@@ -1,0 +1,65 @@
+site_name: "Réponse à l'Appel d'Offre Audit CISAC"
+
+nav:
+  - Home: index.md
+  - Docs de Travail:
+      - docs_de_travail/index.md
+  - Resources:
+      - resources/index.md
+
+docs_dir: docs
+
+# Theme configuration using material with PALO IT customization
+theme:
+  name: material
+  logo: img/palo-it-logo.png
+  favicon: img/favicon.ico
+  palette:
+    primary: custom
+    accent: custom
+  font:
+    text: Montserrat
+    code: Roboto Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+# Custom CSS with PALO IT branding
+extra_css:
+  - css/palo-it-mkdocs-theme.css
+
+# Extra settings
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/palo-it
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/palo-it/
+
+# Footer customization
+copyright: Copyright &copy; 2025 PALO IT
+
+# Plugins
+plugins:
+  - search
+  - mermaid2
+
+# Mermaid configuration
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - tables
+  - footnotes

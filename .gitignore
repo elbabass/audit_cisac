@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+
+
+# mkdocs build output
+site/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python package manager lock files
+uv.lock
+
+# Misc
+*.log

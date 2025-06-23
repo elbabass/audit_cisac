@@ -1,0 +1,196 @@
+/* PALO IT MkDocs Theme - Based on the PALO IT Design System */
+
+/* ---------- PALO IT Color Variables ---------- */
+:root {
+  /* Color palette from PALO IT Design System */
+  --gray: #5E5F5A;
+  --light-green: #46C864;
+  --violet: #9C34D1;
+  --orange: #FF9132;
+  --green: #008F68;
+  --fuchsia: #FF00A0;
+  --light-gray: #F0EFEB;
+  --yellow: #FFD23C;
+  --blue: #5157DD;
+  
+  /* MkDocs theme adjustments */
+  --md-primary-fg-color: var(--green);
+  --md-primary-fg-color--dark: #007554;
+  --md-primary-fg-color--light: var(--light-green);
+  --md-accent-fg-color: var(--orange);
+  --md-accent-fg-color--transparent: rgba(255, 145, 50, 0.1);
+  
+  /* Typography */
+  --md-text-font: "Montserrat", sans-serif;
+  --md-code-font: "Roboto Mono", monospace;
+}
+
+/* ---------- Global Adjustments ---------- */
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--gray);
+}
+
+/* ---------- Header & Navigation ---------- */
+.md-header {
+  background-color: var(--green);
+  color: white;
+}
+
+.md-tabs {
+  background-color: var(--green);
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: var(--yellow);
+}
+
+.md-nav__item .md-nav__link--active {
+  color: var(--green);
+}
+
+.md-nav__link:focus, 
+.md-nav__link:hover {
+  color: var(--orange);
+}
+
+/* ---------- Content ---------- */
+.md-content {
+  line-height: 1.5;
+}
+
+.md-content h1 {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.md-content h2 {
+  color: var(--green);
+  border-bottom: 1px solid var(--light-gray);
+  padding-bottom: 0.3em;
+}
+
+.md-content h3 {
+  color: var(--gray);
+}
+
+.md-content a {
+  color: var(--blue);
+}
+
+.md-content a:hover {
+  color: var(--violet);
+}
+
+/* ---------- Code Blocks ---------- */
+.md-typeset pre > code {
+  border-left: 4px solid var(--green);
+}
+
+/* ---------- Tables ---------- */
+.md-typeset table:not([class]) {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--green);
+  color: white;
+}
+
+.md-typeset table:not([class]) tr:nth-child(odd) {
+  background-color: var(--light-gray);
+}
+
+/* ---------- Footer ---------- */
+.md-footer {
+  background-color: var(--gray);
+}
+
+.md-footer-nav {
+  background-color: var(--light-gray);
+}
+
+.md-footer-nav__link {
+  color: var(--gray);
+}
+
+.md-footer-nav__button:hover {
+  opacity: 0.8;
+}
+
+/* ---------- Buttons & Controls ---------- */
+.md-typeset .md-button {
+  border-radius: 4px;
+}
+
+.md-typeset .md-button--primary {
+  background-color: var(--green);
+  border-color: var(--green);
+  color: white;
+}
+
+.md-typeset .md-button--primary:hover {
+  background-color: #007554;
+}
+
+/* ---------- Admonitions ---------- */
+.md-typeset .admonition {
+  border-radius: 4px;
+}
+
+.md-typeset .admonition.info,
+.md-typeset details.info {
+  border-left-color: var(--blue);
+}
+
+.md-typeset .admonition.info > .admonition-title,
+.md-typeset details.info > .admonition-title {
+  background-color: rgba(81, 87, 221, 0.1);
+}
+
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-left-color: var(--green);
+}
+
+.md-typeset .admonition.tip > .admonition-title,
+.md-typeset details.tip > .admonition-title {
+  background-color: rgba(0, 143, 104, 0.1);
+}
+
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-left-color: var(--yellow);
+}
+
+.md-typeset .admonition.warning > .admonition-title,
+.md-typeset details.warning > .admonition-title {
+  background-color: rgba(255, 210, 60, 0.1);
+}
+
+.md-typeset .admonition.danger,
+.md-typeset details.danger {
+  border-left-color: var(--fuchsia);
+}
+
+.md-typeset .admonition.danger > .admonition-title,
+.md-typeset details.danger > .admonition-title {
+  background-color: rgba(255, 0, 160, 0.1);
+}
+
+/* ---------- Search ---------- */
+.md-search__input {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------- Mermaid Diagrams ---------- */
+.mermaid svg {
+  max-width: 100%;
+}
