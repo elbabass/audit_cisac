@@ -1,0 +1,911 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Request for Proposal",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          89.3136602640152,
+          73.93182563781738
+        ],
+        [
+          316.0564126968384,
+          73.93182563781738
+        ],
+        [
+          314.8611001968384,
+          103.32639241218567
+        ],
+        [
+          88.1183477640152,
+          103.32639241218567
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          89.69239354133606,
+          72.52928566932678
+        ],
+        [
+          200.63107645511627,
+          72.52928566932678
+        ],
+        [
+          200.63107645511627,
+          88.9052220582962
+        ],
+        [
+          89.69239354133606,
+          88.9052220582962
+        ]
+      ]
+    },
+    {
+      "title": "1. Context and objectives",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          89.74352663755417,
+          73.23788452148438
+        ],
+        [
+          247.56013298034668,
+          73.23788452148438
+        ],
+        [
+          246.36482048034668,
+          88.85003662109375
+        ],
+        [
+          88.54821413755417,
+          88.85003662109375
+        ]
+      ]
+    },
+    {
+      "title": "2. Scope of Work (SOW)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          90.02399444580078,
+          650.1857213973999
+        ],
+        [
+          239.6215624809265,
+          648.6388463973999
+        ],
+        [
+          238.4262499809265,
+          666.0100021362305
+        ],
+        [
+          89.55393201112747,
+          666.0653600692749
+        ]
+      ]
+    },
+    {
+      "title": "A. Current-state architecture audit",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          90.02399444580078,
+          72.96573686599731
+        ],
+        [
+          279.1746311187744,
+          72.96573686599731
+        ],
+        [
+          277.9793186187744,
+          87.6199951171875
+        ],
+        [
+          89.14317101240158,
+          87.6199951171875
+        ]
+      ]
+    },
+    {
+      "title": "1. Infrastructure and cloud services",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          90.02399444580078,
+          100.5217137336731
+        ],
+        [
+          252.94009709358215,
+          100.5217137336731
+        ],
+        [
+          251.74478459358215,
+          113.6249270439148
+        ],
+        [
+          89.16803079843521,
+          113.6249270439148
+        ]
+      ]
+    },
+    {
+      "title": "2. Application architecture",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          90.02399444580078,
+          179.92153573036194
+        ],
+        [
+          213.38679134845734,
+          179.92153573036194
+        ],
+        [
+          212.19147884845734,
+          193.46002197265625
+        ],
+        [
+          89.19102108478546,
+          193.46002197265625
+        ]
+      ]
+    },
+    {
+      "title": "3. Performance and workload review",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          90.02399444580078,
+          275.30782556533813
+        ],
+        [
+          262.76233899593353,
+          275.30782556533813
+        ],
+        [
+          261.56702649593353,
+          288.51706552505493
+        ],
+        [
+          89.47671711444855,
+          288.51706552505493
+        ]
+      ]
+    },
+    {
+      "title": "4. Codebase and pipeline audit",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          90.02399444580078,
+          369.91439938545227
+        ],
+        [
+          233.11986207962036,
+          369.91439938545227
+        ],
+        [
+          231.92454957962036,
+          383.3377697467804
+        ],
+        [
+          88.98937958478928,
+          383.3377697467804
+        ]
+      ]
+    },
+    {
+      "title": "B. Upgrade proposal assessment",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          90.02399444580078,
+          466.1184539794922
+        ],
+        [
+          268.60427927970886,
+          464.5715789794922
+        ],
+        [
+          267.40896677970886,
+          480.19000244140625
+        ],
+        [
+          89.79150438308716,
+          481.0258197784424
+        ]
+      ]
+    },
+    {
+      "title": "1. Target architecture review",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          90.02399444580078,
+          493.6132035255432
+        ],
+        [
+          223.73789191246033,
+          492.0663285255432
+        ],
+        [
+          222.54257941246033,
+          505.989990234375
+        ],
+        [
+          88.92444866895676,
+          506.8172507286072
+        ]
+      ]
+    },
+    {
+      "title": "2. Cost and licensing evaluation",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          89.91058695316315,
+          633.1105213165283
+        ],
+        [
+          237.13355934619904,
+          631.5636463165283
+        ],
+        [
+          235.93824684619904,
+          645.2814931869507
+        ],
+        [
+          88.71527445316315,
+          646.8283681869507
+        ]
+      ]
+    },
+    {
+      "title": "3. Feasibility and risk assessment",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          89.93189013004303,
+          96.81917202472687
+        ],
+        [
+          243.47417271137238,
+          96.81917202472687
+        ],
+        [
+          242.27886021137238,
+          110.05999755859375
+        ],
+        [
+          88.73657763004303,
+          110.05999755859375
+        ]
+      ]
+    },
+    {
+      "title": "4. Performance and scalability projections",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          90.02399444580078,
+          191.0810648202896
+        ],
+        [
+          284.91332030296326,
+          191.0810648202896
+        ],
+        [
+          283.71800780296326,
+          204.8599853515625
+        ],
+        [
+          88.92587131261826,
+          204.8599853515625
+        ]
+      ]
+    },
+    {
+      "title": "3. Success Criteria",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          90.02399444580078,
+          287.3502531051636
+        ],
+        [
+          203.73647046089172,
+          287.3502531051636
+        ],
+        [
+          202.54115796089172,
+          302.4800109863281
+        ],
+        [
+          89.08322846889496,
+          302.4800109863281
+        ]
+      ]
+    },
+    {
+      "title": "4. Deliverables",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          89.2678073644638,
+          407.2967004776001
+        ],
+        [
+          185.2017399072647,
+          407.2967004776001
+        ],
+        [
+          184.0064274072647,
+          423.3399963378906
+        ],
+        [
+          88.0724948644638,
+          423.3399963378906
+        ]
+      ]
+    },
+    {
+      "title": "Optional :",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          89.98318737745285,
+          520.3665218353271
+        ],
+        [
+          137.5134385228157,
+          518.8196468353271
+        ],
+        [
+          136.3181260228157,
+          533.0509157180786
+        ],
+        [
+          88.78787487745285,
+          534.5977907180786
+        ]
+      ]
+    },
+    {
+      "title": "5. Timeline",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          89.89065170288086,
+          600.3344078063965
+        ],
+        [
+          164.43852925300598,
+          598.7875328063965
+        ],
+        [
+          163.24321675300598,
+          615.6100006103516
+        ],
+        [
+          88.69533920288086,
+          615.9160766601562
+        ]
+      ]
+    },
+    {
+      "title": "6. Vendor response format",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          90.02399444580078,
+          674.1946678161621
+        ],
+        [
+          256.3703827857971,
+          672.6477928161621
+        ],
+        [
+          255.17507028579712,
+          688.9300003051758
+        ],
+        [
+          88.9359118938446,
+          689.9733781814575
+        ]
+      ]
+    },
+    {
+      "title": "7. Additional information",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          89.4982847571373,
+          170.19198560714722
+        ],
+        [
+          245.36171078681946,
+          170.19198560714722
+        ],
+        [
+          244.16639828681946,
+          187.5411036014557
+        ],
+        [
+          88.3029722571373,
+          187.5411036014557
+        ]
+      ]
+    },
+    {
+      "title": "Appendix",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          90.02399444580078,
+          72.71262538433075
+        ],
+        [
+          146.76294779777527,
+          72.71262538433075
+        ],
+        [
+          145.56763529777527,
+          89.24670481681824
+        ],
+        [
+          90.02399444580078,
+          89.24670481681824
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          92.55215352773666,
+          71.14202892780304
+        ],
+        [
+          322.2772686481476,
+          71.14202892780304
+        ],
+        [
+          321.0819561481476,
+          84.07095444202423
+        ],
+        [
+          91.35684102773666,
+          84.07095444202423
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          11
+        ],
+        [
+          "Line",
+          4
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          57
+        ],
+        [
+          "TableCell",
+          25
+        ],
+        [
+          "Line",
+          7
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "TableCell",
+          54
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "TableOfContents",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          97
+        ],
+        [
+          "Line",
+          35
+        ],
+        [
+          "ListItem",
+          9
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          113
+        ],
+        [
+          "Line",
+          31
+        ],
+        [
+          "ListItem",
+          19
+        ],
+        [
+          "SectionHeader",
+          8
+        ],
+        [
+          "Reference",
+          8
+        ],
+        [
+          "ListGroup",
+          6
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          103
+        ],
+        [
+          "Line",
+          28
+        ],
+        [
+          "ListItem",
+          16
+        ],
+        [
+          "SectionHeader",
+          7
+        ],
+        [
+          "Reference",
+          6
+        ],
+        [
+          "ListGroup",
+          5
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          31
+        ],
+        [
+          "Line",
+          9
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          3
+        ],
+        [
+          "Line",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Figure",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Line",
+          1
+        ],
+        [
+          "Span",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Line",
+          1
+        ],
+        [
+          "Span",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\RFP_ISWC_Audit-v1.1"
+}
