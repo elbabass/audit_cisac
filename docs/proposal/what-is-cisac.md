@@ -1,0 +1,3 @@
+# What is CISAC?
+
+CISAC (International Confederation of Societies of Authors and Composers) is the world’s leading network of authors’ societies, representing over 5 million creators across 116 countries. Its mission is to protect creators’ rights, promote their interests globally, and enable the efficient collective management of copyright. CISAC sets professional standards, advocates for strong legal protection, and provides the technical infrastructure for international rights management. By fostering collaboration among member societies, CISAC ensures that creators are fairly remunerated and their works are recognized and protected worldwide.
