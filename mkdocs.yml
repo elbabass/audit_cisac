@@ -1,5 +1,7 @@
 site_name: "Réponse à l'Appel d'Offre Audit CISAC"
 
+root: docs
+
 nav:
   - Home: index.md
   - Docs de Travail:
