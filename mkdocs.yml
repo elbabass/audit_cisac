@@ -1,20 +1,29 @@
 site_name: "Réponse à l'Appel d'Offre Audit CISAC"
 
-root: docs
-
 nav:
   - Home: index.md
+  - Proposition:
+      - proposal/index.md
+      - Contexte: proposal/context-introduction.md
+      - Gouvernance: proposal/governance.md
+      - Facteurs clés: proposal/key-success-factors.md
+      - Planification: proposal/planning.md
+      - À propos CISAC: proposal/what-is-cisac.md
+      - Document complet: proposal/md/CISAC Audit/CISAC Audit.md
   - Docs de Travail:
       - docs_de_travail/index.md
+      - Synchro PALO: 2025-07-11-CISAC-Synchro-avec-PALO.md
   - Resources:
       - resources/index.md
+      - Standard ISO15707: resources/ISO15707.md
+      - Vue d'ensemble CISAC: resources/[ChatGPT]CISAC-and-ISWC-administration-governance-overview.md
+      - RFP Original: resources/md/RFP_ISWC_Audit-v1.1/RFP_ISWC_Audit-v1.1.md
 
 docs_dir: docs
 
 # Theme configuration using material with PALO IT customization
 theme:
   name: material
-  logo: img/palo-it-logo.png
   favicon: img/favicon.ico
   palette:
     primary: custom
