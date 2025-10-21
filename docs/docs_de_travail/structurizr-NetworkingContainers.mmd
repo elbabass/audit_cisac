@@ -1,0 +1,27 @@
+graph LR
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Networking Infrastructure - Containers"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    3("<div style='font-weight: bold'>External/Suisa SFTP</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>External SFTP server for file<br />exchange with Suisa</div>")
+    style 3 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    17("<div style='font-weight: bold'>Data Platform</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Data processing, analytics,<br />and storage platform</div>")
+    style 17 fill:#1168bd,stroke:#0b4884,color:#ffffff
+
+    subgraph 27 ["Networking Infrastructure"]
+      style 27 fill:#ffffff,stroke:#0b4884,color:#0b4884
+
+      28("<div style='font-weight: bold'>Virtual Network</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Virtual Network]</div><div style='font-size: 80%; margin-top:10px'>Private network for secure<br />communication</div>")
+      style 28 fill:#34495e,stroke:#243341,color:#ffffff
+      29("<div style='font-weight: bold'>Public IP</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Public IP]</div><div style='font-size: 80%; margin-top:10px'>Public IP address for<br />external access</div>")
+      style 29 fill:#34495e,stroke:#243341,color:#ffffff
+      30["<div style='font-weight: bold'>ISWC SFTP</div><div style='font-size: 70%; margin-top: 0px'>[Container: Virtual Machine]</div><div style='font-size: 80%; margin-top:10px'>SFTP server for file<br />transfers</div>"]
+      style 30 fill:#7f8c8d,stroke:#586262,color:#ffffff
+    end
+
+    3-. "<div>Transfers files to</div><div style='font-size: 70%'>[SFTP]</div>" .->29
+    29-. "<div>Provides access to</div><div style='font-size: 70%'></div>" .->30
+    28-. "<div>Secures</div><div style='font-size: 70%'></div>" .->30
+    30-. "<div>Transfers data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->17
+  end

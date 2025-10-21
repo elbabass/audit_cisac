@@ -1,0 +1,61 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["ISWC Platform - Containers"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    1("<div style='font-weight: bold'>External/FastTrack SSO</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>External authentication<br />provider for agency users</div>")
+    style 1 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    2("<div style='font-weight: bold'>Suisa API</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>External API for Suisa<br />integration</div>")
+    style 2 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    13("<div style='font-weight: bold'>Matching Engine</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Work matching and search<br />platform</div>")
+    style 13 fill:#1168bd,stroke:#0b4884,color:#ffffff
+    17("<div style='font-weight: bold'>Data Platform</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Data processing, analytics,<br />and storage platform</div>")
+    style 17 fill:#1168bd,stroke:#0b4884,color:#ffffff
+
+    subgraph 4 ["ISWC Platform"]
+      style 4 fill:#ffffff,stroke:#0b4884,color:#0b4884
+
+      10["<div style='font-weight: bold'>ISWC Jobs</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Functions]</div><div style='font-size: 80%; margin-top:10px'>Background jobs for<br />asynchronous processing</div>"]
+      style 10 fill:#f39c12,stroke:#aa6d0c,color:#ffffff
+      11[("<div style='font-weight: bold'>Key Vault</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Key Vault]</div><div style='font-size: 80%; margin-top:10px'>Centralized secret and<br />certificate management</div>")]
+      style 11 fill:#e74c3c,stroke:#a1352a,color:#ffffff
+      12("<div style='font-weight: bold'>Application Insights</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Application Insights]</div><div style='font-size: 80%; margin-top:10px'>Application performance<br />monitoring and telemetry</div>")
+      style 12 fill:#c0392b,stroke:#86271e,color:#ffffff
+      5("<div style='font-weight: bold'>API Management</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure API Management]</div><div style='font-size: 80%; margin-top:10px'>Central API gateway for<br />external and internal API<br />routing</div>")
+      style 5 fill:#9b59b6,stroke:#6c3e7f,color:#ffffff
+      6("<div style='font-weight: bold'>App Service Plan</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service Plan]</div><div style='font-size: 80%; margin-top:10px'>Hosting infrastructure for<br />web applications and APIs</div>")
+      style 6 fill:#95a5a6,stroke:#687374,color:#ffffff
+      7["<div style='font-weight: bold'>ISWC Agency Portal</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service]</div><div style='font-size: 80%; margin-top:10px'>Web portal for agencies to<br />manage work registrations</div>"]
+      style 7 fill:#3498db,stroke:#246a99,color:#ffffff
+      8["<div style='font-weight: bold'>ISWC Public Portal</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service]</div><div style='font-size: 80%; margin-top:10px'>Public web portal for work<br />information lookup</div>"]
+      style 8 fill:#3498db,stroke:#246a99,color:#ffffff
+      9["<div style='font-weight: bold'>ISWC API</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service]</div><div style='font-size: 80%; margin-top:10px'>Core API for work<br />registration and management<br />operations</div>"]
+      style 9 fill:#e67e22,stroke:#a15817,color:#ffffff
+    end
+
+    1-. "<div>Authenticates via</div><div style='font-size: 70%'>[HTTPS]</div>" .->5
+    2-. "<div>Sends API requests to</div><div style='font-size: 70%'>[HTTPS]</div>" .->5
+    5-. "<div>Routes requests to</div><div style='font-size: 70%'>[HTTPS]</div>" .->7
+    5-. "<div>Routes requests to</div><div style='font-size: 70%'>[HTTPS]</div>" .->9
+    5-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->12
+    6-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->7
+    6-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->8
+    6-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->9
+    6-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->13
+    7-. "<div>Makes requests to</div><div style='font-size: 70%'>[HTTPS]</div>" .->9
+    8-. "<div>Makes requests to</div><div style='font-size: 70%'>[HTTPS]</div>" .->9
+    10-. "<div>Processes data via</div><div style='font-size: 70%'>[HTTPS]</div>" .->9
+    11-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->5
+    11-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->10
+    11-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->17
+    11-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->6
+    9-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->12
+    10-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->12
+    7-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->12
+    8-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->12
+    13-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->12
+    13-. "<div>Indexes data from</div><div style='font-size: 70%'>[HTTPS]</div>" .->17
+    9-. "<div>Reads/Writes data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->17
+    10-. "<div>Reads/Writes data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->17
+  end

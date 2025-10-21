@@ -1,0 +1,30 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["System Landscape"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    1("<div style='font-weight: bold'>External/FastTrack SSO</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>External authentication<br />provider for agency users</div>")
+    style 1 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    13("<div style='font-weight: bold'>Matching Engine</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Work matching and search<br />platform</div>")
+    style 13 fill:#1168bd,stroke:#0b4884,color:#ffffff
+    17("<div style='font-weight: bold'>Data Platform</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Data processing, analytics,<br />and storage platform</div>")
+    style 17 fill:#1168bd,stroke:#0b4884,color:#ffffff
+    2("<div style='font-weight: bold'>Suisa API</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>External API for Suisa<br />integration</div>")
+    style 2 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    27("<div style='font-weight: bold'>Networking Infrastructure</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Network and connectivity<br />infrastructure</div>")
+    style 27 fill:#1168bd,stroke:#0b4884,color:#ffffff
+    3("<div style='font-weight: bold'>External/Suisa SFTP</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>External SFTP server for file<br />exchange with Suisa</div>")
+    style 3 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    4("<div style='font-weight: bold'>ISWC Platform</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>International Standard<br />Musical Work Code platform<br />for work registration and<br />management</div>")
+    style 4 fill:#1168bd,stroke:#0b4884,color:#ffffff
+
+    1-. "<div>Authenticates via</div><div style='font-size: 70%'>[HTTPS]</div>" .->4
+    2-. "<div>Sends API requests to</div><div style='font-size: 70%'>[HTTPS]</div>" .->4
+    3-. "<div>Transfers files to</div><div style='font-size: 70%'>[SFTP]</div>" .->27
+    4-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->13
+    4-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->17
+    13-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->4
+    13-. "<div>Indexes data from</div><div style='font-size: 70%'>[HTTPS]</div>" .->17
+    27-. "<div>Transfers data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->17
+  end

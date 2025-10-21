@@ -1,0 +1,300 @@
+workspace "CISAC Azure Infrastructure" "C4 model of the CISAC Azure infrastructure" {
+
+    model {
+        # External Systems
+        fastTrackSSO = softwareSystem "External/FastTrack SSO" "External authentication provider for agency users" "External"
+        suisaAPI = softwareSystem "Suisa API" "External API for Suisa integration" "External"
+        suisaSFTP = softwareSystem "External/Suisa SFTP" "External SFTP server for file exchange with Suisa" "External"
+
+        # CISAC ISWC Platform
+        iswcPlatform = softwareSystem "ISWC Platform" "International Standard Musical Work Code platform for work registration and management" {
+            # API Gateway
+            apiManagement = container "API Management" "Central API gateway for external and internal API routing" "Azure API Management" "Gateway"
+
+            # App Service Plan
+            appServicePlan = container "App Service Plan" "Hosting infrastructure for web applications and APIs" "Azure App Service Plan" "Infrastructure"
+
+            # Web Applications
+            agencyPortal = container "ISWC Agency Portal" "Web portal for agencies to manage work registrations" "Azure App Service" "WebApp"
+            publicPortal = container "ISWC Public Portal" "Public web portal for work information lookup" "Azure App Service" "WebApp"
+
+            # APIs
+            iswcAPI = container "ISWC API" "Core API for work registration and management operations" "Azure App Service" "API"
+
+            # Background Processing
+            iswcJobs = container "ISWC Jobs" "Background jobs for asynchronous processing" "Azure Functions" "Functions"
+
+            # Security & Monitoring
+            keyVault = container "Key Vault" "Centralized secret and certificate management" "Azure Key Vault" "Security"
+            appInsights = container "Application Insights" "Application performance monitoring and telemetry" "Azure Application Insights" "Monitoring"
+        }
+
+        # Matching Engine System
+        matchingEngine = softwareSystem "Matching Engine" "Work matching and search platform" {
+            mePortal = container "ME Portal" "Web portal for work matching operations" "Azure App Service" "WebApp"
+            meAPI = container "ME API" "API for matching operations" "Azure App Service" "API"
+            searchService = container "Search Service" "Full-text search and indexing service" "Azure Cognitive Search" "Search"
+        }
+
+        # Data Platform
+        dataPlatform = softwareSystem "Data Platform" "Data processing, analytics, and storage platform" {
+            # Processing
+            databricks = container "Databricks" "Big data processing and analytics workspace" "Azure Databricks" "Analytics"
+            dataFactory = container "Data Factory" "ETL and data integration orchestration" "Azure Data Factory" "ETL"
+
+            # NoSQL Storage
+            cosmosDB = container "Cosmos DB" "NoSQL database for JSON document storage" "Azure Cosmos DB" "Database" {
+                widJSON = component "WID JSON" "Work Identifier documents" "JSON Collection"
+                iswcJSON = component "ISWC JSON" "ISWC work documents" "JSON Collection"
+            }
+
+            # Relational Storage
+            sqlServer = container "SQL Server" "Relational database server" "Azure SQL Server" "Database" {
+                iswcDB = component "ISWC Database" "ISWC relational data" "SQL Database"
+                ipiDB = component "IPI Database" "Interested Party Information" "SQL Database"
+            }
+
+            # Big Data Storage
+            dataLake = container "Data Lake" "Large-scale data storage for raw and processed data" "Azure Data Lake Storage Gen2" "Storage"
+        }
+
+        # Networking Infrastructure
+        networkingInfra = softwareSystem "Networking Infrastructure" "Network and connectivity infrastructure" {
+            virtualNetwork = container "Virtual Network" "Private network for secure communication" "Azure Virtual Network" "Network"
+            publicIP = container "Public IP" "Public IP address for external access" "Azure Public IP" "Network"
+            iswcSFTP = container "ISWC SFTP" "SFTP server for file transfers" "Virtual Machine" "VM"
+        }
+
+        # Relationships - External to Gateway
+        fastTrackSSO -> apiManagement "Authenticates via" "HTTPS"
+        suisaAPI -> apiManagement "Sends API requests to" "HTTPS"
+        suisaSFTP -> publicIP "Transfers files to" "SFTP"
+
+        # Relationships - Gateway to Applications
+        apiManagement -> agencyPortal "Routes requests to" "HTTPS"
+        apiManagement -> iswcAPI "Routes requests to" "HTTPS"
+        apiManagement -> appInsights "Sends telemetry to" "HTTPS"
+
+        # Relationships - App Service Plan hosting
+        appServicePlan -> agencyPortal "Hosts" ""
+        appServicePlan -> publicPortal "Hosts" ""
+        appServicePlan -> iswcAPI "Hosts" ""
+        appServicePlan -> mePortal "Hosts" ""
+        appServicePlan -> meAPI "Hosts" ""
+
+        # Relationships - Application flows
+        agencyPortal -> iswcAPI "Makes requests to" "HTTPS"
+        publicPortal -> iswcAPI "Makes requests to" "HTTPS"
+        iswcJobs -> iswcAPI "Processes data via" "HTTPS"
+
+        # Relationships - Key Vault
+        keyVault -> apiManagement "Provides secrets to" "HTTPS"
+        keyVault -> iswcJobs "Provides secrets to" "HTTPS"
+        keyVault -> dataFactory "Provides secrets to" "HTTPS"
+        keyVault -> appServicePlan "Provides secrets to" "HTTPS"
+
+        # Relationships - Application Insights monitoring
+        iswcAPI -> appInsights "Sends telemetry to" "HTTPS"
+        iswcJobs -> appInsights "Sends telemetry to" "HTTPS"
+        agencyPortal -> appInsights "Sends telemetry to" "HTTPS"
+        publicPortal -> appInsights "Sends telemetry to" "HTTPS"
+        mePortal -> appInsights "Sends telemetry to" "HTTPS"
+        meAPI -> appInsights "Sends telemetry to" "HTTPS"
+
+        # Relationships - Matching Engine
+        mePortal -> meAPI "Queries via" "HTTPS"
+        meAPI -> searchService "Searches using" "HTTPS"
+        searchService -> cosmosDB "Indexes data from" "HTTPS"
+        searchService -> sqlServer "Indexes data from" "HTTPS"
+
+        # Relationships - API to Storage
+        iswcAPI -> cosmosDB "Reads/Writes data to" "HTTPS"
+        iswcAPI -> sqlServer "Reads/Writes data to" "HTTPS"
+        iswcJobs -> cosmosDB "Reads/Writes data to" "HTTPS"
+        iswcJobs -> sqlServer "Reads/Writes data to" "HTTPS"
+
+        # Relationships - Data Processing
+        databricks -> dataLake "Processes data from/to" "HTTPS"
+        databricks -> cosmosDB "Transforms data to" "HTTPS"
+        databricks -> sqlServer "Transforms data to" "HTTPS"
+        dataFactory -> dataLake "Orchestrates ETL to/from" "HTTPS"
+        dataFactory -> cosmosDB "Orchestrates pipelines to" "HTTPS"
+        dataFactory -> sqlServer "Orchestrates pipelines to" "HTTPS"
+
+        # Relationships - Networking
+        publicIP -> iswcSFTP "Provides access to" ""
+        virtualNetwork -> iswcSFTP "Secures" ""
+        iswcSFTP -> databricks "Transfers data to" "HTTPS"
+        iswcSFTP -> dataFactory "Transfers data to" "HTTPS"
+
+        # Deployment Environments
+        deploymentEnvironment "Azure" {
+            deploymentNode "Azure Cloud" {
+                deploymentNode "West Europe Region" {
+                    deploymentNode "CISAC Resource Groups" {
+                        # Production Environment
+                        deploymentNode "cisac-iswc-prod" {
+                            containerInstance apiManagement
+                            containerInstance appServicePlan
+                            containerInstance agencyPortal
+                            containerInstance publicPortal
+                            containerInstance iswcAPI
+                            containerInstance iswcJobs
+                            containerInstance keyVault
+                            containerInstance appInsights
+                        }
+
+                        # Data Platform
+                        deploymentNode "cisac-data-prod" {
+                            containerInstance databricks
+                            containerInstance dataFactory
+                            containerInstance cosmosDB
+                            containerInstance sqlServer
+                            containerInstance dataLake
+                        }
+
+                        # Matching Engine
+                        deploymentNode "cisac-me-prod" {
+                            containerInstance mePortal
+                            containerInstance meAPI
+                            containerInstance searchService
+                        }
+
+                        # Networking
+                        deploymentNode "cisac-network-prod" {
+                            containerInstance virtualNetwork
+                            containerInstance publicIP
+                            containerInstance iswcSFTP
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    views {
+        # System Context View
+        systemContext iswcPlatform "SystemContext" {
+            include *
+            autoLayout lr
+        }
+
+        # ISWC Platform Container View
+        container iswcPlatform "ISWCPlatformContainers" {
+            include *
+            autoLayout tb
+        }
+
+        # Matching Engine Container View
+        container matchingEngine "MatchingEngineContainers" {
+            include *
+            autoLayout tb
+        }
+
+        # Data Platform Container View
+        container dataPlatform "DataPlatformContainers" {
+            include *
+            autoLayout tb
+        }
+
+        # Networking Infrastructure Container View
+        container networkingInfra "NetworkingContainers" {
+            include *
+            autoLayout lr
+        }
+
+        # Full System Landscape
+        systemLandscape "SystemLandscape" {
+            include *
+            autoLayout tb
+        }
+
+        # Deployment View - Azure Cloud
+        deployment * "Azure" {
+            include *
+            autoLayout tb
+        }
+
+        # Styling
+        styles {
+            element "Software System" {
+                background #1168bd
+                color #ffffff
+            }
+            element "External" {
+                background #999999
+                color #ffffff
+            }
+            element "Container" {
+                background #438dd5
+                color #ffffff
+            }
+            element "Gateway" {
+                background #9b59b6
+                color #ffffff
+            }
+            element "WebApp" {
+                background #3498db
+                color #ffffff
+                shape WebBrowser
+            }
+            element "API" {
+                background #e67e22
+                color #ffffff
+                shape Hexagon
+            }
+            element "Functions" {
+                background #f39c12
+                color #ffffff
+                shape Component
+            }
+            element "Security" {
+                background #e74c3c
+                color #ffffff
+                shape Cylinder
+            }
+            element "Monitoring" {
+                background #c0392b
+                color #ffffff
+            }
+            element "Database" {
+                background #2ecc71
+                color #ffffff
+                shape Cylinder
+            }
+            element "Storage" {
+                background #27ae60
+                color #ffffff
+                shape Folder
+            }
+            element "Analytics" {
+                background #d35400
+                color #ffffff
+            }
+            element "ETL" {
+                background #16a085
+                color #ffffff
+            }
+            element "Search" {
+                background #8e44ad
+                color #ffffff
+            }
+            element "Network" {
+                background #34495e
+                color #ffffff
+            }
+            element "VM" {
+                background #7f8c8d
+                color #ffffff
+                shape Box
+            }
+            element "Infrastructure" {
+                background #95a5a6
+                color #ffffff
+            }
+        }
+
+        themes default
+    }
+
+}

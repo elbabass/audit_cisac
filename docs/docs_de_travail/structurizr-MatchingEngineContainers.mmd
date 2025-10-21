@@ -1,0 +1,31 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Matching Engine - Containers"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    4("<div style='font-weight: bold'>ISWC Platform</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>International Standard<br />Musical Work Code platform<br />for work registration and<br />management</div>")
+    style 4 fill:#1168bd,stroke:#0b4884,color:#ffffff
+    17("<div style='font-weight: bold'>Data Platform</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Data processing, analytics,<br />and storage platform</div>")
+    style 17 fill:#1168bd,stroke:#0b4884,color:#ffffff
+
+    subgraph 13 ["Matching Engine"]
+      style 13 fill:#ffffff,stroke:#0b4884,color:#0b4884
+
+      14["<div style='font-weight: bold'>ME Portal</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service]</div><div style='font-size: 80%; margin-top:10px'>Web portal for work matching<br />operations</div>"]
+      style 14 fill:#3498db,stroke:#246a99,color:#ffffff
+      15["<div style='font-weight: bold'>ME API</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service]</div><div style='font-size: 80%; margin-top:10px'>API for matching operations</div>"]
+      style 15 fill:#e67e22,stroke:#a15817,color:#ffffff
+      16("<div style='font-weight: bold'>Search Service</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Cognitive Search]</div><div style='font-size: 80%; margin-top:10px'>Full-text search and indexing<br />service</div>")
+      style 16 fill:#8e44ad,stroke:#632f79,color:#ffffff
+    end
+
+    4-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->14
+    4-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->15
+    4-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->17
+    14-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->4
+    15-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->4
+    14-. "<div>Queries via</div><div style='font-size: 70%'>[HTTPS]</div>" .->15
+    15-. "<div>Searches using</div><div style='font-size: 70%'>[HTTPS]</div>" .->16
+    16-. "<div>Indexes data from</div><div style='font-size: 70%'>[HTTPS]</div>" .->17
+  end

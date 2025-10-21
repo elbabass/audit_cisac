@@ -1,0 +1,44 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Data Platform - Containers"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    4("<div style='font-weight: bold'>ISWC Platform</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>International Standard<br />Musical Work Code platform<br />for work registration and<br />management</div>")
+    style 4 fill:#1168bd,stroke:#0b4884,color:#ffffff
+    13("<div style='font-weight: bold'>Matching Engine</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Work matching and search<br />platform</div>")
+    style 13 fill:#1168bd,stroke:#0b4884,color:#ffffff
+    27("<div style='font-weight: bold'>Networking Infrastructure</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Network and connectivity<br />infrastructure</div>")
+    style 27 fill:#1168bd,stroke:#0b4884,color:#ffffff
+
+    subgraph 17 ["Data Platform"]
+      style 17 fill:#ffffff,stroke:#0b4884,color:#0b4884
+
+      18("<div style='font-weight: bold'>Databricks</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Databricks]</div><div style='font-size: 80%; margin-top:10px'>Big data processing and<br />analytics workspace</div>")
+      style 18 fill:#d35400,stroke:#933a00,color:#ffffff
+      19("<div style='font-weight: bold'>Data Factory</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Data Factory]</div><div style='font-size: 80%; margin-top:10px'>ETL and data integration<br />orchestration</div>")
+      style 19 fill:#16a085,stroke:#0f705d,color:#ffffff
+      20[("<div style='font-weight: bold'>Cosmos DB</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Cosmos DB]</div><div style='font-size: 80%; margin-top:10px'>NoSQL database for JSON<br />document storage</div>")]
+      style 20 fill:#2ecc71,stroke:#208e4f,color:#ffffff
+      23[("<div style='font-weight: bold'>SQL Server</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure SQL Server]</div><div style='font-size: 80%; margin-top:10px'>Relational database server</div>")]
+      style 23 fill:#2ecc71,stroke:#208e4f,color:#ffffff
+      26["<div style='font-weight: bold'>Data Lake</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Data Lake Storage Gen2]</div><div style='font-size: 80%; margin-top:10px'>Large-scale data storage for<br />raw and processed data</div>"]
+      style 26 fill:#27ae60,stroke:#1b7943,color:#ffffff
+    end
+
+    4-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->13
+    4-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->19
+    13-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->4
+    13-. "<div>Indexes data from</div><div style='font-size: 70%'>[HTTPS]</div>" .->20
+    13-. "<div>Indexes data from</div><div style='font-size: 70%'>[HTTPS]</div>" .->23
+    4-. "<div>Reads/Writes data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->20
+    4-. "<div>Reads/Writes data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->23
+    18-. "<div>Processes data from/to</div><div style='font-size: 70%'>[HTTPS]</div>" .->26
+    18-. "<div>Transforms data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->20
+    18-. "<div>Transforms data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->23
+    19-. "<div>Orchestrates ETL to/from</div><div style='font-size: 70%'>[HTTPS]</div>" .->26
+    19-. "<div>Orchestrates pipelines to</div><div style='font-size: 70%'>[HTTPS]</div>" .->20
+    19-. "<div>Orchestrates pipelines to</div><div style='font-size: 70%'>[HTTPS]</div>" .->23
+    27-. "<div>Transfers data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->18
+    27-. "<div>Transfers data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->19
+  end

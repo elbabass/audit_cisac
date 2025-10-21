@@ -1,0 +1,119 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Deployment - Azure"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    subgraph 99 ["Azure Cloud"]
+      style 99 fill:#ffffff,stroke:#888888,color:#000000
+
+      subgraph 100 ["West Europe Region"]
+        style 100 fill:#ffffff,stroke:#888888,color:#000000
+
+        subgraph 101 ["CISAC Resource Groups"]
+          style 101 fill:#ffffff,stroke:#888888,color:#000000
+
+          subgraph 102 ["cisac-iswc-prod"]
+            style 102 fill:#ffffff,stroke:#888888,color:#000000
+
+            103("<div style='font-weight: bold'>API Management</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure API Management]</div><div style='font-size: 80%; margin-top:10px'>Central API gateway for<br />external and internal API<br />routing</div>")
+            style 103 fill:#9b59b6,stroke:#6c3e7f,color:#ffffff
+            104("<div style='font-weight: bold'>App Service Plan</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service Plan]</div><div style='font-size: 80%; margin-top:10px'>Hosting infrastructure for<br />web applications and APIs</div>")
+            style 104 fill:#95a5a6,stroke:#687374,color:#ffffff
+            105["<div style='font-weight: bold'>ISWC Agency Portal</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service]</div><div style='font-size: 80%; margin-top:10px'>Web portal for agencies to<br />manage work registrations</div>"]
+            style 105 fill:#3498db,stroke:#246a99,color:#ffffff
+            108["<div style='font-weight: bold'>ISWC Public Portal</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service]</div><div style='font-size: 80%; margin-top:10px'>Public web portal for work<br />information lookup</div>"]
+            style 108 fill:#3498db,stroke:#246a99,color:#ffffff
+            110["<div style='font-weight: bold'>ISWC API</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service]</div><div style='font-size: 80%; margin-top:10px'>Core API for work<br />registration and management<br />operations</div>"]
+            style 110 fill:#e67e22,stroke:#a15817,color:#ffffff
+            115["<div style='font-weight: bold'>ISWC Jobs</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Functions]</div><div style='font-size: 80%; margin-top:10px'>Background jobs for<br />asynchronous processing</div>"]
+            style 115 fill:#f39c12,stroke:#aa6d0c,color:#ffffff
+            117[("<div style='font-weight: bold'>Key Vault</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Key Vault]</div><div style='font-size: 80%; margin-top:10px'>Centralized secret and<br />certificate management</div>")]
+            style 117 fill:#e74c3c,stroke:#a1352a,color:#ffffff
+            121("<div style='font-weight: bold'>Application Insights</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Application Insights]</div><div style='font-size: 80%; margin-top:10px'>Application performance<br />monitoring and telemetry</div>")
+            style 121 fill:#c0392b,stroke:#86271e,color:#ffffff
+          end
+
+          subgraph 127 ["cisac-data-prod"]
+            style 127 fill:#ffffff,stroke:#888888,color:#000000
+
+            128("<div style='font-weight: bold'>Databricks</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Databricks]</div><div style='font-size: 80%; margin-top:10px'>Big data processing and<br />analytics workspace</div>")
+            style 128 fill:#d35400,stroke:#933a00,color:#ffffff
+            129("<div style='font-weight: bold'>Data Factory</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Data Factory]</div><div style='font-size: 80%; margin-top:10px'>ETL and data integration<br />orchestration</div>")
+            style 129 fill:#16a085,stroke:#0f705d,color:#ffffff
+            131[("<div style='font-weight: bold'>Cosmos DB</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Cosmos DB]</div><div style='font-size: 80%; margin-top:10px'>NoSQL database for JSON<br />document storage</div>")]
+            style 131 fill:#2ecc71,stroke:#208e4f,color:#ffffff
+            136[("<div style='font-weight: bold'>SQL Server</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure SQL Server]</div><div style='font-size: 80%; margin-top:10px'>Relational database server</div>")]
+            style 136 fill:#2ecc71,stroke:#208e4f,color:#ffffff
+            141["<div style='font-weight: bold'>Data Lake</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Data Lake Storage Gen2]</div><div style='font-size: 80%; margin-top:10px'>Large-scale data storage for<br />raw and processed data</div>"]
+            style 141 fill:#27ae60,stroke:#1b7943,color:#ffffff
+          end
+
+          subgraph 144 ["cisac-me-prod"]
+            style 144 fill:#ffffff,stroke:#888888,color:#000000
+
+            145["<div style='font-weight: bold'>ME Portal</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service]</div><div style='font-size: 80%; margin-top:10px'>Web portal for work matching<br />operations</div>"]
+            style 145 fill:#3498db,stroke:#246a99,color:#ffffff
+            148["<div style='font-weight: bold'>ME API</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure App Service]</div><div style='font-size: 80%; margin-top:10px'>API for matching operations</div>"]
+            style 148 fill:#e67e22,stroke:#a15817,color:#ffffff
+            152("<div style='font-weight: bold'>Search Service</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Cognitive Search]</div><div style='font-size: 80%; margin-top:10px'>Full-text search and indexing<br />service</div>")
+            style 152 fill:#8e44ad,stroke:#632f79,color:#ffffff
+          end
+
+          subgraph 156 ["cisac-network-prod"]
+            style 156 fill:#ffffff,stroke:#888888,color:#000000
+
+            157("<div style='font-weight: bold'>Virtual Network</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Virtual Network]</div><div style='font-size: 80%; margin-top:10px'>Private network for secure<br />communication</div>")
+            style 157 fill:#34495e,stroke:#243341,color:#ffffff
+            158("<div style='font-weight: bold'>Public IP</div><div style='font-size: 70%; margin-top: 0px'>[Container: Azure Public IP]</div><div style='font-size: 80%; margin-top:10px'>Public IP address for<br />external access</div>")
+            style 158 fill:#34495e,stroke:#243341,color:#ffffff
+            159["<div style='font-weight: bold'>ISWC SFTP</div><div style='font-size: 70%; margin-top: 0px'>[Container: Virtual Machine]</div><div style='font-size: 80%; margin-top:10px'>SFTP server for file<br />transfers</div>"]
+            style 159 fill:#7f8c8d,stroke:#586262,color:#ffffff
+          end
+
+        end
+
+      end
+
+    end
+
+    103-. "<div>Routes requests to</div><div style='font-size: 70%'>[HTTPS]</div>" .->105
+    104-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->105
+    104-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->108
+    103-. "<div>Routes requests to</div><div style='font-size: 70%'>[HTTPS]</div>" .->110
+    104-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->110
+    105-. "<div>Makes requests to</div><div style='font-size: 70%'>[HTTPS]</div>" .->110
+    108-. "<div>Makes requests to</div><div style='font-size: 70%'>[HTTPS]</div>" .->110
+    115-. "<div>Processes data via</div><div style='font-size: 70%'>[HTTPS]</div>" .->110
+    117-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->103
+    117-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->104
+    117-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->115
+    103-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->121
+    105-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->121
+    108-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->121
+    110-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->121
+    115-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->121
+    117-. "<div>Provides secrets to</div><div style='font-size: 70%'>[HTTPS]</div>" .->129
+    110-. "<div>Reads/Writes data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->131
+    115-. "<div>Reads/Writes data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->131
+    128-. "<div>Transforms data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->131
+    129-. "<div>Orchestrates pipelines to</div><div style='font-size: 70%'>[HTTPS]</div>" .->131
+    110-. "<div>Reads/Writes data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->136
+    115-. "<div>Reads/Writes data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->136
+    128-. "<div>Transforms data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->136
+    129-. "<div>Orchestrates pipelines to</div><div style='font-size: 70%'>[HTTPS]</div>" .->136
+    128-. "<div>Processes data from/to</div><div style='font-size: 70%'>[HTTPS]</div>" .->141
+    129-. "<div>Orchestrates ETL to/from</div><div style='font-size: 70%'>[HTTPS]</div>" .->141
+    104-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->145
+    145-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->121
+    104-. "<div>Hosts</div><div style='font-size: 70%'></div>" .->148
+    148-. "<div>Sends telemetry to</div><div style='font-size: 70%'>[HTTPS]</div>" .->121
+    145-. "<div>Queries via</div><div style='font-size: 70%'>[HTTPS]</div>" .->148
+    152-. "<div>Indexes data from</div><div style='font-size: 70%'>[HTTPS]</div>" .->131
+    152-. "<div>Indexes data from</div><div style='font-size: 70%'>[HTTPS]</div>" .->136
+    148-. "<div>Searches using</div><div style='font-size: 70%'>[HTTPS]</div>" .->152
+    159-. "<div>Transfers data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->128
+    159-. "<div>Transfers data to</div><div style='font-size: 70%'>[HTTPS]</div>" .->129
+    157-. "<div>Secures</div><div style='font-size: 70%'></div>" .->159
+    158-. "<div>Provides access to</div><div style='font-size: 70%'></div>" .->159
+  end
