@@ -3,6 +3,7 @@
 **Export Date:** October 21, 2025
 **Subscription:** CISAC
 **Primary Region:** West Europe
+**Source Document:** [CSV Export of all Azure Resources](../../resources/Azureresources-export-20251021.csv)
 
 ---
 
@@ -24,6 +25,7 @@
 This documentation references all Azure resources deployed for the CISAC ISWC (International Standard Work Code) project. The infrastructure is organized into three main environments: **Dev** (Development), **UAT** (User Acceptance Testing), and **Prod** (Production).
 
 **Global Statistics:**
+
 - Total number of resources: 343
 - Environments: 3 (Dev, UAT, Prod)
 - Resource groups: 15
@@ -37,6 +39,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
 #### Core Services
 
 ##### cisaciswcdev (Multi-service)
+
 - **Type:** API Management Service
 - **Description:** API management service for the development environment
 - **Relationships:**
@@ -45,6 +48,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Monitored by Application Insights [cisaciswcdev](#cisaciswcdev-application-insights)
 
 ##### cisaciswcdev (Data Factory)
+
 - **Type:** Data Factory (V2)
 - **Description:** Data orchestration and transformation
 - **Relationships:**
@@ -52,6 +56,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Uses key vault [cisaciswcdev](#cisaciswcdev-key-vault)
 
 ##### cisaciswcdev (Azure Cosmos DB)
+
 - **Type:** Azure Cosmos DB account
 - **Description:** NoSQL database for distributed storage
 - **Relationships:**
@@ -59,6 +64,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Keys stored in [cisaciswcdev](#cisaciswcdev-key-vault)
 
 ##### cisaciswcdev (Key Vault)
+
 - **Type:** Key Vault
 - **Description:** Centralized secret and certificate management
 - **Relationships:**
@@ -66,6 +72,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Referenced by Data Factory, API Management, App Services
 
 ##### cisaciswcdev (Application Insights)
+
 - **Type:** Application Insights
 - **Description:** Dev environment monitoring and telemetry
 - **Relationships:**
@@ -75,6 +82,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
 #### App Services
 
 ##### cisaciswcapidev
+
 - **Type:** App Service + Application Insights
 - **Description:** Main ISWC API for development environment
 - **Relationships:**
@@ -85,6 +93,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Alert: [Failure Anomalies - cisaciswcapidev](#failure-anomalies---cisaciswcapidev)
 
 ##### cisaciswcapilabeldev
+
 - **Type:** App Service + Application Insights
 - **Description:** Label management API for development environment
 - **Relationships:**
@@ -93,6 +102,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Alert: [Failure Anomalies - cisaciswcapilabeldev](#failure-anomalies---cisaciswcapilabeldev)
 
 ##### cisaciswcapipublisherdev
+
 - **Type:** App Service + Application Insights
 - **Description:** Publisher API in development
 - **Relationships:**
@@ -101,6 +111,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Alert: [Failure Anomalies - cisaciswcapipublisherdev](#failure-anomalies---cisaciswcapipublisherdev)
 
 ##### cisaciswcapithirdpartydev
+
 - **Type:** App Service + Application Insights
 - **Description:** Third-party integration API in development
 - **Relationships:**
@@ -109,6 +120,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Alert: [Failure Anomalies - cisaciswcapithirdpartydev](#failure-anomalies---cisaciswcapithirdpartydev)
 
 ##### cisaciswcjobsdev
+
 - **Type:** Function App + Storage Account + Application Insights
 - **Description:** Azure Functions for scheduled tasks and background jobs
 - **Relationships:**
@@ -117,6 +129,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Alert: [Failure Anomalies - cisaciswcjobsdev](#failure-anomalies---cisaciswcjobsdev)
 
 ##### cisaciswcportaldev
+
 - **Type:** App Service + Application Insights
 - **Description:** User web portal in development
 - **Relationships:**
@@ -125,6 +138,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Alert: [Failure Anomalies - cisaciswcportaldev](#failure-anomalies---cisaciswcportaldev)
 
 ##### cisaciswcpublicdev
+
 - **Type:** App Service + Application Insights
 - **Description:** ISWC public API in development
 - **Relationships:**
@@ -135,6 +149,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
 #### Network Infrastructure
 
 ##### CISACAzDSFTP (Virtual Machine + components)
+
 - **Type:** Linux/Windows Virtual Machine
 - **Description:** SFTP server for Dev environment
 - **Associated Components:**
@@ -148,6 +163,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
 #### Databricks
 
 ##### ISWCDev (Azure Databricks Service)
+
 - **Type:** Azure Databricks Service
 - **Description:** Data analytics and Machine Learning platform
 - **Relationships:**
@@ -158,6 +174,7 @@ This documentation references all Azure resources deployed for the CISAC ISWC (I
   - Managed identity: [dbmanagedidentity](#dbmanagedidentity-dev)
 
 ##### Databricks Dev Virtual Machines
+
 The following VMs are automatically managed by Databricks:
 
 1. **093fe79ecf134d3fbf8c53f1e330fa21**
@@ -182,26 +199,31 @@ The following VMs are automatically managed by Databricks:
    - Container disk: bcd7b0b1ccae4831b0af0b7be0a0f165-containerRootVolume
 
 ##### workers-vnet (Dev)
+
 - **Type:** Virtual Network
 - **Description:** Virtual network dedicated to Databricks Dev workers
 - **Resource Group:** ISWCDatabricksDev
 
 ##### workers-sg (Dev)
+
 - **Type:** Network Security Group
 - **Description:** Security rules for Databricks Dev workers
 - **Resource Group:** ISWCDatabricksDev
 
 ##### dbmanagedidentity (Dev)
+
 - **Type:** Managed Identity
 - **Description:** Identity for secure access to Azure resources
 - **Resource Group:** ISWCDatabricksDev
 
 ##### dbstoragenl5sveqhpn3kq
+
 - **Type:** Storage Account
 - **Description:** Storage for Databricks Dev
 - **Resource Group:** ISWCDatabricksDev
 
 ##### cisaciswcdatabricksdev
+
 - **Type:** Storage Account
 - **Description:** Storage for Databricks Dev jobs
 - **Resource Group:** ISWCDev
@@ -209,6 +231,7 @@ The following VMs are automatically managed by Databricks:
 #### SFTP Storage
 
 ##### cisaciswcsftpdev
+
 - **Type:** Storage Account
 - **Description:** Storage for SFTP transfers in development
 - **Relationships:**
@@ -216,22 +239,26 @@ The following VMs are automatically managed by Databricks:
   - User keys in [cisaciswcsftpuserdev](#cisaciswcsftpuserdev)
 
 ##### cisaciswcsftpadmindev
+
 - **Type:** Key Vault
 - **Description:** SFTP Dev admin secrets
 
 ##### cisaciswcsftpuserdev
+
 - **Type:** Key Vault
 - **Description:** SFTP Dev user secrets
 
 #### Database
 
 ##### cisaciswcwedev
+
 - **Type:** SQL Server
 - **Description:** Azure SQL Server for Dev environment
 - **Relationships:**
   - Hosts database [ISWC](#iswc-dev)
 
 ##### ISWC (Dev)
+
 - **Type:** SQL Database
 - **Description:** Main ISWC Dev database
 - **Resource Group:** ISWCDev
@@ -242,12 +269,14 @@ The following VMs are automatically managed by Databricks:
 #### Support Infrastructure
 
 ##### ISWCDev (App Service Plan)
+
 - **Type:** App Service Plan
 - **Description:** Hosting plan for Dev App Services
 - **Relationships:**
   - Hosts all Dev environment App Services
 
 ##### ISWCDev (Application Insights)
+
 - **Type:** Application Insights
 - **Description:** Global Dev environment monitoring
 - **Relationships:**
@@ -256,18 +285,22 @@ The following VMs are automatically managed by Databricks:
 #### Dashboards and Monitoring
 
 ##### 660ec011-e52e-4621-9393-b5177005fdad-dashboard
+
 - **Type:** Shared Dashboard
 - **Description:** Dev monitoring dashboard
 
 ##### 6c3b842b-2450-4b88-b443-bc3d321f4204-dashboard
+
 - **Type:** Shared Dashboard
 - **Description:** Dev monitoring dashboard (secondary)
 
 ##### d1c643a8-e6fc-4b21-b918-ddd7371c13e2-dashboard
+
 - **Type:** Shared Dashboard
 - **Description:** Dev monitoring dashboard (tertiary)
 
 ##### f1dde0d2-e6af-4da3-88d1-07ecb06f1241
+
 - **Type:** Azure Workbook
 - **Description:** Azure workbook for advanced Dev analytics
 
@@ -280,6 +313,7 @@ The following VMs are automatically managed by Databricks:
 #### Core Services
 
 ##### cisaciswcuat (Multi-service)
+
 - **Type:** API Management Service
 - **Description:** API management service for UAT environment
 - **Relationships:**
@@ -288,6 +322,7 @@ The following VMs are automatically managed by Databricks:
   - Monitored by Application Insights [cisaciswcuat](#cisaciswcuat-application-insights)
 
 ##### cisaciswcuat (Data Factory)
+
 - **Type:** Data Factory (V2)
 - **Description:** UAT data orchestration and transformation
 - **Relationships:**
@@ -295,6 +330,7 @@ The following VMs are automatically managed by Databricks:
   - Uses key vault [cisaciswcuat](#cisaciswcuat-key-vault)
 
 ##### cisaciswcuat (Azure Cosmos DB)
+
 - **Type:** Azure Cosmos DB account
 - **Description:** NoSQL database for UAT distributed storage
 - **Relationships:**
@@ -302,6 +338,7 @@ The following VMs are automatically managed by Databricks:
   - Keys stored in [cisaciswcuat](#cisaciswcuat-key-vault)
 
 ##### cisaciswcuat (Key Vault)
+
 - **Type:** Key Vault
 - **Description:** Centralized UAT secret and certificate management
 - **Relationships:**
@@ -309,6 +346,7 @@ The following VMs are automatically managed by Databricks:
   - Referenced by Data Factory, API Management, App Services
 
 ##### cisaciswcuat (Application Insights)
+
 - **Type:** Application Insights
 - **Description:** UAT environment monitoring and telemetry
 - **Relationships:**
@@ -318,6 +356,7 @@ The following VMs are automatically managed by Databricks:
 #### App Services
 
 ##### cisaciswcapiuat
+
 - **Type:** App Service + Application Insights
 - **Description:** Main ISWC API for UAT environment
 - **Relationships:**
@@ -328,6 +367,7 @@ The following VMs are automatically managed by Databricks:
   - Alert: [Failure Anomalies - cisaciswcapiuat](#failure-anomalies---cisaciswcapiuat)
 
 ##### cisaciswcapilabeluat
+
 - **Type:** App Service + Application Insights
 - **Description:** Label management API for UAT environment
 - **Relationships:**
@@ -337,6 +377,7 @@ The following VMs are automatically managed by Databricks:
   - Alert: [Failure Anomalies - cisaciswcapilabeluat](#failure-anomalies---cisaciswcapilabeluat)
 
 ##### cisaciswcapipublisheruat
+
 - **Type:** App Service + Application Insights
 - **Description:** Publisher API in UAT
 - **Relationships:**
@@ -346,6 +387,7 @@ The following VMs are automatically managed by Databricks:
   - Alert: [Failure Anomalies - cisaciswcapipublisheruat](#failure-anomalies---cisaciswcapipublisheruat)
 
 ##### cisaciswcapithirdpartyuat
+
 - **Type:** App Service + Application Insights
 - **Description:** Third-party integration API in UAT
 - **Relationships:**
@@ -354,6 +396,7 @@ The following VMs are automatically managed by Databricks:
   - Alert: [Failure Anomalies - cisaciswcapithirdpartyuat](#failure-anomalies---cisaciswcapithirdpartyuat)
 
 ##### cisaciswcjobsuat
+
 - **Type:** Function App + Storage Account + Application Insights
 - **Description:** UAT Azure Functions for scheduled tasks and background jobs
 - **Relationships:**
@@ -362,6 +405,7 @@ The following VMs are automatically managed by Databricks:
   - Alert: [Failure Anomalies - cisaciswcjobsuat](#failure-anomalies---cisaciswcjobsuat)
 
 ##### cisaciswcportaluat
+
 - **Type:** App Service + Application Insights
 - **Description:** User web portal in UAT
 - **Relationships:**
@@ -370,6 +414,7 @@ The following VMs are automatically managed by Databricks:
   - Alert: [Failure Anomalies - cisaciswcportaluat](#failure-anomalies---cisaciswcportaluat)
 
 ##### cisaciswcpublicuat
+
 - **Type:** App Service + Application Insights
 - **Description:** ISWC public API in UAT
 - **Relationships:**
@@ -380,6 +425,7 @@ The following VMs are automatically managed by Databricks:
 #### Network Infrastructure
 
 ##### CISACAzUSFTP (Virtual Machine + components)
+
 - **Type:** Linux/Windows Virtual Machine
 - **Description:** SFTP server for UAT environment
 - **Associated Components:**
@@ -393,6 +439,7 @@ The following VMs are automatically managed by Databricks:
 #### Databricks
 
 ##### ISWCUAT (Azure Databricks Service)
+
 - **Type:** Azure Databricks Service
 - **Description:** UAT data analytics and Machine Learning platform
 - **Relationships:**
@@ -403,6 +450,7 @@ The following VMs are automatically managed by Databricks:
   - Managed identity: [dbmanagedidentity](#dbmanagedidentity-uat)
 
 ##### Databricks UAT Virtual Machines
+
 The following VMs are automatically managed by Databricks:
 
 1. **146c6be7f20f43f095fefcd15b1eddf1**
@@ -457,26 +505,31 @@ The following VMs are automatically managed by Databricks:
    - Container disk: eaff7c3c506a4b359d6c28e267bb541e-containerRootVolume
 
 ##### workers-vnet (UAT)
+
 - **Type:** Virtual Network
 - **Description:** Virtual network dedicated to Databricks UAT workers
 - **Resource Group:** ISWCDatabricksUAT
 
 ##### workers-sg (UAT)
+
 - **Type:** Network Security Group
 - **Description:** Security rules for Databricks UAT workers
 - **Resource Group:** ISWCDatabricksUAT
 
 ##### dbmanagedidentity (UAT)
+
 - **Type:** Managed Identity
 - **Description:** Identity for secure access to Azure UAT resources
 - **Resource Group:** ISWCDatabricksUAT
 
 ##### dbstorageiblnramgsqgyw
+
 - **Type:** Storage Account
 - **Description:** Storage for Databricks UAT
 - **Resource Group:** ISWCDatabricksUAT
 
 ##### cisaciswcdatabricksuat
+
 - **Type:** Storage Account
 - **Description:** Storage for Databricks UAT jobs
 - **Resource Group:** ISWCUAT
@@ -484,6 +537,7 @@ The following VMs are automatically managed by Databricks:
 #### SFTP Storage
 
 ##### cisaciswcsftpuat
+
 - **Type:** Storage Account
 - **Description:** Storage for SFTP transfers in UAT
 - **Relationships:**
@@ -491,22 +545,26 @@ The following VMs are automatically managed by Databricks:
   - User keys in [cisaciswcsftpuseruat](#cisaciswcsftpuseruat)
 
 ##### cisaciswcsftpadminuat
+
 - **Type:** Key Vault
 - **Description:** SFTP UAT admin secrets
 
 ##### cisaciswcsftpuseruat
+
 - **Type:** Key Vault
 - **Description:** SFTP UAT user secrets
 
 #### Database
 
 ##### cisaciswcweuat
+
 - **Type:** SQL Server
 - **Description:** Azure SQL Server for UAT environment
 - **Relationships:**
   - Hosts database [ISWC](#iswc-uat)
 
 ##### ISWC (UAT)
+
 - **Type:** SQL Database
 - **Description:** Main ISWC UAT database
 - **Resource Group:** ISWCUAT
@@ -517,12 +575,14 @@ The following VMs are automatically managed by Databricks:
 #### Support Infrastructure
 
 ##### ISWCUAT (App Service Plan)
+
 - **Type:** App Service Plan
 - **Description:** Hosting plan for UAT App Services
 - **Relationships:**
   - Hosts all UAT environment App Services
 
 ##### ISWCUAT (Application Insights)
+
 - **Type:** Application Insights
 - **Description:** Global UAT environment monitoring
 - **Relationships:**
@@ -531,26 +591,31 @@ The following VMs are automatically managed by Databricks:
 #### Dashboards and Monitoring
 
 ##### 0485f560-69a2-4b3b-8ead-4a0bb844120a-dashboard
+
 - **Type:** Shared Dashboard
 - **Description:** UAT monitoring dashboard
 
 ##### cisaciswcuat-cisaciswcapidev
+
 - **Type:** Availability test
 - **Description:** Availability test for Dev API from UAT
 
 #### Alerts and Action Groups
 
 ##### Application Insights Smart Detection
+
 - **Type:** Action Group
 - **Description:** Action group for UAT smart detection
 - **Location:** Global
 
 ##### Migration_AG1
+
 - **Type:** Action Group
 - **Description:** Migration action group (1)
 - **Location:** Global
 
 ##### Migration_AG2
+
 - **Type:** Action Group
 - **Description:** Migration action group (2)
 - **Location:** Global
@@ -564,6 +629,7 @@ The following VMs are automatically managed by Databricks:
 #### Core Services
 
 ##### cisaciswcprod (Multi-service)
+
 - **Type:** API Management Service
 - **Description:** API management service for production environment
 - **Relationships:**
@@ -574,6 +640,7 @@ The following VMs are automatically managed by Databricks:
   - Health Check: [Health Check - cisaciswcprod - API Management Service - Capacity](#health-check---cisaciswcprod---api-management-service---capacity)
 
 ##### cisaciswcprod (Data Factory)
+
 - **Type:** Data Factory (V2)
 - **Description:** Production data orchestration and transformation
 - **Relationships:**
@@ -581,6 +648,7 @@ The following VMs are automatically managed by Databricks:
   - Uses key vault [cisaciswcprod](#cisaciswcprod-key-vault)
 
 ##### cisaciswcprod (Azure Cosmos DB)
+
 - **Type:** Azure Cosmos DB account
 - **Description:** NoSQL database for production distributed storage
 - **Relationships:**
@@ -589,6 +657,7 @@ The following VMs are automatically managed by Databricks:
   - Health Check: [Health Check - cisaciswcprod - CosmosDB - RU Consumption](#health-check---cisaciswcprod---cosmosdb---ru-consumption)
 
 ##### cisaciswcprod (Key Vault)
+
 - **Type:** Key Vault
 - **Description:** Centralized production secret and certificate management
 - **Relationships:**
@@ -596,6 +665,7 @@ The following VMs are automatically managed by Databricks:
   - Referenced by Data Factory, API Management, App Services
 
 ##### cisaciswcprod (Application Insights)
+
 - **Type:** Application Insights
 - **Description:** Prod environment monitoring and telemetry
 - **Relationships:**
@@ -605,6 +675,7 @@ The following VMs are automatically managed by Databricks:
   - Alert: [cisaciswcprod - REST API Errors](#cisaciswcprod---rest-api-errors)
 
 ##### cisaciswcprod (Recovery Services Vault)
+
 - **Type:** Recovery Services Vault
 - **Description:** Backup and disaster recovery service for production
 - **Resource Group:** ManagementProd
@@ -612,6 +683,7 @@ The following VMs are automatically managed by Databricks:
 #### App Services
 
 ##### cisaciswcapiprod
+
 - **Type:** App Service + Application Insights
 - **Description:** Main ISWC API for production environment
 - **Relationships:**
@@ -626,6 +698,7 @@ The following VMs are automatically managed by Databricks:
   - Health Check Response Time: [Health Check - cisaciswcapiprod - App Service - Response Time](#health-check---cisaciswcapiprod---app-service---response-time)
 
 ##### cisaciswcapilabelprod
+
 - **Type:** App Service + Application Insights
 - **Description:** Label management API for production environment
 - **Relationships:**
@@ -635,6 +708,7 @@ The following VMs are automatically managed by Databricks:
   - Alert: [cisaciswcapilabelprod - POST AddLabelSubmissionBatch](#cisaciswcapilabelprod---post-addlabelsubmissionbatch)
 
 ##### cisaciswcapipublisherprod
+
 - **Type:** App Service + Application Insights
 - **Description:** Publisher API in production
 - **Relationships:**
@@ -643,6 +717,7 @@ The following VMs are automatically managed by Databricks:
   - Alert: [Failure Anomalies - cisaciswcapipublisherprod](#failure-anomalies---cisaciswcapipublisherprod)
 
 ##### cisaciswcapithirdpartyprod
+
 - **Type:** App Service + Application Insights
 - **Description:** Third-party integration API in production
 - **Relationships:**
@@ -651,6 +726,7 @@ The following VMs are automatically managed by Databricks:
   - Alert: [Failure Anomalies - cisaciswcapithirdpartyprod](#failure-anomalies---cisaciswcapithirdpartyprod)
 
 ##### cisaciswcjobsprod
+
 - **Type:** Function App + Storage Account + Application Insights
 - **Description:** Production Azure Functions for scheduled tasks and background jobs
 - **Relationships:**
@@ -662,6 +738,7 @@ The following VMs are automatically managed by Databricks:
   - Health Check Response Time: [Health Check - cisaciswcjobsprod - App Service - Response Time](#health-check---cisaciswcjobsprod---app-service---response-time)
 
 ##### cisaciswcportalprod
+
 - **Type:** App Service + Application Insights
 - **Description:** User web portal in production
 - **Relationships:**
@@ -672,6 +749,7 @@ The following VMs are automatically managed by Databricks:
   - Health Check Response Time: [Health Check - cisaciswcportalprod - App Service - Response Time](#health-check---cisaciswcportalprod---app-service---response-time)
 
 ##### cisaciswcpublicprod
+
 - **Type:** App Service + Application Insights
 - **Description:** ISWC public API in production
 - **Relationships:**
@@ -684,6 +762,7 @@ The following VMs are automatically managed by Databricks:
 #### Network Infrastructure
 
 ##### CISACAzPSFTP (Virtual Machine + components)
+
 - **Type:** Linux/Windows Virtual Machine
 - **Description:** SFTP server for production environment
 - **Associated Components:**
@@ -700,6 +779,7 @@ The following VMs are automatically managed by Databricks:
 #### Databricks
 
 ##### ISWCProd (Azure Databricks Service)
+
 - **Type:** Azure Databricks Service
 - **Description:** Production data analytics and Machine Learning platform
 - **Relationships:**
@@ -710,6 +790,7 @@ The following VMs are automatically managed by Databricks:
   - Managed identity: [dbmanagedidentity](#dbmanagedidentity-prod)
 
 ##### Databricks Prod Virtual Machines
+
 The following VMs are automatically managed by Databricks:
 
 1. **202fcf371e214e0abf2face52263bc9b**
@@ -790,26 +871,31 @@ The following VMs are automatically managed by Databricks:
     - Container disk: fc9089d2537745088b79e1b8d5b1098b-containerRootVolume
 
 ##### workers-vnet (Prod)
+
 - **Type:** Virtual Network
 - **Description:** Virtual network dedicated to Databricks Prod workers
 - **Resource Group:** ISWCDatabricksProd
 
 ##### workers-sg (Prod)
+
 - **Type:** Network Security Group
 - **Description:** Security rules for Databricks Prod workers
 - **Resource Group:** ISWCDatabricksProd
 
 ##### dbmanagedidentity (Prod)
+
 - **Type:** Managed Identity
 - **Description:** Identity for secure access to Azure Prod resources
 - **Resource Group:** ISWCDatabricksProd
 
 ##### dbstorage7gfy2dooo4lw2
+
 - **Type:** Storage Account
 - **Description:** Storage for Databricks Prod
 - **Resource Group:** ISWCDatabricksProd
 
 ##### cisaciswcdatabricksprod
+
 - **Type:** Storage Account
 - **Description:** Storage for Databricks Prod jobs
 - **Resource Group:** ISWCProd
@@ -817,6 +903,7 @@ The following VMs are automatically managed by Databricks:
 #### SFTP Storage
 
 ##### cisaciswcsftpprod
+
 - **Type:** Storage Account
 - **Description:** Storage for SFTP transfers in production
 - **Relationships:**
@@ -824,22 +911,26 @@ The following VMs are automatically managed by Databricks:
   - User keys in [cisaciswcsftpuserprod](#cisaciswcsftpuserprod)
 
 ##### cisaciswcsftpadminprod
+
 - **Type:** Key Vault
 - **Description:** SFTP Prod admin secrets
 
 ##### cisaciswcsftpuserprod
+
 - **Type:** Key Vault
 - **Description:** SFTP Prod user secrets
 
 #### Database
 
 ##### cisaciswcweprod
+
 - **Type:** SQL Server
 - **Description:** Azure SQL Server for production environment
 - **Relationships:**
   - Hosts database [ISWC](#iswc-prod)
 
 ##### ISWC (Prod)
+
 - **Type:** SQL Database
 - **Description:** Main ISWC Prod database
 - **Resource Group:** ISWCProd
@@ -857,6 +948,7 @@ The following VMs are automatically managed by Databricks:
 #### Support Infrastructure
 
 ##### ISWCProd (App Service Plan)
+
 - **Type:** App Service Plan
 - **Description:** Hosting plan for Prod App Services
 - **Relationships:**
@@ -866,6 +958,7 @@ The following VMs are automatically managed by Databricks:
   - [Health Check - ISWCProd - App Plan - Memory Percentage](#health-check---iswcprod---app-plan---memory-percentage)
 
 ##### ISWCProd (Application Insights)
+
 - **Type:** Application Insights
 - **Description:** Global Prod environment monitoring
 - **Relationships:**
@@ -874,26 +967,31 @@ The following VMs are automatically managed by Databricks:
 #### Dashboards and Monitoring
 
 ##### 615bf233-73d4-41db-9529-5aeeed7d7cde-dashboard
+
 - **Type:** Shared Dashboard
 - **Description:** Prod monitoring dashboard
 
 ##### f1cc2358-16d6-4464-ab1f-a6c4839889f9-dashboard
+
 - **Type:** Shared Dashboard
 - **Description:** Prod monitoring dashboard (secondary)
 
 ##### 7c2b865d-51f5-46ea-96de-418d3ddd3a9f
+
 - **Type:** Azure Workbook
 - **Description:** Azure workbook for advanced Prod analytics
 
 #### Action Groups and Alerts
 
 ##### Health Check
+
 - **Type:** Action Group
 - **Description:** Action group for production health checks
 - **Resource Group:** ManagementProd
 - **Location:** Global
 
 ##### spanish point support
+
 - **Type:** Action Group
 - **Description:** Action group for Spanish Point support
 - **Location:** Global
@@ -905,14 +1003,17 @@ The following VMs are automatically managed by Databricks:
 ### ManagementDev
 
 ##### cisacdev
+
 - **Type:** Key Vault
 - **Description:** Main key vault for Dev management
 
 ##### cisacdiagdev
+
 - **Type:** Storage Account
 - **Description:** Storage for Dev diagnostics
 
 ##### cisaciswcdev
+
 - **Type:** Automation Account
 - **Description:** Automation account for Dev environment
 - **Relationships:**
@@ -920,27 +1021,32 @@ The following VMs are automatically managed by Databricks:
   - Contains runbooks: [ScaleAppServicePlan](#scaleappserviceplan-dev), [ScaleCosmoDB](#scalecosmodb-dev), [StartVM](#startvm-dev), [StopVM](#stopvm-dev)
 
 ##### cisaciswcdevautomation
+
 - **Type:** Storage Account
 - **Description:** Storage for Dev Automation account
 
 #### Dev Runbooks
 
 ##### ScaleAppServicePlan (Dev)
+
 - **Type:** Runbook
 - **Description:** Automation script for scaling Dev App Service Plans
 - **Resource Group:** ManagementDev
 
 ##### ScaleCosmoDB (Dev)
+
 - **Type:** Runbook
 - **Description:** Automation script for scaling Dev CosmosDB
 - **Resource Group:** ManagementDev
 
 ##### StartVM (Dev)
+
 - **Type:** Runbook
 - **Description:** Automation script for starting Dev virtual machines
 - **Resource Group:** ManagementDev
 
 ##### StopVM (Dev)
+
 - **Type:** Runbook
 - **Description:** Automation script for stopping Dev virtual machines
 - **Resource Group:** ManagementDev
@@ -950,14 +1056,17 @@ The following VMs are automatically managed by Databricks:
 ### ManagementUAT
 
 ##### cisacuat
+
 - **Type:** Key Vault
 - **Description:** Main key vault for UAT management
 
 ##### cisacdiaguat
+
 - **Type:** Storage Account
 - **Description:** Storage for UAT diagnostics
 
 ##### cisaciswcuat
+
 - **Type:** Automation Account
 - **Description:** Automation account for UAT environment
 - **Relationships:**
@@ -965,27 +1074,32 @@ The following VMs are automatically managed by Databricks:
   - Contains runbooks: [ScaleAppServicePlan](#scaleappserviceplan-uat), [ScaleCosmoDB](#scalecosmodb-uat), [StartVM](#startvm-uat), [StopVM](#stopvm-uat)
 
 ##### cisaciswcuatautomation
+
 - **Type:** Storage Account
 - **Description:** Storage for UAT Automation account
 
 #### UAT Runbooks
 
 ##### ScaleAppServicePlan (UAT)
+
 - **Type:** Runbook
 - **Description:** Automation script for scaling UAT App Service Plans
 - **Resource Group:** ManagementUAT
 
 ##### ScaleCosmoDB (UAT)
+
 - **Type:** Runbook
 - **Description:** Automation script for scaling UAT CosmosDB
 - **Resource Group:** ManagementUAT
 
 ##### StartVM (UAT)
+
 - **Type:** Runbook
 - **Description:** Automation script for starting UAT virtual machines
 - **Resource Group:** ManagementUAT
 
 ##### StopVM (UAT)
+
 - **Type:** Runbook
 - **Description:** Automation script for stopping UAT virtual machines
 - **Resource Group:** ManagementUAT
@@ -995,14 +1109,17 @@ The following VMs are automatically managed by Databricks:
 ### ManagementProd
 
 ##### cisacprod
+
 - **Type:** Key Vault
 - **Description:** Main key vault for Prod management
 
 ##### cisacdiagprod
+
 - **Type:** Storage Account
 - **Description:** Storage for Prod diagnostics
 
 ##### cisaciswcprod
+
 - **Type:** Automation Account
 - **Description:** Automation account for Prod environment
 - **Relationships:**
@@ -1010,27 +1127,32 @@ The following VMs are automatically managed by Databricks:
   - Contains runbooks: [ScaleAppServicePlan](#scaleappserviceplan-prod), [ScaleCosmoDB](#scalecosmodb-prod), [StartVM](#startvm-prod), [StopVM](#stopvm-prod)
 
 ##### cisaciswcprodautomation
+
 - **Type:** Storage Account
 - **Description:** Storage for Prod Automation account
 
 #### Prod Runbooks
 
 ##### ScaleAppServicePlan (Prod)
+
 - **Type:** Runbook
 - **Description:** Automation script for scaling Prod App Service Plans
 - **Resource Group:** ManagementProd
 
 ##### ScaleCosmoDB (Prod)
+
 - **Type:** Runbook
 - **Description:** Automation script for scaling Prod CosmosDB
 - **Resource Group:** ManagementProd
 
 ##### StartVM (Prod)
+
 - **Type:** Runbook
 - **Description:** Automation script for starting Prod virtual machines
 - **Resource Group:** ManagementProd
 
 ##### StopVM (Prod)
+
 - **Type:** Runbook
 - **Description:** Automation script for stopping Prod virtual machines
 - **Resource Group:** ManagementProd
@@ -1038,6 +1160,7 @@ The following VMs are automatically managed by Databricks:
 #### Log Search Alert Rules (Prod)
 
 ##### cisaciswcapiprod-POST SearchByTitleAndContributor
+
 - **Type:** Log search alert rule
 - **Description:** Alert on API POST SearchByTitleAndContributor calls
 - **Resource Group:** ManagementProd
@@ -1045,6 +1168,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors App Service [cisaciswcapiprod](#cisaciswcapiprod)
 
 ##### cisaciswcprod - EDI failures
+
 - **Type:** Log search alert rule
 - **Description:** Alert on EDI (Electronic Data Interchange) failures
 - **Resource Group:** ManagementProd
@@ -1052,6 +1176,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors [cisaciswcprod](#cisaciswcprod-application-insights)
 
 ##### cisaciswcprod - REST API Errors
+
 - **Type:** Log search alert rule
 - **Description:** Alert on REST API errors
 - **Resource Group:** ManagementProd
@@ -1059,6 +1184,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors [cisaciswcprod](#cisaciswcprod-application-insights)
 
 ##### cisaciswcprod-APIManagement Failures
+
 - **Type:** Log search alert rule
 - **Description:** Alert on API Management failures
 - **Resource Group:** ManagementProd
@@ -1066,6 +1192,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors service [cisaciswcprod](#cisaciswcprod-multi-service) (API Management)
 
 ##### cisaciswcjobsprod-IPI Scheduled Sync Failure
+
 - **Type:** Log search alert rule
 - **Description:** Alert on IPI scheduled sync failures
 - **Resource Group:** ManagementProd
@@ -1073,6 +1200,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors function app [cisaciswcjobsprod](#cisaciswcjobsprod)
 
 ##### cisaciswcapilabelprod - POST AddLabelSubmissionBatch
+
 - **Type:** Log search alert rule
 - **Description:** Alert on API POST AddLabelSubmissionBatch calls
 - **Resource Group:** ISWCProd
@@ -1082,6 +1210,7 @@ The following VMs are automatically managed by Databricks:
 #### Health Check Metric Alert Rules (Prod)
 
 ##### Health Check - CISACAzPSFTP - Virtual Machine - CPU Credits
+
 - **Type:** Metric alert rule
 - **Description:** Monitors CPU credits of Prod SFTP VM
 - **Resource Group:** ManagementProd
@@ -1091,6 +1220,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors VM [CISACAzPSFTP](#cisacazpsftp-virtual-machine--components)
 
 ##### Health Check - CISACAzPSFTP - Virtual Machine - Percentage CPU
+
 - **Type:** Metric alert rule
 - **Description:** Monitors CPU percentage of Prod SFTP VM
 - **Resource Group:** ManagementProd
@@ -1100,6 +1230,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors VM [CISACAzPSFTP](#cisacazpsftp-virtual-machine--components)
 
 ##### Health Check - cisaciswcapiprod - App Service - Handle Count
+
 - **Type:** Metric alert rule
 - **Description:** Monitors handle count of Prod API
 - **Resource Group:** ManagementProd
@@ -1109,6 +1240,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors App Service [cisaciswcapiprod](#cisaciswcapiprod)
 
 ##### Health Check - cisaciswcapiprod - App Service - Response Time
+
 - **Type:** Metric alert rule
 - **Description:** Monitors response time of Prod API
 - **Resource Group:** ManagementProd
@@ -1118,6 +1250,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors App Service [cisaciswcapiprod](#cisaciswcapiprod)
 
 ##### Health Check - cisaciswcjobsprod - App Service - Handle Count
+
 - **Type:** Metric alert rule
 - **Description:** Monitors handle count of Prod Functions
 - **Resource Group:** ManagementProd
@@ -1127,6 +1260,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors function app [cisaciswcjobsprod](#cisaciswcjobsprod)
 
 ##### Health Check - cisaciswcjobsprod - App Service - Response Time
+
 - **Type:** Metric alert rule
 - **Description:** Monitors response time of Prod Functions
 - **Resource Group:** ManagementProd
@@ -1136,6 +1270,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors function app [cisaciswcjobsprod](#cisaciswcjobsprod)
 
 ##### Health Check - cisaciswcportalprod - App Service - Handle Count
+
 - **Type:** Metric alert rule
 - **Description:** Monitors handle count of Prod Portal
 - **Resource Group:** ManagementProd
@@ -1145,6 +1280,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors App Service [cisaciswcportalprod](#cisaciswcportalprod)
 
 ##### Health Check - cisaciswcportalprod - App Service - Response Time
+
 - **Type:** Metric alert rule
 - **Description:** Monitors response time of Prod Portal
 - **Resource Group:** ManagementProd
@@ -1154,6 +1290,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors App Service [cisaciswcportalprod](#cisaciswcportalprod)
 
 ##### Health Check - cisaciswcprod - API Management Service - Capacity
+
 - **Type:** Metric alert rule
 - **Description:** Monitors capacity of Prod API Management service
 - **Resource Group:** ManagementProd
@@ -1163,6 +1300,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors service [cisaciswcprod](#cisaciswcprod-multi-service) (API Management)
 
 ##### Health Check - cisaciswcprod - CosmosDB - RU Consumption
+
 - **Type:** Metric alert rule
 - **Description:** Monitors RU (Request Units) consumption of Prod CosmosDB
 - **Resource Group:** ManagementProd
@@ -1172,6 +1310,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors [cisaciswcprod](#cisaciswcprod-multi-service) (Cosmos DB)
 
 ##### Health Check - cisaciswcpublicprod - App Service - Handle Count
+
 - **Type:** Metric alert rule
 - **Description:** Monitors handle count of Prod public API
 - **Resource Group:** ManagementProd
@@ -1181,6 +1320,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors App Service [cisaciswcpublicprod](#cisaciswcpublicprod)
 
 ##### Health Check - cisaciswcpublicprod - App Service - Response Time
+
 - **Type:** Metric alert rule
 - **Description:** Monitors response time of Prod public API
 - **Resource Group:** ManagementProd
@@ -1190,6 +1330,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors App Service [cisaciswcpublicprod](#cisaciswcpublicprod)
 
 ##### Health Check - ISWC - SQLDB - CPUPercentage
+
 - **Type:** Metric alert rule
 - **Description:** Monitors CPU percentage of SQL database
 - **Resource Group:** ManagementProd
@@ -1199,6 +1340,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors database [ISWC](#iswc-prod)
 
 ##### Health Check - ISWC - SQLDB - Data IO
+
 - **Type:** Metric alert rule
 - **Description:** Monitors data I/O of SQL database
 - **Resource Group:** ManagementProd
@@ -1208,6 +1350,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors database [ISWC](#iswc-prod)
 
 ##### Health Check - ISWC - SQLDB - Data Space Used
+
 - **Type:** Metric alert rule
 - **Description:** Monitors disk space used by SQL database
 - **Resource Group:** ManagementProd
@@ -1217,6 +1360,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors database [ISWC](#iswc-prod)
 
 ##### Health Check - ISWC - SQLDB - Deadlock
+
 - **Type:** Metric alert rule
 - **Description:** Monitors deadlocks in SQL database
 - **Resource Group:** ManagementProd
@@ -1226,6 +1370,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors database [ISWC](#iswc-prod)
 
 ##### Health Check - ISWC - SQLDB - Failed Connections
+
 - **Type:** Metric alert rule
 - **Description:** Monitors failed connections to SQL database
 - **Resource Group:** ManagementProd
@@ -1235,6 +1380,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors database [ISWC](#iswc-prod)
 
 ##### Health Check - ISWC - SQLDB - Log IO
+
 - **Type:** Metric alert rule
 - **Description:** Monitors log I/O of SQL database
 - **Resource Group:** ManagementProd
@@ -1244,6 +1390,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors database [ISWC](#iswc-prod)
 
 ##### Health Check - ISWCProd - App Plan - CPU Percentage
+
 - **Type:** Metric alert rule
 - **Description:** Monitors CPU percentage of Prod App Service Plan
 - **Resource Group:** ManagementProd
@@ -1253,6 +1400,7 @@ The following VMs are automatically managed by Databricks:
   - Monitors App Service Plan [ISWCProd](#iswcprod-app-service-plan)
 
 ##### Health Check - ISWCProd - App Plan - Memory Percentage
+
 - **Type:** Metric alert rule
 - **Description:** Monitors memory percentage of Prod App Service Plan
 - **Resource Group:** ManagementProd
@@ -1268,6 +1416,7 @@ The following VMs are automatically managed by Databricks:
 ### CoreDev
 
 ##### CISACDev
+
 - **Type:** Virtual Network
 - **Description:** Main virtual network for Dev environment
 - **Relationships:**
@@ -1279,6 +1428,7 @@ The following VMs are automatically managed by Databricks:
 ### CoreUAT
 
 ##### CISACUAT
+
 - **Type:** Virtual Network
 - **Description:** Main virtual network for UAT environment
 - **Relationships:**
@@ -1290,6 +1440,7 @@ The following VMs are automatically managed by Databricks:
 ### CoreProd
 
 ##### CISACProd
+
 - **Type:** Virtual Network
 - **Description:** Main virtual network for Prod environment
 - **Relationships:**
@@ -1307,6 +1458,7 @@ The following resources have a Global location and apply to multiple environment
 All alerts below are of type "smart detector alert rule" and have global scope.
 
 #### Dev
+
 - **Failure Anomalies - cisaciswcapidev** (ISWCDev)
 - **Failure Anomalies - cisaciswcapilabeldev** (ISWCDev)
 - **Failure Anomalies - cisaciswcapipublisherdev** (ISWCDev)
@@ -1319,6 +1471,7 @@ All alerts below are of type "smart detector alert rule" and have global scope.
 - **Failure Anomalies - ISWCDev** (ISWCDev)
 
 #### UAT
+
 - **Failure Anomalies - cisaciswcapilabeluat** (ISWCUAT)
 - **Failure Anomalies - cisaciswcapipublisheruat** (ISWCUAT)
 - **Failure Anomalies - cisaciswcapithirdpartyuat** (ISWCUAT)
@@ -1331,6 +1484,7 @@ All alerts below are of type "smart detector alert rule" and have global scope.
 - **Failure Anomalies - ISWCUAT** (ISWCUAT)
 
 #### Prod
+
 - **Failure Anomalies - cisaciswcapilabelprod** (ISWCProd)
 - **Failure Anomalies - cisaciswcapiprod** (ISWCProd)
 - **Failure Anomalies - cisaciswcapipublisherprod** (ISWCProd)
@@ -1344,7 +1498,9 @@ All alerts below are of type "smart detector alert rule" and have global scope.
 ### Availability Tests and Alerts
 
 #### Prod
+
 ##### root-cisaciswcapiprod (Metric alert rule)
+
 - **Type:** Metric alert rule
 - **Resource Group:** ISWCProd
 - **Location:** Global
@@ -1353,6 +1509,7 @@ All alerts below are of type "smart detector alert rule" and have global scope.
   - Monitors App Service [cisaciswcapiprod](#cisaciswcapiprod)
 
 ##### root-cisaciswcapiprod (Availability test)
+
 - **Type:** Availability test
 - **Resource Group:** ISWCProd
 - **Location:** West Europe
@@ -1365,93 +1522,123 @@ All alerts below are of type "smart detector alert rule" and have global scope.
 ## Resource Types Glossary
 
 ### Action Group
+
 Set of notifications and actions triggered by Azure Monitor alerts. Can include emails, SMS, webhooks, Azure functions, etc.
 
 ### API Management Service
+
 Complete API gateway for publishing, securing, transforming, maintaining, and monitoring APIs. Offers developer portal, rate limiting, authentication, etc.
 
 ### App Service
+
 Managed service for hosting web applications, REST APIs, and mobile backends. Supports multiple languages (.NET, Java, Node.js, Python, PHP, Ruby).
 
 ### App Service Plan
+
 Underlying infrastructure that defines compute resources (CPU, memory, storage) for hosting App Services. Determines scaling capabilities and available features.
 
 ### App Service Slot
+
 Secondary deployment environment (slot) for an App Service, enabling zero-downtime deployments (blue-green deployment) and production testing.
 
 ### Application Insights
+
 Application Performance Management (APM) monitoring and analytics service. Collects telemetry, logs, traces, and metrics to diagnose issues and understand application behavior.
 
 ### Automation Account
+
 Service for automating repetitive tasks and configuration management. Hosts PowerShell or Python runbooks to orchestrate processes.
 
 ### Availability Test
+
 Automated test verifying availability and responsiveness of a web application from multiple geographic locations. Generates alerts on failure.
 
 ### Azure Cosmos DB Account
+
 Multi-model, globally distributed NoSQL database service with guaranteed low latency. Supports multiple APIs (SQL, MongoDB, Cassandra, Gremlin, Table).
 
 ### Azure Databricks Service
+
 Data analytics platform based on Apache Spark, optimized for Azure. Used for Big Data, Machine Learning, and advanced analytics.
 
 ### Azure Workbook
+
 Interactive reporting tool for creating rich reports combining text, analytics queries, metrics, and parameters.
 
 ### Data Factory (V2)
+
 Cloud data integration service for creating, scheduling, and orchestrating ETL (Extract, Transform, Load) and ELT pipelines at scale.
 
 ### Disk
+
 Persistent block storage for Azure virtual machines. Available in multiple types: Premium SSD, Standard SSD, Standard HDD.
 
 ### Function App
+
 Serverless service for executing code on-demand without managing infrastructure. Ideal for scheduled tasks, event processing, and system integration.
 
 ### Key Vault
+
 Service for secure management of secrets, encryption keys, and certificates. Enables centralized access control and automatic secret rotation.
 
 ### Log Search Alert Rule
+
 Alert based on KQL (Kusto Query Language) queries executed on Azure Monitor logs or Application Insights.
 
 ### Managed Identity
+
 Identity automatically managed by Azure allowing Azure services to authenticate to other services without storing credentials in code.
 
 ### Metric Alert Rule
+
 Alert triggered when an Azure metric exceeds a defined threshold (e.g., CPU > 80%, memory > 90%).
 
 ### Network Interface
+
 Virtual network card enabling an Azure virtual machine to communicate with Internet, Azure, and on-premises resources.
 
 ### Network Security Group (NSG)
+
 Virtual firewall containing security rules to filter inbound and outbound network traffic of Azure resources in a virtual network.
 
 ### Public IP Address
+
 Publicly routed IP address enabling Azure resources to communicate with the Internet. Primarily used for virtual machines and load balancers.
 
 ### Recovery Services Vault
+
 Backup and disaster recovery service for virtual machines, files, databases, and other Azure resources.
 
 ### Runbook
+
 Automated script hosted in Azure Automation to perform operational tasks (VM start/stop, scaling, maintenance).
 
 ### Shared Dashboard
+
 Customizable Azure dashboard displaying visualizations of metrics, logs, and resource status. Can be shared between users.
 
 ### Smart Detector Alert Rule
+
 Machine learning-based alert that automatically detects anomalies in telemetry patterns (e.g., sudden spike in exceptions).
 
 ### SQL Database
+
 Relational database as a service (PaaS) based on Microsoft SQL Server. Offers high availability, automatic backups, and elastic scaling.
 
 ### SQL Server
+
 Logical server hosting one or more Azure SQL databases. Provides centralized connection point and common security settings.
 
 ### Storage Account
+
 Versatile cloud storage service offering blobs (objects), files, queues, and tables. Supports different performance tiers and redundancy levels.
 
 ### Virtual Machine
+
 Scalable virtual server in Azure cloud. Supports Windows and Linux with complete control over the operating system.
 
 ### Virtual Network (VNet)
+
 Logically isolated network in Azure enabling secure communication between Azure resources, Internet, and on-premises networks.
 
 ---
@@ -1459,25 +1646,30 @@ Logically isolated network in Azure enabling secure communication between Azure 
 ## Important Notes
 
 ### Naming Conventions
+
 - **Environment suffix:** Resources are suffixed with `dev`, `uat`, or `prod` depending on environment
 - **CISAC prefix:** Most resources begin with `cisac` or `CISAC`
 - **ISWC:** Refers to the International Standard Work Code project
 
 ### Databricks
+
 - Databricks virtual machines are created and managed automatically by Azure Databricks service
 - Each VM has up to 5 associated resources: private/public interface, public IP, OS disk, container disk
 - Resources are named with automatically generated hexadecimal identifiers
 
 ### SFTP
+
 - Each environment has its own SFTP server with 3 associated key vaults
 - Architecture: VM + NSG + public IP + storage account + 2 key vaults (admin/user)
 
 ### Monitoring
+
 - Application Insights is deployed at multiple levels: per service AND globally per environment
 - "Failure Anomalies" alerts use AI to automatically detect anomalies
 - Prod environment has a complete "Health Checks" system via metric alerts
 
 ### Automation
+
 - Each environment has 4 standard runbooks: ScaleAppServicePlan, ScaleCosmoDB, StartVM, StopVM
 - Runbooks enable infrastructure management automation
 
