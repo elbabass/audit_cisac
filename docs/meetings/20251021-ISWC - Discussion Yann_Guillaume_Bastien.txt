@@ -1,0 +1,598 @@
+ISWC - DISCUSSION YANN/GUILLAUME/BASTIEN
+
+
+Participants    
+- Guillaume Jay
+- Bastien Gallay
+- LEBREUILLY Yann
+
+Date    2025-10-21
+
+Bastien G. 00:13
+- Bonjour en fait c'est son jeu j'ai encore des enfants et son assistant qui arrive en avance des réunions ouais ouais donc du coup mais peu enfin peu importe si tu veux continuer ce que tu me disais il ya rien de l'assistant peut le noter ouais tout à fait. 
+
+Guillaume J. 00:40
+- Ok, là j'ai vu qu'il a répondu sur ses dispos, donc ça c'est bien. 
+
+Bastien G. 00:47
+- Non mais autant qu'on soit en avance sur cette réunion, quand il arrive, il arrive. Ok, par contre là Doc, je voulais juste essayer de me le mettre de côté, il était dans le 1.4. 
+
+Guillaume J. 01:02
+- Celle que je viens de te montrer ? 
+
+Bastien G. 01:04
+- Ouais, Validation. 
+
+Guillaume J. 01:04
+- C'était le MVP, c'est dans... Ouais. 
+
+Bastien G. 01:08
+- W. WBS 1.4. Et dedans, il y en a deux versions d'ailleurs de celui-ci. 
+
+Guillaume J. 01:15
+- Oui, mais je... 
+
+Bastien G. 01:17
+- Ah merde, tu l'as modifié là. 
+
+Guillaume J. 01:20
+- J'ai rien modifié au final, parce que je suis parti, mais c'est problématique ça. Enfin, je pense pas l'avoir modifié. 
+
+Bastien G. 01:26
+- Parce que normalement, si tu fais aucune modification, il met pas d'enregistrement. Parce que je te demandais hier, parce que je sais comment passer en affichage seul. 
+
+Guillaume J. 01:37
+- Ouais, j'ai pas pensé. 
+
+Bastien G. 01:40
+- Arrête, je suis pas sûr. Bah écoute, tu peux... Mais ce que je voulais, c'était comment est-ce que par défaut, tu peux lui dire, ouvre-moi les trucs en mode validation, en mode... en mode lecture seulement. J'ai pas trouvé. 
+
+Guillaume J. 02:01
+- Donc, ouais, non, moi non plus. Je pensais les modifications métas. 
+
+Bastien G. 02:11
+- J'ai vraiment peur de faire une modif. Là, au pire, tu as modifié la date de modification. C'est facile de revenir en arrière. 
+
+Guillaume J. 02:18
+- Oui, il y a un historique. 
+
+Bastien G. 02:21
+- Voilà, vraiment, Yann. Je l'ai fait rentrer. 
+
+Guillaume J. 02:25
+- Ok. voilà là il ya les valeurs de configuration telle qu'ils sont mis pour le match moules bonjour à tous les deux manches à vous ça va bien ça va et vous ça va ça va bon. 
+
+Bastien G. 02:51
+- On a eu des docs et des accès sur hier en revanche bon je vais mettre les pédants là tout de suite c'est vrai que c'est un petit peu on a un petit peu en difficulté là pour l'instant ça ne met pas en péril le fait de faire un audit, mais c'est vrai que ça fait changer un peu le fusil d'épaule. Alors, justement. 
+
+LEBREUILLY Y. 03:13
+- Bastien, tu vas détailler tout ça, c'est ça ? 
+
+Bastien G. 03:16
+- Vas-y, si tu veux donner ton sentiment d'abord, c'est vrai que moi je veux bien avoir ton retour, tu les connais. 
+
+LEBREUILLY Y. 03:20
+- Mais ce n'est pas pour rien que je fais un audit, c'est-à-dire que pour moi, il y a beaucoup de choses qui ne vont pas sur le management de ce produit, donc voilà, je suis déjà au sens large. Déjà, la gouvernance est bancale. Moi, je suis le responsable des programmes. Par extension, les projets, j'en ai vu quelques-uns. Des produits, j'en ai vu quelques-uns depuis beaucoup d'années. Comme je vous l'ai déjà dit, peut-être, j'ai aussi une structure de coaching et puis de... Dans le projet, en gros. Donc, quand je vois tout ça, je me dis, il n'y a rien qui va. Mais j'ai besoin d'un œil extérieur pour compléter ma vision des choses, y compris sur le point de vue technique. Donc, pour moi, c'est un marasme, ce truc-là. Ça ne veut pas dire que ça ne marche pas. Ça fonctionne, mais tout est à revoir. Donc, la documentation n'est pas disponible quand on le veut, quand on le demande. Il faut que nous repassions derrière. le fournisseur pour pouvoir classer notre documentation parce que c'est confus tout ça, c'est pas forcément au bon endroit, il y en a partout, elle est pas forcément à jour. Quand je vois des specs qui datent de 2019 avec 2B Requirements MVP et que c'est ce qui est utilisé en prod, alors que je suis sûr qu'il y a eu des mises à jour et que c'est pas dedans évidemment, ça n'a pas été remis. Donc pour moi, un DOD digne de ce nom doit embarquer la mise à jour des et des documentations, qu'elles soient techniques ou fonctionnelles. Donc tout ça, c'est des choses qui sont lourdes à porter, je ne peux pas le dire de mon simple fait, et j'ai besoin qu'une équipe qui audite mette le doigt là-dessus et confirme ce que j'ai dit auprès de plusieurs personnes. Donc c'est dans ce cadre-là que je viens de vous voir. C'est dans ce cadre-là plus le cadre de l'architecture qu'on m'a proposé. Parce que si on propose une architecture, il faut qu'il y ait une plus-value. Et il ne faut pas que ce soit une architecture qui vient cacher la misère d'un code mal foutu ou d'une application qui a la dérive et qui est finalement peut-être au bout de sa vie au niveau des briques techniques. Et on se dit, tiens, on va masquer tout ça en faisant un changement d'architecture. Et puis ça va passer. 
+
+Guillaume J. 05:41
+- Ou en montant la puissance tant qu'on peut encore, mais que les données augmentant, à un moment, il n'y aura plus de puissance disponible. 
+
+LEBREUILLY Y. 05:51
+- Je vous avais évoqué tout ça, mais là, peut-être que dès la première réunion, vous vous rendez compte des choses, c'est peut-être ça aussi. 
+
+Bastien G. 05:57
+- Oui, alors ils sont beaucoup sur la défensive, je ne sais pas si c'est une attitude qu'ils avaient, ce qu'ils avaient hier. C'est-à-dire que le moment d'incompréhension où je t'ai rappelé, il était énorme, mais ils étaient deux, ils écoutaient, on voyait qu'ils écoutaient. ils ne venaient pas à notre aide. Et ça, moi, ça m'a beaucoup surpris. Donc, est-ce qu'ils sont plus sur la défensive avec nous ? Est-ce que c'est une attitude qui est habituelle chez eux ? Déjà, c'est une première question pour moi. 
+
+LEBREUILLY Y. 06:23
+- Moi, ce que j'ai vu, c'est que c'est habituel. C'est-à-dire, quand on demande quelque chose, c'est toujours dans quel but, etc. 
+
+Bastien G. 06:28
+- Émite qu'on demande le but, ce n'est pas gênant. Mais quand on fasse des blocages pour quelque chose dont on parle depuis trois mois, il est logique qu'on doit avoir accès au code. 
+
+LEBREUILLY Y. 06:39
+- C'est une évidence. 
+
+Bastien G. 06:41
+- Quand on n'y a pas accès pour certaines raisons légales, parce qu'il y a de leur code, je le comprends. Ce qui est plus embêtant, c'est que dans ce cas-là, ça veut dire qu'ils ont un couplage fort. 
+
+LEBREUILLY Y. 06:50
+- Extrêmement fort. Le cœur de notre produit, c'est leur outil. C'est ça la difficulté. Et c'est pour ça qu'hier, je l'ai rappelé, j'ai dit attendez, il n'y a même pas de sujet. Il n'y a pas de sujet, le code vous donne accès. Par contre, en ce qui concerne le moteur de matching, bon, je peux comprendre que vous êtes propriétaire. Mais d'ailleurs, je vais aller voir les documents, parce que si on n'a même pas le droit de regarder le code du moteur de matching, on fait un audit un tiers du produit en vrai. 
+
+Bastien G. 07:18
+- Ce serait déjà pas mal si on pouvait le faire sans aucun problème. Pour moi, c'est en fait, s'il y a une partie du code auquel on ne peut pas avoir accès, c'est ce que je veux dire, c'est que ça devrait être physiquement séparé. Donc ce genre de discussion hier n'existe pas. Ça fait partie des règles de l'art en qualité logicielle, et on n'a pas besoin d'avoir des années d'expérience pour comprendre ça. Que l'erreur soit faite, c'est acceptable, ça se corrige. Dans ce cas-là, la solution va au moins nous faire un extrait du code qu'on peut regarder. 
+
+LEBREUILLY Y. 07:53
+- Ouais, je te trouve déjà... On se tutoie, ça ne vous dérange pas, c'est plus simple. 
+
+Bastien G. 07:57
+- Oui, on est passé au tutoiement hier, ça me va très bien. 
+
+LEBREUILLY Y. 08:00
+- Je te trouve déjà très gentil de dire... L'erreur est permise, etc. Quand on voit la réputation qu'il se donne sur les réseaux, des experts, etc. Microsoft, Partner, etc. Encore vainqueur l'année dernière. Ouais, ok, mais expert de quoi ? Parce que vous voyez, dès qu'on commence à... 
+
+Guillaume J. 08:22
+- Moi, je suis moins indulgent que Bastien, effectivement. j'ai pris une telle baffe hier, une telle froideur, j'avais fait un audit en début d'année, je faisais un grand nom des finances et tout, eux aussi ils ont plein de trucs hyper propriétaires, mais les gens ils étaient enthousiastes, ils participaient au truc, il y avait un partenariat. 
+
+LEBREUILLY Y. 08:50
+- C'est à 11h la prochaine réunion, c'est ça ? 
+
+Bastien G. 08:52
+- Oui, du coup on a décalé pour qu'on puisse nous réfléchir un peu à ce qu'on fait, discuter avec toi. 
+
+LEBREUILLY Y. 08:57
+- Ok, alors première chose c'est que déjà je vais rappeler les règles du jeu donc à 11h je vais me connecter je vais leur rappeler les règles du jeu, on est tous dans la même équipe on n'est pas en train d'essayer de mettre des buts contre notre camp, sinon ça va pas aller du tout, on va arrêter l'audit et puis on va prendre des sanctions plus... ça je leur dirai de mon côté mais déjà je vais rappeler les règles du jeu pour qu'on fonctionne tous ensemble parce que Déjà hier, tu as très bien fait de m'appeler, mais je trouve ça inadmissible que tu sois obligé de le faire. J'ai autre chose à faire que de revenir pour dire oui, oui, c'est vrai. On vous a mandaté, ils sont au courant et il n'y a pas de raison de venir faire du blocage. Ce n'est pas normal. 
+
+Bastien G. 09:40
+- Oui, il y avait une forme d'incompréhension et à mon avis, il masque quelque chose aussi dedans. Parce que l'explication elle a évolué en fait, il y a eu trois phases, je ne sais pas si tu te rappelles comme ça aussi Guillaume, ton côté, il y a eu trois phases d'explication. Au départ c'est je ne sais pas si on a le droit, nous on dit on est une NDI avec la Cisac il n'y a pas de soucis. Et après c'est techniquement on n'est pas sûr de pouvoir ouvrir les choses correctement. Et enfin, la dernière explication qui est, on a une partie du code qui ne s'appartient pas. Alors les trois peuvent être vrais sous divers degrés, mais on voyait qu'hitergiversaient. 
+
+LEBREUILLY Y. 10:17
+- Oui, oui, oui, ça ne m'étonne pas, c'est souvent comme ça, et puis souvent c'est pris en plus à la rigolade derrière. Non mais attendez, oui, oui, c'est une évidence. Ouais, ça va en fait, moi je veux du factuel. Je veux du factuel. Donc je comprends la situation. Je comprends. 
+
+Bastien G. 10:37
+- Toi, tu es arrivé du coup, il y a deux ans, trois ans, je ne sais plus. 
+
+LEBREUILLY Y. 10:44
+- Le mois de mai 2024. 
+
+Bastien G. 10:47
+- D'accord. Un an et demi. Un an et demi, c'est ça. Donc en fait, il n'y a pas eu beaucoup de changements. Si je me base sur les documentations, sur un peu ce que j'ai pu deviner sur Azure, il n'y a pas eu beaucoup de changements depuis que tu es là. 
+
+LEBREUILLY Y. 11:00
+- Non, il n'y a pas beaucoup de changements. J'ai mis en place un cab. vous connaissez CAB donc j'ai mis en place un CAB pour les déploiements parce qu'il n'y avait rien, il faisait tout quand il voulait sans même prévenir les déploiements, donc j'ai mis en place un CAB qui est ce qu'il est avec un groupe restreint d'experts et comme ça j'ai l'historique des déploiements depuis on va dire un an je peux peut-être vous donner accès aussi à ce fichier là ça peut être intéressant c'est le seul suivi concret que j'ai des déploiements en prod, voyez ? Parce que ça, il n'y avait même pas, ça n'existait pas, et donc je n'avais aucune idée de ce qui était déployé au fur et à mesure. Et je ne pouvais pas l'empêcher, puisque je ne savais pas quand est-ce que ça arrivait. 
+
+Bastien G. 11:48
+- Oui, non mais ça, c'est... ça fait partie des bases, mais qui, il est vrai, pendant longtemps, n'étaient pas forcément évidentes pour beaucoup de prestataires. Maintenant, bon voilà, au moins prévenir, dire... 
+
+LEBREUILLY Y. 12:08
+- Oui, ça a coupé, je crois que je vous ai encore en audio. Oui, c'est bon. 
+
+Bastien G. 12:14
+- Ça revient, ça revient. Après, les interlocuteurs, toi, en un an et demi, tu as toujours eu les mêmes ? 
+
+LEBREUILLY Y. 12:19
+- Oui, oui, oui. Curnan, c'est vraiment le lead tech, en fait. 
+
+Bastien G. 12:23
+- En fait, c'est le seul nom qu'on voit dans les docs. Oui. 
+
+LEBREUILLY Y. 12:27
+- Il était là, la construction de la page. 
+
+Bastien G. 12:30
+- Donc, moi, ce que j'ai deviné aussi, c'est qu'il y a dû avoir, même chez eux, des changements. qui font qu'on n'a plus les mêmes personnes et que ça a pu être aussi une difficulté qui sont de leur côté et comme tout prestataire dans cette situation ils peuvent pas ils peuvent pas le supporter mais ils peuvent pas non plus le faire supporter à la Cisac voilà c'est peut-être une des difficultés qu'ils ont. 
+
+LEBREUILLY Y. 12:58
+- Est-ce qu'ils vous ont donné accès aux teams avec les différents documents ? 
+
+Bastien G. 13:03
+- Oui c'est la plus grosse source de documentation qu'on a là c'est ça. Du coup c'est là que je vois voilà que à part Curnan il n'y a aucun autre nom. qu'on connaît, il y a Nick Nicolas qu'on a vu hier qui apparaît je pense il y a un an. 
+
+LEBREUILLY Y. 13:20
+- Un an et demi ouais c'est ça, moi je l'ai toujours connu un ou deux. 
+
+Bastien G. 13:23
+- Trois docs d'extraits et puis il y a Sylvain Pia de chez vous qu'on avait rencontré qui a mis quelques docs aussi sur des stats c'est en regardant en survolant mais du coup je vois qu'il y a eu quand même de leur côté à mon avis un changement d'équipe ce qui est normal parce qu'il y a l'équipe de développement. Après, on ne peut pas la maintenir à plein temps dessus. Il repart sur d'autres projets. Mais qui est peut-être aujourd'hui une difficulté. Je ne sais pas à quel point je suis un ami qu'on a vu hier et ne récupère pas des choses qu'il n'aurait pas envie, par exemple. Et ce qu'il met aussi... 
+
+LEBREUILLY Y. 13:59
+- Alors moi, lui, je le vois que quand on a des audits ensemble. Je ne le vois jamais. Celui-ci, ce n'est pas quelqu'un qui est dans l'équipe resserrée ou proche. Alors... Ou alors ça va vers lui à chaque fois. Mais je ne le connais pas. Je l'ai rencontré pendant nos ateliers à nous, une fois ou deux par ailleurs, mais il ne fait pas partie de l'équipe avec qui je discute au quotidien. 
+
+Bastien G. 14:25
+- D'accord. 
+
+LEBREUILLY Y. 14:25
+- C'est vraiment Curnan et Nick. 
+
+Guillaume J. 14:29
+- D'accord. 
+
+LEBREUILLY Y. 14:32
+- Et puis le boss de la boîte qui est John Corley. 
+
+Bastien G. 14:36
+- J'ai lu son nom par endroit, en effet. 
+
+LEBREUILLY Y. 14:38
+- C'est lui le boss de la boîte. Alors, boss de la boîte qui fait aussi Product Owner de l'application. Pourquoi ? Parce qu'il est le père du Matching Engine. Donc forcément, il a un oeil là-dessus. 
+
+Guillaume J. 14:56
+- Il surveille son bébé. 
+
+LEBREUILLY Y. 14:58
+- Ouais, c'est exactement ça. 
+
+Guillaume J. 15:02
+- Ok. Donc tu nous dis que vous leur demandez peu d'évolution au final sur les 5 ans ? 
+
+LEBREUILLY Y. 15:10
+- Alors sur les 5 ans, depuis que l'application est créée, c'est ça en gros. Moi je vois que des petites évolutions. J'en ai en cours d'ailleurs des petites évolutions, mais tu vois c'est par exemple rajouter des éléments de verbosité à un log. C'est des choses qui sont comme ça. ou alors... au lieu d'ingérer l'ensemble d'une liste d'oeuvres, le faire par batch. Vous voyez des choses vraiment très techniques et contenues. Ce ne sont pas des choses qui vont révolutionner l'application. 
+
+Bastien G. 15:44
+- Et là, vous gérez comment ces demandes ? Il y a un outil chez eux, chez vous, pour gérer les demandes ? 
+
+LEBREUILLY Y. 15:49
+- Oui. Ils ont un Jira sur lequel, évidemment, on peut aller regarder tout ça. C'est fouillis aussi. Donc, je me suis fait un petit fichier où je récupérais les numéros de features. Et puis, je me dis, tiens, où on en est sur ce feature-là ? Est-ce que c'est mis en prod ? Est-ce que c'est déployé ? Est-ce que c'est encore à l'étude ? Ou est-ce que c'est encore une proposition de devis ? Donc, ça, j'ai un petit fichier Excel de mon côté. Et sinon, il y a un Jira plus conséquent, mais où je ne m'y retrouve pas. 
+
+Bastien G. 16:13
+- D'accord. 
+
+LEBREUILLY Y. 16:14
+- J'ai demandé une mise à jour du Jira avec des statuts qui soient cohérents. D'accord. le chef m'a dit, je ne vois pas pourquoi tous mes autres clients se font bien avec ça. J'ai dit, je ne suis pas les autres en fait. 
+
+Guillaume J. 16:31
+- Vous êtes un gros client pour eux ? 
+
+LEBREUILLY Y. 16:34
+- Oui, on est un gros client sur l'appli de base. C'est-à-dire que quand on a acheté l'appli avec le moteur intégré, on était un gros client. Mais depuis les petites évolutions, ne rapportent rien, et c'est de la maintenance. Et de ce fait, je suis convaincu qu'ils perdent de l'argent à chaque fois qu'ils nous parlent. Leur moteur de match, il est vendu partout dans le monde. Ils font partie, eux, des 3-4 très grands éditeurs qui le vendent à toutes les sociétés du monde. Et c'est le même moteur de matching qui est utilisé pour tout le monde. 
+
+Guillaume J. 17:17
+- Mais avec le même, tu sais, si c'est avec le même mécanisme de validation pipeline et de choses comme ça, le même enrobage autour ? 
+
+LEBREUILLY Y. 17:25
+- Alors ça, je ne sais pas et je doute que ce soit le cas. Je pense qu'ils ont fait un certain enrobage pour nous à un moment qui est devenu obsolète, je pense, d'un point de vue techno, d'un point de vue performance. Ça, c'est ce que j'imagine. Ça se trouve, j'ai complètement faux. Mais vu la tournure des événements, je pense que c'est ça. et ils se sont aperçus que sur notre application, les performances devenaient plus assez bonnes ou alors certains éléments étaient... Duplicated depuis trop longtemps. D'ailleurs, c'est ce que j'ai vu pour le .NET. Je vais vous expliquer après ça. Et à un moment, ils se sont dit, on ne peut plus rien faire. Il faudrait dire qu'on change d'architecture pour pouvoir supporter tout cet écosystème. Pour le .NET, juste un exemple. Au mois de juin ou juillet, moi, je regarde le .NET et puis ils me disent, il va falloir le mettre à jour. Et en fait, il n'était plus supporté déjà, le .NET. Et quand je leur ai dit, bon, la mise à jour, vous faites ça dans combien de temps ? Eh bien, ça coûtera tant, 15 000, je crois. Et je suis retourné vers eux, je me suis dit, non mais attendez, vous nous faites payer de la maintenance tous les ans. Si dans la maintenance, il n'y a même pas la mise à jour du dotnet, il y a quoi dans votre maintenance ? Et là, ils ont fait, OK, fair enough. Je fais, oui, oui, fair enough, oui, bien sûr. 
+
+Guillaume J. 18:37
+- Effectivement, on l'a vu sur Azure, que le dotnet, c'est du 3.1, qui est plus supporté depuis 2022. 
+
+LEBREUILLY Y. 18:44
+- Et donc là, il est mis à jour ces jours-ci. Parce que là, il est en test en UAT, mais vous vous rendez compte. Il n'hésite pas à dire, bon, on va vous facturer la mise à jour du .NET. Non, mais franchement, si la maintenance ne prend pas ça en compte, je ne sais plus quoi dire. Databricks n'est plus à jour de plusieurs versions. J'ai eu les gars de Databricks qui sont en train de faire un audit par ailleurs, ou en tout cas avec qui on bosse, parce que... Quand ils ont vu ça, ils se sont fait, mais vous n'êtes pas du tout sur la dernière version à jour, la Databricks. Donc, vous ne pouvez pas bénéficier, par exemple, de l'IA dans vos requêtes et de, en gros, de super pouvoir de requête par vous-même dans l'application. 
+
+Guillaume J. 19:30
+- Et j'avais une autre question. Parce que là, tu parles de changement d'architecture, mais ce que je me souviens du changement d'architecture, c'était surtout de la montée en puissance. 
+
+LEBREUILLY Y. 19:38
+- Oui, c'est ça. 
+
+Guillaume J. 19:39
+- C'était aller payer plus cher le cloud. Ce n'est pas un vrai changement d'architecture. 
+
+LEBREUILLY Y. 19:44
+- Alors, je pense qu'il y a un changement parce que, je ne sais plus, je ne connais plus les termes Azure spécifiques, parce qu'il y a un changement d'architecture quand même, et puis un changement de sécurité. Ils avaient proposé les deux. donc la sécurité on a fait bon bah a priori on est déjà au goût du jour on va pas en faire. 
+
+Guillaume J. 20:01
+- 10 fois plus et l'architecture je sais plus ce que c'était c'est ça que je t'avais demandé la proposition si tu l'avais là je t'envoie oui oui je vous la renvoie c'est vrai que je me souviens maintenant ça va être intéressant Ça peut quand même être de l'architecture cloud et pas de l'architecture du projet en lui-même. 
+
+Bastien G. 20:20
+- Et à part cet applicatif... 
+
+LEBREUILLY Y. 20:24
+- C'est pas l'hyperscale ? Oui. 
+
+LEBREUILLY Y. 20:25
+- C'est ça. 
+
+LEBREUILLY Y. 20:28
+- Mais bon, je vous renvoie le document. 
+
+Bastien G. 20:30
+- Oui, je vois bien. Et à part cette application, vous avez donc une licence Machine Engine, c'est ça ? 
+
+LEBREUILLY Y. 20:41
+- Alors c'est une bonne question, je sais pas comment ça se passe ce truc là, j'ai l'impression que la maintenance nous permet et puis l'achat de départ nous permet d'utiliser le matching engine avec ses évolutions de ce que j'ai compris. Il faudrait certainement que j'aille dans le contrat de base pour comprendre ce qui est à nous et ce qui est pas à nous et ce qu'on a le droit d'aller voir aussi comme code. 
+
+Bastien G. 21:05
+- Et ça matching engine c'est utilisé pas. énormément d'autres clients pour eux ? Oui. 
+
+LEBREUILLY Y. 21:12
+- Oui, oui. 
+
+Bastien G. 21:14
+- Mais vous avez peut-être apporté aussi une capacité d'évolution, parce que vu la taille de ce qui est géré par la Cisac j'imagine que ça leur a permis, eux, de fine-tuner certains éléments. 
+
+LEBREUILLY Y. 21:24
+- Au moins. C'est certain. En tout cas, on a contribué forcément d'une manière ou d'une autre à l'évolution de ce matching engine. 
+
+Guillaume J. 21:30
+- Vous êtes dans les plus gros clients en termes de volume, j'imagine, non ? 
+
+LEBREUILLY Y. 21:35
+- Oui, oui, bien sûr. 
+
+Guillaume J. 21:37
+- Est-ce que tu as des contacts avec d'autres de leurs clients par hasard ? 
+
+LEBREUILLY Y. 21:40
+- Oui, oui, oui. 
+
+Guillaume J. 21:41
+- Est-ce qu'ils t'ont donné un feeling ? 
+
+LEBREUILLY Y. 21:46
+- En fait, c'est plutôt moi qui leur fais peur. C'est-à-dire qu'ils s'embarquent avec eux souvent en se disant c'est le top du top, c'est la Rolls. Je leur dis peut-être dans les mots, oui, mais moi je ne suis pas content jusqu'à présent. Alors le produit, il fonctionne bien. Il a été long à mettre en place, mais il fonctionne bien a priori. mais je ne suis pas content de la relation à la fois commerciale et produit, et puis les coûts, parce que les coûts sont énormes. J'en ai pour 50K chaque mois de cloud, en gros, que ce soit de la transaction ou de l'hébergement de données. 
+
+Guillaume J. 22:23
+- Après, vous avez beaucoup de données, mais ça, c'est... Oui. Mais attends, tu dis que le produit fonctionne bien, mais tu n'as pas une pointe quand même avec. 
+
+LEBREUILLY Y. 22:31
+- Pardon ? 
+
+Guillaume J. 22:32
+- Tu dis que le produit fonctionne bien. Je le comprends dans le sens que ça retourne les bons résultats sans bug, mais il y a des difficultés à l'usage quand même. 
+
+LEBREUILLY Y. 22:43
+- J'en ai pas tant que ça. J'ai pas tant que ça. Le produit fait son office, c'est-à-dire que ça fonctionne correctement. Moi, ce qui m'embête plus, c'est cette sorte de non-transparence, cette opacité et les coûts que j'ai du mal à maîtriser. Et ça vient bien de quelque part. Et quand on nous propose quelque chose, la cause n'est pas bien identifiée. Je ne suis pas certain de ce qu'on me dit. Je ne suis jamais sûr. Ça. 
+
+Bastien G. 23:09
+- Je comprends. 
+
+LEBREUILLY Y. 23:10
+- Vu l'attitude qu'ils ont. Et puis les coûts sont faramineux. C'est ce qui m'avait fait déclencher avec vous. Quand j'ai demandé un environnement de pré-prod où on m'a annoncé, je ne sais plus combien on m'avait dit, ce n'est pas 25 000 ou un truc comme ça, ou même plus. J'ai dit, à ce moment-là, on va étendre un petit peu l'environnement de test pour pouvoir rapatrier plus de données. Et là, ils m'ont dit, d'accord, ça sera juste 20 000. Et puis, 20 jours de travail. Là, j'ai fait, là, il y a un vrai problème. On ne peut pas me demander pour une extension de taille d'environnement, 20 jours de travail, ça n'a pas de sens. Ça n'a aucun sens. Normalement, ça se fait en deux heures ou une demi-journée. J'étends mon environnement. J'y ai fait un peu de développement, je connais un tout petit peu ce côté-là, même si je ne suis pas un expert, on ne peut pas me vendre 20 jours alors que j'en ai besoin que d'un demi, en théorie. 
+
+Bastien G. 24:08
+- Oui, mais comme on te l'avait dit la première fois que nous avions évoqué ce point, avoir besoin d'autant à payer, mais aussi autant de jours, ça dénote aussi que dans le passé, il y a peut-être quelque chose qui n'a pas été fait suffisamment bien pour la réplication des environnements. Très souvent, oui, c'est ce genre de choses. On peut comprendre, c'est la première fois, c'est pas dans la demande initiale, donc on demande des jours, mais il y a peut-être un partage à faire, au minimum. 
+
+LEBREUILLY Y. 24:36
+- Et puis ça dénote quand même quelque chose, ne pas être capable, de base, dans un produit, de prendre une... d'avoir l'option, un jour, de pouvoir étendre son environnement de recettes. Ça indique quand même. 
+
+Guillaume J. 24:53
+- Oui, parce que par étang, j'ai bien compris, tu ne parles qu'en fait de rajouter plus de données. 
+
+LEBREUILLY Y. 24:57
+- Enfin. 
+
+Guillaume J. 24:58
+- Une base de données d'une taille qui correspond plus à celle de la prod. 
+
+LEBREUILLY Y. 25:01
+- C'est exactement ça. 
+
+Bastien G. 25:02
+- Et on ne parle pas du deuxième environnement. 
+
+LEBREUILLY Y. 25:05
+- Non, tu ne parles même pas du deuxième environnement, parce que celui-ci, je me suis dit, attends, vous êtes fou pour le prix, je dis, bon, attendez, dans ce cas-là, on va augmenter la taille de la BD, puis vous allez me mettre un subset des données de prod plus fraîches. Oui, c'est quasiment le même prix. 
+
+Guillaume J. 25:19
+- C'est incroyable ça. 
+
+LEBREUILLY Y. 25:21
+- Effectivement. Sans sourciller. J'ai fait non, non, non. J'ai fait non, non, non. Go audit. Effectivement, je pense que les mécanismes de réplication n'avaient pas été automatisés, voire même pensés. Et tout ce genre de choses. Donc forcément, derrière, ils ont besoin de jours pour pouvoir payer ça. Tout simplement. 
+
+Bastien G. 25:45
+- Oui, mais en fait... Je suis désolé, je les trouve pas très très malins en termes de prestataires et fournisseurs de solutions. Je suis pas commercial, je suis pas dans le marketing, mais ça me semble pas normal la manière dont ils te traitent d'après ce que tu nous racontes. Dans ce cas-là, qu'on fasse pas des cadeaux à tout va, parce que voilà, mais vous êtes un gros client. Ils nous montrent clairement une attitude qui est réfractaire. Je pense peut-être derrière, ils se disent peur de perdre Cisac. Ok. Mais leur attitude risque d'aller encore plus dans cette direction. Rien que leur attitude. Je ne parle pas de ce qu'ils ont déjà fait. Et je ne les trouve pas très malins là-dessus. Et c'est une des choses qu'on a discuté avec Guillaume, c'est comment est-ce que nous, on pourrait essayer de retourner un petit peu pour leur dire, mais on n'est pas là pour vous incendier. Si vous jouez bien le coup, c'est peut-être une manière de mieux travailler avec la Cisac dans le futur, mieux les servir. Nous, on peut défendre des points de vue que vous avez. Enfin, voilà. et... mais je... Pour l'instant, on n'a même pas trop d'accroche là-dessus. 
+
+LEBREUILLY Y. 26:48
+- Alors, écoute, moi, je suis arrivé au mois de mai. À partir de fin juin, je me suis dit, ceux-là, je ne peux pas les voir. C'est-à-dire qu'il y a un vrai problème de transparence. Je ne peux pas travailler avec des gens en transparence. Vous voyez, par exemple, je n'ai jamais eu de discussion comme j'ai avec vous là, avec l'équipe. Alors que ce n'est pas du tout normal. Avec d'autres prestataires, on peut se marrer, on peut rigoler, on a un lien. Moi, je travaille comme ça. D'ailleurs, vous l'avez vu par rapport à l'audit. Je vais sélectionner les personnes qui me semblent adaptées et ensuite, on crée un lien pour essayer de trouver la meilleure façon d'avancer, les meilleurs produits à construire, la meilleure relation possible. Et ça n'a jamais été possible. Et à tel point que comme j'ai de l'opacité à la fois managériale, technique, fonctionnelle, moi, je dois produire une vision moyen terme. Ma vision moyen terme, c'est de me passer de eux, en fait, tout simplement. C'est ça la réalité aujourd'hui, parce que je ne peux pas gérer un SI sur lequel je n'ai pas la main, et actuellement je n'ai pas la main du tout. 
+
+Guillaume J. 28:03
+- Ah, que ce soit une boîte noire totale. 
+
+LEBREUILLY Y. 28:07
+- Et c'est ce que vous avez ressenti en un atelier de deux heures. 
+
+Bastien G. 28:10
+- Oui. 
+
+Bastien G. 28:12
+- On n'a pas attendu la fin des heures. On a attendu déjà. Malheureusement. Juste. Donc à part cet applicatif, qu'est-ce que toi, dans ton giron, mais la Cisac de manière générale, a chez Spanish Point ? 
+
+LEBREUILLY Y. 28:29
+- Rien d'autre. 
+
+Bastien G. 28:29
+- Il n'y a que ça ? 
+
+LEBREUILLY Y. 28:32
+- Rien d'autre. Alors, il y a Cisnet qui est produit par Cisac, vraiment, celui-ci, qui est développé chez nous, anciennement Fastrack, mais qui est redevenu Cisac. Fastrack, c'était un petit agglomérat de différentes sociétés qui ont construit Cisnet et on a récupéré Cisnet il y a deux ans et Fastrack a fermé. En fait, Fastrack avait été monté spécialement par les gros acteurs du marché pour développer Cisnet. D'accord, je comprends. 
+
+Bastien G. 29:01
+- Parce qu'un moment, j'ai vu dans les docs un lien vers un wiki Fastrack. 
+
+LEBREUILLY Y. 29:04
+- C'est ça. 
+
+Bastien G. 29:05
+- Et comme il me disait pas d'accès, je revenais et suivais un truc, ça m'a redirigé sur Cisac. 
+
+LEBREUILLY Y. 29:10
+- Oui, c'est ça. Fastrack en fait, c'était une entité qui avait émané de Cisac, et puis qui s'est fermée quand on a récupéré Sysnet. Et d'ailleurs, on a récupéré aussi les développeurs, Moïse était Fastrack. Donc c'est in-house, c'est dans la maison, ça, ce truc-là. Et donc, on a un lien vers une API de l'ISWC, forcément, pour aller chercher les codes. Et puis, SwissNet 2, qu'on est en train de développer actuellement, aura un lien, et a déjà un lien vers l'ISWC. Donc, on est très dépendant de cette base qui nous appartient. Cette application nous appartient, et c'est l'application autoritative pour l'attribution d'ISWC. Donc, ce n'est pas rien. donc moi je peux pas avoir je peux pas avoir ne pas avoir peu de connaissances et peu de maîtrise sur cette société. Oui. 
+
+Bastien G. 30:05
+- Je fais une petite parenthèse pour mieux comprendre d'un point de vue métier. Je vais partager mon écran sur le site de Machine. Je ne sais jamais si on dit engine ou engine. Je crois que les anglo-saxons ne disent pas tous pareil en plus. 
+
+LEBREUILLY Y. 30:21
+- Oui, moi je change régulièrement aussi. 
+
+Bastien G. 30:25
+- Dans ces référentiels, ces deux-là, c'est Cisac en fait. 
+
+LEBREUILLY Y. 30:29
+- Oui, absolument. 
+
+Bastien G. 30:32
+- Oui. 
+
+LEBREUILLY Y. 30:33
+- Parce que Weed fait partie de Sysnet. 
+
+Bastien G. 30:37
+- Ok. Et API... 
+
+LEBREUILLY Y. 30:40
+- Et API, c'est aussi Cisac. Tout est Cisac, là. 
+
+Bastien G. 30:45
+- D'accord. 
+
+LEBREUILLY Y. 30:46
+- Et l'IPI, c'est une base de données sur... Quand on est artiste, on a un ID unique dans le monde. Et donc l'IPI fait ce recensement. Et l'IPI, on a délégué le développement et le management de cette application à la Cisac, qui est la société suisse. 
+
+Guillaume J. 31:07
+- D'accord. 
+
+LEBREUILLY Y. 31:09
+- Sinon, Weed. Et SysNet, la WID, c'est un nœud de SysNet en fait, c'est une base de données dans SysNet. Donc c'est vraiment chez nous, c'est même Moïse qui le manage. La WID, c'est en gros toutes les petites sociétés ou une grande partie des sociétés qui se rassemblent sous un gros nœud comme ça. Mais considérons que c'est SysNet, donc WID et SysNet en gros c'est la même chose. Le ISWC, c'est pour les codes uniques des œuvres et puis l'IPI, c'est pour les codes uniques des artistes ou des compositeurs. En gros, c'est des codes uniques sur les gens. 
+
+Guillaume J. 31:42
+- Donc, leur business model est basé sur vos données. Il n'existe pas sans vos données. 
+
+LEBREUILLY Y. 31:48
+- Disons que ce moteur de matching, il est nécessaire aussi pour toutes les sociétés de compositeurs du monde, puisque les sociétés dans le monde entier ont besoin de faire matcher des œuvres. Donc, ils vendent aussi ce matching engine dans toutes les sociétés du monde. 
+
+Guillaume J. 32:06
+- Avec leur propre poste de données. 
+
+LEBREUILLY Y. 32:08
+- Exactement. 
+
+Guillaume J. 32:09
+- Et c'est les vôtres qui mettent sur la page de couvre. 
+
+LEBREUILLY Y. 32:12
+- Ah oui, parce que c'est ce qu'ils mettent sur leur site. 
+
+Guillaume J. 32:17
+- Parce qu'à mon pays, Bastien, c'était leur homepage de Matching Engine. 
+
+LEBREUILLY Y. 32:22
+- Donc oui, effectivement, c'est juste nos applications. 
+
+Bastien G. 32:26
+- Je te remontre. C'est clairement, là, tu vois, ça c'est Matching Engine. Et tu vois, tu fais By Spanish Point. 
+
+LEBREUILLY Y. 32:37
+- D'accord. Et donc la home page, c'est chez nous. En fait, la home page. 
+
+Bastien G. 32:41
+- C'est... En fait, quand on va sur Matching Module, on voit ça. Le truc qu'ils mettent le plus en avant, c'est leur Matching Module. 
+
+LEBREUILLY Y. 32:51
+- Ah ouais, ils disent, bon, voilà, c'est ce qu'ils réussissent à faire. Oui, le matching avec toutes les applications autoritatives. 
+
+Bastien G. 32:58
+- C'est ça. Après, il y a les autres modules, mais pareil, ça... 
+
+LEBREUILLY Y. 33:02
+- Allez. 
+
+Bastien G. 33:03
+- Il me semble que c'est un peu chez vous aussi. 
+
+LEBREUILLY Y. 33:05
+- IP information, c'est l'IPI, c'est ce qu'on voyait juste avant. 
+
+Bastien G. 33:08
+- Ah oui, j'aurais dû réaliser. J'apprends encore le métier. Bon, après, je pense que... Ce qu'on voit à gauche. 
+
+LEBREUILLY Y. 33:18
+- Pareil. Ce qu'on voit à gauche, juste au-dessus. 
+
+Guillaume J. 33:21
+- CWR. 
+
+LEBREUILLY Y. 33:21
+- Etc. CWR, c'est nous qui en avons. CWR, oui, d'IPI, c'est encore nous. 
+
+Bastien G. 33:28
+- Donc en effet, ils ont de quoi bien naviguer dans vos données. 
+
+LEBREUILLY Y. 33:32
+- Ah bah oui, oui, oui. 
+
+Guillaume J. 33:36
+- Oui, oui. Puis après, je pense que l'autre partie, c'est peut-être pour... Parce que toutes les sociétés de musique du monde remplissent nos données aussi ou elles ont leur propre base de données éventuellement ? 
+
+LEBREUILLY Y. 33:46
+- Elles ont leur base de données qui alimente CISNET et elles ont des interactions toutes les secondes, en gros, avec l'ISWC pour attribuer des codes œuvres uniques. Toutes les œuvres qui arrivent chez elle, l'Italie, va avoir plein d'auteurs, compositeurs qui vont créer. Et pour les identifier, ces œuvres-là, directement, ils vont renseigner ISWC qui va attribuer un code. 
+
+Guillaume J. 34:15
+- Vous êtes la référence mondiale, la source de vérité. 
+
+Guillaume J. 34:17
+- Oui. 
+
+LEBREUILLY Y. 34:18
+- Absolument. C'est la source autoritative unique et ISO d'ailleurs. C'est nous qui avons ce référentiel unique. 
+
+Bastien G. 34:26
+- Tous ces codes, j'ai vu qu'il y avait un ISO pour la SWC, les autres codes aussi ont leur norme ISO. 
+
+LEBREUILLY Y. 34:34
+- Alors, est-ce que c'est ISO, le CWR, tout ça, ça c'est plus des normes d'échange, mais l'ISO porte beaucoup plus sur ISWC. L'ISO, c'est ISWC, c'est ça le référencement unique des œuvres. Ensuite, c'est plus des formats d'échange de données entre éditeurs. et société, société et société, éditeur, éditeur, etc. Et grosses plateformes aussi, comme YouTube, avec les DDEX, les choses comme ça. Des formats de données, enfin, formats d'échange. CWR, par exemple, c'est quand un éditeur doit mettre à jour des informations sur des... sur une œuvre et puis le renvoie vers la société par exemple. Il y a tout un mécanisme derrière tout ça. On a des infos aussi sur le site Cisac. 
+
+Bastien G. 35:24
+- Merci en tout cas pour ces précisions, plus côté métier. Hier, je pense que tu étais là, je ne sais pas si tu entendais, mais c'est une chose que du coup, je pense qu'on va abandonner totalement par rapport au plan d'origine. Il y avait quand même des ateliers qui étaient interactifs avec eux. Je le sens vraiment plus. Guillaume, je crois toi encore à moins que moi. Je pense qu'on va plus être dans un mode où on leur pose des questions, on produit, et on leur montre nos productions, on leur demande de confirmer qu'on a bien compris. Donc d'être en vrai mode interactif. Si on voit que ça crée quelque chose, il y a peut-être des moments où on refera de l'interactivité. C'est bien. Mais pour l'instant, je ne vois pas ce qu'on peut faire de mieux. C'est pour ça aussi qu'on raccourcit aujourd'hui, demain on verra si on raccourcit ou on annule tout simplement. Parce que le deuxième point qu'on se disait qu'il faut changer, c'est que tant qu'on n'a pas de certitude sur l'accès à toute ou partie du code, ce n'est pas du tout le même type d'audit qu'on va devoir faire. 
+
+LEBREUILLY Y. 36:29
+- Bien sûr, bien sûr. Je vais aller voir aujourd'hui de nouveau dans le contrat ce qui est stipulé et si on a accès au code du matching engine normalement, parce qu'effectivement, là, ça... ça peut créer une restriction. 
+
+Bastien G. 36:47
+- Et moi j'ai peur en plus là, s'il y a une vraie intrication, que même ce qu'il vous propose comme évolution, ce soit une évolution qui profite à tous ceux qui utilisent le matching engine. Mais ça c'est peut-être une petite paranoïa qui se crée chez moi, mais ça semble, tu vois, les attitudes que tu as expliquées et ce point d'intrication de code... peut laisser penser ça aussi. 
+
+LEBREUILLY Y. 37:14
+- C'est exactement la situation dans laquelle je suis depuis un an. C'est que j'ai du mal à les croire quand ils me parlent et j'ai du mal à savoir jusqu'où ce qu'on me demande s'est justifié, surtout quand je vois les tarifs. Tout ça, en fait, ça amène de l'eau à mon moulin, encore une fois. Je ne pensais pas que ça allait se voir aussi rapidement. mais au moins c'est clair dès le début dès la première heure avec vous en fait bon c'est plutôt une bonne chose ce qui me rassure c'est je. 
+
+Bastien G. 37:54
+- N'étais pas parano déjà premièrement ou alors on l'est tous les trois bah actuellement il y a des choses qui sont pas qui vont pas dans la bonne direction et ça on va pouvoir déjà mettre ça par écrit et c'est pour ça qu'il y aura peut-être aussi une orientation autre chose que proposait Guillaume tout à l'heure c'est peut-être de parler avec eux un peu plus tu disais Guillaume style entretien qu'est-ce qui vous a le plus plu qu'est-ce qui est le plus intéressant pour vous dans cette appli allez plus sur le côté intérêt et une approche aussi à mon avis qui peut être intéressante est ce que ce serait intéressant aussi carrément on rencontre le père de la machine jane moi je suis convaincu que oui vous allez comprendre aussi un état d'esprit derrière oui. 
+
+LEBREUILLY Y. 38:54
+- Oui j'en suis convaincu maintenant est ce que vous allez voir de la dispo faut la demander dès maintenant. 
+
+Bastien G. 39:01
+- Oui, tu peux nous transmettre les coordonnées, comme ça on va regarder ça. Oui. 
+
+LEBREUILLY Y. 39:04
+- Bien sûr, bien sûr, je vous envoie ça. Oui, oui, c'est important de comprendre. Je vous laisserai vous faire votre avis là-dessus. Oui. Ok, ok. Donc de mon côté, ce qu'il faut faire, les coordonnées, plus le contrat, je vais aller voir dedans, et plus une discussion. avec eux tout à l'heure de manière à remettre les choses dans leur contexte et leur dire que vous avez entièrement la main sur tout ça. 
+
+Bastien G. 39:38
+- Est-ce que tu veux qu'on te laisse seul avec eux pour démarrer ? 
+
+LEBREUILLY Y. 39:42
+- Non. 
+
+LEBREUILLY Y. 39:42
+- Non, non. 
+
+LEBREUILLY Y. 39:46
+- Au contraire, moi j'ai besoin de transparence ils habitent tout le monde c'est important C'est plus pour eux. 
+
+Bastien G. 39:51
+- Ils pourraient se sentir plus à l'aise de t'avoir toi en direct mais j'ai ta réponse, c'est bien. 
+
+LEBREUILLY Y. 40:02
+- Ouais, je les ai déjà câlinés, etc. donc c'est bon maintenant. En fait vous vous rendez bien compte qu'au bout d'un an et demi à travailler dans ces conditions, on prend moins de gants. 
+
+Guillaume J. 40:16
+- Je m'imagine, parce que je me dis, c'est peut-être qu'on ne se connaît pas. 
+
+LEBREUILLY Y. 40:21
+- Il n'a pas la langue et tout, donc peut-être que... Non, non, non. En gros, moi, de ce que j'ai vu encore hier, il y a Kurnon qui, lui, est mutique, c'est-à-dire que déjà, dans toutes les discussions, en général, il ne parle pas et puis il a un ton monotone. Et ça, ça le dessert aussi largement parce que... Même quand il va bien et qu'il est super content, il a ce ton-là. Vous vous rendez compte de ça. Donc, Curnan lui, il est toujours sur un ton monotone. Au début, je pensais qu'il se foutait de moi, mais en fait, il est comme ça avec tout le monde. Et c'est simplement sa façon d'être. Alors ça, ça le dessert, il me semble. Et puis, en plus, il n'en joue pas. Donc, c'est Gallay. Et puis, vous avez son collègue. On a toujours l'impression qu'il se fout de vous quand il répond quelque chose. Et moi, je l'avais remarqué déjà dans d'autres réunions. Quand on dit quelque chose, pour lui, il nous prend pour des abrutis. On dit, attendez, c'est évident ça, c'est évident ça, bah oui, puis ça c'est évident, bah non, on ferait pas comme ça, c'est évident. En fait, non, c'est pas si évident que ça, vu le travail que vous faites. Quand on merge en prod un truc qui a été testé et un truc qui devait surtout pas sortir, parce que c'est ce qui est arrivé l'année dernière, non, non, je peux avoir des doutes, en fait. Je peux bien sûr avoir des doutes. On a mis six mois à fixer tous les problèmes qu'il y a eu à ce moment-là. Il y a eu un merge malheureux qui est arrivé en prod. Donc, on n'a pas de leçon à recevoir, en vrai. C'était un merge qui a eu lieu avec du code qui était en POC. Un POC sur un autre projet, ça a été mergé avec la branche principale et c'est sorti en prod. Et ça nous a valu pratiquement six mois de Gallay, d'incidents incessants, pour pouvoir fixer tout ce qui devait être fixé au mois de mai, juin l'année dernière. Ça vous donne des repères temporels et peut-être des pistes d'investigation aussi. 
+
+Bastien G. 42:40
+- Il va falloir qu'on creuse ça éventuellement. On va voir aujourd'hui, après je pense qu'on va remettre aussi un peu plus au clair ce qu'on espère sortir de l'audit. Je suis désolé, mais il y a un moment où il faudra aussi qu'on dise clairement qu'on peut sortir ça. Là déjà on a de la matière pour donner des informations avec le point de vue externe qu'on a. Derrière, il est vrai qu'à l'origine on était sur un audit qui devait quand même beaucoup plus s'orienter sur... une investigation technique de performance. Pour l'instant, on s'oriente sur de l'organisationnel majoritairement. Et on verra pour cette phase en fonction des moyens qu'on a. 
+
+LEBREUILLY Y. 43:18
+- Moi, j'ai vraiment besoin qu'on creuse le côté technique. Donc, je vais leur dire donner accès techniquement aux plus de choses possibles parce que c'est pour ça que d'ailleurs, je vais leur rappeler, c'est pour ça que je paye ces Gallay. Et s'ils n'ont pas accès au niveau technique, je suis en train de perdre de l'argent. Je vais leur expliquer de cette manière-là. Moi, je fais venir des gens, si vous ne faites pas le nécessaire pour qu'ils puissent avoir accès, en fait, vous me faites perdre de l'argent, je vais leur dire. Au bout d'un moment, il faut dire les choses. Parce que c'est ça, quand vous raccourcissez, quand vous ne pouvez pas avoir accès, quand vous Gallay, finalement, c'est l'audit qu'on avait demandé qui se perd petit à petit. quelque part c'est quand même fort de révélation. Ça veut quand même dire beaucoup. C'est-à-dire qu'en gros, on n'a pas vraiment la main sur notre application. C'est aussi une réponse. 
+
+Bastien G. 44:20
+- Oui, je suis entièrement d'accord avec ça. 
+
+LEBREUILLY Y. 44:24
+- Est-ce que vous aviez besoin de voir autre chose ? 
+
+Bastien G. 44:27
+- Non, je pense que ça va aller. On va peut-être faire une petite pause avant de reprendre à 11h. 
+
+LEBREUILLY Y. 44:34
+- Ok. 
+
+LEBREUILLY Y. 44:35
+- Alors je saute dans une autre réunion. 
+
+LEBREUILLY Y. 44:39
+- Je regarde le contrat et puis je reviens avec vous à 11h. Ok. 
+
+Bastien G. 44:42
+- Merci beaucoup. Merci beaucoup. Ah oui, on a gardé deux heures par prudence. 
+
+LEBREUILLY Y. 44:48
+- Oui. 
+
+Bastien G. 44:49
+- La volonté était de rester sur une heure. Là par l'union, j'ai dit gardons deux heures par prudence. 
+
+LEBREUILLY Y. 44:55
+- On ne sait jamais. Voilà. Ça se débloque. Allez, à tout à l'heure. 
+
+Bastien G. 45:00
+- Merci, à tout à l'heure. 
+

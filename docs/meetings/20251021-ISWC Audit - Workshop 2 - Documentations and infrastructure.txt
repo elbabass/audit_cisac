@@ -1,0 +1,691 @@
+ISWC AUDIT - WORKSHOP 2 - DOCUMENTATIONS AND INFRASTRUCTURE
+
+
+Participants    Guillaume Jay, Mark Stadler, Bastien Gallay, LEBREUILLY Yann, Xiyuan Zeng
+
+Date    2025-10-21
+
+Bastien G. 00:05
+Guillaume, I don't know if you had time to see what Yann shared with us. 
+
+Guillaume J. 00:14
+You're up Guillaume. I saw that there was the source code that will be provided. We'll see. 
+
+LEBREUILLY Y. 00:24
+It took me exactly 2 minutes 30, because I had other meetings. I said to myself, I still have to go to the meeting with biscuits. I went to see, it's written in the ... On the contrary. 
+
+Guillaume J. 00:34
+And you could continue with another seller, if I understand the meaning of the page. 
+
+LEBREUILLY Y. 00:37
+Exactly, exactly. 
+
+Bastien G. 00:42
+Besides, the terms I see are super advantageous for you. Yes, yes, yes. 
+
+LEBREUILLY Y. 00:47
+So I will still remember the rules of the game. 
+
+Bastien G. 00:57
+Very well, well, like that, that's it. At least it will put you in a little peace of mind about it. Yes, yes. Well, since we already have two minutes, I'll let Mark in. Me neither. 
+
+LEBREUILLY Y. 01:11
+I don't know who it is. 
+
+Guillaume J. 01:12
+The vulgar. 
+
+LEBREUILLY Y. 01:24
+Hey Mark. 
+
+Guillaume J. 01:26
+Hello. 
+
+LEBREUILLY Y. 01:31
+Nice to meet you. We never talked to each other in the past. No. 
+
+Mark S. 01:34
+We haven't talked, no. I'm standing in for Curnan this morning. 
+
+LEBREUILLY Y. 01:37
+Okay. You mean Curnan won't be here this morning? 
+
+Mark S. 01:45
+He won't be able to be here, no. 
+
+LEBREUILLY Y. 01:47
+Okay. And Xion? 
+
+Mark S. 01:49
+I'm Mark. I initially developed the Cisac system. Oh. 
+
+LEBREUILLY Y. 01:52
+Okay. 
+
+Mark S. 01:54
+So I have some experience with it. 
+
+LEBREUILLY Y. 01:56
+Okay, okay, okay, okay. 
+
+LEBREUILLY Y. 01:57
+Thank you. Nice to meet you. Good morning, Sian. 
+
+LEBREUILLY Y. 02:23
+Good morning. Hi, Sian. Well, so I understood that Curnan will not be part of the meeting. That's it, Mark? You told us? 
+
+Mark S. 02:36
+Yeah, he won't be able to join. 
+
+LEBREUILLY Y. 02:38
+Okay, okay, okay. So just the first thing, thank you for... for joining Mark and thank you for participating once again to this audit. I'm very happy to to have this audit conducted because I don't know much about the application. It's been one year and a half that I'm at Cisac and I take part in all the... Sorry Mark, there is your microphone. Some noise behind you. 
+
+Mark S. 03:13
+Sorry, I didn't hear myself. 
+
+LEBREUILLY Y. 03:16
+Yes, please. Thank you. And there are some parts of the application I still don't know. We have plenty of documentation and it's not possible for me to go over all these interesting documents. I had a look to the contract, however, and I found that it's possible to answer your question from yesterday, Sian. I found that it's in the terms of a contract to have access to both the code for especially the ISWC Cisac code and the matching engine. It's written in the contract, so please do accordingly and provide the interested rights to Bastien and Guillaume. That way, they will not lose time anymore because time is money for them. I paid... a solid amount of money for having the audit done and each hour they don't have access to the code or to the infrastructure or to the technical side it's money I'm losing. So please grant them the correct rights that they can access these technical things. And if there is an issue, just put me in contact with John directly and we will sort it out. Okay? 
+
+Xiyuan Z. 04:40
+Sure yes so yeah in terms of access right so um i already granted access for the last for all the you know air portal uh yesterday so you should have received the invitation yesterday evening and you know so you can basically view all the error infrastructure with all the configuration right for Cisac part so that's that should have already been in place and in terms of the repo or source code access so regardless you know how the access is going to be arranged it won't be done today and it has to wait because there's a procedure need to go through internally and also the configuration on our side to even enable it. So that won't happen today nor tomorrow. It will be the earliest will be somewhere later this week or early next week. 
+
+Bastien G. 05:41
+Okay, waiting for all that. Sorry, waiting for all that. Could we have an extract of the code? Maybe a zip put in the SharePoint would be enough to start with. 
+
+Xiyuan Z. 05:53
+Not really. No, it's not whether I share with you, it's some procedure configuration you to go through, and internally I need to sign off, share with you guys as well. Sorry, internally so that we have some approval process. As I said, if this means delay on your side, then I suggest, as you said, probably reschedule or not put guys waiting, if they are waiting on the source code. because i i'm unable to share the source code today not tomorrow okay but but but as you said the source code is written in the contracts and then that should have no problem but the earliest i said you know and their procedure goes through then that has to be somewhere um probably early next week because then i can share source code with you okay and well we don't know this procedure. 
+
+LEBREUILLY Y. 06:53
+First of all, it's an issue not knowing this procedure. We announced the audit a few weeks ago, so it should have been anticipated, second thing. And third thing, we are losing 25% of the duration of the audit just granting the rights. It's not normal. So I will have a look with John. on how it's possible to be quicker than that. I understand it's a procedure you have to follow, Xion, no issue about that. But yes, I will go and see John to understand how it's possible to go quickly and more quickly than you are talking about. And so, Guillaume, Bastien, of course, I will tell you as soon as I have information. Hopefully I will have the answer from John today or tomorrow. So this is an important part, yes, because it's a technical audit. So if we don't have a technical environment and a source, it's an issue. Well, I want also a total transparency from each part. It's very important for us to understand that we need to masterize the knowledge of Cisac on Cisac side to be able to take the correct decision when it deals with, for instance, enhancement, improvements and making the right choice at the right moment, on my side especially. So please, if you have doubts, Bastien, Guillaume on something you don't know. Don't hesitate to ask John and Mark. and all the Cisac team that they can answer clearly and in total transparency about all that. And I think I'm done. And maybe I will disappear from the meeting right now. I'll let you talk about all that. Yeah. 
+
+Xiyuan Z. 09:02
+So I have no issue with what you said. So if the question is on what the ISW setup looks like, and so the decision-making where what feature are, we are happy to provide all the answer. But I'd like to just quote out at the beginning, before we dive any further. So this is only about explaining what ISW is. We are not going to do any. full in-depth explaining the Azure service in general as a training procedure. I just want to make sure this is all due for the application. If there's a particular service that the N01 is not familiar with, we won't spend time to go through detail explaining that service itself, because that will be impossible to finish that level of explanation in weeks because it's just simply impractical. so the but we have no issue to go through the Cisac specific right you know which service you use and what the configuration is for that service okay just making sure we are fully aligning here yeah thanks i'm not really sure about the the death. 
+
+Guillaume J. 10:22
+Or question right now because uh we we will see when we got access to the source code it's a bit premature to be we're not going to ask for fully functional description description of feature viz but we will we're going we're going to have some questions about how it works the technical side so. 
+
+Xiyuan Z. 10:51
+Yeah, I understand you might have questions, but the phrase I'd like to use at this stage is to make sure we are clear understanding that we certainly don't have the capability or capacity in terms of scheduling whatever to explain in terms of the source code of power using only good language. Maybe everyone can understand that. We're not going to explain C-sharp syntax. We're not going to explain how C-sharp works. We're not going to explain how... python or python works right well no we know our basic knowledge in there i'm sorry i just give you examples we we can explain what the components there are for example we have a csh based project for this website right here just here here's source code for example right so we we can explain that but the foundation for each components right we we just it's impractical right for for even for a week or two weeks to explain them all right so um so We will try to answer your question to base software knowledge in terms of a C-SAT specific configuration. 
+
+Guillaume J. 12:01
+We don't need a basic C-SAT course on Azure works or things like that. 
+
+Xiyuan Z. 12:07
+Perfect. We won't ask a stupid question. Just because of time here. I said it's a very complex system. If it go down from the bottom from stack, from technology-wise, There's no way to finish in weeks or months. We will answer all of those and walk you through all of those Cisac system or application specific, requirement which is in the specification and how the application behave and what infrastructure is, and you currently have access. Also the question you have, we definitely will try to answer to base offer knowledge and make sure you're happy with it. 
+
+Bastien G. 12:47
+No problem with that. Maybe it's time to come back on, maybe it could be reassuring on this point, on who we are, Guillaume and me, and what we want to see in this audit. We don't want to see everything because it would be a lot of time for everyone. We don't want to ask questions about everything either. We want to have a broad view and on some points because we are curious. or because you say it's really something we should look together, we are going to dive in it and look at everything. What is really important, Guillaume and me, we have more than half a century of experience together. So we have seen Guillaume is really specializing in all Microsoft technologies. So I think it's very okay. I know also these technologies. Guillaume and me, we have done a lot of Python also. So it's okay with that. And I'm sure in what you do, there are some technologies we don't know very good. But it's okay. We won't bother you with the basics on that. But what is really important is to understand, you know, we are passionate developers, actually. We are not only consultants. we use our developer skills to be consultant it's not the contrary so consider us as we are developers coming in your team to work with you and what is interesting because we should work often on that part or it's really interesting in terms of business or technical construction and that's what we want to understand because At the end of the day, for Jan and Cisac, the only important thing is to have an external point of view, a new point of view of what you are doing together and why it has value for you at Spanishpoint and for Cisac. So that's all. So if you feel at any time that you are losing time on some explanation, feel free to say it. Because it's better to say it than losing time or feeling not at ease. And we'll see what we can do to go on another subject. Okay? 
+
+Xiyuan Z. 15:28
+Yeah, yeah, yeah. I understand that. So the reason I point out is that it's about because, as you will know, little later on or if you have reviewed the airport already. I started to see use a lot of technology and a lot of services in Azure. It's a mixture of, I see Linux operating system, it's a mixture of a Cloud-native services and there are tons of services. Every service has its own technology or the way it operates. We will spend months if they go down from. basic level so one thing is we skip the basic levels and we uh we jump to the iwc system specific and and you know what the features there are and and how they are implemented you know and how they communicate you know etc so that we we don't spend months because we just don't have you know nobody has that time right so i'm not saying i'm feeling waste of time okay one thing is go down from foundation level for all services is just impractical okay that's why i use c sharp language as an example right that level foundation is probably something we neither of us would have time to to go through you know in two three days but um but uh but the the application that has been written on top of that is definitely fully in scope of what we anticipated and that we should know and we will provide yeah hope that makes sense to you okay okay. 
+
+Bastien G. 17:15
+Um do we have any other subject to discuss for the introduction of today or can we go to the agenda. 
+
+Bastien G. 17:33
+So we are guide we will follow your her your guidance here right so however you want to start so and yeah um just for today we have shortened the meeting uh sorry it was a bit late to uh tenants the the. 
+
+Bastien G. 17:53
+Changes but as we only had uh access to uh azure without uh all the information about what is the use of everything. We could look into it. So thank you for all this access. Thank you also for all the documentations. We could explore them and we talked about them with Guillaume. There are a lot of very good and interesting documentations. Now we have a good knowledge base, I would say. What is more important in software is not the knowledge but also the shared understanding so that's why we need to do these meetings because we need to discuss what uh what we see in the document in documentation first of all is uh knowing in the document is it up to date uh do we have some um some things that we could share and for us to understand better how you work uh it's how it was created how is it updated it's a kind of things we are going to ask for the documentation part and for the infrastructure if you all agree i would say we could go uh very quickly on it today because i think uh except if you have some further knowledge to explain how to navigate into all the resources in Azure. It will be very long to understand what we can look at it. Maybe Guillaume, you have looked more into it and you have some questions. 
+
+Guillaume J. 19:48
+I have some question maybe. I would like to have a good graded tour of your resources in Azure maybe. and you explainer with various high level services in a few words app services and things how it's Or if you have some kind of diagram somewhere? 
+
+Xiyuan Z. 20:10
+Diagram, yeah, the diagram should be in the Teams site, right, that we grant you access to. There must be some video diagram in there. Can you show us? 
+
+Bastien G. 20:23
+There are a lot of documents. So I'm in the roots of the documents. We have, so it's the design, it's in a system. Is it there? 
+
+Xiyuan Z. 20:38
+Well, okay. I cannot point out which particular folder in here, because then they were all the common that have been drawn out in different time. So if you ask me which particular one has a diagram, or folder in here, I cannot tell. But I can send you a screenshot in the chat for the system in as-is picture. but again i don't know which file in here is that because it just made me too many folders okay and i pasted the image in the chat uh so that's one of the video which should be one of those video file in here right you see you we can already see two video file in here right integration overview logic architecture i stop you see so i just i don't i don't know which one in here is the one but uh there's image in the chat okay that's a current uh That's a current system, what Cisac looks like. We understand it is a lot of documentation in here, but those were the ones that are built from the beginning and also over time for those changes, and those were different folders in here. Anyway, so the architecture is in the picture, is in the chat. 
+
+Bastien G. 22:00
+Yes, it's a little bit, I can't move it into the second screen. I don't understand why. 
+
+Xiyuan Z. 22:12
+Yeah, you should find the equivalent information from some of those files in there as well, or from, yeah, because these were shared with Cisac previously. This is the current system. from infrastructure problem view and mark Stadler here with my colleague and and he can work with from application point here so i reprint the infrastructure site from swan's wound mark reprint the application site from swan's one okay. 
+
+Bastien G. 22:44
+I would only just in case if you want to annotate and show us things while while talking. 
+
+Xiyuan Z. 22:58
+So any particular question here um okay um so yeah maybe i'll give you a quick just two minutes right just uh so the so this just uh the ice entire isw system right we have the um two external components right we just call that the end that the external fast track sso that's one of those authentication providers at the c-set and asked us to integrate Waze at the beginning of project for authentication. And there's a Swiss API, which is external, nothing to do with Cisac, but Cisac need to call that API. And there's also external SFTP service that we push files to. So there are three external components to my knowledge, but there can be more over time, but not added. But there are external components. And we have the Cisac agency portal, right? That one, and see that basically login, and that one single sign-on through FastTrack SSO. That's one see that stuff login to my knowledge. There's also the public portal, which is basically free around region net who had the registration and they can login. Then there's the set Cisac API, and Cisac API is not directly exposed to internet. Azure is not directly called by the different agencies. The API definition are exposed by Azure API M, and the API M is the one that accessed over Internet by different client callers. API M essentially is a public facing reverse proxy for Cisac API. Then there's jobs, running background jobs called Cisac jobs. There are different type of jobs, it's not just one way. So there are different jobs that are hosted using which is IAWC and the secret are stored in Azure Key Vault. application instrumentation and those statistics are gathered in Application Insights and that means I think the great of is also web app is et cetera. There's a Data Factory to orchestrate the data movement between different components. Data Lake store the files, whatever binary files in which are formatted. They are in Data Lake and the Databricks also used in combination of a Data Factory to process larger volume of files. and there's also a SFTP where different agencies, different societies, maybe that's the correct term, and they have their own SFTP account so that they log into the SFTP server over SFTP protocol, so that they upload the download files. The files they upload, they download, they are storing storage accounts. access by the Databricks and Databricks later. All the backend data stored in either SQL Server, Microsoft SQL Server for schema or stored in Cosmos TV, which is NoSQL in JSON schema. The system also has an internal dependency, which is called Match Engine, non-SWC. That is one on the left. The MatchEngine components are not outlining here. But the MatchEngine has multiple services in here. The main one that you're using here is, I think it's a MatchEngine API. Mark can create in here so that the Cisac system would call the MatchEngine API or call the MatchEngine search service. And that's and I started to see. is not directly integrated at source code level to match engine components. We treat match engine as another application that deployed alongside IWC and IWC call match engine as a client application. Put it this way. Yes, you could backline that. That's the entire thing. yeah that's the entirety of the application a different arrow in here just try to make the communication slide more you know and clear and on the type of traffic okay okay okay just to be sure um. 
+
+Guillaume J. 27:36
+In cosmos db there is only the audit data for the thing that's risk in in cosmo db you only have the auditing data that. 
+
+Xiyuan Z. 27:50
+I can answer Mark can. From my point of view, because I came from the infrastructure architect background, and Cosmos DB is in NoSQL database. Basically, the ones that doesn't use relational database schema, those data are stored in Cosmos DB. The precise list of content will be. Yeah, I can go through that, but I cannot give you a full list right now in my mind. 
+
+Mark S. 28:22
+Okay. Yeah. 
+
+Mark S. 28:25
+So if you look at the Cisac portal, and if you look at the submission history of an Cisac for different works, we store that in Cosmos DB. Okay, yeah. 
+
+Guillaume J. 28:37
+But it's auditing data. Yeah. Okay. Um, Great. Can we map the app service to their Azure name, just to be safe? 
+
+Xiyuan Z. 29:00
+Which service? Sorry, I'm not the in-catcher for the past... 
+
+Guillaume J. 29:03
+Anyway, let me... I'm just going to... Just one second. Sorry. 
+
+Guillaume J. 29:11
+Don't just... i will put the azure portal next to it if you want yes we have uh we have you have this app services i just want to map them to. 
+
+Guillaume J. 29:33
+To your diagram just to be sure which one is which somewhere easy but not as a. 
+
+Xiyuan Z. 29:41
+All the services in Azure Portals, they precise match the service. Of course, there are some internal dependency resources that are not relevant to architecture, and those are not drawn in a diagram, but they are shown in Azure Portal. For example, virtual machine. like let I stop you say SFTP from dependency from AgriPortal point of view that has related you know disks for open system that has related yes but I think specifically about yeah those are services yeah they are in the chat uh six one defined for prod yeah you can identify by the name yes so there's API in there there's a public in there they're portally in there yes. 
+
+Guillaume J. 30:34
+But the API label. 
+
+Xiyuan Z. 30:38
+What is it? So Mark, I will need to mark those ones. They are not in this diagram, most likely added after maybe for some change request. So Mark, can you answer what is that the API third-party, API publisher, API label? i say they're part of the api they're just implementing differently yeah they're all kind of part of the same app service through this apis yeah so the top to the top three they are apis right those api labels so top three and the bar and the bottom one they are all apis they can identify by the naming convention they have api in the name and you just put a map. 
+
+Mark S. 31:34
+Do you think that's that yeah yeah public and that one is the just portal it's just called call yeah yeah okay we also the api is the bottom of the api department meaning which api i'm sorry. 
+
+Guillaume J. 32:02
+But you can annotate, you have the right to write, you have a toolbar on top. 
+
+Xiyuan Z. 32:20
+So do you have enough information here or still unclear on this part, on the mapping? 
+
+Guillaume J. 32:26
+Ok, this is free, so we are not on this diagram. 
+
+Xiyuan Z. 32:31
+Yeah they're not on this diagram they're more recent they're more recent but they are apis as well right mark yeah yeah so so they are essentially the same as i stopped to say api so in the diagram it's called i stopped with the api but behind that there are there are multiple api hosting right and all which are exposed through api yeah mark yeah yeah external components not in the list okay the fast track sso and the swiss api they are they are in the diagram but they are external companies they're not at your resource yeah you see the you see the very bottom the Cisac api that's more of an agency api that's used for the portals um. 
+
+Mark S. 33:28
+And then the the kind of top three were added more recently so one is for third party members and those for publisher members. 
+
+Guillaume J. 33:35
+So it's not quite slightly different yeah the different different apis essentially yeah okay but the problem is the api okay so. 
+
+Guillaume J. 33:55
+I see that in azure the matching engine is an excellent component it's not in the portal okay all. 
+
+Xiyuan Z. 34:22
+The resources you currently see on the left those are the data breaks you know you see those waiter names those are the database cluster to run the data breaks python notebooks. 
+
+Bastien G. 34:34
+Okay they are not showing the diagram they're part of databricks but all other services you should be able to find a precise match yes i think it's clear because we have uh the bricks in them not all of them i think this one could be no it's databricks too yeah it was clear enough with your The groups are clear to us, I think so. When the name is not clear enough, we have the group to guide us. 
+
+Xiyuan Z. 35:10
+Sure, yeah. 
+
+Bastien G. 35:11
+Are you using some infrastructure as code to manage all this? 
+
+Xiyuan Z. 35:19
+Yes. All resources are provisioned through infrastructure as code. 
+
+Bastien G. 35:24
+What kind? 
+
+Xiyuan Z. 35:27
+That's Azure native language. 
+
+Bastien G. 35:30
+Add your microsoft okay okay okay so we'll see later good anything else on the azure resources or infrastructure for. 
+
+Xiyuan Z. 35:47
+Today so i've recorded yeah whatever question you have right so so this subscription is the only place it contains everything there's no other area resources you don't have access to there's no other area subscriptions okay so everything is uh you know is in here and for the for this entire day yes. 
+
+Bastien G. 36:13
+Just a question on my side uh you gave me access to that i don't have any resource in it maybe it's a neural or i just wanted to be sure that we are not missing something sorry it's in french but uh you may understand it's uh no you thought you had access but you don't have access and what access you're looking for you see we have some uh directories some tenants uh there's no isw this is an underspending directory yes everything we were looking that is in a Cisac sphr okay correct but i also had access to that and i have nothing in it so maybe it's an it's a mistake we actually have access to it yeah that's not relevant okay. 
+
+Guillaume J. 37:11
+Just to be to be extra sure we have everything in opal in our sub-charts except the batching engine. 
+
+Xiyuan Z. 37:23
+You said MatchEngine, correct. MatchEngine is deployed alongside of Cisac, and the MatchEngine is a separate product used as a dependency. No, it's in the same subscription to be precise, in terms of the deployment. MatchEngine you currently do not have access to, because that's not part of Cisac application itself. It is called or utilized by the Cisac. application the same as Cisac core external APIs such as fast track SSO or Swiss APIs. So Managing is another component Cisac utilize okay it's not part of it. 
+
+Guillaume J. 38:07
+It's here but we don't have a right to see it. 
+
+Xiyuan Z. 38:13
+You don't because that's not part of Cisac we consider that as out of scope. 
+
+Guillaume J. 38:20
+I'm not sure but okay. okay fun um great um i was wondering we have access to the sql server um can we we on the database can we get some or maybe we can extract a backup something like that we can can we get some kind of a backup of a of a database of something not too big i assume because the wheel one is really really really big but um can. 
+
+Guillaume J. 39:04
+You give us some kind of uh database backup we can install somewhere are you looking for a cycle server backup or cost not yes yes which one are you looking for. 
+
+Guillaume J. 39:17
+No, Bastien, it's not there. It's... 
+
+Bastien G. 39:22
+Do you want to share your screen? 
+
+Guillaume J. 39:26
+Yes, I'm going to do it. Just a second. Let me check the right window. Um... 
+
+Xiyuan Z. 39:35
+The ISW system backup is defined based on a backup policy documentation, which we shared with CSA previously. So the backup exists for data tier services that are... based on the backup policy documentation and the and the single data is uh is backup is done by microsoft and fully managed by microsoft yeah it's just not cloud service i i i agree with that but. 
+
+Guillaume J. 40:00
+I would like to... Yeah, you're missing some... Let me check... 
+
+Xiyuan Z. 40:13
+What were you looking for? Er... 
+
+Guillaume J. 40:18
+One, two, one... 
+
+Guillaume J. 40:32
+Ah, it's to me. 
+
+Bastien G. 40:33
+From the manager or query editor, I think. 
+
+Guillaume J. 40:41
+We don't have access to a query editor. 
+
+Xiyuan Z. 40:46
+So you want access data? Is that what you mean? 
+
+Guillaume J. 40:49
+I would like to have access to a version of the database. Maybe you have something you can send me so I can install it. At least to see in a SQL Server Manager. tools like this to be able to read the schema. 
+
+Xiyuan Z. 41:04
+So you want to be able to query database, yeah? 
+
+Guillaume J. 41:08
+Yes. 
+
+Xiyuan Z. 41:09
+Okay, okay, fine. I assume that is authorized by CSEC, yeah, rather than to access the data level. 
+
+Guillaume J. 41:17
+I can go with a limited version of the infrastructure and, you know, I want to explore it in tools. 
+
+Xiyuan Z. 41:29
+We can arrange that. I believe this would have no issue because this falls under IWC category. Is Yann in there? I just want to confirm that you guys would have the database level access. Mark, we can create a login credential for you. Then you can log into the database and then select data out of the database. That I don't see any technical. or any blocker in there we can certainly link that connected from tools um yeah you can connect through tools and that's supported um but this is this user we don't have i think uh. 
+
+Bastien G. 42:16
+No we will create a separate user for you there is your password for the complete if you want to access. 
+
+Xiyuan Z. 42:24
+We will create a Sabre using M password for you. Okay, so you won't be using a password. We will create one for you. 
+
+Guillaume J. 42:31
+That would be great. Even on the UAT, if there are the same, the port database, it's good. We don't need access to the big one. 
+
+Xiyuan Z. 42:42
+You only need access to Dev instance, is that what you mean? Or you want access to all three? I'm trying to understand the credentials you want us to create. 
+
+Guillaume J. 42:57
+Maybe we'll ask Yann because it's his database in fact. Sorry, I'm here but I didn't- If the three databases are the same, we don't need access to a ProdWatt. Not at first, I think. 
+
+LEBREUILLY Y. 43:12
+Do you have any question for me? Sorry, I was on another topic. 
+
+Xiyuan Z. 43:15
+Yes. The guy is requesting access to- database level uh we know for Cisac database right so instead of just infrastructure level so i'm i'm just asking you and so that's no problem for you yeah so guys can select data out of the database yes it's okay on my side yeah yeah okay great and then the nda side and so and for the environment are the guys okay to access dev uat production or just dev so or or from your side there is no restriction. 
+
+LEBREUILLY Y. 43:48
+On production, I don't know if it's really necessary, but maybe, Guillaume, Bastien, which environment would be enough for you? 
+
+Guillaume J. 43:59
+I think we can avoid the production because we don't need it, and it's better to be safe. 
+
+LEBREUILLY Y. 44:06
+Okay, okay. So the other environment, if it's okay on your side, not production. Sorry. 
+
+Xiyuan Z. 44:10
+Wait. Wait, sorry. 
+
+LEBREUILLY Y. 44:12
+Say it again. Everything except production environment. 
+
+Xiyuan Z. 44:19
+So dave and uat you want access to dave and uat and you do not need the production okay yes and mark can create credential yeah i can do it yeah and the level permission you guys will need will be what just read the permission or read right or can you can you confirm um i maybe we can just start with reader i think it should be. 
+
+Guillaume J. 44:46
+Sufficient I'm not sure we're going to... 
+
+Bastien G. 44:51
+No, read will be enough, and if we change our mind, we... Yes. Okay? So read permission, okay. 
+
+Guillaume J. 44:56
+We're auditing. 
+
+Xiyuan Z. 44:57
+We're not trying to... 
+
+Xiyuan Z. 45:01
+Mark Sander, my colleague Mark will create the SQL login credential for you. One for Dev, one for UAT. We will send you a separate union password. That will be for you to log in to this SWC SQL database. Can you provide your public IP where you will access the database from? For example, if you access the database from your office, then your office public ip if you exit from your home your whole internet uh outbound public ip and so please provide the information so we can okay and grant this level access you can put them in the chat and make sure you provide the full list of right now so um okay that's your ip that's your own ip yes okay anyone else anyone else need access or just you uh bastion yes sorry just um okay okay and you want us to create credential right now yes It's up to you. We can create now or we can create after the call. We, as I said, we follow your procedure. After the call, it would be good. 
+
+Guillaume J. 46:53
+Once we got the credential, we are going to look at the database and then we'll have questions. But it's not a good usage of your time to. 
+
+Xiyuan Z. 47:09
+To do this now it's up to you right so if you want to gain access and asking questions right during the course and we do that right now right i because i am doing that right right now okay so we we have no problem there no. 
+
+Guillaume J. 47:21
+I think we're going to try some some other questions for you right now sure um let's look anyway here's my windows uh let's go back. 
+
+Guillaume J. 48:08
+I wish you see it. It's small. Do I have other questions? 
+
+Xiyuan Z. 48:31
+Okay, so your access at the firewall level has been updated. Okay. So Dave and UAT, and then Mark will send you login credentials. I suppose one login credential will be enough. You two can share the same username and password. Then you can connect over Internet. Okay. Any other thing? 
+
+Bastien G. 49:04
+On the show i mean i should not stay but i will have some questions about documentations after after that uh ask them if you want um browsing and exploring yeah so i'm coming back into the SharePoint, you share from TMs. So we have a lot of documents. First thing, I noticed the directories, but it's usually the same when we are going into the folders, but a lot of them have dates that are six years ago or so. So the first question we had on a lot of documents is, are they all to date or is there some kind of index we could refer to to say this is the right version of the document or any naming convention? 
+
+Xiyuan Z. 50:17
+First of all, the documentation are all stored in different folders and all files are in here. So if there was a conversation that happened six years ago, Then that documentation's time or modified time for that doc would be six years ago if nobody opened the file and then just click Save. You are currently in this as-is system folder. That to my knowledge is it's basically as-is version. But there are certainly files that are discussed over past two or three years. They might be in different folder. So this is not about the document that all about six years ago. They were document created over time, and they all have their own date. So you are in the as-is system folder. There are other folder in there. So they certainly are more file. For example, this one. Yeah. 
+
+Bastien G. 51:22
+This is the update time. It's not the creation time. I can show you what I mean by that. Okay. 
+
+Xiyuan Z. 51:36
+I understand what you're saying. I understand what you're saying. So all the documentation are here. There's no other storage area for document that only us have access to, everything here. The version you see as the current version, no matter what the update time is, they are the current version. 
+
+Bastien G. 51:57
+Okay. 
+
+Xiyuan Z. 51:58
+The latest version. So if that answers your question. 
+
+Bastien G. 52:03
+My question is not do I have everything, it's how do I know that when I look at a schema, for instance this one, it's still up to date with the current system? 
+
+Xiyuan Z. 52:18
+It's still up to date. Any feature, that at the time when we gather requirements and understanding what needs to be implemented, those were the specification or whatever, those were the documentation at that point in time, and then the system would then be implemented. If there's any particular feature you want to dive into, that's okay. Mark can walk you through that. So is there anything particular you want to ask or just something general? If just something general, then I'm not sure what's the best way to answer your question here. Okay. 
+
+Bastien G. 53:06
+Let's go back a bit. You remember, I thought we can do it really role-playing if you want, but if you and me are two developers coming to work with you, what can we do to understand from this documentation? what is really important and how we can understand the business, the context and everything. If we don't want to go through all the documentations with you, that would last too long. 
+
+Xiyuan Z. 53:39
+That's not practical, as you mentioned, right? 
+
+Bastien G. 53:44
+How can we be sure we are looking at the right things? It's only that, you know, we say, okay, this afternoon we are going, given me to go into the document. What can we look at to be sure we are looking at the right documents to understand the system? 
+
+Xiyuan Z. 54:04
+There's no shortcut, guys. I call this out in front. I start with the easy complex system. Every feature in the system, no matter implemented at the beginning or added over time, there were specification for each stage. and they are different documentation in different folders so there's no single place going to tell the precise the you know the you know the shape of the for any space for components right the overall i are your architecture diagram which i share in the chat which is you know some of those files in there and they are the ones for infrastructure level but for schema level Yeah, it will be different components will have a different schema right and they are. 
+
+Bastien G. 54:55
+Basically buried on some of those files in there so um yeah it's okay it is okay you share the schema and uh this camera is good enough but to understand it better we need did this discussion with you so uh what you are telling is in my scenario uh if we are new developers in your team we should talk about parts of what we are exploring what we are learning today to understand better. Is that it? 
+
+Xiyuan Z. 55:28
+So I understand what you're asking. But actually I'm not the right person to answer that question, because I come from the Azure and the DevOps architecture side. I think probably somewhere someone from Mark side, from which is from current team, which couldn't join today. He lead the dev team, so he will have the precise answer you're looking for. Okay, just me personally and I. yeah i don't have that answer so Mark do you know anything i started system uh like a database scheme or whatever documentation were five do you know where where those are guys because i personally don't know where that is we found uh i think this document that is very useful for all the database yeah you talk to karen really and on that part he lead the dev side he certainly know which documentation contains the you know more useful information to get quick started right if i phrasing this way and yeah um okay i. 
+
+Mark S. 56:43
+Think the easiest way if you're starting is to start at the agency portal and uh look at the different features of the agency portal um synaton works searching works And then there is kind of rules then around that. So there's a rules document, API kind of document at different stages and to just kind of go through each one of those. That'll be where we'd probably start if you're joining the team. 
+
+Bastien G. 57:15
+Yeah, that's okay. It's good. 
+
+Mark S. 57:18
+Because if you were joining the team, the easiest way to visualize stuff is to use the agency board because it's like a visual kind of. Okay. 
+
+Bastien G. 57:27
+A visual thing because uh okay for now we don't have an access to the agency portal uh we asked for all these access to to be able to in one environment to listen better what uh what is working with how we. 
+
+Mark S. 57:44
+Can use it so that should be processing so there's yeah so maybe start with the agency portal and then there's also um Not the agency portal, but there's um what's what's in front of the agency portal and the API is kind of a development portal um just for it's kind of an API representation that you can use and see it's more kind of code based uh JSON based you see the different operations uh for the API. 
+
+Xiyuan Z. 58:23
+That's probably a good start point for APIs. I think most agencies just will call that API. It's a daily report of Azure API management that has a full set of APIs that the agencies can call, and the specification for those APIs. That's probably a good starting point. 
+
+Mark S. 58:44
+Once you start using that API management development portal, I make a request. you'll get validation rules and there's a document in here somewhere that kind of that um shows you all these different validation rules yes i. 
+
+Guillaume J. 59:06
+Think so it's um when the so uh. 
+
+Bastien G. 59:20
+Okay it's 11 on your side 12 on ours we have reached one hour of meeting so now we should have more accesses so we are thank you for all the database accesses maybe it will bring us some new knowledge we'll wait for the code and for the for the application understanding the agency portal and the dev portal which should be the best okay. 
+
+Xiyuan Z. 59:55
+So do you have uh can you end it all accesses for us yeah yeah we certainly we no issue because we agreed that uh you know the application will access absolutely no issue and and i'm surprised that you actually don't have the credential yet i thought the current or the access management system yet. 
+
+Mark S. 1:00:22
+The kind of the development portal you have to sign up yeah register yeah yeah we'll approve that and you can access that uh for the agency portal itself um there's different logins for each agency i think it's fast track manage the login so for uat i think everyone has the same password necessarily so i need to ask caroline uh what agency you could use her for kind of testing. 
+
+Xiyuan Z. 1:00:55
+I think Colonel mentioned yesterday some test account or something. I don't know which one it is. The API will be those are public facing. They will report over API management. Everyone, every agency. I think it's the API management. Sorry. The. 
+
+Xiyuan Z. 1:01:12
+API. Yeah. 
+
+Xiyuan Z. 1:01:24
+Is there an issue accessing the API management API? Because all the API are there. 
+
+Guillaume J. 1:01:30
+I created an account yesterday here in the database developer portal. 
+
+Xiyuan Z. 1:01:40
+Yeah. That's important. 
+
+Guillaume J. 1:01:42
+I was able to correct that. Okay. 
+
+Mark S. 1:01:54
+I'll find a job to support manage the access that's all follow up with them. 
+
+Mark S. 1:02:01
+Okay. 
+
+Xiyuan Z. 1:02:06
+Yeah, that's the main API management portal. That's one of the main portal for our developer as well as agency developer. to understand the api or the data that uh you know offered through Cisac system and as you can see from actual point of view you know the api is it's basically the major service that i supply c offers to agencies and. 
+
+Mark S. 1:02:35
+All the api documented in here so a lot of agencies like using this they could develop their own api to access or develop their own kind of code to call this i started using the agency portal. okay great um this also has some useful documentation as well in this yes i just started to read it and exploit so if you look here at the so if you just click on that the link for the agency or the api management portal you'd see that there's just kind of four kind of sections societies yeah you just click on the home button really yeah see societies are the agencies um so that's the kind of main one and then if you just scroll down you'll see publishers uh labels and third parties and if you go if you remember back to that diagram of the apis you'll find that it lines up exactly with this. 
+
+Xiyuan Z. 1:03:52
+We've got the labels api to our parties api publishers api and the agencies so there's four different apis right there are four api web app you're asking a mapping right so those were the four for society publisher server label also name precise match what you saw portal right. 
+
+Guillaume J. 1:04:27
+I see that I need to add a subscription and things like that. 
+
+Xiyuan Z. 1:04:30
+Correct. It's explained somewhere. I think, Mark, that's something we need to confirm with Karlin or something, because I think they need to be added to a subscription so that they have access to it. I don't know which subscription. I think the subscription is mapped to... 
+
+Mark S. 1:04:49
+Different society or publisher or something but uh so so the subscription is uh different for each api yeah so like if you have yeah so each api would have a different subscription so obviously agency for agency api wouldn't have but let's say third parties wouldn't be able to access the agency api also publishers. 
+
+Xiyuan Z. 1:05:16
+I suppose the last one access to all apis is that what i'm requesting just make sure we are aligned on what yeah well we can give you can give you access to multiple description. 
+
+Mark S. 1:05:25
+You have to select what subscription or API, correct subscription. 
+
+Guillaume J. 1:05:31
+Okay, that would be good. 
+
+Xiyuan Z. 1:05:40
+So this is an API portal. It has tons of documentation for developers or for the agency, popular society, whoever they are, they want to use APIs. and the specification for api are also in this border okay all the data schema request respond everything are in this border okay of course okay okay so these are yeah This is basically API specification. This portal is served by the Azure API management service. The backend of those API, API management basically forward the request to the Azure App Service you saw earlier in Azure portal. That's basically how the work works. Right. 
+
+Guillaume J. 1:06:42
+Okay. We just need the subscription. 
+
+Xiyuan Z. 1:06:45
+Yeah. You need to be assigned the subscription so that you can call those different APIs. And Mark, you're going to check with the lab, right? So to... Yeah. 
+
+Mark S. 1:06:55
+I'll have to check with support. 
+
+Xiyuan Z. 1:06:58
+Check with support, yeah. And which account you are using to sign in, so we know your login account, so that we can assign the access to your account. Yeah. 
+
+Mark S. 1:07:10
+If you can send me towards email or towards... Yeah, it's email. Yeah, thank you. 
+
+Guillaume J. 1:07:12
+Thank you. 
+
+Xiyuan Z. 1:07:18
+We'll ask the guy who managed the access to assign user subscription so that you can call the APIs. I suppose you will restrict yourself on post or update if you don't want to make any change. Once the access are granted, you can certainly call all sorts of APIs that are available as an agency. 
+
+Bastien G. 1:07:47
+Which is equivalent though we give you read write access to the database okay yes okay we we won't write i think um okay do you have any question or maybe because we have a lot of things to read uh no i think it's uh really good uh we had uh a lot of information i was wondering What we are going to do tomorrow, I think, I'm not sure, maybe we could cancel tomorrow's workshop until we have explored more thing and of course we'll need the code to continue. What I can encourage you guys to do on your side is to look for For our time in your scale later this week or beginning of next week, because we'll need to talk as soon as we have code access. 
+
+Bastien G. 1:08:59
+Source code access, is that what you mean? 
+
+Bastien G. 1:09:03
+Yes. 
+
+Xiyuan Z. 1:09:04
+Yes? 
+
+Bastien G. 1:09:04
+Yes. 
+
+Xiyuan Z. 1:09:05
+Okay. Yeah. As I said, I cannot . This is the procedure I need to go through. I hope you understand. This is all source code, everything is in the queue. But I think that would have no issue in there, but we are reaching out internally for approval procedure. Certainly, I established this in source code, I think most likely it would have no problem. But yeah, I'm not sure how you can really set up your dev environment in a very short window okay um yeah if you're talking about you know thinking about you know within a couple of days and then you can get a fully operational local dev environment i'd say that's highly unlikely okay um yeah i think that will be very impractical i say um based on the timing that because again i don't know how you know how your engagement with uh we see that but but the time this certainly require a lot of time even to set up your local dev environment okay um because this this is not just one way website or as you can see in the in the in the in your design there are a lot of company in there. and those communicate with each other for different features of the system. You might be able to run or run let's say agency portal in your local dev environment, but the certain feature when you click certain button, of course on API, some then you'd my three exceptions, central because certain things not configured correctly in your local dev environment. I just want to quote out loud. but uh but that's certainly uh something uh to happen i i don't think there's an issue in there okay um and the sound services are cloud native okay you won't be able to do local environment it's just not possible okay and the one you can locally do probably is those web apps in there right those are asp.net site so you know you should be able to locally power it up i think And then error function probably yes. Database, SQL database I think so, if you have a big enough machine on your site, so you should be able to power up database. Cosmos DB, I'm not so certain. There might be a local numerator. Databricks will be problematic, or you set up your local dev environment, which is highly unlikely. 
+
+Mark S. 1:11:48
+It's going to be a whole island. Yeah. 
+
+Xiyuan Z. 1:11:52
+To set up a development environment to have a pretty uh yeah data breaks very very very very heavy if you want to do data breaks local dev and data factory hasn't data factory has no local replacements so it's always in the cloud for data factory there's no local and that sftp server is just you know it's just there's no third-party component okay there's no sftp product okay from any third party it's native uh linux open operating system right because the sftp is linux no file transfer protocol so it is native feature sftp okay part of a linux operating system itself no third party nothing whatsoever so uh that that's a sftp the sap file uploading will end up in a error storage file share. Storage account file service. You can see the file in your airport even right now. There are storage account in there for SFTP files, and each society is there if I got directly uploaded to the storage account. There's no other intermediate file storage location for SFTP. They just underweighs storage account. So that's pretty much it. yeah i don't see how feasible it is for you to set up your local daily environment in a couple of days it's just impractical no i don't think so okay we'll see what we can you can you can browse source code i say you know one way you know almost has been shared but uh running locally i say highly No. 
+
+Bastien G. 1:13:38
+But even if we were in the long term, what we would need is to run parts. of one part, one component of this system locally. It could be useful. And I don't think when you develop something on this system, you are everything on your computer, but at least one component that you are working on. 
+
+Xiyuan Z. 1:14:09
+I think for the, I start with this, just to be honest with you, okay? And the only comment, probably you can't can run locally is a website, is an app service or other components. Even when we say developer locally, they are actually connected to the Cloud service. So that your local dev environment is not actually fully operational local. For example, for Databricks, they're actually connected to the Cloud Databricks service. You just run local, you modify the local Python files and the PySpark notebooks. but those execution of those files are in the Cloud. For web app, you might be able to run it if you put the correct connection string, etc. Function you can, other services I don't think so. Data brings you can. 
+
+Bastien G. 1:15:01
+Other services there's their cloud native service so there's no local equivalent okay and on your side do you run any of these uh on your computer when you are developing something uh both of you Mark and june mostly. 
+
+Mark S. 1:15:23
+Just the websites like the portals apis and databricks. 
+
+Xiyuan Z. 1:15:31
+And some of the functions yeah okay that's pretty much what i was saying right you can run the website locally function locally and then databricks notebook only write notebook content still collect into the cloud the rest connect to the cloud yeah exactly yeah okay and just before leaving uh. 
+
+Bastien G. 1:15:58
+This leads to a question before we continue. In the past six months or year, on what components did you have the most work to do when you had some modifications to do? It's a good point for us to know where to focus based on this question. 
+
+Bastien G. 1:16:28
+Really are you talking about i'm talking about the support we're talking about from change from which angle anything related to to this uh software system because it's not where it comes from but it what needs. 
+
+Bastien G. 1:16:44
+The most changes and what needs the most effort uh to to to be updated to be to have new features or uh okay i see what you mean okay. 
+
+Xiyuan Z. 1:16:58
+There's no single answer to this one because different features utilize different components in the system. The feature themselves are driven by Cisac, not by us. Us provide the service in a break-fix as a match service. If Cisac does not introduce a new features and there's no changes. but for any changes for any new addition that sees I want to add it's really up to what that feature really involves right but for most of them will be the API I say in most cases and there will be most most of the business yeah API API API API the API management portal right when you add a new notification there for a new API endpoint. and the backend of that is Azure App Service for the API, and then the data tier will be SQL or Cosmos DB. Those are common paths, but there can be other data processing involved and all based on the precise requirement for the feature that CSI want to add. There's no single answer in here, but API in general is quite common. 
+
+Mark S. 1:18:19
+The API are the kind of Databricks. So if you're writing like a new file, like if you dropped a new file into SFTP and you wanted for a certain process in a certain way, there would be a lot of work in processing that file in Databricks. So the API and Databricks would be probably the two biggest, two most involved things. 
+
+Xiyuan Z. 1:18:44
+Fire building process, right? A new file dumped by agency, agency use their own. SFTP login or publisher user on login, files landing to our storage account for the SFTP file storage area, going to be picked up by data factory processed by Databricks. Again, precisely which component needs to be changed is really depends on the feature or the file type. But it's like a two incoming paths, one through file uploading through SFTP. processed by data factory Databricks and the store maybe in database for Cosmos DB. The other part is the API. The agency programmatically or publisher programmatically call the API, which is through APMN portal, you saw it. Then those data reach the API. The API will basically send data to database or Cosmos DB or to storage count. Then there's a public portal. user can that public port i think to reach for it's actually rate only for the for the part and the one for public so they don't modify information so they only reach Yeah. The public portal is the one for read, and the only other one called portal, that's one for FastTrack single sign-on. I think that portal has some Reidy functionality there, I suppose. Those are major incoming point for this component, just site API and the file uploading and file processing. which basically match the actual diagram I showed you back there. Yeah, but I really don't think it's a good idea for you to set up your local dev environments. That's not going to work. 
+
+Bastien G. 1:20:43
+You're the expert and we follow the advice. Okay, thank you. 
+
+Xiyuan Z. 1:20:47
+Yeah, you can browse code. That's no problem once access is in place. Yeah. 
+
+Bastien G. 1:20:58
+Okay, so I will keep tomorrow's meeting as a placeholder and we'll see what we can do, but I think it would be too early to spend too much time together now, so I... prefer that we work offline with with what we have now wait for the source code to go further and replan some workshops also uh as we have discussed a lot of things and knowing no better the nature of uh of the work to do i we we talked this morning and i'm not sure we are going to do uh the planned workshop that means event sourcing and CIFOR, but we have to talk with you, your colleagues, your team about what we discover, what are our assumptions and a lot of questions of course. So for that, we'll plan some other meetings. I will send Yann email to propose some time this week and next. And also, easy to good idea, we want to just ask a quick question to use Teams for that. On any channel, on the Teams you shared with us? 
+
+Xiyuan Z. 1:22:44
+We pay for workshops, even 30 minutes one hour workshops, so that you have 10 questions and put them together. and rather than send us a chat message every 30 minutes to different engineers on our side. We prefer to put them all together. 
+
+Bastien G. 1:23:03
+Okay. So we'll make batches. Thank you. 
+
+Xiyuan Z. 1:23:08
+Yeah. We can schedule call if needed, every day or every two days so that we still keep in touch. 
+
+Bastien G. 1:23:21
+Best communication, madam, is Teams, mail for all these batch traffic questions? 
+
+Xiyuan Z. 1:23:28
+Workshops, meetings, yes. And email, yes, no problem. Yeah. 
+
+Bastien G. 1:23:34
+Good. 
+
+Xiyuan Z. 1:23:36
+Yeah, I think so, yeah. And you have access to AgriPortal, right? And you have access to the API for all the APIs. And you sign up for the APIs and we can sort out the stuff and... the subscription which is which api you can you know you can actually call right because that actually requires you to sign up first and so and we will sort out the api access and do you want the asmgp access as well i suppose it's up to you i don't know so you know where you it is can we follow your right if you request it we can sort it out well for the moment if you get us. 
+
+Guillaume J. 1:24:20
+Tb actors all you can really do is drop files drop and look at files to be honest no i don't think so for now uh just yes subscription for api for portal applications uh we. 
+
+Xiyuan Z. 1:24:37
+Don't have access i think or i don't remember test account for the portal applications for the application yeah okay so so we talk about different access right so the api and for the api unborns right and we will give you the subscription after a call. The application level for the. 
+
+Mark S. 1:24:59
+Public portal Mark am not sure how they are the access grant the public the public portal is just uh i just think it's one of those googling verification things what you call them those annoying things okay um and the agency portal then it's a login so i'll try and get you a test account of the agency portal okay okay so. 
+
+Xiyuan Z. 1:25:24
+The guys don't need to sign up anything first yeah. 
+
+Mark S. 1:25:26
+We can directly give them login credentials is that what you mean mark yeah okay grant so we will send you login credential yeah yeah yeah just for dev and uat and david only yeah yeah correct yeah or yeah let's just make sure we yeah so the agency portal there's no sign up because it's handled by fast track so it's just a login um so we could just i'll just get Yann account to test. 
+
+Xiyuan Z. 1:25:54
+So database you requested the let's just write right down right so database you requested the dev and UAT yeah and for the for the APIM you registered for UAT only yes and the access for that would be UAT only or you are going to register for dev as well please confirm. 
+
+Guillaume J. 1:26:19
+UAT only. 
+
+Xiyuan Z. 1:26:24
+Uat only yeah okay so api am uat only okay and for the for the uh for those portals uh so it's like a dev and uat or or uat only or please confirm uat on uat only okay so database you have access to both and uh the portal uh will be uat only yeah yes but you should have access to the public The closer to the production without being the production. Okay. So yeah, we will sort those out. Okay. So you're creating access to that level. No problem. Um, yeah. Okay. And, uh, yeah, as, as I said, you know, I started to stay away from setting up a local dev environment, you know, for, for around two days or even a week, that's just not going to work. Um, If there was one of our developer, it will spend actually way more time to actually setting up the local data environments. I'm not sure you have that timing to actually configure that, because it's also very complicated. But once source code is sorted out, you should be able to browse code. That should have no issue. Those codes can also be, as I said, we compile the code and you should be able to compile code or deploy manually and that should have no problem. Once you have source code. We can also show you which source code is deployed to which components as which components in the portal. That should have no issue neither. Which source code is built as which. artifact or as which file and then deployed into which area right so um that would have no problem um yeah and you have access to all the documentation right and and it is indeed tons of documentation because it is not a single file okay and that's the nature of this isw application it built it's it it was very complex at beginning and then over time, more and more feature got added, and those are reflected as files because you do see tons of files. There's no other easy way to say which file is actually the feature. No, they are all different files documenting different features or different areas of Cisac application. Those are all the files. as I said earlier. That is all there is for Cisac application. There's no other documentation we're not sharing anyway. That's all. It's a collaboration place when we work with Cisac when we're building the system over time, and that's all the information there. That also has all the data schema, meeting schedule, whatever. They're all there. You have access to all the documentation. Yeah. So yeah, you're here. We discussed at the very beginning for the source code part. So the estimation on my side I provided at beginning was, and probably somewhere later this week or earlier next week, will be the earliest that I can provide access to source code. If you want to call John, I'm not sure he's available because he's on some business travel. You might try, but if we go down the procedure for our internal process. we are looking at early next week. 
+
+Bastien G. 1:30:34
+If we can do anything to accelerate this, I mean, if at some point we need to confirm something, please tell us, send messages everywhere to be sure that we don't miss any more minutes. 
+
+Xiyuan Z. 1:30:52
+Sure. But you have access to all the documentation, all the Azure. resources for all the infrastructure what the application look looks like and all the access credential right and the source code i understand you are looking for uh yeah i just uh i think understands that uh. 
+
+Bastien G. 1:31:13
+As developers we we understand better code than documentations you'll be surprised for the code because code is not just one one project i would say okay so this is not it's it's source code i say it's actually very complicated okay you won't find it easy to read the source code you won't find that guarantee it has its own life cycles and with i think many developers touched it and modified it so it's okay it's what we see every day and we have some We'll have some headache at the end, but it's okay. 
+
+Xiyuan Z. 1:32:02
+Sure. Just be warm. It's complicated. But yeah, sure. 
+
+LEBREUILLY Y. 1:32:14
+I have a question much more technical just for my information. I'd like to know what is the policy for the backup of the data? Because I have a question in another call. and i'm not sure about it is it well is it i'm sure it is but uh what is the the frequency of snapchat i have answer to that so the backup policy is documented in a file and. 
+
+Xiyuan Z. 1:32:41
+The way previously shared with csec so it must be somewhere in that team channel that you have access to and and the precise configuration you know you know I'm not going to list during this call right now, because there will be too many. Different data tier service such as Storage Account or Cosmos DB or every single database. They have their own retention policies such as X-month, weeks, X-month, months, whatever. They are documented in one of those backup policy file. There's a predefined backup policy documentation and the system is configured as such. 
+
+LEBREUILLY Y. 1:33:23
+Perfect, it answers totally to the question. I will have another meeting in a few minutes. So thank you, thank you so much. Another question from my side. 
+
+Bastien G. 1:33:36
+So it's right for me. I keep the place order for tomorrow. And thank you for the summary of what you need to do for us. It would be okay like that. I will send some preposition for next meetings. I think we'll work with... shorter meetings but with just the right persons that we need depending on the subject. Okay? 
+
+Xiyuan Z. 1:34:03
+Yeah. You let us know what you want to ask for. So we can have the correct engineer. But in general, I will have one from, basically we will have one from my side, from Azure, from the architecture side. We will have one from developer side, so just in case. but uh yeah it's good that if you can let us know what you're going to ask first we can even prepare something yes we work on it uh this afternoon uh so you'll have some uh i think uh exact. 
+
+Bastien G. 1:34:35
+Uh assignment for uh we need someone to talk about this uh and these are the uh these schedule options and some other blurry points that In the near future, maybe end of next week or something like that, we'll need to go into this topic. It's not a real subject, it's not a... And just to be aware that we will have some next meetings. Okay? 
+
+Xiyuan Z. 1:35:10
+Sure. I don't see any gray area here. Just call out, right? So there's nothing we are not going to share with you as long as those who are allowed to be shared, right? And those who are based on the contract, whatever they are. And once you have access to those information, then we are fully transparent in here. So we're not trying to hide anything or show you some old version or something. Just be precise here. 
+
+Bastien G. 1:35:37
+Think about it. 
+
+Xiyuan Z. 1:35:44
+Okay. 
+
+Xiyuan Z. 1:35:44
+Okay. 
+
+Bastien G. 1:35:46
+So that's okay for me. If everything is okay for you too, I think we can leave. Have a nice day. And see you maybe tomorrow, maybe next time. Next week. 
+
+LEBREUILLY Y. 1:36:01
+Thank you everyone have a nice day thanks guys bye-bye goodbye thank you. 
+
