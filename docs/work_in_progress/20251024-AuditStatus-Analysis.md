@@ -30,6 +30,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 ### 2.2 From CISAC
 
 - [ ] **Hyperscale evolution proposal** - Architecture upgrade documentation
+- [ ] **Performance improvement proposal** - Provide document from Spanish point with the evolution including "Hyperscale"
 
 ---
 
@@ -40,6 +41,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 **Issue:** Major difficulties obtaining source code access
 
 **Timeline:**
+
 - Workshop 1 (Oct 20): Initial refusal citing legal concerns
 - Post-workshop: Yann confirmed contractual rights to access code
 - Workshop 2 (Oct 21): Internal approval process, "early next week" estimate
@@ -52,11 +54,12 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 > **Yann LEBREUILLY (WS2, 00:03:16):** "I found that it's in the terms of a contract to have access to both the code for especially the ISWC Cisac code and the matching engine."
 
 **Three-phase explanation evolution:**
+
 1. Legal/NDA concerns
 2. Technical difficulties opening access
 3. Proprietary Matching Engine code separation
 
-### 3.2 Vendor Relationship Crisis ⚠️ 🔴
+### 3.2 Vendor Relationship Issues ⚠️ 🔴
 
 **Yann's Strategic Vision:**
 
@@ -85,6 +88,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 > **Xiyuan (WS2, 1:32:02):** "You're going to be surprised for the code because code is not just one one project... it's actually very complicated... You won't find it easy to read the source code you won't find that guarantee it has its own life cycles and with I think many developers touched it and modified it."
 
 **Development Environment:**
+
 - No local dev environment feasible within audit timeframe
 - Cloud-based access only approach recommended
 - Multiple developers modified code over time
@@ -125,11 +129,13 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 > **Yann (Discussion YGB, 11:00):** "J'ai mis en place un CAB... parce qu'il n'y avait rien, il faisait tout quand il voulait sans même prévenir les déploiements."
 
 **Before CAB (pre-May 2024):**
+
 - Deployments without notification
 - No change control
 - No deployment history
 
 **After CAB (since May 2024):**
+
 - Controlled deployment process
 - Deployment history tracking
 - Expert group review
@@ -155,11 +161,13 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 #### System Architecture (from WS2)
 
 **External Dependencies:**
+
 - FastTrack SSO (authentication)
 - Swiss API
 - External SFTP service
 
 **Core Components:**
+
 - Agency Portal & Public Portal
 - API Management (reverse proxy)
 - Background Jobs (ISWC Jobs)
@@ -241,6 +249,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 #### Spanish Point Team
 
 **Key Contacts:**
+
 - **Curnan Reidy:** Lead tech, monotone communication style
 - **Nicholas Randles:** Appeared ~1 year ago
 - **Xiyuan Zeng:** Infrastructure architect
@@ -262,6 +271,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 #### Workshop 1 (October 20) - Negative Experience
 
 **Noota Summary:**
+
 - Cold atmosphere ("ambiance froide")
 - Defensive attitude from Spanish Point
 - Systematic challenges to access requests
@@ -274,6 +284,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 #### Workshop 2 (October 21) - Slight Improvement
 
 **More Cooperative:**
+
 - Mark Stadler (original developer) provided valuable context
 - Architecture walkthrough conducted
 - Access provisioning in progress
@@ -297,6 +308,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 #### Most Active Components (from WS2)
 
 **Primary Development Areas:**
+
 1. **APIs** - Most common change point
 2. **Databricks** - File processing for new file types
 
@@ -311,11 +323,13 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 > **Xiyuan (WS2, 53:39):** "That's not practical... There's no shortcut, guys."
 
 **Recommended Starting Points (from WS2):**
+
 1. Agency Portal (visual interface)
 2. API Management Developer Portal
 3. Validation rules documentation
 
 **Gaps Identified:**
+
 - No documentation digest or quick-start guide
 - No "how to contribute" guide
 - No systematic onboarding for new developers
@@ -459,6 +473,7 @@ Based on Workshop 2 discussion:
 > **Bastien (WS2, 56:00):** "Je pense qu'on va plus être dans un mode où on leur pose des questions, on produit, et on leur montre nos productions, on leur demande de confirmer qu'on a bien compris. Donc d'être en vrai mode interactif."
 
 **Approach:**
+
 1. **Question-driven** rather than interactive workshops
 2. **Batch questions** for efficient meetings
 3. **Focus on most-changed components** (APIs, Databricks)
@@ -534,16 +549,19 @@ To better understand strategic vision and Matching Engine:
 ## 11. Document References
 
 ### Meeting Transcripts
+
 - [Workshop 1 - Oct 20, 2025](../meetings/20251020-SpanishPoint-AuditRelaunch.md)
 - [Discussion Yann/Guillaume/Bastien - Oct 21, 2025](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt)
 - [Workshop 2 - Documentation & Infrastructure - Oct 21, 2025](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt)
 
 ### Noota Reports
+
 - Workshop 1 Summary (PDF)
 - Internal Discussion Summary (PDF)
 - Workshop 2 Summary (PDF)
 
 ### Other Notes
+
 - [Guillaume's Notes - Oct 20, 2025](../meetings/2025-10-20-NotesGuillaume.txt)
 
 ---
@@ -558,6 +576,7 @@ To better understand strategic vision and Matching Engine:
 ## Appendix A: Team Contact Information
 
 ### Spanish Point
+
 - **Curnan Reidy** - Development Team Lead
 - **Nicholas Randles** - Development Team
 - **Xiyuan Zeng** - Infrastructure Architect
@@ -565,11 +584,13 @@ To better understand strategic vision and Matching Engine:
 - **John Corley** - CEO/Product Owner/Matching Engine Creator
 
 ### CISAC
+
 - **Yann LEBREUILLY** - Program Manager
 - **Moaiz** - (Role TBD - Maintenance contact)
 - **Sylvain Piat** - (Stats documentation contributor)
 
 ### Audit Team (Teragone Factory)
+
 - **Bastien Gallay** - Lead Auditor
 - **Guillaume Jay** - Technical Auditor
 
@@ -578,6 +599,7 @@ To better understand strategic vision and Matching Engine:
 ## Appendix B: Architecture Components
 
 ### Azure Services Used
+
 - App Services (APIs, Portals)
 - Azure Functions (Background Jobs)
 - SQL Server (Relational data)
@@ -591,12 +613,14 @@ To better understand strategic vision and Matching Engine:
 - Application Insights (Monitoring)
 
 ### External Integrations
+
 - FastTrack SSO (Authentication)
 - Swiss API
 - External SFTP (File delivery)
 - Matching Engine (Proprietary - separate product)
 
 ### Data Sources (CISAC-owned)
+
 - ISWC (International Standard Musical Work Code)
 - IPI (Interested Parties Information)
 - Cisnet/WID (Work database)
