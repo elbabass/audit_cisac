@@ -1,0 +1,15 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+table {
+  font-size: $fs_regular;
+}
+
+.row {
+  border-bottom: solid 1px $greyBorder;
+  height: 50px;
+  td {
+    padding: 10px 40px 10px 0;
+    max-width: 240px;
+  }
+}

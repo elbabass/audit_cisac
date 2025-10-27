@@ -1,0 +1,47 @@
+{
+	"name": "Azure_Lookup_Agency",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AgencyID",
+				"type": "char"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedUserID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"tableName": "Agency"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

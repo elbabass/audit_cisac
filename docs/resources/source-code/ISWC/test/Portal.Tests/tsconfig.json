@@ -1,0 +1,11 @@
+{
+   "compilerOptions": {
+      "strict": false,
+      "baseUrl": "./",
+      "target": "es5",
+      "lib": ["es5", "dom"],
+      "typeRoots": ["./node_modules/@types", "./cypress/support"],
+      "types": ["cypress", "node", "cypress-wait-until"]
+   },
+   "include": ["**/*.ts"]
+}

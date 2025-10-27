@@ -1,0 +1,19 @@
+{
+   "baseUrl": "https://localhost",
+   "viewportWidth": 1920,
+   "viewportHeight": 1080,
+   "defaultCommandTimeout": 15000,
+   "responseTimeout": 45000,
+   "video": false,
+   "ignoreTestFiles": "prod.spec.ts",
+   "chromeWebSecurity": false,
+   "experimentalSessionSupport": true,
+   "reporter": "junit",
+   "reporterOptions": {
+      "mochaFile": "results/test-spec-[hash].xml"
+   },
+   "retries": {
+      "runMode": 2,
+      "openMode": 0
+   }
+}

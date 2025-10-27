@@ -1,0 +1,122 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include display_flex;
+  @include flex_direction(column);
+  width: 100%;
+}
+
+.headerDiv {
+  @include flex(1 1 auto);
+  @include display_flex;
+  @include flex_direction(column);
+  position: relative;
+  background-color: $greyBackground;
+  height: 128px;
+}
+
+.titleDiv {
+  margin-left: 140px;
+  margin-top: 30px;
+  font-style: normal;
+  @include heading_1();
+  line-height: normal;
+  color: $defaultFont;
+}
+
+.textDiv {
+  margin: 20px 140px;
+}
+
+.gridContainer {
+  @include display_flex;
+  @include flex_direction(column);
+  @include flex(1 1 auto);
+  background-color: $primaryWhite;
+  @include grid_container;
+  margin-top: 30px;
+}
+
+.actionButtonDiv {
+  @include display_flex;
+  margin-right: 135px;
+  margin-left: 30px;
+  width: 160px;
+}
+
+.statusContainer {
+  margin-left: auto;
+}
+
+.successfulStatus {
+  color: $secondaryGreen;
+  text-align: center;
+  @include heading_3;
+}
+
+.unsuccessfulStatus {
+  text-align: center;
+  @include heading_3;
+}
+
+.gridTitle {
+  @include label_text;
+  margin-bottom: 5px;
+}
+
+.gridText {
+  @include regular_text;
+  margin-bottom: 5px;
+}
+
+.grid {
+  border: solid 1px $greyBorder;
+  border-bottom: none;
+}
+
+.statusAndButtonDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  @include flex_align_items(center);
+  float: right;
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 1024px) {
+  .subDiv {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+  .grid {
+    border: none;
+  }
+  .actionButtonDiv {
+    width: 84%;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  .statusAndButtonDiv {
+    @include flex_direction(column);
+    float: none;
+  }
+  .statusContainer {
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .headerDiv {
+    height: 108px;
+  }
+
+  .subDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .grid {
+    border: none;
+  }
+}

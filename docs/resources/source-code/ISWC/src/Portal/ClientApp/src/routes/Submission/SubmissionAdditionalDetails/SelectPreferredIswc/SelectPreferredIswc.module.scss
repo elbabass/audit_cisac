@@ -1,0 +1,12 @@
+@import '../../../../shared/variables.scss';
+@import '../../../../shared/mixins.scss';
+
+.preferredDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  @include flex_align_items(center);
+}
+
+.container {
+  margin-bottom: 30px;
+}

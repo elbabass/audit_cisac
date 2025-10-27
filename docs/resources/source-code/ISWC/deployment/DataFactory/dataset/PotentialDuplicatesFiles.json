@@ -1,0 +1,24 @@
+{
+	"name": "PotentialDuplicatesFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "PotentialDuplicates",
+					"type": "Expression"
+				},
+				"fileSystem": "reporting"
+			}
+		}
+	}
+}

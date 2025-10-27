@@ -1,0 +1,25 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.gridRow {
+    border-bottom: solid 1px $greyBorder;
+    background-color: white;
+}
+
+.subTableContainer {
+    @include grid_container;
+    width: 96%;
+    @include flex_direction(column);
+    margin-top: 1rem;
+}
+
+.subTableTitle {
+    @include table_header;
+    padding-bottom: 5px;
+    color: $primaryGrey;
+}
+
+.subTable {
+    border: solid 1px $greyBorder;
+    border-bottom: none;
+}

@@ -1,0 +1,56 @@
+{
+	"name": "Azure_ISWC_Performer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PerformerID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Status",
+				"type": "bit"
+			},
+			{
+				"name": "Concurrency",
+				"type": "timestamp"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedUserID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FirstName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LastName",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "Performer"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

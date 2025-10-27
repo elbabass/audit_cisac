@@ -1,0 +1,29 @@
+{
+	"name": "DciDelimitedTsv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DCI"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('ISWC-DCI-EXPORT-', formatDateTime(pipeline().TriggerTime,'yyyyMMdd-hhmmss') , '.tsv.zip')",
+					"type": "Expression"
+				},
+				"fileSystem": "dci-assessment"
+			},
+			"columnDelimiter": "\t",
+			"compressionCodec": "ZipDeflate",
+			"escapeChar": "\\",
+			"quoteChar": ""
+		},
+		"schema": []
+	}
+}

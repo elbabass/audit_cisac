@@ -1,0 +1,60 @@
+{
+	"name": "csi_creator",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "ip_base_number",
+				"type": "String"
+			},
+			{
+				"name": "work_info_id",
+				"type": "Int64"
+			},
+			{
+				"name": "created_date",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_modified_date",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_modified_user_id",
+				"type": "String"
+			},
+			{
+				"name": "is_dispute",
+				"type": "String"
+			},
+			{
+				"name": "authoritative",
+				"type": "String"
+			},
+			{
+				"name": "role_type_id",
+				"type": "String"
+			},
+			{
+				"name": "iswc_id",
+				"type": "Int64"
+			},
+			{
+				"name": "ip_name_number",
+				"type": "Int32"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"csi\".\"csi_creator\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

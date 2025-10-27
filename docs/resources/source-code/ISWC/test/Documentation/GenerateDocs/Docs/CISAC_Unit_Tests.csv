@@ -1,0 +1,217 @@
+Component,Rule,Test,Description
+IswcEligibilityValidator,EL_01,EL_01_EligibleOneIpRepresentedBySubmitter,Checks that IsEligible is set to true if submitter represents at least one IP with an ISWC eligible role
+IswcEligibilityValidator,EL_01,EL_01_EligibleOneIPRepresentedBySubmitterRoleTypeIneligible,Checks that IsEligible is set to false if submitter represents at least one IP but the role type(s) is not an ISWC eligible role
+IswcEligibilityValidator,EL_01,EL_01_Ineligible,Checks that IsEligible is set to false if the submitter does not represent at least one IP with an ISWC eligible role and the Creator IP Base Numbers are not Public Domain
+IswcEligibilityValidator,EL_01,EL_01_EligibleAllIPBaseNumbersPDAndEligibleRoles,Checks that IsEligible is set to true if all creator IP Base numbers are Public Domain and have ISWC eligible roles
+IswcEligibilityValidator,EL_01,EL_01_InEligibleNotAllIPBaseNumbersPDAndEligibleRoles,Checks that IsEligible is set to false if all creator IP Base numbers are Public Domain but role type(s) is not an ISWC eligible role
+IswcEligibilityValidator,EL_01,EL_01_InEligibleNotAllIPBaseNumbersPD,Checks that IsEligible is set to false if not all creator IPBaseNumbers are Public Domain
+IswcEligibilityValidator,EL_02,EL_02_EligibleNoAffiliatedAgencies,Checks that IsEligible is set to true if none of the IpBaseNumbers are affiliated with an agency
+IswcEligibilityValidator,EL_02,EL_02_Ineligible,Checks that IsEligible is set to false if one of the IpBaseNumbers is affiliated with an agency which is not the submitting agency
+IswcEligibilityValidator,EL_02,EL_02_EligibleAllSubmittingAgency,Checks that IsEligible is set to true if all of the IpBaseNumbers are affiliated with just the submitting agency
+IswcEligibilityValidator,EL_03,EL_03_EligibleOneIpRepresentedBySubmitter,Checks that IsEligible is set to true if submitter represents at least one IP with an ISWC eligible role
+IswcEligibilityValidator,EL_03,EL_03_EligibleOneIPRepresentedBySubmitterRoleTypeIneligible,Checks that IsEligible is set to false if submitter represents at least one IP but the role type(s) is not an ISWC eligible role
+IswcEligibilityValidator,EL_03,EL_03_Ineligible,Checks that IsEligible is set to false if the submitter does not represent at least one IP with an ISWC eligible role and the Creator IP Base Numbers are not Public Domain
+IswcEligibilityValidator,EL_03,EL_03_EligibleAllIPBaseNumbersPDAndEligibleRoles,Checks that IsEligible is set to true if all creator IP Base numbers are Public Domain and have ISWC eligible roles
+IswcEligibilityValidator,EL_03,EL_03_InEligibleNotAllIPBaseNumbersPDAndEligibleRoles,Checks that IsEligible is set to false if all creator IP Base numbers are Public Domain but role type(s) is not an ISWC eligible role
+IswcEligibilityValidator,EL_03,EL_03_InEligibleNotAllIPBaseNumbersPD,Checks that IsEligible is set to false if not all creator IPBaseNumbers are Public Domain
+LookupDataValidator,IV_24,IV_24_Submission_TrueParam_Valid,Check that transaction passes if submission does not have all PD Creators. Parameter = True
+LookupDataValidator,IV_24,IV_24_Submission_TrueParam_AllPublicDomainCreators_InValid,"Check that transaction fails if submission contains all PD creators who are all identified using the generic IPs (Public Domain, DP, TRAD or Unknown Composer Author)"
+LookupDataValidator,IV_24,IV_24_Submission_TrueParam_AllPublicDomainCreators_Valid,"Check that transaction passes if submission contains all PD creators, at least one of which is not one of the generic IPs (Public Domain, DP, TRAD, Unknown Composer Author)"
+LookupDataValidator,IV_24,IV_24_Submission_FalseParam_Valid,Check that transaction passes if submission does not have all PD Creators. Parameter = Fase
+LookupDataValidator,IV_24,IV_24_Submission_FalseParam_InValid,Check that transaction fails if submission's creators are all PD. Parameter = False
+MetadataStandardizationValidator,MD_01,MD_01_RolesMapped,Check that ip roles are mapped correctly
+MetadataStandardizationValidator,MD_03,MD_03_TitlesRemoved,Checks that the title types listed in the rule's parameter values are not saved in core ISWC data
+MetadataStandardizationValidator,MD_03,MD_03_NoTitlesRemoved,Checks all title types are saved in core ISWC data as rule's parameter values are empty
+MetadataStandardizationValidator,MD_06,MD_06_SpecialCharactersRemoved,Check that special characters are removed from standardised title
+MetadataStandardizationValidator,MD_08,MD_08_ConvertNumbers,Check that numbers are converted to words and a space is inserted on either side of the number in standardised title
+MetadataStandardizationValidator,MD_09,MD_09_TitleToBeStandardised,Check that title's spelling was standardised
+MetadataStandardizationValidator,MD_09,MD_09_TitleManyWordsToBeStandardised,Check that title's spelling was standardised (where many words need to be standardised)
+MetadataStandardizationValidator,MD_09,MD_09_TitleNotToBeStandardised,Check that title's spelling was not standardised
+MetadataStandardizationValidator,MD_10,MD_10_TitleToBeStandardised,Check that the letter 'G' was dropped in standardised titles for words that end in 'ING'
+MetadataStandardizationValidator,MD_10,MD_10_TitleNotToBeStandardised,"When the title word endings should not be standardised, check that the letter 'G' was not dropped for words which end in 'ING'"
+MetadataStandardizationValidator,MD_11,MD_11_TitleToBeStandardised,Check that the letter 'S' has been dropped from words ending in 'S' when the title has been standardised
+MetadataStandardizationValidator,MD_11,MD_11_TitleNotToBeStandardised,Check that the letter 'S' has not been dropped from words ending in 'S' when the title has not been standardised
+MetadataStandardizationValidator,MD_13,MD_13_TitleToBeStandardised,"Check that title characters IZE, YZE and PART were converted to ISE, YSE and PT when the title was standardised"
+MetadataStandardizationValidator,MD_13,MD_13_TitleNotToBeStandardised,"Check that title characters IZE, YZE and PART were not converted to ISE, YSE and PT where the title was not standardised"
+MetadataStandardizationValidator,MD_16,MD_16_Submission_TrueParam_NewIpBaseNumber,Check that the transaction passes and the new Status 1 IP Base number is set if submitted IP is Status 3. Parameter = True
+MetadataStandardizationValidator,MD_16,MD_16_Submission_FalseParam_InValid,Check that transaction fails if IP is status 3 and submitter is ISWC eligible and authoritative for the status 3 IP. Parameter = False
+MetadataStandardizationValidator,MD_16,MD_16_Submission_FalseParam_IswcEligibleNewIpBaseNumber,Check the transaction passes and new status 1 IP Base number is set if the submitter is ISWC eligible but not authoritative for the status 3 IP. Parameter = False
+MetadataStandardizationValidator,MD_16,MD_16_Submission_FalseParam_NotStatus3_Valid,Checks that rule passes and new IpBaseNumber is set if ip has a status 1
+MetadataStandardizationValidator,MD_16,MD_16_Submission_FalseParam_ISWCIneligible_NewIpBaseNumber,Check that transaction passes if IP is status 3 and submitter is not ISWC eligible. Parameter = False
+MetadataStandardizationValidator,MD_17,MD_17_Submission_TrueParam,Checks that correct amount of ips are added if PG ip is present
+MetadataStandardizationValidator,MD_17,MD_17_Submission_TrueParam_NoIpsAdded,Checks that no ips are added if there is no PG ip
+MetadataStandardizationValidator,MD_17,MD_17_Submission_TrueParam_NotAuthAndEligible,Checks that the IPs have the correct Authoritative values when PG IP is not Authoritative
+MetadataStandardizationValidator,MD_17,MD_17_Submission_TrueParam_AuthAndEligible,Checks that the IPs have the correct Authoritative values when PG IP is Authoritative
+MetadataStandardizationValidator,MD_17,MD_17_Submission_FalseParam,Checks number of IPs stay the same as per submission. Parameter = False
+MetadataStandardizationValidator,MD_17,MD_17_Submission_TrueParam_NoIps,Checks that correct amount of ips are present if no ips are returned from provided IpBasenumber
+PostMatchingValidator,IV_40,IV_40_NoDisambiguateFromIswcsProvided_Valid,Check rule passes if no disambiguateFromIswcs are provided
+PostMatchingValidator,IV_40,IV_40_ParameterValueIsFalse_Valid,Check rule passes if parameter value is set to false
+PostMatchingValidator,IV_40,IV_40_NotAllDisambiguateFromIswcsMatch_Invalid,Check rule fails if any disambiguateFromIswcs do not have a matching preferredIswc
+PostMatchingValidator,IV_40,IV_40_AllDisambiguateFromIswcsMatch_Valid,Check rule passes if all disambiguateFromIswcs have a matching preferredIswc
+PostMatchingValidator,PV_01,PV_01_Submission_InValid,Check transaction fails if work number does not exist in the database (CDR record)
+PostMatchingValidator,PV_01,PV_01_Submission_Valid,Check transaction passes if work number does exist in the database (CDR record)
+PostMatchingValidator,PV_02,PV_02_NoMatchesToCheck_Valid,Check transaction passes validation if no work number provided (CAR record)
+PostMatchingValidator,PV_02,PV_02_WorkNumberAlreadyExistsInDb_Valid,Check transaction is converted to CUR transaction if work number exists in db
+PostMatchingValidator,PV_02,PV_02_WorkNumberDoesNotExistInDb_Valid,Check transaction passes if work number does not exist in db
+PostMatchingValidator,PV_03,PV_03_NoMatchesToCheck_Valid,Check transaction passes validation if no work number provided
+PostMatchingValidator,PV_03,PV_03_WorkNumberAlreadyExistsInDb_Valid,Check transaction passes if work number exists in db
+PostMatchingValidator,PV_03,PV_03_WorkNumberDoesNotExistInDb_Valid,Check transaction is converted to CAR transaction if work number does not exist in db
+PostMatchingValidator,PV_04,PV_04_NoMatchesToCheck_Valid,Check rule passes if no matches have been found.
+PostMatchingValidator,PV_04,PV_04_IPNumbersDoNotMatch_InValid,Check transaction fails if submitted IP Name Numbers do not match current ISWC metadata
+PostMatchingValidator,PV_04,PV_04_TitlesDoNotMatch_InValid,Check transaction fails if submitted titles do not match current ISWC metadata
+PostMatchingValidator,PV_04,PV_04_TitleTypeDoesNotMatch_InValid,Check transaction fails if submitted title types do not match current ISWC metadata
+PostMatchingValidator,PV_04,PV_04_Valid,Check transaction passes if all submitted IP and title data match current ISWC metadata
+PostMatchingValidator,PV_05,PV_05_Submission_InValid,Check transaction fails if TransactionType is CUR and workinfo record is deleted
+PostMatchingValidator,PV_05,PV_05_Submission_Valid,Check transaction passes if TransactionType is CUR and workinfo record is not deleted
+PostMatchingValidator,PV_09,PV_09_FindWithWorkCode_Valid,Check transaction passes if work code is used to identify Iswc
+PostMatchingValidator,PV_09,PV_09_FindWithPreferredIswc_Valid,Check transaction passes if PreferredIswc is used to identify Iswc
+PostMatchingValidator,PV_09,PV_09_IswcIsDeleted_InValid,Check transaction fails if ISWC has been deleted
+PostMatchingValidator,PV_09,PV_09_WorkDoesNotExist_InValid,Check transaction fails if workinfo record does not exist
+PostMatchingValidator,PV_09,PV_09_IswcDoesNotExist_InValid,Check transaction fails if ISWC does not exist
+PostMatchingValidator,PV_13,PV_13_Invalid,Check transaction fails if a deletion submission has no ReasonCode
+PostMatchingValidator,PV_13,PV_13_Valid,Check transaction passes if a deletion submission has a ReasonCode
+PostMatchingValidator,PV_14,PV_14_ParticipatingAgencies,Checks that the workflow flag is set to true if there are other participating agencies.
+PostMatchingValidator,PV_14,PV_14_NoParticipatingAgencies,Checks that the workflow flag is set to false if there are no other participating agencies.
+PostMatchingValidator,PV_14,PV_14_NotEligible,Checks that the workflow flag is set to false if the submission is not Iswc Eligible
+PostMatchingValidator,PV_20,PV_20_NoMatchesFound_InValid,Check transaction fails if no matches are found for the preferred Iswc
+PostMatchingValidator,PV_20,PV_20_MultipleMatchesFound_Invalid,Check transaction fails if multiple matches are found for the preferred Iswc
+PostMatchingValidator,PV_20,PV_20_SingleMatchFound_Valid,Check transaction passes if a single match is found for the preferred Iswc
+PostMatchingValidator,PV_21,PV_21_NoMatchesFound_Invalid,Checks that transaction fails if no matches are found
+PostMatchingValidator,PV_21,PV_21_SingleMatchFound_Valid,Checks that transaction passes if a single match is found
+PostMatchingValidator,PV_21,PV_21_MultipleMatchesAndNotAuthoritative_Invalid,Checks that transaction fails if multiple matches are found and submitter is not authoritative
+PostMatchingValidator,PV_21,PV_21_MultipleMatchesAndAuthoritative_Valid,Checks that transaction passes if multiple matches are found and submitter is authoritative
+PostMatchingValidator,PV_22,PV_22_PreferredIswcDoesNotExist_Invalid,Check transaction fails if Preferred ISWC does not exist in the db
+PostMatchingValidator,PV_22,PV_22_IswcDoesExist_Valid,Check transaction passes if Preferred ISWC exists in the db
+PostMatchingValidator,PV_22,PV_22_PreferredIswcDoesNotMatch_Invalid,Check transaction fails if Preferred ISWC in the DB does not match the Preferred ISWC in the submission.
+PostMatchingValidator,PV_22,PV_22_Submission_Valid,Check transaction passes if Preferred ISWC in the DB  matches the Preferred ISWC in the submission.
+PostMatchingValidator,PV_23,PV_23_IswcDoesNotMatch_InValid,Check transaction fails if Archived ISWC does not match the archived ISWC in the retrieved workinfo record
+PostMatchingValidator,PV_23,PV_23_IswcDoesMatch_Valid,Check transaction passes if Archived ISWC matches the archived ISWC in the retrieved workinfo record
+PostMatchingValidator,PV_23,PV_23_IswcDoesNotExist_InValid,Check transaction fails if Archived ISWC does not exist
+PostMatchingValidator,PV_23,PV_23_IswcNotProvided_Valid,Check transaction passes if Iswc is not provided
+PostMatchingValidator,PV_24,PV_24_PreferredIswcDoesNotExist_InValid,Check transaction fails if PreferredIswc does not exist in the db
+PostMatchingValidator,PV_24,PV_24_PreferredIswcDoesNotMatchArchived_InValid,Check transaction fails if PreferredIswc does not match archived Iswc
+PostMatchingValidator,PV_24,PV_24_PreferredIswcDoesExist_Valid,Check transaction passes if PreferredIswc exists
+PostMatchingValidator,PV_25,PV_25_InvalidWorkNumberProvided_InValid,Check transaction fails if Society work code does not exist in system
+PostMatchingValidator,PV_25,PV_25_WorkInfoDoesNotExist_WorkNumber_InValid,Check transaction fails if Society work code exists but there is no matching work info record
+PostMatchingValidator,PV_25,PV_25_WorkInfoDoesNotExist_PreferredIswc_InValid,Check transaction fails if Preferred ISWC does not exist in system
+PostMatchingValidator,PV_25,PV_25_WorkInfoDoesNotMatch_InValid,Check transaction fails if Preferred ISWC and Society Work Code exist in the system but the work info records do not match each other
+PostMatchingValidator,PV_25,PV_25_WorkInfoDoesMatch_Valid,Check transaction passes if Preferred ISWC and Society Work Code exist in the system and the work info records match each other
+PostMatchingValidator,PV_26,PV_26_MissingRequiredFields_InValid,Check transaction fails if PreferredIswc is missing
+PostMatchingValidator,PV_26,PV_26_WorkNotFoundByWorkNumber_InValid,Check transaction fails if workinfo record is not found by work number
+PostMatchingValidator,PV_26,PV_26_WorkMetaDataDoesNotMatch_InValid,Check transaction fails if work metadata does not match
+PostMatchingValidator,PV_26,PV_26_Valid,Check transaction passes if all required fields are present and work metadata matches
+PostMatchingValidator,PV_29,PV_29_NotIswcEligible_Invalid,Check transaction fails if submission is not Iswc eligible
+PostMatchingValidator,PV_29,PV_29_NotIswcEligibleAndNoMatchingWorks_Invalid,Check transaction fails if submission is not Iswc eligible and there are no matching works
+PostMatchingValidator,PV_29,PV_29_Valid,Check transaction passes if submission is Iswc eligible
+PostMatchingValidator,PV_30,PV_30_NoDisambiguateFromIswcsProvided_Valid,Check transaction passes if no DisambiguateFrom Iswcs are provided and Disambiguation is False
+PostMatchingValidator,PV_30,PV_30_IswcIsNull_InValid,Check transaction fails if DisambiguateFrom Iswc is null
+PostMatchingValidator,PV_30,PV_30_IswcDoesNotExist_InValid,Check transaction fails if DisambiguateFrom Iswc does not exist in db
+PostMatchingValidator,PV_30,PV_30_OneIswcDoesNotExist_InValid,Check transaction fails if one DisambiguateFrom Iswc does not exist in db
+PostMatchingValidator,PV_30,PV_30_AllIswcsProvidedExist_Valid,Check transaction passes if all DisambiguateFrom Iswcs exist in db
+StaticDataValidator,IV_02,IV_02_Submission_InValid,Check transaction fails if no IP provided
+StaticDataValidator,IV_02,IV_02_Submission_Valid,Check transaction passes if an IP is provided
+StaticDataValidator,IV_06,IV_06_Submission_InValid,Check transaction fails if more than one OT title exists in the work submission
+StaticDataValidator,IV_06,IV_06_Submission_Valid,Check transaction passes if only one OT title exists in the work submission
+StaticDataValidator,IV_07,IV_07_Submission_InValid,Check transaction fails if the work submission does not contain a creator role
+StaticDataValidator,IV_07,IV_07_Submission_Valid,Check transaction passes if  the work submission contains at least one creator role
+StaticDataValidator,IV_08,IV_08_Submission_InValid,Check transaction fails if combination of submitting agency and source db does not exist in the database
+StaticDataValidator,IV_08,IV_08_Submission_Valid,Check transaction passes if combination of submitting agency and source db exists in the database
+StaticDataValidator,IV_10,IV_10_Submission_InValid,Check that transaction fails if the AgencyID provided is not in the database
+StaticDataValidator,IV_10,IV_10_Submission_Valid,Check that transaction passes if the AgencyID provided is in the database
+StaticDataValidator,IV_13,IV_13_Submission_InValid,Check transaction fails if the Preferred ISWC is not provided
+StaticDataValidator,IV_13,IV_13_Submission_Valid,Check transaction passes if the Preferred ISWC is provided
+StaticDataValidator,IV_14,IV_14_Submission_PreferredIswc_InValid,Check transaction fails if the Preferred ISWC is not in a valid format
+StaticDataValidator,IV_14,IV_14_Submission_Iswc_InValid,Check transaction fails if the Archived ISWC is not in a valid format
+StaticDataValidator,IV_14,IV_14_Submission_Valid,Check transaction passes if the Preferred ISWC and Archived ISWC are in a valid format
+StaticDataValidator,IV_15,IV_15_Submission_InValid,Check transaction fails if the check digit formula is not met
+StaticDataValidator,IV_15,IV_15_Submission_IswcFormat_InValid,Check that the transaction fails if the ISWC is not in a valid format
+StaticDataValidator,IV_15,IV_15_Submission_Valid,Check transaction passes if the check digit formula is met
+StaticDataValidator,IV_19,IV_19_Submission_InValid,Check transaction fails if the IPNameNumber does not exist in the database
+StaticDataValidator,IV_19,IV_19_Submission_Valid,Check transaction passes if the IPNameNumber exists in the database
+StaticDataValidator,IV_25,IV_25_InterestedParty_Removed,"Check that an IP is removed from submission if it belongs to a work submissions with Unknown Publisher, IPBaseNumber “I-001631070-4”"
+StaticDataValidator,IV_25,IV_25_InterestedParty_Not_Removed,Check that an IP is not removed from submission if it doesn't belong to a work submissions with Unknown Publisher( IPBaseNumber “I-001631070-4”)
+StaticDataValidator,IV_29,IV_29_Submission_InValid,Check transaction fails if any of the submitted IPNameNumbers feature in the list of IPs to reject
+StaticDataValidator,IV_29,IV_29_Submission_Valid,Check transaction passes if none of the submitted IPNameNumbers feature in the list of IPs to reject
+StaticDataValidator,IV_34,IV_34_Submission_Basic_IswcPattern_InValid,"Check transaction fails if DerivedFrom(ModifiedVersion) ISWC pattern is invalid. ""basic"" parameter"
+StaticDataValidator,IV_34,IV_34_Submission_Basic_IswcNoInDb_InValid,"Check transaction fails if DerivedFrom(ModifiedVersion) ISWC does not exist in the db. ""basic"" parameter"
+StaticDataValidator,IV_34,IV_34_Submission_Basic_Valid,"Check transaction passes if DerivedFrom(ModifiedVersion) ISWC pattern is valid and it exists in the database. ""basic"" parameter"
+StaticDataValidator,IV_34,IV_34_Submission_Full_IswcPattern_InValid,"Check transaction fails if DerivedFrom(ModifiedVersion) ISWC pattern is invalid. ""full"" parameter"
+StaticDataValidator,IV_34,IV_34_Submission_Full_IswcNoInDb_InValid,"Check transaction fails if DerivedFrom(ModifiedVersion) ISWC does not exist in the db. ""full"" parameter"
+StaticDataValidator,IV_34,IV_34_Submission_Full_Valid,"Check transaction passes if DerivedFrom(ModifiedVersion) ISWC pattern is valid and it exists in the database. ""full"" parameter"
+StaticDataValidator,IV_34,IV_34_Submission_Full_HasTitleOnly_Valid,"Check transaction passes if only DerivedFrom(ModifiedVersion) title is provided. ""full"" parameter"
+StaticDataValidator,IV_34,IV_34_Submission_Full_HasIswcOnly_Valid,"Check transaction passes if only DerivedFrom(ModifiedVersion) ISWC is provided. ""full"" parameter"
+StaticDataValidator,IV_34,IV_34_Submission_NoDF_InValid,"Check transaction fails if DerivedWorkType is set to ModifiedVersion and no DerivedFrom information is provided. ""full"" param"
+StaticDataValidator,IV_34,IV_34_Submission_Full_NoTitleOrIswc_InValid,"Check transaction fails if no DerivedFrom(ModifiedVersion) ISWC or title is provided. ""full"" parameter"
+StaticDataValidator,IV_34,IV_34_Submission_None_Valid,"Check transaction passes when parameter is set to ""none"""
+StaticDataValidator,IV_36,IV_36_Submission_IswcPattern_InValid,Check transaction fails if DerivedFrom(Composite) ISWC pattern is invalid
+StaticDataValidator,IV_36,IV_36_Submission_IswcNoInDb_InValid,Check transaction fails if DerivedFrom(Composite) ISWC does not exist in the db
+StaticDataValidator,IV_36,IV_36_Submission_NoTitleOrIswc_InValid,Check transaction fails if no DerivedFrom(Composite) ISWC or title is provided.
+StaticDataValidator,IV_36,IV_36_Submission_NoDF_InValid,"Check transaction fails if DerivedWorkType is set to Composite and no DerivedFrom information is provided. ""full"" param"
+StaticDataValidator,IV_36,IV_36_Submission_Valid,"Check transaction passes if DerivedFrom(Composite) Iswc pattern is valid and it exists in the db. ""full"" param"
+StaticDataValidator,IV_36,IV_36_Submission_HasTitleOnly_Valid,"Check transaction passes if only DerivedFrom(Composite) title is provided. ""full"" param"
+StaticDataValidator,IV_36,IV_36_Submission_HasIswcOnly_Valid,Check transaction passes if only DerivedFrom(Composite) ISWC is provided.
+StaticDataValidator,IV_38,IV_38_Submission_IswcPattern_InValid,Check transaction fails if DerivedFrom(Excerpt) ISWC pattern is invalid
+StaticDataValidator,IV_38,IV_38_Submission_NoDF_InValid,"Check transaction fails if DerivedWorkType is set to Composite and no DerivedFrom information is provided. ""full"" param"
+StaticDataValidator,IV_38,IV_38_Submission_IswcNoInDb_InValid,Check transaction fails if DerivedFrom(Excerpt) ISWC does not exist in the db
+StaticDataValidator,IV_38,IV_38_Submission_Valid,Check transaction passes if DerivedFrom(Excerpt) ISWC pattern is valid and it exists in the db.
+StaticDataValidator,IV_38,IV_38_Submission_HasTitleOnly_Valid,Check transaction passes if only DerivedFrom(Excerpt) Title is provided.
+StaticDataValidator,IV_38,IV_38_Submission_HasIswcOnly_Valid,Check transaction passes if only DerivedFrom(Excerpt) ISWC is provided.
+StaticDataValidator,IV_40,IV_40_Submission_NoDisambiguateFromIswcsProvided_InValid,Check transaction fails if no DisambiguateFrom ISWCs are provided
+StaticDataValidator,IV_40,IV_40_Submission_InValidIswcProvided_InValid,Check transaction fails if the DisambiguateFrom ISWC(s) provided are not valid
+StaticDataValidator,IV_40,IV_40_Submission_NoPerformerLastname_InValid,Check transaction fails if Performer is missing LastName
+StaticDataValidator,IV_40,IV_40_Submission_PerformersWithLastname_Valid,Check transaction passes if Performer has LastName
+StaticDataValidator,IV_40,IV_40_Submission_DisambiguateFromIswcsProvided_Valid,Check transaction passes if valid DisambiguateFrom ISWCs are provided
+StaticDataValidator,IV_40,IV_40_Submission_NoDisambiguationReasonCodeProvided_InValid,Check transaction fails if no DisambiguationReasonCode is provided
+StaticDataValidator,IV_40,IV_40_Submission_DisambiguationReasonCodeProvided_InValid,Check transaction fails if invalid DisambiguationReasonCode is provided
+StaticDataValidator,IV_40,IV_40_Submission_BLTVR_InValid,Check transaction fails if invalid BLTVR value is provided
+StaticDataValidator,IV_40,IV_40_Submission_BLTVR_Valid,Check transaction passes if valid BLTVR value is provided
+StaticDataValidator,IV_40,IV_40_Submission_InstrumentationCode_InValid,Check transaction fails if invalid instrumentation code is provided
+StaticDataValidator,IV_40,IV_40_Submission_InstrumentationCode_Valid,Check transaction passes if valid instrumentation code is provided
+StaticDataValidator,IV_44,IV_44_InValid,Check transaction fails if no PreferredISWC is provided
+StaticDataValidator,IV_44,IV_44_Valid,Check transaction passes if PreferredISWC is provided
+MatchingComponent,MatchingForIswcEligibleExisting,ProcessSubmissions,Checks that submissions get matched and returned by the matching engine
+MatchingComponent,MatchingForIswcEligibleSubmitter,ProcessSubmissions,Checks that submissions get matched and returned by the matching engine
+MatchingComponent,MatchingForIswcNonEligibleExisting,ProcessSubmissions,Checks that submissions get matched and returned by the matching engine
+MatchingComponent,MatchingForIswcNonEligibleSubmitter,ProcessSubmissions,Checks that submissions get matched and returned by the matching engine
+MatchingComponent,SearchComponent,SearchMatch,"Checks that if a search match result is found, the search result model is populated."
+MatchingComponent,SearchComponent,NoSearchMatch,"Checks that for no search match found, no search result is returned"
+MatchingComponent,MatchingAlterIps,MatchAsync_Called_RemovesCommonIPs,"Check that if there are no initial matches found, the rule removes Public Domain IPs and IPs with date of death over 80 years ago and then attempts matching again"
+MatchingComponent,MatchingAlterIps,No_Ips_Removed,"Check that if there are no initial matches found, the rule does not remove IPs that are not Public Domain IPs and do not have a date of death over 80 years ago and then attempts matching again."
+MatchingComponent,MatchingForIswcRelated,DerivedFromIswc_NoMatches_Returns_Rejection,"When Derived From ISWCs are provided but no matches are found, submission should be rejected."
+MatchingComponent,MatchingForIswcRelated,DerivedFromIswc_MultipleMatches_Returns_Rejection,"When Derived From ISWCs are provided and multiple matches are found, the submission should be rejected"
+MatchingComponent,MatchingForIswcRelated,MergeIswc_NoMatches_Returns_Rejection,"When Merge ISWCs are provided but no matches are found, the submission should be rejected"
+MatchingComponent,MatchingForIswcRelated,MergeIswc_MultipleMatches_Returns_Rejection,"When Merge ISWCs are provided and multiple matches are found, the submission should be rejected"
+MatchingComponent,MatchingForIswcRelated,WorkNumber_NoMatches_Returns_Rejection,"When Agency Work Codes are provided for merging and no matches are found, the submission should be rejected"
+MatchingComponent,MatchingForIswcRelated,WorkNumber_MultipleMatches_Returns_Rejection,"When Agency Work Codes are provided for merging and multiple matches are found, the submission should be rejected"
+ProcessingComponent,AS_01,AS_01_Valid,Check full mapping from submission for AS_01
+ProcessingComponent,AS_01,AS_01_CheckMapping_WorkInfo,Check WorkInfo mapping from submission
+ProcessingComponent,AS_01,AS_01_CheckMapping_Title,Check Title mapping from submission
+ProcessingComponent,AS_01,AS_01_CheckMapping_Creator,Check Creator mapping from submission
+ProcessingComponent,AS_01,AS_01_CheckMapping_WorkInfoPerformers_And_Performers,Check WorkInfoPerformers and Performers mapping from submission
+ProcessingComponent,AS_01,AS_01_CheckMapping_Publishers,Check Publishers mapping from submission
+ProcessingComponent,AS_01,AS_01_CheckMapping_DerivedFrom,Check DerivedFrom mapping from submission
+ProcessingComponent,AS_01,AS_01_CheckMapping_DisambiguationISWC,Check AS_01 DisambiguationISWC mapping from submission
+ProcessingComponent,AS_02,AS_02_Valid,Checks full AS_02 mapping from submission
+ProcessingComponent,AS_02,AS_02_CheckMapping_WorkInfo,Check WorkInfo mapping from submission
+ProcessingComponent,AS_02,AS_02_CheckMapping_Title,Check Title mapping from submission
+ProcessingComponent,AS_02,AS_02_CheckMapping_Creator,Check Creator mapping from submission
+ProcessingComponent,AS_02,AS_02_CheckMapping_WorkInfoPerformers_And_Performers,Check WorkInfoPerformers and Performers mapping from submission
+ProcessingComponent,AS_02,AS_02_CheckMapping_Publishers,Check Publishers mapping from submission
+ProcessingComponent,AS_02,AS_02_CheckMapping_DerivedFrom,Check DerivedFrom mapping from submission
+ProcessingComponent,AS_02,AS_02_CheckMapping_DisambiguationISWC,Check DisambiguationISWC mapping from submission
+ProcessingComponent,AS_03,AS_03_Valid,Check full AS_03 mapping from submission
+ProcessingComponent,AS_03,AS_02_CheckMapping_WorkInfo,Check WorkInfo mapping from submission
+ProcessingComponent,AS_03,AS_02_CheckMapping_Title,Check Title mapping from submission
+ProcessingComponent,AS_03,AS_02_CheckMapping_Creator,Check Creator mapping from submission
+ProcessingComponent,AS_03,AS_02_CheckMapping_WorkInfoPreformers_And_Performers,Check WorkInfoPerformers and Performers mapping from submission
+ProcessingComponent,AS_03,AS_02_CheckMapping_Publishers,Check Publishers mapping from submission
+ProcessingComponent,AS_03,AS_02_CheckMapping_DerivedFrom,Check DerivedFrom mapping from submission
+ProcessingComponent,AS_03,AS_02_CheckMapping_DisambiguationISWC,Check DisambiguationISWC mapping from submission
+ProcessingComponent,AS_04,AS_04_Valid,Check full AS_04 mapping from submission
+ProcessingComponent,AS_04,AS_02_CheckMapping_Title,Check Title mapping from submission
+ProcessingComponent,AS_04,AS_02_CheckMapping_Creator,Check Creator mapping from submission
+ProcessingComponent,AS_04,AS_02_CheckMapping_Publishers,Check Publishers mapping from submission
+ProcessingComponent,AS_05,AS_05_Valid,Check full AS_05 mapping from submission
+ProcessingComponent,AS_05,AS_05_Check_Mapping,Checks mapping from submission model to IswcLinkedTo
+ProcessingComponent,AS_08,AS_08_Valid,Check full AS_08 mapping from submission
+ProcessingComponent,AS_09,AS_09_Valid,Check full AS_09 mapping from submission

@@ -1,0 +1,37 @@
+{
+	"name": "Azure_IPI_IPNameUsage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "IPNameNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Role",
+				"type": "char"
+			},
+			{
+				"name": "CreationClass",
+				"type": "char"
+			},
+			{
+				"name": "IPBaseNumber",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "IPNameUsage"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

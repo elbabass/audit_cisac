@@ -1,0 +1,10 @@
+{
+  "AzureKeyVaultSecret-EDI-SFTP-Hostname": "",
+  "AzureKeyVaultSecret-EDI-SFTP-Username": "",
+  "AzureKeyVaultSecret-EDI-SFTP-Password": "",
+  "AzureKeyVaultSecret-EDI-Databricks-JobApiBearerToken": "",
+  "AzureKeyVaultSecret-EDI-Databricks-JobID": null,
+  "AzureKeyVaultSecret-ISWC-BaseAddress-IswcApi": "",
+  "AzureKeyVaultSecret-ISWC-Secret-IswcApiManagement": "",
+  "AzureKeyVaultSecret-ISWC-ConnectionString-ISWCCosmosDb": ""
+}

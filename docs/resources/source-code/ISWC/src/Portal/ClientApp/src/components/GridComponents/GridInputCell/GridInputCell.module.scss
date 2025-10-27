@@ -1,0 +1,15 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.input {
+  @include regular_text();
+  width: 100%;
+  color: $defaultFont;
+  border: 1px solid $greyBorder;
+  padding: 7px 0 7px 10px;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $primaryBlack;
+  }
+}

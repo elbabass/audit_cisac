@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="100" xml:space="preserve">
+    <value>Generic Error</value>
+  </data>
+  <data name="102" xml:space="preserve">
+    <value>I.P. Name Number is required</value>
+    <comment>IV/19</comment>
+  </data>
+  <data name="103" xml:space="preserve">
+    <value>Source Society Code is invalid</value>
+    <comment>IV/10, PV/25</comment>
+  </data>
+  <data name="104" xml:space="preserve">
+    <value>At least one I.P. is required on a submission</value>
+    <comment>IV/02</comment>
+  </data>
+  <data name="105" xml:space="preserve">
+    <value>ISWC System Unable to process record, please resubmit</value>
+    <comment>IV/01</comment>
+  </data>
+  <data name="106" xml:space="preserve">
+    <value>I.P. Role Code is required</value>
+    <comment>IV/22</comment>
+  </data>
+  <data name="107" xml:space="preserve">
+    <value>Preferred ISWC is required</value>
+    <comment>IV/13</comment>
+  </data>
+  <data name="108" xml:space="preserve">
+    <value>The IP on the work submission is not a creator affiliated with the source society</value>
+    <comment>IV/24</comment>
+  </data>
+  <data name="109" xml:space="preserve">
+    <value>Work Titles are required</value>
+    <comment>IV/05</comment>
+  </data>
+  <data name="110" xml:space="preserve">
+    <value>Only one Original Title allowed</value>
+    <comment>IV/06</comment>
+  </data>
+  <data name="111" xml:space="preserve">
+    <value>At least one creator I.P. is required</value>
+    <comment>IV/07</comment>
+  </data>
+  <data name="112" xml:space="preserve">
+    <value>Work Title Type is required</value>
+    <comment>IV/31</comment>
+  </data>
+  <data name="113" xml:space="preserve">
+    <value>ISWC format error [T][0-9]{10}</value>
+    <comment>IV/14</comment>
+  </data>
+  <data name="114" xml:space="preserve">
+    <value>An existing ISWC logical work that already contains active (not deleted) submission from the submitting society</value>
+    <comment>PV/06</comment>
+  </data>
+  <data name="115" xml:space="preserve">
+    <value>Specified source db is not allowed to make a submission for the specified society</value>
+    <comment>IV/08</comment>
+  </data>
+  <data name="116" xml:space="preserve">
+    <value>Modification of an Archived ISWC is not permitted</value>
+    <comment>PV/23, PV/26</comment>
+  </data>
+  <data name="117" xml:space="preserve">
+    <value>Requested ISWC preferred does not exist on ISWC System</value>
+    <comment>PV/22, PV/24, PV/25</comment>
+  </data>
+  <data name="118" xml:space="preserve">
+    <value>At least one Derived From DF record is required for a Derived Work of type "Modified Version"</value>
+    <comment>IV/34</comment>
+  </data>
+  <data name="119" xml:space="preserve">
+    <value>The ISWC provided in the Derived From DF record is not a valid Preferred ISWC in the ISWC Database</value>
+    <comment>IV/34, IV/36, IV/38</comment>
+  </data>
+  <data name="120" xml:space="preserve">
+    <value>Each Derived From DF record must contain either an ISWC or a Title</value>
+    <comment>IV/34,IV/36, IV/38</comment>
+  </data>
+  <data name="121" xml:space="preserve">
+    <value>At least one Derived From DF record is required for a Derived Work of type "Composite"</value>
+    <comment>IV/36</comment>
+  </data>
+  <data name="122" xml:space="preserve">
+    <value>Invalid Disambiguation ISWC</value>
+    <comment>IV/40</comment>
+  </data>
+  <data name="123" xml:space="preserve">
+    <value>Invalid disambiguation reason code</value>
+    <comment>IV/40</comment>
+  </data>
+  <data name="124" xml:space="preserve">
+    <value>One or more Disambiguation ISWCs must be provided</value>
+    <comment>IV/40</comment>
+  </data>
+  <data name="125" xml:space="preserve">
+    <value>BLTVR must be blank or be one of the following values: Background, Logo, Theme, Visual, RolledUpCue</value>
+    <comment>IV/40</comment>
+  </data>
+  <data name="126" xml:space="preserve">
+    <value>Performer information must contain a Second Name or a Second Name and a First Name</value>
+    <comment>IV/40, IV/47</comment>
+  </data>
+  <data name="127" xml:space="preserve">
+    <value>Submitted titles don’t match current ISWC Documentation</value>
+    <comment>PV/04, PV/20</comment>
+  </data>
+  <data name="128" xml:space="preserve">
+    <value>One or more specified Disambiguation ISWCs are not Preferred ISWCs in the ISWC Database</value>
+    <comment>PV/30</comment>
+  </data>
+  <data name="129" xml:space="preserve">
+    <value>Invalid Disambiguation ISWC</value>
+    <comment>IV/40</comment>
+  </data>
+  <data name="130" xml:space="preserve">
+    <value>The Agency Work Number provided does not exist in the ISWC Database </value>
+    <comment>PV/01</comment>
+  </data>
+  <data name="131" xml:space="preserve">
+    <value>Submission is Deleted in the ISWC Database</value>
+    <comment>PV/05</comment>
+  </data>
+  <data name="132" xml:space="preserve">
+    <value>The Preferred ISWCs specified in the merge do not exist in the ISWC database</value>
+    <comment>PV/09</comment>
+  </data>
+  <data name="133" xml:space="preserve">
+    <value>Delete reason has not been provided</value>
+    <comment>PV/13</comment>
+  </data>
+  <data name="134" xml:space="preserve">
+    <value>I.P. Name Number is invalid, must be numeric</value>
+    <comment>IV/20</comment>
+  </data>
+  <data name="135" xml:space="preserve">
+    <value>Work Title Type is invalid</value>
+    <comment>IV/31</comment>
+  </data>
+  <data name="136" xml:space="preserve">
+    <value>Society Work Code is required</value>
+    <comment>IV/11</comment>
+  </data>
+  <data name="137" xml:space="preserve">
+    <value>IP Name Number must be status 1 or 2 and exist in the IPI database</value>
+    <comment>MD/16 </comment>
+  </data>
+  <data name="138" xml:space="preserve">
+    <value>Source Society Database Code is invalid</value>
+    <comment>IV/12, PV/25</comment>
+  </data>
+  <data name="139" xml:space="preserve">
+    <value>I.P. Role Code is invalid</value>
+    <comment>IV/22</comment>
+  </data>
+  <data name="140" xml:space="preserve">
+    <value>The submitted transaction is not ISWC eligible and no matching Preferred ISWC has been found through the matching rules as per MAT/04</value>
+    <comment>PV/29</comment>
+  </data>
+  <data name="141" xml:space="preserve">
+    <value>ISWC format error – Invalid Check Digit</value>
+    <comment>IV/15</comment>
+  </data>
+  <data name="142" xml:space="preserve">
+    <value>No specific error number - the whole file is rejected</value>
+    <comment>IV/09</comment>
+  </data>
+  <data name="143" xml:space="preserve">
+    <value>Requested ISWC metadata does not exist for specified Society Work Code, Society Code and Society Database Code</value>
+    <comment>PV/25</comment>
+  </data>
+  <data name="144" xml:space="preserve">
+    <value>The submitting agency may not update Preferred ISWC level metadata</value>
+    <comment>PV/20</comment>
+  </data>
+  <data name="145" xml:space="preserve">
+    <value>The submitting agency may only remove IPs that they control</value>
+    <comment>PV/21</comment>
+  </data>
+  <data name="146" xml:space="preserve">
+    <value>Instrumentation Code is invalid</value>
+    <comment>IV/40</comment>
+  </data>
+  <data name="147" xml:space="preserve">
+    <value>At least one Derived From DF record is required for a Derived Work of type "Excerpt"</value>
+    <comment>IV/38</comment>
+  </data>
+  <data name="148" xml:space="preserve">
+    <value>I.P. is not accepted</value>
+    <comment>IV/29</comment>
+  </data>
+  <data name="149" xml:space="preserve">
+    <value>Agency is not Eligible for a Source ISWC</value>
+    <comment>EL/03</comment>
+  </data>
+  <data name="150" xml:space="preserve">
+    <value>Submitter must be eligible and have a submission on any of the works to be merged</value>
+    <comment>PV/10</comment>
+  </data>
+  <data name="151" xml:space="preserve">
+    <value>Agency provided does not exist in the database</value>
+    <comment>PV/11</comment>
+  </data>
+  <data name="152" xml:space="preserve">
+    <value>Workflow Task with the properties provided does not exist</value>
+    <comment>PV/11</comment>
+  </data>
+  <data name="153" xml:space="preserve">
+    <value>The Preferred ISWC specified in the demerge does not exist in the ISWC database</value>
+    <comment>PV/09</comment>
+  </data>
+  <data name="154" xml:space="preserve">
+    <value>None of the provided Creators are affiliated with a Society</value>
+    <comment>EL/02</comment>
+  </data>
+  <data name="155" xml:space="preserve">
+    <value>Concurrency Error: The Submission being updated has already changed. Please try again.</value>
+  </data>
+  <data name="156" xml:space="preserve">
+    <value>An ISWC can not be merged because it would result in a self-referential link.</value>
+    <comment>PV/31</comment>
+  </data>
+  <data name="157" xml:space="preserve">
+    <value>An ISWC can not be merged because it already has a parent ISWC.</value>
+    <comment>PV/31</comment>
+  </data>
+  <data name="158" xml:space="preserve">
+    <value>Work code must not exceed 20 characters</value>
+    <comment>IV/45</comment>
+  </data>
+  <data name="159" xml:space="preserve">
+    <value>Work code does not exist for submitted ISWC</value>
+    <comment>IV_46</comment>
+  </data>
+  <data name="160" xml:space="preserve">
+    <value>The submitted transaction is not ISWC eligible and multiple matches have been found through the matching rules as per MAT/04</value>
+    <comment>PV/29</comment>
+  </data>
+  <data name="161" xml:space="preserve">
+    <value>Publisher is not a member of submitting agency</value>
+    <comment>EL/04</comment>
+  </data>
+  <data name="162" xml:space="preserve">
+    <value>Performer Firstname and Lastname values must not exceed 50 characters</value>
+    <comment>IV/47</comment>
+  </data>
+  <data name="163" xml:space="preserve">
+    <value>No matching Preferred ISWC has been found</value>
+    <comment>PV/29</comment>
+  </data>
+  <data name="164" xml:space="preserve">
+    <value>Multiple matching ISWCs have been found</value>
+    <comment>PV/29</comment>
+  </data>
+  <data name="166" xml:space="preserve">
+    <value>Resolution transactions (FSQ) are administered via CISAC only</value>
+    <comment>IV/49</comment>
+  </data>
+  <data name="167" xml:space="preserve">
+    <value>You cannot update a disambiguated work through this method. Please use another method such as the ISWC Agency Portal instead</value>
+    <comment>IV/51</comment>
+  </data>
+  <data name="168" xml:space="preserve">
+    <value>Submitted work code already exists</value>
+    <comment>PV/02</comment>
+  </data>
+  <data name="169" xml:space="preserve">
+    <value>The Locally Allocated ISWC provided already exists in the ISWC database</value>
+    <comment>PV/24</comment>
+  </data>
+  <data name="170" xml:space="preserve">
+    <value>Another submission exists in batch with same workcode</value>
+    <comment>IV/52</comment>
+  </data>
+  <data name="171" xml:space="preserve">
+    <value>The LocallyAllocatedIswc value provided is within the reserved T3 range.</value>
+    <comment>IV/53</comment>
+  </data>
+  <data name="172" xml:space="preserve">
+    <value>The specified Iswc cannot be demerged because it previously has not been merged.</value>
+    <comment>PV/12</comment>
+  </data>
+  <data name="173" xml:space="preserve">
+    <value>The specified agent version is not supported. Please update the agent version and try again.</value>
+    <comment>IV/54</comment>
+  </data>
+  <data name="174" xml:space="preserve">
+    <value>No ISWC metadata has changed.</value>
+    <comment>MD/18</comment>
+  </data>
+  <data name="175" xml:space="preserve">
+    <value>The continuation token provided is invalid.</value>
+    <comment>IV/55</comment>
+  </data>
+  <data name="176" xml:space="preserve">
+    <value>One or more Additional Workcodes provided already exist in ISWC database.</value>
+    <comment>IV/57</comment>
+  </data>
+  <data name="177" xml:space="preserve">
+    <value>One or more Additional Workcodes provided do not exist in ISWC database.</value>
+    <comment>IV/57</comment>
+  </data>
+  <data name="178" xml:space="preserve">
+    <value>Additional work numbers must exist on the same ISWC for update.</value>
+    <comment>PV/32</comment>
+  </data>
+  <data name="179" xml:space="preserve">
+    <value>Submission can not contain workcodes from agencies that are not part of this hub.</value>
+    <comment>IV/08</comment>
+  </data>
+  <data name="180" xml:space="preserve">
+    <value>ISWC not found</value>
+    <comment>PV/33</comment>
+  </data>
+  <data name="181" xml:space="preserve">
+    <value>Preview disambiguation is not available</value>
+    <comment>PV/33</comment>
+  </data>
+  <data name="182" xml:space="preserve">
+    <value>agencyWorkCodes field is not available for CUR/CAR transactions.</value>
+    <comment>PV/33</comment>
+  </data>
+  <data name="201" xml:space="preserve">
+    <value>DerivedFrom ISWCs do not match exactly one matching preferred ISWC</value>
+  </data>
+  <data name="202" xml:space="preserve">
+    <value>Merge ISWCs do not match exactly one matching preferred ISWC</value>
+  </data>
+  <data name="203" xml:space="preserve">
+    <value>Merge Agency Work Numbers do not match exactly one matching Agency Work Number</value>
+  </data>
+  <data name="247" xml:space="preserve">
+    <value>Submitted IPs do not match current ISWC Documentation</value>
+    <comment>PV/04, PV/20</comment>
+  </data>
+  <data name="248" xml:space="preserve">
+    <value>Label submissions cannot have more than one label identifier</value>
+    <comment>PV/04, PV/20</comment>
+  </data>
+  <data name="249" xml:space="preserve">
+    <value>The ISWC found by ISRC does not match the ISWC found by work metadata</value>
+    <comment>PV/34</comment>
+  </data>
+  <data name="250" xml:space="preserve">
+    <value>SubmitterDPID is required</value>
+    <comment>IV/59</comment>
+  </data>
+  <data name="251" xml:space="preserve">
+    <value>I.P. Name and Last Name are required</value>
+    <comment>IV/60</comment>
+  </data>
+  <data name="No Error Code" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>IV/25</comment>
+  </data>
+  <data name="No Error Code1" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>MD/13</comment>
+  </data>
+  <data name="No Error Code10" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>PV/14</comment>
+  </data>
+  <data name="No Error Code11" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>MD/17</comment>
+  </data>
+  <data name="No Error Code12" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>MD/01</comment>
+  </data>
+  <data name="No Error Code13" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>MD/03</comment>
+  </data>
+  <data name="No Error Code14" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>MD/06</comment>
+  </data>
+  <data name="No Error Code15" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>MD/08</comment>
+  </data>
+  <data name="No Error Code16" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>MD/09</comment>
+  </data>
+  <data name="No Error Code17" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>MD/10</comment>
+  </data>
+  <data name="No Error Code18" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>MD/11</comment>
+  </data>
+  <data name="No Error Code2" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>EL/01</comment>
+  </data>
+  <data name="No Error Code3" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>EL/03</comment>
+  </data>
+  <data name="No Error Code4" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>EL/02</comment>
+  </data>
+  <data name="No Error Code5" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>PV/02</comment>
+  </data>
+  <data name="No Error Code6" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>PV/03</comment>
+  </data>
+  <data name="No Error Code7" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>PV/10</comment>
+  </data>
+  <data name="No Error Code8" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>PV/11</comment>
+  </data>
+  <data name="No Error Code9" xml:space="preserve">
+    <value>No Error Message</value>
+    <comment>PV/12</comment>
+  </data>
+</root>

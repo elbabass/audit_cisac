@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>SpanishPoint.Azure.Iswc.Api.Tests.Documentation.GenerateDocs</AssemblyName>
+    <RootNamespace>SpanishPoint.Azure.Iswc.Api.Tests.Documentation.GenerateDocs</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Docs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="12.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Api.Tests\Api.Tests.csproj" />
+    <ProjectReference Include="..\..\Business.Tests\Business.Tests.csproj" />
+    <ProjectReference Include="..\..\Data.Tests\Data.Tests.csproj" />
+    <ProjectReference Include="..\..\Framework.Tests\Framework.Tests.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\IswcEligibilityValidator.Tests\IswcEligibilityValidator.Tests.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\LookupDataValidator.Tests\LookupDataValidator.Tests.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\MatchingComponent.Tests\MatchingComponent.Tests.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\MetadataStandardizationValidator.Tests\MetadataStandardizationValidator.Tests.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\PostMatchingValidator.Tests\PostMatchingValidator.Tests.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\ProcessingComponent.Tests\ProcessingComponent.Tests.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\StaticDataValidator.Tests\StaticDataValidator.Tests.csproj" />
+    <ProjectReference Include="..\..\Pipelines\MatchingPipeline.Tests\MatchingPipeline.Tests.csproj" />
+    <ProjectReference Include="..\..\Pipelines\PostMatchingPipeline.Tests\PostMatchingPipeline.Tests.csproj" />
+    <ProjectReference Include="..\..\Pipelines\ProcessingPipeline.Tests\ProcessingPipeline.Tests.csproj" />
+    <ProjectReference Include="..\..\Pipelines\ValidationPipeline.Tests\ValidationPipeline.Tests.csproj" />
+  </ItemGroup>
+
+</Project>

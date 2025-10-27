@@ -1,0 +1,18 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include table_header();
+  padding: 8px 0 8px 10px;
+}
+
+.icon {
+  height: 5px;
+  margin-left: 5px;
+}
+
+.subContainer {
+  @include display_flex;
+  @include flex_direction(row);
+  @include flex_align_items(center);
+}

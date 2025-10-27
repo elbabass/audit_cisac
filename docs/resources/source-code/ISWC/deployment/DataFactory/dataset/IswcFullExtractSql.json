@@ -1,0 +1,15 @@
+{
+	"name": "IswcFullExtractSql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

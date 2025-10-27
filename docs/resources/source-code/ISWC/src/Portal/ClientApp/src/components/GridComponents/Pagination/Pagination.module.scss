@@ -1,0 +1,120 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.paginationDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  @include flex_align_items(center);
+  @include regular_text;
+  height: 32px;
+}
+
+.showPerPageDiv {
+  @include display_flex;
+  @include flex_align_items(center);
+  @include flex_direction(row);
+  margin-right: 20px;
+  white-space: nowrap;
+  height: 100%;
+}
+
+.pageNumberDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  @include flex_align_items(center);
+  white-space: nowrap;
+  height: 100%;
+}
+
+.pageNumberInput {
+  width: 35px;
+  border: 1px solid $greyBorder;
+  text-align: center;
+  margin-right: 5px;
+  height: 100%;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $primaryBlack;
+  }
+}
+
+.resultsPerPageSelect {
+  margin: 0 5px 0 5px;
+  height: 100%;
+  width: 55px;
+  border: 1px solid $greyBorder;
+  padding-left: 5px;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $primaryBlack;
+  }
+}
+
+.resultsNumberDiv {
+  @include display_flex;
+  @include flex_align_items(center);
+  font-weight: bold;
+  white-space: nowrap;
+  margin-right: 10px;
+  height: 100%;
+}
+
+.inputDiv {
+  margin: 0 12px 0 12px;
+  height: 100%;
+}
+
+.showPerDiv {
+  height: 100%;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .paginationDiv {
+    @include flex_align_items(flex-end);
+  }
+
+  .showPerDiv {
+    @include flex_align_items(flex-end);
+    margin-right: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .paginationDiv {
+    @include flex_direction(column);
+    @include flex_align_items(flex-end);
+    height: auto;
+  }
+
+  .showPerPageDiv {
+    height: 25px;
+    margin-right: 0;
+  }
+
+  .showPerDiv {
+    @include flex_align_items(flex-end);
+  }
+
+  .pageNumberDiv {
+    margin-top: 10px;
+    height: 25px;
+  }
+
+  .resultsNumberDiv {
+    margin-right: none;
+  }
+}
+
+@media (min-width: 575px) and (max-width: 620px) {
+  .showPerPageDiv {
+    margin-right: 1%;
+  }
+
+  .resultsNumberDiv {
+    margin-right: 1%;
+  }
+}

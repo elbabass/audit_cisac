@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>SpanishPoint.Azure.Iswc.Pipelines.ProcessingPipeline</AssemblyName>
+    <RootNamespace>SpanishPoint.Azure.Iswc.Pipelines.ProcessingPipeline</RootNamespace>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bdo\Bdo.csproj" />
+    <ProjectReference Include="..\..\Framework\Framework.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\ProcessingComponent\ProcessingComponent.csproj" />
+  </ItemGroup>
+
+</Project>

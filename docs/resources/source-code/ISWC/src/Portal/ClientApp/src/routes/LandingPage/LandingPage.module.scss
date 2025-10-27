@@ -1,0 +1,111 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.background {
+  background-color: $greyBackground;
+  @include display_flex;
+  @include flex_direction(column);
+  @include flex(1);
+  @include flex_align_items(center);
+  height: 100%;
+}
+
+.logoContainer {
+  @include display_flex;
+  @include flex_align_items(center);
+  height: 150px;
+}
+
+.logo {
+  width: 250px;
+  height: 72px;
+}
+
+.contentContainer {
+  @include display_flex;
+  @include flex_direction(column);
+  height: 550px;
+  width: 75%;
+  background-color: $primaryWhite;
+  padding: 20px;
+}
+
+.textContainer {
+  @include flex(0.9);
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.captchaContainer {
+  @include flex_align_items(flex-start);
+  @include flex(0.1);
+  margin-top: 15px;
+}
+
+.buttonContainer {
+  @include display_flex;
+  @include flex_align_items(center);
+  height: 100px;
+  width: 75%;
+}
+
+.button {
+  @include display_flex;
+  margin-left: auto;
+  width: 150px;
+}
+
+.languageButton {
+  @include display_flex;
+  @include flex_justify(center);
+  width: 250px;
+  height: 40px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.selectLanguageText {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: $fs_heading2;
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 1024px) {
+  .contentContainer {
+    width: 90%;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .buttonContainer {
+    width: 90%;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .contentContainer {
+    width: 90%;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .captchaContainer {
+    @include flex_align_items(center);
+  }
+
+  .buttonContainer {
+    width: 90%;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

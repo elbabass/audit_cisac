@@ -1,0 +1,29 @@
+{
+	"name": "DciAssessmentSftp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CisacSftp",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DCI"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "SftpLocation",
+				"fileName": {
+					"value": "@concat('ISWC-DCI-EXPORT-', formatDateTime(pipeline().TriggerTime,'yyyyMMdd-HHmmss') , '.tsv.zip')",
+					"type": "Expression"
+				},
+				"folderPath": "/313/Out"
+			},
+			"columnDelimiter": "\t",
+			"compressionCodec": "ZipDeflate",
+			"escapeChar": "\\",
+			"quoteChar": ""
+		},
+		"schema": []
+	}
+}

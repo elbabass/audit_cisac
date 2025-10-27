@@ -1,0 +1,50 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.container {
+  color: $defaultFont;
+}
+
+.resultsContainer {
+  margin-top: 1.5rem;
+  margin-left: 140px;
+  margin-right: 140px;
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  @include heading_2();
+  color: $lightShade;
+  margin-bottom: 5px;
+}
+
+.cellDiv {
+  @include display_flex;
+  @include flex_direction(row);
+}
+
+.iconDiv {
+  margin-left: 8px;
+}
+
+.portalMessage {
+  @include display_flex;
+  @include flex_justify(center);
+  padding-top: 20px;
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 1024px) {
+  .resultsContainer {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .resultsContainer {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

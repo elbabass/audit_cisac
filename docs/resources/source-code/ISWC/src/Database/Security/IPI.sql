@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [IPI]
+    AUTHORIZATION [dbo];
+

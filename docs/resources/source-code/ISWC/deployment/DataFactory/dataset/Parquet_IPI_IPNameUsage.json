@@ -1,0 +1,40 @@
+{
+	"name": "Parquet_IPI_IPNameUsage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "IPI FullSync"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "IPNameUsage",
+				"fileSystem": "ipi-integration"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "IPNameNumber",
+				"type": "INT64"
+			},
+			{
+				"name": "Role",
+				"type": "UTF8"
+			},
+			{
+				"name": "CreationClass",
+				"type": "UTF8"
+			},
+			{
+				"name": "IPBaseNumber",
+				"type": "UTF8"
+			}
+		]
+	}
+}

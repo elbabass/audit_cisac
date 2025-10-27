@@ -1,0 +1,27 @@
+{
+	"name": "PotentialDuplicates_DisambiguationISWC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "ISWC_DisambiguationISWC.parquet",
+				"folderPath": {
+					"value": "PotentialDuplicates",
+					"type": "Expression"
+				},
+				"fileSystem": "reporting"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

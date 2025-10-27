@@ -1,0 +1,4 @@
+- After installing the packages in requirements.txt with **pip install -r requirements.txt**, run the smoke test in parrallel using **pytest -n auto tests/smoke_test.py**.
+- All tests get the ACK filename for their job out of the FileAudit container in Cosmos so the entire test suite can be run in parrallel without tests picking up the wrong output file from the agency directory. Just use **pytest -n auto**. to run using as many virtual cpu's as your machine has. Recommend to run with 5 or less if your total is greater than 5 as testing has shown more than this can introduce random failures.
+
+- The **settings.json** file contains the host, username, password, job id, bearer token values and API/Cosmos details for DEV and a file transform task can be used in the release definition to change the values for UAT.

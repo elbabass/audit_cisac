@@ -1,0 +1,114 @@
+{
+	"name": "Archive PostgreSql Database",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Each Table",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.TablesToCopy",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "Copy table",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzurePostgreSqlSource",
+									"query": {
+										"value": "@concat('select * from ', item())",
+										"type": "Expression"
+									}
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "csi_users",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ArchiveTable",
+									"type": "DatasetReference",
+									"parameters": {
+										"FileName": {
+											"value": "@concat(item(), '.parquet')",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"TablesToCopy": {
+				"type": "array",
+				"defaultValue": [
+					"csi.csi_audit",
+					"csi.csi_audit_req",
+					"csi.csi_audit_req_tx",
+					"csi.csi_audit_req_tx_error",
+					"csi.csi_audit_req_work",
+					"csi.csi_cisac_role_mapping",
+					"csi.csi_configuration",
+					"csi.csi_creator",
+					"csi.csi_intrpty",
+					"csi.csi_intrpty_roles",
+					"csi.csi_iswc",
+					"csi.csi_match_types",
+					"csi.csi_performer",
+					"csi.csi_request_type",
+					"csi.csi_society",
+					"csi.csi_std_rules",
+					"csi.csi_std_rules_data",
+					"csi.csi_std_rules_mapping",
+					"csi.csi_title_types",
+					"csi.csi_titles",
+					"csi.csi_users",
+					"csi.csi_workinfo",
+					"csi.csi_workinfo_ip",
+					"csi.csi_workinfo_performer",
+					"csi.csi_works",
+					"ipir.ipi_agm",
+					"ipir.ipi_basedat",
+					"ipir.ipi_ipnameusg",
+					"ipir.ipi_name",
+					"ipir.ipi_name_ref",
+					"ipir.ipi_sts"
+				]
+			}
+		},
+		"folder": {
+			"name": "Archiving"
+		},
+		"annotations": []
+	}
+}

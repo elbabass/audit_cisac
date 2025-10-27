@@ -1,0 +1,102 @@
+@import '../../../../shared/variables.scss';
+@import '../../../../shared/mixins.scss';
+
+.subHeader {
+  @include regular_text;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.margin {
+  margin-top: 30px;
+}
+
+.inputDiv {
+  height: 30px;
+}
+
+.dropdownDiv {
+  height: 25px;
+}
+
+.reasonBvltrDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  @include flex_justify(space-between);
+  margin-top: 30px;
+}
+
+.leftDiv {
+  @include flex(0.475);
+}
+
+.rightDiv {
+  @include flex(0.475);
+  @include flex_justify(flex-end);
+}
+
+.container {
+  margin-bottom: 30px;
+}
+
+.accordDiv {
+  margin-top: 20px;
+}
+
+.accordText {
+  @include regular_text;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.accordSubDiv {
+  @include regular_text;
+  background-color: $greyBackground;
+}
+
+.closeIconDiv {
+  width: 100%;
+  padding: 10px;
+}
+
+.closeIcon {
+  cursor: pointer;
+  float: right;
+  height: 10px;
+  width: 10px;
+}
+
+.textDiv {
+  width: 100%;
+  padding: 0 15px 15px 15px;
+}
+
+.textDivTitle {
+  color: $primaryRed;
+  font-weight: bold;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .reasonBvltrDiv {
+    @include flex_direction(column);
+  }
+
+  .leftDiv {
+    @include flex(1 1 auto);
+  }
+
+  .rightDiv {
+    @include flex(1 1 auto);
+    margin-top: 10px;
+  }
+
+  .gridDiv {
+    margin-bottom: 25px;
+  }
+}

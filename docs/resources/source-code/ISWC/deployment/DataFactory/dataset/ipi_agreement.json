@@ -1,0 +1,64 @@
+{
+	"name": "ipi_agreement",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "agmid",
+				"type": "Decimal"
+			},
+			{
+				"name": "amdt",
+				"type": "DateTime"
+			},
+			{
+				"name": "creclass",
+				"type": "String"
+			},
+			{
+				"name": "fromdt",
+				"type": "DateTime"
+			},
+			{
+				"name": "todt",
+				"type": "DateTime"
+			},
+			{
+				"name": "rgt",
+				"type": "String"
+			},
+			{
+				"name": "rol",
+				"type": "String"
+			},
+			{
+				"name": "shr",
+				"type": "Decimal"
+			},
+			{
+				"name": "signdt",
+				"type": "DateTime"
+			},
+			{
+				"name": "socid",
+				"type": "Decimal"
+			},
+			{
+				"name": "ipbasenr",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"ipir\".\"ipi_agm\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

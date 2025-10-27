@@ -1,0 +1,16 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.goBackDiv {
+  @include regular_text;
+  @include display_flex;
+  @include flex_align_items(center);
+  height: 30px;
+  width: 200px;
+  cursor: pointer;
+}
+
+.arrowIcon {
+  height: 13px;
+  margin-right: 5px;
+}

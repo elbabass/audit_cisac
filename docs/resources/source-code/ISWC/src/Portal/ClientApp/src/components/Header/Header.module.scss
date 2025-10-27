@@ -1,0 +1,170 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.header {
+  width: 100%;
+  @include display_flex();
+  padding-right: 0;
+  background-color: $primaryBlack;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  margin-bottom: 3px;
+}
+
+.headerLink {
+  @include regular_text;
+  text-align: center;
+}
+
+.headerItem {
+  padding: 0 10px 0 10px;
+  white-space: nowrap;
+}
+
+.headerLogo {
+  margin-left: 20px;
+  width: 200px;
+  height: 58px;
+}
+
+.settingsLink {
+  @include display_flex();
+  @include flex-justify(center);
+  text-align: right;
+  cursor: pointer;
+  position: relative;
+}
+
+.settingsItem {
+  width: 80px;
+  border-left: 1px solid $headerBorder;
+  color: #ffffff80;
+}
+
+.settingsText {
+  display: none;
+}
+
+.settingsIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  margin-bottom: 3px;
+}
+
+.settingsDropdown {
+  @include display_flex;
+  @include flex_direction(column);
+  position: absolute;
+  width: 160px;
+  right: 0;
+  top: 65px;
+  background-color: $primaryBlack;
+  z-index: 1;
+  border-top: 1px solid $headerBorder;
+}
+
+.dropdownButton {
+  @include display_flex;
+  @include regular_text();
+  @include flex_align_items(center);
+  height: 40px;
+  width: 100%;
+  border: 1px solid $headerBorder;
+  border-top: none;
+  border-right: none;
+  padding-left: 15px !important;
+  color: #ffffff80;
+  white-space: nowrap;
+}
+
+/* Tablet */
+@media (min-width: 575px) and (max-width: 1024px) {
+  .headerLogo {
+    margin-left: 0;
+    width: 150px;
+    height: 43px;
+  }
+  .headerItem {
+    border-left: 1px solid $headerBorder;
+  }
+  .settingsLink {
+    @include flex-justify(center);
+  }
+  .headerLink {
+    @include display_flex();
+    @include flex_direction(column !important);
+    @include flex_align_items(center);
+    font-size: 12px;
+  }
+  .icon {
+    margin-right: 0;
+  }
+  .settingsIcon {
+    margin-top: 10px;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+  .settingsDropdown {
+    top: 71px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 680px) {
+  .headerLogo {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .headerItem {
+    padding: 0 4px 0 4px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .headerLink {
+    text-align: left;
+  }
+  .headerItem {
+    width: 100%;
+    border-top: 1px solid $headerBorder;
+    padding: 5px 0;
+  }
+  .settingsItem {
+    padding: 5px 0 0;
+    width: 100%;
+    border-top: 1px solid $headerBorder;
+    border-left: none;
+  }
+  .settingsText {
+    @include display_flex();
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+  }
+  .settingsLink {
+    @include flex-justify(flex-start);
+  }
+  .settingsDropdown {
+    top: 53px;
+    width: 100vw;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .dropdownButton {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid $headerBorder;
+    padding-left: 0;
+  }
+  .toggler {
+    margin-right: 5px;
+  }
+}

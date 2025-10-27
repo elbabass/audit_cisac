@@ -1,0 +1,159 @@
+{
+	"name": "IswcCreator_FullDbSync",
+	"properties": {
+		"activities": [
+			{
+				"name": "Load into Delta table",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Process in batches",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/GenericJob/main_processauditjob",
+					"baseParameters": {
+						"load_iswc_data_sql_server": "True",
+						"interval_minutes": "0"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Get Batch Ranges",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "WITH NumberedRows \nAS \n(\n    SELECT \n        WorkInfoID,\n        ROW_NUMBER() OVER (ORDER BY WorkInfoID) AS RowNum\n    FROM ISWC.WorkInfo\n),\nPartitions\nAS\n(\nSELECT \n    *,\n    (RowNum - 1) / 5000000 + 1 AS PartitionNumber\nFROM NumberedRows\n)\nSELECT \n\tPartitionNumber AS BatchId,\n\tMIN(WorkInfoID) AS StartId,\n\tMAX(WorkInfoID) AS EndId\nFROM Partitions\nGROUP BY PartitionNumber\nORDER BY BatchId",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "IswcCreator_WorkInfo",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Process in batches",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Batch Ranges",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Batch Ranges').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 3,
+					"activities": [
+						{
+							"name": "Copy Iswc Data to data lake",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "SELECT * FROM Azure.Databricks_Iswc_Data WHERE WorkID BETWEEN @{item().StartId} AND @{item().EndId}",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "IswcCreator_IswcData",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "IswcCreator_IswcDataFile",
+									"type": "DatasetReference",
+									"parameters": {
+										"BatchId": {
+											"value": "@item().BatchId",
+											"type": "Expression"
+										},
+										"StartId": {
+											"value": "@item().StartId",
+											"type": "Expression"
+										},
+										"EndId": {
+											"value": "@item().EndId",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": []
+	}
+}

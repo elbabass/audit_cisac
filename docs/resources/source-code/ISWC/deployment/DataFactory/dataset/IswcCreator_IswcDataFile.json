@@ -1,0 +1,38 @@
+{
+	"name": "IswcCreator_IswcDataFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"BatchId": {
+				"type": "int"
+			},
+			"StartId": {
+				"type": "int"
+			},
+			"EndId": {
+				"type": "int"
+			}
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "IswcData_@{dataset().BatchId}_@{dataset().StartId}-@{dataset().EndId}.parquet",
+					"type": "Expression"
+				},
+				"folderPath": "IswcCreator/Batches",
+				"fileSystem": "reporting"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"name": "csi_matchtypes",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "code",
+				"type": "String"
+			},
+			{
+				"name": "description",
+				"type": "String"
+			},
+			{
+				"name": "created_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_user",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"csi\".\"csi_match_types\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

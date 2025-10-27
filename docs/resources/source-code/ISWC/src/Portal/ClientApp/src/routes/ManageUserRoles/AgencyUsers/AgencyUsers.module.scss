@@ -1,0 +1,17 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  color: $defaultFont;
+}
+
+.text {
+  font-size: $fs_regular;
+  margin-bottom: 1.5rem;
+}
+
+.input {
+  @include display_flex;
+  width: 250px;
+  margin-bottom: 1.5rem;
+}

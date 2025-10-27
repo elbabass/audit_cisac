@@ -1,0 +1,71 @@
+{
+	"name": "Azure_ISWC_Title",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TitleID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Status",
+				"type": "bit"
+			},
+			{
+				"name": "Concurrency",
+				"type": "timestamp"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedUserID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IswcID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "WorkInfoID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "StandardizedTitle",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TitleTypeID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"tableName": "Title"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

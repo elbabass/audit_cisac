@@ -1,0 +1,52 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  color: $defaultFont;
+  @include regular_text;
+}
+
+.dropdownDiv {
+  width: 250px;
+  margin-right: 30px;
+}
+
+.dropdownSwitchDiv {
+  @include display_flex;
+  @include flex(1);
+  margin-bottom: 40px;
+}
+
+.textDiv {
+  margin-bottom: 40px;
+}
+
+.dateDiv {
+  margin-bottom: 40px;
+}
+
+.actionButton {
+  @include display_flex;
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+.alertMessageDiv {
+  margin-bottom: 25px;
+}
+
+@media (max-width: 670px) {
+  .actionButton {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .dropdownSwitchDiv {
+    @include flex_direction(column);
+  }
+
+  .dropdownDiv {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+}

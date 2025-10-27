@@ -1,0 +1,29 @@
+{
+	"name": "IswcFullExtract_Archived",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('ISWC_DATA_', formatDateTime(pipeline().TriggerTime,'yyyyMMdd') , '_Preferred_Archive_list.dat')",
+					"type": "Expression"
+				},
+				"folderPath": "IswcFullExtract",
+				"fileSystem": "reporting"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "\\",
+			"quoteChar": ""
+		},
+		"schema": []
+	}
+}

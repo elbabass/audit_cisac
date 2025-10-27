@@ -1,0 +1,57 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include flex(1 1 auto);
+  @include display_flex;
+  @include flex_direction(column);
+}
+
+.tabButtonsDiv {
+  @include display_flex;
+  @include flex_direction(row);
+}
+
+.buttonDiv {
+  @include display_flex;
+  height: 40px;
+  @include regular_text();
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 1024px) {
+  .textDiv {
+    margin-left: 25px;
+    margin-top: 23px;
+  }
+
+  .tabButtonsDiv {
+    left: 25px;
+  }
+
+  .buttonDiv {
+    height: 35px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .textDiv {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  .buttonDiv {
+    @include flex_direction(column);
+    height: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1170px) {
+  .reportsButtonDiv {
+    @include flex_direction(column);
+    height: auto;
+    width: 100%;
+  }
+}

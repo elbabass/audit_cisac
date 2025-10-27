@@ -1,0 +1,21 @@
+﻿@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.container {
+  color: var(--primaryRed);
+  margin-left: 20px;
+}
+
+.buttonDiv {
+  display: flex;
+  width: 100px;
+  height: 28px;
+  margin-bottom: 10px;
+}
+
+.gridDiv {
+  @include display_flex;
+  margin-top: 10px;
+  width: 80%;
+  margin-bottom: 20px;
+}

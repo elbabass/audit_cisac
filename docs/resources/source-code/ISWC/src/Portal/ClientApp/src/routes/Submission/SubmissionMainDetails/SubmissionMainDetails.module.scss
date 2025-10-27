@@ -1,0 +1,65 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.gridTitles {
+  margin-bottom: 10px;
+  @include heading_2();
+  color: $lightShade;
+}
+
+.gridDiv {
+  margin-bottom: 40px;
+}
+
+.lookupGridCell {
+  @include display_flex;
+  @include flex_direction(row);
+  @include regular_text;
+  @include flex_align_items(center);
+  height: 100%;
+}
+
+.lookupButtonDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  margin-left: 10px;
+}
+
+.gridIconCellDiv {
+  margin-left: 7.5px;
+}
+
+.descriptionText {
+  @include regular_text;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.descriptionTextBold {
+  @include label_text;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.dropdownDiv {
+  max-width: 250px;
+  margin-bottom: 10px;
+}
+
+.nameNumberContainer {
+  @include display_flex;
+}
+
+.nameNumberSearch {
+  @include display_flex;
+  @include flex_justify(center);
+  height: 36px;
+  width: 35px;
+  border-top: 1px solid $greyBorder;
+  border-right: 1px solid $greyBorder;
+  border-bottom: 1px solid $greyBorder;
+  margin: auto;
+  &:hover {
+    cursor: pointer;
+  }
+}

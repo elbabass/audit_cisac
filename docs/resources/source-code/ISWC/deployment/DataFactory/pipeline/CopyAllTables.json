@@ -1,0 +1,2154 @@
+{
+	"name": "CopyAllTables",
+	"properties": {
+		"activities": [
+			{
+				"name": "ISWC_Performer",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "ISWC_ISWC",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT perf_id, lstname, fstname, created_dt, last_updated_dt, last_updated_user\nFROM csi.csi_performer;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_Performer]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_Performer]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "perf_id"
+								},
+								"sink": {
+									"name": "PerformerID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fstname"
+								},
+								"sink": {
+									"name": "FirstName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "lstname"
+								},
+								"sink": {
+									"name": "LastName",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_performer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_Performer",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Lookup_TitleType",
+				"description": "",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Lookup_RoleType",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT code, description, created_dt, last_updated_dt, last_updated_user\nFROM csi.csi_title_types;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[Lookup_TitleTypes]",
+						"sqlWriterTableType": "[Migration].[Azure_Lookup_TitleTypes]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "code"
+								},
+								"sink": {
+									"name": "Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "description"
+								},
+								"sink": {
+									"name": "Description",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_titletypes",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_Lookup_TitleTypes",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Lookup_RoleType",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Lookup_User",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT code, description, created_dt, last_updated_dt, last_updated_user\nFROM csi.csi_intrpty_roles;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[Lookup_RoleType]",
+						"sqlWriterTableType": "[Migration].[Azure_Lookup_RoleType]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "code"
+								},
+								"sink": {
+									"name": "Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "description"
+								},
+								"sink": {
+									"name": "Description",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_roles",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_Lookup_RoleType",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Lookup_MatchType",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Lookup_TitleType",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT code, description, created_dt, last_updated_dt, last_updated_user\nFROM csi.csi_match_types;\n"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[Lookup_MatchType]",
+						"sqlWriterTableType": "[Migration].[Azure_Lookup_MatchType]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "code"
+								},
+								"sink": {
+									"name": "Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "description"
+								},
+								"sink": {
+									"name": "Description",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_matchtypes",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_Lookup_MatchType",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Lookup_CisacRoleMapping",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Lookup_MatchType",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT csi_role, cisac_role, created_dt, last_updated_dt, last_updated_user\nFROM csi.csi_cisac_role_mapping;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[Lookup_CisacRoleMapping]",
+						"sqlWriterTableType": "[Migration].[Azure_Lookup_CisacRoleMapping]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "csi_role"
+								},
+								"sink": {
+									"name": "RoleType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cisac_role"
+								},
+								"sink": {
+									"name": "CisacRoleType",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_cisacrolemapping",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_Lookup_CisacRoleMapping",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Lookup_Agency",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Lookup_CisacRoleMapping",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT lpad(cast(code as char(3)), 3, '0'), \"name\", country, created_dt, last_updated_dt, last_updated_user\nFROM csi.csi_society;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[Lookup_Agency]",
+						"sqlWriterTableType": "[Migration].[Azure_Lookup_Agency]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "code"
+								},
+								"sink": {
+									"name": "AgencyID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "country"
+								},
+								"sink": {
+									"name": "Country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_society",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_Lookup_Agency",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "ISWC_ISWC",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Configuration_StandardizedTitle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT csi.csi_iswc.iswc_id, csi.csi_iswc.created_dt, csi.csi_iswc.last_updated_dt, csi.csi_iswc.last_updated_user, csi.csi_iswc.iswc, lpad(cast(csi.csi_iswc.society_code as char(3)), 3, '0')\nFROM csi.csi_iswc\nJOIN csi.csi_works on csi.csi_iswc.work_id = csi.csi_works.work_id;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_ISWC]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_ISWC]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "iswc_id"
+								},
+								"sink": {
+									"name": "IswcID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "iswc"
+								},
+								"sink": {
+									"name": "Iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "society_code"
+								},
+								"sink": {
+									"name": "AgencyID",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_works",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_ISWC",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "ISWC_WorkInfoPerformer",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "ISWC_Performer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "ISWC_WorkInfo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT perf_id, work_info_id, created_dt as created_dt_1, created_dt as created_dt_2, created_user\nFROM csi.csi_workinfo_performer;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_WorkInfoPerformer]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_WorkInfoPerformer]"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "work_info_id"
+								},
+								"sink": {
+									"name": "WorkInfoID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "perf_id"
+								},
+								"sink": {
+									"name": "PerformerID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt_1"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt_2"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "created_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_workinfoperformer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_WorkInfoPerformer",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "ISWC_Title",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "ISWC_WorkInfo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT csi.csi_titles.title_id, csi.csi_iswc.iswc_id, csi.csi_titles.title, csi.csi_titles.s_title, csi.csi_titles.type_code, csi.csi_titles.created_dt, csi.csi_titles.last_updated_dt, csi.csi_titles.last_updated_user, csi.csi_titles.work_info_id\nFROM csi.csi_titles\nJOIN csi.csi_iswc on csi.csi_titles.work_id = csi.csi_iswc.work_id;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_Title]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_Title]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "title_id",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "TitleID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "iswc_id"
+								},
+								"sink": {
+									"name": "IswcID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "work_info_id"
+								},
+								"sink": {
+									"name": "WorkInfoID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "s_title"
+								},
+								"sink": {
+									"name": "StandardizedTitle",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "title"
+								},
+								"sink": {
+									"name": "Title",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "type_code"
+								},
+								"sink": {
+									"name": "TitleTypeCode",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_titles",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_Title",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "ISWC_WorkInfo",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "ISWC_ISWC",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT  csi.csi_workinfo.work_info_id, csi.csi_iswc.iswc_id, csi.csi_workinfo.society_work_code, csi.csi_workinfo.source_db, lpad(cast(csi.csi_workinfo.society_code as char(3)), 3, '0'), csi.csi_workinfo.archived_iswc, csi.csi_workinfo.mwi_category, csi.csi_workinfo.match_type_code, csi.csi_workinfo.is_deleted, csi.csi_workinfo.cisnet_posted_dt, csi.csi_workinfo.cisnet_last_updated_dt, csi.csi_workinfo.created_dt, csi.csi_workinfo.last_updated_dt, csi.csi_workinfo.last_updated_user, csi.csi_workinfo.iswc_eligible, csi.csi_workinfo.ip_count\nFROM csi.csi_workinfo\nJOIN csi.csi_iswc on csi.csi_workinfo.work_id = csi.csi_iswc.work_id;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_WorkInfo]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_WorkInfo]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "work_info_id"
+								},
+								"sink": {
+									"name": "WorkInfoID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "iswc_id"
+								},
+								"sink": {
+									"name": "IswcID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "archived_iswc"
+								},
+								"sink": {
+									"name": "ArchivedIswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cisnet_last_updated_dt"
+								},
+								"sink": {
+									"name": "CisnetLastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "cisnet_posted_dt"
+								},
+								"sink": {
+									"name": "CisnetCreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ip_count"
+								},
+								"sink": {
+									"name": "IPCount",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "is_deleted"
+								},
+								"sink": {
+									"name": "IsDeleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "iswc_eligible"
+								},
+								"sink": {
+									"name": "IswcEligible",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "match_type_code"
+								},
+								"sink": {
+									"name": "MatchTypeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "mwi_category"
+								},
+								"sink": {
+									"name": "MwiCategory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "society_code"
+								},
+								"sink": {
+									"name": "AgencyID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "society_work_code"
+								},
+								"sink": {
+									"name": "AgencyWorkCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "source_db"
+								},
+								"sink": {
+									"name": "SourceDatabase",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_workinfo",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_WorkInfo",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "IPI_InterestedParty",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Configuration_StandardizedTitle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT ipbasenr, amdt, make_date(cast(birthyy as int), cast(birthmm as int), cast(birthdd as int)) as birthdate, birthplace, birthstate, make_date(cast(deathyy as int), cast(deathmm as int), cast(deathdd as int)) as deathdate, gender, iptyp, lpad(cast(socid as char(3)), 3, '0')\nFROM ipir.ipi_basedat;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[IPI_InterestedParty]",
+						"sqlWriterTableType": "[Migration].[Azure_IPI_InterestedParty]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ipbasenr"
+								},
+								"sink": {
+									"name": "IPBaseNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "amdt"
+								},
+								"sink": {
+									"name": "AmendedDateTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "birthdate"
+								},
+								"sink": {
+									"name": "BirthDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "birthplace"
+								},
+								"sink": {
+									"name": "BirthPlace",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "birthstate"
+								},
+								"sink": {
+									"name": "BirthState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deathdate"
+								},
+								"sink": {
+									"name": "DeathDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "gender"
+								},
+								"sink": {
+									"name": "Gender",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "iptyp"
+								},
+								"sink": {
+									"name": "Type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "socid"
+								},
+								"sink": {
+									"name": "AgencyID",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ipi_basedat",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_IPI_InterestedParty",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "ISWC_Creator",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "ISWC_WorkInfo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_Creator]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_Creator]",
+						"storedProcedureTableTypeParameterName": "Creator"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ip_base_number"
+								},
+								"sink": {
+									"name": "IPBaseNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "work_info_id"
+								},
+								"sink": {
+									"name": "WorkInfoID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "created_date"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_modified_date"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_modified_user_id"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "is_dispute"
+								},
+								"sink": {
+									"name": "IsDispute",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "role_type_id"
+								},
+								"sink": {
+									"name": "RoleTypeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "iswc_id"
+								},
+								"sink": {
+									"name": "IswcID",
+									"type": "Int64"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_creator",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_Creator",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "IPI_Agreement",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "IPI_InterestedParty",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT agmid, amdt, creclass, fromdt, todt, rgt, rol, shr, signdt, lpad(cast(socid as char(3)), 3, '0'), ipbasenr\nFROM ipir.ipi_agm;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[IPI_Agreement]",
+						"sqlWriterTableType": "[Migration].[Azure_IPI_Agreement]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "agmid"
+								},
+								"sink": {
+									"name": "AgreementID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "amdt"
+								},
+								"sink": {
+									"name": "AmendedDateTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "creclass"
+								},
+								"sink": {
+									"name": "CreationClass",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fromdt"
+								},
+								"sink": {
+									"name": "FromDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "todt"
+								},
+								"sink": {
+									"name": "ToDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "rgt"
+								},
+								"sink": {
+									"name": "EconomicRights",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "rol"
+								},
+								"sink": {
+									"name": "Role",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "shr"
+								},
+								"sink": {
+									"name": "SharePercentage",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "signdt"
+								},
+								"sink": {
+									"name": "SignedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "socid"
+								},
+								"sink": {
+									"name": "AgencyID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ipbasenr"
+								},
+								"sink": {
+									"name": "IPBaseNumber",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ipi_agreement",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_IPI_Agreement",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "IPI_Name",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "IPI_InterestedParty",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT ipnamenr, amdt, fstname, lstname, namecrea, nametyp, relipnamenr, lpad(cast(socid as char(3)), 3, '0') \nFROM ipir.ipi_name;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[IPI_Name]",
+						"sqlWriterTableType": "[Migration].[Azure_IPI_Name]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ipnamenr"
+								},
+								"sink": {
+									"name": "IPNameNumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "amdt"
+								},
+								"sink": {
+									"name": "AmendedDateTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "fstname"
+								},
+								"sink": {
+									"name": "FirstName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "lstname"
+								},
+								"sink": {
+									"name": "LastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "namecrea"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "nametyp"
+								},
+								"sink": {
+									"name": "TypeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "relipnamenr"
+								},
+								"sink": {
+									"name": "ForwardingNameNumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socid"
+								},
+								"sink": {
+									"name": "AgencyID",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ipi_name",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_IPI_Name",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "IPI_NameReference",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "IPI_Name",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT ipnamenr, amdt, ipbasenr\nFROM ipir.ipi_name_ref;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[IPI_NameReference]",
+						"sqlWriterTableType": "[Migration].[Azure_IPI_NameReference]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ipnamenr"
+								},
+								"sink": {
+									"name": "IPNameNumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "amdt"
+								},
+								"sink": {
+									"name": "AmendedDateTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ipbasenr"
+								},
+								"sink": {
+									"name": "IPBaseNumber",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ipi_ipinameref",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_IPI_NameReference",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "IPI_Status",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "IPI_InterestedParty",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT amdt, fromdt, todt, relipbasenr, stscde, ipbasenr\nFROM ipir.ipi_sts;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[IPI_Status]",
+						"sqlWriterTableType": "[Migration].[Azure_IPI_Status]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "amdt"
+								},
+								"sink": {
+									"name": "AmendedDateTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "fromdt"
+								},
+								"sink": {
+									"name": "FromDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "todt"
+								},
+								"sink": {
+									"name": "ToDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "relipbasenr"
+								},
+								"sink": {
+									"name": "ForwardingBaseNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "stscde"
+								},
+								"sink": {
+									"name": "StatusCode",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ipbasenr"
+								},
+								"sink": {
+									"name": "IPBaseNumber",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ipi_sts",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_IPI_Status",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "IPI_IPNameUsage",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "IPI_Name",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT ipnamenr, rol, creclass, ipbasenr\nFROM ipir.ipi_ipnameusg;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[IPI_IPNameUsage]",
+						"sqlWriterTableType": "[Migration].[Azure_IPI_IPNameUsage]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ipnamenr"
+								},
+								"sink": {
+									"name": "IPNameNumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "rol"
+								},
+								"sink": {
+									"name": "Role",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "creclass"
+								},
+								"sink": {
+									"name": "CreationClass",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ipbasenr"
+								},
+								"sink": {
+									"name": "IPBaseNumber",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ipi_ipnameusg",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_IPI_IPNameUsage",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Lookup_User",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "SELECT \"name\", description, created_dt, last_updated_dt, last_updated_user\nFROM csi.csi_users;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[Lookup_User]",
+						"sqlWriterTableType": "[Migration].[Azure_Lookup_User]"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUserID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "description"
+								},
+								"sink": {
+									"name": "Description",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_users",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_Lookup_User",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Configuration_StandardizedTitle",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Configuration_SourceSubmission",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select society_code, search_pattern, replace_pattern from csi.csi_std_rules_data\nwhere rule_id = 7;"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "society_code"
+								},
+								"sink": {
+									"name": "Society",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "search_pattern"
+								},
+								"sink": {
+									"name": "SearchPattern",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "replace_pattern"
+								},
+								"sink": {
+									"name": "ReplacePattern",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_std_rules_data",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_Configuration_StandardizedTitle",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Configuration_SourceSubmission",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Lookup_Agency",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select distinct on (society_code) LPAD(society_code::text, 3, '0') , created_dt, last_updated_dt, last_updated_user from csi.csi_configuration where society_code <> -1;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[Configuration_SubmissionSource]",
+						"sqlWriterTableType": "[Migration].[Azure_Configuration_SubmissionSource]",
+						"storedProcedureTableTypeParameterName": "SubmissionSource"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "society_code"
+								},
+								"sink": {
+									"name": "Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "LastModifiedUser",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_configuration",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_Configuration_SubmissionSource",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

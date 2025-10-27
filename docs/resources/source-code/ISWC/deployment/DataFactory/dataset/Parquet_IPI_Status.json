@@ -1,0 +1,48 @@
+{
+	"name": "Parquet_IPI_Status",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "IPI FullSync"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Status",
+				"fileSystem": "ipi-integration"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "AmendedDateTime",
+				"type": "INT96"
+			},
+			{
+				"name": "FromDate",
+				"type": "INT96"
+			},
+			{
+				"name": "ToDate",
+				"type": "INT96"
+			},
+			{
+				"name": "ForwardingBaseNumber",
+				"type": "UTF8"
+			},
+			{
+				"name": "StatusCode",
+				"type": "INT32"
+			},
+			{
+				"name": "IPBaseNumber",
+				"type": "UTF8"
+			}
+		]
+	}
+}

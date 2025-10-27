@@ -1,0 +1,62 @@
+{
+	"name": "Azure_ISWC_csi_audit_req_work",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "titles",
+				"type": "varchar"
+			},
+			{
+				"name": "ips",
+				"type": "varchar"
+			},
+			{
+				"name": "created_dt",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "soccde",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "socwrkcde",
+				"type": "varchar"
+			},
+			{
+				"name": "srcdb",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "update_seq",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "last_updated_dt",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "last_updated_user",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "ISWC",
+			"table": "csi_audit_req_work"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

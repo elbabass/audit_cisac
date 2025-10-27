@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SpanishPoint.Azure.Iswc.Api.Label</name>
+    </assembly>
+    <members>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Label.Configuration.Swagger.BaseController">
+            <summary>
+            Base Controller
+            </summary>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Label.Configuration.Swagger.ConfigureSwaggerOptions">
+            <summary>
+            Configures the Swagger generation options.
+            </summary>
+            <remarks>This allows API versioning to define a Swagger document per API version after the
+            <see cref="T:Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider"/> service has been resolved from the service container.</remarks>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Label.Configuration.Swagger.ConfigureSwaggerOptions.#ctor(Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SpanishPoint.Azure.Iswc.Api.Label.Configuration.Swagger.ConfigureSwaggerOptions"/> class.
+            </summary>
+            <param name="provider">The <see cref="T:Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider">provider</see> used to generate Swagger documents.</param>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Label.Configuration.Swagger.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Label.Controllers.AuditController">
+            <summary>
+            Audit Controller
+            </summary>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Label.Controllers.AuditController.#ctor(SpanishPoint.Azure.Iswc.Business.Managers.IAuditManager)">
+            <summary>
+            Audit Controller
+            </summary>
+            <param name="auditManager"></param>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Label.Controllers.AuditController.Search(System.String)">
+            <summary>Search Audit History by Preferred Iswc</summary>
+            <returns>List of logged submissions from Audit History</returns>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Label.Controllers.LookupController">
+            <summary>
+            Lookup Controller
+            </summary>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Label.Controllers.LookupController.#ctor(SpanishPoint.Azure.Iswc.Business.Managers.ILookupManager,SpanishPoint.Azure.Iswc.Business.Managers.IMessagingManager)">
+            <summary>
+            Lookup Controller
+            </summary>
+            <param name="lookupMananger"></param>
+            <param name="messagingManager"></param>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Label.Controllers.LookupController.GetLookupData">
+            <summary>Get Lookup Data</summary>
+            <returns>Lookup Data</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Label.Controllers.LookupController.GetIps(SpanishPoint.Azure.Iswc.Bdo.Ipi.InterestedPartySearchModel)">
+            <summary>Get IPs</summary>
+            <returns>List creators or publishers</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Label.Controllers.LookupController.GetErrorCodes">
+            <summary>
+            Get Error Codes
+            </summary>
+            <returns>List of error codes and their corresponding message.</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Label.V1.IISWC_Label_SubmissionController.AddLabelSubmissionBatchAsync(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Label.V1.SubmissionBatch})">
+            <summary>Array of ISWC submission objects that need to be added to the ISWC Database for a Label</summary>
+            <param name="body">Array of ISWC submission objects that need to be added to the ISWC Database for a Label</param>
+            <returns>Submissions processed</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Label.V1.ISWC_Label_SubmissionController.AddLabelSubmissionBatch(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Label.V1.SubmissionBatch})">
+            <summary>Array of ISWC submission objects that need to be added to the ISWC Database for a Label</summary>
+            <param name="body">Array of ISWC submission objects that need to be added to the ISWC Database for a Label</param>
+            <returns>Submissions processed</returns>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.ISWCMetadata.IswcStatus">
+            <summary>Indicator of ISWC being preferred or provisional</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.ISWCMetadata.Agency">
+            <summary>A CISAC code of a submitting agency that allocated this ISWC</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.ISWCMetadata.OriginalTitle">
+            <summary>Original title of a musical composition</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.ISWCMetadata.OtherTitles">
+            <summary>Other titles associated with musical composition (aka alternative titles)</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.ISWCMetadata.InterestedParties">
+            <summary>Interested party associated with musical composition, such as :composers, lyricist, translator, original and sub publishers</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.ISWCMetadata.ParentISWC">
+            <summary>A preferred ISWC of a parent of this ISWC. Presence of this field indicates that the ISWC merged to the parent.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.ISWCMetadata.LinkedISWC">
+            <summary>All linked preferred ISWCs. Presence of this field indicates that those ISWCs merged to this ISWC.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.ISWCMetadata.OverallParentISWC">
+            <summary>The preferred ISWC that is at the top of the chain of ISWCs.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.Submission.PreferredIswc">
+            <summary>The preferred ISWC</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.Submission.PreviewDisambiguation">
+            <summary>If this field is set to true, the submission will not be saved to the ISWC database if there are multiple matches. If this field is set to false or is not provided, the submission will be saved to the ISWC database.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.Submission.DisableAddUpdateSwitching">
+            <summary>If this field is set to true, the submission will be rejected if a submission already exists for the provided Agency Work Code.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.Submission.AllowProvidedIswc">
+            <summary>If this field is set to false, the submission will be rejected if the preferredIswc value cannot be found in the database. If this field is set to true and the preferredIswc value cannot be found in the database, a new ISWC record will be created with the value provided.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.Submission.DetailLevel">
+            <summary>Allow the return of limited ISWC metadata</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.SubmissionBatch.SubmissionId">
+            <summary>A unique submission identifier for this request. The same identifier will be populated for the submission in the response.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.Id">
+            <summary>An unique identifier assigned by the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.Iswc">
+            <summary>A preferred ISWC assigned by the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.IswcEligible">
+            <summary>Indicator of a submitter being Iswc Eligible</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.IswcStatus">
+            <summary>Indicator of ISWC being preferred or provisional</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.Deleted">
+            <summary>Indicator of a submission being logically deleted on CSINET</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.LinkedFrom">
+            <summary>The ISWC record that this is linked from</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.LinkedTo">
+            <summary>The ISWC record that this is linked to</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.ArchivedIswc">
+            <summary>The Archived ISWC</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.OverallParentISWC">
+            <summary>The preferred ISWC that is at the top of the chain of ISWCs.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.CreatedDate">
+            <summary>Data and time of creation in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.LastModifiedDate">
+            <summary>Data and time of the latest update in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmission.LastModifiedBy">
+            <summary>Identifier of the last update in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.VerifiedSubmissionBatch.SubmissionId">
+            <summary>The value of the submissionID from the request submission.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonSubmissionAttributes.CisnetCreatedDate">
+            <summary>Date and time when this metadata was created on CISNET</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonSubmissionAttributes.CisnetLastModifiedDate">
+            <summary>Date and time when this metadata last modified on CISNET</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonSubmissionAttributes.AdditionalIdentifiers">
+            <summary>Optional list of additional identifiers that can be supplied with the submission.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonISWCMetadata.IswcStatus">
+            <summary>Indicator of ISWC being preferred or provisional</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonISWCMetadata.Agency">
+            <summary>A CISAC code of a submitting agency that allocated this ISWC</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonISWCMetadata.OriginalTitle">
+            <summary>Original title of a musical composition</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonISWCMetadata.OtherTitles">
+            <summary>Other titles associated with musical composition (aka alternative titles)</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonISWCMetadata.InterestedParties">
+            <summary>Interested party associated with musical composition, such as :composers, lyricist, translator, original and sub publishers</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonSystemAttributes.CreatedDate">
+            <summary>Data and time of creation in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonSystemAttributes.LastModifiedDate">
+            <summary>Data and time of the latest update in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.CommonSystemAttributes.LastModifiedBy">
+            <summary>Identifier of the last update in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.Title.Title1">
+            <summary>Musical work title</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.Title.Type">
+            <summary>Musical work title type</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.InterestedParty.Name">
+            <summary>Full name of Interested Party</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Label.V1.InterestedParty.Role">
+            <summary>The role will be rolled up to the corresponding CISAC Role as per the following mapping: C(C,A,CA), MA(AR,SR), TA(AD,SA,TR) E(E,AM)</summary>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Label.V1.DisambiguationReason">
+            <summary>Disambiguation Reason Code</summary>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Label.V1.BVLTR">
+            <summary>Background, Logo, Theme, Visual or Rolled Up Cue</summary>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Label.V1.DerivedWorkType">
+            <summary>Derived Work Type- if not provided then this isn't a derived work</summary>
+        </member>
+    </members>
+</doc>

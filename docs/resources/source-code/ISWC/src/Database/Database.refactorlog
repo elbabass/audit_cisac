@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="8b9e3334-e607-4ff4-adec-e9ac06765654" ChangeDateTime="07/31/2019 14:49:54">
+    <Property Name="ElementName" Value="[dbo].[SubmissionSource].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SubmissionSource]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SubmissionSourceID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="24a65bb3-8d6b-440e-acf0-d6c8251925aa" ChangeDateTime="02/05/2020 17:00:20">
+    <Property Name="ElementName" Value="[dbo].[MergeType].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MergeType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MergeTypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ecc1442d-0769-4413-b0fc-07840364ff15" ChangeDateTime="02/05/2020 17:03:46">
+    <Property Name="ElementName" Value="[Lookup].[MergeStatus].[MergeTypeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Lookup].[MergeStatus]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MergeType" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a571318d-0a22-4494-843c-9a6e5a044363" ChangeDateTime="02/05/2020 17:22:59">
+    <Property Name="ElementName" Value="[dbo].[MergeType].[MergeTypeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MergeType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MergeTypeID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="370231dd-e33c-4def-b81b-76a7ac0b10ea" ChangeDateTime="02/06/2020 14:59:32">
+    <Property Name="ElementName" Value="[ISWC].[DeMergeRequest].[MergeStatus]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[ISWC].[DeMergeRequest]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DeMergeStatus" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c7c8f5a2-9ac0-493f-8944-d0140f5c4ad8" ChangeDateTime="02/28/2020 11:31:45">
+    <Property Name="ElementName" Value="[Configuration].[PK_HighWatermark]" />
+    <Property Name="ElementType" Value="SqlPrimaryKeyConstraint" />
+    <Property Name="ParentElementName" Value="[Configuration].[HighWatermark]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[PK_HWM_Name]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="360bcab7-f5f8-4e62-b3ec-0d4da30d14db" ChangeDateTime="04/20/2021 14:53:13">
+    <Property Name="ElementName" Value="[ISWC].[Creator].[[IsExcludedFromIswc]]]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[ISWC].[Creator]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsExcludedFromIswc" />
+  </Operation>
+</Operations>

@@ -1,0 +1,25 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include grid_container;
+  @include flex_direction(column);
+}
+
+.header {
+  @include display_flex;
+  @include flex_justify(flex-start);
+  margin-bottom: 50px;
+}
+
+.headerItem {
+  @include display_flex;
+  @include flex_direction(column);
+  @include flex_justify(center);
+  @include label_text;
+  margin-right: 80px;
+}
+
+.headerText {
+  padding-top: 14px;
+}

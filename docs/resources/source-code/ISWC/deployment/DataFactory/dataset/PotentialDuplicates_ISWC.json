@@ -1,0 +1,27 @@
+{
+	"name": "PotentialDuplicates_ISWC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "ISWC_ISWC.parquet",
+				"folderPath": {
+					"value": "PotentialDuplicates",
+					"type": "Expression"
+				},
+				"fileSystem": "reporting"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

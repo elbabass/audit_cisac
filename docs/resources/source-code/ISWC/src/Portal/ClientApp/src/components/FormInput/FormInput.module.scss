@@ -1,0 +1,114 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.inputContainer {
+  @include display_flex;
+  @include flex_direction(column);
+  width: 100%;
+}
+
+.container {
+  @include display_flex;
+  @include flex_direction(column);
+  max-width: 200px;
+}
+
+.dateContainer {
+  input[type='date']::-webkit-inner-spin-button,
+  input[type='date']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  @include display_flex;
+  @include flex_direction(row);
+  @include flex_align_items(center);
+  border: 1px solid $greyBorder;
+
+  input {
+    border: none;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+.formLabel {
+  color: $defaultFont;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  @include label_text();
+}
+
+.formInput {
+  color: $defaultFont;
+  border-radius: 0px;
+  border: 1px solid $greyBorder;
+  @include regular_text();
+  padding: 7px 0 7px 10px;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $primaryBlack;
+  }
+}
+
+.dateInput {
+  color: $defaultFont;
+  border-radius: 0px;
+  border: 1px solid $greyBorder;
+  @include regular_text();
+  padding: 6px 0 6px 10px;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $primaryBlack;
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .formInput {
+    padding: 10px 0 10px 10px;
+  }
+
+  .dateInput {
+    padding: 10px 0 10px 10px;
+  }
+}
+
+.dropdownInput {
+  color: $defaultFont;
+  border-radius: 0px;
+  border: 1px solid $greyBorder;
+  @include regular_text();
+  padding: 8.25px 0 9.25px 10px;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $primaryBlack;
+  }
+}
+
+.dateRangeInputContainer {
+  @include display_flex();
+  @include flex_direction(row);
+}
+
+.dateRangeItem {
+  margin-right: 20px;
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .dateRangeInputContainer {
+    @include flex_direction(column);
+  }
+
+  .dateRangeItem {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}

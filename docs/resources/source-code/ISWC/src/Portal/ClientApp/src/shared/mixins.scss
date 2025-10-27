@@ -1,0 +1,217 @@
+// Custom mixins
+
+@mixin heading_1() {
+  font-size: $fs_heading1;
+  font-weight: $fw_bold;
+}
+
+@mixin heading_2() {
+  font-size: $fs_heading2;
+  font-weight: $fw_semiBold;
+}
+@mixin heading_3() {
+  font-size: $fs_heading3;
+  font-weight: $fw_semiBold;
+}
+
+@mixin regular_text() {
+  font-size: $fs_regular;
+  font-weight: $fw_regular;
+}
+
+@mixin label_text() {
+  font-size: $fs_regular;
+  font-weight: $fw_semiBold;
+}
+
+@mixin table_header() {
+  font-size: $fs_regular;
+  font-weight: $fw_semiBold;
+}
+
+@mixin mobile_text_size($fontSize) {
+  font-size: $fontSize;
+}
+
+@mixin grid_container() {
+  @include display_flex;
+  width: 84%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+//Flex Mixins
+
+@mixin display_flex() {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin inline_flex() {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+@mixin flex_direction($property) {
+  -webkit-flex-direction: $property;
+  -ms-flex-direction: $property;
+  flex-direction: $property;
+}
+
+@mixin flex_wrap($property) {
+  @if $property == 'nowrap' {
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  } @else if $property == 'wrap' {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  } @else if $property == 'wrap-reverse' {
+    -webkit-flex-wrap: wrap-reverse;
+    -ms-flex-wrap: wrap-reverse;
+    flex-wrap: wrap-reverse;
+  }
+}
+
+@mixin flex_justify($property: flex-start) {
+  @if $property == 'flex-start' {
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  } @else if $property == 'flex-end' {
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  } @else if $property == 'center' {
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  } @else if $property == 'space-between' {
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  } @else if $property == 'space-around' {
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+}
+
+@mixin flex_align_content($property: flex-start) {
+  @if $property == 'flex-start' {
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+  } @else if $property == 'flex-end' {
+    -webkit-align-content: flex-end;
+    -ms-flex-line-pack: end;
+    align-content: flex-end;
+  } @else if $property == 'center' {
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+  } @else if $property == 'space-between' {
+    -webkit-align-content: space-between;
+    -ms-flex-line-pack: justify;
+    align-content: space-between;
+  } @else if $property == 'space-around' {
+    -webkit-align-content: space-around;
+    -ms-flex-line-pack: distribute;
+    align-content: space-around;
+  } @else if $property == 'stretch' {
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+  }
+}
+
+@mixin flex_align_items($property: flex-start) {
+  @if $property == 'flex-start' {
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  } @else if $property == 'flex-end' {
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  } @else if $property == 'center' {
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  } @else if $property == 'baseline' {
+    -webkit-align-items: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+  } @else if $property == 'stretch' {
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+  }
+}
+
+@mixin flex_align_self($property: flex-start) {
+  @if $property == 'auto' {
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+  } @else if $property == 'flex-start' {
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+  } @else if $property == 'flex-end' {
+    -webkit-align-self: flex-end;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+  } @else if $property == 'center' {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+  } @else if $property == 'baseline' {
+    -webkit-align-self: baseline;
+    -ms-flex-item-align: baseline;
+    align-self: baseline;
+  } @else if $property == 'stretch' {
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+  }
+}
+
+@mixin flex_order($property: 0) {
+  -webkit-order: $property;
+  -ms-flex-order: $property;
+  order: $property;
+}
+
+@mixin flex_grow($property: 0) {
+  -webkit-flex-grow: $property;
+  -ms-flex-positive: $property;
+  flex-grow: $property;
+}
+
+@mixin flex_shrink($property: 1) {
+  -webkit-flex-shrink: $property;
+  -ms-flex-negative: $property;
+  flex-shrink: $property;
+}
+
+@mixin flex_basis($property: 1) {
+  -webkit-flex-basis: $property;
+  flex-basis: $property;
+}
+
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+  -webkit-flex: $fg $fs $fb;
+  -moz-flex: $fg $fs $fb;
+  -ms-flex: $fg $fs $fb;
+  flex: $fg $fs $fb;
+}
+
+@mixin flex_center() {
+  @include flex(flex);
+  @include flex_align_items(center);
+  @include flex_justify(center);
+}

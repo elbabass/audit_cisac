@@ -1,0 +1,50 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.modalFooter {
+  @include display_flex;
+  @include flex_direction(row);
+  padding: 1rem;
+  border-top: 0 none;
+}
+
+.modalActionButton {
+  @include display_flex;
+  min-width: 100px;
+  margin-left: 15px;
+}
+
+.modalBody {
+  @include regular_text;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.modalHeader {
+  @include heading_1;
+  border-bottom: 0 none;
+  button {
+    padding: 0 !important;
+    opacity: 1;
+    padding-right: 5px !important;
+    outline: none;
+    span {
+      font-size: 20px;
+    }
+  }
+  h5 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.loader {
+  margin: 10px 0;
+}
+
+/* IE style */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .actionButtonBig {
+    width: 125px;
+  }
+}

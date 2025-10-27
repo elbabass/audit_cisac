@@ -1,0 +1,48 @@
+{
+	"name": "Azure_Lookup_RoleType",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "RoleTypeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Code",
+				"type": "char"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedUserID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "RoleType"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

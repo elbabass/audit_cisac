@@ -1,0 +1,78 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.mainContainer {
+  @include display_flex;
+  @include flex_direction(column);
+  padding: 5px 10px 5px 10px;
+  position: relative;
+}
+
+.container {
+  @include inline_flex;
+  @include flex_direction(row);
+  @include flex_align_items(center);
+  width: 100%;
+}
+
+.error {
+  border: 1px solid $errorAlert;
+  color: $errorAlert;
+  background-color: #ff70601f;
+}
+
+.success {
+  border: 1px solid $successAlert;
+  color: $successAlert;
+  background-color: #008f5831;
+}
+
+.info {
+  border: 1px solid $secondaryBlue;
+  color: $secondaryBlue;
+  background-color: #606aff1f;
+}
+
+.warn {
+  border: 1px solid $secondaryOrange;
+  color: $secondaryOrange;
+  background-color: #ff99002c;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+}
+
+.text {
+  @include label_text;
+  margin-left: 12px;
+  margin-top: 3px;
+}
+
+.viewMore {
+  @include label_text;
+  font-weight: normal;
+  padding: 1px 15px 0px 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.closeButton {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.portalSubMessage {
+  max-width: 950px;
+  padding: 10px 1px 2px 33px;
+}
+@media (max-width: 575px) {
+  .container {
+    @include flex_justify(center);
+    width: 100%;
+    max-width: none;
+  }
+}

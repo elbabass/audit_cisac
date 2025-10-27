@@ -1,0 +1,40 @@
+{
+	"name": "csi_cisacrolemapping",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "csi_role",
+				"type": "String"
+			},
+			{
+				"name": "cisac_role",
+				"type": "String"
+			},
+			{
+				"name": "created_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_user",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"csi\".\"csi_cisac_role_mapping\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

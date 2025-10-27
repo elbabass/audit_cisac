@@ -1,0 +1,22 @@
+{
+	"name": "SuisaSftp",
+	"properties": {
+		"annotations": [],
+		"type": "Sftp",
+		"typeProperties": {
+			"host": "ftp.suisa.ch",
+			"port": 22,
+			"skipHostKeyValidation": true,
+			"authenticationType": "Basic",
+			"userName": "cisac-sp",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "AzureKeyVaultSecret-DataFactory-Secret-SuisaIpiPassword"
+			}
+		}
+	}
+}

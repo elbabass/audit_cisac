@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>SpanishPoint.Azure.Iswc.PipelineComponents.ProcessingComponent</AssemblyName>
+    <RootNamespace>SpanishPoint.Azure.Iswc.PipelineComponents.ProcessingComponent</RootNamespace>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bdo\Bdo.csproj" />
+    <ProjectReference Include="..\..\Business\Business.csproj" />
+    <ProjectReference Include="..\..\Framework\Framework.csproj" />
+  </ItemGroup>
+
+
+</Project>

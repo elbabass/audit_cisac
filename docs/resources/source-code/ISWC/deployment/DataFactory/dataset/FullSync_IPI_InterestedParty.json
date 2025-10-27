@@ -1,0 +1,60 @@
+{
+	"name": "FullSync_IPI_InterestedParty",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "IPIAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "IPI FullSync"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "IPBaseNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AmendedDateTime",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "BirthDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "BirthPlace",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BirthState",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeathDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "Gender",
+				"type": "char"
+			},
+			{
+				"name": "Type",
+				"type": "char"
+			},
+			{
+				"name": "AgencyID",
+				"type": "char"
+			}
+		],
+		"typeProperties": {
+			"schema": "IPI",
+			"table": "InterestedParty"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

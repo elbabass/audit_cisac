@@ -1,0 +1,103 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  color: $defaultFont;
+  @include regular_text;
+}
+
+.chartRowDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  width: 100%;
+  margin-top: 50px;
+}
+
+.chartDiv {
+  width: 50%;
+}
+
+.mainDiv {
+  @include display_flex;
+  @include flex_direction(column);
+}
+
+.title {
+  @include heading_2();
+  color: $lightShade;
+}
+
+.dropdownRow {
+  @include display_flex;
+  @include flex_direction(row);
+  margin-top: 15px;
+}
+
+.dropdownDiv {
+  width: 250px;
+  margin-right: 30px;
+}
+
+.filtersDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  margin-bottom: 20px;
+}
+
+.label {
+  @include label_text;
+  margin-bottom: 15px;
+}
+
+.checkBoxRow {
+  @include display_flex;
+  @include flex_direction(row);
+  @include label_text;
+}
+
+.checkBox {
+  margin-right: 20px;
+}
+
+.actionButton {
+  @include display_flex;
+  width: 180px;
+  margin-top: 20px;
+}
+
+.graphView {
+  margin-top: 20px;
+}
+
+@media (max-width: 670px) {
+  .actionButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 750px) {
+  .chartDiv {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .chartRowDiv {
+    @include flex_direction(column);
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .filtersDiv {
+    @include flex_direction(column);
+  }
+
+  .dropdownRow {
+    @include flex_direction(column);
+  }
+
+  .dropdownDiv {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

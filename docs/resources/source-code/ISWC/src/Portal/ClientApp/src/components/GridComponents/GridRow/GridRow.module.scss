@@ -1,0 +1,96 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  border-bottom: solid 1px $greyBorder;
+  background-color: $primaryWhite;
+}
+
+.gridCell {
+  @include regular_text();
+  vertical-align: top;
+  padding: 6px 10px 6px 10px;
+  max-width: 200px;
+}
+
+.messageContainer {
+  border-bottom: none;
+}
+
+.messageRow {
+  border-bottom: solid 1px $greyBorder;
+}
+
+.messsageCell {
+  padding-bottom: 5px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .block {
+    display: block;
+  }
+
+  .container {
+    border-top: solid 1px $greyBorder;
+    border-right: solid 1px $greyBorder;
+    border-left: solid 1px $greyBorder;
+    border-bottom: none;
+  }
+
+  .messageContainer {
+    border-top: solid 1px $greyBorder;
+    border-right: solid 1px $greyBorder;
+    border-left: solid 1px $greyBorder;
+  }
+
+  .messageRow {
+    border-right: solid 1px $greyBorder;
+    border-left: solid 1px $greyBorder;
+    margin-bottom: 25px;
+  }
+
+  .messsageCell {
+    padding-top: 5px;
+  }
+
+  .containerMargin {
+    margin-bottom: 25px;
+  }
+
+  .rowDiv {
+    td:before {
+      @include display_flex;
+      @include flex(0.3);
+      @include flex_align_items(center);
+      @include table_header();
+      content: attr(id);
+    }
+  }
+
+  .gridCell {
+    @include display_flex;
+    @include flex_direction(row);
+    @include flex_align_items(center);
+    border-bottom: solid 1px $greyBorder;
+    max-width: none;
+    padding: 15px 15px 15px 15px;
+  }
+
+  .gridCellRightTablet {
+    @include display_flex;
+    @include flex_direction(row);
+    @include flex(0.7);
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .gridCellRightTabletMax {
+    max-height: 28px;
+  }
+
+  .gridCell {
+    padding: 10px !important;
+  }
+}

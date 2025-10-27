@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>SpanishPoint.Azure.Iswc.PipelineComponents.PostMatchingValidator</AssemblyName>
+    <RootNamespace>SpanishPoint.Azure.Iswc.PipelineComponents.PostMatchingValidator</RootNamespace>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\Business.csproj" />
+    <ProjectReference Include="..\IswcEligibilityValidator\IswcEligibilityValidator.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,56 @@
+{
+	"name": "ipi_basedat",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "ipbasenr",
+				"type": "String"
+			},
+			{
+				"name": "amdt",
+				"type": "DateTime"
+			},
+			{
+				"name": "birthdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "birthplace",
+				"type": "String"
+			},
+			{
+				"name": "birthstate",
+				"type": "String"
+			},
+			{
+				"name": "deathdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "gender",
+				"type": "String"
+			},
+			{
+				"name": "iptyp",
+				"type": "String"
+			},
+			{
+				"name": "socid",
+				"type": "Decimal"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"ipir\".\"ipi_basedat\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

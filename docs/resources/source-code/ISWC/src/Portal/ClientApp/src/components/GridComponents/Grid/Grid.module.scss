@@ -1,0 +1,103 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include display_flex;
+  @include flex(1 1 auto);
+  @include flex_direction(column);
+  width: 100%;
+  height: auto;
+}
+
+.tableContainer {
+  @include display_flex;
+  @include flex(1 1 auto);
+  @include flex_direction(column);
+}
+
+.tableHeader {
+  background: $primaryWhite;
+  border-bottom: solid 4px $greyBackground;
+}
+
+.table {
+  @include regular_text();
+  background: $primaryWhite;
+  width: 100%;
+}
+
+.tableBorder {
+  border: solid 1px $greyBorder;
+}
+
+.gridRow {
+  border-bottom: solid 1px $greyBorder;
+  background-color: white;
+}
+
+.selectAllContainer {
+  @include table_header();
+  @include display_flex;
+  @include flex_align_items(center);
+  padding: 5px 0 5px 10px;
+}
+
+.bottomPagination {
+  margin-top: 15px;
+}
+
+.tableBanner {
+  margin-bottom: 1.5rem;
+  background-color: $greyBackground;
+  padding: 5px;
+}
+
+.tableBanner span {
+  color: $primaryBlack;
+  font-size: 1rem;
+}
+
+.indicator::before {
+  content: "*";
+  color: $primaryRed;
+  margin-right: 5px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* IE style */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .table {
+    table-layout: fixed !important;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    thead,
+    tbody,
+    tr {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+
+    table {
+      table-layout: fixed;
+    }
+  }
+
+  .tableBorder {
+    border: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .bottomPagination {
+    margin-top: 0;
+  }
+}

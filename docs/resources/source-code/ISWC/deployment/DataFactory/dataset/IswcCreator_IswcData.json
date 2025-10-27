@@ -1,0 +1,19 @@
+{
+	"name": "IswcCreator_IswcData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "Azure",
+			"table": "Databricks_Iswc_Data"
+		}
+	}
+}
