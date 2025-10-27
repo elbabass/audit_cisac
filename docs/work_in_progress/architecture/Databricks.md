@@ -70,18 +70,22 @@ From Workshop 2 and Azure infrastructure discussion:
 
 ### Storage Architecture
 
-```
-SFTP Upload
-    ↓
-Azure Storage Account (File Shares)
-    ↓
-Data Lake Storage (Input Folder)
-    ↓
-Databricks Processing (PySpark Notebooks)
-    ↓
-Data Lake Storage (Output Folder - Intermediate CSV/Parquet)
-    ↓
-SQL Server (ISWC Database) + Cosmos DB (Audit)
+```mermaid
+flowchart TD
+    A[SFTP Upload] --> B[Azure Storage Account<br/>File Shares]
+    B --> C[Data Lake Storage<br/>Input Folder]
+    C --> D[Databricks Processing<br/>PySpark Notebooks]
+    D --> E[Data Lake Storage<br/>Output Folder<br/>Intermediate CSV/Parquet]
+    E --> F[SQL Server<br/>ISWC Database]
+    E --> G[Cosmos DB<br/>Audit]
+
+    style A fill:#e1f5ff
+    style B fill:#fff4e1
+    style C fill:#e8f5e9
+    style D fill:#f3e5f5
+    style E fill:#e8f5e9
+    style F fill:#ffe0e0
+    style G fill:#ffe0e0
 ```
 
 ---
@@ -152,7 +156,7 @@ The primary documented use case is **IPI (Interested Party Information) synchron
 
 **File Structure:**
 
-```
+```plaintext
 HDR  (Header - one per file)
 GRH  (Group Header - one per file)
   IPA Transaction (one per Interested Party)
@@ -260,31 +264,27 @@ Both paths result in same data model and trigger same workflows.
 
 From Workshop 2 architecture diagram:
 
-```
-┌────────────────────────────────────┐
-│  Agency SFTP Folders               │
-│  (Azure Storage Account)           │
-└──────────────┬─────────────────────┘
-               ↓
-┌────────────────────────────────────┐
-│  Data Lake Storage                 │
-│  (Input/Output/Archive folders)    │
-└──────────────┬─────────────────────┘
-               ↓
-┌────────────────────────────────────┐
-│  Data Factory Pipelines            │
-│  (Orchestration & Triggers)        │
-└──────────────┬─────────────────────┘
-               ↓
-┌────────────────────────────────────┐
-│  **DATABRICKS**                    │
-│  (PySpark Notebooks)               │
-└──────┬────────────────┬────────────┘
-       ↓                ↓
-┌─────────────┐  ┌─────────────┐
-│ SQL Server  │  │  Cosmos DB  │
-│ (Metadata)  │  │  (Audit)    │
-└─────────────┘  └─────────────┘
+```mermaid
+flowchart TD
+    A[Agency SFTP Folders<br/>Azure Storage Account]
+    B[Data Lake Storage<br/>Input/Output/Archive folders]
+    C[Data Factory Pipelines<br/>Orchestration & Triggers]
+    D[DATABRICKS<br/>PySpark Notebooks]
+    E[SQL Server<br/>Metadata]
+    F[Cosmos DB<br/>Audit]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    D --> F
+
+    style A fill:#e1f5ff,stroke:#0288d1,stroke-width:2px
+    style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px,font-weight:bold
+    style E fill:#ffebee,stroke:#c62828,stroke-width:2px
+    style F fill:#ffebee,stroke:#c62828,stroke-width:2px
 ```
 
 ---
@@ -361,35 +361,58 @@ From Workshop 2 architecture diagram:
 
 > **From [IPI Integration Spec](../../resources/core_design_documents/SPE_20191001_ISWC_IPI_Integration/SPE_20191001_ISWC_IPI_Integration.md) → Section 3 "IPI EDI File Based Full Resynch Process" (Architecture Diagram):**
 
+#### High-Level Workflow
+
+```mermaid
+flowchart TD
+    A[IPI Quarterly Export Files<br/>1GB each]
+    B[Manual Upload to Data Lake<br/>IPI Full Resynch/input]
+    C[Databricks Notebook Execution<br/>6 processing steps]
+    D[ISWC System<br/>→ Maintenance Mode]
+    E[Replace IPI Tables in SQL Server<br/>6 tables replaced]
+    F[Update High-Water-Mark<br/>from Timestamp file]
+    G[ISWC System<br/>→ Normal Mode]
+    H[Move Files to Archive Folder]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+
+    style A fill:#e3f2fd
+    style B fill:#fff3e0
+    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
+    style D fill:#ffe0b2
+    style E fill:#ffebee,stroke:#c62828,stroke-width:2px
+    style F fill:#e8f5e9
+    style G fill:#c8e6c9
+    style H fill:#f5f5f5
 ```
-IPI Quarterly Export Files (1GB each)
-    ↓
-[Manual Upload to Data Lake: IPI Full Resynch/input]
-    ↓
-Databricks Notebook Execution:
-    1. Unzip files
-    2. Validate file structure (HDR, GRH, GRT, TRL)
-    3. Parse IPA transactions
-    4. Extract data per field mappings
-    5. Generate intermediate files (CSV/Parquet)
-    6. Deduplicate [IPI.Name] records
-    ↓
-[ISWC System → Maintenance Mode]
-    ↓
-Replace IPI tables in SQL Server:
-    - [InterestedParty]
-    - [Name]
-    - [NameReference]
-    - [IPNameUsage]
-    - [Status]
-    - [Agreement]
-    ↓
-Update high-water-mark from Timestamp file
-    ↓
-[ISWC System → Normal Mode]
-    ↓
-Move files to archive folder
-```
+
+#### Databricks Processing Steps (Step C)
+
+The Databricks notebook performs the following operations:
+
+1. **Unzip files** - Extracts compressed IPI export files
+2. **Validate file structure** - Checks for required sections: HDR, GRH, GRT, TRL
+3. **Parse IPA transactions** - Reads and parses interested party records
+4. **Extract data per field mappings** - Maps EDI fields to ISWC database schema
+5. **Generate intermediate files** - Creates CSV/Parquet files for each table
+6. **Deduplicate [IPI.Name] records** - Removes duplicate name entries
+
+#### SQL Server Tables Replaced (Step E)
+
+The following IPI tables are completely replaced during the resynch process:
+
+- `[IPI].[InterestedParty]` - Core interested party information
+- `[IPI].[Name]` - Name records for interested parties
+- `[IPI].[NameReference]` - References between names and interested parties
+- `[IPI].[IPNameUsage]` - Usage information for IP names
+- `[IPI].[Status]` - Status history for interested parties
+- `[IPI].[Agreement]` - Agreement records between parties and societies
 
 ### Error Handling
 
@@ -606,6 +629,7 @@ The following source code files in the ISWC system interact with or reference Da
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | 2025-10-24 | Audit Team | Initial document based on IPI Integration spec and Workshop 2; Documented file processing architecture, IPI use case, technical debt issues, integration points |
+| 1.1 | 2025-10-27 | Audit Team | Added comprehensive Source Code References section (33 files); Converted ASCII diagrams to Mermaid flowcharts for better visualization; Simplified complex workflow diagrams with text explanations |
 
 ---
 
