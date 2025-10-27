@@ -1,0 +1,149 @@
+{
+  "table_of_contents": [
+    {
+      "title": "PROFESSIONAL SERVICES AGREEMENT",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          152.89999389648438,
+          124.5732421875
+        ],
+        [
+          424.21197509765625,
+          124.5732421875
+        ],
+        [
+          424.21197509765625,
+          134.76409912109375
+        ],
+        [
+          152.89999389648438,
+          134.76409912109375
+        ]
+      ]
+    },
+    {
+      "title": "Terms:",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          90.02399444580078,
+          465.8134765625
+        ],
+        [
+          112.79327392578125,
+          465.8134765625
+        ],
+        [
+          112.79327392578125,
+          477.3987731933594
+        ],
+        [
+          90.02399444580078,
+          477.3987731933594
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          239
+        ],
+        [
+          "TableCell",
+          130
+        ],
+        [
+          "Line",
+          65
+        ],
+        [
+          "ListItem",
+          14
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Form",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          55
+        ],
+        [
+          "Line",
+          15
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/PSA5499_CISAC Azure ISWC Infrastructure Update_20253103"
+}
