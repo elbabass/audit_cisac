@@ -23,14 +23,15 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 - [ ] **Agency portal access** - Required for use case understanding
 - [ ] **Source code access** - Critical for technical audit (BLOCKED - approval process ongoing)
-- [ ] **Database access** - SQL credentials for Dev/UAT environments (in progress)
+- [x] **Database access** - SQL credentials for Dev/UAT environments (in progress)
 - [ ] **CI/CD access** - To review deployment and testing processes
 - [ ] **API Management subscriptions** - For all four API types (societies, publishers, labels, third parties)
+  - [ ] Bastien+Guillaume : verify accesses
 
 ### 2.2 From CISAC
 
 - [ ] **Hyperscale evolution proposal** - Architecture upgrade documentation
-- [ ] **Performance improvement proposal** - Provide document from Spanish point with the evolution including "Hyperscale"
+- [ ] **Agency portal access** - Required for use case understanding --> Yann to provide access in UAT
 
 ---
 
@@ -49,9 +50,9 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **Evidence from meetings:**
 
-> **Xiyuan Zeng (WS1):** "For Cisac component... that one probably more likely to be allowed. For the matching part is probably not going to be allowed."
+> **Xiyuan Zeng** in [Workshop 1 - Spanish Point Audit Relaunch](../meetings/20251020-SpanishPoint-AuditRelaunch.md): "For Cisac component... that one probably more likely to be allowed. For the matching part is probably not going to be allowed."
 >
-> **Yann LEBREUILLY (WS2, 00:03:16):** "I found that it's in the terms of a contract to have access to both the code for especially the ISWC Cisac code and the matching engine."
+> **Yann LEBREUILLY** at 00:03:16 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "I found that it's in the terms of a contract to have access to both the code for especially the ISWC Cisac code and the matching engine."
 
 **Three-phase explanation evolution:**
 
@@ -63,29 +64,29 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **Yann's Strategic Vision:**
 
-> **Yann (Discussion YGB, 27:54):** "Ma vision moyen terme, c'est de me passer de eux, en fait, tout simplement. C'est ça la réalité aujourd'hui, parce que je ne peux pas gérer un SI sur lequel je n'ai pas la main, et actuellement je n'ai pas la main du tout."
+> **Yann LEBREUILLY** at 27:54 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Ma vision moyen terme, c'est de me passer de eux, en fait, tout simplement. C'est ça la réalité aujourd'hui, parce que je ne peux pas gérer un SI sur lequel je n'ai pas la main, et actuellement je n'ai pas la main du tout."
 >
 > Translation: "My medium-term vision is to get rid of them, quite simply. That's the reality today, because I cannot manage an IS that I don't control, and currently I have no control at all."
 
 **Initial Meeting Atmosphere:**
 
-> **Guillaume's Notes (Oct 20):** "Ambiance froide" (Cold atmosphere)
+> **Guillaume Jay** in [Meeting Notes - October 20](../meetings/2025-10-20-NotesGuillaume.txt): "Ambiance froide" (Cold atmosphere)
 >
-> **Guillaume (Discussion YGB, 08:14):** "Moi, je suis moins indulgent que Bastien, effectivement. j'ai pris une telle baffe hier, une telle froideur, j'avais fait un audit en début d'année... eux aussi ils ont plein de trucs hyper propriétaires, mais les gens ils étaient enthousiastes, ils participaient au truc, il y avait un partenariat."
+> **Guillaume Jay** at 08:14 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Moi, je suis moins indulgent que Bastien, effectivement. j'ai pris une telle baffe hier, une telle froideur, j'avais fait un audit en début d'année... eux aussi ils ont plein de trucs hyper propriétaires, mais les gens ils étaient enthousiastes, ils participaient au truc, il y avait un partenariat."
 
 **Yann's Assessment:**
 
-> **Yann (Discussion YGB, 03:20):** "Pour moi, il y a beaucoup de choses qui ne vont pas sur le management de ce produit... la gouvernance est bancale... Donc, pour moi, c'est un marasme, ce truc-là."
+> **Yann LEBREUILLY** at 03:20 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Pour moi, il y a beaucoup de choses qui ne vont pas sur le management de ce produit... la gouvernance est bancale... Donc, pour moi, c'est un marasme, ce truc-là."
 
 **Defensive Attitude Observations:**
 
-> **Bastien (Discussion YGB, 05:57):** "Oui, alors ils sont beaucoup sur la défensive... le moment d'incompréhension où je t'ai rappelé, il était énorme, mais ils étaient deux, ils écoutaient, on voyait qu'ils écoutaient. ils ne venaient pas à notre aide."
+> **Bastien Gallay** at 05:57 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Oui, alors ils sont beaucoup sur la défensive... le moment d'incompréhension où je t'ai rappelé, il était énorme, mais ils étaient deux, ils écoutaient, on voyait qu'ils écoutaient. ils ne venaient pas à notre aide."
 
 ### 3.3 Technical Complexity & Admissions ⚠️
 
 **Xiyuan's Complexity Warning:**
 
-> **Xiyuan (WS2, 1:32:02):** "You're going to be surprised for the code because code is not just one one project... it's actually very complicated... You won't find it easy to read the source code you won't find that guarantee it has its own life cycles and with I think many developers touched it and modified it."
+> **Xiyuan Zeng** at 1:32:02 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "You're going to be surprised for the code because code is not just one one project... it's actually very complicated... You won't find it easy to read the source code you won't find that guarantee it has its own life cycles and with I think many developers touched it and modified it."
 
 **Development Environment:**
 
@@ -104,7 +105,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **Xiyuan's Confirmation:**
 
-> **Xiyuan (WS2, 51:58):** "Any feature... those were the specification or whatever, those were the documentation at that point in time, and then the system would then be implemented."
+> **Xiyuan Zeng** at 51:58 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "Any feature... those were the specification or whatever, those were the documentation at that point in time, and then the system would then be implemented."
 
 #### Areas of Concern ⚠️
 
@@ -114,19 +115,19 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **Yann's Criticism:**
 
-> **Yann (Discussion YGB, 03:20):** "La documentation n'est pas disponible quand on le veut, quand on le demande. Il faut que nous repassions derrière le fournisseur pour pouvoir classer notre documentation parce que c'est confus tout ça."
+> **Yann LEBREUILLY** at 03:20 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "La documentation n'est pas disponible quand on le veut, quand on le demande. Il faut que nous repassions derrière le fournisseur pour pouvoir classer notre documentation parce que c'est confus tout ça."
 
 ### 3.5 Governance & Process Failures ⚠️ 🔴
 
 #### Major Production Incident (May-June 2024)
 
-> **Yann (Discussion YGB, 41:40):** "On a mis six mois à fixer tous les problèmes qu'il y a eu à ce moment-là. Il y a eu un merge qui a eu lieu avec du code qui était en POC. Un POC sur un autre projet, ça a été mergé avec la branche principale et c'est sorti en prod. Et ça nous a valu pratiquement six mois de Gallay, d'incidents incessants."
+> **Yann LEBREUILLY** at 41:40 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "On a mis six mois à fixer tous les problèmes qu'il y a eu à ce moment-là. Il y a eu un merge qui a eu lieu avec du code qui était en POC. Un POC sur un autre projet, ça a été mergé avec la branche principale et c'est sorti en prod. Et ça nous a valu pratiquement six mois de Gallay, d'incidents incessants."
 
 **Impact:** 6 months of continuous incidents from POC code accidentally merged to production
 
 #### CAB Implementation
 
-> **Yann (Discussion YGB, 11:00):** "J'ai mis en place un CAB... parce qu'il n'y avait rien, il faisait tout quand il voulait sans même prévenir les déploiements."
+> **Yann LEBREUILLY** at 11:00 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "J'ai mis en place un CAB... parce qu'il n'y avait rien, il faisait tout quand il voulait sans même prévenir les déploiements."
 
 **Before CAB (pre-May 2024):**
 
@@ -142,7 +143,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 #### Definition of Done (DoD) Failures
 
-> **Yann (Discussion YGB, 03:20):** "Donc pour moi, un DOD digne de ce nom doit embarquer la mise à jour des et des documentations, qu'elles soient techniques ou fonctionnelles."
+> **Yann LEBREUILLY** at 03:20 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Donc pour moi, un DOD digne de ce nom doit embarquer la mise à jour des et des documentations, qu'elles soient techniques ou fonctionnelles."
 
 ### 3.6 Technical Architecture Concerns ⚠️
 
@@ -150,13 +151,13 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **Suspected tight coupling between Matching Engine and ISWC:**
 
-> **Bastien (Discussion YGB, 06:41):** "Ce qui est plus embêtant, c'est que dans ce cas-là, ça veut dire qu'ils ont un couplage fort."
+> **Bastien Gallay** at 06:41 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Ce qui est plus embêtant, c'est que dans ce cas-là, ça veut dire qu'ils ont un couplage fort."
 >
-> **Yann (Discussion YGB, 06:50):** "Extrêmement fort. Le cœur de notre produit, c'est leur outil. C'est ça la difficulté."
+> **Yann LEBREUILLY** at 06:50 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Extrêmement fort. Le cœur de notre produit, c'est leur outil. C'est ça la difficulté."
 
 **Architectural Principle Violation:**
 
-> **Bastien (Discussion YGB, 07:18):** "Pour moi, c'est en fait, s'il y a une partie du code auquel on ne peut pas avoir accès, c'est ce que je veux dire, c'est que ça devrait être physiquement séparé."
+> **Bastien Gallay** at 07:18 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Pour moi, c'est en fait, s'il y a une partie du code auquel on ne peut pas avoir accès, c'est ce que je veux dire, c'est que ça devrait être physiquement séparé."
 
 #### System Architecture (from WS2)
 
@@ -181,13 +182,13 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **Outdated Technologies:**
 
-> **Guillaume (Discussion YGB, 18:44):** ".NET 3.1, qui est plus supporté depuis 2022."
+> **Guillaume Jay** at 18:44 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): ".NET 3.1, qui est plus supporté depuis 2022."
 >
-> **Yann (Discussion YGB, 18:44):** "Et donc là, il est mis à jour ces jours-ci... Il n'hésite pas à dire, bon, on va vous facturer la mise à jour du .NET. Non, mais franchement, si la maintenance ne prend pas ça en compte, je ne sais plus quoi dire."
+> **Yann LEBREUILLY** at 18:44 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Et donc là, il est mis à jour ces jours-ci... Il n'hésite pas à dire, bon, on va vous facturer la mise à jour du .NET. Non, mais franchement, si la maintenance ne prend pas ça en compte, je ne sais plus quoi dire."
 
 **Databricks:**
 
-> **Yann (Discussion YGB, 19:30):** "Databricks n'est plus à jour de plusieurs versions... vous ne pouvez pas bénéficier, par exemple, de l'IA dans vos requêtes."
+> **Yann LEBREUILLY** at 19:30 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Databricks n'est plus à jour de plusieurs versions... vous ne pouvez pas bénéficier, par exemple, de l'IA dans vos requêtes."
 
 ### 3.7 Cost Insights & Concerns 💰
 
@@ -195,30 +196,30 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **Monthly Cloud Costs:**
 
-> **Yann (Discussion YGB, 22:23):** "Les coûts sont énormes. J'en ai pour 50K chaque mois de cloud, en gros, que ce soit de la transaction ou de l'hébergement de données."
+> **Yann LEBREUILLY** at 22:23 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Les coûts sont énormes. J'en ai pour 50K chaque mois de cloud, en gros, que ce soit de la transaction ou de l'hébergement de données."
 
 **Environment Scaling Costs:**
 
 - **New pre-prod environment:** €25k + (originally quoted even higher)
 - **UAT database size increase:** €20k + 20 person-days
 
-> **Yann (Discussion YGB, 23:10):** "Là, j'ai fait, là, il y a un vrai problème. On ne peut pas me demander pour une extension de taille d'environnement, 20 jours de travail, ça n'a pas de sens. Ça n'a aucun sens. Normalement, ça se fait en deux heures ou une demi-journée."
+> **Yann LEBREUILLY** at 23:10 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Là, j'ai fait, là, il y a un vrai problème. On ne peut pas me demander pour une extension de taille d'environnement, 20 jours de travail, ça n'a pas de sens. Ça n'a aucun sens. Normalement, ça se fait en deux heures ou une demi-journée."
 
 **Architecture Upgrade Proposal:**
 
-> **Guillaume (Discussion YGB, 19:44):** "Parce que là, tu parles de changement d'architecture, mais ce que je me souviens du changement d'architecture, c'était surtout de la montée en puissance."
+> **Guillaume Jay** at 19:44 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Parce que là, tu parles de changement d'architecture, mais ce que je me souviens du changement d'architecture, c'était surtout de la montée en puissance."
 >
-> **Guillaume (Discussion YGB, 19:46):** "C'était aller payer plus cher le cloud. Ce n'est pas un vrai changement d'architecture."
+> **Guillaume Jay** at 19:46 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "C'était aller payer plus cher le cloud. Ce n'est pas un vrai changement d'architecture."
 
 #### Business Model Concerns
 
 **CISAC as Major Client:**
 
-> **Yann (Discussion YGB, 16:34):** "Oui, on est un gros client sur l'appli de base... Mais depuis les petites évolutions, ne rapportent rien, et c'est de la maintenance. Et de ce fait, je suis convaincu qu'ils perdent de l'argent à chaque fois qu'ils nous parlent."
+> **Yann LEBREUILLY** at 16:34 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Oui, on est un gros client sur l'appli de base... Mais depuis les petites évolutions, ne rapportent rien, et c'est de la maintenance. Et de ce fait, je suis convaincu qu'ils perdent de l'argent à chaque fois qu'ils nous parlent."
 
 **Evolution Suspicion:**
 
-> **Bastien (Discussion YGB, 37:14):** "J'ai peur en plus là, s'il y a une vraie intrication, que même ce qu'il vous propose comme évolution, ce soit une évolution qui profite à tous ceux qui utilisent le matching engine."
+> **Bastien Gallay** at 37:14 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "J'ai peur en plus là, s'il y a une vraie intrication, que même ce qu'il vous propose comme évolution, ce soit une évolution qui profite à tous ceux qui utilisent le matching engine."
 
 ### 3.8 CISAC's Strategic Position 🎯
 
@@ -226,23 +227,23 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **CISAC as Data Source:**
 
-> **Guillaume (Discussion YGB, 34:17):** "Donc, leur business model est basé sur vos données. Il n'existe pas sans vos données."
+> **Guillaume Jay** at 34:17 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Donc, leur business model est basé sur vos données. Il n'existe pas sans vos données."
 >
-> **Yann (Discussion YGB, 34:18):** "C'est la source autoritative unique et ISO d'ailleurs. C'est nous qui avons ce référentiel unique."
+> **Yann LEBREUILLY** at 34:18 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "C'est la source autoritative unique et ISO d'ailleurs. C'est nous qui avons ce référentiel unique."
 
 **Homepage Prominence:**
 
-> **Bastien (Discussion YGB, 32:56):** "Le truc qu'ils mettent le plus en avant, c'est leur Matching Module... En fait, quand on va sur Matching Module, on voit ça."
+> **Bastien Gallay** at 32:56 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Le truc qu'ils mettent le plus en avant, c'est leur Matching Module... En fait, quand on va sur Matching Module, on voit ça."
 
 **Volume Leadership:**
 
-> **Guillaume (Discussion YGB, 31:42):** "Vous êtes dans les plus gros clients en termes de volume, j'imagine, non ?"
+> **Guillaume Jay** at 31:42 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Vous êtes dans les plus gros clients en termes de volume, j'imagine, non ?"
 >
-> **Yann (Discussion YGB, 31:48):** "Oui, oui, bien sûr."
+> **Yann LEBREUILLY** at 31:48 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Oui, oui, bien sûr."
 
 #### Other Clients' Feedback
 
-> **Yann (Discussion YGB, 22:00):** "En fait, c'est plutôt moi qui leur fais peur. C'est-à-dire qu'ils s'embarquent avec eux souvent en se disant c'est le top du top, c'est la Rolls. Je leur dis peut-être dans les mots, oui, mais moi je ne suis pas content jusqu'à présent."
+> **Yann LEBREUILLY** at 22:00 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "En fait, c'est plutôt moi qui leur fais peur. C'est-à-dire qu'ils s'embarquent avec eux souvent en se disant c'est le top du top, c'est la Rolls. Je leur dis peut-être dans les mots, oui, mais moi je ne suis pas content jusqu'à présent."
 
 ### 3.9 Team & Communication Patterns
 
@@ -258,13 +259,13 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **Communication Style:**
 
-> **Yann (Discussion YGB, 40:21):** "Curnan lui, il est toujours sur un ton monotone. Au début, je pensais qu'il se foutait de moi, mais en fait, il est comme ça avec tout le monde."
+> **Yann LEBREUILLY** at 40:21 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Curnan lui, il est toujours sur un ton monotone. Au début, je pensais qu'il se foutait de moi, mais en fait, il est comme ça avec tout le monde."
 >
-> **Yann (Discussion YGB, 40:21):** "Et puis, vous avez son collègue. On a toujours l'impression qu'il se fout de vous quand il répond quelque chose... 'attendez, c'est évident ça, c'est évident ça, bah oui, puis ça c'est évident, bah non, on ferait pas comme ça, c'est évident.'"
+> **Yann LEBREUILLY** at 40:21 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Et puis, vous avez son collègue. On a toujours l'impression qu'il se fout de vous quand il répond quelque chose... 'attendez, c'est évident ça, c'est évident ça, bah oui, puis ça c'est évident, bah non, on ferait pas comme ça, c'est évident.'"
 
 #### Transparency Issues
 
-> **Yann (Discussion YGB, 26:48):** "C'est-à-dire qu'il y a un vrai problème de transparence. Je ne peux pas travailler avec des gens en transparence... je n'ai jamais eu de discussion comme j'ai avec vous là, avec l'équipe."
+> **Yann LEBREUILLY** at 26:48 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "C'est-à-dire qu'il y a un vrai problème de transparence. Je ne peux pas travailler avec des gens en transparence... je n'ai jamais eu de discussion comme j'ai avec vous là, avec l'équipe."
 
 ### 3.10 Collaboration & Communication Evolution ⚠️
 
@@ -279,7 +280,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **Yann's Authorization Required:**
 
-> **Yann (WS1 Noota):** "Just to confirm, we have NDA signed with these guys concerning everything, not the matching engine... for all the other parts, yes, please give them access."
+> **Yann LEBREUILLY** in [Workshop 1 - Spanish Point Audit Relaunch](../meetings/20251020-SpanishPoint-AuditRelaunch.md): "Just to confirm, we have NDA signed with these guys concerning everything, not the matching engine... for all the other parts, yes, please give them access."
 
 #### Workshop 2 (October 21) - Slight Improvement
 
@@ -291,19 +292,19 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 **But Still Blocking:**
 
-> **Xiyuan (WS2, 04:40):** "In terms of access right so... the repo or source code access so regardless... it won't be done today and it has to wait because there's a procedure need to go through internally."
+> **Xiyuan Zeng** at 04:40 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "In terms of access right so... the repo or source code access so regardless... it won't be done today and it has to wait because there's a procedure need to go through internally."
 
 **Bastien's Alternative Request Denied:**
 
-> **Bastien (WS2, 05:41):** "Could we have an extract of the code? Maybe a zip put in the SharePoint would be enough to start with."
+> **Bastien Gallay** at 05:41 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "Could we have an extract of the code? Maybe a zip put in the SharePoint would be enough to start with."
 >
-> **Xiyuan (WS2, 05:53):** "Not really. No, it's not whether I share with you, it's some procedure configuration you to go through."
+> **Xiyuan Zeng** at 05:53 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "Not really. No, it's not whether I share with you, it's some procedure configuration you to go through."
 
 ### 3.11 Development & Evolution Patterns
 
 #### Limited Recent Evolution
 
-> **Yann (Discussion YGB, 15:10):** "Alors sur les 5 ans... Moi je vois que des petites évolutions... c'est par exemple rajouter des éléments de verbosité à un log... ou alors au lieu d'ingérer l'ensemble d'une liste d'oeuvres, le faire par batch."
+> **Yann LEBREUILLY** at 15:10 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Alors sur les 5 ans... Moi je vois que des petites évolutions... c'est par exemple rajouter des éléments de verbosité à un log... ou alors au lieu d'ingérer l'ensemble d'une liste d'oeuvres, le faire par batch."
 
 #### Most Active Components (from WS2)
 
@@ -312,15 +313,15 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 1. **APIs** - Most common change point
 2. **Databricks** - File processing for new file types
 
-> **Mark Stadler (WS2, 1:18:44):** "The API are the kind of Databricks. So if you're writing like a new file, like if you dropped a new file into SFTP... there would be a lot of work in processing that file in Databricks. So the API and Databricks would be probably the two biggest, two most involved things."
+> **Mark Stadler** at 1:18:44 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "The API are the kind of Databricks. So if you're writing like a new file, like if you dropped a new file into SFTP... there would be a lot of work in processing that file in Databricks. So the API and Databricks would be probably the two biggest, two most involved things."
 
 ### 3.12 Onboarding & Knowledge Management ⚠️
 
 **No Defined Process:**
 
-> **Bastien (WS2, 55:28):** "What can we do to understand from this documentation? what is really important and how we can understand the business, the context and everything."
+> **Bastien Gallay** at 55:28 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "What can we do to understand from this documentation? what is really important and how we can understand the business, the context and everything."
 >
-> **Xiyuan (WS2, 53:39):** "That's not practical... There's no shortcut, guys."
+> **Xiyuan Zeng** at 53:39 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "That's not practical... There's no shortcut, guys."
 
 **Recommended Starting Points (from WS2):**
 
@@ -415,27 +416,27 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 ### On Governance
 
-> **Yann (Discussion YGB, 03:20):** "Pour moi, il y a beaucoup de choses qui ne vont pas sur le management de ce produit, donc voilà, je suis déjà au sens large. Déjà, la gouvernance est bancale."
+> **Yann LEBREUILLY** at 03:20 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Pour moi, il y a beaucoup de choses qui ne vont pas sur le management de ce produit, donc voilà, je suis déjà au sens large. Déjà, la gouvernance est bancale."
 
 ### On Transparency
 
-> **Yann (Discussion YGB, 28:07):** "C'est que c'est habituel. C'est-à-dire, quand on demande quelque chose, c'est toujours dans quel but, etc."
+> **Yann LEBREUILLY** at 28:07 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "C'est que c'est habituel. C'est-à-dire, quand on demande quelque chose, c'est toujours dans quel but, etc."
 
 ### On Control
 
-> **Yann (Discussion YGB, 27:54):** "Je ne peux pas gérer un SI sur lequel je n'ai pas la main, et actuellement je n'ai pas la main du tout... c'est une boîte noire totale."
+> **Yann LEBREUILLY** at 27:54 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Je ne peux pas gérer un SI sur lequel je n'ai pas la main, et actuellement je n'ai pas la main du tout... c'est une boîte noire totale."
 
 ### On Costs
 
-> **Yann (Discussion YGB, 23:10):** "On ne peut pas me demander pour une extension de taille d'environnement, 20 jours de travail, ça n'a pas de sens. Normalement, ça se fait en deux heures ou une demi-journée."
+> **Yann LEBREUILLY** at 23:10 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "On ne peut pas me demander pour une extension de taille d'environnement, 20 jours de travail, ça n'a pas de sens. Normalement, ça se fait en deux heures ou une demi-journée."
 
 ### On Maintenance
 
-> **Yann (Discussion YGB, 18:44):** "Il n'hésite pas à dire, bon, on va vous facturer la mise à jour du .NET. Non, mais franchement, si la maintenance ne prend pas ça en compte, je ne sais plus quoi dire."
+> **Yann LEBREUILLY** at 18:44 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Il n'hésite pas à dire, bon, on va vous facturer la mise à jour du .NET. Non, mais franchement, si la maintenance ne prend pas ça en compte, je ne sais plus quoi dire."
 
 ### On Experience
 
-> **Guillaume (Discussion YGB, 08:14):** "J'ai pris une telle baffe hier, une telle froideur... eux aussi ils ont plein de trucs hyper propriétaires, mais les gens ils étaient enthousiastes, ils participaient au truc, il y avait un partenariat."
+> **Guillaume Jay** at 08:14 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "J'ai pris une telle baffe hier, une telle froideur... eux aussi ils ont plein de trucs hyper propriétaires, mais les gens ils étaient enthousiastes, ils participaient au truc, il y avait un partenariat."
 
 ---
 
@@ -470,7 +471,7 @@ This report provides a comprehensive snapshot of the ISWC audit progress, highli
 
 Based on Workshop 2 discussion:
 
-> **Bastien (WS2, 56:00):** "Je pense qu'on va plus être dans un mode où on leur pose des questions, on produit, et on leur montre nos productions, on leur demande de confirmer qu'on a bien compris. Donc d'être en vrai mode interactif."
+> **Bastien Gallay** at 56:00 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "Je pense qu'on va plus être dans un mode où on leur pose des questions, on produit, et on leur montre nos productions, on leur demande de confirmer qu'on a bien compris. Donc d'être en vrai mode interactif."
 
 **Approach:**
 
@@ -484,7 +485,7 @@ Based on Workshop 2 discussion:
 
 To better understand strategic vision and Matching Engine:
 
-> **Bastien (Discussion YGB, 38:54):** "Une approche aussi à mon avis qui peut être intéressante est ce que ce serait intéressant aussi carrément on rencontre le père de la machine jane moi je suis convaincu que oui vous allez comprendre aussi un état d'esprit derrière oui."
+> **Bastien Gallay** at 38:54 in [Internal Discussion - Yann/Guillaume/Bastien](../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt): "Une approche aussi à mon avis qui peut être intéressante est ce que ce serait intéressant aussi carrément on rencontre le père de la machine jane moi je suis convaincu que oui vous allez comprendre aussi un état d'esprit derrière oui."
 
 ### Next Workshops Focus
 
@@ -514,7 +515,7 @@ To better understand strategic vision and Matching Engine:
 
 ### Escalation Needs
 
-> **Yann (WS2, 06:53):** "I will have a look with John on how it's possible to be quicker than that."
+> **Yann LEBREUILLY** at 06:53 in [Workshop 2 - Documentations and Infrastructure](../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt): "I will have a look with John on how it's possible to be quicker than that."
 
 ---
 
@@ -585,13 +586,13 @@ To better understand strategic vision and Matching Engine:
 
 ### CISAC
 
-- **Yann LEBREUILLY** - Program Manager
-- **Moaiz** - (Role TBD - Maintenance contact)
-- **Sylvain Piat** - (Stats documentation contributor)
+- **Yann LEBREUILLY** - Head of Programs
+- **Moaiz BEN DHAOU** - (Role TBD - Techical contact)
+- **Sylvain PIAT** - (Stats documentation contributor)
 
 ### Audit Team (Teragone Factory)
 
-- **Bastien Gallay** - Lead Auditor
+- **Bastien Gallay** - Technical Auditor
 - **Guillaume Jay** - Technical Auditor
 
 ---
