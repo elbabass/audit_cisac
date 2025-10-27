@@ -27,6 +27,34 @@ Documentation de l'infrastructure Azure CISAC :
 
 - [Infrastructure Documentation Index](infra/index.md) - Complete infrastructure documentation with all diagrams and references
 
+### 🏛️ Architecture
+
+Documentation technique des composants du système ISWC :
+
+- [Architecture Documentation Index](architecture/index.md) - 7 documents couvrant tous les composants principaux
+  - Agency Portal (React/TypeScript + ASP.NET Core)
+  - Databricks (PySpark processing engine)
+  - CosmosDB & Audit Logging (NoSQL database)
+  - Matching Engine (External integration)
+  - Performance analysis
+  - SFTP file exchange
+
+### 💻 Code Analysis
+
+Analyses détaillées du code source et des patterns d'intégration :
+
+- [Code Analysis Index](code_analysis/index.md) - Études approfondies de l'implémentation
+  - Matching Engine integration patterns
+  - *(Plus d'analyses à venir)*
+
+### 📊 Project Status
+
+Documents de suivi et d'analyse de l'audit :
+
+- [Investigation Planning](Investigation-Planning.md) - Plan d'investigation de l'audit
+- [Audit Status (October 24)](20251024-AuditStatus.md) - État d'avancement de l'audit
+- [Audit Status Analysis](20251024-AuditStatus-Analysis.md) - Analyse détaillée du statut
+
 ## Navigation
 
 Pour accéder aux autres sections :
