@@ -1,0 +1,1326 @@
+ISWC AUDIT - WORKSHOP 1
+
+Participants    LEBREUILLY Yann, Bastien Gallay, Guillaume Jay, Curnan Reidy, Xiyuan Zeng, Nicholas Randles
+Date    2025-10-20
+
+
+
+LEBREUILLY Y.  00:01
+Hello Guillaume. Well finally we're getting there. 
+
+Bastien G.  00:05
+Finally! 
+
+LEBREUILLY Y.  00:10
+I'm not going to stay all along the workshop because I have meetings in parallel but I wanted to make sure to be there at the beginning to be sure that the provider. 
+
+Guillaume J.  00:20
+On. 
+
+LEBREUILLY Y.  00:21
+Our side is present. 
+
+Bastien G.  00:23
+And then. 
+
+LEBREUILLY Y.  00:23
+Answer any logistic order questions if necessary etc. Just for your information I saw with Séverin. All the information, I will get closer to people who sign at my place and I will send it back to them in the day. We will even have the contract that will be signed for the first day of the workshop or. 
+
+Bastien G.  00:49
+The second day. 
+
+LEBREUILLY Y.  00:54
+Wow, that's great! Yes, it's not. 
+
+Bastien G.  00:57
+Bad. And then, they answered, so I think they will. 
+
+LEBREUILLY Y.  01:04
+Come. 
+
+Bastien G.  01:05
+They are. 
+
+LEBREUILLY Y.  01:05
+Always. 2-3 minutes late. It's always, always, so I took the habit, but that way you'll know. As I said, it was. November 14th for the first version, the foggy. 
+
+Bastien G.  01:20
+Version. 
+
+LEBREUILLY Y.  01:20
+So I can share that with the piloting committee on the 18th. and the final version on November 21. Is that right? 
+
+Bastien G.  01:30
+Yes. 
+
+LEBREUILLY Y.  01:31
+Ok. Very good. I had to put everything in mind. So how many of them are on their side? How many transfers or invitations have. 
+
+Bastien G.  01:49
+You received? I sent. 
+
+LEBREUILLY Y.  01:49
+It to Kurt. I think there are two or three in general. 
+
+Bastien G.  01:58
+Yes, and that's it, there's Zheng. No, it's Xuanyuan. 
+
+LEBREUILLY Y.  02:04
+Ah, well, here's Kurnan. 
+
+Bastien G.  02:05
+Kurnan. 
+
+LEBREUILLY Y.  02:06
+And then. 
+
+Bastien G.  02:12
+Yeah. We're going to make it come. 
+
+LEBREUILLY Y.  02:14
+In. Very well. 
+
+Bastien G.  02:16
+And. Xuanyuan put it in temporary, so I don't know if they can really come in. And he's in presentation. Good, come on. About. 
+
+LEBREUILLY Y.  02:31
+Hi hello. 
+
+Curnan R.  02:32
+Morning. 
+
+Guillaume J.  02:34
+Hello. 
+
+Bastien G.  02:40
+How are you. 
+
+Curnan R.  02:42
+Not too bad. 
+
+Bastien G.  02:45
+So thank you for joining this uh new new workshop meeting. 
+
+Curnan R.  02:51
+Sorry. 
+
+LEBREUILLY Y.  02:52
+In france we say. Like a Monday. I don't know if in Ireland it's the same, but when you're on a Monday, you say, how are you? Like. 
+
+Curnan R.  03:03
+A. 
+
+LEBREUILLY Y.  03:03
+Monday. It's not too bad, 
+
+Guillaume J.  03:06
+Not. 
+
+LEBREUILLY Y.  03:06
+Too good. Not special. Are you alone on your side, or do you have also your colleague with you? 
+
+Curnan R.  03:20
+Yeah, it should be. You want a neck over the top? 
+
+LEBREUILLY Y.  03:44
+Bastien, I propose to let you start whenever you want. I will jump in another meeting. Me if you need something by Teams or by mail during the next minutes or during the next hours. I will be available to come again in the meeting if it's necessary or if you need it. Okay? 
+
+Guillaume J.  04:10
+Okay. 
+
+Bastien G.  04:10
+Very good. Thank you, Yann. 
+
+LEBREUILLY Y.  04:13
+You're welcome. Hi, Nick. Hey, 
+
+Nicholas R.  04:19
+Guys. How's it going? 
+
+Bastien G.  04:22
+Quite good thank you. 
+
+LEBREUILLY Y.  04:25
+Well see you everyone maybe see you in a few minutes maybe bye. 
+
+Bastien G.  04:31
+See you later all right all right um so as i said thank you for joining this meeting um it has been a while so sorry it's because of us and some. I won't go into the details, some company problems on our side. And now we are starting again this exercise to explore this application. Application system that you have developed and you are maintaining on your side and give an overview of of it with an external point of view for Cisac to have a better understanding and governance of it in the long term. So to be honest. Guillaume and me had a lot. In our mind since last time we spoke. So maybe, I'm really sorry, maybe we will ask the same thing again. Like Guillaume said. 
+
+Guillaume J.  05:51
+It was summer, now it's early winter. 
+
+Bastien G.  05:55
+We are not starting from zero, but from 0.1. 
+
+Curnan R.  06:01
+Okay. 
+
+Bastien G.  06:02
+So sorry for all that. Anyway. We had a demo and. I don't think we have to have a full demo again, but sometimes maybe we'll need to ask you to open again and show us something about the application and it will be better like that. For today. I think... The highest priority is to relaunch this project to be sure that we agree on what we need to share, what we need to prepare. So we have the same mirror board we had in the past. And. I've sent the link if you don't have access. I may be able to provide it to you. And I hope. I can share my screen on this new computer. Sorry, I'm coming back in a few minutes, a few seconds, I would say. 
+
+Guillaume J.  07:29
+Okay, I assume you have some obligations to meet. I think we are going to need all the authorization. 
+
+Bastien G.  07:44
+You. 
+
+Guillaume J.  07:45
+Gave us last time on our new email address. Did you get our Terragon address? 
+
+Curnan R.  07:58
+No, we didn't get sent anything, no. Okay, 
+
+Guillaume J.  08:00
+I'm going to put them. 
+
+Bastien G.  08:21
+Here. Thank you, Guillaume. 
+
+Guillaume J.  08:22
+This one. 
+
+Bastien G.  08:34
+Perfect okay. 
+
+Guillaume J.  08:52
+So. 
+
+Bastien G.  08:52
+Um as you see i've put the date here it's uh november the 14th. It's the first restitution we need to do to. Yann team for Cisac. So everything we need to understand together will be in this. From now to these dates. And as I'm used to say. It's always good if we can review with the real builders. Before doing the restitutions. So maybe before these dates, it would be good to have a meeting with one of you or all of you, I don't know. Just to explore what we have to say about everything. If there is any misunderstanding in what we are providing in our draft report. And if there is something we still need to... To explore further. Okay? So follow the calendar, this leads to a date for. 
+
+Guillaume J.  10:12
+I. 
+
+Bastien G.  10:12
+Would say just half an hour meeting would be okay for that. 
+
+Curnan R.  10:27
+Okay, what do you mean by restitution on November. 14th? 
+
+Bastien G.  10:32
+We'll just say. Everything that we understood about your application to explain to Cisac. 
+
+Guillaume J.  10:46
+What we. 
+
+Bastien G.  10:46
+Understand, what we can propose. 
+
+Curnan R.  10:48
+For. 
+
+Bastien G.  10:49
+The future. Like. 
+
+Curnan R.  10:49
+A report. 
+
+Guillaume J.  10:51
+Yes. The first draft of our report which will be finalized by next week. Yann has asked for it in mid-November. 
+
+Bastien G.  11:11
+So as far as it is. 
+
+Guillaume J.  11:15
+On. 
+
+Bastien G.  11:16
+Friday. I would say beginning of the week. So. 11th is. Bank Holiday in France. So I don't know if you Guillaume you can on Monday. But I would say the 10th or the 12th would be the best time to have this short meeting to review. Our first draft? Yeah. What? Would it be okay on your side? 
+
+Curnan R.  11:55
+Yeah, that's fine. 
+
+Bastien G.  11:58
+What time would be the best for everyone? For me, all the days is okay. 
+
+Curnan R.  12:04
+So this, let me just check the calendar here. So this is the week after the November 14th, is it? Is that what you're saying? 
+
+Bastien G.  12:19
+No, no, before. 
+
+Curnan R.  12:22
+So the week of that week. 
+
+Bastien G.  12:26
+Wednesday the 12th. 
+
+Curnan R.  12:29
+Yeah, say Wednesday the 12th at 10. Our time. So yeah, 11 o'clock. Our time. 
+
+Bastien G.  13:11
+I'm fighting with the time zones because we'll change time I think this weekend so I don't really know if it's still one hour or... So you're in UTC plus one? 
+
+Curnan R.  13:32
+Plus one yeah. 
+
+Bastien G.  13:34
+Okay. And so what time is the cafe for you? 10. 
+
+Curnan R.  13:57
+O'clock. 
+
+Bastien G.  14:00
+10? Okay. And for your car, do I have to invite someone else? 
+
+Curnan R.  14:10
+Yeah, you can invite Nick and she. 
+
+Xiyuan Z.  14:24
+What day what time can you see the game the precise time uh 10 o'clock. 
+
+Curnan R.  14:28
+On the. 
+
+Guillaume J.  14:34
+12th. 
+
+Bastien G.  14:52
+Okay i just note it and we'll send the details okay otherwise it will be too long okay. Okay. 
+
+Guillaume J.  15:53
+So. 
+
+Bastien G.  15:54
+After that you have all our. 
+
+Guillaume J.  15:58
+Coordinates. 
+
+Bastien G.  15:59
+I've noted that we need access to GitHub. To one environment of the application to just use it. I think there is a demo or a test environment. 
+
+Curnan R.  16:17
+Yeah, there's a dev. 
+
+Bastien G.  16:19
+Maybe that would be the best. 
+
+Xiyuan Z.  16:21
+Yeah. 
+
+Bastien G.  16:22
+And some access to Azure. And do you have any other monitoring solution that we could have access to? 
+
+Curnan R.  16:33
+That's it. Everything is in Azure. 
+
+Guillaume J.  16:35
+Yes. 
+
+Bastien G.  16:36
+Last time. 
+
+Guillaume J.  16:36
+You gave us access to the App Insights alert. 
+
+Curnan R.  16:42
+Yeah. 
+
+Guillaume J.  16:43
+It was good. It was great. 
+
+Bastien G.  16:45
+Okay. Not this one. Okay, and if we need anything else. We can ask later. But these were the three most important, I think. Do you see anything else? 
+
+Curnan R.  16:59
+No, that's it. 
+
+Xiyuan Z.  17:06
+And your access. So you mean area portal access? 
+
+Bastien G.  17:14
+I think the application. 
+
+Xiyuan Z.  17:16
+Access what precisely you mean here so application access you mean access to application yeah so as the application and the user or admin right you're on the application access okay and the error access can you be more precise what level access and what is that access just make sure we have no assumption here. 
+
+Bastien G.  17:35
+We don't have either because uh it's we need to explore things that we'll see technically in the code in the architecture and sometimes we need to to see okay what is it really for the user so instead of each time calling you it would be best to. 
+
+Guillaume J.  18:00
+Be. 
+
+Bastien G.  18:00
+To explore by yourself. 
+
+Xiyuan Z.  18:05
+You mean at your portal so we have no issue giving you application level access okay even you know admin permission whatever with multiple accounts there's no no usual there okay and are you accessing here do you mean have your access to every portal to see the resources deploying at you or you mean something else i'm. 
+
+Bastien G.  18:32
+Really sure to see what you mean. That's amazing in that. 
+
+Guillaume J.  18:43
+Can you show us it'll be easier. 
+
+Xiyuan Z.  18:49
+Show you just want to people that's why i'm i'm under that's why i'm asking here right so and you you you we we understand i think everyone understand the application they will access right so there's no question in there we will supply you credential whatever then you can log into application as any user or on the user yeah so that we understood. And then you wrote down another one called Azure Access. Yeah. So that's. 
+
+Guillaume J.  19:15
+Where. 
+
+Xiyuan Z.  19:15
+Our question is. Precisely what do you mean by Azure Access? Do you mean. 
+
+Guillaume J.  19:22
+Microsoft. 
+
+Xiyuan Z.  19:23
+Azure. 
+
+Guillaume J.  19:23
+Portal? Okay, I got it. We need to see, it's the DevOps part, we need to see App Insights. 
+
+Xiyuan Z.  19:32
+App Insights? Okay, so you want to. 
+
+Guillaume J.  19:34
+See App. 
+
+Xiyuan Z.  19:34
+Insights. Okay, and sales you want to see? I think. 
+
+Guillaume J.  19:38
+We want... To see the whole architecture deployed. But not in the production environment. That's your issue. We just want to be able to. 
+
+Bastien G.  20:01
+How it's set. Ideally, we'll need to have. Access in Read-Only but for the monitoring and projection in another environment where it is less risky we could have more accesses but I think Read-Only is what we need right now to. Start understanding and if we need something else we'll ask again I don't know if it's if it helps. 
+
+Xiyuan Z.  20:32
+So read so read only permission Okay. 
+
+Bastien G.  20:35
+And. 
+
+Xiyuan Z.  20:35
+Read-only permission on what? That's my question. 
+
+Guillaume J.  20:40
+Read-only on possible. 
+
+Bastien G.  20:44
+Yeah, you could. Everything. 
+
+Guillaume J.  20:45
+Is. 
+
+Bastien G.  20:46
+Possible. 
+
+Guillaume J.  20:48
+Maybe not Key Vault if you have secrets in. 
+
+Bastien G.  20:52
+It and things. 
+
+Guillaume J.  20:52
+Like that, but just being able to know there is a Key Vault. 
+
+Xiyuan Z.  21:00
+So you're asking? I'm asking read-only to App Insights or read-only to all the Azure infrastructure or read-only to what? So I'm trying to understand what you're trying to get. 
+
+Guillaume J.  21:11
+Here so. 
+
+Xiyuan Z.  21:12
+We can grant the permission. 
+
+Guillaume J.  21:13
+As. 
+
+Xiyuan Z.  21:13
+Required, right? 
+
+Guillaume J.  21:14
+Yes. We need to audit the whole application including the cloud platform so we need to see everything in read-only, it's great. Maybe... If you can guarantee that the production environment is the same, that your dev one is enough for us. We can understand that you don't want to have sticky fingers in the production environment. 
+
+Xiyuan Z.  21:47
+Okay, so you're asking read-only permission to basically all the editors through AgriPortal, yeah? 
+
+Guillaume J.  21:53
+Yes. 
+
+Xiyuan Z.  21:53
+If I read you correctly. Okay. The credential you provided in the e-mail, that's your Office 365 account, yes? Yes. 
+
+Guillaume J.  22:03
+And. 
+
+Xiyuan Z.  22:04
+See that account? 
+
+Guillaume J.  22:05
+Yes. I put in the chat. 
+
+Xiyuan Z.  22:11
+Okay. I understand that I have your access now. Okay. Assuming no issue. Okay. The other one you wrote what? GitHub access? 
+
+Guillaume J.  22:22
+Sorry? 
+
+Xiyuan Z.  22:24
+Sorry. You had another box in your screen sharing earlier there? Yes. Okay. 
+
+Bastien G.  22:29
+Github access yeah uh. 
+
+Xiyuan Z.  22:32
+We don't use github. 
+
+Guillaume J.  22:34
+Oh. 
+
+Bastien G.  22:34
+Sorry i thought we had some invites for our github like what is it so. 
+
+Xiyuan Z.  22:39
+So i'm trying to understand what you are trying what access. 
+
+Bastien G.  22:42
+Is the code. 
+
+Guillaume J.  22:43
+Repository. 
+
+Xiyuan Z.  22:46
+Sorry singing sorry i didn't. 
+
+Guillaume J.  22:47
+Maybe it's a gitlab repo or anything. 
+
+Xiyuan Z.  22:53
+You mean the source code access. 
+
+Guillaume J.  22:54
+Yes. 
+
+Xiyuan Z.  22:56
+The source code of the Cisac application is that what you mean yes. 
+
+Bastien G.  23:00
+Yes. 
+
+Xiyuan Z.  23:03
+Okay this part uh we need to double check okay i cannot fully confirm right now uh you know for whatever contractual or priority reason okay i i cannot guarantee this one can be granted straight away okay okay. 
+
+Bastien G.  23:22
+You must check with uh who. 
+
+Xiyuan Z.  23:26
+Well i must check with over you know because you know the Cisac right you know the isw application i need to check you know um with both Cisac as well as spanish ones right you know and on a third-party access to source code and how this you know should be allowed or can be allowed right. 
+
+Bastien G.  23:45
+Yes. I was asking because uh as jan said if we just need to call him and. 
+
+Guillaume J.  23:52
+Say. 
+
+Bastien G.  23:52
+It's okay because we are we have an NDA with. Cisac just. 
+
+Xiyuan Z.  23:58
+Because. 
+
+Bastien G.  23:58
+We can... 
+
+Xiyuan Z.  24:01
+Yeah, well, yes, I understand. 
+
+Bastien G.  24:02
+That. Do you want me to go. 
+
+Xiyuan Z.  24:03
+There? No, no, no. Well, what I'm saying is, you have NDA with Cisac, that's okay, right? But this does not mean that you are legally allowed to access the source code of ISW application. 
+
+Guillaume J.  24:16
+So. 
+
+Xiyuan Z.  24:16
+I'm not saying you don't have access or you cannot have access. What I'm saying is I need to check with the... How the contract was written in here in terms of the Cisac source code access okay so and so this one is not as straight forward as application access okay. 
+
+Guillaume J.  24:36
+I'm. 
+
+Xiyuan Z.  24:36
+Clean access i have no issue have your access probably no issue neither okay uh keep the source code repo access okay we need to double check okay. 
+
+Guillaume J.  24:46
+Okay. 
+
+Xiyuan Z.  24:54
+Okay, we can move on. Thank you. 
+
+Bastien G.  24:55
+When can you do that? Because it's a matter of time. We need to have access to the source code as soon as possible. 
+
+Xiyuan Z.  25:04
+Well, I mean. After call, I finished when I need to check internally from contractual point of view, how the third-party source code is going to be allowed, especially in this instance. The label access and how you want to access it. I'm assuming you are not talking about accessing to Kampa board or DevOps tasks, you actually want to access the source code of the application. That's my assumption and you correct me if i'm wrong here and if i'm right if i my assumption is correct then yes we will spanish phone will need to internally you know making sure uh you know everything uh you know on the contract or you know it's kind of you know we we have no issue to grant your exit okay so that i'm gonna say okay i i i again i said i don't. I'm not saying you cannot have access. One. 
+
+Bastien G.  25:59
+Thing. 
+
+Xiyuan Z.  25:59
+Is I need to check because. 
+
+Guillaume J.  26:01
+As. 
+
+Xiyuan Z.  26:01
+You can understand, grant access to source code is a high privilege level. 
+
+Guillaume J.  26:07
+Access. 
+
+Xiyuan Z.  26:08
+We want to make sure everything is done correctly. 
+
+Guillaume J.  26:13
+We can understand that it's safer for everyone. I think maybe it's included in Azure Access, but we need also access to the database, to a database. Which is a database more or less similar to the production one. I think we talked about that three months ago. Your dev database was a backup of the production one. Yeah, the. 
+
+Curnan R.  26:54
+Dev is pretty much the same as prod, so. 
+
+Xiyuan Z.  26:59
+That'll. 
+
+Curnan R.  26:59
+Be fine. 
+
+Bastien G.  27:12
+Right. 
+
+Xiyuan Z.  27:13
+So. 
+
+Bastien G.  27:14
+With. 
+
+Guillaume J.  27:16
+All. 
+
+Bastien G.  27:17
+This. Do you think we could be able to build the application on our side? 
+
+Xiyuan Z.  27:26
+Build application. You mean the build process, so excluding source code, you want to see the sequence of the build process? Is that what you mean? 
+
+Bastien G.  27:38
+As if I was a developer on your team. To be able to build the complete solution, run it. Maybe make a local modification and run it again, would it be possible? 
+
+Xiyuan Z.  27:53
+Build process, okay. 
+
+Guillaume J.  27:58
+There. 
+
+Xiyuan Z.  27:58
+Might be slightly less issue on requesting source code, but again, we need to double-check on how their permission can be granted exclusively without granting access to source code. Because we use Azure DevOps, we use. Azure DevOps repo and Azure DevOps pipeline. You are talking about basic access to pipeline part only, no access to Git. to the source code. And again, we will check how that permission can be granted. But from what I can think about right now, that is more likely to have no issue. But again, I need to check how that permission can be granted. But again, you leave that with. 
+
+Bastien G.  28:45
+Us. Is it possible. 
+
+Xiyuan Z.  28:46
+To run locally the. 
+
+Guillaume J.  28:47
+Source code? 
+
+Xiyuan Z.  28:57
+Look locally? Meaning. 
+
+Guillaume J.  28:59
+In my Visual Studio? 
+
+Xiyuan Z.  29:03
+You mean email you a zip file. 
+
+Guillaume J.  29:05
+Container. 
+
+Xiyuan Z.  29:06
+Source code? Is that what you mean? 
+
+Guillaume J.  29:07
+Yes. 
+
+Xiyuan Z.  29:08
+But this would be equivalent of granting you access directly to the Git repo. It is essentially giving you access to the source code, that you own the copy of source code, regardless whether you see the historical version or the latest version. That's the last concern here. is about how to grant third-party access to the source code itself. That is something I cannot confirm right now during this. 
+
+Bastien G.  29:35
+Call. 
+
+Xiyuan Z.  29:36
+Okay. 
+
+Bastien G.  29:36
+But as hearing we can have access to the source code, would it be possible? 
+
+Xiyuan Z.  29:41
+Okay. If there's nothing on contract anywhere that prevents you from accessing the source code, meaning legally that you should be allowed to, and if that if that assumption then which then which we are able to grant you access to source code okay. 
+
+Guillaume J.  29:59
+Okay. 
+
+Xiyuan Z.  30:00
+It's just i. 
+
+Guillaume J.  30:00
+Cannot confirm the. 
+
+Xiyuan Z.  30:02
+Rest. 
+
+Guillaume J.  30:02
+On your computer. 
+
+Xiyuan Z.  30:11
+Just technically. Technically, we can grant you access through browser. You can see source code or source code in the browser. You can browse the source code in Azure DevOps, in Azure repo. You can browse all the release build pipeline. So if there's no legal issue. Okay. Okay. 
+
+Guillaume J.  30:26
+My point is, if we have. Assuming we have access to a source. 
+
+Xiyuan Z.  30:34
+Code, if I-. 
+
+Guillaume J.  30:34
+Download the source code on my computer. Will I be able to run it? Is it difficult to run the code on a local computer? Do you have an onboarding process for new devs? Something like that. You need three days to be able to run a project on your local computer when you just start. 
+
+Xiyuan Z.  30:56
+You mean download source code on your machine and do you want to locally debugging it and run it locally? Is that what you mean? 
+
+Guillaume J.  31:02
+Yes. Is it easy? Is it hard? I say for. 
+
+Xiyuan Z.  31:10
+Modern applications, that's definitely not easy. Because Cisac complex component is not just one website or two-way website or whatever. There are. 
+
+Guillaume J.  31:22
+A. 
+
+Xiyuan Z.  31:22
+Lot of components. And only some of those components are locally developed because it is a local service. Only for those components, there's a possibility that you can configure your local environment correctly to locally debugging it. It's technically possible for the applicable components only. That you can download source code and run the source code locally. Assuming you have all the environment, all the configuration correct. That's certainly possible. 
+
+Guillaume J.  31:55
+Uh okay uh i'm not sure i i got this according to access to the source code if we ask Yann to go to come back to this meeting uh can he give you the the okay for this already or do you need. 
+
+Bastien G.  32:38
+More he's coming uh just uh authorize uh and to join back. Hi again. Okay, so maybe you can repeat your question Guillaume because. I just asked to Yann if you could have something to ease this code access. 
+
+Guillaume J.  33:06
+Because. 
+
+Bastien G.  33:07
+It's. 
+
+Guillaume J.  33:07
+Central. 
+
+Bastien G.  33:07
+In our work. 
+
+Guillaume J.  33:09
+I hope I'm connecting you. correctly uh need some uh justification validation from you from Cisac to give us a source code access if i got it correctly right. 
+
+Xiyuan Z.  33:28
+So uh so basically what i'm saying that you know and the level app and the type of access you are requesting back there right you showed basis three type of access right the application level access uh everyone we understood so no issue in there. 
+
+Guillaume J.  33:43
+The. 
+
+Xiyuan Z.  33:43
+Second type of access is Azure access, and my assumption that you want to access the Azure portal. Again, that had probably no issue neither. Basically, just grant you to have a read-only view for example to everything, no issue in there. The third type of access is. Git access. Based on conversations so far, our understanding that you are requesting access to the source code of the entire IAWC application. Uh it is this component that i i cannot confirm during this call right now okay and that we can grant access to third party okay okay i'm not saying this. 
+
+Bastien G.  34:23
+Is. 
+
+Xiyuan Z.  34:24
+Not allowed or neither i just cannot confirm it because yeah as you can understand granting any party access to the source code is a little bit concerned in general right so um what i'm saying is no and i need to double-check this after this call okay to make sure and there's nothing uh you know legally not allowed or allowed you know for third-party source code access. 
+
+Guillaume J.  34:49
+Okay. 
+
+LEBREUILLY Y.  34:51
+Hi everyone um just to understand. You're talking about the matching engine. 
+
+Guillaume J.  35:05
+Sources. 
+
+LEBREUILLY Y.  35:06
+And not the other sources, that's it? Or all the sources. 
+
+Guillaume J.  35:10
+Are. 
+
+LEBREUILLY Y.  35:11
+Concerned with what you say? 
+
+Xiyuan Z.  35:13
+So yeah, okay, I didn't mention anything about, you know, and try to distinguish here, right? But you are correct in here. There are two high levels, there are two sub-companies here. One is the Cisac component, one is the dependency matching engine component, right? So. 
+
+Guillaume J.  35:30
+For. 
+
+Xiyuan Z.  35:30
+Cisac component. Again, I don't know the legal terminology in here, I'm not going to make any assumption, 
+
+Guillaume J.  35:39
+And. 
+
+Xiyuan Z.  35:40
+That one probably more likely to be allowed. Because that's your application. For the matching part is probably not going to be allowed. Again. The reason I don't want to go down to this level is I don't want to see something wrong in here. I don't have that level of detail currently on my hand because we generally grant really nobody has access to the source code. Since you are requesting source code access. We want to make sure there's nothing non-technically preventing anyone from accessing the source code. That's what I'm saying. 
+
+LEBREUILLY Y.  36:27
+Okay, 
+
+Xiyuan Z.  36:28
+So. 
+
+LEBREUILLY Y.  36:29
+Just to confirm, we have NDA signed with these guys concerning everything, not. 
+
+Guillaume J.  36:35
+The. 
+
+LEBREUILLY Y.  36:36
+Matching engine. This is your property, this one, so I fully understand that you have to ask. But for all the other parts, yes, please give them access. It's okay on my side. 
+
+Xiyuan Z.  36:49
+Okay, so it's okay from ISW side, from your side. Yeah, okay, I understand that. Okay, then the rest is just we need to check. you know, on our side, making sure our compliance team. You know. They are happy with this request. Okay. And once they confirm, then we certainly can grant you access. Okay. Thank. 
+
+LEBREUILLY Y.  37:09
+You. Thank you for understanding. Thank. 
+
+Guillaume J.  37:15
+You. 
+
+Bastien G.  37:17
+Thank you for all that. Okay. When we have it. So. I think we will be able, because it was another question. But maybe I should ask it in another way. Would it be possible to share your screen and just, 
+
+Guillaume J.  37:47
+Because. 
+
+Bastien G.  37:48
+It's something that could really ease our common understanding. If we could build the application in Reddit on our side locally. 
+
+Guillaume J.  37:58
+With. 
+
+Bastien G.  37:58
+All the assumptions we can make okay it's it's okay it would be a big accelerator to for us to to understand everything so maybe one of you could uh share the screen and show where is the press building process how it's working uh what are the dependencies maybe there is a dependency portal and uh something like that and what it involves it's. 
+
+Guillaume J.  38:25
+Um it's. 
+
+Bastien G.  38:26
+A bit fast forward in the agenda we wanted, but. I think it could be reassuring for Guillaume and me to know how it works and to be more able. 
+
+Guillaume J.  38:43
+To. 
+
+Bastien G.  38:43
+Be more accurate in your questions. Would it be okay for you? 
+
+Xiyuan Z.  38:51
+So you want me to, especially you on the screen, want to screen share the build process. 
+
+Bastien G.  38:58
+If you can as maybe the local process or the continuous integration process anyone you want just to show us because it will be more concrete to us okay. I'm. 
+
+Xiyuan Z.  39:16
+Not sure about the local process the local pro we probably can show you screen sharing on the build process as as part of pipe. That probably has no issue. Local build process, I'm not sure, because that one takes ages, right? So. As a developer, right? So, I think Suncommon can be built locally, and absolutely no issue. Otherwise, how can you. 
+
+Bastien G.  39:42
+Do. 
+
+Xiyuan Z.  39:43
+It, right? You know, write the code, right? 
+
+Bastien G.  39:46
+But. 
+
+Xiyuan Z.  39:46
+To demonstrate the build process locally, that require lots of setup. I'm not sure the guys who's on the call have that environment really, local environment on their laptop in there. Again. Let's just go through them one by one. I can share screen for the build process in the Cloud. Yes. You want to see that one. That one probably has no issue. And just bear with me okay a moment. 
+
+Bastien G.  40:22
+I don't know if you have all the. 
+
+Xiyuan Z.  40:26
+I. 
+
+Bastien G.  40:27
+Should. 
+
+Xiyuan Z.  40:27
+Have. 
+
+Bastien G.  40:28
+Let. 
+
+Xiyuan Z.  40:29
+Me know when you can see the screen. Okay. So you can see. 
+
+Bastien G.  40:56
+The screen, 
+
+Xiyuan Z.  40:56
+Yes? Yeah. So source code is here, right? So it's in this repo. This is Agri repo, and this is a dedicated repo for ISW application for Cisac. So all source code are here. The build process is defined by Agri DevOps. YAML pipeline. And the pipeline is essentially this one here. If they find, let's say. Just let's just use this one for now. So this is the build process. So we build unit test. Build infrastructure code, build source code, whatever. So this is the entire definition of the build process. So let me know uh you know if you want me to click in anywhere else. 
+
+Bastien G.  41:57
+Okay um so. I'm not. 
+
+Guillaume J.  42:20
+Yes, 
+
+Bastien G.  42:20
+To this view, I think Guillaume you know it better, no? 
+
+Guillaume J.  42:23
+I. 
+
+Bastien G.  42:24
+Hope. 
+
+Guillaume J.  42:25
+You know. 
+
+Bastien G.  42:25
+Better. 
+
+Guillaume J.  42:26
+Yeah. So. 
+
+Xiyuan Z.  42:30
+This is the build. This is the Azure DevOps pipeline. This is the pipeline. This is the Azure DevOps CSED pipeline. The one I showed you is just one instance of the pipeline execution and the pipeline defined build as well as deployment. right build just built once off and then the same binary uh got deployed into dev environment then uat then production right so that's a basic general concept as any pipeline. 
+
+Guillaume J.  43:02
+So. 
+
+Xiyuan Z.  43:02
+If we talk about the build process uh you know then the first box is a build process yeah. 
+
+Guillaume J.  43:10
+So. 
+
+Xiyuan Z.  43:11
+So if you tell me what you're looking for then i can drill further but but these are the components of Cisac application and they are built in. 
+
+Guillaume J.  43:21
+The Cloud. 
+
+Xiyuan Z.  43:21
+By Azure DevOps, Microsoft hosted agent. The build process just generate output binaries, which are used later by deployment process. That's what the build is. Is there anything in particular you want me to show? Just call it out. 
+
+Guillaume J.  43:52
+We'll look at it closely when we get access, but maybe just the longest one in the site web portal private. If you can just show us the site web portal private. 
+
+Xiyuan Z.  44:13
+Sorry, I didn't get what you're asking right now. 
+
+Bastien G.  44:20
+Yes, it's the third one from the bottom of this box. 
+
+Guillaume J.  44:24
+You. 
+
+Xiyuan Z.  44:27
+Mean this one? 
+
+Guillaume J.  44:29
+Yeah, 
+
+Bastien G.  44:31
+Because it was longer. So yeah, it's a good idea. 
+
+Xiyuan Z.  44:37
+So what do you want me to show you here? So this is basically the build process for the first wave portal. 
+
+Guillaume J.  44:44
+Can we see the pipeline? This is the log, the definition, the pipeline. 
+
+Bastien G.  44:53
+Definition, not the log. Yes, I think you should go back and click on jobs. 
+
+Xiyuan Z.  44:57
+You mean pipeline definition? So we can show you pipeline definition once we confirm there's no. 
+
+Guillaume J.  45:04
+Issue. 
+
+Xiyuan Z.  45:04
+With the. 
+
+Bastien G.  45:04
+Source code access. 
+
+Xiyuan Z.  45:05
+We'll wait for. 
+
+Guillaume J.  45:06
+That because we are not going. 
+
+Xiyuan Z.  45:09
+To... Yeah, I have. 
+
+Bastien G.  45:09
+No issue. 
+
+Guillaume J.  45:09
+Showing the. 
+
+Xiyuan Z.  45:10
+Ui. Okay, sorry about that. Okay. 
+
+Bastien G.  45:13
+Okay, we can look at that. It was fast forward. But it's okay. 
+
+Xiyuan Z.  45:22
+But these are the graphic view of the build process. So it's installed some binary dependencies and installs the .NET Core version. The node version. And then just build the binary. 
+
+Guillaume J.  45:38
+Using. 
+
+Xiyuan Z.  45:38
+The .NET command. Don't let restore, don't let build, don't let publish. Once the binary is built. We put. 
+
+Guillaume J.  45:48
+The. 
+
+Xiyuan Z.  45:48
+Artifact, the generated file into the pipeline artifacts. Which will later consumed by deployment pipeline. That's what this build process. 
+
+Guillaume J.  45:59
+Is. 
+
+Xiyuan Z.  46:01
+The exact definition in its text format. Once you gain access to the source code, you will see it. 
+
+Bastien G.  46:16
+Okay. So as we don't have all the accesses, maybe we can stop on this path and go back to other things. I wanted to... Maybe we can go back on the mirror border. 
+
+Xiyuan Z.  46:44
+So just let me know what you want to see, okay? You want me to click? I'll just click, 
+
+Guillaume J.  46:52
+Okay? 
+
+Xiyuan Z.  46:53
+Let me know. 
+
+Bastien G.  46:54
+Yes, but I think it's okay. What time is it? Because. Okay, we still have. On our side it's okay for you to. One hour from now. It's okay for everyone um so Guillaume do you have any question before we go we go into the more um functional understanding. 
+
+Guillaume J.  47:29
+Uh no. 
+
+Bastien G.  47:31
+Question. 
+
+Guillaume J.  47:31
+For now till we we don't have access. 
+
+Bastien G.  47:34
+Yeah okay so. What we have planned to do, if you remember, we had two workshops. I don't know how much you know about them. Workshops that are more on. I would say, a holistic view of the application. We start talking about features. And we go deeper when we want to understand what is involved technically. It's the event storming. And on another side, more about the conception, the design, the architecture of the application, to understand what is communicating with what part. Maybe this part is internal, external. And going further and further. The biggest priority is to talk about event storming. And event storming, as it's... Do you know... Do one of you know event storming already? 
+
+Curnan R.  48:45
+Yeah. 
+
+Bastien G.  48:45
+Have you already practiced it? 
+
+Curnan R.  48:49
+Yeah, we've done it before. 
+
+Bastien G.  48:51
+Yeah, okay. So we don't have time to do a full event storming here. It's just because we're using the event storming base. It's talking about. 
+
+Guillaume J.  49:03
+Events. 
+
+Bastien G.  49:03
+In the application in the past tense is. The easiest way to share the understanding of what is happening in the software solution. Okay, so we are realizing that this will at the end help us make emerge some domain. Some parts of the application that we need to dig further. From now it's uh what is uh always hard to uh to start with we don't know a lot the application so what would be the the first seven if i say what is the highest value output in this application you know for an accounting. For an accounting application. It would be for instance the invoice. So creating the invoice would be maybe the highest value fitter, the highest value events related would be an invoice has been created. 
+
+Guillaume J.  50:26
+Okay. 
+
+Bastien G.  50:28
+So what is or what are the highest value output. 
+
+Guillaume J.  50:33
+In. 
+
+Bastien G.  50:34
+This application about you? 
+
+Curnan R.  50:44
+Like it's kind of hard to just summarize like i mean it's such a big applicant but we have a ton of spec documents that describe the system if you want to have a look at them. 
+
+Guillaume J.  50:57
+Oh yes please. 
+
+Bastien G.  50:59
+Yes please. 
+
+Curnan R.  51:01
+Like they're in the. 
+
+Guillaume J.  51:03
+In. 
+
+Curnan R.  51:03
+The teams channel that we share with Cisac and we can add you to it off. 
+
+Guillaume J.  51:27
+I. 
+
+Curnan R.  51:28
+Guess I'll use your email that's here. 
+
+Guillaume J.  51:30
+So. 
+
+Bastien G.  51:40
+Starts very shortly. 
+
+Curnan R.  51:56
+Okay, yeah, so I've added you as a guest to the Teams channel. The Cisac. 
+
+Bastien G.  52:02
+One. 
+
+Curnan R.  52:02
+That's. Yeah, so this is the channel, well, sorry, the team that we've had for the lifetime of this application. So if you go to the design channel of that in the files, you'll see all of the specification documents that we would have built up over the years. So they'll give you like that has all the description of. 
+
+Guillaume J.  52:30
+What the. 
+
+Curnan R.  52:30
+Application does basically. 
+
+Guillaume J.  52:32
+In. 
+
+Curnan R.  52:32
+Those documents. 
+
+Guillaume J.  53:15
+I'm not sure I can see any channels. 
+
+Bastien G.  53:22
+Yes, 
+
+Guillaume J.  53:23
+I. 
+
+Bastien G.  53:23
+Accepted the invite, but. I see nothing. 
+
+Guillaume J.  53:27
+More. 
+
+Bastien G.  53:28
+In my. 
+
+Guillaume J.  53:28
+Teams. I'm not getting any Teams or channels. Do. 
+
+Curnan R.  53:36
+You see the team? 
+
+Guillaume J.  53:38
+Now, when I click on see all your things, there is nothing. Let check. I'm on all. Maybe I'm... I have nothing. 
+
+Curnan R.  54:34
+There should be an invite or something like that. 
+
+Guillaume J.  54:36
+Did. 
+
+Curnan R.  54:37
+You accept the invite? 
+
+Guillaume J.  54:38
+I. 
+
+Bastien G.  54:39
+Didn't. 
+
+Guillaume J.  54:40
+Check it anywhere. Team's name i. 
+
+Bastien G.  54:53
+Have to uh add some security access so maybe it will be better now. 
+
+Guillaume J.  55:01
+I'm. 
+
+Bastien G.  55:40
+Trying again, but I don't see any channel. 
+
+Curnan R.  56:01
+Can you see the team? 
+
+Bastien G.  56:03
+No. Everything is happening correctly until the moment. I come back into the team's application. I've tried on the web app. But I don't see anything. 
+
+Curnan R.  56:25
+Not sure then this is how we share with all of the Cisac people normally. 
+
+Bastien G.  56:30
+Yes. 
+
+Xiyuan Z.  57:02
+And Karna, is this the CSI SB IWC? 
+
+Curnan R.  57:06
+Yeah. 
+
+Guillaume J.  57:07
+I. 
+
+Xiyuan Z.  57:08
+Don't see any list of users. Are you sure you redeemed the access? Maybe. 
+
+Guillaume J.  57:12
+I'll try. 
+
+Curnan R.  57:15
+It. 
+
+Xiyuan Z.  57:16
+Again. And which account? Is that the. Gallay account? 
+
+Bastien G.  57:23
+It's me. 
+
+Xiyuan Z.  57:26
+Okay, I can see your account is in the list. 
+
+Guillaume J.  57:30
+I'm seeing your channel now. 
+
+Bastien G.  57:33
+It's. 
+
+Guillaume J.  57:35
+Up here. I don't know what happened, but now. I see. 
+
+Bastien G.  57:39
+You. 
+
+Guillaume J.  57:39
+Are using . 
+
+Xiyuan Z.  57:42
+Your account has access. 
+
+Guillaume J.  57:44
+Yes. 
+
+Xiyuan Z.  57:45
+It's. 
+
+Bastien G.  57:45
+Okay. 
+
+Curnan R.  57:46
+Okay, cool. 
+
+Xiyuan Z.  57:47
+It's okay now. Okay. 
+
+Curnan R.  57:49
+Grant, so if you go to the design channel there and files. And then there's obviously there's a ton of stuff, but the most important ones for you guys would be there's MVP folders. To begin with MVP, there's about 10 of them. 
+
+Guillaume J.  58:10
+Yes. 
+
+Curnan R.  58:12
+And each of them have a spec that describes that particular part of the system. So like it would start at 1.1, the data model. Then 1.2 was the... the business rules. 1.3 data migration 1.4 validation rules etc. 
+
+Guillaume J.  58:35
+Okay okay a lot of things. And it's up to date? 
+
+Curnan R.  59:07
+Yeah. Because. 
+
+Guillaume J.  59:08
+I see that the data model is not updated. At least there's no change record since 2020. 
+
+Curnan R.  59:21
+Yeah, like that's what the data model will look like, that. 
+
+Guillaume J.  59:26
+Specification. Great. Just. 
+
+Bastien G.  1:00:18
+A. 
+
+Guillaume J.  1:00:18
+Few minutes, 
+
+Bastien G.  1:00:18
+Please. 
+
+Guillaume J.  1:00:19
+Okay, 
+
+Bastien G.  1:01:08
+Guys. We have our next meeting tomorrow morning. Maybe it could be so we could explore all these documents from now. On your side, you could see all the accesses we need to have and it varies. an issue let us know. 
+
+Guillaume J.  1:01:36
+And. 
+
+Bastien G.  1:01:36
+Maybe the best for uh now would be to uh for us to uh to to dive into these documents. 
+
+Guillaume J.  1:01:46
+Yes. 
+
+Bastien G.  1:01:46
+And uh maybe come back with uh some better questions and a better way to start uh workshops uh event storming and uh after that the c4 okay yeah okay. 
+
+Curnan R.  1:02:03
+Yeah. 
+
+Bastien G.  1:02:03
+That. 
+
+Curnan R.  1:02:03
+Sounds good. 
+
+Guillaume J.  1:02:05
+Okay. 
+
+Bastien G.  1:02:06
+So thank you very much because i think we have information very happy to have the accesses and there are. 
+
+LEBREUILLY Y.  1:02:21
+A lot. 
+
+Bastien G.  1:02:21
+Nice. 
+
+LEBREUILLY Y.  1:02:23
+Nothing it's okay i'm not sorry just. Just. Yes, let me know, but if you need something else, you can contact me. Whatever the mean is, don't hesitate. Okay. 
+
+Bastien G.  1:02:43
+Thank you very much. 
+
+Curnan R.  1:02:44
+Cool. 
+
+Bastien G.  1:02:45
+So, 
+
+LEBREUILLY Y.  1:02:46
+Yeah. 
+
+Curnan R.  1:02:49
+All right, thanks guys. Talk to you later. 
+
+Nicholas R.  1:02:52
+Thanks. 
+
+Bastien G.  1:02:54
+Guys, bye. Bye. 
