@@ -21,7 +21,7 @@ nav:
 
 docs_dir: docs
 
-# Theme configuration using material with PALO IT customization
+# Theme configuration using material
 theme:
   name: material
   favicon: img/favicon.ico
@@ -41,21 +41,16 @@ theme:
     - search.highlight
     - content.code.copy
 
-# Custom CSS with PALO IT branding
+# Custom CSS with TERAGONE FACTORY branding
 extra_css:
   - css/palo-it-mkdocs-theme.css
 
 # Extra settings
 extra:
   generator: false
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/palo-it
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/palo-it/
 
 # Footer customization
-copyright: Copyright &copy; 2025 PALO IT
+copyright: Copyright &copy; 2025 TERAGONE FACTORY. All rights reserved.
 
 # Plugins
 plugins:

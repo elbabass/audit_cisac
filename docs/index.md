@@ -16,10 +16,6 @@ Documents de travail internes, notes de réunions et éléments de préparation 
 
 Ressources de référence, documentation technique et matériaux de recherche utilisés pour préparer notre réponse.
 
-## À propos de PALO IT
-
-PALO IT est une société de conseil en transformation digitale qui accompagne les organisations dans leur évolution technologique et organisationnelle. Notre expertise couvre l'audit de systèmes d'information, l'architecture technique et la gouvernance des données.
-
 ---
 
-*Cette documentation est générée avec MkDocs et utilise le thème Material avec la charte graphique PALO IT.*
+*Cette documentation est générée avec MkDocs et utilise le thème Material.*
