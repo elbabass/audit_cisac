@@ -43,6 +43,19 @@ This is a **MkDocs documentation site** using Python 3.12+ with Material theme.
 
 **Linting:** Run `npx markdownlint docs/**/*.md` (configuration in `.markdownlint.json`)
 
+## Git Commit Policy
+
+**Commit message format:** Use conventional commit prefixes:
+
+- `doc:` - Documentation changes
+- `feat:` - New features
+- `fix:` - Bug fixes
+- `refactor:` - Code refactoring
+- `chore:` - Maintenance tasks
+- `test:` - Test additions or changes
+
+**Important:** Do not add Claude signatures or AI-generated attributions to commit messages (no "Generated with Claude Code" or "Co-Authored-By: Claude"). Keep commits professional and attribution-free
+
 ## Repository Architecture
 
 ### Five-Layer Documentation Structure
