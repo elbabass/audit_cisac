@@ -68,7 +68,7 @@ mkdocs serve
 npx markdownlint docs/**/*.md
 
 # Lint specific file
-npx markdownlint docs/work_in_progress/Investigation-Planning.md
+npx markdownlint docs/project_management/Investigation-Planning.md
 
 # Auto-fix issues
 npx markdownlint --fix docs/**/*.md
@@ -99,17 +99,43 @@ npx markdownlint --fix docs/**/*.md
    - Workshop 2 (Oct 21) - Infrastructure and documentation review
    - Internal discussions and planning sessions
 
-3. **`docs/work_in_progress/`** - Active audit analyses (private, not in MkDocs nav)
+3. **`docs/project_management/`** - Project planning and tracking
    - `Investigation-Planning.md` - Master audit plan and backlog
+   - Status tracking documents (audit progress snapshots)
+
+4. **`docs/work_in_progress/`** - Active audit analyses (private, not in MkDocs nav)
    - `architecture/` - Component deep-dives (CosmosDB, Databricks, Portal, etc.)
    - `code_analysis/` - Integration pattern analysis
    - `infra/` - Azure infrastructure inventory (343 resources) + C4 diagrams
-   - Draft documents for restitution
-   - Status tracking documents
+   - `messages/` - Communications and correspondence
 
-4. **`docs/proposal/`** - Original audit proposal
+5. **`docs/proposal/`** - Original audit proposal
    - Original proposal documents split into sections
    - Context, governance, planning, and methodology
+
+### Index.md Files Policy
+
+**All subfolders in `docs/` must have an `index.md` file for navigation.**
+
+**Requirements:**
+
+- **Very concise** - exist purely for navigation, not documentation
+- **Structure:** Brief folder description (1-2 sentences) + simple list of main documents/contents
+- **No excessive detail** - just enough to help users find what they need
+- **No emojis** unless explicitly requested
+
+**Example format:**
+
+```markdown
+# Folder Name
+
+Brief description of folder purpose.
+
+## Contents/Documents
+
+- [Document Name](path) - Short description
+- [Subfolder Name](subfolder/) - Short description
+```
 
 ### MkDocs Navigation
 
@@ -253,7 +279,7 @@ When analyzing ISWC source code (`docs/resources/source-code/ISWC/src/`):
 
 ## Investigation Planning Document
 
-**Master backlog:** `docs/work_in_progress/Investigation-Planning.md`
+**Master backlog:** `docs/project_management/Investigation-Planning.md`
 
 **Key sections:**
 
@@ -283,7 +309,7 @@ When analyzing ISWC source code (`docs/resources/source-code/ISWC/src/`):
 
 ## Progress Tracking
 
-**Status reports are maintained separately** as dated snapshots in `docs/work_in_progress/`:
+**Status reports are maintained separately** as dated snapshots in `docs/project_management/`:
 
 - Status documents follow naming pattern: `YYYYMMDD-AuditStatus.md`
 - Detailed analyses follow pattern: `YYYYMMDD-AuditStatus-Analysis.md`
@@ -291,8 +317,8 @@ When analyzing ISWC source code (`docs/resources/source-code/ISWC/src/`):
 
 **Latest status reports:**
 
-- [20251024-AuditStatus.md](docs/work_in_progress/20251024-AuditStatus.md) - Quick status snapshot
-- [20251024-AuditStatus-Analysis.md](docs/work_in_progress/20251024-AuditStatus-Analysis.md) - Comprehensive findings and analysis
+- [20251024-AuditStatus.md](docs/project_management/20251024-AuditStatus.md) - Quick status snapshot
+- [20251024-AuditStatus-Analysis.md](docs/project_management/20251024-AuditStatus-Analysis.md) - Comprehensive findings and analysis
 
 **When to update status documents:**
 
