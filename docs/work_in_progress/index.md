@@ -47,6 +47,13 @@ Analyses détaillées du code source et des patterns d'intégration :
   - Matching Engine integration patterns
   - *(Plus d'analyses à venir)*
 
+### 📧 Messages et Communications
+
+Communications et correspondance avec les parties prenantes :
+
+- [Messages Index](messages/index.md) - Documentation des communications de l'audit
+  - [Draft Emails](messages/draft/index.md) - Brouillons de messages (lacunes code source)
+
 ### 📊 Project Status
 
 Documents de suivi et d'analyse de l'audit :
