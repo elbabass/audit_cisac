@@ -194,6 +194,7 @@ public class PostMatchingValidator : BaseValidator, IPostMatchingValidator
 **Key Pattern**: Inherits from [BaseValidator](validation-pipeline.md#basevalidator-rule-execution-engine) with `ValidatorType.PostMatchingValidator` to load post-matching rules.
 
 **Execution Flow**: Same as [ValidationPipeline](validation-pipeline.md#execution-flow):
+
 1. BaseValidator loads rules matching ValidatorType.PostMatchingValidator
 2. Filters rules by TransactionType
 3. Executes rules sequentially with short-circuit rejection
@@ -285,15 +286,15 @@ pie title Post-Matching Rules by Category (22 total)
 | **PV_01** | CDR | Work exists for deletion | _130 |
 | **PV_04** | CUR | ISWC exists for update | _146 |
 | **PV_05** | CUR | Work exists for update | _131 |
-| **PV_09** | MER, DMR | ISWCs/works exist and not replaced | _132, _153 |
+| **PV_09** | MER, DMR | ISWCs/works exist and not replaced | _132,_153 |
 | **PV_10** | MER, DMR | Submitter has eligible submissions on ISWC | _150 |
 | **PV_11** | CUR | Prevent merge during update | _143 |
 | **PV_12** | CUR | Work number matches expected | _134 |
 | **PV_13** | CUR | ISWC matches work | _135 |
 | **PV_14** | CDR | Submitter has single work on ISWC | _136 |
-| **PV_20** | CUR | IP/title consistency (non-eligible) | _144, _247, _127 |
-| **PV_21** | CUR | IP deletion requires authorization | _144, _145 |
-| **PV_22** | CUR | ISWC status allows update | _137, _138 |
+| **PV_20** | CUR | IP/title consistency (non-eligible) | _144,_247, _127 |
+| **PV_21** | CUR | IP deletion requires authorization | _144,_145 |
+| **PV_22** | CUR | ISWC status allows update | _137,_138 |
 | **PV_23** | CUR | (TBD - not read) | (TBD) |
 | **PV_24** | CUR | (TBD - not read) | (TBD) |
 | **PV_25** | CDR | Work not archived | _133 |
@@ -430,6 +431,7 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 **Transaction Types**: MER, DMR
 
 **Error Codes**:
+
 - **_132**: ISWC/work to merge does not exist or is replaced
 - **_153**: ISWC to unmerge does not exist or is replaced
 
@@ -478,6 +480,7 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 **Error Code _150**: Submitter has no eligible submissions on matched ISWCs
 
 **Permission Logic**:
+
 1. Extract ISWCs from matched results
 2. Query eligible submissions (`iswcEligibleOnly = true`)
 3. Filter by submitter's agency
@@ -572,10 +575,12 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 **Transaction Type**: CUR
 
 **Error Codes**:
+
 - **_144**: No matches found or non-eligible update of allocated ISWC
 - **_145**: Deleted IP is not authoritative to submitter
 
 **Authorization Logic**:
+
 1. Skip if no other eligible works on ISWC (submitter is sole owner)
 2. Identify deleted IPs (present in existing work, not in submission)
 3. For each deleted IP:
@@ -585,6 +590,7 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 4. Reject if any deleted IP fails authorization
 
 **Public Domain Detection**:
+
 - **CommonIPs.PublicDomainIps**: Static list of known public domain IPs
 - **DeathDate < UtcNow - 80 years**: Automatic public domain after 80 years
 
@@ -712,11 +718,13 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 **Configuration Parameter**: `EnablePVTitleStandardization` (bool)
 
 **Error Codes**:
+
 - **_144**: IPs don't match existing work
 - **_247**: IPs don't match selected match
 - **_127**: Titles don't match
 
 **Validation Logic**:
+
 1. Only applies to **non-eligible** CUR submissions
 2. **Case 1**: PreferredIswc matches existing ISWC (not allocated status 2)
    - Compare IPs (writers only) by IpBaseNumber
@@ -727,10 +735,12 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
    - Compare titles
 
 **IP Matching**:
+
 - Groups by IpBaseNumber
 - Requires same count and all IpBaseNumbers present in both sets
 
 **Title Matching** (2 modes):
+
 - **Standardized mode** (`paramValue = true`): Use StandardizedName/StandardizedTitle
 - **Non-standardized mode**: Exact comparison or sanitized comparison, excluding specific title types
 
@@ -773,6 +783,7 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 **Error Code _128**: Disambiguation ISWC does not exist
 
 **Disambiguation Flow**:
+
 1. User receives matches in PreviewDisambiguation mode
 2. User selects "This is a new work, not any of these matches"
 3. Frontend sends `Disambiguation = true` and `DisambiguateFrom` list
@@ -823,8 +834,9 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 **Error Code _129**: Disambiguation ISWC does not exist (configurable rule)
 
 **Difference from PV_30**:
+
 - Can be disabled via `ValidateDisambiguationISWCs = false`
-- Different error code (_129 vs _128)
+- Different error code (_129 vs_128)
 - Does not check `submission.Model.Disambiguation` flag
 
 **Questions for Further Investigation:**
@@ -899,6 +911,7 @@ graph TB
 ### Upstream: ProcessingPipeline
 
 **Input Data**:
+
 - `submission.IswcModel`: Assigned ISWC with verified submissions
 - `submission.Model.PreferredIswc`: Assigned or requested ISWC
 - `submission.Model.IswcsToMerge`: ISWCs to merge (for MER)
@@ -907,6 +920,7 @@ graph TB
 - `submission.TransactionType`: CAR, CUR, CDR, MER, DMR, FSQ
 
 **Critical Fields**:
+
 - **IswcModel.Iswc**: Assigned ISWC
 - **IswcModel.IswcStatusId**: ISWC status (1=Active?, 2=Allocated?)
 - **IswcModel.IsReplaced**: ISWC merge status
@@ -914,11 +928,13 @@ graph TB
 ### Downstream: Response Generation
 
 **Output Data**:
+
 - `submission.Rejection`: Final rejection if post-matching validation failed
 - `submission.RulesApplied`: Complete audit trail including PV_* rules
 - `submission.IsEligible`: Updated eligibility flag (by PV_10)
 
 **Response Flow**:
+
 1. If `submission.Rejection != null`: Return error response with error code
 2. If `submission.Rejection == null`: Return success response with IswcModel
 
@@ -1000,10 +1016,12 @@ if (iswc == null || iswc.IsReplaced)
 **Short-Circuit Behavior**:
 
 ✅ **Benefit**: First validation failure stops rule execution immediately
+
 - Reduced database queries for invalid submissions
 - Faster rejection response
 
 ⚠️ **Trade-off**: User only sees first validation error, not all errors
+
 - Multiple issues require multiple submission attempts
 - Difficult to diagnose complex validation failures
 
@@ -1013,17 +1031,23 @@ if (iswc == null || iswc.IsReplaced)
 
 ### High Priority
 
-🔴 **No Distributed Transaction Isolation**
-- **Impact**: Race conditions between ProcessingPipeline and PostMatchingPipeline
-- **Risk**: Work deleted/modified between stages causes validation failures
-- **Recommendation**: Add distributed transaction or saga pattern
+🔴 **Unclear Transaction Boundaries Across Pipeline Stages**
+
+- **Impact**: Database changes may be committed incrementally during request processing
+- **Risk**: If EF Core auto-commits after each operation, concurrent API requests could modify the same work data between ProcessingPipeline and PostMatchingPipeline, causing validation failures
+- **Context**: Pipelines are sequential within a single request, but work is persisted to database by ProcessingPipeline before PostMatchingPipeline validates
+- **Current Mitigation**: DbUpdateConcurrencyException handling; IsReplaced flag checks
+- **Question**: Does EF Core transaction scope span the entire API request, or does each WorkManager operation auto-commit?
+- **Recommendation**: Investigate actual transaction boundaries; consider explicit TransactionScope spanning all pipeline stages if needed
 
 🔴 **Sequential Database Queries (N+1 Problem)**
+
 - **Impact**: High latency for merge operations with many targets
 - **Risk**: Performance degradation at scale
 - **Recommendation**: Batch merge target validation into single query
 
 🔴 **No Caching from ProcessingPipeline**
+
 - **Impact**: Redundant work lookups (already queried in ProcessingPipeline)
 - **Risk**: Unnecessary database load
 - **Recommendation**: Pass ProcessingPipeline work data to PostMatchingPipeline
@@ -1031,21 +1055,25 @@ if (iswc == null || iswc.IsReplaced)
 ### Medium Priority
 
 ⚠️ **IV_40 Misplaced in PostMatchingValidator**
+
 - **Impact**: Confusing naming (IV_* typically in StaticDataValidator)
 - **Risk**: Maintenance confusion
 - **Recommendation**: Rename to PV_XX or move to appropriate validator
 
 ⚠️ **Duplicate Disambiguation Rules (PV_30 + IV_40)**
+
 - **Impact**: Two rules for same validation
 - **Risk**: Inconsistent behavior if configurations differ
 - **Recommendation**: Consolidate into single configurable rule
 
 ⚠️ **Complex Nested Logic in PV_20, PV_21**
+
 - **Impact**: Difficult to maintain and test
 - **Risk**: Edge cases not covered
 - **Recommendation**: Refactor into smaller, testable methods
 
 ⚠️ **Single-Error Reporting (Short-Circuit)**
+
 - **Impact**: User sees only first validation error
 - **Risk**: Multiple round trips to fix all issues
 - **Recommendation**: Add "collect all errors" mode for development
@@ -1053,11 +1081,13 @@ if (iswc == null || iswc.IsReplaced)
 ### Low Priority
 
 ⚠️ **No Rule Execution Timeout**
+
 - **Impact**: Slow database queries can block pipeline
 - **Risk**: Timeouts at API level
 - **Recommendation**: Add rule-level timeouts with circuit breaker
 
 ⚠️ **Hard-Coded Public Domain Logic (80 years)**
+
 - **Impact**: Cannot adapt to different jurisdictions
 - **Risk**: Incorrect public domain detection
 - **Recommendation**: Move to configurable rule parameter
@@ -1104,6 +1134,9 @@ if (iswc == null || iswc.IsReplaced)
 1. What do PV_11, PV_12, PV_13, PV_14 validate? (CUR consistency, CDR permissions)
 2. What do PV_22, PV_23, PV_24, PV_25, PV_26 validate? (CUR/CDR additional checks)
 3. What do PV_29, PV_31, PV_33, PV_34 validate? (Unknown transaction types)
+4. What is the Entity Framework Core transaction scope? (Per-request? Per-operation?)
+5. Are there explicit `TransactionScope` declarations in the API layer?
+6. How frequently do concurrent requests target the same work?
 
 ## Related Documentation
 

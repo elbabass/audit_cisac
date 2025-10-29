@@ -427,6 +427,7 @@ The 13 assignment strategies handle different combinations of transaction types,
 | **AS_15** | CAR/CUR | Any | Existing | Label | ISRC-based matching |
 
 **Transaction Type Legend:**
+
 - **CAR**: Create (add new work)
 - **CUR**: Update (modify existing work)
 - **CDR**: Delete (remove work)
@@ -489,6 +490,7 @@ flowchart TD
 **Purpose**: Add a new work submission that matches an existing ISWC (eligible for ISWC assignment).
 
 **Key Logic**:
+
 ```csharp
 public async Task<IswcModel> ProcessSubmission(Submission submission)
 {
@@ -548,6 +550,7 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 ```
 
 **PreviewDisambiguation Mode**:
+
 - Returns empty ISWC (`Iswc = ""`) when matches exist
 - Allows user to review and confirm matching before final assignment
 - Prevents automatic ISWC assignment for ambiguous cases
@@ -559,6 +562,7 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 **Purpose**: Create a new work with a freshly generated ISWC (no existing matches found).
 
 **Key Logic**:
+
 ```csharp
 async Task<IswcModel> IProcessingSubComponent.ProcessSubmission(Submission submission)
 {
@@ -573,6 +577,7 @@ async Task<IswcModel> IProcessingSubComponent.ProcessSubmission(Submission submi
 ```
 
 **ISWC Generation**:
+
 - `getNewIswc: true` triggers ISWC generation service
 - ISWC format: `T-XXX.XXX.XXX-C` (T=Type, C=Check digit)
 - ISWC uniqueness enforced by database constraints
@@ -590,6 +595,7 @@ async Task<IswcModel> IProcessingSubComponent.ProcessSubmission(Submission submi
 **Purpose**: Handle CUR transactions where the preferred ISWC differs from matched ISWC, requiring merge operations.
 
 **Key Logic**:
+
 ```csharp
 public async Task<IswcModel> ProcessSubmission(Submission submission)
 {
@@ -655,12 +661,14 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 ```
 
 **Merge Logic**:
+
 1. **IsPortalSubmissionFinalStep**: User chose a different ISWC from portal disambiguation → merge old ISWC into new
 2. **Standard CUR**: System detected ISWC mismatch → merge preferred ISWC
 3. **IswcStatus=2 Handling**: Merge all allocated ISWCs (status 2) into new ISWC
 4. **ISRC Fallback**: For Label requests, use ISRC matches if available
 
 **LinkedTo Relationship**:
+
 - Stored in `IswcLinkedTo` table
 - Represents ISWC merge history
 - Used for ISWC consolidation and reporting
@@ -678,6 +686,7 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 **Purpose**: Handle CDR (Delete) transactions to remove works from the database.
 
 **Key Logic**:
+
 ```csharp
 public async Task<IswcModel> ProcessSubmission(Submission submission)
 {
@@ -687,6 +696,7 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 ```
 
 **Delete Behavior**:
+
 - Likely soft delete (sets `Status = false` flag)
 - Returns empty IswcModel
 - Used for removing duplicate or erroneous submissions
@@ -700,6 +710,7 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 ### AS_12/AS_11: Merge Management
 
 **AS_12 (MER)**: [AS_12.cs](../../../../resources/source-code/ISWC/src/PipelineComponents/ProcessingComponent/Processing/AS_12.cs)
+
 ```csharp
 public async Task<IswcModel> ProcessSubmission(Submission submission)
 {
@@ -713,6 +724,7 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 ```
 
 **AS_11 (DMR)**: [AS_11.cs](../../../../resources/source-code/ISWC/src/PipelineComponents/ProcessingComponent/Processing/AS_11.cs)
+
 ```csharp
 public async Task<IswcModel> ProcessSubmission(Submission submission)
 {
@@ -726,10 +738,12 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 ```
 
 **Purpose**:
+
 - **MER**: Create ISWC merge relationships (link ISWCs)
 - **DMR**: Remove ISWC merge relationships (unlink ISWCs)
 
 **Use Cases**:
+
 - Manual merge corrections by administrators
 - Resolving ISWC conflicts discovered post-allocation
 - Undoing incorrect merge decisions
@@ -741,11 +755,13 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 **Purpose**: Provide read-only consolidated view of work data, merging information from all verified submissions.
 
 **Key Features**:
+
 - **Consolidated Original Title (OT)**: Select most recent eligible OT, fallback to non-eligible
 - **Consolidated Non-OT Titles**: Merge all alternate titles from verified submissions
 - **Consolidated Interested Parties**: Merge IPs with authoritative flag priority
 
 **Consolidation Logic**:
+
 ```csharp
 // Get consolidated OT title (prefer eligible, most recent)
 string GetConsolidatedOTTitle(IswcModel iswc)
@@ -828,6 +844,7 @@ List<InterestedPartyModel> GetConsolidatedIPs(IswcModel iswc)
 ```
 
 **Consolidation Priority**:
+
 1. **Titles**: Eligible → Non-Eligible → Most Recent
 2. **IPs**: Authoritative → Most Recent → Deduplicate by IpBaseNumber/IPNameNumber
 3. **Public Requests**: Strip IpBaseNumber for privacy
@@ -845,6 +862,7 @@ List<InterestedPartyModel> GetConsolidatedIPs(IswcModel iswc)
 **Purpose**: Handle Label requests with ISRC-based matching (IswcStatus=1 from ISRC matches).
 
 **Key Logic**:
+
 ```csharp
 public async Task<IswcModel> ProcessSubmission(Submission submission)
 {
@@ -883,6 +901,7 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 ```
 
 **ISRC Matching Flow**:
+
 1. Check for ISRC matches with IswcStatus=1
 2. If found, update work and merge with ISRC-matched ISWC
 3. This strategy is Label-specific (RequestType.Label)
@@ -902,6 +921,7 @@ public async Task<IswcModel> ProcessSubmission(Submission submission)
 **Purpose**: Recalculate `IsAuthoritative` flags for interested parties based on agency rules.
 
 **Key Logic**:
+
 ```csharp
 public async Task<Submission> RecaculateAuthoritativeFlag(Submission submission)
 {
@@ -923,6 +943,7 @@ public async Task<Submission> RecaculateAuthoritativeFlag(Submission submission)
 ```
 
 **Authoritative Logic**:
+
 - **CisacInterestedPartyType**:
   - **C**: Composer
   - **MA**: Music Author
@@ -931,6 +952,7 @@ public async Task<Submission> RecaculateAuthoritativeFlag(Submission submission)
 - **IsAuthoritative Determination**: Checks if IP is authoritative for submitting agency
 
 **Usage**:
+
 - Called by AS_01, AS_02, AS_03, AS_04, AS_05, AS_08, AS_13, AS_14
 - Ensures authoritative flags are up-to-date before persistence
 - Critical for ISWC eligibility determination
@@ -950,6 +972,7 @@ public async Task<Submission> RecaculateAuthoritativeFlag(Submission submission)
 The WorkManager provides comprehensive CRUD operations for works and ISWCs:
 
 **Key Methods**:
+
 ```csharp
 public interface IWorkManager
 {
@@ -991,6 +1014,7 @@ public interface IWorkManager
 ```
 
 **Repository Dependencies**:
+
 - **IWorkRepository**: Work data CRUD
 - **IIswcRepository**: ISWC allocation and status
 - **IIswcLinkedToRepository**: ISWC merge relationships
@@ -1010,6 +1034,7 @@ public interface IWorkManager
 ### Database Transaction Handling
 
 **Concurrency Control**:
+
 ```csharp
 catch (DbUpdateConcurrencyException)
 {
@@ -1021,11 +1046,13 @@ catch (DbUpdateConcurrencyException)
 **Error Code _155**: Database concurrency conflict (optimistic concurrency violation)
 
 **Concurrency Strategy**:
+
 - Entity Framework Core uses optimistic concurrency with rowversion/timestamp columns
 - If a work is modified between read and update, concurrency exception is thrown
 - Submission marked as failed with _155 error
 
 **General Exception Handling**:
+
 ```csharp
 catch (Exception ex)
 {
@@ -1098,6 +1125,7 @@ graph TB
 ### Upstream: MatchingPipeline
 
 **Input Data**:
+
 - `submission.MatchedResult.Matches`: Work matches from Matching Engine
 - `submission.IsrcMatchedResult.Matches`: ISRC-based matches (Label requests)
 - `submission.Model.PreferredIswc`: Submitter's preferred ISWC
@@ -1105,6 +1133,7 @@ graph TB
 - `submission.IsEligible`: Eligibility flag from validation
 
 **Critical Fields**:
+
 - **MatchedResult.Matches[].Id**: WorkInfoId for existing work
 - **MatchedResult.Matches[].IswcStatus**: ISWC status (1=Active?, 2=Allocated?)
 - **MatchedResult.Matches[].Numbers**: Work identifiers (ISWC, agency codes)
@@ -1112,12 +1141,14 @@ graph TB
 ### Downstream: PostMatchingPipeline
 
 **Output Data**:
+
 - `submission.IswcModel`: Assigned ISWC model with verified submissions
 - `submission.IsProcessed`: Processing completion flag
 - `submission.RulesApplied`: Audit trail with AS_XX strategy identifiers
 - `submission.Rejection`: Error if processing failed
 
 **Persisted Data**:
+
 - **WorkInfo**: Work metadata (title, IPs, instrumentation)
 - **Iswc**: ISWC allocation and status
 - **IswcLinkedTo**: ISWC merge relationships
@@ -1130,6 +1161,7 @@ graph TB
 ### Performance Patterns
 
 **Reflection Overhead**:
+
 ```csharp
 var validSubComponents = AppDomain.CurrentDomain.GetComponentsOfType<IProcessingSubComponent>(serviceProvider)
     .Where(p =>
@@ -1141,6 +1173,7 @@ var validSubComponents = AppDomain.CurrentDomain.GetComponentsOfType<IProcessing
 ```
 
 ⚠️ **Reflection on every submission** (same as MatchingPipeline):
+
 - Assembly scanning via `AppDomain.CurrentDomain`
 - Runtime filtering by transaction type and eligibility
 - No caching of discovered components
@@ -1148,18 +1181,21 @@ var validSubComponents = AppDomain.CurrentDomain.GetComponentsOfType<IProcessing
 **Mitigation**: Strategies typically resolve to 1-2 components per submission due to strict filtering.
 
 **Database Round Trips**:
+
 ```csharp
 var workinfoId = await workManager.AddWorkInfoAsync(submission, getNewIswc: true);
 submission.IswcModel = (await workManager.FindManyAsync(new long[] { workinfoId }, detailLevel: submission.DetailLevel)).FirstOrDefault();
 ```
 
 ⚠️ **Two database round trips**:
+
 1. Insert work and generate ISWC
 2. Query back the full IswcModel with joins
 
 **Rationale**: IswcModel requires complex joins (VerifiedSubmissions, InterestedParties, Titles, etc.) that are not immediately available after insert.
 
 **Single Transaction Per Submission**:
+
 ```csharp
 foreach (var submission in batch)
 {
@@ -1178,6 +1214,7 @@ foreach (var submission in batch)
 ```
 
 ⚠️ **No batch transaction**: Each submission has isolated transaction scope
+
 - **Benefit**: Partial batch failures don't rollback entire batch
 - **Risk**: Inconsistent state if batch contains dependent submissions
 
@@ -1190,6 +1227,7 @@ foreach (var submission in batch)
 ### Error Handling
 
 **Concurrency Conflict (_155)**:
+
 ```csharp
 catch (DbUpdateConcurrencyException)
 {
@@ -1199,6 +1237,7 @@ catch (DbUpdateConcurrencyException)
 ```
 
 🔴 **No retry mechanism**:
+
 - Submission immediately fails with _155 error
 - Client must resubmit entire submission
 - No automatic conflict resolution
@@ -1210,6 +1249,7 @@ catch (DbUpdateConcurrencyException)
 - Can conflicts be resolved automatically by refreshing submission data?
 
 **Generic Exception Handling**:
+
 ```csharp
 catch (Exception ex)
 {
@@ -1220,6 +1260,7 @@ catch (Exception ex)
 ```
 
 ⚠️ **Overly broad exception handling**:
+
 - All exceptions (SQL, network, null reference, etc.) result in generic _100 error
 - No specific error codes for different failure types
 - Difficult for clients to determine retry strategy
@@ -1229,12 +1270,14 @@ catch (Exception ex)
 ### Data Consistency
 
 **PreferredIswc Propagation**:
+
 ```csharp
 if(submission.MultipleAgencyWorkCodesChild && string.IsNullOrWhiteSpace(submission.Model.PreferredIswc))
     submission.Model.PreferredIswc = batch.FirstOrDefault(x=> x.SubmissionId == submission.SubmissionParentId).Model.PreferredIswc;
 ```
 
 ⚠️ **Parent-child dependency**:
+
 - Child submissions inherit PreferredIswc from parent
 - Parent must be processed before child
 - No validation of processing order in batch
@@ -1246,6 +1289,7 @@ if(submission.MultipleAgencyWorkCodesChild && string.IsNullOrWhiteSpace(submissi
 - Can circular dependencies occur?
 
 **Additional Identifiers Merging**:
+
 ```csharp
 if (submission.Model.AdditionalIdentifiers != null && submission.Model.AdditionalIdentifiers.Any())
 {
@@ -1265,10 +1309,12 @@ if (submission.Model.AdditionalIdentifiers != null && submission.Model.Additiona
 ```
 
 ⚠️ **Complex nested loops** for identifier merging:
+
 - O(n×m×k) complexity (verifiedSubmissions × additionalIdentifiers × existing identifiers)
 - Potential performance issue for works with many identifiers
 
 **Label Submission Updates**:
+
 ```csharp
 if (processedSubmission.RequestType != RequestType.Label
     && verifiedSubmissions.Count(y => y.WorkNumber.Number.StartsWith("PRS")) > 0
@@ -1287,38 +1333,47 @@ if (processedSubmission.RequestType != RequestType.Label
 ### High Priority
 
 🔴 **No Retry Mechanism for Concurrency Conflicts**
+
 - **Impact**: Submissions fail permanently on concurrency exceptions
 - **Risk**: High failure rate in concurrent submission scenarios
 - **Recommendation**: Implement optimistic retry with exponential backoff
 
 🔴 **Reflection-Based Component Discovery on Every Submission**
+
 - **Impact**: CPU overhead for assembly scanning and filtering
 - **Risk**: Degraded performance at scale
 - **Recommendation**: Cache discovered components by filter criteria
 
 🔴 **Generic Exception Handling (_100)**
+
 - **Impact**: Poor error visibility for clients
 - **Risk**: Difficult to diagnose and resolve failures
 - **Recommendation**: Implement specific error codes for SQL, network, validation errors
 
 ### Medium Priority
 
-⚠️ **No Batch Transaction Support**
-- **Impact**: Partial batch failures leave inconsistent state
-- **Risk**: Parent-child submissions may have incomplete processing
-- **Recommendation**: Add optional batch-level transaction scope
+⚠️ **Unclear Transaction Boundaries Across Pipeline Stages**
+
+- **Impact**: Database changes may be committed incrementally during request processing
+- **Risk**: If EF Core auto-commits after each operation, concurrent API requests could modify the same work data, causing validation failures in PostMatchingPipeline
+- **Current Mitigation**: DbUpdateConcurrencyException handling with _155 error code
+- **Question**: Does EF Core transaction scope span the entire API request, or does each WorkManager operation auto-commit?
+- **Recommendation**: Investigate actual transaction boundaries; consider explicit TransactionScope if needed
 
 ⚠️ **Complex GetPreferredIswcType Logic (62 lines)**
+
 - **Impact**: Difficult to maintain and test
 - **Risk**: Edge cases may not be handled correctly
 - **Recommendation**: Refactor into strategy pattern with unit tests
 
 ⚠️ **Two Database Round Trips per Submission**
+
 - **Impact**: Increased latency and database load
 - **Risk**: Performance bottleneck at scale
 - **Recommendation**: Optimize WorkManager to return IswcModel directly
 
 ⚠️ **No Validation of Parent-Child Processing Order**
+
 - **Impact**: Child submissions may fail if parent not processed first
 - **Risk**: Batch failures due to ordering issues
 - **Recommendation**: Add batch ordering validation
@@ -1326,11 +1381,13 @@ if (processedSubmission.RequestType != RequestType.Label
 ### Low Priority
 
 ⚠️ **Additional Identifiers Merging Complexity**
+
 - **Impact**: O(n×m×k) nested loops
 - **Risk**: Performance issue for works with many identifiers
 - **Recommendation**: Optimize with dictionary lookups
 
 ⚠️ **Stopwatch Timing Overhead**
+
 - **Impact**: Minor CPU overhead for rule execution tracking
 - **Risk**: Negligible but unnecessary in high-throughput scenarios
 - **Recommendation**: Consider async timing or sampling
@@ -1387,6 +1444,9 @@ if (processedSubmission.RequestType != RequestType.Label
 3. Can AddWorkInfoAsync return IswcModel directly to reduce round trips?
 4. Are there scenarios where batch-level transactions are required?
 5. What is the expected batch size and throughput?
+6. What is the Entity Framework Core transaction scope? (Per-request? Per-operation?)
+7. Are there explicit `TransactionScope` declarations in the API layer?
+8. How frequently do concurrent requests target the same work?
 
 ## Related Documentation
 
