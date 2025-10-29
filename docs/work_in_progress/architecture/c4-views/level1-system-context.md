@@ -15,16 +15,19 @@ This document defines the System Context (C4 Level 1) for the CISAC ISWC system,
 ## Validation Sources
 
 **Primary Sources:**
+
 - [InfrastructureDiagram.png](../../../resources/InfrastructureDiagram.png) - Authoritative Azure deployment diagram
 - [Azure Resources Export CSV](../../../resources/Azureresources-export-20251021.csv) - Complete Azure resource inventory
 
 **Secondary Sources:**
+
 - [Core Design Documents](../../../resources/core_design_documents/) - 12 functional specifications
   - SPE_20190806_ISWC_Portal.md - Agency Portal specification
   - SPE_20200108_ISWC_Public_Portal.md - Public Portal specification
   - SPE_20191217_CISAC ISWC REST API.md - REST API specification
 
 **Tertiary Sources:**
+
 - [Source Code](../../../resources/source-code/ISWC/src/) - Implementation evidence
   - Matching Engine HTTP client configuration
   - Database connection strings
@@ -121,6 +124,7 @@ The ISWC Platform is the core system for managing International Standard Musical
 #### Evidence from Validation Sources
 
 **From Azure Resources CSV:**
+
 - 4 separate API App Services confirmed in production:
   - `cisaciswcapiprod` (Agency API)
   - `cisaciswcapilabelprod` (Label API)
@@ -135,11 +139,13 @@ The ISWC Platform is the core system for managing International Standard Musical
   - `cisaciswcwedev/uat/prod` (SQL Server)
 
 **From InfrastructureDiagram.png:**
+
 - Shows complete Azure architecture with all major components
 - Confirms external system integrations
 - Shows Matching Engine in separate grouping
 
 **From Source Code:**
+
 - 4 separate API projects: Api.Agency, Api.Label, Api.Publisher, Api.ThirdParty
 - Portal project exists (Agency Portal)
 - ⚠️ **Public Portal source code NOT FOUND** (despite App Service being deployed)
@@ -168,6 +174,7 @@ The Matching Engine is a **separate software system** developed and maintained b
 #### Evidence That Matching Engine is External
 
 **From Source Code (`Framework/HttpClients/MatchingEngine/MatchingEngineMatchingService.cs`):**
+
 ```csharp
 // HTTP client configured with external base URL
 httpClient = httpClientFactory.CreateClient("MatchingApi");
@@ -177,6 +184,7 @@ opt.BaseAddress = new Uri(configuration["BaseAddress-SpanishPointMatchingEngine"
 ```
 
 **Key Evidence:**
+
 1. ✅ **External HTTP API:** ISWC APIs make HTTP calls to Matching Engine (not in-process)
 2. ✅ **No source code in repository:** ME Portal, ME API, Search Service not in ISWC repo
 3. ✅ **Vendor product:** Spanish Point product, separate development team
@@ -185,11 +193,13 @@ opt.BaseAddress = new Uri(configuration["BaseAddress-SpanishPointMatchingEngine"
 #### Shared Infrastructure Caveat
 
 **IMPORTANT:** While logically external, Matching Engine **shares Azure infrastructure** with ISWC Platform:
+
 - Deployed in same Azure subscription
 - Shares same databases (Cosmos DB, SQL Server) for indexing
 - Shown in separate resource group in InfrastructureDiagram.png
 
 **C4 Modeling Decision:** Model as **External System** at Level 1 because:
+
 - Separate codebase and development team
 - Different product with separate licensing
 - HTTP API integration (not internal service calls)
@@ -198,6 +208,7 @@ opt.BaseAddress = new Uri(configuration["BaseAddress-SpanishPointMatchingEngine"
 #### Integration Pattern
 
 **ISWC Platform → Matching Engine:**
+
 - **Protocol:** HTTPS REST API
 - **Authentication:** OAuth bearer tokens
 - **Purpose:** Search for matching works during submission validation
@@ -210,6 +221,7 @@ opt.BaseAddress = new Uri(configuration["BaseAddress-SpanishPointMatchingEngine"
   6. ISWC Platform presents matches to agency for disambiguation
 
 **Design Document Reference:**
+
 - SPE_20190424_MVPMatchingRules.md - Matching rules specification
 
 #### Open Questions for Validation
@@ -235,12 +247,14 @@ FastTrack SSO is an external authentication provider used for agency user authen
 #### Integration Pattern
 
 **Agency Portal → FastTrack SSO:**
+
 - **Protocol:** HTTPS with OAuth2
 - **Flow:** User clicks "Login" → Redirected to FastTrack → Authenticated → Redirected back with token
 - **Token Type:** Bearer token (JWT or similar)
 - **Scope:** Agency Portal only (Public Portal likely uses different auth or none)
 
 **Evidence:**
+
 - InfrastructureDiagram.png shows "External/FastTrack SSO" with arrow to API Management
 - Design doc SPE_20190806_ISWC_Portal.md mentions authentication requirements
 
@@ -265,6 +279,7 @@ Suisa is the Swiss music rights society. The Suisa API allows Suisa to programma
 #### Integration Pattern
 
 **Suisa API → ISWC Platform:**
+
 - **Protocol:** HTTPS REST API
 - **Routing:** Through Azure API Management gateway
 - **Endpoint:** ISWC Third Party API (likely)
@@ -272,6 +287,7 @@ Suisa is the Swiss music rights society. The Suisa API allows Suisa to programma
 - **Authentication:** API key or OAuth (TBD)
 
 **Design Document Reference:**
+
 - SPE_20191217_CISAC ISWC REST API.md - API specification
 
 #### Open Questions for Validation
@@ -295,6 +311,7 @@ Suisa operates an SFTP server for bulk file exchange with the ISWC Platform usin
 #### Integration Pattern
 
 **Suisa SFTP → ISWC SFTP → Data Factory/Databricks:**
+
 - **Protocol:** SFTP (SSH File Transfer Protocol)
 - **File Format:** EDI (CWR format - SPE_20190806_ISWC_EDI_FileFormat.md)
 - **Flow:**
@@ -305,11 +322,13 @@ Suisa operates an SFTP server for bulk file exchange with the ISWC Platform usin
   5. Databricks parses EDI file and loads to Cosmos DB/SQL Server
 
 **Evidence:**
+
 - InfrastructureDiagram.png shows "External/Suisa SFTP" with arrow to "Public IP" → "ISWC SFTP"
 - SFTP-Usage.md component doc describes SFTP workflows
 - Data Factory deployment folder has linkedService/SuisaSftp.json
 
 **Design Document Reference:**
+
 - SPE_20190806_ISWC_EDI_FileFormat.md - EDI file format specification
 
 #### Open Questions for Validation
@@ -325,6 +344,7 @@ Suisa operates an SFTP server for bulk file exchange with the ISWC Platform usin
 ### Work Submission Flows
 
 #### 1. Agency Web Portal Submission
+
 ```mermaid
 sequenceDiagram
     actor User as Agency User
@@ -352,6 +372,7 @@ sequenceDiagram
 ```
 
 #### 2. API Submission (Third Party Integration)
+
 ```mermaid
 sequenceDiagram
     actor External as External System (Suisa)
@@ -373,6 +394,7 @@ sequenceDiagram
 ```
 
 #### 3. File-Based Submission (EDI via SFTP)
+
 ```mermaid
 sequenceDiagram
     actor Suisa as Suisa System
@@ -395,6 +417,7 @@ sequenceDiagram
 ```
 
 ### Public Search Flow
+
 ```mermaid
 sequenceDiagram
     actor Public as Public User
@@ -420,6 +443,7 @@ sequenceDiagram
 ### ISWC Platform Boundary
 
 **What's Inside:**
+
 - All web applications (Agency Portal, Public Portal)
 - All APIs (Agency, Label, Publisher, Third Party)
 - All background jobs (Azure Functions)
@@ -428,6 +452,7 @@ sequenceDiagram
 - All infrastructure (SFTP server, API Management, Key Vault, etc.)
 
 **Rationale:** These components:
+
 - Are developed and deployed as one platform
 - Share the same codebase repository (mostly - Public Portal source missing)
 - Are maintained by Spanish Point under ISWC Platform contract
@@ -437,11 +462,13 @@ sequenceDiagram
 ### Matching Engine Boundary
 
 **What's Inside:**
+
 - Matching Engine Portal (vendor-managed UI)
 - Matching Engine API (REST API for work matching)
 - Azure Cognitive Search service (indexing)
 
 **Rationale:** These components:
+
 - Are a separate Spanish Point product
 - Have separate codebase (not in ISWC repository)
 - Are accessed via HTTP API (external integration pattern)
@@ -451,6 +478,7 @@ sequenceDiagram
 ### External System Boundaries
 
 **External Systems:**
+
 - FastTrack SSO
 - Suisa API
 - Suisa SFTP
@@ -466,6 +494,7 @@ sequenceDiagram
 **Decision:** Model Matching Engine as external system despite shared infrastructure
 
 **Rationale:**
+
 1. Separate codebase and product
 2. HTTP API integration pattern
 3. Vendor dependency risk is audit focus
@@ -473,10 +502,12 @@ sequenceDiagram
 5. No source code access in ISWC repository
 
 **Alternatives Considered:**
+
 - Model as internal subsystem: Rejected because it obscures vendor coupling
 - Model as separate system in same platform: Ambiguous, doesn't clarify relationship
 
 **Impact:**
+
 - Makes vendor dependency explicit in architecture
 - Highlights integration points for replacement analysis
 - Aligns with audit goal of assessing vendor independence
@@ -486,6 +517,7 @@ sequenceDiagram
 **Decision:** All data processing containers are part of ISWC Platform system
 
 **Rationale:**
+
 1. Databricks, Data Factory, Cosmos DB, SQL Server serve ISWC Platform
 2. They are not independent systems with separate business purposes
 3. They are deployment containers within ISWC Platform architecture
@@ -499,6 +531,7 @@ sequenceDiagram
 **Decision:** Networking is Azure infrastructure, not a C4 software system
 
 **Rationale:**
+
 1. Virtual Network, Public IP are network infrastructure
 2. They don't execute business logic
 3. C4 Level 1 shows software systems, not infrastructure
@@ -538,6 +571,7 @@ sequenceDiagram
 ### High Priority Questions for Validation
 
 **Infrastructure:**
+
 1. ⚠️ Are all resources in single Azure subscription?
 2. ⚠️ What is the resource group organization strategy?
 3. ⚠️ Are Dev/UAT/Prod fully separate or do they share some resources?
@@ -562,27 +596,32 @@ sequenceDiagram
 Before proceeding to Level 2 (Container View), validate:
 
 ### System Boundaries
+
 - [ ] **ISWC Platform** boundary is correct (includes all listed components)
 - [ ] **Matching Engine** should be external (vs. internal subsystem)
 - [ ] **External Systems** list is complete (no missing integrations)
 
 ### Actors
+
 - [ ] **Agency User** description is accurate
 - [ ] **Public User** description is accurate
 - [ ] Are there other actor types? (Admins, Auditors, etc.)
 
 ### Integration Patterns
+
 - [ ] FastTrack SSO authentication flow is correct
 - [ ] Suisa API integration pattern is correct
 - [ ] Suisa SFTP file exchange pattern is correct
 - [ ] Matching Engine API integration is correct
 
 ### Open Questions
+
 - [ ] Review all open questions marked with ⚠️
 - [ ] Provide answers where known
 - [ ] Confirm which questions need investigation
 
 ### Critical Gaps
+
 - [ ] Public Portal source code location/status
 - [ ] Matching Engine coupling assessment approach
 - [ ] Any other missing information before Level 2?
@@ -622,10 +661,12 @@ After validation of this System Context:
 ## References
 
 **Diagrams:**
+
 - [InfrastructureDiagram.png](../../../resources/InfrastructureDiagram.png) - Primary source
 - [Archived Structurizr DSL](../../../work_in_progress/infra/overview/infrastructure-diagram-structurizr.dsl.ARCHIVED) - Historical reference (contains errors)
 
 **Design Documents:**
+
 - [ISWC Portal Specification](../../../resources/core_design_documents/SPE_20190806_ISWC_Portal/)
 - [ISWC Public Portal Specification](../../../resources/core_design_documents/SPE_20200108_ISWC_Public_Portal/)
 - [ISWC REST API Specification](../../../resources/core_design_documents/SPE_20191217_CISAC%20ISWC%20REST%20API/)
@@ -634,15 +675,18 @@ After validation of this System Context:
 - [Matching Rules](../../../resources/core_design_documents/SPE_20190424_MVPMatchingRules/)
 
 **Source Code References:**
+
 - Framework/HttpClients/MatchingEngine/ - Matching Engine HTTP client
 - Data/ - Database access (SQL Server, Cosmos DB)
 - Source code projects: Api.Agency, Api.Label, Api.Publisher, Api.ThirdParty, Portal, Jobs
 
 **Azure Resources:**
+
 - [Azure Resources Export CSV](../../../resources/Azureresources-export-20251021.csv)
 - deployment/DataFactory/ - Data Factory pipeline definitions
 
 **Component Documentation:**
+
 - [SFTP-Usage.md](../../SFTP-Usage.md) - SFTP file exchange patterns
 - [MatchingEngine.md](../../MatchingEngine.md) - Matching Engine integration
 - [Databricks.md](../../Databricks.md) - Data processing
