@@ -1,18 +1,20 @@
-# ISWC Agency Portal
+# ISWC Web Portals (Agency + Public)
 
-**Document Version:** 2.0
-**Date:** October 27, 2025
+**Document Version:** 3.0
+**Date:** October 29, 2025
 
 **Sources:**
 
 - **Primary:** SPE_20190806_ISWC_Portal.md (Core Design Document - Agency Portal Specification v4.0)
 - **Primary:** SPE_20200108_ISWC_Public_Portal.md (Public Portal Specification v1.3)
 - **Secondary:** Workshop 2 (Oct 21, 2025) - Documentation and Infrastructure
-- **Tertiary:** 161+ source code files in Portal project (C#, TypeScript/React)
+- **Tertiary:** 368 source code files in Portal project (C#, TypeScript/React)
+- **Source Code Analysis:** October 29, 2025 - Shared codebase architecture investigation
 
 **Search Terms Used:**
 
-- Primary: Agency Portal, ISWC Portal, Portal, Web Portal
+- Primary: Agency Portal, Public Portal, ISWC Portal, Portal, Web Portal
+- Architecture: REACT_APP_MODE, PublicPortal, AgencyPortal, environment-driven
 - Authentication: FastTrack, CIS-Net, SSO, Authentication
 - Technologies: React, TypeScript, Redux, ClientApp, ASP.NET Core 3.1
 - Features: Submission, Workflow, Search, Merge, Demerge, Reports
@@ -23,18 +25,113 @@
 ## Component Classification
 
 **C4 Model Level:** Level 3 - Component
-**Parent Container:** ISWC Platform (Agency Portal Web Application + CISAC REST API)
-**Component Type:** Web Application (Frontend + Backend)
+**Parent Container:** ISWC Platform (Web Portal Applications + CISAC REST API)
+**Component Type:** Web Applications (Dual-Mode Deployment - Agency + Public)
 
 ---
 
 ## Overview
 
-The ISWC Agency Portal is a **web-based application for music rights societies (agencies)** to interact with the ISWC Database for work registration, searching, updating, merging, and workflow management.
+The ISWC Web Portals provide **two distinct web-based interfaces** using a **single shared codebase** for interacting with the ISWC Database:
 
-> **From Agency Portal Spec:** "It provides a detailed specification and design of the new ISWC Agency portal. This new web portal will be used by staff within agencies (societies) to search the ISWC database and to carry out key transactions."
+1. **Agency Portal** - Authenticated interface for music rights societies (agencies) to manage work registration, updates, merging, and workflow approvals
+2. **Public Portal** - Anonymous interface for public users to search the ISWC database (replacement for iswcnet.cisac.org)
 
-**Portal Audience:** Society (agency) staff worldwide who manage musical work registrations and ISWC assignments.
+### Shared Codebase Architecture
+
+> **Key Discovery:** 99% code reuse between portals - only 5 out of 368 TypeScript files are portal-specific.
+
+**Architecture Pattern:** Single codebase with environment-variable driven activation:
+
+- **Deployment Mode:** `REACT_APP_MODE=public` or `REACT_APP_MODE=private` (set at build time)
+- **Shared Infrastructure:** Same ASP.NET Core 3.1 backend, same React components, same Redux logic
+- **Portal Differentiation:** Separate Redux stores and routing configurations
+- **Build Process:** Same codebase produces two different deployment artifacts
+
+```mermaid
+flowchart TD
+    A[Single Codebase<br/>368 TypeScript files] -->|REACT_APP_MODE=private| B[Agency Portal Build]
+    A -->|REACT_APP_MODE=public| C[Public Portal Build]
+
+    B --> D[Azure App Service<br/>Agency Portal]
+    C --> E[Azure App Service<br/>Public Portal]
+
+    D --> F[Shared Backend<br/>ASP.NET Core 3.1]
+    E --> F
+
+    style A fill:#e3f2fd
+    style B fill:#fff3e0
+    style C fill:#e8f5e9
+    style D fill:#ffebee
+    style E fill:#f3e5f5
+    style F fill:#e1f5fe
+```
+
+**Portal Audiences:**
+
+- **Agency Portal:** Society (agency) staff worldwide who manage musical work registrations and ISWC assignments
+- **Public Portal:** General public users searching for ISWC information
+
+### Code Separation Analysis
+
+**Portal-Specific Files (5 files out of 368):**
+
+| Portal | Files | Purpose |
+|--------|-------|---------|
+| **Agency Portal** | [Portal/App.tsx](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/App/Portal/App.tsx) | Root component with authenticated routing |
+| **Agency Portal** | [Portal/AppContainer.ts](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/App/Portal/AppContainer.ts) | Redux store with 7 reducers (search, submission, workflows, merge, history, app, reports) |
+| **Agency Portal** | [Portal/LogOut.ts](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/App/Portal/LogOut.ts) | FastTrack SSO logout handler |
+| **Public Portal** | [PublicPortal/App.tsx](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/App/PublicPortal/App.tsx) | Root component with public routing |
+| **Public Portal** | [PublicPortal/AppContainer.ts](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/App/PublicPortal/AppContainer.ts) | Redux store with 2 reducers (search, app only) |
+
+**Shared Components (363 files):**
+
+- **81+ UI Components:** Grid, Modal, FormInput, TabView, Pagination, AlertMessage
+- **All Redux Business Logic:** SearchThunks, SubmissionThunks, WorkflowsThunks, MergeThunks
+- **All Backend Controllers:** 16 C# controllers, all services, all repositories
+- **All Page Components:** Search pages, Submission forms, Workflows grids (feature gating via Redux)
+
+### Key Architectural Differences
+
+**Agency Portal (Private Mode):**
+
+- **Authentication:** FastTrack SSO required (authMiddleware on every Redux action)
+- **Redux Reducers:** 7 reducers (full feature set)
+- **Routes:** 9 routes (search, submit, merge, demerge, workflows, reports, user management, profile, home)
+- **Features:** Full CRUD operations - Create, Read, Update, Delete, Merge, Demerge, Approve/Reject workflows
+- **Backend Authorization:** Controllers use `[Authorize]` attribute
+
+**Public Portal (Public Mode):**
+
+- **Authentication:** None (anonymous access allowed)
+- **Redux Reducers:** 2 reducers (search and app only)
+- **Routes:** 4 routes (landing, search, user guide, about)
+- **Features:** Read-only - Search by ISWC, Title, or Creator only
+- **Backend Authorization:** Controllers use `[AllowAnonymous]` attribute
+
+**Redux Store Segregation Pattern:**
+
+```typescript
+// Agency Portal Store (AppContainer.ts)
+const agencyStore = {
+  app: AppReducer,           // Global state
+  search: SearchReducer,     // Search results
+  submission: SubmissionReducer, // Create/update works
+  workflows: WorkflowsReducer,   // Approve/reject tasks
+  merge: MergeReducer,       // Merge/demerge operations
+  history: HistoryReducer,   // Submission audit trail
+  reports: ReportsReducer    // Report generation
+}
+
+// Public Portal Store (AppContainer.ts)
+const publicStore = {
+  app: AppReducer,           // Global state only
+  search: SearchReducer      // Search results only
+}
+
+// Shared components check for reducer existence
+const canSubmit = useSelector(state => state.submission !== undefined)
+```
 
 ---
 
@@ -42,7 +139,7 @@ The ISWC Agency Portal is a **web-based application for music rights societies (
 
 ### High-Level Component Structure
 
-The Agency Portal follows a **Single Page Application (SPA) architecture** with clear separation between presentation and business logic layers:
+The Web Portals follow a **Single Page Application (SPA) architecture** with clear separation between presentation and business logic layers:
 
 ```mermaid
 flowchart TD
@@ -232,7 +329,9 @@ flowchart LR
 
 ## Primary Purpose
 
-The Agency Portal enables societies to:
+### Agency Portal Features
+
+The Agency Portal enables societies (authenticated users) to:
 
 1. **Search for works** - By ISWC, Agency Work Code, Title, or Creator
 2. **Submit new works** - Register new musical works and request ISWC assignment
@@ -241,8 +340,19 @@ The Agency Portal enables societies to:
 5. **Delete works** - Remove works from the database
 6. **Manage workflows** - Approve or reject changes made by other societies
 7. **Disambiguate works** - Mark works as distinct from similar ones
+8. **Generate reports** - Agency statistics, work lists, audit trails, potential duplicates
 
 **Role in System:** Primary interactive interface for ISWC-eligible and ISWC-ineligible agencies to manage their work catalog submissions.
+
+### Public Portal Features
+
+The Public Portal enables public users (anonymous access) to:
+
+1. **Search for works** - By ISWC, Title, or Creator (read-only)
+2. **View work details** - Titles, creators, ISWC numbers (no editing)
+3. **Access user guide** - Documentation on how to use the search interface
+
+**Role in System:** Public-facing search interface replacing iswcnet.cisac.org, providing transparency and access to ISWC database for general public.
 
 ---
 
@@ -1302,6 +1412,7 @@ From Known Gaps section and specification Appendix B:
 | 1.0 | 2025-10-24 | Audit Team | Initial document based on Agency Portal core design specification and Workshop 2; Documented domain design, page features, workflows, integration points, use cases |
 | 2.0 | 2025-10-27 | Audit Team | **MAJOR UPDATE:** Added comprehensive source code references section with 161+ implementation files; Updated Technology Stack with specific versions from package.json and Portal.csproj; Added Search Terms Used section documenting three-phase research; Documented React 16.12.0/TypeScript 3.7.3 frontend with Redux 4.0.4, ASP.NET Core 3.1 backend; Listed all page components, Redux thunks, controllers, services, database objects; Verified multi-language support (EN/FR/ES); Documented FastTrack SSO SOAP implementation |
 | 3.0 | 2025-10-29 | Audit Team | **C4 LEVEL 3 UPGRADE:** Added Component Classification section; Added comprehensive Component Architecture section (frontend/backend patterns, authentication flow, component interactions); Added Performance Considerations section (bundle size, API latency, Redux overhead, monitoring); Restructured Known Gaps into Technical Debt and Risks section with priority levels (🔴 Critical: ASP.NET Core 3.1 EOL, React 16.12.0 outdated, FastTrack SSO SPOF; ⚠️ High: TypeScript 3.7.3, Redux legacy pattern, no code splitting; Medium: Enzyme deprecation, Bootstrap 4, permission model); Enhanced Questions for Further Investigation with categorization (Authentication, Performance, Data, Usage, Features, Operational); Updated status to "C4 Level 3 Documentation" |
+| 4.0 | 2025-10-29 | Audit Team | **DUAL-PORTAL RESTRUCTURE:** Renamed from agency-portal.md to web-portals.md; Documented shared codebase architecture (99% code reuse, 368 total files); Added Code Separation Analysis (5 portal-specific files vs 363 shared); Added Key Architectural Differences section (Agency vs Public feature comparison); Added Redux Store Segregation Pattern documentation; Restructured Primary Purpose section to cover both Agency and Public Portal features; Updated Component Classification to reflect dual-mode deployment; Added shared codebase deployment diagram |
 
 ---
 
@@ -1311,9 +1422,9 @@ From Known Gaps section and specification Appendix B:
 
 **Specification Status:**
 
-- Core document is Agency Portal spec v4.0 from October 2019 (signed off by Steering Group)
+- Core documents: Agency Portal spec v4.0 + Public Portal spec v1.3 (both signed off by Steering Group)
 - Workshop 2 confirmed Portal is primary developer onboarding tool
-- Source code analysis completed (161+ files documented)
+- Source code analysis completed (368 files documented, shared codebase architecture verified)
 
 **Pending Runtime Validation:**
 

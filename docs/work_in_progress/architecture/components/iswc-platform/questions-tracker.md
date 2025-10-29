@@ -45,13 +45,13 @@
 
 | Status | Priority | Question | Source |
 |--------|----------|----------|--------|
-| ❓ | 🔴 | Are there SLAs for Portal response times? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 🔴 | What are the p50/p95/p99 latencies for search endpoints? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 🔴 | What are the p50/p95/p99 latencies for submission endpoints? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | How many concurrent users does Portal support? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | Are there rate limits for Portal API calls? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | What is the actual bundle size after webpack build? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | What is the average database query time for search operations? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | 🔴 | Are there SLAs for Portal response times? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 🔴 | What are the p50/p95/p99 latencies for search endpoints? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 🔴 | What are the p50/p95/p99 latencies for submission endpoints? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | How many concurrent users does Portal support? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | Are there rate limits for Portal API calls? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | What is the actual bundle size after webpack build? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | What is the average database query time for search operations? | [web-portals](web-portals.md#questions-for-further-investigation) |
 
 #### Databricks Performance
 
@@ -122,9 +122,9 @@
 |--------|----------|----------|--------|
 | ❓ | 🔴 | What is the monthly €50K cloud cost breakdown by service? | Multiple sources |
 | ❓ | ⚠️ | Are there cost alerts configured? | [cosmos-db](cosmos-db.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | What monitoring alerts exist for Portal performance issues? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | What is the average number of workflow tasks per agency per day? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | What percentage of submissions result in workflow tasks? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | What monitoring alerts exist for Portal performance issues? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | What is the average number of workflow tasks per agency per day? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | What percentage of submissions result in workflow tasks? | [web-portals](web-portals.md#questions-for-further-investigation) |
 | ❓ | 📝 | What is the average file size distribution? | [databricks](databricks.md#questions-for-further-investigation) |
 
 ---
@@ -135,19 +135,19 @@
 
 | Status | Priority | Question | Source |
 |--------|----------|----------|--------|
-| ❓ | 🔴 | What happens if FastTrack SSO is unavailable? (No fallback documented) | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 🔴 | Who operates FastTrack SSO (CISAC or third-party vendor)? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 🔴 | What is FastTrack SSO uptime SLA? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | Is there a backup authentication method for critical operations? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | How are JWT tokens issued and validated? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | What is the token expiry duration? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | Are there session timeout warnings for users? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | 🔴 | What happens if FastTrack SSO is unavailable? (No fallback documented) | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 🔴 | Who operates FastTrack SSO (CISAC or third-party vendor)? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 🔴 | What is FastTrack SSO uptime SLA? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | Is there a backup authentication method for critical operations? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | How are JWT tokens issued and validated? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | What is the token expiry duration? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | Are there session timeout warnings for users? | [web-portals](web-portals.md#questions-for-further-investigation) |
 
 #### Permission and Authorization
 
 | Status | Priority | Question | Source |
 |--------|----------|----------|--------|
-| ❓ | ⚠️ | What permission model is used for multi-user agencies? (Spec mentions "wish list" item) | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | What permission model is used for multi-user agencies? (Spec mentions "wish list" item) | [web-portals](web-portals.md#questions-for-further-investigation) |
 | ❓ | ⚠️ | What is the `CommonIPs.PublicDomainIps` list? (Static configuration? Database table?) | [post-matching-pipeline](post-matching-pipeline.md#questions-for-further-investigation) |
 | ❓ | ⚠️ | Why 80 years for public domain? (Standard copyright term? Configurable?) | [post-matching-pipeline](post-matching-pipeline.md#questions-for-further-investigation) |
 | ❓ | ⚠️ | How does `interestedPartyManager.IsAuthoritative()` work? | [post-matching-pipeline](post-matching-pipeline.md#questions-for-further-investigation) |
@@ -186,7 +186,7 @@
 | ❓ | 🔴 | Should the system use distributed transactions (saga pattern) or accept eventual consistency? | [pipeline-architecture-overview](pipeline-architecture-overview.md#questions-for-further-investigation) |
 | ❓ | ⚠️ | How frequently do concurrent requests target the same work? | [processing-pipeline](processing-pipeline.md#questions-for-further-investigation) |
 | ❓ | ⚠️ | Are there database-level locks or only EF optimistic concurrency? | [processing-pipeline](processing-pipeline.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | How are concurrent edits to the same work handled? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | How are concurrent edits to the same work handled? | [web-portals](web-portals.md#questions-for-further-investigation) |
 
 #### Merge and Parent-Child Logic
 
@@ -206,8 +206,8 @@
 
 | Status | Priority | Question | Source |
 |--------|----------|----------|--------|
-| ❓ | ⚠️ | How is the IPI database replica synchronized? (Frequency, mechanism) | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | What is the replication lag between IPI source and replica? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | How is the IPI database replica synchronized? (Frequency, mechanism) | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | What is the replication lag between IPI source and replica? | [web-portals](web-portals.md#questions-for-further-investigation) |
 | ❓ | 📝 | How does `GetCacheIswcs()` relate to the ISWC cache in SearchComponent? | [processing-pipeline](processing-pipeline.md#questions-for-further-investigation) |
 
 ---
@@ -311,11 +311,11 @@
 
 | Status | Priority | Question | Source |
 |--------|----------|----------|--------|
-| ❓ | ⚠️ | How often is Portal deployed to production? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | What is the rollback procedure for failed deployments? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | Are there A/B testing capabilities? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | What is the incident response process for Portal outages? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | Who has production access for troubleshooting? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | How often is Portal deployed to production? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | What is the rollback procedure for failed deployments? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | Are there A/B testing capabilities? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | What is the incident response process for Portal outages? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | Who has production access for troubleshooting? | [web-portals](web-portals.md#questions-for-further-investigation) |
 
 #### Audit Trail
 
@@ -353,8 +353,8 @@
 | Status | Priority | Question | Source |
 |--------|----------|----------|--------|
 | ❓ | 🔴 | What is the approval workflow (`AddUpdateApprovalWorkflow`)? | [processing-pipeline](processing-pipeline.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | What is the time limit for automatic workflow approval? (Spec says ~30 days - need confirmation) | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | Are there bulk approval operations for workflows? (Spec mentions "Approve All") | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | What is the time limit for automatic workflow approval? (Spec says ~30 days - need confirmation) | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | Are there bulk approval operations for workflows? (Spec mentions "Approve All") | [web-portals](web-portals.md#questions-for-further-investigation) |
 
 #### Matching Strategies
 
@@ -396,12 +396,12 @@
 
 | Status | Priority | Question | Source |
 |--------|----------|----------|--------|
-| ❓ | ⚠️ | How many agencies actively use Portal vs API vs SFTP? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | What is the Portal vs API vs SFTP submission volume breakdown? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | What are the peak usage hours/days for Portal? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | What is the most frequently used Portal feature? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | What is the average session duration? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | What reports are most frequently generated? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | How many agencies actively use Portal vs API vs SFTP? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | What is the Portal vs API vs SFTP submission volume breakdown? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | What are the peak usage hours/days for Portal? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | What is the most frequently used Portal feature? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | What is the average session duration? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | What reports are most frequently generated? | [web-portals](web-portals.md#questions-for-further-investigation) |
 
 ---
 
@@ -413,7 +413,7 @@
 |--------|----------|----------|--------|
 | ❓ | 🔴 | What is the complete database schema? (ERD diagram) | [pipeline-architecture-overview](pipeline-architecture-overview.md#questions-for-further-investigation) |
 | ❓ | ⚠️ | How are database indexes optimized for pipeline queries? | [pipeline-architecture-overview](pipeline-architecture-overview.md#questions-for-further-investigation) |
-| ❓ | ⚠️ | Are there database indexes on search columns (Title, ISWC, WorkCode)? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | ⚠️ | Are there database indexes on search columns (Title, ISWC, WorkCode)? | [web-portals](web-portals.md#questions-for-further-investigation) |
 | ❓ | ⚠️ | Are there database-level optimizations (query plan caching, indexes)? | [post-matching-pipeline](post-matching-pipeline.md#questions-for-further-investigation) |
 
 #### Data Structures
@@ -439,8 +439,8 @@
 
 | Status | Priority | Question | Source |
 |--------|----------|----------|--------|
-| ❓ | 📝 | Is there an export feature for bulk ISWC lists? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
-| ❓ | 📝 | Can users download submission history as CSV/Excel? | [agency-portal](agency-portal.md#questions-for-further-investigation) |
+| ❓ | 📝 | Is there an export feature for bulk ISWC lists? | [web-portals](web-portals.md#questions-for-further-investigation) |
+| ❓ | 📝 | Can users download submission history as CSV/Excel? | [web-portals](web-portals.md#questions-for-further-investigation) |
 
 ---
 
@@ -534,7 +534,7 @@
 1. databricks.md: 45 questions
 2. processing-pipeline.md: 36 questions
 3. post-matching-pipeline.md: 36 questions
-4. agency-portal.md: 32 questions
+4. web-portals.md: 32 questions
 5. cosmos-db.md: 25 questions
 
 ---

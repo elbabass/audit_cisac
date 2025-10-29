@@ -221,7 +221,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | 🔴 Critical |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | No security patches since December 2022; 40+ known vulnerabilities in .NET Core 3.1 ecosystem; Compliance risk for CISAC member agencies |
 | **Mitigation** | Upgrade to .NET 8 LTS (supported until November 2026) |
 | **Effort** | 3-5 weeks (testing required for breaking changes) |
@@ -239,7 +239,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | 🔴 Critical |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Missing 5+ years of security patches and performance improvements; React 16 has documented XSS vulnerabilities; Missing modern features (concurrent rendering, automatic batching, Suspense) |
 | **Mitigation** | Upgrade to React 18.x (breaking changes in lifecycle methods) |
 | **Effort** | 4-6 weeks (component refactoring + testing) |
@@ -257,7 +257,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | 🔴 Critical |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Portal completely unusable if FastTrack is unavailable; No fallback; Vendor lock-in (external dependency outside CISAC control) |
 | **Mitigation** | Circuit breaker pattern with degraded mode; Local authentication fallback for critical users; SLA verification with FastTrack provider |
 | **Effort** | 2-3 weeks |
@@ -523,7 +523,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | ⚠️ High |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Missing modern TypeScript features (4.x → 5.x improvements); No template literal types, no satisfies operator; Degraded VSCode/IDE experience |
 | **Mitigation** | Upgrade to TypeScript 5.x (low risk, high value) |
 | **Effort** | 1-2 weeks (mostly type fixes) |
@@ -536,7 +536,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | ⚠️ High |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Verbose boilerplate, no built-in async handling best practices; Current pattern: Manual thunks, action creators, reducers |
 | **Mitigation** | Gradual migration to Redux Toolkit (official recommended approach); Benefits: Reduced code, built-in Immer, RTK Query for API caching |
 | **Effort** | 6-8 weeks (large codebase, 50+ thunks) |
@@ -549,7 +549,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | ⚠️ High |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Large initial bundle download (800KB-1MB estimated); Slow initial page load, especially for mobile/poor connections; Current pattern: Single bundle with all routes |
 | **Mitigation** | Implement React.lazy for route-based splitting |
 | **Effort** | 2-3 weeks (webpack configuration + dynamic imports) |
@@ -562,7 +562,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | ⚠️ High |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Missing performance improvements from EF Core 5-8; No compiled models, slower query generation; Breaking Changes: .NET 8 requires EF Core 8 |
 | **Mitigation** | Upgrade alongside .NET upgrade (TD-012) |
 | **Effort** | Included in ASP.NET Core upgrade effort |
@@ -683,7 +683,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | 📝 Medium |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Enzyme no longer maintained, React 18 incompatible; Test suite will break on React upgrade |
 | **Mitigation** | Migrate to React Testing Library |
 | **Effort** | 3-4 weeks (rewrite all component tests) |
@@ -698,7 +698,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | 📝 Medium |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Bootstrap 5 released in 2021, different API; Missing accessibility improvements, outdated design patterns; Migration Complexity: Bootstrap 5 removed jQuery dependency |
 | **Mitigation** | Upgrade to Bootstrap 5 + update Reactstrap |
 | **Effort** | 2-3 weeks (UI regression testing required) |
@@ -711,7 +711,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | 📝 Medium |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Repeated calls for lookup data (agencies, role types); Unnecessary database queries and HTTP round-trips |
 | **Mitigation** | Implement HTTP caching headers + Redis cache |
 | **Effort** | 1 week |
@@ -724,7 +724,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | 📝 Medium |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Agency-level access only (all users see same data); Requested: User-specific permissions; Usability issue for large agencies (GEMA, BMI, SACEM) |
 | **Mitigation** | Design role-based permission model |
 | **Effort** | 4-6 weeks (database schema + UI changes) |
@@ -782,7 +782,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | 💡 Low |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | Frontend: @microsoft/applicationinsights-react-js 2.5.4 (2019); Backend: bundled with 3.1; Missing better telemetry features |
 | **Mitigation** | Upgrade to latest SDKs |
 | **Effort** | 1 day |
@@ -795,7 +795,7 @@
 |-------|-------|
 | **Status** | ⏳ Not Started |
 | **Priority** | 💡 Low |
-| **Component** | [agency-portal](agency-portal.md#technical-debt-and-risks) |
+| **Component** | [web-portals](web-portals.md#technical-debt-and-risks) |
 | **Impact** | XML-based resource files (legacy .NET Framework pattern); Developer experience issue |
 | **Mitigation** | Migrate to JSON localization with i18next |
 | **Effort** | 2 weeks |

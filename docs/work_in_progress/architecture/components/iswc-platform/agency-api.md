@@ -751,7 +751,7 @@ flowchart LR
 
 **Connection Strings:**
 
-```
+```text
 Read-Write:
 Server=tcp:cisaciswcprod.database.windows.net,1433;Database=ISWC;...
 
@@ -1113,7 +1113,7 @@ Reload Interval: 30 minutes
 
 - [Matching Engine](../matching-engine/matching-engine.md) - External matching service integration
 - [Cosmos DB](cosmos-db.md) - Audit logging database
-- [Agency Portal](agency-portal.md) - Primary web client
+- [Web Portals](web-portals.md) - Agency and Public Portal web clients
 
 **Infrastructure:**
 

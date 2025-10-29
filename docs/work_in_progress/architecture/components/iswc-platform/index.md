@@ -53,12 +53,12 @@ This directory contains Level 3 component documentation for containers within th
 
 ## Web Applications
 
-- ✅ [Agency Portal](agency-portal.md) - Web portal for agencies to manage work registrations (v3.0, upgraded Oct 29)
-- ⏳ **Public Portal** - Public search portal (same codebase as Agency Portal, different mode)
-  - [See undocumented-components.md: UC-001](undocumented-components.md#uc-001-public-portal)
-  - Estimated effort: 2-3 days
+- ✅ [Web Portals (Agency + Public)](web-portals.md) - Dual-mode web portals with shared codebase (v4.0, restructured Oct 29)
+  - Agency Portal: Authenticated interface for societies to manage work registrations
+  - Public Portal: Anonymous public search interface (iswcnet.cisac.org replacement)
+  - Architecture: 99% code reuse, environment-variable driven activation
 
-**Status:** 1/2 components documented (50%)
+**Status:** 1/1 components documented (100%)
 
 ---
 
@@ -150,13 +150,13 @@ This directory contains Level 3 component documentation for containers within th
 | Category | Documented | Total | Percentage |
 |----------|------------|-------|------------|
 | **Pipeline Components** | 6 | 6 | 100% ✅ |
-| **Web Applications** | 1 | 2 | 50% |
+| **Web Applications** | 1 | 1 | 100% ✅ |
 | **APIs** | 0 | 4 | 0% |
 | **Background Processing** | 1 | 4 | 25% |
 | **Data Storage** | 1 | 4 | 25% |
 | **External Dependencies** | 0 | 3 | 0% |
 | **Infrastructure** | 0 | 2 | 0% |
-| **TOTAL** | **9** | **25** | **36%** |
+| **TOTAL** | **9** | **24** | **38%** |
 
 ---
 

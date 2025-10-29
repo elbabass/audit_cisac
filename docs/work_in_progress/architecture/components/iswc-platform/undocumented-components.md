@@ -1,8 +1,8 @@
 # Undocumented Components - ISWC Platform
 
-**Version:** 1.0
+**Version:** 2.0
 **Date:** October 29, 2025
-**Total Components:** 10 undocumented components requiring documentation
+**Total Components:** 9 undocumented components requiring documentation
 
 **Purpose:** Track components identified in the ISWC system architecture that lack comprehensive C4 Level 3 component documentation.
 
@@ -13,18 +13,19 @@
 During the audit, we identified **9 documented components** with C4 Level 3 structure:
 
 ✅ **Documented:**
+
 1. [validation-pipeline.md](validation-pipeline.md)
 2. [matching-pipeline.md](matching-pipeline.md)
 3. [processing-pipeline.md](processing-pipeline.md)
 4. [post-matching-pipeline.md](post-matching-pipeline.md)
 5. [pipeline-architecture-overview.md](pipeline-architecture-overview.md)
 6. [validation-rules-catalog.md](validation-rules-catalog.md)
-7. [agency-portal.md](agency-portal.md)
+7. [web-portals.md](web-portals.md) - Agency + Public Portals (shared codebase)
 8. [databricks.md](databricks.md)
 9. [cosmos-db.md](cosmos-db.md)
 
 ❌ **Undocumented:**
-10 components lack comprehensive documentation (listed below)
+9 components lack comprehensive documentation (listed below)
 
 ---
 
@@ -41,27 +42,6 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 
 ## Undocumented Components List
 
-### UC-001: Public Portal
-
-| Field | Value |
-|-------|-------|
-| **Priority** | 🔴 Critical |
-| **Component Type** | Web Application (Public-facing) |
-| **Technology** | React + ASP.NET Core (assumed similar to Agency Portal) |
-| **Purpose** | Public search interface for ISWC database (replacement for iswcnet.cisac.org) |
-| **Why Important** | Public-facing interface; Different user base than Agency Portal; Security implications; Performance requirements differ from Agency Portal |
-| **Effort Estimate** | 2-3 days |
-
-**Key Questions:**
-- What features are available to public users vs agency users?
-- Is authentication required or fully public?
-- What rate limiting exists?
-- How is data filtered for public consumption?
-
-**Source Reference:** [SPE_20200108_ISWC_Public_Portal.md](../../../resources/core_design_documents/SPE_20200108_ISWC_Public_Portal/SPE_20200108_ISWC_Public_Portal.md)
-
----
-
 ### UC-002: SFTP Server
 
 | Field | Value |
@@ -74,6 +54,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 | **Effort Estimate** | 1-2 days |
 
 **Key Questions:**
+
 - How are agency folders structured?
 - What authentication mechanism is used?
 - How are credentials rotated?
@@ -96,6 +77,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 | **Effort Estimate** | 2-3 days |
 
 **Key Questions:**
+
 - How many pipelines exist?
 - What triggers are configured (file arrival, schedule, manual)?
 - How are errors handled?
@@ -119,6 +101,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 | **Effort Estimate** | 1-2 days |
 
 **Key Questions:**
+
 - What is the update frequency? (Daily? Hourly?)
 - How are incremental updates applied to SQL Server?
 - What happens if the SUISA API is unavailable?
@@ -145,6 +128,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 | **Effort Estimate** | 2-3 days |
 
 **Key Questions:**
+
 - What is the database schema? (ERD diagram)
 - What are the key tables and relationships?
 - What indexes exist?
@@ -170,6 +154,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 | **Effort Estimate** | 1-2 days |
 
 **Key Questions:**
+
 - What is the SLA? (Uptime, response time)
 - What is the cost model? (Per-request? Fixed monthly?)
 - What matching algorithms are used?
@@ -195,6 +180,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 | **Effort Estimate** | 1 day |
 
 **Key Questions:**
+
 - What is the data format? (IPI EDI specification)
 - How often are quarterly dumps available?
 - What is the incremental update API?
@@ -220,6 +206,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 | **Effort Estimate** | 1 day |
 
 **Key Questions:**
+
 - Who operates FastTrack? (CISAC or third-party vendor?)
 - What is the uptime SLA?
 - What happens if FastTrack is unavailable?
@@ -229,7 +216,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 
 **Source Reference:** [SPE_20190806_ISWC_Portal.md](../../../resources/core_design_documents/SPE_20190806_ISWC_Portal/SPE_20190806_ISWC_Portal.md)
 
-**Related:** [agency-portal.md](agency-portal.md) documents the integration but not the service itself
+**Related:** [web-portals.md](web-portals.md) documents the integration but not the service itself
 
 ---
 
@@ -245,6 +232,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 | **Effort Estimate** | 1 day |
 
 **Key Questions:**
+
 - What telemetry is collected?
 - What alerts are configured?
 - What dashboards exist?
@@ -270,6 +258,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 | **Effort Estimate** | 1 day |
 
 **Key Questions:**
+
 - What secrets are stored?
 - How are secrets rotated?
 - Who has access to Key Vault?
@@ -284,18 +273,14 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 
 ## Documentation Roadmap
 
-### Phase 1: Critical Components (5-8 days)
+### Phase 1: Critical Components (3-5 days)
 
 **Priority:** Core system functionality
 
-1. **UC-001: Public Portal** (2-3 days)
-   - Use `/document-component` command
-   - Similar structure to Agency Portal documentation
-
-2. **UC-002: SFTP Server** (1-2 days)
+1. **UC-002: SFTP Server** (1-2 days)
    - Focus on folder structure, authentication, monitoring
 
-3. **UC-003: Azure Data Factory** (2-3 days)
+2. **UC-003: Azure Data Factory** (2-3 days)
    - Document all pipelines, triggers, error handling
 
 ---
@@ -304,39 +289,39 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 
 **Priority:** Vendor dependencies and data sources
 
-4. **UC-004: IPI WebJob** (1-2 days)
+3. **UC-004: IPI WebJob** (1-2 days)
    - Incremental update mechanism
    - API integration with SUISA
 
-5. **UC-005: SQL Server** (2-3 days)
+4. **UC-005: SQL Server** (2-3 days)
    - Database schema (ERD)
    - Performance characteristics
    - Backup strategy
 
-6. **UC-006: Matching Engine** (1-2 days)
+5. **UC-006: Matching Engine** (1-2 days)
    - Vendor service documentation
    - SLA requirements
    - Disaster recovery
 
 ---
 
-### Phase 3: Supporting Components (3 days)
+### Phase 3: Supporting Components (4 days)
 
 **Priority:** External dependencies and infrastructure
 
-7. **UC-007: IPI Database** (1 day)
+6. **UC-007: IPI Database** (1 day)
    - External data source
    - Synchronization strategy
 
-8. **UC-008: FastTrack SSO** (1 day)
+7. **UC-008: FastTrack SSO** (1 day)
    - Authentication service
    - SLA and fallback
 
-9. **UC-009: Application Insights** (1 day)
+8. **UC-009: Application Insights** (1 day)
    - Monitoring configuration
    - Alert definitions
 
-10. **UC-010: Azure Key Vault** (1 day)
+9. **UC-010: Azure Key Vault** (1 day)
     - Secrets inventory
     - Rotation strategy
 
@@ -344,10 +329,10 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 
 ## Total Estimated Effort
 
-- **Phase 1 (Critical):** 5-8 days
+- **Phase 1 (Critical):** 3-5 days
 - **Phase 2 (High):** 5-7 days
-- **Phase 3 (Supporting):** 3 days
-- **Total:** 13-18 days
+- **Phase 3 (Supporting):** 4 days
+- **Total:** 12-16 days (reduced from 13-18 days due to Public Portal now documented)
 
 ---
 
@@ -377,6 +362,7 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | 2025-10-29 | Audit Team | Initial list of 10 undocumented components; Prioritization matrix; Documentation roadmap with effort estimates |
+| 2.0 | 2025-10-29 | Audit Team | **UC-001 COMPLETED:** Removed UC-001 (Public Portal) - now documented in web-portals.md with Agency Portal; Updated component count from 10 to 9; Updated total effort from 13-18 days to 12-16 days; Updated agency-portal.md references to web-portals.md; Updated Phase 1 effort from 5-8 days to 3-5 days |
 
 ---
 
