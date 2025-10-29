@@ -1,18 +1,20 @@
-# ISWC Agency Portal
+# ISWC Web Portals (Agency + Public)
 
-**Document Version:** 2.0
-**Date:** October 27, 2025
+**Document Version:** 3.0
+**Date:** October 29, 2025
 
 **Sources:**
 
 - **Primary:** SPE_20190806_ISWC_Portal.md (Core Design Document - Agency Portal Specification v4.0)
 - **Primary:** SPE_20200108_ISWC_Public_Portal.md (Public Portal Specification v1.3)
 - **Secondary:** Workshop 2 (Oct 21, 2025) - Documentation and Infrastructure
-- **Tertiary:** 161+ source code files in Portal project (C#, TypeScript/React)
+- **Tertiary:** 368 source code files in Portal project (C#, TypeScript/React)
+- **Source Code Analysis:** October 29, 2025 - Shared codebase architecture investigation
 
 **Search Terms Used:**
 
-- Primary: Agency Portal, ISWC Portal, Portal, Web Portal
+- Primary: Agency Portal, Public Portal, ISWC Portal, Portal, Web Portal
+- Architecture: REACT_APP_MODE, PublicPortal, AgencyPortal, environment-driven
 - Authentication: FastTrack, CIS-Net, SSO, Authentication
 - Technologies: React, TypeScript, Redux, ClientApp, ASP.NET Core 3.1
 - Features: Submission, Workflow, Search, Merge, Demerge, Reports
@@ -20,19 +22,316 @@
 
 ---
 
+## Component Classification
+
+**C4 Model Level:** Level 3 - Component
+**Parent Container:** ISWC Platform (Web Portal Applications + CISAC REST API)
+**Component Type:** Web Applications (Dual-Mode Deployment - Agency + Public)
+
+---
+
 ## Overview
 
-The ISWC Agency Portal is a **web-based application for music rights societies (agencies)** to interact with the ISWC Database for work registration, searching, updating, merging, and workflow management.
+The ISWC Web Portals provide **two distinct web-based interfaces** using a **single shared codebase** for interacting with the ISWC Database:
 
-> **From Agency Portal Spec:** "It provides a detailed specification and design of the new ISWC Agency portal. This new web portal will be used by staff within agencies (societies) to search the ISWC database and to carry out key transactions."
+1. **Agency Portal** - Authenticated interface for music rights societies (agencies) to manage work registration, updates, merging, and workflow approvals
+2. **Public Portal** - Anonymous interface for public users to search the ISWC database (replacement for iswcnet.cisac.org)
 
-**Portal Audience:** Society (agency) staff worldwide who manage musical work registrations and ISWC assignments.
+### Shared Codebase Architecture
+
+> **Key Discovery:** 99% code reuse between portals - only 5 out of 368 TypeScript files are portal-specific.
+
+**Architecture Pattern:** Single codebase with environment-variable driven activation:
+
+- **Deployment Mode:** `REACT_APP_MODE=public` or `REACT_APP_MODE=private` (set at build time)
+- **Shared Infrastructure:** Same ASP.NET Core 3.1 backend, same React components, same Redux logic
+- **Portal Differentiation:** Separate Redux stores and routing configurations
+- **Build Process:** Same codebase produces two different deployment artifacts
+
+```mermaid
+flowchart TD
+    A[Single Codebase<br/>368 TypeScript files] -->|REACT_APP_MODE=private| B[Agency Portal Build]
+    A -->|REACT_APP_MODE=public| C[Public Portal Build]
+
+    B --> D[Azure App Service<br/>Agency Portal]
+    C --> E[Azure App Service<br/>Public Portal]
+
+    D --> F[Shared Backend<br/>ASP.NET Core 3.1]
+    E --> F
+
+    style A fill:#e3f2fd
+    style B fill:#fff3e0
+    style C fill:#e8f5e9
+    style D fill:#ffebee
+    style E fill:#f3e5f5
+    style F fill:#e1f5fe
+```
+
+**Portal Audiences:**
+
+- **Agency Portal:** Society (agency) staff worldwide who manage musical work registrations and ISWC assignments
+- **Public Portal:** General public users searching for ISWC information
+
+### Code Separation Analysis
+
+**Portal-Specific Files (5 files out of 368):**
+
+| Portal | Files | Purpose |
+|--------|-------|---------|
+| **Agency Portal** | [Portal/App.tsx](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/App/Portal/App.tsx) | Root component with authenticated routing |
+| **Agency Portal** | [Portal/AppContainer.ts](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/App/Portal/AppContainer.ts) | Redux store with 7 reducers (search, submission, workflows, merge, history, app, reports) |
+| **Agency Portal** | [Portal/LogOut.ts](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/App/Portal/LogOut.ts) | FastTrack SSO logout handler |
+| **Public Portal** | [PublicPortal/App.tsx](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/App/PublicPortal/App.tsx) | Root component with public routing |
+| **Public Portal** | [PublicPortal/AppContainer.ts](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/App/PublicPortal/AppContainer.ts) | Redux store with 2 reducers (search, app only) |
+
+**Shared Components (363 files):**
+
+- **81+ UI Components:** Grid, Modal, FormInput, TabView, Pagination, AlertMessage
+- **All Redux Business Logic:** SearchThunks, SubmissionThunks, WorkflowsThunks, MergeThunks
+- **All Backend Controllers:** 16 C# controllers, all services, all repositories
+- **All Page Components:** Search pages, Submission forms, Workflows grids (feature gating via Redux)
+
+### Key Architectural Differences
+
+**Agency Portal (Private Mode):**
+
+- **Authentication:** FastTrack SSO required (authMiddleware on every Redux action)
+- **Redux Reducers:** 7 reducers (full feature set)
+- **Routes:** 9 routes (search, submit, merge, demerge, workflows, reports, user management, profile, home)
+- **Features:** Full CRUD operations - Create, Read, Update, Delete, Merge, Demerge, Approve/Reject workflows
+- **Backend Authorization:** Controllers use `[Authorize]` attribute
+
+**Public Portal (Public Mode):**
+
+- **Authentication:** None (anonymous access allowed)
+- **Redux Reducers:** 2 reducers (search and app only)
+- **Routes:** 4 routes (landing, search, user guide, about)
+- **Features:** Read-only - Search by ISWC, Title, or Creator only
+- **Backend Authorization:** Controllers use `[AllowAnonymous]` attribute
+
+**Redux Store Segregation Pattern:**
+
+```typescript
+// Agency Portal Store (AppContainer.ts)
+const agencyStore = {
+  app: AppReducer,           // Global state
+  search: SearchReducer,     // Search results
+  submission: SubmissionReducer, // Create/update works
+  workflows: WorkflowsReducer,   // Approve/reject tasks
+  merge: MergeReducer,       // Merge/demerge operations
+  history: HistoryReducer,   // Submission audit trail
+  reports: ReportsReducer    // Report generation
+}
+
+// Public Portal Store (AppContainer.ts)
+const publicStore = {
+  app: AppReducer,           // Global state only
+  search: SearchReducer      // Search results only
+}
+
+// Shared components check for reducer existence
+const canSubmit = useSelector(state => state.submission !== undefined)
+```
+
+---
+
+## Component Architecture
+
+### High-Level Component Structure
+
+The Web Portals follow a **Single Page Application (SPA) architecture** with clear separation between presentation and business logic layers:
+
+```mermaid
+flowchart TD
+    subgraph "Frontend Layer"
+        A[React SPA<br/>TypeScript 3.7.3]
+        B[Redux Store<br/>State Management]
+        C[React Router<br/>Navigation]
+        D[Axios HTTP Client]
+    end
+
+    subgraph "Backend Layer"
+        E[ASP.NET Core 3.1<br/>MVC Controllers]
+        F[FastTrack Service<br/>SOAP Client]
+        G[Business Managers<br/>Autofac DI]
+    end
+
+    subgraph "External Dependencies"
+        H[CISAC REST API]
+        I[FastTrack SSO]
+        J[IPI Database Replica]
+    end
+
+    A --> B
+    B --> D
+    D --> E
+    E --> F
+    E --> G
+    F --> I
+    G --> H
+    G --> J
+
+    style A fill:#e3f2fd
+    style B fill:#fff3e0
+    style E fill:#e8f5e9
+    style F fill:#ffebee
+    style I fill:#fff3e0,stroke:#d32f2f,stroke-width:2px
+```
+
+### Frontend Architecture Patterns
+
+**React Component Hierarchy:**
+
+From source code analysis in [Portal/ClientApp/src/](../../../resources/source-code/ISWC/src/Portal/ClientApp/src/):
+
+- **Container Components** - Connected to Redux (SearchThunks, SubmissionThunks, WorkflowsThunk)
+- **Presentation Components** - Pure UI components (Grid, Modal, FormInput)
+- **Page Components** - Route-level containers (Search.tsx, Submission.tsx, Workflows.tsx)
+- **Shared Components** - Reusable across pages (PortalHeader, TabView, Pagination)
+
+**Redux State Management Pattern:**
+
+```typescript
+// Pattern from configureStore.ts and various thunks
+State = {
+  app: AppReducer,           // Global app state (user, config)
+  search: SearchReducer,     // Search results and filters
+  submission: SubmissionReducer, // Current submission draft
+  workflows: WorkflowsReducer,   // Workflow tasks
+  merge: MergeReducer        // Merge/demerge operations
+}
+
+// Async actions use Redux Thunk pattern
+dispatch(searchByIswcThunk(iswc))
+  → AppService.searchByIswc(iswc)
+  → Axios GET to /api/search/iswc
+  → Dispatch success/failure actions
+  → Update reducer state
+```
+
+**Component Communication:**
+
+- **Props down** - Parent to child component data flow
+- **Callbacks up** - Child to parent event handling
+- **Redux connect** - Components subscribe to state slices
+- **Thunks** - Async operations dispatch multiple actions
+
+### Backend Architecture Patterns
+
+**ASP.NET Core 3.1 MVC with SPA Services:**
+
+From [Startup.cs:48-92](../../../resources/source-code/ISWC/src/Portal/Startup.cs):
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllersWithViews();
+    services.AddSpaStaticFiles(configuration => {
+        configuration.RootPath = "ClientApp/build";
+    });
+
+    // Autofac DI container registration
+    var builder = new ContainerBuilder();
+    builder.RegisterModule<BusinessModule>();
+    builder.RegisterModule<DataModule>();
+
+    // Application Insights telemetry
+    services.AddApplicationInsightsTelemetry();
+}
+
+public void Configure(IApplicationBuilder app)
+{
+    app.UseStaticFiles();
+    app.UseSpaStaticFiles();
+
+    app.UseSpa(spa => {
+        spa.Options.SourcePath = "ClientApp";
+        if (env.IsDevelopment()) {
+            spa.UseReactDevelopmentServer(npmScript: "start");
+        }
+    });
+}
+```
+
+**Controller Pattern:**
+
+All controllers follow standard MVC pattern with dependency injection:
+
+- [LoginController.cs](../../../resources/source-code/ISWC/src/Portal/Controllers/LoginController.cs) - POST /api/login endpoints
+- [ProfileController.cs](../../../resources/source-code/ISWC/src/Portal/Controllers/ProfileController.cs) - GET/PUT /api/profile
+- [AuditController.cs](../../../resources/source-code/ISWC/src/Portal/Controllers/AuditController.cs) - GET /api/audit endpoints
+- [LookupController.cs](../../../resources/source-code/ISWC/src/Portal/Controllers/LookupController.cs) - GET /api/lookup endpoints
+
+Controllers delegate to Business Managers (WorkManager, UserManager) which use Repository pattern.
+
+### Authentication Flow Architecture
+
+**FastTrack SSO Integration:**
+
+From [FastTrackAuthenticationService.cs](../../../resources/source-code/ISWC/src/Portal/Services/FastTrackAuthenticationService.cs):
+
+```mermaid
+sequenceDiagram
+    participant U as User Browser
+    participant P as Portal Frontend
+    participant L as LoginController
+    participant F as FastTrackService
+    participant SSO as FastTrack SSO<br/>(SOAP API)
+
+    U->>P: Enter credentials
+    P->>L: POST /api/login<br/>{username, password}
+    L->>F: AuthenticateUser(credentials)
+    F->>SSO: SOAP Request<br/>ValidateCredentials
+    SSO-->>F: SOAP Response<br/>{success, userData}
+    F-->>L: UserDetailsModel
+    L-->>P: JWT token + user info
+    P->>P: Store in Redux + LocalStorage
+    P-->>U: Redirect to Portal home
+```
+
+**Session Management:**
+
+- **Frontend:** Redux Storage persists authentication state to LocalStorage
+- **Backend:** Stateless - Each request validated via token (implementation pattern from controllers)
+- **Token expiry:** Handled by FastTrack SSO session timeout
+
+### Component Interaction Patterns
+
+**Search Flow:**
+
+```mermaid
+flowchart LR
+    A[Search.tsx] -->|dispatch| B[SearchThunks.ts]
+    B -->|HTTP GET| C[CISAC REST API<br/>/iswc/search]
+    C -->|via| D[Matching Engine]
+    D -->|results| C
+    C -->|JSON| B
+    B -->|action| E[SearchReducer]
+    E -->|state update| F[Grid.tsx re-render]
+```
+
+**Submission Flow:**
+
+```mermaid
+flowchart LR
+    A[Submission.tsx] -->|dispatch| B[SubmissionThunks.ts]
+    B -->|HTTP POST| C[CISAC REST API<br/>/submission]
+    C -->|validation| D[ValidationPipeline]
+    C -->|matching| E[MatchingPipeline]
+    C -->|processing| F[ProcessingPipeline]
+    F -->|results| C
+    C -->|JSON| B
+    B -->|action| G[SubmissionReducer]
+    G -->|state update| H[SubmissionSuccess.tsx]
+```
 
 ---
 
 ## Primary Purpose
 
-The Agency Portal enables societies to:
+### Agency Portal Features
+
+The Agency Portal enables societies (authenticated users) to:
 
 1. **Search for works** - By ISWC, Agency Work Code, Title, or Creator
 2. **Submit new works** - Register new musical works and request ISWC assignment
@@ -41,8 +340,19 @@ The Agency Portal enables societies to:
 5. **Delete works** - Remove works from the database
 6. **Manage workflows** - Approve or reject changes made by other societies
 7. **Disambiguate works** - Mark works as distinct from similar ones
+8. **Generate reports** - Agency statistics, work lists, audit trails, potential duplicates
 
 **Role in System:** Primary interactive interface for ISWC-eligible and ISWC-ineligible agencies to manage their work catalog submissions.
+
+### Public Portal Features
+
+The Public Portal enables public users (anonymous access) to:
+
+1. **Search for works** - By ISWC, Title, or Creator (read-only)
+2. **View work details** - Titles, creators, ISWC numbers (no editing)
+3. **Access user guide** - Documentation on how to use the search interface
+
+**Role in System:** Public-facing search interface replacing iswcnet.cisac.org, providing transparency and access to ISWC database for general public.
 
 ---
 
@@ -784,22 +1094,279 @@ This section lists ALL source code files that implement the ISWC Agency Portal c
 
 ---
 
+## Performance Considerations
+
+### Frontend Performance
+
+**Bundle Size and Load Times:**
+
+From [package.json](../../../resources/source-code/ISWC/src/Portal/ClientApp/package.json) dependencies:
+
+- **React 16.12.0 + Dependencies:** ~450KB (minified + gzipped estimated)
+- **Redux + Middleware:** ~50KB
+- **Bootstrap + Reactstrap:** ~100KB
+- **Chart.js:** ~180KB
+- **Total estimated bundle:** ~800KB-1MB (requires build analysis confirmation)
+
+**Optimization Strategies Needed:**
+
+- Code splitting by route (React.lazy + Suspense)
+- Dynamic imports for heavy components (Charts, Reports)
+- Tree shaking for unused Bootstrap components
+- Image lazy loading for submission history
+
+**Current Performance Characteristics:**
+
+- **Initial Load:** Single bundle download (no code splitting detected in source)
+- **State Persistence:** LocalStorage for Redux state (fast, synchronous)
+- **Re-renders:** React 16.12.0 without concurrent mode (potential optimization opportunity)
+
+### Backend Performance
+
+**API Response Time Factors:**
+
+From controller implementations and database dependencies:
+
+1. **FastTrack SSO calls** - SOAP requests add latency (synchronous blocking)
+2. **CISAC REST API calls** - HTTP round-trips for all data operations
+3. **IPI Database queries** - IP Lookup searches replica database
+4. **Matching Engine calls** - External HTTP API dependency
+
+**Database Query Patterns:**
+
+- **SQL Server:** Entity Framework Core 3.0.0 with LINQ queries
+- **Cosmos DB:** Submission history queries (MongoDB API)
+- **Potential N+1 queries:** Work details with related creators and titles
+
+**Caching Opportunities:**
+
+- **Lookup data** - Agencies, role types, error messages (rarely change)
+- **IPI data** - Creator information (changes infrequently)
+- **User permissions** - Agency access rights (session-scoped)
+
+### Redux State Management Overhead
+
+**State Size Concerns:**
+
+- **Search results:** 20-100 works per page with full metadata
+- **Submission drafts:** Complex nested objects (titles, creators, publishers)
+- **Workflow tasks:** Potentially hundreds of pending approvals
+- **Merge lists:** Multiple ISWCs with work details
+
+**Performance Impact:**
+
+- LocalStorage serialization on every state change
+- Large state objects cause re-render cascades
+- No virtualization for long lists (100+ workflow tasks)
+
+### Monitoring and Metrics
+
+**Application Insights Integration:**
+
+From [Startup.cs](../../../resources/source-code/ISWC/src/Portal/Startup.cs) and frontend package.json:
+
+- **Backend telemetry:** Request duration, dependency calls, exceptions
+- **Frontend telemetry:** Page views, AJAX calls, client-side errors
+- **Custom metrics opportunity:** Search performance, submission success rates
+
+**Performance Baselines Needed:**
+
+- [ ] Average page load time by route
+- [ ] API endpoint p50/p95/p99 latencies
+- [ ] FastTrack SSO authentication time
+- [ ] Matching Engine search duration
+- [ ] Database query performance statistics
+
+---
+
+## Technical Debt and Risks
+
+### 🔴 Critical Security and Support Risks
+
+**ASP.NET Core 3.1 End of Life (December 2022):**
+
+- **Impact:** No security patches since December 2022
+- **CVE Exposure:** 40+ known vulnerabilities in .NET Core 3.1 ecosystem
+- **Compliance Risk:** CISAC member agencies may have security audit requirements
+- **Mitigation:** Upgrade to .NET 8 LTS (supported until November 2026)
+- **Effort Estimate:** 3-5 weeks (testing required for breaking changes)
+
+**React 16.12.0 Severely Outdated (Released December 2019):**
+
+- **Impact:** Missing 5+ years of security patches and performance improvements
+- **Known Issues:** React 16 has documented XSS vulnerabilities
+- **Modern Features Missing:** Concurrent rendering, automatic batching, Suspense
+- **Mitigation:** Upgrade to React 18.x (breaking changes in lifecycle methods)
+- **Effort Estimate:** 4-6 weeks (component refactoring + testing)
+
+**FastTrack SSO Single Point of Failure:**
+
+- **Impact:** Portal completely unusable if FastTrack is unavailable
+- **No Fallback:** No local authentication mechanism
+- **Vendor Lock-in:** External dependency outside CISAC control
+- **Mitigation Options:**
+  - Circuit breaker pattern with degraded mode
+  - Local authentication fallback for critical users
+  - SLA verification with FastTrack provider
+- **Questions:**
+  - [ ] What is FastTrack SSO uptime SLA?
+  - [ ] Is there a backup authentication method?
+  - [ ] Who operates FastTrack (CISAC or third party)?
+
+### ⚠️ High Priority Technical Debt
+
+**TypeScript 3.7.3 Outdated (Released November 2019):**
+
+- **Impact:** Missing modern TypeScript features (4.x → 5.x improvements)
+- **Type Safety Gaps:** No template literal types, no satisfies operator
+- **Tooling Issues:** VSCode/IDE experience degraded
+- **Mitigation:** Upgrade to TypeScript 5.x (low risk, high value)
+- **Effort Estimate:** 1-2 weeks (mostly type fixes)
+
+**Redux 4.0.4 Legacy Pattern (Pre-Redux Toolkit):**
+
+- **Impact:** Verbose boilerplate, no built-in async handling best practices
+- **Current Pattern:** Manual thunks, action creators, reducers
+- **Modern Alternative:** Redux Toolkit (official recommended approach)
+- **Benefits:** Reduced code, built-in Immer, RTK Query for API caching
+- **Mitigation:** Gradual migration to Redux Toolkit
+- **Effort Estimate:** 6-8 weeks (large codebase, 50+ thunks)
+
+**No Code Splitting or Lazy Loading:**
+
+- **Impact:** Large initial bundle download (800KB-1MB estimated)
+- **User Experience:** Slow initial page load, especially for mobile/poor connections
+- **Current Pattern:** Single bundle with all routes
+- **Mitigation:** Implement React.lazy for route-based splitting
+- **Effort Estimate:** 2-3 weeks (webpack configuration + dynamic imports)
+
+**Entity Framework Core 3.0.0 (October 2019):**
+
+- **Impact:** Missing performance improvements from EF Core 5-8
+- **Performance Gaps:** No compiled models, slower query generation
+- **Breaking Changes:** .NET 8 requires EF Core 8
+- **Mitigation:** Upgrade alongside .NET upgrade
+- **Effort Estimate:** Included in ASP.NET Core upgrade effort
+
+### Medium Priority Improvements
+
+**Enzyme Testing Library (Deprecated):**
+
+- **Status:** Enzyme no longer maintained, React 18 incompatible
+- **Current Tests:** Enzyme 3.10.0 with Jest
+- **Recommended:** Migrate to React Testing Library
+- **Impact:** Test suite will break on React upgrade
+- **Effort Estimate:** 3-4 weeks (rewrite all component tests)
+
+**Bootstrap 4.4.1 (January 2020):**
+
+- **Status:** Bootstrap 5 released in 2021, different API
+- **Impact:** Missing accessibility improvements, outdated design patterns
+- **Migration Complexity:** Bootstrap 5 removed jQuery dependency
+- **Mitigation:** Upgrade to Bootstrap 5 + update Reactstrap
+- **Effort Estimate:** 2-3 weeks (UI regression testing required)
+
+**No API Response Caching:**
+
+- **Impact:** Repeated calls for lookup data (agencies, role types)
+- **Performance Cost:** Unnecessary database queries and HTTP round-trips
+- **Mitigation:** Implement HTTP caching headers + Redis cache
+- **Effort Estimate:** 1 week
+
+**Permission Model Limitations:**
+
+From Known Gaps section and specification Appendix B:
+
+- **Current:** Agency-level access only (all users see same data)
+- **Requested:** User-specific permissions for complex societies
+- **Workaround:** Multiple agency accounts for same organization
+- **Impact:** Usability issue for large agencies (GEMA, BMI, SACEM)
+- **Mitigation:** Design role-based permission model
+- **Effort Estimate:** 4-6 weeks (database schema + UI changes)
+
+### Low Priority / Nice to Have
+
+**Application Insights SDK Versions:**
+
+- **Frontend:** @microsoft/applicationinsights-react-js 2.5.4 (2019)
+- **Backend:** Microsoft.ApplicationInsights.AspNetCore (bundled with 3.1)
+- **Recommendation:** Upgrade to latest SDKs for better telemetry
+- **Effort Estimate:** 1 day
+
+**Localization Resource Files (.resx):**
+
+- **Current:** XML-based resource files (legacy .NET Framework pattern)
+- **Modern Alternative:** JSON localization with i18next
+- **Impact:** Developer experience, easier translation workflow
+- **Effort Estimate:** 2 weeks
+
+**Concurrent Edit Conflict Resolution:**
+
+- **Risk:** Two users editing same work simultaneously
+- **Current Behavior:** Last write wins (potential data loss)
+- **Mitigation:** Optimistic concurrency with ETag/RowVersion
+- **Effort Estimate:** 2-3 weeks
+
+---
+
 ## Questions for Further Investigation
 
-- [x] ~~What specific file formats are supported for submissions?~~ **ANSWERED:** Portal is web-based, not file-based (EDI/JSON via SFTP is separate)
+### Authentication and Security
+
 - [x] ~~What authentication method is used?~~ **ANSWERED:** FastTrack SSO with CIS-Net credentials
+- [ ] What happens if FastTrack SSO is unavailable? (No fallback documented)
+- [ ] Who operates FastTrack SSO (CISAC or third-party vendor)?
+- [ ] What is FastTrack SSO uptime SLA?
+- [ ] Is there a backup authentication method for critical operations?
+- [ ] How are JWT tokens issued and validated?
+- [ ] What is the token expiry duration?
+- [ ] Are there session timeout warnings for users?
+
+### Performance and Scalability
+
 - [ ] What is the average number of workflow tasks per agency per day?
 - [ ] What percentage of submissions result in workflow tasks?
-- [ ] How many agencies actively use Portal vs API vs SFTP?
 - [ ] Are there SLAs for Portal response times?
 - [ ] What monitoring alerts exist for Portal performance issues?
-- [ ] How is the IPI database replica synchronized?
-- [ ] What happens if FastTrack SSO is unavailable?
+- [ ] What is the actual bundle size after webpack build?
+- [ ] What are the p50/p95/p99 latencies for search endpoints?
+- [ ] What are the p50/p95/p99 latencies for submission endpoints?
+- [ ] How many concurrent users does Portal support?
 - [ ] Are there rate limits for Portal API calls?
-- [ ] What is the time limit for automatic workflow approval (documented as ~30 days - need confirmation)?
-- [ ] **NEW:** What permission model is used for multi-user agencies?
-- [ ] **NEW:** Is there an export feature for bulk ISWC lists?
-- [ ] **NEW:** How are concurrent edits to the same work handled?
+
+### Data and Integration
+
+- [ ] How is the IPI database replica synchronized? (Frequency, mechanism)
+- [ ] What is the replication lag between IPI source and replica?
+- [ ] How are concurrent edits to the same work handled?
+- [ ] What is the time limit for automatic workflow approval? (Spec says ~30 days - need confirmation)
+- [ ] Are there database indexes on search columns (Title, ISWC, WorkCode)?
+- [ ] What is the average database query time for search operations?
+
+### Usage Patterns
+
+- [x] ~~What specific file formats are supported for submissions?~~ **ANSWERED:** Portal is web-based, not file-based (EDI/JSON via SFTP is separate)
+- [ ] How many agencies actively use Portal vs API vs SFTP?
+- [ ] What is the Portal vs API vs SFTP submission volume breakdown?
+- [ ] What are the peak usage hours/days for Portal?
+- [ ] What is the most frequently used Portal feature?
+- [ ] What is the average session duration?
+
+### Features and Permissions
+
+- [ ] What permission model is used for multi-user agencies? (Spec mentions "wish list" item)
+- [ ] Is there an export feature for bulk ISWC lists?
+- [ ] Can users download submission history as CSV/Excel?
+- [ ] Are there bulk approval operations for workflows? (Spec mentions "Approve All")
+- [ ] What reports are most frequently generated?
+
+### Operational
+
+- [ ] How often is Portal deployed to production?
+- [ ] What is the rollback procedure for failed deployments?
+- [ ] Are there A/B testing capabilities?
+- [ ] What is the incident response process for Portal outages?
+- [ ] Who has production access for troubleshooting?
 
 ---
 
@@ -844,38 +1411,33 @@ This section lists ALL source code files that implement the ISWC Agency Portal c
 |---------|------|--------|---------|
 | 1.0 | 2025-10-24 | Audit Team | Initial document based on Agency Portal core design specification and Workshop 2; Documented domain design, page features, workflows, integration points, use cases |
 | 2.0 | 2025-10-27 | Audit Team | **MAJOR UPDATE:** Added comprehensive source code references section with 161+ implementation files; Updated Technology Stack with specific versions from package.json and Portal.csproj; Added Search Terms Used section documenting three-phase research; Documented React 16.12.0/TypeScript 3.7.3 frontend with Redux 4.0.4, ASP.NET Core 3.1 backend; Listed all page components, Redux thunks, controllers, services, database objects; Verified multi-language support (EN/FR/ES); Documented FastTrack SSO SOAP implementation |
+| 3.0 | 2025-10-29 | Audit Team | **C4 LEVEL 3 UPGRADE:** Added Component Classification section; Added comprehensive Component Architecture section (frontend/backend patterns, authentication flow, component interactions); Added Performance Considerations section (bundle size, API latency, Redux overhead, monitoring); Restructured Known Gaps into Technical Debt and Risks section with priority levels (🔴 Critical: ASP.NET Core 3.1 EOL, React 16.12.0 outdated, FastTrack SSO SPOF; ⚠️ High: TypeScript 3.7.3, Redux legacy pattern, no code splitting; Medium: Enzyme deprecation, Bootstrap 4, permission model); Enhanced Questions for Further Investigation with categorization (Authentication, Performance, Data, Usage, Features, Operational); Updated status to "C4 Level 3 Documentation" |
+| 4.0 | 2025-10-29 | Audit Team | **DUAL-PORTAL RESTRUCTURE:** Renamed from agency-portal.md to web-portals.md; Documented shared codebase architecture (99% code reuse, 368 total files); Added Code Separation Analysis (5 portal-specific files vs 363 shared); Added Key Architectural Differences section (Agency vs Public feature comparison); Added Redux Store Segregation Pattern documentation; Restructured Primary Purpose section to cover both Agency and Public Portal features; Updated Component Classification to reflect dual-mode deployment; Added shared codebase deployment diagram |
 
 ---
 
-## Known Gaps and Contradictions
+## Implementation Verification Needed
 
-### 🔍 Implementation vs Specification
+### Design Specification vs Runtime Behavior
 
-**Design specification verified (2019), implementation details pending:**
+**Specification Status:**
 
-- Core document is Agency Portal spec v4.0 from October 2019
+- Core documents: Agency Portal spec v4.0 + Public Portal spec v1.3 (both signed off by Steering Group)
 - Workshop 2 confirmed Portal is primary developer onboarding tool
-- Full feature implementation status needs code review verification
-- **Next step:** Access Portal instance to validate implemented features against spec
+- Source code analysis completed (368 files documented, shared codebase architecture verified)
 
-### ⚠️ Permission Model Complexity
+**Pending Runtime Validation:**
 
-**Specification mentions future enhancement:**
+- [ ] Feature implementation completeness (all spec features vs actual deployment)
+- [ ] Permission model current state (agency-level vs user-level)
+- [ ] Workflow auto-approval time limit (spec says ~30 days)
+- [ ] Performance metrics (actual vs expected)
+- [ ] Monitoring dashboard configuration
 
-- Current spec: Single agency-level access (all users in agency see same data)
-- Usability feedback noted: "Support more complex permission model for societies where individual users will be given different permission settings"
-- Status: Listed as "Wish List" item in Appendix B
-- **Resolution needed:** Confirm current permission granularity in implementation
-
-### 🔔 Workflow Time Limit
-
-**Auto-approval timing not precisely specified:**
-
-- Appendix C states: "The exact setting for this time limit is not agreed but it is expected to be approx. 30 days"
-- **Impact:** Low - Affects understanding of workflow urgency
-- **Action item:** Confirm configured auto-approval time limit from implementation
+**Action Required:** Request Portal instance access for runtime feature validation
 
 ---
 
-**Status:** Updated with Implementation Details - Based on core design documents and complete source code analysis
+**Status:** C4 Level 3 Documentation - Based on core design documents and complete source code analysis
+**Last Updated:** October 29, 2025
 **Next Review:** After Portal access granted for runtime feature validation

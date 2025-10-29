@@ -46,6 +46,7 @@ Each agency operates from their **own secure folder** on the central ISWC Databa
 > **Xiyuan Zeng (WS2, 33:10):** "There's also a SFTP where different agencies, different societies, maybe that's the correct term, and they have their own SFTP account so that they log into the SFTP server over SFTP protocol, so that they upload the download files."
 
 **Key Characteristics:**
+
 - **Per-agency accounts** - Each society/agency has unique SFTP credentials
 - **Isolated access** - Agencies only see their own files
 - **Bidirectional** - Both upload and download capabilities
@@ -73,6 +74,7 @@ Each agency operates from their **own secure folder** on the central ISWC Databa
 > **Xiyuan Zeng (WS2, 33:30):** "The sap file uploading will end up in a error storage file share. Storage account file service. You can see the file in your airport even right now. There are storage account in there for SFTP files, and each society is there if I got directly uploaded to the storage account."
 
 **Flow:**
+
 ```
 Agency SFTP Login
     ↓
@@ -84,6 +86,7 @@ Agency-specific directory/file share
 ```
 
 **No Intermediate Storage:**
+
 - Files go **directly** to Azure Storage Account
 - No temporary file system staging
 - Immediate availability for processing
@@ -133,6 +136,7 @@ From the architecture diagram and Workshop 2 discussions:
 > **Mark Stadler (WS2, 1:18:44):** "If you're writing like a new file, like if you dropped a new file into SFTP and you wanted for a certain process in a certain way, there would be a lot of work in processing that file in Databricks. So the API and Databricks would be probably the two biggest, two most involved things."
 
 **Processing Characteristics:**
+
 - **Triggered by file arrival** - Data Factory detects new files
 - **Databricks processing** - Heavy computation for file parsing and validation
 - **Format-specific pipelines** - Different file types require different processing
@@ -151,6 +155,7 @@ ISWCYYYYMMDDHHMMSSRRRSSS.extension
 ```
 
 Where:
+
 - **YYYY** = Year (4 digits)
 - **MM** = Month (2 digits)
 - **DD** = Day (2 digits)
@@ -161,6 +166,7 @@ Where:
 - **SSS** = Sequence number (3 digits, 001-999)
 
 **Extensions:**
+
 - `.CSN` - Uncompressed file
 - `.zip` - Compressed file (must contain single CSN file with matching name)
 
@@ -284,6 +290,7 @@ Two formats are supported:
 From the system architecture diagram (WS2):
 
 **SFTP sits alongside:**
+
 - Agency Portal (interactive web UI)
 - Public Portal (public access)
 - API Management (programmatic access)
@@ -349,6 +356,7 @@ From the system architecture diagram (WS2):
 ### Business Importance
 
 SFTP is critical for:
+
 - **Global agency network** - Societies worldwide use file exchange
 - **Industry standards** - CWR and other standard formats rely on file transfer
 - **Operational continuity** - Many agencies have decades of file-based workflows
@@ -357,6 +365,7 @@ SFTP is critical for:
 ### Technical Importance
 
 SFTP processing through Databricks represents:
+
 - **Most active development area** - Alongside APIs, most frequent changes
 - **Complex processing** - Significant logic in file parsing and transformation
 - **Data quality** - Validation rules and error handling
@@ -367,17 +376,20 @@ SFTP processing through Databricks represents:
 ## Related Components
 
 ### Upstream Dependencies
+
 - **Linux VM** - Hosts SFTP server
 - **Azure Storage Account** - File storage
 - **Network security** - Firewall rules, SSH configuration
 
 ### Downstream Dependencies
+
 - **Data Factory** - File detection and orchestration
 - **Databricks** - File processing and transformation
 - **SQL Server** - Processed data storage
 - **Cosmos DB** - Alternative storage for certain data types
 
 ### Monitoring & Operations
+
 - **Application Insights** - Would monitor processing metrics
 - **Key Vault** - May store SFTP credentials
 - **Backup policies** - Storage Account backup configuration

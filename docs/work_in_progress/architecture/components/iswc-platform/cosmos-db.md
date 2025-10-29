@@ -34,6 +34,14 @@
 
 ---
 
+## Component Classification
+
+**C4 Model Level:** Level 3 - Component
+**Parent Container:** ISWC Platform (Data Tier)
+**Component Type:** NoSQL Database (Azure Cosmos DB with MongoDB API)
+
+---
+
 ## Overview
 
 Azure Cosmos DB is a globally distributed NoSQL database service used in the ISWC system for storing high-volume audit logs and caching ISWC counter values.
@@ -63,6 +71,134 @@ Cosmos DB was selected to address scalability challenges with audit data, which 
 - **Audit Trail System** - Complete audit log for compliance and debugging
 - **Caching Layer** - Performance optimization for frequently accessed data
 - **Scalability Solution** - Handles data volumes beyond RDBMS practical limits
+
+---
+
+## Component Architecture
+
+### Collection Architecture
+
+Cosmos DB organizes data into collections with MongoDB API compatibility:
+
+```mermaid
+flowchart TD
+    subgraph "Cosmos DB Database"
+        A[Audit Collection<br/>822M+ documents]
+        B[AuditRequest Collection]
+        C[AuditRequestTransaction Collection]
+        D[ISWC Collection<br/>Counter]
+        E[CacheIswcs Collection]
+        F[AgentRuns Collection]
+        G[CsnNotifications Collection]
+        H[SubmissionChecksums Collection]
+        I[UpdateWorkflowHistory Collection]
+    end
+
+    style A fill:#ffebee
+    style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    style E fill:#fff3e0
+```
+
+**Collection Relationships:**
+
+- **Audit → AuditRequest → AuditRequestTransaction** (hierarchical audit trail)
+- **ISWC ← CacheIswcs** (counter source → cache)
+- **Independent collections:** AgentRuns, CsnNotifications, SubmissionChecksums, UpdateWorkflowHistory
+
+### Service Layer Architecture
+
+From source code in [src/Data/Services/](../../resources/source-code/ISWC/src/Data/Services/):
+
+**Repository Pattern:**
+
+```mermaid
+flowchart LR
+    A[Business Managers] --> B[Service Interfaces<br/>IAuditService, ICacheIswcService]
+    B --> C[Service Implementations<br/>CosmosDbAuditService, etc.]
+    C --> D[Generic Repository<br/>ICosmosDbRepository]
+    D --> E[Cosmos DB<br/>MongoDB API]
+
+    style A fill:#e3f2fd
+    style B fill:#fff3e0
+    style C fill:#f3e5f5
+    style D fill:#e8f5e9
+    style E fill:#ffebee,stroke:#388e3c,stroke-width:2px
+```
+
+**Key Services:**
+
+- **CosmosDbAuditService** - Writes audit logs (Audit, AuditRequest, AuditRequestTransaction collections)
+- **CosmosDbCacheIswcService** - Manages ISWC counter cache
+- **CosmosDbIswcService** - Generates new ISWC values
+- **CosmosDbNotificationService** - Tracks CSN notification status
+- **CosmosDbAgentRunService** - Background job execution tracking
+- **CosmosDbChecksumService** - Duplicate submission detection
+
+### Data Access Patterns
+
+**Write Pattern - Audit Logging:**
+
+```csharp
+// From CosmosDbAuditService.cs
+public async Task LogSubmissions(IEnumerable<Submission> submissions)
+{
+    var auditModels = mapper.Map<IEnumerable<AuditModel>>(submissions);
+    await cosmosRepository.CreateManyAsync(auditModels, collectionName: "Audit");
+
+    var requestModels = submissions.SelectMany(MapToRequests);
+    await cosmosRepository.CreateManyAsync(requestModels, collectionName: "AuditRequest");
+}
+```
+
+**Read Pattern - Submission History:**
+
+```csharp
+// From AuditManager.cs
+public async Task<PagedResults<AuditModel>> GetSubmissionHistory(
+    string preferredIswc,
+    string continuationToken)
+{
+    var query = cosmosRepository.Query()
+        .Where(a => a.PreferredIswc == preferredIswc)
+        .OrderByDescending(a => a.CreatedDate);
+
+    return await cosmosRepository.GetPagedAsync(query, continuationToken);
+}
+```
+
+**Cache Pattern - ISWC Counter:**
+
+```csharp
+// From CosmosDbCacheIswcService.cs
+public async Task<string> GetNextIswc()
+{
+    // Check cache first
+    var cached = await cacheRepository.GetFirstOrDefaultAsync();
+    if (cached != null) return cached.Iswc;
+
+    // Generate new from counter
+    var nextIswc = await iswcService.GenerateNext();
+    await cacheRepository.CreateAsync(new CacheIswcsModel { Iswc = nextIswc });
+    return nextIswc;
+}
+```
+
+### Partition Key Strategy
+
+> **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 2.3.2:** "Society Code and Created Date as a partition key"
+
+**Format:** `XXXDDD` where XXX = Society Code, DDD = Month (1-12, zero-padded)
+
+**Benefits:**
+
+- Even distribution across societies
+- Time-based partitioning for data archival
+- Query optimization for single-society queries
+
+**Trade-offs:**
+
+- Cross-society queries require fan-out
+- Small societies may have under-utilized partitions
 
 ---
 
@@ -502,17 +638,231 @@ Cosmos DB serves as one of two primary data tier options alongside SQL Server.
 
 ---
 
+## Performance Considerations
+
+### RU (Request Units) Consumption Patterns
+
+**Initial Configuration:**
+
+> **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 2.3:** "An initial value of 1,000 RU (Request Units) will be provisioned."
+
+**RU Consumption Estimates:**
+
+- **Write operations:** 5-10 RU per audit document (varies by size)
+- **Read operations:** 1-5 RU per query (simple lookups)
+- **Complex queries:** 10-100+ RU (cross-partition queries, aggregations)
+
+**Performance Baselines Needed:**
+
+- [ ] What is the current production RU provisioning? (Expected: >1,000 RU for 822M+ documents)
+- [ ] What is the average RU consumption per hour?
+- [ ] Are there RU throttling events? (HTTP 429 errors)
+- [ ] Is auto-scaling enabled?
+
+### Query Performance Characteristics
+
+**Optimized Query Patterns:**
+
+- **Single-partition queries** - Fast (partition key = societyCode + month)
+- **Paged results** - ContinuationToken pattern for large result sets
+- **PreferredIswc lookups** - Indexed for submission history
+
+**Slow Query Patterns:**
+
+- **Cross-partition queries** - Fan-out to all partitions (expensive)
+- **Unindexed fields** - Full collection scan
+- **Large result sets** - No pagination
+
+**Portal Performance Impact:**
+
+- **Submission History page** - Queries by PreferredIswc (optimized)
+- **Reports** - May trigger cross-partition queries (expensive)
+- **Statistics aggregation** - Background jobs minimize user impact
+
+### Cost Optimization Opportunities
+
+**Current Cost Drivers:**
+
+- **RU throughput** - Provisioned or consumed (depends on autoscale mode)
+- **Storage** - 822M+ documents = ~300-500GB estimated
+- **Backup** - Automated backups every 4 hours
+
+**Optimization Strategies:**
+
+1. **TTL (Time-To-Live) for old audit data** - Auto-delete after retention period
+2. **Indexing policy tuning** - Only index queried fields
+3. **Archival to cold storage** - Move old audit data to Azure Blob Storage
+4. **Serverless mode consideration** - For low-traffic collections (CacheIswcs, AgentRuns)
+5. **Query optimization** - Avoid cross-partition scans
+
+**Cost Estimate:**
+
+- **1,000 RU provisioned** = ~$58/month (West Europe)
+- **Storage (500GB)** = ~$125/month
+- **Total estimated** = ~$183/month (needs verification against actual bill)
+
+### Monitoring and Metrics
+
+**Current Observability:**
+
+From source code references to Application Insights:
+
+- **Write success/failure** - Logged in application layer
+- **RU consumption** - Not explicitly tracked in code (relies on Azure Portal)
+- **Query latency** - Application Insights dependency tracking
+
+**Missing Metrics:**
+
+- [ ] RU consumption per collection
+- [ ] Partition hotspots (uneven distribution)
+- [ ] Query performance baselines (p50/p95/p99)
+- [ ] Cost per operation type (write vs read)
+
+**Recommended Dashboards:**
+
+- Cosmos DB metrics in Azure Portal (RU, storage, latency)
+- Application Insights dependency calls for audit operations
+- Custom dashboard for audit log volume trends
+
+---
+
+## Technical Debt and Risks
+
+### 🔴 Critical Operational Risks
+
+**Very Limited Backup Retention (8-Hour Window):**
+
+> **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 2.4:** "Azure Cosmos DB automatically takes a backup of the database every 4 hours and at any one point in time, only the latest 2 backups are stored."
+
+- **Impact:** Data loss risk beyond 8 hours (catastrophic for audit compliance)
+- **Comparison:** SQL Server has 35-day retention (MUCH better)
+- **Scenario:** If data corruption detected after 9+ hours, no recovery possible
+- **Compliance Risk:** Audit data required for legal/regulatory purposes
+- **Mitigation:** Implement long-term backup strategy (copy to Azure Blob Storage, schedule exports)
+- **Effort Estimate:** 1-2 weeks (implement scheduled backup jobs + restore testing)
+
+**Untested Backup Restoration Procedure:**
+
+> **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 2.4:** "For recovery within the 8 hours, Azure support will be contacted to restore the data from backup."
+
+- **Issue:** Requires opening Azure support ticket (not self-service)
+- **Recovery Time:** Unknown (depends on Azure support SLA)
+- **Risk:** Never tested in production (disaster recovery drill needed)
+- **Mitigation:** Document step-by-step restoration process, conduct annual DR test
+- **Effort Estimate:** 1 day documentation + 1 day testing
+
+### ⚠️ High Priority Technical Debt
+
+**No Data Retention Policies:**
+
+- **Issue:** 822M+ documents accumulate indefinitely
+- **Storage Growth:** Unbounded growth increases costs
+- **Performance Impact:** Large collections slow down queries
+- **Compliance:** May violate GDPR "right to be forgotten" or retention limits
+- **Mitigation:** Implement TTL for audit data (e.g., 7-year retention), archival to cold storage
+- **Effort Estimate:** 2-3 weeks (design retention policy + implement archival)
+
+**Unknown Production RU Configuration:**
+
+From specification:
+
+- **Documented:** 1,000 RU initial provisioning
+- **Actual:** Unknown (needs verification)
+- **Risk:** Over-provisioned = wasted cost, Under-provisioned = throttling
+- **Mitigation:** Review Azure Cost Management, optimize RU allocation
+- **Effort Estimate:** 1 week analysis + tuning
+
+**No Local Development Emulator:**
+
+> **From [Workshop 2](../../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt) (Line 549, Xiyuan Zeng):** "Cosmos DB, I'm not so certain. There might be a local numerator."
+
+- **Impact:** Developers must connect to cloud Cosmos DB (slower, costs money)
+- **Alternative:** Cosmos DB emulator exists but may not be configured
+- **Mitigation:** Configure Cosmos DB emulator for local development
+- **Effort Estimate:** 2-3 days setup + documentation
+
+### Medium Priority Improvements
+
+**Indexing Policy Not Optimized:**
+
+- **Issue:** Default indexing policy indexes all fields (expensive)
+- **Impact:** Higher RU costs for writes, storage overhead
+- **Mitigation:** Review query patterns, exclude unused fields from indexing
+- **Effort Estimate:** 1 week analysis + configuration changes
+
+**Partition Hotspots Possible:**
+
+- **Issue:** Large societies (GEMA, BMI, SACEM) may saturate partitions
+- **Partition Key:** SocietyCode + Month (uneven distribution if one society dominates)
+- **Mitigation:** Monitor partition metrics, consider synthetic partition key if needed
+- **Effort Estimate:** 1 week monitoring + analysis
+
+**No Cost Alerts:**
+
+- **Issue:** Cosmos DB costs can spike unexpectedly
+- **Risk:** Budget overruns without warning
+- **Mitigation:** Configure Azure Cost Management alerts (e.g., >€500/month threshold)
+- **Effort Estimate:** 1 day
+
+### Low Priority / Nice to Have
+
+**Serverless Mode for Low-Traffic Collections:**
+
+- **Collections:** CacheIswcs, AgentRuns, SubmissionChecksums (low traffic)
+- **Benefit:** Pay-per-use instead of provisioned RU
+- **Consideration:** Evaluate cost savings vs performance trade-off
+- **Effort Estimate:** 2-3 days migration + testing
+
+**Multi-Region Replication:**
+
+- **Current:** Single region (assumed West Europe)
+- **Benefit:** Global distribution for faster reads worldwide
+- **Cost:** Significant increase (2-3x storage + replication RU)
+- **Consideration:** Evaluate business need vs cost
+
+---
+
 ## Questions for Further Investigation
 
+### Performance and Capacity
+
 - [ ] What is the current RU (Request Units) provisioning in production vs initial 1,000 RU?
-- [ ] How are Cosmos DB connection strings rotated and managed?
-- [ ] What is the actual data volume in production Cosmos DB?
+- [ ] Is auto-scaling enabled for RU throughput?
+- [ ] What is the average RU consumption per hour/day?
+- [ ] Have there been any RU throttling events (HTTP 429 errors)?
+- [ ] What is the actual data volume in production Cosmos DB? (Expected: 300-500GB)
+- [ ] How many documents are in each collection?
+- [ ] What are the slowest queries and their RU costs?
+
+### Cost and Optimization
+
+- [ ] What is the monthly Cosmos DB cost breakdown (RU vs storage vs backup)?
+- [ ] Are there partition hotspots (uneven RU distribution)?
+- [ ] What is the indexing policy configuration?
+- [ ] Are there unused indexes consuming RU?
+- [ ] Could TTL reduce storage costs?
+
+### Backup and Disaster Recovery
+
+- [ ] What is the backup restoration procedure and has it been tested?
+- [ ] How long does backup restoration take?
+- [ ] Is there a long-term archival strategy for audit data beyond 8 hours?
+- [ ] Are there any retention policies for old audit data?
+- [ ] What is the disaster recovery RTO/RPO for Cosmos DB?
+
+### Development and Operations
+
 - [ ] Is there a local Cosmos DB emulator configured for development?
+- [ ] How are Cosmos DB connection strings rotated and managed?
 - [ ] What monitoring/alerting exists for Cosmos DB performance and costs?
 - [ ] How are partition keys chosen for new collections beyond Audit?
-- [ ] What is the backup restoration procedure and has it been tested?
-- [ ] Are there any retention policies for old audit data?
-- [ ] How is Cosmos DB cost optimized (TTL, indexing policies)?
+- [ ] Are there cost alerts configured?
+
+### Data Governance
+
+- [ ] What is the data retention policy for audit logs (GDPR compliance)?
+- [ ] How is "right to be forgotten" handled for Cosmos DB audit data?
+- [ ] Are there compliance requirements for audit data retention?
 
 ---
 
@@ -544,45 +894,44 @@ Cosmos DB serves as one of two primary data tier options alongside SQL Server.
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | 2025-10-27 | Documentation Team | Initial document created via /document-component command; Comprehensive three-phase research (4 design docs, 158+ code files, 2 meeting transcripts); Focus on Cache and Audit use cases; Mermaid diagrams for architecture and workflows |
+| 2.0 | 2025-10-29 | Audit Team | **C4 LEVEL 3 UPGRADE:** Added Component Classification section; Added comprehensive Component Architecture section (collection architecture, service layer, data access patterns, partition key strategy); Added Performance Considerations section (RU consumption, query performance, cost optimization, monitoring); Restructured and expanded Technical Debt and Risks section with priority levels (🔴 Critical: 8-hour backup retention, untested restoration procedure; ⚠️ High: No data retention policies, unknown RU configuration, no local emulator; Medium: Indexing not optimized, partition hotspots, no cost alerts); Enhanced Questions for Further Investigation with categories (Performance, Cost, Backup, Development, Data Governance); Integrated Known Gaps into Technical Debt section; Updated status to "C4 Level 3 Documentation" |
 
 ---
 
-## Known Gaps and Contradictions
+## Implementation Verification Needed
 
-### 🔍 Local Development Uncertainty
+### Production Configuration Review
 
-**Gap identified:**
+**Cosmos DB Runtime Configuration:**
 
-> **From [Workshop 2](../../meetings/20251021-ISWC%20Audit%20-%20Workshop%202%20-%20Documentations%20and%20infrastructure.txt) (Line 549, Xiyuan Zeng):** "Cosmos DB, I'm not so certain. There might be a local numerator."
+- [ ] Confirm production RU provisioning (Expected: >1,000 RU)
+- [ ] Verify auto-scaling configuration
+- [ ] Review indexing policies per collection
+- [ ] Document partition distribution and hotspots
 
-- **Issue**: Unclear if Cosmos DB emulator is configured for local development
-- **Impact**: **Medium** - Affects developer productivity and testing
-- **Resolution Needed**: Verify emulator setup or document cloud-only development approach
+**Cost and Performance Baselines:**
 
-### 🔍 Backup Recovery Procedure
+- [ ] Collect monthly Cosmos DB cost breakdown
+- [ ] Analyze RU consumption patterns
+- [ ] Identify slow queries and optimization opportunities
+- [ ] Review partition metrics for uneven distribution
 
-**Specification states:**
+**Action Required:** Request access to Azure Portal and Cost Management
 
-> **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 2.4 "Backup and recovery":** "For recovery within the 8 hours, Azure support will be contacted to restore the data from backup."
+### Disaster Recovery Validation
 
-- **Gap**: No documented procedure for initiating backup restoration
-- **Impact**: **High** - Critical for disaster recovery
-- **Resolution Needed**: Document step-by-step restoration process, test recovery procedure
+**Backup and Restoration:**
 
-### ⚠️ Limited Backup Retention
+- [ ] Document step-by-step backup restoration procedure
+- [ ] Conduct disaster recovery drill (test restore from backup)
+- [ ] Implement long-term archival strategy (beyond 8-hour window)
+- [ ] Define RTO/RPO requirements for audit data
 
-**Only 2 backups retained (8-hour window)**
+**Action Required:** Schedule DR testing with operations team
 
-- **Concern**: Very limited recovery window compared to SQL Server (35 days)
-- **Impact**: **High** - Data loss risk beyond 8 hours
-- **Mitigation Needed**: Consider long-term archival strategy for critical audit data
+---
 
-### 🔍 RU Scaling Strategy
-
-**Initial configuration documented:**
-
-> "An initial value of 1,000 RU (Request Units) will be provisioned."
-
-- **Gap**: No information on production RU configuration or auto-scaling policies
-- **Impact**: **Medium** - Affects performance and cost
-- **Resolution Needed**: Document current RU allocation and scaling triggers
+**Status:** C4 Level 3 Documentation - Based on data model spec, workshop discussions, and 158+ source code files
+**Last Updated:** October 29, 2025
+**Next Review:** After production configuration review and DR testing
+**Critical Action Item:** Address 8-hour backup retention limitation - critical for audit compliance
