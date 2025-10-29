@@ -231,6 +231,7 @@ flowchart TB
    - SubSource = "Eligible" (or "NonEligible", "Label", "Search")
 
 2. **API Call** - `MatchingEngineMatchingService.MatchAsync()` calls HTTP endpoint:
+
    ```
    POST https://[matchengine-url]/api/Work/Match
    Headers:
@@ -258,6 +259,7 @@ flowchart TB
    - Linked-to chain following
 
 5. **Response Processing** - ISWC receives `MatchingResult`:
+
    ```json
    {
      "Matches": [

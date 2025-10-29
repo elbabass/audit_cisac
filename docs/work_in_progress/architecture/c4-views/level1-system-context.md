@@ -687,6 +687,6 @@ After validation of this System Context:
 
 **Component Documentation:**
 
-- [SFTP-Usage.md](../../SFTP-Usage.md) - SFTP file exchange patterns
-- [MatchingEngine.md](../../MatchingEngine.md) - Matching Engine integration
-- [Databricks.md](../../Databricks.md) - Data processing
+- [sftp-server.md](../components/networking/sftp-server.md) - SFTP file exchange patterns
+- [matching-engine.md](../components/matching-engine/matching-engine.md) - Matching Engine integration
+- [databricks.md](../components/iswc-platform/databricks.md) - Data processing

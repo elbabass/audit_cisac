@@ -6,11 +6,79 @@ This directory contains comprehensive technical documentation for the ISWC (Inte
 
 The ISWC system is a complex distributed system for managing musical work registrations globally. It consists of multiple components deployed on Microsoft Azure, integrating with external systems, and supporting multiple submission methods for music rights societies worldwide.
 
-## Component Documentation
+## C4 Architecture Model
+
+The architecture is documented using the C4 model (Context, Containers, Components, Code) for hierarchical system visualization:
+
+### Master Navigation
+
+- **[C4 Architecture Master Hub](c4-architecture-master.md)** - Central navigation, progress tracking, and methodology
+
+### C4 Views
+
+- **[Level 1: System Context](c4-views/level1-system-context.md)** ✅ Validated
+  - ISWC Platform system boundaries
+  - External systems (Matching Engine, FastTrack SSO, Suisa API/SFTP)
+  - High-level system interactions
+- **[Level 2: Container View](c4-views/level2-containers.md)** ✅ Validated
+  - 14 containers (Web Apps, APIs, Processing, Databases, File Transfer)
+  - Technology stack with EOL flagging
+  - Data flow patterns and relationships
+- **Level 3: Component Details** - 🚧 In Progress (35% complete)
+  - See component directories below
+
+### Component Documentation by System
+
+#### [ISWC Platform Components](components/iswc-platform/)
+
+**Web Applications:**
+
+- [Agency Portal](components/iswc-platform/agency-portal.md) ✅ v2.0
+- **Public Portal** - Same codebase as Agency Portal (REACT_APP_MODE=PUBLIC_MODE)
+
+**APIs:** (4 separate App Services)
+
+- **Agency API** - 🔴 Pending documentation
+- **Label API** - 🔴 Pending documentation
+- **Publisher API** - 🔴 Pending documentation
+- **Third Party API** - 🔴 Pending documentation
+
+**Background Processing:**
+
+- **ISWC Jobs** - 🔴 Pending documentation (8 Azure Functions)
+- [Databricks](components/iswc-platform/databricks.md) ✅ v1.1
+- **Data Factory** - 🔴 Pending documentation (14 pipelines)
+
+**Data Storage:**
+
+- [Cosmos DB](components/iswc-platform/cosmos-db.md) ✅ v1.0
+- **SQL Server** - 🔴 Pending documentation (ISWC + IPI databases)
+- **Data Lake** - 🔴 Pending documentation
+
+#### [Matching Engine](components/matching-engine/)
+
+- [Matching Engine](components/matching-engine/matching-engine.md) ✅ v1.0 - External Spanish Point product
+
+#### [Networking](components/networking/)
+
+- [SFTP Server](components/networking/sftp-server.md) ✅ v1.0
+
+#### [Integration Patterns](integration-patterns/)
+
+- [Audit Logging](integration-patterns/audit-logging.md) ✅ v1.0
+- [Performance](integration-patterns/performance.md) ✅ v1.0
+- **Pipeline Orchestration** - 🔴 Pending (Validation → Matching → Processing)
+- **API Authentication** - 🔴 Pending (OAuth2 + FastTrack SSO)
+
+---
+
+## Legacy Component Documentation
+
+*Note: The sections below provide detailed information about components. See C4 views above for architectural context.*
 
 ### Core Infrastructure Components
 
-#### [CosmosDB.md](CosmosDB.md)
+#### [CosmosDB.md](components/iswc-platform/cosmos-db.md)
 
 **Azure Cosmos DB with MongoDB API** - NoSQL database for flexible data storage
 
@@ -24,7 +92,7 @@ The ISWC system is a complex distributed system for managing musical work regist
   - 822+ million audit records scalability
   - Connection string configuration and security
 
-#### [AuditLogging.md](AuditLogging.md)
+#### [AuditLogging.md](integration-patterns/audit-logging.md)
 
 **Audit Logging System** - Complete audit trail for all system transactions
 
@@ -39,7 +107,7 @@ The ISWC system is a complex distributed system for managing musical work regist
   - Extended audit fields beyond specification
   - Performance considerations and query patterns
 
-#### [Databricks.md](Databricks.md)
+#### [Databricks.md](components/iswc-platform/databricks.md)
 
 **Azure Databricks File Processing Engine** - Big data processing and ETL workflows
 
@@ -57,7 +125,7 @@ The ISWC system is a complex distributed system for managing musical work regist
 
 ### User Interface Components
 
-#### [ISWC-Agency-Portal.md](ISWC-Agency-Portal.md)
+#### [ISWC-Agency-Portal.md](components/iswc-platform/agency-portal.md)
 
 **Agency Portal Web Application** - Interactive web interface for music rights societies
 
@@ -76,7 +144,7 @@ The ISWC system is a complex distributed system for managing musical work regist
 
 ### External Integrations
 
-#### [MatchingEngine.md](MatchingEngine.md)
+#### [MatchingEngine.md](components/matching-engine/matching-engine.md)
 
 **Matching Engine Integration** - External work matching and search service
 
@@ -96,7 +164,7 @@ The ISWC system is a complex distributed system for managing musical work regist
 
 ### Performance & Operations
 
-#### [Performance.md](Performance.md)
+#### [Performance.md](integration-patterns/performance.md)
 
 **System Performance Analysis** - Performance characteristics and optimization opportunities
 
@@ -112,7 +180,7 @@ The ISWC system is a complex distributed system for managing musical work regist
   - Scalability considerations
   - Performance tuning recommendations
 
-#### [SFTP-Usage.md](SFTP-Usage.md)
+#### [SFTP-Usage.md](components/networking/sftp-server.md)
 
 **SFTP File Exchange** - Batch file submission and notification system
 
@@ -222,18 +290,21 @@ flowchart TD
 ### Critical Issues Identified
 
 🔴 **Databricks Runtime Outdated:**
+
 - Integration Cluster on 10.4 LTS (outdated)
 - Missing features available in newer runtimes
 - Performance and compatibility concerns
 - **Impact:** High - affects IPI processing reliability
 
 🔴 **Matching Engine External Dependency:**
+
 - NOT part of ISWC codebase - separate Spanish Point product
 - Black box with limited control
 - Synchronous blocking affects submission performance
 - **Impact:** High - critical path for all submissions
 
 ⚠️ **Specification vs Implementation Gaps:**
+
 - Audit logging has extended fields beyond spec
 - Some spec fields not in current implementation
 - **Impact:** Medium - potential data model inconsistencies

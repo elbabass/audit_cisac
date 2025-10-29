@@ -1380,9 +1380,9 @@ flowchart TD
 
 **Related Documentation:**
 
-- [Databricks](./Databricks.md) - Processing engine
-- [Cosmos DB](./CosmosDB.md) - Audit storage
-- [ISWC Agency Portal](./ISWC-Agency-Portal.md) - User interface
+- [Databricks](../components/iswc-platform/databricks.md) - Processing engine
+- [Cosmos DB](../components/iswc-platform/cosmos-db.md) - Audit storage
+- [ISWC Agency Portal](../components/iswc-platform/agency-portal.md) - User interface
 
 ---
 
@@ -1497,7 +1497,7 @@ flowchart TD
 
 - **[20251021-ISWC - Discussion Yann_Guillaume_Bastien.txt](../../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt) (17:25, Yann Lebreuilly)** - Performance degradation and technical obsolescence discussion
 - **[20251021-ISWC - Discussion Yann_Guillaume_Bastien.txt](../../meetings/20251021-ISWC%20-%20Discussion%20Yann_Guillaume_Bastien.txt) (42:40, Bastien Gallay, Teragone-Factory)** - Audit scope observation (organizational vs technical focus)
-- **[README.md](../../meetings/README.md)** - Notes "System performance and cost issues"
+- **[README.md](../../../meetings/README.md)** - Notes "System performance and cost issues"
 
 ### Performance Proposition Documents
 

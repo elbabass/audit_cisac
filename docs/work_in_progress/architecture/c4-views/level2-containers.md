@@ -261,7 +261,7 @@ graph LR
 - App Service: `cisaciswcportalprod` (line 182 in CSV)
 - Application Insights: `cisaciswcportalprod` (line 183)
 
-**Status:** ✅ Source code exists, documented in [ISWC-Agency-Portal.md](../../ISWC-Agency-Portal.md)
+**Status:** ✅ Source code exists, documented in [agency-portal.md](../components/iswc-platform/agency-portal.md)
 
 ---
 
@@ -543,7 +543,7 @@ All APIs follow the same architectural pattern:
 - Storage: `cisaciswcdatabricksprod` (line 161)
 - Worker VMs: ~10 VMs (lines 20-110, hash IDs)
 
-**Status:** ✅ Documented in [Databricks.md](../../Databricks.md) v1.1
+**Status:** ✅ Documented in [databricks.md](../components/iswc-platform/databricks.md) v1.1
 **Technical Debt:** ⚠️ Databricks 10.4 LTS is outdated (current LTS: 13+)
 
 ---
@@ -636,7 +636,7 @@ All APIs follow the same architectural pattern:
 
 - Cosmos DB Account: `cisaciswcprod` (line 188)
 
-**Status:** ✅ Documented in [CosmosDB.md](../../CosmosDB.md) v1.0
+**Status:** ✅ Documented in [cosmos-db.md](../components/iswc-platform/cosmos-db.md) v1.0
 
 ---
 
@@ -805,7 +805,7 @@ All APIs follow the same architectural pattern:
 - Public IP: `CISACAzPSFTP` (line 119)
 - OS Disk: `CISACAzPSFTP-OS` (line 120)
 
-**Status:** ✅ Documented in [SFTP-Usage.md](../../SFTP-Usage.md) v1.0
+**Status:** ✅ Documented in [sftp-server.md](../components/networking/sftp-server.md) v1.0
 
 ---
 
@@ -1144,7 +1144,7 @@ After validation of this Container View:
 
 **Component Documentation:**
 
-- [CosmosDB.md](../../CosmosDB.md) v1.0 - Cosmos DB container
-- [Databricks.md](../../Databricks.md) v1.1 - Databricks container
-- [SFTP-Usage.md](../../SFTP-Usage.md) v1.0 - SFTP server container
-- [ISWC-Agency-Portal.md](../../ISWC-Agency-Portal.md) v2.0 - Agency Portal container
+- [cosmos-db.md](../components/iswc-platform/cosmos-db.md) v1.0 - Cosmos DB container
+- [databricks.md](../components/iswc-platform/databricks.md) v1.1 - Databricks container
+- [sftp-server.md](../components/networking/sftp-server.md) v1.0 - SFTP server container
+- [agency-portal.md](../components/iswc-platform/agency-portal.md) v2.0 - Agency Portal container

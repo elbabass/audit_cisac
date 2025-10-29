@@ -392,7 +392,7 @@ The actual implementation in [AuditRequestModel.cs](../../resources/source-code/
 
 **Direct Integration:**
 
-- **Cosmos DB Infrastructure** - Database platform (see [CosmosDB.md](./CosmosDB.md))
+- **Cosmos DB Infrastructure** - Database platform (see [CosmosDB](../components/iswc-platform/cosmos-db.md))
 - **SQL Server** - Complementary relational storage for current state
 - **Application Insights** - Performance monitoring and diagnostics
 - **Azure Functions** - Background processing of agency statistics

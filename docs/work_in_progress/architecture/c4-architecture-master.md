@@ -48,6 +48,7 @@ Each level is researched from these sources, documented, and **validated by doma
 | Level 3 - Components | 🟡 **Partial** | Various | - | 7 of 20 components documented |
 
 **Legend:**
+
 - ✅ **Validated** - Reviewed and approved by domain expert
 - 🟡 **Partial** - Some elements validated, others pending
 - 🔴 **Not Validated** - Awaiting validation
@@ -64,12 +65,14 @@ Each level is researched from these sources, documented, and **validated by doma
 Based on preliminary analysis of InfrastructureDiagram.png and source code:
 
 **System 1: ISWC Platform** (Main System)
+
 - The core CISAC ISWC work registration and management platform
 - Includes all application services, data processing, and storage
 - Developed and maintained by Spanish Point Technologies
 - Deployed in Azure West Europe
 
 **System 2: Matching Engine** (External Vendor System)
+
 - Work matching and search platform
 - Developed and maintained by Spanish Point Technologies
 - Integrated via HTTP REST API
@@ -77,6 +80,7 @@ Based on preliminary analysis of InfrastructureDiagram.png and source code:
 - Evidence: Source code shows HTTP client with external base URL
 
 **External Systems:**
+
 - **FastTrack SSO** - External authentication provider for agency users
 - **Suisa API** - External API for Swiss society integration
 - **Suisa SFTP** - External SFTP server for file exchange
@@ -84,17 +88,20 @@ Based on preliminary analysis of InfrastructureDiagram.png and source code:
 ### Key Findings from Validation Research
 
 **Critical Discovery #1: Data Platform is NOT a separate system**
+
 - Databricks, Data Factory, Cosmos DB, SQL Server, Data Lake are part of ISWC Platform
 - They are deployment containers within the main system, not a separate logical system
 - All accessed directly by ISWC APIs and Jobs
 
 **Critical Discovery #2: Matching Engine is External**
+
 - Source code proof: `BaseAddress-SpanishPointMatchingEngine` configuration
 - No Matching Engine source code in repository
 - ISWC APIs make HTTP calls to it as external dependency
 - However, shares Azure infrastructure (same subscription, resource groups)
 
 **Critical Discovery #3: Networking is Infrastructure**
+
 - Virtual Network, Public IP are Azure infrastructure, not software systems
 - ISWC SFTP should be a container in ISWC Platform
 
@@ -115,14 +122,16 @@ Based on InfrastructureDiagram.png and source code analysis:
 #### ISWC Platform Containers (Proposed)
 
 **Web Applications:**
+
 - **ISWC Agency Portal** - Azure App Service (React + ASP.NET Core 3.1)
   - Source: `Portal` project (found)
-  - Status: ✅ Documented in [agency-portal.md](../ISWC-Agency-Portal.md)
+  - Status: ✅ Documented in [agency-portal.md](components/iswc-platform/agency-portal.md)
 - **ISWC Public Portal** - Azure App Service (React + ASP.NET Core 3.1)
   - Source: ⚠️ **NOT FOUND** in repository
   - Status: ⚠️ Needs investigation
 
 **APIs:**
+
 - **ISWC Agency API** - Azure App Service (ASP.NET Core 3.1)
   - Source: `Api.Agency` project (found)
 - **ISWC Label API** - Azure App Service (ASP.NET Core 3.1)
@@ -135,21 +144,24 @@ Based on InfrastructureDiagram.png and source code analysis:
 ⚠️ **Open Question:** InfrastructureDiagram.png shows single "ISWC Api" box, but source code has 4 API projects. Are these deployed as separate App Services or combined?
 
 **Background Processing:**
+
 - **ISWC Jobs** - Azure Functions v3
   - Source: `Jobs` project (found)
   - 8 function jobs for scheduled tasks
 
 **Data Processing:**
+
 - **Databricks** - Azure Databricks 10.4 LTS
-  - Status: ✅ Documented in [Databricks.md](../Databricks.md)
+  - Status: ✅ Documented in [databricks.md](components/iswc-platform/databricks.md)
   - ⚠️ Technical debt: Outdated runtime version
 - **Data Factory** - Azure Data Factory v2
   - Status: 🔴 Not documented
   - ⚠️ Pipeline definitions not found in source code
 
 **Databases:**
+
 - **Cosmos DB** - Azure Cosmos DB (MongoDB API)
-  - Status: ✅ Documented in [CosmosDB.md](../CosmosDB.md)
+  - Status: ✅ Documented in [cosmos-db.md](components/iswc-platform/cosmos-db.md)
   - Collections: WID JSON, ISWC JSON
 - **SQL Server - ISWC Database** - Azure SQL Database
   - Status: 🔴 Not documented
@@ -159,14 +171,17 @@ Based on InfrastructureDiagram.png and source code analysis:
   - IPI = Interested Party Information
 
 **Storage:**
+
 - **Data Lake** - Azure Data Lake Storage Gen2
   - Status: 🔴 Not documented
 
 **File Transfer:**
+
 - **ISWC SFTP Server** - Azure Virtual Machine
-  - Status: ✅ Documented in [SFTP-Usage.md](../SFTP-Usage.md)
+  - Status: ✅ Documented in [sftp-server.md](components/networking/sftp-server.md)
 
 **Infrastructure (NOT modeled as containers in C4):**
+
 - API Management - Gateway (may show at Level 1 or deployment view)
 - App Service Plan - Hosting infrastructure
 - Key Vault - Secret management infrastructure
@@ -197,32 +212,38 @@ Based on InfrastructureDiagram.png and source code analysis:
 #### ISWC Platform Components
 
 **Web Applications:**
-- ✅ [Agency Portal](../ISWC-Agency-Portal.md) (v2.0) - React + ASP.NET Core frontend
+
+- ✅ [Agency Portal](components/iswc-platform/agency-portal.md) (v2.0) - React + ASP.NET Core frontend
 - 🔴 Public Portal - Not documented (source code missing)
 
 **Data Platform:**
-- ✅ [Databricks](../Databricks.md) (v1.1) - Data processing notebooks and jobs
-- ✅ [Cosmos DB](../CosmosDB.md) (v1.0) - NoSQL document storage
+
+- ✅ [Databricks](components/iswc-platform/databricks.md) (v1.1) - Data processing notebooks and jobs
+- ✅ [Cosmos DB](components/iswc-platform/cosmos-db.md) (v1.0) - NoSQL document storage
 - 🔴 Data Factory - Not documented **[CRITICAL]**
 - 🔴 SQL Server - Not documented **[HIGH PRIORITY]**
 - 🔴 Data Lake - Not documented
 
 **APIs:**
+
 - 🔴 ISWC API(s) - Not documented **[CRITICAL]** - Core submission pipeline
 
 **Background Processing:**
+
 - 🔴 ISWC Jobs - Not documented **[HIGH PRIORITY]** - Azure Functions catalog
 
 **File Transfer:**
-- ✅ [SFTP Server](../SFTP-Usage.md) (v1.0) - File exchange patterns
+
+- ✅ [SFTP Server](components/networking/sftp-server.md) (v1.0) - File exchange patterns
 
 #### Matching Engine Components
 
-- ✅ [Matching Engine](../MatchingEngine.md) (v1.0) - External HTTP API integration
+- ✅ [Matching Engine](components/matching-engine/matching-engine.md) (v1.0) - External HTTP API integration
 
 ### Priority Queue for New Documentation
 
 #### 🔴 CRITICAL (Week 1)
+
 1. **ISWC API(s)** - Core submission pipeline (4 API projects)
    - Understanding if deployed as 1 or 4 App Services
    - Pipeline orchestration (Validation → Matching → Processing)
@@ -241,6 +262,7 @@ Based on InfrastructureDiagram.png and source code analysis:
    - Error handling and retry logic
 
 #### 🟠 HIGH PRIORITY (Week 2)
+
 4. **ISWC Jobs** - Azure Functions catalog
    - Job types and schedules
    - IPI synchronization jobs
@@ -260,6 +282,7 @@ Based on InfrastructureDiagram.png and source code analysis:
    - Authorization patterns
 
 #### 🟡 MEDIUM PRIORITY (Week 3)
+
 7. **API Management** - Gateway configuration
    - Routing policies
    - Rate limiting
@@ -280,10 +303,12 @@ Based on InfrastructureDiagram.png and source code analysis:
 Cross-cutting concerns and integration patterns documentation:
 
 ### Completed
-- ✅ [Audit Logging](../AuditLogging.md) (v1.0) - Audit trail implementation
-- ✅ [Performance](../Performance.md) (v1.0) - System-wide performance analysis
+
+- ✅ [Audit Logging](integration-patterns/audit-logging.md) (v1.0) - Audit trail implementation
+- ✅ [Performance](integration-patterns/performance.md) (v1.0) - System-wide performance analysis
 
 ### Planned
+
 - 🔴 **Pipeline Orchestration** - Validation → Matching → Processing flow **[CRITICAL]**
 - 🔴 **API Authentication** - OAuth2 + FastTrack SSO patterns **[HIGH]**
 - 🔴 **Database Access Patterns** - Repository pattern, connection management
@@ -307,26 +332,26 @@ Cross-cutting concerns and integration patterns documentation:
 
 | Component | Type | Status | Priority | Doc Link |
 |-----------|------|--------|----------|----------|
-| Agency Portal | Web App | ✅ Complete (v2.0) | - | [Link](../ISWC-Agency-Portal.md) |
+| Agency Portal | Web App | ✅ Complete (v2.0) | - | [Link](components/iswc-platform/agency-portal.md) |
 | Public Portal | Web App | 🔴 Not Started | 🟡 Medium | ⚠️ Source code missing |
 | Agency API | API | 🔴 Not Started | 🔴 Critical | Part of API investigation |
 | Label API | API | 🔴 Not Started | 🔴 Critical | Part of API investigation |
 | Publisher API | API | 🔴 Not Started | 🔴 Critical | Part of API investigation |
 | Third Party API | API | 🔴 Not Started | 🔴 Critical | Part of API investigation |
 | ISWC Jobs | Functions | 🔴 Not Started | 🟠 High | - |
-| Databricks | Data Processing | ✅ Complete (v1.1) | - | [Link](../Databricks.md) |
+| Databricks | Data Processing | ✅ Complete (v1.1) | - | [Link](components/iswc-platform/databricks.md) |
 | Data Factory | ETL | 🔴 Not Started | 🔴 Critical | - |
-| Cosmos DB | Database | ✅ Complete (v1.0) | - | [Link](../CosmosDB.md) |
+| Cosmos DB | Database | ✅ Complete (v1.0) | - | [Link](components/iswc-platform/cosmos-db.md) |
 | SQL Server (ISWC) | Database | 🔴 Not Started | 🟠 High | - |
 | SQL Server (IPI) | Database | 🔴 Not Started | 🟠 High | - |
 | Data Lake | Storage | 🔴 Not Started | 🟡 Medium | - |
-| ISWC SFTP | File Transfer | ✅ Complete (v1.0) | - | [Link](../SFTP-Usage.md) |
+| ISWC SFTP | File Transfer | ✅ Complete (v1.0) | - | [Link](components/networking/sftp-server.md) |
 
 #### Matching Engine (External)
 
 | Component | Type | Status | Priority | Doc Link |
 |-----------|------|--------|----------|----------|
-| Matching Engine | External API | ✅ Complete (v1.0) | - | [Link](../MatchingEngine.md) |
+| Matching Engine | External API | ✅ Complete (v1.0) | - | [Link](components/matching-engine/matching-engine.md) |
 | ME Portal | Web App | 🔵 Deferred | - | Vendor-managed, out of scope |
 | Search Service | Search | 🔵 Deferred | - | Covered in ME doc |
 
@@ -334,8 +359,8 @@ Cross-cutting concerns and integration patterns documentation:
 
 | Pattern | Status | Priority | Doc Link |
 |---------|--------|----------|----------|
-| Audit Logging | ✅ Complete (v1.0) | - | [Link](../AuditLogging.md) |
-| Performance | ✅ Complete (v1.0) | - | [Link](../Performance.md) |
+| Audit Logging | ✅ Complete (v1.0) | - | [Link](integration-patterns/audit-logging.md) |
+| Performance | ✅ Complete (v1.0) | - | [Link](integration-patterns/performance.md) |
 | Pipeline Orchestration | 🔴 Not Started | 🔴 Critical | - |
 | API Authentication | 🔴 Not Started | 🟠 High | - |
 | Database Access | 🔴 Not Started | 🟡 Medium | - |
@@ -417,6 +442,7 @@ Cross-cutting concerns and integration patterns documentation:
 The original C4 model at `../infra/overview/infrastructure-diagram-structurizr.dsl` has been archived as of 2025-10-29 due to significant architectural errors discovered during validation.
 
 **Key Issues Identified:**
+
 - Invented fictional system boundaries ("Data Platform", "Networking Infrastructure")
 - Modeled Azure infrastructure as C4 containers (App Service Plan, Key Vault, Virtual Network)
 - Unclear Matching Engine boundary (should be marked as external)
@@ -442,7 +468,9 @@ This rebuilt C4 model uses the following primary sources:
 For each new component to be documented:
 
 ### 1. User Selection Phase
+
 User specifies:
+
 ```
 NEXT COMPONENT: [Component Name]
 PRIORITY LEVEL: [Critical/High/Medium]
@@ -451,6 +479,7 @@ KNOWN GAPS: [Optional - areas needing investigation]
 ```
 
 ### 2. Research Phase (Claude)
+
 - Analyze design documents for specifications
 - Analyze source code for implementation
 - Identify integration points
@@ -459,18 +488,21 @@ KNOWN GAPS: [Optional - areas needing investigation]
 - Document open questions
 
 ### 3. User Validation Phase
+
 - Review research findings
 - Answer clarification questions
 - Provide domain knowledge
 - Correct assumptions
 
 ### 4. Documentation Phase (Claude)
+
 - Create component document using standard template
 - Include validated Mermaid diagrams
 - Add complete source code references
 - Document known gaps
 
 ### 5. Review & Approval
+
 - User reviews final document
 - ✅ Approves → Mark complete, move to next
 - 🔄 Requests revisions → Refine specific sections
@@ -483,6 +515,7 @@ KNOWN GAPS: [Optional - areas needing investigation]
 Each component document must include:
 
 **Content Requirements:**
+
 - Version number and date
 - Sources section (Primary, Secondary, Tertiary)
 - Overview (2-3 paragraphs)
@@ -496,6 +529,7 @@ Each component document must include:
 - Known Gaps flagged with ⚠️
 
 **Diagram Requirements:**
+
 - Component diagram showing internal structure
 - At least one integration diagram (sequence or data flow)
 - Proper Mermaid syntax
@@ -503,6 +537,7 @@ Each component document must include:
 - Technology annotations
 
 **Citation Requirements:**
+
 - Design docs cited with relative file paths
 - Source code files listed with descriptions
 - Meeting transcripts referenced if relevant
