@@ -38,6 +38,8 @@ This document provides Level 3 (Component) documentation for the **Validation Pi
 
 The **Validation Pipeline** is the first of four sequential pipeline stages in the ISWC submission processing flow. It validates work metadata against **73+ business rules** organized across four specialized validators, rejecting invalid submissions before they reach the Matching Engine or database.
 
+**Documentation Note:** This document provides comprehensive technical depth intentionally for audit cross-analysis purposes. While some details may exceed immediate needs, they enable future investigation of performance, security, and architectural concerns.
+
 ### Position in 4-Stage Flow
 
 ```mermaid
@@ -204,7 +206,7 @@ sequenceDiagram
 
 **Example Scenario:**
 
-```
+```text
 Initial Submission:
   ToBeProcessed = true
   InterestedParties = [...]
@@ -353,12 +355,14 @@ Once any rule fails, no further rules execute for that submission.
 **2. Rule Filtering**
 
 Rules execute only when:
+
 - `TransactionType` matches (CAR, CUR, CDR, etc.)
 - `ValidatorType` matches (StaticValidator, MetadataStandardizationValidator, etc.)
 
 **3. Audit Trail**
 
 Every rule execution is recorded:
+
 ```csharp
 submission.RulesApplied.Add(new RuleExecution
 {
@@ -505,6 +509,7 @@ public class IV_05 : IRule
 ```
 
 **Pattern Characteristics:**
+
 - **No dynamic configuration** - `ParameterName = string.Empty`
 - **Always executes** - No conditional logic
 - **Simple validation** - Single LINQ check
@@ -561,6 +566,7 @@ public class IV_02 : IRule
 ```
 
 **Pattern Characteristics:**
+
 - **Dynamic configuration** - `ParameterName = "MustHaveOneIP"`
 - **Conditional execution** - Rule can be disabled (`if (!paramValue) return true`)
 - **Rule configuration tracking** - Sets `RuleConfiguration` property for audit
@@ -571,11 +577,13 @@ public class IV_02 : IRule
 **Example:** IV_PopulateIPsMERandCDR
 
 **Responsibilities:**
+
 - Fetch additional interested parties from database for MER (Merge) and CDR (Delete) transactions
 - Populate submission with complete IP data
 - **Set `ToBeProcessed = true`** to trigger re-validation
 
 **Implementation Pattern:**
+
 ```csharp
 public async Task<(bool IsValid, Submission Submission)> IsValid(Submission submission)
 {
@@ -609,6 +617,7 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 **Rule Categories:**
 
 **IV_* Rules (Input Validation):** 33 rules
+
 - IV_02: Must have one interested party
 - IV_05: Must have original title (TitleType.OT)
 - IV_06: Agency code must be valid
@@ -630,10 +639,12 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 - IV_PopulateIPsMERandCDR: Data population for MER/CDR
 
 **PV_* Rules (Pre-validation):** 2 rules
+
 - PV_02: Pre-matching validation
 - PV_03: Conflict detection
 
 **Transaction Type Support:**
+
 - CAR (Create/Add/Revise)
 - CUR (Change/Update/Revise)
 - CDR (Change/Delete/Remove)
@@ -660,6 +671,7 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 **Purpose:** Normalize and standardize metadata for consistent processing.
 
 **MD_* Rules (Metadata):** 11 rules
+
 - MD_01: Title capitalization standardization
 - MD_03: Remove leading/trailing whitespace
 - MD_06: Character encoding normalization (diacritics, special chars)
@@ -684,9 +696,11 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 | "ABC  123" | MD_17 | "ABC 123" |
 
 **Transaction Type Support:**
+
 - CAR, CUR, FSQ (all modification transactions)
 
 **Key Behavior:**
+
 - **Does NOT reject** - Only transforms data
 - **Silent normalization** - No error messages generated
 - **Idempotent** - Can run multiple times without side effects
@@ -700,6 +714,7 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 **Purpose:** Validate fields against reference data (lookup tables).
 
 **IV_* Rules:** 1 rule
+
 - IV_24: Validate all lookup codes against reference data
   - Agency codes
   - Category codes (DOM, JAZ, POP, SER, UNC)
@@ -709,6 +724,7 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
   - Country codes (ISO 3166-1 alpha-2)
 
 **Implementation Pattern:**
+
 ```csharp
 public async Task<(bool IsValid, Submission Submission)> IsValid(Submission submission)
 {
@@ -735,11 +751,13 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 ```
 
 **Reference Data Sources:**
+
 - **Cosmos DB** - Lookup collections
 - **24-hour cache** - In-memory caching via `ILookupManager`
 - **Agency Portal** - Manual maintenance via admin interface
 
 **Transaction Type Support:**
+
 - CAR, CUR, FSQ (all transactions with lookup codes)
 
 ---
@@ -751,6 +769,7 @@ public async Task<(bool IsValid, Submission Submission)> IsValid(Submission subm
 **Purpose:** Determine if a work qualifies for ISWC assignment based on interested party roles and agency agreements.
 
 **EL_* Rules (Eligibility):** 4 rules
+
 - EL_01: **Primary eligibility check** - Validates IP roles and agency agreements
 - EL_02: Eligibility validation against rules engine
 - EL_03: Eligibility criteria assessment
@@ -804,11 +823,13 @@ bool IsPublicDomain(IEnumerable<InterestedParty> ips)
 ```
 
 **Eligible Roles (Configuration Parameter):**
+
 - **C** - Composer
 - **CA** - Composer/Author
 - **A** - Author (lyricist)
 
 **Ineligible Roles:**
+
 - **E** - Publisher (original)
 - **SR** - Sub-Publisher
 - **SA** - Sub-Author
@@ -818,12 +839,14 @@ bool IsPublicDomain(IEnumerable<InterestedParty> ips)
 - **PA** - Publisher Administrator
 
 **Key Behavior:**
+
 - **Does NOT reject** - Sets `IsEligible = true/false`
 - **Affects downstream** - ProcessingPipeline uses `IsEligible` flag
 - **Public Domain exception** - Death date + 80 years calculation
 - **Agency agreements** - Database-driven eligibility rules
 
 **Transaction Type Support:**
+
 - CAR (new work submissions only)
 
 ---
@@ -850,6 +873,7 @@ public enum ErrorCode
 
 **JSON Serialization:**
 The `ErrorCodeConverter` strips the underscore prefix:
+
 ```json
 {
   "errorCode": "104",  // Serialized without underscore
@@ -860,6 +884,7 @@ The `ErrorCodeConverter` strips the underscore prefix:
 ### Common Error Codes by Validator
 
 **StaticDataValidator:**
+
 | Code | Message | Rule |
 |------|---------|------|
 | _102 | Invalid agency code | IV_06 |
@@ -870,15 +895,18 @@ The `ErrorCodeConverter` strips the underscore prefix:
 | _114 | Invalid IP role code | IV_14 |
 
 **MetadataStandardizationValidator:**
+
 - **No error codes** - Only transformations
 
 **LookupDataValidator:**
+
 | Code | Message | Rule |
 |------|---------|------|
 | _102 | Agency code not in lookup data | IV_24 |
 | _111 | Category code not in lookup data | IV_24 |
 
 **IswcEligibilityValidator:**
+
 - **No error codes** - Sets `IsEligible` flag instead
 
 ---
@@ -949,6 +977,7 @@ public async Task<IEnumerable<IRule>> GetEnabledRules<IRule>()
 **Always-On Rules:**
 
 Rules implementing `IAlwaysOnRule` marker interface cannot be disabled:
+
 ```csharp
 public interface IAlwaysOnRule : IBaseRule
 {
@@ -998,12 +1027,14 @@ public interface IValidationPipeline
 ```
 
 **Input Requirements:**
+
 - `submission.Model` populated with work metadata
 - `submission.TransactionType` set (CAR, CUR, CDR, etc.)
 - `submission.Agency` and `submission.SourceDb` set
 - `submission.ToBeProcessed` initialized to `false`
 
 **Output Guarantees:**
+
 - `submission.Rejection` set if validation failed (non-null)
 - `submission.IsEligible` set by IswcEligibilityValidator
 - `submission.RulesApplied` contains audit trail of all executed rules
@@ -1027,6 +1058,7 @@ submissions = await matchingPipeline.RunPipeline(submissions);
 ```
 
 **Data Flow:**
+
 - ValidationPipeline → **Submission.IsEligible** → Used by MatchingPipeline to determine source ("Eligible" vs. "Label")
 - ValidationPipeline → **Submission.Rejection** → Short-circuits remaining pipelines
 - ValidationPipeline → **Submission.RulesApplied** → Audit trail passed through all stages
@@ -1038,6 +1070,7 @@ submissions = await matchingPipeline.RunPipeline(submissions);
 **Purpose:** Rule discovery, configuration, enabling/disabling
 
 **Methods:**
+
 ```csharp
 Task<IEnumerable<IRule>> GetEnabledRules<IRule>();
 Task<T> GetParameterValue<T>(string parameterName);
@@ -1052,11 +1085,13 @@ Task<T> GetParameterValue<T>(string parameterName);
 **Purpose:** Error message retrieval by error code
 
 **Methods:**
+
 ```csharp
 Task<Rejection> GetRejectionMessage(ErrorCode errorCode);
 ```
 
 **Returns:**
+
 ```csharp
 public class Rejection
 {
@@ -1076,6 +1111,7 @@ public class Rejection
 **Purpose:** Reference data queries (agency codes, category codes, role codes, etc.)
 
 **Methods:**
+
 ```csharp
 Task<LookupData> GetLookupDataAsync();
 ```
@@ -1089,6 +1125,7 @@ Task<LookupData> GetLookupDataAsync();
 **Purpose:** Agency agreement validation (EL_01 eligibility check)
 
 **Methods:**
+
 ```csharp
 Task<AgencyAgreement> GetAgencyAgreementsAsync(string agencyCode);
 ```
@@ -1102,6 +1139,7 @@ Task<AgencyAgreement> GetAgencyAgreementsAsync(string agencyCode);
 ### Rule Execution Timing
 
 **Measurement:**
+
 ```csharp
 var sw = Stopwatch.StartNew();
 var result = await rule.IsValid(submission);
@@ -1113,11 +1151,13 @@ submission.RulesApplied.Add(new RuleExecution
 ```
 
 **Typical Timing:**
+
 - Simple rules (IV_05, IV_06): **1-5ms**
 - Database lookup rules (IV_24): **10-50ms** (cached after first query)
 - Eligibility rules (EL_01): **20-100ms** (agreement database query)
 
 **Batch Performance:**
+
 - 100 submissions × 51 rules (Static + Metadata + Lookup + Eligibility)
 - **Without rejection:** ~5-10 seconds (51 rules × 100 submissions)
 - **With early rejection:** Significantly faster (short-circuit on first failure)
@@ -1132,6 +1172,7 @@ if (!result.IsValid)
 ```
 
 Average rules executed per submission:
+
 - **Valid submission:** 51 rules (all validators)
 - **Invalid submission:** 5-15 rules (reject early)
 
@@ -1149,6 +1190,7 @@ var submissionRules = rules
 ```
 
 Only rules matching transaction type execute:
+
 - CAR transactions: ~45 rules
 - CUR transactions: ~40 rules
 - CDR transactions: ~15 rules
@@ -1164,6 +1206,7 @@ var lookupData = await lookupManager.GetLookupDataAsync();
 ```
 
 **Impact:**
+
 - First query: ~200ms (database fetch)
 - Subsequent queries: ~1ms (in-memory cache)
 
@@ -1177,6 +1220,7 @@ var paramValue = await rulesManager.GetParameterValue<bool>("MustHaveOneIP");
 ```
 
 **Impact:**
+
 - First query: ~50ms (Cosmos DB)
 - Subsequent queries: ~1ms (cached)
 
@@ -1187,11 +1231,13 @@ var paramValue = await rulesManager.GetParameterValue<bool>("MustHaveOneIP");
 **Risk:** Infinite loop if `ToBeProcessed` always `true`
 
 **Mitigation (Implicit):**
+
 - Rules that set `ToBeProcessed` are data transformation rules (IV_PopulateIPsMERandCDR)
 - Data transformation completes in 1-2 iterations
 - No explicit max iteration limit in code (potential improvement)
 
 **Typical Iterations:**
+
 - Most submissions: **1 iteration**
 - MER/CDR with IP population: **2 iterations**
 - Complex scenarios: **3 iterations**
@@ -1288,6 +1334,7 @@ Rules can be disabled without recompilation:
 ```
 
 **Query:**
+
 ```csharp
 var enabledRules = await rulesManager.GetEnabledRules<IRule>();
 // Only returns IV_02, IV_05, EL_01 (IV_06 is disabled)
@@ -1335,6 +1382,7 @@ if (iterations >= maxIterations)
 **Recommendation:** Either implement batch rules or remove IBatchRule support
 
 **Use Case for Batch Rules:**
+
 - Duplicate work detection across batch
 - Batch-level percentage validation (IP shares sum to 100%)
 - Cross-submission conflict detection
@@ -1391,6 +1439,7 @@ submission.Rejection = await messagingManager.GetRejectionMessage(ErrorCode._104
 ```
 
 **Recommendation:** Enhance Rejection model with field path and values:
+
 ```csharp
 public class Rejection
 {

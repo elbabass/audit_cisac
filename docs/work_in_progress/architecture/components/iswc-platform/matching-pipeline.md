@@ -38,6 +38,8 @@ This document provides Level 3 (Component) documentation for the **Matching Pipe
 
 The **Matching Pipeline** is the second of four sequential pipeline stages, responsible for querying the Spanish Point Matching Engine to detect duplicate works and potential conflicts. It implements a sophisticated two-phase matching strategy with fuzzy title/contributor matching and ISRC (recording code) matching.
 
+**Documentation Note:** This document provides comprehensive technical depth intentionally for audit cross-analysis purposes. While some details may exceed immediate needs, they enable future investigation of vendor dependencies, performance bottlenecks, and integration patterns.
+
 ### Position in 4-Stage Flow
 
 ```mermaid
