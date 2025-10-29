@@ -87,6 +87,7 @@
 | **Effort** | 1-2 weeks |
 
 **Recommended Configuration:**
+
 - Open circuit after 5 consecutive failures
 - Half-open state after 30 seconds
 - Fallback to basic exact matching
@@ -161,6 +162,7 @@
 | **Effort** | 2 weeks |
 
 **Recommended Error Codes:**
+
 - _101: Database connection error
 - _102: Database timeout
 - _103: Matching Engine unavailable
@@ -181,6 +183,7 @@
 | **Effort** | 1 week (investigation + implementation if needed) |
 
 **Investigation Questions:**
+
 - What is the Entity Framework Core transaction scope? (Per-request? Per-operation?)
 - Are there explicit `TransactionScope` declarations in the API layer?
 - How frequently do concurrent requests target the same work?
@@ -227,6 +230,7 @@
 | **Effort** | 3-5 weeks (testing required for breaking changes) |
 
 **Blocking Issues:**
+
 - Entity Framework Core 3.0 → 8.0 (breaking changes)
 - ASP.NET Core 3.1 → 8.0 (middleware changes, dependency injection changes)
 - Third-party library compatibility
@@ -245,6 +249,7 @@
 | **Effort** | 4-6 weeks (component refactoring + testing) |
 
 **Breaking Changes:**
+
 - `componentWillMount`, `componentWillReceiveProps`, `componentWillUpdate` deprecated
 - Automatic batching changes event handler behavior
 - Stricter hydration errors
@@ -263,6 +268,7 @@
 | **Effort** | 2-3 weeks |
 
 **Questions for Investigation:**
+
 - Who operates FastTrack SSO (CISAC or third-party vendor)?
 - What is FastTrack SSO uptime SLA?
 - Is there a backup authentication method?
@@ -281,6 +287,7 @@
 | **Effort** | 2-4 weeks (notebook testing for breaking changes, regression testing) |
 
 **Contractual Context:**
+
 - Yann's expectation: Runtime updates should be included in annual maintenance contract
 - Spanish Point's position: Offered to charge separately for runtime upgrade
 - Yann's response: Rejected paid upgrade - maintenance should cover platform updates

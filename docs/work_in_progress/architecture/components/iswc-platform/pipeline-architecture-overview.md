@@ -109,17 +109,19 @@ sequenceDiagram
 | **IswcEligibilityValidator** | 4 rules (EL_*) | ISWC eligibility determination |
 
 **Key Patterns**:
+
 - **Iterative validation**: `while (submissions.Any(s => s.ToBeProcessed))`
 - **Short-circuit rejection**: First failure stops rule execution
 - **Dynamic configuration**: Rules fetch parameters from IRulesManager
 - **Rule timing**: Stopwatch tracks execution time for audit trail
 
 **Technical Debt**:
+
 - 🔴 No max iteration limit (infinite loop risk)
 - ⚠️ IBatchRule interface unused (dead code)
 - ⚠️ Reflection overhead for rule discovery
 
-**Error Code Range**: _100 to _126 (input validation errors)
+**Error Code Range**: _100 to_126 (input validation errors)
 
 **[Full Documentation →](validation-pipeline.md)**
 
@@ -137,6 +139,7 @@ sequenceDiagram
 | **Post Matching** | 5 components | Conflict resolution, data enrichment |
 
 **Key Integration**: Spanish Point Matching Engine (REST API)
+
 - **OAuth2**: Client credentials flow with Azure AD
 - **Timeout**: 80 seconds with 10-second retry (3 attempts)
 - **Two-Phase Matching**:
@@ -144,12 +147,14 @@ sequenceDiagram
   2. Fallback: "Label" source (relaxed IP matching, no IP details)
 
 **Key Patterns**:
+
 - **Plugin discovery**: `AppDomain.CurrentDomain.GetComponentsOfType<T>()`
 - **SearchComponent**: CMQ/CIQ queries with ISWC cache lookup
 - **PRS_ filtering**: Removes archived ISWCs from results
 - **ISRC matching**: Label requests fallback to ISRC-based matching
 
 **Technical Debt**:
+
 - 🔴 Critical vendor dependency (no local fallback)
 - 🔴 No circuit breaker pattern
 - ⚠️ 80s timeout too long for user-facing API
@@ -200,22 +205,25 @@ flowchart LR
 | **FSQ** (Full Status) | ❌ | Existing | AS_13 | Consolidated query |
 
 **Shared Components**:
+
 - **AS_10**: Authoritative flag calculator (recalculates IP authorization)
 
 **Key Patterns**:
+
 - **GetPreferredIswcType**: Complex 62-line decision logic
 - **PreviewDisambiguation**: Returns empty ISWCs for user review
 - **Parent-child submissions**: Child inherits PreferredIswc from parent
 - **Concurrency control**: DbUpdateConcurrencyException → ErrorCode._155
 
 **Technical Debt**:
+
 - 🔴 No retry mechanism for concurrency conflicts
 - 🔴 Reflection overhead for strategy discovery
 - ⚠️ Generic exception handling (all exceptions → _100)
 - ⚠️ Two database round trips per submission (insert + query back)
 - ⚠️ Unclear transaction boundaries across pipeline stages
 
-**Error Code Range**: _155 (concurrency), _100 (generic)
+**Error Code Range**: _155 (concurrency),_100 (generic)
 
 **[Full Documentation →](processing-pipeline.md)**
 
@@ -259,6 +267,7 @@ flowchart TB
 ```
 
 **Key Patterns**:
+
 - **Existence validation**: Prevents operations on missing/replaced works
 - **Authorization checks**: `interestedPartyManager.IsAuthoritative()`
 - **Public domain detection**: 80+ years since death OR CommonIPs list
@@ -266,13 +275,14 @@ flowchart TB
 - **IsReplaced flag**: Prevents merge operations on deprecated ISWCs
 
 **Technical Debt**:
+
 - 🔴 Unclear transaction boundaries (concurrent request concerns)
 - 🔴 Sequential database queries (N+1 problem for merge operations)
 - 🔴 No caching from ProcessingPipeline (redundant work lookups)
 - ⚠️ IV_40 misplaced (should be PV_* or in different validator)
 - ⚠️ Single-error reporting (short-circuit limits user feedback)
 
-**Error Code Range**: _127 to _153, _247 (post-processing validation errors)
+**Error Code Range**: _127 to_153, _247 (post-processing validation errors)
 
 **[Full Documentation →](post-matching-pipeline.md)**
 
@@ -295,6 +305,7 @@ public class [Pipeline]Pipeline : I[Pipeline]Pipeline
 ```
 
 **Benefits**:
+
 - Clear interface for pipeline orchestration
 - Consistent API across all stages
 - Business logic isolated in component layer
@@ -312,6 +323,7 @@ public class [Validator] : BaseValidator, I[Validator]
 ```
 
 **BaseValidator Execution**:
+
 1. Load rules from IRulesManager (filtered by ValidatorType)
 2. Filter by TransactionType
 3. Execute rules sequentially with Stopwatch timing
@@ -319,6 +331,7 @@ public class [Validator] : BaseValidator, I[Validator]
 5. Track execution in `submission.RulesApplied`
 
 **Benefits**:
+
 - Consistent rule execution logic
 - Audit trail with timing metrics
 - Dynamic rule configuration
@@ -338,15 +351,18 @@ foreach (var component in validComponents)
 ```
 
 **Discovery Criteria**:
+
 - **MatchingPipeline**: Component type (Initial vs Post)
 - **ProcessingPipeline**: TransactionType + IsEligible + PreferedIswcType + RequestType
 
 **Benefits**:
+
 - Extensible without modifying orchestrator
 - Clear separation of concerns
 - Strategy pattern for assignment logic
 
 **Trade-offs**:
+
 - ⚠️ Reflection overhead on every submission
 - ⚠️ Difficult to trace which components execute
 
@@ -363,11 +379,13 @@ if (!result.IsValid)
 ```
 
 **Benefits**:
+
 - Fast failure for invalid submissions
 - Reduced database queries for rejected submissions
 - Clear error signaling
 
 **Trade-offs**:
+
 - ⚠️ User sees only first error (multiple issues require multiple attempts)
 - ⚠️ Difficult to diagnose complex validation failures
 
@@ -433,12 +451,14 @@ stateDiagram-v2
 ### Error Handling Strategy
 
 **Error Code Ranges**:
+
 - **_100-_126**: ValidationPipeline errors
 - **_127-_153**: PostMatchingPipeline errors
 - **_155**: Concurrency conflict (ProcessingPipeline)
 - **_247**: PostMatchingPipeline (IP/match errors)
 
 **Error Response Pattern**:
+
 ```csharp
 {
   "errorCode": "_XXX",
@@ -455,11 +475,13 @@ stateDiagram-v2
 ```
 
 **Error Handling Patterns**:
+
 1. **Validation errors**: Short-circuit rejection with specific error code
 2. **Concurrency conflicts**: DbUpdateConcurrencyException → _155
 3. **Generic exceptions**: All other exceptions → _100 (Internal Server Error)
 
 **Questions for Further Investigation:**
+
 - Should the system collect all validation errors instead of short-circuiting?
 - Can error codes be more granular (SQL errors, network errors, etc.)?
 - Is _100 generic error sufficient for production diagnostics?
@@ -467,6 +489,7 @@ stateDiagram-v2
 ### Performance Characteristics
 
 **Reflection Overhead**:
+
 - **MatchingPipeline**: Discovers 11 components per submission
 - **ProcessingPipeline**: Discovers 13 strategies per submission (filters to 1-2)
 - **Mitigation**: Components filtered aggressively (typically 1-2 execute)
@@ -483,12 +506,14 @@ stateDiagram-v2
 **Total**: ~5-18 database queries per submission
 
 **Bottlenecks**:
+
 1. 🔴 **Matching Engine REST API**: 80s timeout, 3 retries → up to 4 minutes
 2. 🔴 **Two-phase matching**: Sequential Eligible → Label queries
 3. ⚠️ **ProcessingPipeline round trips**: Insert + query back for IswcModel
 4. ⚠️ **PostMatchingPipeline N+1**: Merge validation queries each target individually
 
 **Questions for Further Investigation:**
+
 - Can reflection-discovered components be cached?
 - Can database queries be batched or cached across pipeline stages?
 - What is the p99 latency for end-to-end pipeline execution?
@@ -496,21 +521,25 @@ stateDiagram-v2
 ### Transaction Management
 
 **Current State**:
+
 - Each pipeline stage operates independently
 - ProcessingPipeline persists to database before PostMatchingPipeline validates
 - DbUpdateConcurrencyException handled with _155 error (no retry)
 
 **Concerns**:
+
 - ⚠️ **Unclear transaction boundaries**: Does EF Core wrap entire request or auto-commit per operation?
 - ⚠️ **Concurrent request conflicts**: If EF auto-commits, concurrent requests can modify same work
 - ⚠️ **No distributed transaction**: Changes committed incrementally, no rollback across stages
 
 **Current Mitigation**:
+
 - Optimistic concurrency with DbUpdateConcurrencyException
 - IsReplaced flag prevents operations on deprecated ISWCs
 - PostMatchingPipeline validates persisted data
 
 **Questions for Further Investigation:**
+
 - What is the Entity Framework Core transaction scope? (Per-request? Per-operation?)
 - Are there explicit `TransactionScope` declarations in the API layer?
 - Should the system use distributed transactions (saga pattern) or accept eventual consistency?
@@ -529,16 +558,19 @@ submission.RulesApplied.Add(new RuleExecution
 ```
 
 **Stored Data**:
+
 - Rule/component identifier
 - Version (from assembly)
 - Execution time (Stopwatch)
 
 **Use Cases**:
+
 - Performance monitoring (identify slow rules)
 - Compliance auditing (prove which rules executed)
 - Debugging (trace submission path through pipeline)
 
 **Questions for Further Investigation:**
+
 - Is RulesApplied persisted to database or only in API response?
 - Are there monitoring dashboards for rule execution times?
 - Can rule execution be traced in Application Insights/logging?
@@ -568,6 +600,7 @@ submission.RulesApplied.Add(new RuleExecution
 ### Database Schema
 
 **Key Tables** (inferred from code):
+
 - **WorkInfo**: Musical work metadata
 - **Iswc**: ISWC allocations (Iswc1, IswcStatusId, IsReplaced)
 - **VerifiedSubmission**: Agency-specific work versions
@@ -577,6 +610,7 @@ submission.RulesApplied.Add(new RuleExecution
 - **CsnNotifications** (Cosmos DB): Audit trail
 
 **Questions for Further Investigation:**
+
 - What is the complete database schema? (ERD diagram)
 - How are database indexes optimized for pipeline queries?
 - What is the data retention policy for audit trail?
@@ -586,12 +620,14 @@ submission.RulesApplied.Add(new RuleExecution
 ### Vendor Dependencies
 
 **Spanish Point Matching Engine**:
+
 - ⚠️ **Single point of failure**: No local fallback or circuit breaker
 - ⚠️ **Performance bottleneck**: 80s timeout with 3 retries → up to 4 minutes
 - ⚠️ **Vendor lock-in**: Custom REST API, OAuth2 integration
 - ⚠️ **Cost implications**: External API calls per submission
 
 **Recommendation**:
+
 - Implement circuit breaker pattern
 - Add local matching fallback (basic duplicate detection)
 - Monitor Matching Engine SLA and availability
@@ -599,6 +635,7 @@ submission.RulesApplied.Add(new RuleExecution
 ### Technical Debt Summary
 
 **High Priority** 🔴:
+
 1. **ASP.NET Core 3.1 EOL** (December 2022) - Security risk
 2. **No Matching Engine fallback** - Single point of failure
 3. **No retry mechanism** for concurrency conflicts
@@ -606,6 +643,7 @@ submission.RulesApplied.Add(new RuleExecution
 5. **Reflection overhead** - Performance at scale
 
 **Medium Priority** ⚠️:
+
 1. **Iterative validation** with no max limit
 2. **Generic exception handling** (_100 for all errors)
 3. **80s Matching Engine timeout** - Too long for user-facing API
@@ -613,6 +651,7 @@ submission.RulesApplied.Add(new RuleExecution
 5. **Sequential N+1 queries** (PostMatchingPipeline merge validation)
 
 **Low Priority**:
+
 1. IBatchRule interface unused (dead code)
 2. Complex nested logic (GetPreferredIswcType, PV_20, PV_21)
 3. Stopwatch timing overhead

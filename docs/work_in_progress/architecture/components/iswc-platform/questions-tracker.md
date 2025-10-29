@@ -275,7 +275,7 @@
 
 | Status | Priority | Question | Source |
 |--------|----------|----------|--------|
-| ❓ | 🔴 | What error codes are _180 and _181 (observed in ErrorCode enum)? | [validation-rules-catalog](validation-rules-catalog.md#questions-for-further-investigation) |
+| ❓ | 🔴 | What error codes are `_180` and `_181` (observed in ErrorCode enum)? | [validation-rules-catalog](validation-rules-catalog.md#questions-for-further-investigation) |
 | ❓ | 🔴 | Should the system collect all validation errors instead of short-circuiting? | [validation-rules-catalog](validation-rules-catalog.md#questions-for-further-investigation) |
 | ❓ | 🔴 | Can error codes be more granular (SQL errors, network errors, etc.)? | [pipeline-architecture-overview](pipeline-architecture-overview.md#questions-for-further-investigation) |
 | ❓ | ⚠️ | Is _100 generic error sufficient for production diagnostics? | [pipeline-architecture-overview](pipeline-architecture-overview.md#questions-for-further-investigation) |
@@ -514,11 +514,13 @@
 
 **Total Questions:** 242
 **By Priority:**
+
 - 🔴 Critical: 66 questions (27%)
 - ⚠️ High: 98 questions (40%)
 - 📝 Medium/Low: 78 questions (33%)
 
 **By Category:**
+
 - Performance and Scalability: 45 questions (19%)
 - Cost and Resource Optimization: 24 questions (10%)
 - Security and Authentication: 14 questions (6%)
@@ -531,6 +533,7 @@
 - Backup and Disaster Recovery: 8 questions (3%)
 
 **Documents with Most Questions:**
+
 1. databricks.md: 45 questions
 2. processing-pipeline.md: 36 questions
 3. post-matching-pipeline.md: 36 questions

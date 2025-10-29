@@ -275,6 +275,7 @@ public static IEnumerable<T> GetComponentsOfType<T>(this AppDomain domain, IServ
 ```
 
 **Discovery Scope:**
+
 - Scans all loaded assemblies
 - Instantiates components via DI container
 - Filters by interface type (`IInitialMatchingComponent` or `IPostMatchingComponent`)
@@ -329,6 +330,7 @@ flowchart TD
 ```
 
 **Eligibility Filtering:**
+
 - `IsEligible = null` → Applies to all submissions (both eligible and non-eligible)
 - `IsEligible = true` → Only eligible submissions
 - `IsEligible = false` → Only non-eligible submissions
@@ -355,6 +357,7 @@ flowchart TD
 **Purpose:** Search for existing works by ISWC or agency work code
 
 **Transaction Types:**
+
 - **CMQ** (Change/Metadata/Query) - Search by ISWC
 - **CIQ** (Change/Internal/Query) - Search by agency work code
 
@@ -451,11 +454,13 @@ if (submission.RequestType == RequestType.ThirdParty && !paramValue)
 **Purpose:** Match new eligible works (CAR transactions) against existing ISWC database
 
 **Filtering:**
+
 - `IsEligible = true`
 - `TransactionType = CAR`
 - `RequestType = Agency, Label, Publisher, ThirdParty`
 
 **Process:**
+
 1. Call Matching Engine with source "Eligible"
 2. Filter archived ISWCs (PRS_* prefix)
 3. Store results in `submission.MatchedResult`
@@ -467,10 +472,12 @@ if (submission.RequestType == RequestType.ThirdParty && !paramValue)
 **Purpose:** Match updates to existing eligible works (CUR transactions)
 
 **Filtering:**
+
 - `IsEligible = true`
 - `TransactionType = CUR`
 
 **Process:**
+
 1. Call Matching Engine with existing ISWC context
 2. Detect changes that affect matching
 3. Flag conflicts if match changes
@@ -634,6 +641,7 @@ flowchart TD
 ### Phase 1: Primary Source Matching
 
 **"Eligible" Source:**
+
 - Full contributor details included
 - Strict contributor count rules
 - Higher match confidence threshold
@@ -660,10 +668,12 @@ flowchart TD
 ### Phase 2: Label Fallback Matching
 
 **Triggered When:**
+
 - Primary matching returns zero results
 - OR transaction type is CUR (updates always check for new matches)
 
 **"Label" Source:**
+
 - **Contributor details removed** (`IPNameNumber`, `IpBaseNumber`, `Name` = null)
 - **Relaxed contributor count rules** (`SkipContributorCountRules = false`)
 - Lower match confidence threshold
@@ -783,6 +793,7 @@ grant_type=client_credentials
 ```
 
 **Token Caching:**
+
 - Cached for token lifetime minus 5-minute buffer
 - Automatic refresh on expiry
 - Thread-safe token access
@@ -790,6 +801,7 @@ grant_type=client_credentials
 ### Retry Policy
 
 **Transient Errors (Retry 3 times with 10s delay):**
+
 - `408` Request Timeout
 - `429` Too Many Requests
 - `500` Internal Server Error
@@ -798,6 +810,7 @@ grant_type=client_credentials
 - `504` Gateway Timeout
 
 **Permanent Errors (No retry):**
+
 - `400` Bad Request
 - `401` Unauthorized
 - `403` Forbidden
@@ -822,6 +835,7 @@ grant_type=client_credentials
 **Purpose:** Score and rank match results by similarity
 
 **Ranking Factors:**
+
 - Title similarity (fuzzy matching score)
 - Contributor overlap percentage
 - ISWC status (Active > Provisional > Withdrawn)
@@ -850,6 +864,7 @@ public async Task<IEnumerable<Submission>> ProcessSubmissions(IEnumerable<Submis
 ```
 
 **RankScore Calculation (in Matching Engine):**
+
 - 100 = Exact match
 - 90-99 = Very high confidence
 - 80-89 = High confidence
@@ -863,6 +878,7 @@ public async Task<IEnumerable<Submission>> ProcessSubmissions(IEnumerable<Submis
 **Purpose:** Match works by International Standard Recording Code
 
 **ISRC Format:** `CC-XXX-YY-NNNNN`
+
 - CC = Country code (2 letters)
 - XXX = Registrant code (3 alphanumeric)
 - YY = Year (2 digits)
@@ -871,6 +887,7 @@ public async Task<IEnumerable<Submission>> ProcessSubmissions(IEnumerable<Submis
 **Example:** `US-S1Z-19-00123`
 
 **Process:**
+
 1. Extract ISRCs from submission
 2. Query Matching Engine by ISRC
 3. Store results in `submission.IsrcMatchedResult` (separate from title/contributor matches)
@@ -883,6 +900,7 @@ public async Task<IEnumerable<Submission>> ProcessSubmissions(IEnumerable<Submis
 **Purpose:** Normalize interested party data for consistent matching
 
 **Normalizations:**
+
 - Remove duplicate IPs (by IpBaseNumber)
 - Standardize role codes
 - Merge pseudonym groups
@@ -969,6 +987,7 @@ sequenceDiagram
 ```
 
 **Input from ValidationPipeline:**
+
 - `submission.IsEligible` - Determines matching component selection
 - `submission.Model` - Work metadata for matching
 - `submission.TransactionType` - Affects matching strategy
@@ -999,6 +1018,7 @@ sequenceDiagram
 ```
 
 **Output to PostMatchingPipeline:**
+
 - `submission.MatchedResult.Matches` - Primary matches for validation
 - `submission.IsrcMatchedResult` - ISRC matches for comparison
 - `submission.HasAlternateIswcMatches` - Conflict flag
@@ -1013,6 +1033,7 @@ sequenceDiagram
 **Type:** External REST API (Critical Vendor Dependency)
 
 **Endpoints:**
+
 - `POST /Work/Match` - Title/contributor matching
 - `POST /Usage/Match` - Usage-based matching (performance metadata)
 - `GET /Work/SearchByIswc` - ISWC lookup
@@ -1021,11 +1042,13 @@ sequenceDiagram
 **Authentication:** OAuth2 Client Credentials
 
 **Performance:**
+
 - Timeout: 80 seconds
 - Retry: 3 attempts with 10s delay
 - No circuit breaker (risk of cascading failures)
 
 **Availability Risk:**
+
 - 🔴 **No local fallback** - Matching Pipeline cannot function without Matching Engine
 - 🔴 **Single point of failure** - No redundancy or failover
 - ⚠️ **Vendor lock-in** - Proprietary matching algorithms
@@ -1037,12 +1060,14 @@ sequenceDiagram
 **Purpose:** Orchestrate Matching Engine calls, apply business rules
 
 **Methods:**
+
 ```csharp
 Task<IEnumerable<Submission>> MatchAsync(IEnumerable<Submission> submissions, string source);
 Task<IEnumerable<MatchResult>> MatchContributorsAsync(InterestedPartySearchModel searchModel);
 ```
 
 **Responsibilities:**
+
 - Call MatchingEngineMatchingService
 - Apply two-phase matching strategy
 - Filter archived ISWCs
@@ -1055,6 +1080,7 @@ Task<IEnumerable<MatchResult>> MatchContributorsAsync(InterestedPartySearchModel
 **Purpose:** ISWC cache management, database queries
 
 **Methods:**
+
 ```csharp
 Task<IswcModel> GetCacheIswcs(string iswc);
 Task<bool> Exists(string iswc);
@@ -1064,6 +1090,7 @@ Task<IEnumerable<IswcModel>> FindManyAsync(IEnumerable<string> iswcs, bool readO
 ```
 
 **Caching Strategy:**
+
 - In-memory cache for frequently accessed ISWCs
 - 24-hour TTL
 - Cache warming on application start
@@ -1079,12 +1106,14 @@ Task<IEnumerable<IswcModel>> FindManyAsync(IEnumerable<string> iswcs, bool readO
 **Risk:** Slow Matching Engine responses block submission processing
 
 **Typical Response Times:**
+
 - Simple match (1-2 contributors): **500ms - 2s**
 - Complex match (5+ contributors): **2s - 10s**
 - Batch match (10 works): **5s - 30s**
 - Worst case (timeout): **80 seconds**
 
 **Impact:**
+
 - Submissions processed synchronously
 - No parallelization of Matching Engine calls
 - Single slow match blocks entire batch
@@ -1096,17 +1125,20 @@ Task<IEnumerable<IswcModel>> FindManyAsync(IEnumerable<string> iswcs, bool readO
 ### Two-Phase Matching Overhead
 
 **Cost of Fallback:**
+
 - Primary match: 1 HTTP request
 - Fallback match: +1 HTTP request (if no primary matches)
 - Total: Up to 2 HTTP requests per submission
 
 **Example:**
+
 - 100 submissions without matches
 - Primary matching: 100 submissions × 2s = **200 seconds**
 - Fallback matching: 100 submissions × 2s = **200 seconds**
 - **Total: 400 seconds (~6.7 minutes)**
 
 **Optimization:**
+
 - Batch multiple submissions in single HTTP request
 - Current implementation: 1 request per batch (good)
 - Matching Engine supports up to 100 works per request
@@ -1116,14 +1148,17 @@ Task<IEnumerable<IswcModel>> FindManyAsync(IEnumerable<string> iswcs, bool readO
 ### Cache Performance
 
 **ISWC Cache Hit Rates:**
+
 - CMQ queries (frequent ISWCs): **70-80% cache hit**
 - CIQ queries (agency work codes): **30-40% cache hit**
 
 **Cache Miss Impact:**
+
 - Cache hit: ~1ms
 - Cache miss: ~50-200ms (SQL query)
 
 **Savings:**
+
 - 1000 CMQ queries
 - Without cache: 1000 × 100ms = **100 seconds**
 - With cache (75% hit): (250 × 100ms) + (750 × 1ms) = **25.75 seconds**
@@ -1140,16 +1175,19 @@ AppDomain.CurrentDomain.GetComponentsOfType<T>(serviceProvider)
 ```
 
 **Overhead:**
+
 - Assembly scan: ~50-100ms (first call)
 - Type filtering: ~10-20ms
 - Instance creation: ~5-10ms per component
 - **Total per batch: ~150-200ms**
 
 **Optimization:**
+
 - Cache discovered components per application lifetime
 - Current implementation: Discovers on every batch (inefficient)
 
 **Recommendation:**
+
 ```csharp
 private static readonly Lazy<IEnumerable<IInitialMatchingComponent>> _initialComponents =
     new Lazy<IEnumerable<IInitialMatchingComponent>>(() =>
@@ -1209,6 +1247,7 @@ private static readonly Lazy<IEnumerable<IInitialMatchingComponent>> _initialCom
 **Issue:** Matching Engine failures cascade without circuit breaker
 
 **Risk:**
+
 - Slow Matching Engine responses block all submissions
 - Timeout after 80 seconds × 3 retries = **4 minutes**
 - No graceful degradation
@@ -1231,11 +1270,13 @@ services.AddHttpClient("MatchingApi")
 **Issue:** Complete dependency on external Matching Engine API
 
 **Risk:**
+
 - Matching Engine downtime = ISWC system unusable
 - No local matching capability
 - Vendor lock-in (proprietary algorithms)
 
 **Recommendation:**
+
 - Implement fallback matching strategy (basic exact matching)
 - Cache frequently matched works
 - Consider alternative matching engine (Elasticsearch, Azure Cognitive Search)
@@ -1247,11 +1288,13 @@ services.AddHttpClient("MatchingApi")
 **Issue:** 80-second timeout blocks submission processing
 
 **Impact:**
+
 - User experience degradation (slow responses)
 - Thread pool exhaustion under load
 - No parallelization
 
 **Recommendation:**
+
 - Reduce timeout to 30 seconds
 - Implement async batch processing
 - Add queue-based submission processing
@@ -1267,6 +1310,7 @@ services.AddHttpClient("MatchingApi")
 **Impact:** ~150-200ms overhead per batch
 
 **Recommendation:** Cache discovered components:
+
 ```csharp
 private static readonly Lazy<IEnumerable<IInitialMatchingComponent>> _components = ...;
 ```
@@ -1280,6 +1324,7 @@ private static readonly Lazy<IEnumerable<IInitialMatchingComponent>> _components
 **Impact:** Up to 2× HTTP overhead for submissions without matches
 
 **Recommendation:**
+
 - Make fallback configurable
 - Implement smart fallback (only for specific cases)
 - Add telemetry to measure fallback frequency
@@ -1293,6 +1338,7 @@ private static readonly Lazy<IEnumerable<IInitialMatchingComponent>> _components
 **Impact:** Cannot tune matching sensitivity per agency
 
 **Recommendation:** Add configurable thresholds:
+
 ```json
 {
   "matchingThresholds": {
