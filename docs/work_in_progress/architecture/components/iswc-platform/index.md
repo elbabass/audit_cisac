@@ -2,27 +2,7 @@
 
 This directory contains Level 3 component documentation for containers within the ISWC Platform system.
 
----
-
-## 📊 Audit Tracking Documents
-
-**Comprehensive tracking for open questions, technical debt, and documentation gaps:**
-
-- **[Questions Tracker](questions-tracker.md)** - 242 open questions across all components (organized by 10 categories)
-- **[Technical Debt Tracker](technical-debt-tracker.md)** - 67 technical debt items with priorities, mitigation strategies, and roadmap
-- **[Undocumented Components](undocumented-components.md)** - 10 components requiring C4 Level 3 documentation
-
-### Quick Links to Critical Issues
-
-**🔴 Critical Technical Debt (17 items):**
-
-- [TD-012: ASP.NET Core 3.1 EOL](technical-debt-tracker.md#td-012-aspnet-core-31-end-of-life-december-2022) - No security patches since Dec 2022
-- [TD-013: React 16.12.0 Outdated](technical-debt-tracker.md#td-013-react-16120-severely-outdated-released-december-2019) - 5+ years behind
-- [TD-015: Databricks Runtime 11.3 LTS](technical-debt-tracker.md#td-015-outdated-databricks-runtime-113-lts-4-versions-behind) - 4 major versions behind (contractual dispute)
-- [TD-016: Cosmos DB 8-Hour Backup Window](technical-debt-tracker.md#td-016-cosmos-db-very-limited-backup-retention-8-hour-window) - Critical for audit compliance
-- [TD-004: Matching Engine SPOF](technical-debt-tracker.md#td-004-single-point-of-failure---matching-engine-vendor-dependency) - No fallback strategy
-
-[View All Critical Items →](technical-debt-tracker.md#-critical-priority-17-items)
+**For project tracking documents** (questions, technical debt, undocumented components), see [`docs/project_management/`](../../../../project_management/).
 
 ---
 
@@ -79,11 +59,11 @@ This directory contains Level 3 component documentation for containers within th
 
 - ✅ [Databricks](databricks.md) - Big data processing workspace for file processing (v2.0, upgraded Oct 29)
 - ⏳ **Azure Data Factory** - ETL pipeline orchestration (triggers Databricks, file archival)
-  - [See undocumented-components.md: UC-003](undocumented-components.md#uc-003-azure-data-factory)
+  - [See project tracking: UC-003](../../../../project_management/undocumented-components.md#uc-003-azure-data-factory)
   - **Priority:** 🔴 Critical
   - Estimated effort: 2-3 days
 - ⏳ **IPI WebJob** - Incremental IPI updates via SUISA API
-  - [See undocumented-components.md: UC-004](undocumented-components.md#uc-004-ipi-webjob-incremental-updates)
+  - [See project tracking: UC-004](../../../../project_management/undocumented-components.md#uc-004-ipi-webjob-incremental-updates)
   - **Priority:** ⚠️ High
   - Estimated effort: 1-2 days
 - ⏳ **ISWC Jobs** - Azure Functions for scheduled background jobs
@@ -96,12 +76,12 @@ This directory contains Level 3 component documentation for containers within th
 
 - ✅ [Cosmos DB](cosmos-db.md) - NoSQL document database for audit logs and ISWC cache (v2.0, upgraded Oct 29)
 - ⏳ **SQL Server** - Azure SQL databases (ISWC + IPI metadata)
-  - [See undocumented-components.md: UC-005](undocumented-components.md#uc-005-sql-server-azure-sql-database)
+  - [See project tracking: UC-005](../../../../project_management/undocumented-components.md#uc-005-sql-server-azure-sql-database)
   - **Priority:** ⚠️ High
   - Estimated effort: 2-3 days
 - ⏳ **Data Lake** - Azure Data Lake Storage Gen2 for file storage
 - ⏳ **SFTP Server** - Agency file upload/download
-  - [See undocumented-components.md: UC-002](undocumented-components.md#uc-002-sftp-server)
+  - [See project tracking: UC-002](../../../../project_management/undocumented-components.md#uc-002-sftp-server)
   - **Priority:** 🔴 Critical
   - Estimated effort: 1-2 days
 
@@ -112,17 +92,17 @@ This directory contains Level 3 component documentation for containers within th
 ## External Dependencies (Vendor Services)
 
 - ⏳ **Matching Engine** - Spanish Point proprietary matching service
-  - [See undocumented-components.md: UC-006](undocumented-components.md#uc-006-matching-engine-spanish-point-vendor-dependency)
+  - [See project tracking: UC-006](../../../../project_management/undocumented-components.md#uc-006-matching-engine-spanish-point-vendor-dependency)
   - **Priority:** ⚠️ High (Critical vendor dependency - SPOF)
-  - **Technical Debt:** [TD-004: No fallback strategy](technical-debt-tracker.md#td-004-single-point-of-failure---matching-engine-vendor-dependency)
+  - **Technical Debt:** [TD-004](../../../../project_management/technical-debt-tracker.md#td-004-single-point-of-failure---matching-engine-vendor-dependency)
   - Estimated effort: 1-2 days
 - ⏳ **FastTrack SSO** - CIS-Net authentication service
-  - [See undocumented-components.md: UC-008](undocumented-components.md#uc-008-fasttrack-sso-cis-net-authentication)
+  - [See project tracking: UC-008](../../../../project_management/undocumented-components.md#uc-008-fasttrack-sso-cis-net-authentication)
   - **Priority:** 📝 Medium
-  - **Technical Debt:** [TD-014: No fallback authentication](technical-debt-tracker.md#td-014-fasttrack-sso-single-point-of-failure)
+  - **Technical Debt:** [TD-014](../../../../project_management/technical-debt-tracker.md#td-014-fasttrack-sso-single-point-of-failure)
   - Estimated effort: 1 day
 - ⏳ **IPI Database** - SUISA-maintained Interested Party database
-  - [See undocumented-components.md: UC-007](undocumented-components.md#uc-007-ipi-database-suisa-external-source)
+  - [See project tracking: UC-007](../../../../project_management/undocumented-components.md#uc-007-ipi-database-suisa-external-source)
   - **Priority:** 📝 Medium
   - Estimated effort: 1 day
 
@@ -133,11 +113,11 @@ This directory contains Level 3 component documentation for containers within th
 ## Infrastructure & Monitoring
 
 - ⏳ **Application Insights** - Monitoring and telemetry
-  - [See undocumented-components.md: UC-009](undocumented-components.md#uc-009-application-insights-monitoring--telemetry)
+  - [See project tracking: UC-009](../../../../project_management/undocumented-components.md#uc-009-application-insights-monitoring--telemetry)
   - **Priority:** 💡 Low
   - Estimated effort: 1 day
 - ⏳ **Azure Key Vault** - Secrets management
-  - [See undocumented-components.md: UC-010](undocumented-components.md#uc-010-azure-key-vault-secrets-management)
+  - [See project tracking: UC-010](../../../../project_management/undocumented-components.md#uc-010-azure-key-vault-secrets-management)
   - **Priority:** 💡 Low
   - Estimated effort: 1 day
 
@@ -174,9 +154,10 @@ This directory contains Level 3 component documentation for containers within th
 |---------|------|--------|---------|
 | 1.0 | 2025-10-27 | Audit Team | Initial index with basic component listing |
 | 2.0 | 2025-10-29 | Audit Team | **MAJOR UPDATE:** Added tracking documents (questions, technical debt, undocumented components); Added component status indicators (✅ C4 Level 3, 🔄 Legacy, ⏳ Undocumented); Added quick links to critical technical debt; Organized components by category with status percentages; Added priority indicators and effort estimates for undocumented components |
+| 3.0 | 2025-10-30 | Audit Team | **RESTRUCTURE:** Moved tracking documents to `docs/project_management/` (undocumented-components.md, technical-debt-tracker.md, questions-tracker.md); Updated all cross-references to point to new location; Simplified header to focus on component documentation |
 
 ---
 
 **Note:** The ISWC Platform system includes all application, processing, and data containers. There is no separate "Data Platform" system - all data containers (Databricks, Data Factory, databases) are part of the ISWC Platform architecture.
 
-**Last Updated:** October 29, 2025
+**Last Updated:** October 30, 2025

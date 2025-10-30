@@ -579,7 +579,7 @@ These are audit team estimates based on experience. They can be refined as actua
 
 **Summary:** 67 technical debt items with effort estimates ranging from 1 day to 8 weeks
 
-**Source:** `docs/work_in_progress/architecture/components/iswc-platform/technical-debt-tracker.md`
+**Source:** `docs/project_management/technical-debt-tracker.md`
 
 **Totals:**
 
@@ -620,7 +620,7 @@ These are audit team estimates based on experience. They can be refined as actua
 
 **Summary:** Undocumented components with documentation effort estimates
 
-**Source:** `docs/work_in_progress/architecture/components/iswc-platform/undocumented-components.md:332-335`
+**Source:** `docs/project_management/undocumented-components.md:332-335`
 
 **Phase-based Estimates:**
 
@@ -771,7 +771,7 @@ These are facts from specifications, code, or configuration files. They don't re
 | Retry Wait | 10 seconds | agency-api.md | 733 |
 | JWT ClockSkew | 5 minutes | agency-api.md | 855 |
 | Config Reload Interval | 30 minutes | agency-api.md | 892 |
-| Circuit Breaker Half-Open | 30 seconds | technical-debt-tracker.md | 92 |
+| Circuit Breaker Half-Open | 30 seconds | ../../project_management/technical-debt-tracker.md | 92 |
 | Databricks Auto-termination | 15-30 minutes | databricks.md | 746 |
 
 **Source:** Code configuration values from repository analysis
@@ -923,7 +923,7 @@ These are facts from specifications, code, or configuration files. They don't re
 
 ### Technical Debt Distribution
 
-**Source:** `technical-debt-tracker.md:25-28`
+**Source:** `../../project_management/technical-debt-tracker.md:25-28`
 
 | Priority | Percentage | Count |
 |----------|------------|-------|
@@ -937,7 +937,7 @@ These are facts from specifications, code, or configuration files. They don't re
 
 ### Questions Distribution
 
-**Source:** `questions-tracker.md:518-533`
+**Source:** `../../project_management/questions-tracker.md:518-533`
 
 **Priority Distribution:**
 
