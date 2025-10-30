@@ -27,6 +27,14 @@
     <PackageReference Include="Microsoft.Graph" Version="3.15.0" />
     <PackageReference Include="Microsoft.Graph.Auth" Version="1.0.0-preview.5" />
     <PackageReference Include="Parquet.Net" Version="3.7.6" />
+    <PackageReference Include="Roslynator.Analyzers" Version="4.12.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="SecurityCodeScan.VS2019" Version="5.6.7">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="3.0.34" />
   </ItemGroup>
 

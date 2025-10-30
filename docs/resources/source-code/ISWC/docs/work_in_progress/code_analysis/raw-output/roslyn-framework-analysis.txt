@@ -1,0 +1,9 @@
+/Users/bastiengallay/Dev/clients/CISAC/docs/resources/source-code/ISWC/src/Framework/Extensions/HashExtensions.cs(12,24): warning SCS0006: Weak hashing function. (https://security-code-scan.github.io/#SCS0006) [/Users/bastiengallay/Dev/clients/CISAC/docs/resources/source-code/ISWC/src/Framework/Framework.csproj]
+
+Build succeeded.
+
+/Users/bastiengallay/Dev/clients/CISAC/docs/resources/source-code/ISWC/src/Framework/Extensions/HashExtensions.cs(12,24): warning SCS0006: Weak hashing function. (https://security-code-scan.github.io/#SCS0006) [/Users/bastiengallay/Dev/clients/CISAC/docs/resources/source-code/ISWC/src/Framework/Framework.csproj]
+    1 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.16
