@@ -149,14 +149,14 @@ Sample of key outdated packages:
 
 | Package | Current | Latest | Description | Security/Performance Benefits |
 |---------|---------|--------|-------------|-------------------------------|
-| **Autofac** | 4.9.3 | 8.4.0 | IoC container for dependency injection | Performance improvements, memory optimizations, support for .NET 8, better async disposal patterns |
-| **AutoMapper** | 7.0.0 | 12.0.1 | Object-to-object mapping library | Performance gains (15-20% faster), reduced allocations, LINQ expression tree optimizations, null reference handling improvements |
-| **Microsoft.AspNetCore.Authentication.JwtBearer** | 3.1.18 | 3.1.32 | JWT token authentication for APIs | **Security patches** for token validation vulnerabilities, improved token lifetime validation, fixes for potential timing attacks |
-| **Polly** | 7.2.1 | 8.6.4 | Resilience and transient-fault-handling library | New resilience pipelines API, improved async performance, better timeout handling, reduced allocations, telemetry support |
-| **Swashbuckle.AspNetCore** | 5.0.0 | 9.0.0 | Swagger/OpenAPI documentation generator | OpenAPI 3.1 support, improved schema generation, better performance, security: fixes XSS vulnerabilities in Swagger UI |
-| **Entity Framework Core** | 3.1.32 | 5.0.17 | ORM for database access (constrained by .NET Core 3.1) | Performance improvements (30-50% faster queries), improved LINQ translation, compiled model caching, **requires .NET 5+ migration** |
-| **Microsoft.Azure.Cosmos** | 3.42.0 | 3.54.0 | Azure Cosmos DB SDK | Bug fixes for connection handling, improved retry logic, reduced latency, memory leak fixes, better diagnostics |
-| **CsvHelper** | 12.1.2 | 33.1.0 | CSV reading/writing library | Significant performance improvements (2-3x faster), reduced memory allocations, async stream support, better error handling |
+| **Autofac** | 4.9.3 | 8.4.0 | IoC container for dependency injection | Performance improvements in 8.x series, memory optimizations, support for .NET 8, better async disposal patterns. No known security CVEs. |
+| **AutoMapper** | 7.0.0 | 12.0.1 | Object-to-object mapping library | Performance improvements through simplified implementation, reduced allocations, better LINQ expression handling, improved null reference handling |
+| **Microsoft.AspNetCore.Authentication.JwtBearer** | 3.1.18 | 3.1.32 | JWT token authentication for APIs | **Critical: Fixes CVE-2021-34532** (information disclosure vulnerability), improved token lifetime validation, better security for JWT authentication |
+| **Polly** | 7.2.1 | 8.6.4 | Resilience and transient-fault-handling library | **~4x less memory** (3816 B → 1008 B), new resilience pipelines API, improved async performance, built-in telemetry support, better timeout handling |
+| **Swashbuckle.AspNetCore** | 5.0.0 | 9.0.0 | Swagger/OpenAPI documentation generator | OpenAPI 3.1 support, improved schema generation. **Security: Addresses XSS vulnerabilities in underlying Swagger UI** (CVE-2019-17495, DomPurify issues in older versions) |
+| **Entity Framework Core** | 3.1.32 | 5.0.17 | ORM for database access (constrained by .NET Core 3.1) | Performance improvements (compiled model caching, better LINQ translation). Note: ~70% improvement in EF Core 6.0 vs 5.0. **Requires .NET 5+ migration** |
+| **Microsoft.Azure.Cosmos** | 3.42.0 | 3.54.0 | Azure Cosmos DB SDK | Bug fixes for connection handling, improved retry logic, reduced latency. Memory leak fixes addressed in 3.x series. Better diagnostics and error handling. |
+| **CsvHelper** | 12.1.2 | 33.1.0 | CSV reading/writing library | Major version updates with async stream support, reduced memory allocations, better error handling. Compiles classes on-the-fly for fast performance. |
 
 **Full Details:** See `raw-output/outdated-packages.txt`
 
@@ -166,13 +166,13 @@ Sample of key outdated packages:
 
 | Package | Current | Latest | Description | Security/Performance Benefits | Breaking |
 |---------|---------|--------|-------------|-------------------------------|----------|
-| **react** | 16.12.0 | 19.2.0 | UI framework library | Concurrent rendering, automatic batching, improved hydration, **security fixes** for XSS vulnerabilities, 30-40% performance improvements | YES |
+| **react** | 16.12.0 | 19.2.0 | UI framework library | Concurrent rendering, automatic batching, improved hydration. **Note: XSS vulnerability CVE-2018-6341 was in React 16.x (already fixed).** React 18/19 focus on performance and new features. | YES |
 | **react-dom** | 16.12.0 | 19.2.0 | React DOM rendering | Improved SSR performance, streaming HTML support, selective hydration, memory leak fixes | YES |
-| **typescript** | 3.7.3 | 5.9.3 | Typed JavaScript superset | Better type inference, performance (50% faster compilation), improved error messages, **security**: fixes for prototype pollution in compiler | YES |
-| **react-scripts** | 3.4.4 | 5.0.1 | Create React App build tooling | Webpack 5 (faster builds), updated dependencies with **security patches**, modern JS output, tree-shaking improvements | YES |
+| **typescript** | 3.7.3 | 5.9.3 | Typed JavaScript superset | Better type inference, **~50% faster compilation**, improved error messages, general security improvements. No specific CVEs for TS compiler found. | YES |
+| **react-scripts** | 3.4.4 | 5.0.1 | Create React App build tooling | Webpack 5 upgrade (faster builds), modern JS output. **⚠️ Warning: v5.0.1 has known vulnerabilities** in dependencies (@svgr/webpack, nth-check, loader-utils ReDoS). Consider v5.0.1+ patches. | YES |
 | **redux** | 4.0.4 | 5.0.1 | State management library | TypeScript improvements, better tree-shaking, reduced bundle size, RTK Query integration recommended | Minor |
 | **react-router** | 5.3.4 | 7.9.5 | Client-side routing | Data loading APIs, improved lazy loading, better TypeScript support, nested routing improvements | YES |
-| **bootstrap** | 4.6.2 | 5.3.8 | CSS framework | Removed jQuery dependency (security & performance), CSS custom properties, improved accessibility, **security patches** | YES |
+| **bootstrap** | 4.6.2 | 5.3.8 | CSS framework | **jQuery removal improves security** (eliminated XSS attack vector), better CSP compatibility, improved XSS protection in components, CSS custom properties, improved accessibility. No direct CVEs in 5.3.x. | YES |
 
 **Impact:** Major version jumps require significant testing and potential code changes
 
@@ -227,10 +227,10 @@ Created `.editorconfig` at `docs/resources/source-code/ISWC/.editorconfig`
 ### Short-Term (Next Month)
 
 1. **Update Security-Critical Packages**
-   - Microsoft.AspNetCore.Authentication.JwtBearer (security patches)
-   - Microsoft.Azure.Cosmos (bug fixes)
-   - Other packages with known CVEs
-   - Estimated effort: 1 day + testing
+   - **Priority 1**: Microsoft.AspNetCore.Authentication.JwtBearer 3.1.18 → 3.1.32 (fixes CVE-2021-34532)
+   - **Priority 2**: Investigate react-scripts alternatives or patches (v5.0.1 has known vulnerabilities)
+   - **Priority 3**: Microsoft.Azure.Cosmos (bug fixes and memory leak resolutions)
+   - Estimated effort: 2 days + testing
 
 2. **Enable Analyzers in CI/CD**
    - Add analyzer warnings to build pipeline
@@ -326,11 +326,34 @@ docs/work_in_progress/code_analysis/
 
 ## 8. References
 
+### Analysis Tools
+
 - [Security Code Scan Rules](https://security-code-scan.github.io/)
 - [Roslynator Analyzers Documentation](https://github.com/dotnet/roslynator)
 - [.NET Core Support Policy](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)
 - [.NET 8 Migration Guide](https://learn.microsoft.com/dotnet/core/porting/)
 - [React 18 Upgrade Guide](https://react.dev/blog/2022/03/08/react-18-upgrade-guide)
+
+### Package-Specific Sources (Verified 2025-10-30)
+
+**Backend (.NET):**
+
+1. **Autofac**: [GitHub Releases](https://github.com/autofac/Autofac/releases) | [Release v8.0.0](https://github.com/autofac/Autofac/releases/tag/v8.0.0)
+2. **AutoMapper**: [12.0 Upgrade Guide](https://docs.automapper.io/en/latest/12.0-Upgrade-Guide.html) | [GitHub Releases](https://github.com/AutoMapper/AutoMapper/releases)
+3. **JWT Bearer CVE-2021-34532**: [GitHub Advisory](https://github.com/dotnet/announcements/issues/195) | [Snyk Vulnerability DB](https://security.snyk.io/vuln/SNYK-DOTNET-MICROSOFTASPNETCOREAUTHENTICATIONJWTBEARER-1540308)
+4. **Polly v8**: [Official Announcement](https://www.thepollyproject.org/2023/09/28/polly-v8-officially-released/) | [InfoQ Article](https://www.infoq.com/news/2023/11/Polly-v8/) | [CHANGELOG](https://github.com/App-vNext/Polly/blob/main/CHANGELOG.md)
+5. **Swashbuckle XSS**: [CVE-2019-17495](https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/1319) | [SwaggerUI XSS Issue](https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/2494)
+6. **Entity Framework Core**: [EF Core 6.0 Performance Edition](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-6-0-preview-4-performance-edition/)
+7. **Azure Cosmos SDK**: [Changelog](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) | [Memory Leak Issues](https://github.com/Azure/azure-cosmos-dotnet-v3/issues/2471)
+8. **CsvHelper**: [Change Log](https://joshclose.github.io/CsvHelper/change-log/) | [GitHub Releases](https://github.com/JoshClose/CsvHelper/releases)
+
+**Frontend (React/TypeScript):**
+
+1. **React CVE-2018-6341**: [React v16.4.2 Security Fix](https://legacy.reactjs.org/blog/2018/08/01/react-v-16-4-2.html) | [Snyk React Vulnerabilities](https://security.snyk.io/package/npm/react)
+2. **React 18.3 Release**: [GitHub CHANGELOG](https://github.com/facebook/react/blob/main/CHANGELOG.md)
+3. **TypeScript**: [Snyk Vulnerabilities](https://security.snyk.io/package/npm/typescript) (no compiler CVEs found)
+4. **react-scripts Vulnerabilities**: [GitHub Issue #13351](https://github.com/facebook/create-react-app/issues/13351) | [Snyk 5.0.0](https://security.snyk.io/package/npm/react-scripts/5.0.0)
+5. **Bootstrap 5 Security**: [Bootstrap 5 Security Features](https://reintech.io/blog/bootstrap-5-security-features-best-practices) | [Snyk Bootstrap](https://security.snyk.io/package/npm/bootstrap)
 
 ---
 
