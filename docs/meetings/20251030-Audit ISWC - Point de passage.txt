@@ -1,0 +1,286 @@
+AUDIT ISWC - POINT DE PASSAGE
+
+
+Participants    
+- Guillaume Jay
+- LEBREUILLY Yann
+- Bastien Gallay
+
+Date    2025-10-30
+
+LEBREUILLY Y. 00:06
+- Bonjour Bastien, bonjour Guillaume, comment Gallay ? 
+
+Bastien G. 00:12
+- Bien et toi ? 
+
+LEBREUILLY Y. 00:14
+- Ça va, ça va bien, j'ai eu peu de temps pour vous répondre alors ça sera mieux à partir de maintenant. Mais il me semble que je n'ai pas loupé quoi que ce soit. 
+
+Bastien G. 00:23
+- Non, non, très bien, c'était bien ta réponse, juste que vu qu'on se voyait aujourd'hui, il n'y avait peut-être pas forcément plus de temps pour prendre des décisions et les appliquer. Voilà. Je pense qu'aujourd'hui, il faut plus peut-être parler de ce point qu'on t'avait rapporté sur le code source en premier, voir ce que toi, ton plan, c'est-à-dire qu'on puisse sortir de là en disant qu'est-ce qu'on change du plan d'action et des objectifs en fonction de ça. 
+
+LEBREUILLY Y. 00:54
+- Oui, et ce qui est important de voir, c'est si à l'heure actuelle, on avance comme vous l'aviez prévu, sinon quels sont les impacts et qu'est-ce que je peux faire pour... pour rectifier la donne auprès du fournisseur. En particulier. 
+
+Bastien G. 01:14
+- Oui. Ce qui... Ce qui se passe là, c'est qu'on arrive quand même à trouver des choses. On va pouvoir t'en montrer aujourd'hui, faire un survol au moins. Tu lui diras si tu veux qu'on aille plus en profondeur, mais on a déjà des choses à montrer. Ce qui est surtout embêtant, c'est que par exemple, quand on trouve quelque chose qui nous semble assez évident d'un point de vue performance, confirmer que c'est un problème réel, c'est difficile parce qu'on ne peut pas exécuter. Leur proposition est quand même assez floue sur comment ils ont mesuré autant les problèmes que les bénéfices attendus. Et je ne sais pas si c'est peut-être quelque chose que je crois que je t'avais déjà demandé, mais est-ce que toi, de ton côté, tu as... d'une manière ou d'une autre, une mesure des performances, même si elle est purement artisanale et qui n'allait pas. 
+
+LEBREUILLY Y. 02:15
+- Alors, on se met ça comme action, c'est de demander à Moïse, qui est l'expert technique à la Cisac, de vous faire un retour sur les différents éléments de métrique qu'il peut lui posséder de son côté ou qu'il pourrait envisager d'avoir simplement. Merci. Parce que je n'ai pas la maîtrise de ce truc-là pour l'instant. 
+
+Bastien G. 02:39
+- Et il revient bientôt, je crois ? 
+
+LEBREUILLY Y. 02:40
+- Il revient, oui. Alors déjà, il est disponible par mail dès maintenant. Donc, je pourrais lui envoyer un mail si besoin. Vous pouvez d'ailleurs le faire si vous pensez que vous avez de quoi lui demander. Et puis sinon, encore une fois, il sera disponible dès lundi. 
+
+Bastien G. 02:56
+- Ok, super. Je veux bien de toute façon, dans tous les cas, son email, parce que je crois que... qu'il était erroné dans les invitations que je lui ai envoyées. 
+
+LEBREUILLY Y. 03:04
+- Possible, alors attends. Je te donne ça tout de suite. Continuons et puis je te le mets dans le chat. 
+
+Guillaume J. 03:10
+- Peut-être qu'on pourrait essayer de planifier une réunion avec lui, en fait. 
+
+LEBREUILLY Y. 03:14
+- Absolument. 
+
+Bastien G. 03:15
+- De toute façon, je pense que ce serait intéressant. 
+
+LEBREUILLY Y. 03:18
+- D'ailleurs, à ce propos, quitte à planifier des réunions, vous aviez parlé tout à l'heure, vous avez dit que vous ne pouviez pas l'actionner, le code, bien évidemment, puisque vous êtes en local, vous n'avez pas tous les branchements possibles. En revanche, En revanche, est-ce qu'il ne serait pas intéressant de faire, ce n'est pas du pair development, mais au moins être sur les genoux des gars pour savoir comment ça se passe, au moins qu'ils vous fassent voir les principaux users de journée ou des choses comme ça. Oui. 
+
+Bastien G. 03:52
+- De toute façon, ça va être nécessaire. Merci. Ce qui était un petit peu compliqué, oui, c'était au début, c'était comment collaborer justement avec eux. Et là, ce qu'on a cherché, c'était aussi d'avoir des points plus précis. Donc là, on va pouvoir faire une mouture de mail pour autant avoir des sessions de questions, mais aussi regarder des use cases. Je ne sais pas si ça nous apportera réellement des réponses, par exemple, sur ce qui est sécurité. Mais après, il y a des choses assez importantes à demander, comme... Pourquoi dans le code qu'on a reçu, il y a toujours .NET 3.1 ? C'est la première question qui est assez embêtante. Toi, est-ce que de ton côté... Tu as creusé ou tu as plus d'informations sur le pourquoi et comment on n'a pas l'Octim Engine alors que c'était dans le scope ? 
+
+LEBREUILLY Y. 04:52
+- Non, je ne l'ai pas creusé parce que la réponse, je l'ai déjà, c'est qu'en fait, c'est leur outil propriétaire et ils ne vont pas nous l'ouvrir à l'accès. Ils nous ouvriraient l'accès, dans ce que j'ai vu dans le contrat, que si on arrêtait le contrat avec eux. dans ce cas là Il serait obligé de nous donner les sources pour qu'on puisse continuer à utiliser le produit et à le maintenir par nous-mêmes. 
+
+Guillaume J. 05:15
+- D'accord. 
+
+LEBREUILLY Y. 05:18
+- C'est une vraie limitation, parce que ça veut dire que tant qu'on est avec eux, c'est une black box, une boîte noire, et puis on le découvrirait, le paquet cadeau, si on arrêtait le contrat, ce qui nous mettrait évidemment dans l'embarras, parce qu'on n'arriverait même pas à le maintenir nous-mêmes, j'imagine. D'ailleurs, je ne sais même pas pour vous dire, est-ce que ce serait vraiment possible de... de débrancher, rebrancher ce genre de matching engine, je ne sais même pas, vous voyez comment c'est vraiment fait. 
+
+Bastien G. 05:48
+- Non, non, non, alors là, l'application, je pense en grande partie à refaire, puisque toutes les pipelines de validation de ce qu'on voit, et je pense que toi tu le confirmes, parce que c'était dans les specs dès le départ, elles sont basées sur cette machine engine. Oui. 
+
+Guillaume J. 06:09
+- Après, si on est capable de renvoyer le même type de résultat que lui... 
+
+LEBREUILLY Y. 06:15
+- Il faudrait calibrer des API qui font la même chose quelque part, c'est-à-dire des calls et des retours qui soient exactement dans les mêmes formats. Donc dans ce cas-là, ça fonctionnerait avec un matching engine, je dirais, qui serait universel. 
+
+Bastien G. 06:31
+- Oui, ce qui est souvent fait là-dessus, c'est plus de mettre... soit une façade, soit un résultat intermédiaire, et c'est un objet, niveau code, c'est un objet métier, il lui réinterprète en fonction de la source, ce qui fait que derrière, on pourrait utiliser Machine Engine et tout. Mais dans tous les cas, ça demande quand même une restructuration assez complète du traitement qui est fait avec Machine Engine dans l'application. Là, jusqu'ici, je ne pense pas voir autrement que ça. Pour ce qui concerne l'exécution du code, sauf si vraiment tu penses ou Moïse pense que c'est vraiment hyper important ou qu'on trouve quelque chose qui nécessite, nous on peut builder, exécuter, on pense que ça nous prendrait à partir maintenant énormément de temps d'essayer d'exécuter. Et on commence vraiment à douter que ce soit, du coup, après deux semaines, le meilleur move. En revanche, ça ne veut pas dire que dans les choses qu'on a demandées, il n'y a pas des choses qui sont importantes. Je pense en particulier à comprendre mieux ce qu'ils ont comme si ICD, parce que justement, il faut le voir. Moi, je ne sais pas à quel point il faut qu'on creuse, parce qu'il est clair que de toute façon, là, s'il y avait des changements à faire, vous êtes bloqué avec Matching Engine, de toute façon. Mais si vous vouliez garder que Machine Engine chez Spanish Point, je fais juste une hypothèse, et puis développer le reste ailleurs, ou autrement, ou refaire un gros développement dedans, l'onboarding des développeurs, moi et Guillaume, tu confirmes, je crois, je trouve que c'est très compliqué. Donc là on est sur un problème d'évolutivité et de transférabilité assez grand, peut-être même de maintenabilité, parce que je ne sais pas à quel point eux, leurs coûts d'évolution et de maintenance ne sont pas augmentés, parce qu'ils ont peu de capacité à se rappeler comment ça fonctionne à chaque fois. 
+
+LEBREUILLY Y. 08:41
+- S'ils n'ont pas les historiques développeurs qui travaillent dessus, même en interne, ça doit être compliqué de ce que tu me dis à passer. 
+
+Bastien G. 08:49
+- C'est ça, mais c'est une recommandation que je leur ferai. De toute façon, je pense que c'est important, mais eux, ils doivent le savoir. C'est juste entre l'implicite et l'explicite. 
+
+Guillaume J. 09:01
+- En fait, je me suis dit après, pragmatiquement, il faudrait qu'un jour tu te confies à une autre équipe, une petite features pour voir, est-ce que le jour où vous rompez le truc, vous êtes capable d'onboarder une autre équipe ? 
+
+LEBREUILLY Y. 09:17
+- Oui parce que le moindre petit feature, le moindre petite fonctionnalité là dedans c'est toujours la même chose. Comme l'outil est tentaculaire, rien que vouloir développer un bouton en plus ou quelque chose Ce serait déjà s'approprier l'outil parce qu'il y a tellement de dépendance que je comprends. 
+
+Guillaume J. 09:36
+- C'est sûr, mais c'est déjà être capable de prouver qu'on est capable de s'approprier l'outil et qu'ils sont capables de fournir tout ce qu'il faut pour ça et tout. 
+
+LEBREUILLY Y. 09:45
+- Vous savez que j'ai mis sur le coup de redocumenter l'ensemble à partir de tous les documents qu'on a, plus les évolutions qui n'ont certainement pas été loguées à l'intérieur. J'ai mis une équipe dessus. Ils sont en train déjà de s'arracher les cheveux pour savoir quels sont les documents qui sont encore à jour. Et est-ce que les évolutions ont été traquées quelque part pour savoir si les docs de départ... Pour savoir dans quelle ampleur il faut modifier les docs de départ, parce que c'est pas si, c'est sûr. Donc je comprends bien votre réflexion. D'où l'audit, c'est bien pour ça que j'ai pas de doute. 
+
+Bastien G. 10:28
+- Quand tu parles de quelle ampleur modifier les données au départ, tu parles de quoi ? 
+
+LEBREUILLY Y. 10:32
+- Les docs. 
+
+Bastien G. 10:33
+- Les docs. Oui, oui, alors... Tout ce qu'on avait perdu. 
+
+Guillaume J. 10:36
+- Qu'on avait été aussi... 
+
+Bastien G. 10:37
+- Nous, c'est vrai qu'il y a une chose qui évolue quand on est en... en mode audit comme ça, c'est que maintenant on utilise massivement les LLM et ça permet, là, avec le code qu'on a, de demander à croiser avec les docs et nous, après, de ce qui est remonté, d'aller vérifier est-ce que c'est une hallucination, est-ce que c'est intelligent et tout. Et il y a souvent plus tendance à remonter des écarts assez gros entre deux sources différentes. Là, il n'y en a pas d'énormes qui sont remontées. Je pourrais t'en passer quelques-uns si tu veux, mais il y en a un qui m'avait étonné parce que ça semble correspondre à rien et je ne l'ai pas encore vérifié. C'est que sur Cosmos DB, il n'y aurait que 8 heures de rétention. Et je trouve ça pas forcément cohérent avec d'autres choses que j'ai pu voir, donc c'est à creuser. Et en dehors de ça, bon, c'est des choses... Non, ça semble assez proche. J'ai revu une règle de gestion, je crois, qui n'était peut-être pas implémentée selon lui, je n'ai pas creusé. Le reste, non, les docs semblent être à jour avec le code qu'on a. 
+
+Bastien G. 11:48
+- D'accord. 
+
+Bastien G. 11:48
+- Ce qu'on a pu observer. 
+
+LEBREUILLY Y. 11:55
+- Guillaume qui dode l'île de la tête, ça veut dire qu'il y a quand même des manquants. Toi. 
+
+Bastien G. 11:58
+- Tu as des choses qui t'ont surprise peut-être, Guillaume. 
+
+LEBREUILLY Y. 12:02
+- Tu es mute, Guillaume. 
+
+Guillaume J. 12:08
+- Le problème c'est que le code est peu commenté au niveau métier, très peu commenté, donc c'est assez difficile. 
+
+LEBREUILLY Y. 12:15
+- D'ailleurs, la qualité du code, vous en pensez quoi ? 
+
+Guillaume J. 12:18
+- C'est pas si mal, c'est bien structuré. Il y a des points qu'on a relevés, des choses de performance qui peuvent être améliorées, etc. On navigue assez facilement dedans, la logique générale se repère. ça je veux dire ça que c'est assez structuré voilà ça serait mieux s'il y avait plus de codes pour préciser les points métiers quoi je pense plus de commentaires de façon très très basique il n'y a pas vu trop de choses qui ont piqué les yeux. 
+
+Bastien G. 12:59
+- Il y a quelques principes qui sont assez étonnants, comme par exemple il y a énormément de duplication de code. Guillaume ne dit pas de commentaires, et là on a deux styles différents. Moi je dis souvent des blocs de code qui ne sont pas assez explicites, parce que moi je préférais qu'on se passe deux commentaires et qu'on ait des blocs très explicites, en découpant comme il le faut. Mais que ce soit l'un ou l'autre des commentaires, ou rendre plus explicite certains blocs, il manque quelque chose. Et comme il y a de la duplication, c'est assez fréquent qu'on ait ce problème. Mais ça c'est les plus gros problèmes qu'on a eu. Après, tout ce qui va avec la version .NET qui est ancienne, il y a pas mal de packages qui sont anciens, autant d'un point de vue sur le front avec React que d'un point de vue .NET. Bon, on n'a pas de... Là dessus c'est des versions qui datent à peu près de 2019-2020, donc au moment du début du projet, pour celles qui sont trop anciennes en tout cas. Donc je pense qu'il y a eu des versions qui n'ont pas été mises à jour. Et là c'est tout frais donc je ne peux pas encore te garantir tout, parce que je l'ai fait dans l'heure avant. Mais c'était regarder quelles étaient les... que je leur trouve... les risques qu'il y avait sur chacun des packages trop anciens. 
+
+Guillaume J. 14:38
+- Après, c'est dommage aussi qu'on n'ait pas l'historique guide, qu'on n'ait pas eu un vrai accès au repo, puisqu'on nous aurait donné des indications. On n'aurait pas tout creusé parce qu'après c'est des semaines à passer mais ça aurait pu être utile pour... 
+
+Bastien G. 14:52
+- Des fois ça apporte des réponses intéressantes. 
+
+Guillaume J. 14:54
+- Ouais. Pourquoi il y a des codes qui sont subtilement différents, des choses comme ça. Et puis... C'est sûr qu'un repo, on voit aussi la façon d'utiliser un repo, c'est un signe aussi de qualité. Oui. 
+
+Bastien G. 15:10
+- Les commentaires qui sont mis, comment ils sont mis, la liste de notes, qui sont les personnes et à quelle fréquence selon les périodes, des choses intéressantes. On s'est posé quelques questions, on s'est quand même dit que l'historique Git aurait été hyper intéressant pour y répondre. On y a répondu autrement, on les a notés, il faut qu'on mette ça un peu plus au propre. Là voilà on a on a des tableaux comme ça donc faut que je vérifie en fait les choses, c'est à dire que par exemple bon la autofuck je saurais pas trop m'avancer, mais ouais sur un additive framework on a certainement des gains à avoir. en faisant évoluer la version. Et celle-ci, j'espère quand même que c'est quelque chose qu'ils ont fait évoluer en même temps que l'évolution de la pièce. Le 8. 
+
+LEBREUILLY Y. 16:08
+- Ça va être en prod à partir du 4, donc dans quelques jours. 
+
+Bastien G. 16:12
+- Oui. D'ailleurs, je garde en tête, je crois que Guillaume, tu avais une petite question là-dessus sur cette version. Et après, on a aussi des équivalents. Donc là, je ne sais pas... Mais il y a quand même la partie publique qui est en React. Donc la faille de sécurité n'y était pas. Sur le reste, les gains ne sont pas non plus des choses qui sont catastrophiques en termes de version. Donc ça devrait aller. Maintenant voilà des mises à jour. Mais les mises à jour, juste pour mettre à jour... Si les choses sont stables, ce n'est pas toujours non plus quelque chose qu'on va trop faire, surtout sur le front. Donc c'est toujours assez compliqué de se prononcer. Par contre, sur le back, il faudrait vraiment qu'on connaisse quelles sont les versions équivalentes. Donc là, ce qui serait peut-être pas mal, c'est quand on a confirmé ce tableau, le renvoyer. et leur demander ce qui arrive comme version en même temps que... 
+
+Guillaume J. 17:27
+- Oui, parce qu'ils ne sont pas obligés de mettre un jour tout à ces niveaux-là. 
+
+Bastien G. 17:31
+- Et Guillaume, tu demandais pourquoi la version 8 plutôt que la version 9, parce qu'à un ou deux mois près... 
+
+Guillaume J. 17:38
+- Non, je vais te demander, je pense que... A moins que tu aies... Enfin, à moins que tu aies beaucoup insisté pour passer en version 8, alors, plein, je t'aurais demandé un mois de délai pour se mettre en version 10, pour être couvert 3 ans à partir de maintenant. Parce que la version 8, elle est out of support en... en 2026. 
+
+LEBREUILLY Y. 17:55
+- En novembre 2021. Comment c'est passé, c'est que je ne sais plus pour quelle raison je suis allé voir les versions de .NET, je ne sais plus à quel propos, puis j'ai dit, mais là, on n'est plus sur les bonnes versions. Ils m'ont dit, justement, on passe à la version 8 au mois d'octobre. Donc c'était simplement... Avant. 
+
+Guillaume J. 18:11
+- Tu leur demandes un truc n'est-ce pas ? Ou tu penses qu'ils t'ont dit parce que tu as remarqué le truc ? 
+
+LEBREUILLY Y. 18:16
+- Bah, c'est... Je ne saurais jamais. Tout ce que je peux vous dire, c'est que quand j'ai vu ça et que je leur dis, justement, c'est prévu de passer en version 8. Je me suis dit, bon, c'est un moindre mal. C'est un moindre mal, mais c'est loin d'être parfait. 
+
+Guillaume J. 18:32
+- De toute façon. voilà voilà faut se moquer dans un an il faut qu'ils changent de version encore quoi oui c'est ça ce coup ci pour pas se retrouver avec mais je regarde par exemple pour fk je viens juste de regarder ils peuvent passer en dotnet 8 tout en gardant l'ancien référence Bastien qui. 
+
+LEBREUILLY Y. 18:53
+- Peuvent rester au df corp 1 et donc ils peuvent rester ou outdite complètement donc il peut être en retard complet. Ok. Est-ce que dans tout ce que vous venez de me dire et tout ce qu'on envisage pour les prochains jours, vous avez besoin d'une action particulière de ma part ou vous pouvez les contacter directement pour avancer sur les sujets qu'on a évoqués ? 
+
+Bastien G. 19:19
+- Pour moi, il faut qu'on les contacte sur les sujets et voir sur quoi on doit focaliser la suite de l'audit ensemble, tous les trois. il y a une chose pour l'instant on a toujours que le public portal si je me trompe pas on n'a pas moi je j'ai pas si on a les deux portails c'est la même application réacte c'est une application réacte qui affiche l'un ou l'autre en fonction du paramètre des portails oui mais toi tu accèdes à l'agency portal ah pardon j'étais dans le code non non ça on n'a pas eu de réponse là dessus est-ce. 
+
+Guillaume J. 19:54
+- Que moi j'aimerais quand même leur demander la version 8 du code quoi parce que Sinon ça rend obsolète peut-être certaines de nos choses ou des choses comme ça. Je comprends pas pourquoi il ne nous l'a pas donné. 
+
+LEBREUILLY Y. 20:12
+- En vrai. Qu'est-ce qui pourrait être la raison ? Parce qu'en vrai, il n'y a pas de raison si je réfléchis, puisque là où les branches sont déjà dispo, parce qu'elles sont en UAT, en tout cas en environnement de test, donc celle de dev est forcément idem, sinon ça n'a pas de sens. Donc en fait c'est ça. ça n'a pas vraiment de sens d'avoir des repos avec encore du 3.1 alors que c'est déjà en environnement de test et prêt à être déployé en 8 ? 
+
+Bastien G. 20:37
+- Voilà, je pense que tout simplement ils ont pris main et c'est pas encore mergé vu que c'est pas en prod, quelque chose comme ça. 
+
+LEBREUILLY Y. 20:46
+- Le main du prod ? 
+
+Bastien G. 20:48
+- Oui, le main doit correspondre à la prod comme sur la plupart des repos et donc ils nous ont envoyé le main sans réfléchir à oui on a très besoin de la prochaine version déployée. Donc c'est tout simplement ça. 
+
+LEBREUILLY Y. 21:00
+- Alors si c'est ça, à partir de, encore une fois, de mardi, ils peuvent refaire le travail, parce que mardi, on est avec le 8, donc dans ce cas-là, si vous le renvoie, vous avez les dernières infos à jour. 
+
+Bastien G. 21:13
+- Oui, mais de toute façon, je ne sais pas s'il faut qu'il y ait un intervalle, je pense qu'il faudrait que nous, on relance là-dessus. Je ne sais même plus si on l'aurait dit explicitement par mail quand on avait reçu, mais je ne crois pas, on avait demandé sur autre chose. Si, je crois que tu avais répondu ça, Guillaume. Mais est-ce que c'était que à Yann, ou alors est-ce que tu as... 
+
+Guillaume J. 21:32
+- Je crois que j'ai répondu qu'à Yann. Oui, oui, je pense que c'est capable. Yann. 
+
+Bastien G. 21:36
+- Tu nous as donné le code source. Oui, tout à fait. Parce qu'ils n'ont peut-être pas eu conscience de ça. 
+
+LEBREUILLY Y. 21:44
+- Alors, on a évoqué le côté performance. Alors, à 17h, j'ai une réunion importante, il faudrait absolument que j'y sois. On a évoqué le côté performance, on a évoqué les actions éventuelles, y compris côté Cisac avec Moïse. Le côté aussi financier, de maîtrise des coûts, est-ce que ça vous avez commencé à jeter un œil ? 
+
+Bastien G. 22:06
+- Oui. 
+
+LEBREUILLY Y. 22:07
+- Alors qu'est-ce que vous en pensez aussi ? Est-ce que vous comprenez ? Alors déjà oui, est-ce que vous arrivez à comprendre mon étonnement avec les infos que vous avez ? Est-ce que vous arrivez à comprendre mon étonnement chaque mois quand je reçois une facture qui est différente du mois d'avant avec des choses qui sont des fois sensiblement la même chose ? en termes de transactions et de data, et d'un seul coup, hop, ça n'a rien à voir. 
+
+Bastien G. 22:34
+- Moi, je n'ai pas trop vu ça, donc je voudrais bien que tu nous pointes un ou deux endroits. Il y a des fluctuations, en effet, et certaines peuvent être étonnantes, mais sans être graves. Après, sur le breakdown, il est vrai qu'il y a des choses... Là, on manque d'informations encore techniques qu'il faudra peut-être creuser. Moi, de mon côté, en tout cas, j'ai du mal à comprendre pourquoi Cosmos DB est si cher. J'ai vraiment l'impression qu'il y a moyen de couper un peu dedans. La Cosmos. 
+
+LEBREUILLY Y. 23:08
+- Elle n'est pas là pour juste les transactions ? C'est le log des transactions, non ? La Cosmos ? 
+
+Guillaume J. 23:13
+- Oui. C'est l'audit. Et peut-être ça sert de table d'espace pour les fichiers, uploader, des choses comme ça, j'ai cru voir. 
+
+Bastien G. 23:22
+- Mais principalement l'audit. J'avais une piste, c'est que sur les règles et les validations, apparemment, il y a une insertion à chaque fois, plutôt qu'une insertion en transactionnel, pour l'ensemble des règles de validation appliquées. Et éventuellement, ça, ça peut faire qu'on multiplie par autant qu'il y a de règles. applicable le coût. Peut-être que ça peut être une piste dans le futur, mais ça c'est d'un point de vue purement programmatique, et je ne suis pas sûr qu'il n'y ait pas d'autres éléments importants à trouver. Donc là, pareil, je pense que ce serait intéressant de... de creuser plus. Ce qu'il faut surtout là c'est, si on abandonne l'idée de dire on va exécuter le code sauf conditions particulières, qu'on va rester un peu plus en statique et en discussion avec eux, on se dit que comprendre mieux les coups, avoir une description un peu plus carrée de la plateforme, et j'ai oublié parce que je pense que c'était le numéro 1, c'était comprendre les problèmes de performance. Ça reste les trois priorités, performance, carto et écoute. 
+
+LEBREUILLY Y. 24:39
+- Oui. 
+
+Bastien G. 24:40
+- Ok. Et niveau performance, l'autre chose qu'il nous faudrait, on a vu, par exemple, Guillaume parlait d'IL plus 1 tout à l'heure, qui est un problème de... 
+
+Guillaume J. 24:55
+- On fait la base excédentaire. 
+
+Bastien G. 25:00
+- Est-ce que tu aurais des choses où particulièrement les performances semblent embêtantes ? Parce que je me rappelle que tu nous avais parlé d'un service en particulier, et je ne sais pas si tu ne l'avais pas dit ou si je ne l'avais pas noté, où il était limité à 3,5 requêtes secondes. 
+
+LEBREUILLY Y. 25:20
+- Oui, c'est un appel API. En fait, on utilise dans notre application SysNet un appel via une API. sur ISWC pour aller vérifier des codes œuvre côté ISWC. Et cet appel-là qui est limité à peu, genre je crois que c'est 3 à 5. Donc ça, effectivement, pareil, Moïse pourra nous en dire plus parce qu'il utilise directement cet outil-là depuis l'application SysNet. Et ça, ça nous limite énormément d'ailleurs. Parce que 5 appels secondes, c'est pas grand chose. 
+
+Bastien G. 26:06
+- Oui, sur d'autres aspects, on a vu des choses où c'était, selon le volume, c'était un petit peu étonnant que ce soit des appels, des services restent synchrones. On les aura plus vus en asynchrone, surtout quand on en voit plusieurs, par exemple une soumission d'une œuvre, je crois. Mais en envoyer 10, ça semble être assez énorme, le calcul qui est fait. Donc généralement, là-dessus, on fait de la synchrone. C'est-à-dire, on dit, voilà, je soumets ça. Le résultat sera là. Ou alors, on met en place un hook de retour, des choses comme ça. 
+
+LEBREUILLY Y. 26:47
+- Nous, on peut difficilement faire ça, tu vois, d'un point de vue métier. Parce que finalement, ça peut être une mise à jour d'un code œuvre ou d'une œuvre. Et si tu le fais en parallèle, ça veut dire que tu peux avoir des inconsistances. tu as mis à jour quelque chose et puis qu'après tu veux aller le rechercher, il est déjà mis à jour ça marche plus et du coup tu crées vraiment les données sont corrompues donc c'est potentiellement à cause de ça dans le cas de merger des oeuvres en fait, tu vois, tu as une oeuvre avec certains éléments, tu en as une autre qui arrive peut-être qu'elle a juste un élément différent mais si c'est arrivé à un moment avant ou après ou pendant, et bah t'arrives plus à le merger ou t'arrives plus à dire que c'est la même D'où le côté synchrone et non pas asynchrone. 
+
+Bastien G. 27:35
+- Là où je parle de synchrone, c'est vraiment l'appel même. Parce qu'on peut traiter en synchrone, c'est juste que le fait de créer quelque chose de bloquant, et bloquant sur toutes les couches aussi après, jusqu'aux données et aux services appelés, peut être un des sujets sur la performance. 
+
+LEBREUILLY Y. 27:55
+- D'accord. 
+
+Bastien G. 27:56
+- Qui serait peut-être à regarder. Mais ne sachant pas exactement où est-ce que ça bloque et quel est le volume attendu, est-ce que tu as des SLA d'ailleurs là-dessus, qu'ils soient formels ou peu formels avec Spanish Point ? 
+
+LEBREUILLY Y. 28:12
+- Des SLA là-dessus, non, il n'y en a pas. C'est plus du qualitatif que du quantitatif, donc ça n'a aucun intérêt. En revanche... Euh... parler avec des données, ça tu pourras le faire avec Moïse qui lui a éprouvé le système depuis 5 ans en louant l'argent en travers. Il va être 17h, et je vais vous quitter. Est-ce que vous avez besoin d'action de mon côté ou est-ce que vous vous occupez d'envoyer les mails et puis les invitations si besoin, que ce soit à Moïse ou à l'équipe en face ? 
+
+Bastien G. 28:40
+- Alors, Moïse et à l'équipe, c'est bon. Il y a juste, je crois que c'était de ton côté, la demande pour qu'on ait accès à l'agency portal. 
+
+LEBREUILLY Y. 28:49
+- Oui, ça, il faut que je fasse. Donc, si toi. 
+
+Bastien G. 28:51
+- Tu sais où c'en est, ça nous permettrait d'avoir un tout petit peu plus d'infos et de compréhension. 
+
+LEBREUILLY Y. 28:56
+- Ça marche, je fais ça. 
+
+Bastien G. 28:58
+- C'est pas bloquant, c'est juste nous, c'est nos apports des infos. Oui. 
+
+LEBREUILLY Y. 29:01
+- C'est mieux. Très bien. Merci beaucoup, Bastien. 
+
+LEBREUILLY Y. 29:04
+- Guillaume. Merci à toi, excellent soirée. N'hésitez pas, si vous avez besoin. 
+

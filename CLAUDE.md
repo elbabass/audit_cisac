@@ -172,3 +172,4 @@ This document contains:
 **Citation rules, quality standards, and diagram guidelines:** See [DOCUMENTATION_STANDARDS.md](docs/DOCUMENTATION_STANDARDS.md)
 
 - When adding estimates like `**Estimated Timeline:** 1-2 weeks` or `VPN Gateway: +€200/month` or `- Simple rules (IV_05, IV_06): **1-5ms**`, I want to make sure to know how it has been estimated. My goal is to know if there are : real figures in the source analysed, real project data from the past to make statistics or just an experienced guess (in that last case, some experimentations in the project conditions may confirm it).
+- When editing or creating markdown files, ensure that there is no linting error. Use `npx markdownlint [filename] --fix` if it helps.
