@@ -19,3 +19,7 @@ uv.lock
 
 # Misc
 *.log
+
+# Structurizr generated files
+.structurizr/
+workspace.json
