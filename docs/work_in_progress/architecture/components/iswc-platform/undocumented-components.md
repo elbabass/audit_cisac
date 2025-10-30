@@ -329,6 +329,8 @@ During the audit, we identified **9 documented components** with C4 Level 3 stru
 
 ## Total Estimated Effort
 
+**Note:** All effort estimates are **[Experience-based estimates]** from the audit team and will be refined as documentation work progresses.
+
 - **Phase 1 (Critical):** 3-5 days
 - **Phase 2 (High):** 5-7 days
 - **Phase 3 (Supporting):** 4 days

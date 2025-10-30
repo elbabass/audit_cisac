@@ -1105,12 +1105,12 @@ Task<IEnumerable<IswcModel>> FindManyAsync(IEnumerable<string> iswcs, bool readO
 
 **Risk:** Slow Matching Engine responses block submission processing
 
-**Typical Response Times:**
+**Typical Response Times:** **[Estimate: Experience-based - needs validation (see PERF-001)]**
 
 - Simple match (1-2 contributors): **500ms - 2s**
 - Complex match (5+ contributors): **2s - 10s**
 - Batch match (10 works): **5s - 30s**
-- Worst case (timeout): **80 seconds**
+- Worst case (timeout): **80 seconds** **[Source-documented from code configuration]**
 
 **Impact:**
 
@@ -1130,7 +1130,7 @@ Task<IEnumerable<IswcModel>> FindManyAsync(IEnumerable<string> iswcs, bool readO
 - Fallback match: +1 HTTP request (if no primary matches)
 - Total: Up to 2 HTTP requests per submission
 
-**Example:**
+**Example:** **[Estimate: Calculated from PERF-001]**
 
 - 100 submissions without matches
 - Primary matching: 100 submissions × 2s = **200 seconds**
@@ -1147,17 +1147,17 @@ Task<IEnumerable<IswcModel>> FindManyAsync(IEnumerable<string> iswcs, bool readO
 
 ### Cache Performance
 
-**ISWC Cache Hit Rates:**
+**ISWC Cache Hit Rates:** **[Estimate: Experience-based - needs validation (see PERF-003)]**
 
 - CMQ queries (frequent ISWCs): **70-80% cache hit**
 - CIQ queries (agency work codes): **30-40% cache hit**
 
-**Cache Miss Impact:**
+**Cache Miss Impact:** **[Estimate: Experience-based - needs validation (see PERF-004)]**
 
 - Cache hit: ~1ms
 - Cache miss: ~50-200ms (SQL query)
 
-**Savings:**
+**Savings:** **[Estimate: Calculated from above estimates]**
 
 - 1000 CMQ queries
 - Without cache: 1000 × 100ms = **100 seconds**
@@ -1174,7 +1174,7 @@ Task<IEnumerable<IswcModel>> FindManyAsync(IEnumerable<string> iswcs, bool readO
 AppDomain.CurrentDomain.GetComponentsOfType<T>(serviceProvider)
 ```
 
-**Overhead:**
+**Overhead:** **[Estimate: Experience-based - needs validation (see PERF-005)]**
 
 - Assembly scan: ~50-100ms (first call)
 - Type filtering: ~10-20ms

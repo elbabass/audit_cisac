@@ -1181,6 +1181,8 @@ From [Startup.cs](../../../resources/source-code/ISWC/src/Portal/Startup.cs) and
 
 ## Technical Debt and Risks
 
+**Note:** All effort estimates in this section are **[Experience-based estimates]** from the audit team and should be refined based on actual upgrade complexity.
+
 ### 🔴 Critical Security and Support Risks
 
 **ASP.NET Core 3.1 End of Life (December 2022):**

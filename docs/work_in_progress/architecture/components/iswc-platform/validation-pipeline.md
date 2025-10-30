@@ -1150,13 +1150,13 @@ submission.RulesApplied.Add(new RuleExecution
 });
 ```
 
-**Typical Timing:**
+**Typical Timing:** **[Estimate: Experience-based - needs validation (see PERF-002)]**
 
 - Simple rules (IV_05, IV_06): **1-5ms**
 - Database lookup rules (IV_24): **10-50ms** (cached after first query)
 - Eligibility rules (EL_01): **20-100ms** (agreement database query)
 
-**Batch Performance:**
+**Batch Performance:** **[Estimate: Calculated from PERF-002]**
 
 - 100 submissions × 51 rules (Static + Metadata + Lookup + Eligibility)
 - **Without rejection:** ~5-10 seconds (51 rules × 100 submissions)
@@ -1176,7 +1176,7 @@ Average rules executed per submission:
 - **Valid submission:** 51 rules (all validators)
 - **Invalid submission:** 5-15 rules (reject early)
 
-**Savings:** 70-90% reduction in rule execution for invalid submissions
+**Savings: 70-90% reduction** in rule execution for invalid submissions **[Estimate: Experience-based - needs validation (see PERF-006)]**
 
 ---
 
@@ -1205,7 +1205,7 @@ Only rules matching transaction type execute:
 var lookupData = await lookupManager.GetLookupDataAsync();
 ```
 
-**Impact:**
+**Impact:** **[Estimate: Experience-based - needs validation (see PERF-004)]**
 
 - First query: ~200ms (database fetch)
 - Subsequent queries: ~1ms (in-memory cache)
@@ -1219,7 +1219,7 @@ var lookupData = await lookupManager.GetLookupDataAsync();
 var paramValue = await rulesManager.GetParameterValue<bool>("MustHaveOneIP");
 ```
 
-**Impact:**
+**Impact:** **[Estimate: Experience-based - needs validation (see PERF-004)]**
 
 - First query: ~50ms (Cosmos DB)
 - Subsequent queries: ~1ms (cached)
@@ -1410,7 +1410,7 @@ var allRules = AppDomain.CurrentDomain.GetAssemblies()
     // ... expensive reflection
 ```
 
-**Impact:** ~100-200ms overhead per batch
+**Impact: ~100-200ms** overhead per batch **[Estimate: Experience-based - needs validation (see PERF-005)]**
 
 **Recommendation:** Cache rule discovery results per validator lifetime
 

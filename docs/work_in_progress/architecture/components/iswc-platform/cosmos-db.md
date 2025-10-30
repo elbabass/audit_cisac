@@ -227,7 +227,7 @@ public async Task<string> GetNextIswc()
 
 **Backup Strategy:**
 
-> **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 2.4 "Backup and recovery":** "Azure Cosmos DB automatically takes a backup of the database every 4 hours and at any one point in time, only the latest 2 backups are stored. For recovery within the 8 hours, Azure support will be contacted to restore the data from backup."
+> **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 2.4 "Backup and recovery":** "Azure Cosmos DB automatically takes a backup of the database every **4 hours** **[Source-documented from specs]** and at any one point in time, only the latest **2 backups** are stored. For recovery within the **8 hours** **[Source-documented from specs]**, Azure support will be contacted to restore the data from backup."
 
 ### Integration Points
 
@@ -646,7 +646,7 @@ Cosmos DB serves as one of two primary data tier options alongside SQL Server.
 
 > **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 2.3:** "An initial value of 1,000 RU (Request Units) will be provisioned."
 
-**RU Consumption Estimates:**
+**RU Consumption Estimates:** **[Estimate: Experience-based - needs validation (see SCALE-003)]**
 
 - **Write operations:** 5-10 RU per audit document (varies by size)
 - **Read operations:** 1-5 RU per query (simple lookups)
@@ -684,7 +684,7 @@ Cosmos DB serves as one of two primary data tier options alongside SQL Server.
 **Current Cost Drivers:**
 
 - **RU throughput** - Provisioned or consumed (depends on autoscale mode)
-- **Storage** - 822M+ documents = ~300-500GB estimated
+- **Storage** - 822M+ documents = **~300-500GB** estimated **[Estimate: Calculated - needs verification (see SCALE-002)]**
 - **Backup** - Automated backups every 4 hours
 
 **Optimization Strategies:**
@@ -695,7 +695,7 @@ Cosmos DB serves as one of two primary data tier options alongside SQL Server.
 4. **Serverless mode consideration** - For low-traffic collections (CacheIswcs, AgentRuns)
 5. **Query optimization** - Avoid cross-partition scans
 
-**Cost Estimate:**
+**Cost Estimate:** **[Estimate: Calculated - verify against bill (see COST-003)]**
 
 - **1,000 RU provisioned** = ~$58/month (West Europe)
 - **Storage (500GB)** = ~$125/month
@@ -727,6 +727,8 @@ From source code references to Application Insights:
 ---
 
 ## Technical Debt and Risks
+
+**Note:** All effort estimates in this section are **[Experience-based estimates]** from the audit team and should be refined based on actual implementation complexity.
 
 ### 🔴 Critical Operational Risks
 

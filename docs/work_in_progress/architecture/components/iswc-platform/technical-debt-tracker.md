@@ -37,6 +37,8 @@
 
 ### Estimated Effort
 
+**Note:** All effort estimates in this document are **[Experience-based estimates]** from the audit team and should be refined as actual work progresses.
+
 - **Critical items:** 25-38 weeks total
 - **High priority items:** 28-41 weeks total
 - **Quick wins (<1 week):** 12 items

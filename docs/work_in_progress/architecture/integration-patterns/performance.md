@@ -61,9 +61,9 @@
 
 ### SpanishPoint Proposal Summary
 
-**Investment:** €39,658.05 (core) + €34,543.80 (optional WAF) = €74,201.85
+**Investment:** €39,658.05 (core) + €34,543.80 (optional WAF) = **€74,201.85** **[Estimate: Vendor-provided (see VEN-001)]**
 
-**Monthly Impact:** -€1,800/month net savings (€3,300 database savings - €1,500 new costs)
+**Monthly Impact:** **-€1,800/month** net savings **[Estimate: Vendor-provided - verify (see VEN-002)]** (€3,300 database savings **[Estimate: Vendor-provided (see VEN-003)]** - €1,500 new costs **[Estimate: Vendor-provided (see VEN-004)]**)
 
 **Key Changes:**
 
@@ -91,7 +91,7 @@ Recommended approach:
 
 ### Immediate Actions
 
-**Estimated Timeline:** 1-2 weeks
+**Estimated Timeline: 1-2 weeks** **[Estimate: Experience-based]**
 
 - [ ] **Establish Performance Baseline**
   - [ ] Deploy Application Performance Monitoring (APM) tool (e.g., Application Insights, New Relic)
@@ -114,7 +114,7 @@ Recommended approach:
 
 ### Short-Term Investigation
 
-**Estimated Timeline:** 2-4 weeks (can run in parallel with Immediate Actions)
+**Estimated Timeline: 2-4 weeks** (can run in parallel with Immediate Actions) **[Estimate: Experience-based]**
 
 - [ ] **Application Performance Audit**
   - [ ] SQL slow query log analysis (identify N+1 queries, missing indexes)
@@ -136,7 +136,7 @@ Recommended approach:
 
 ### Medium-Term Planning
 
-**Estimated Timeline:** 2-3 months (after initial investigations complete)
+**Estimated Timeline: 2-3 months** (after initial investigations complete) **[Estimate: Experience-based]**
 
 - [ ] **Application Modernization Path**
   - [ ] Define .NET upgrade strategy (3.1 → 8.0 LTS)
@@ -192,8 +192,8 @@ Recommended approach:
 | Aspect | Current (Business Critical) | Proposed (Hyperscale) |
 |--------|----------------------------|----------------------|
 | Replicas | 4 (1 primary + 3 read-only) | 2 (1 primary + 1 secondary) |
-| Licensing | Separate compute + SQL license | Bundled (35% discount) |
-| Cost | Baseline | -€3,300/month |
+| Licensing | Separate compute + SQL license | Bundled (**35% discount**) **[Estimate: Vendor-provided (see VEN-006)]** |
+| Cost | Baseline | **-€3,300/month** **[Estimate: Vendor-provided (see VEN-003)]** |
 | Performance | 24 vCore, 122.4 GB | "More cores at same price" |
 | Migration | - | 1.25 days effort |
 
@@ -201,7 +201,7 @@ Recommended approach:
 
 ✅ **Strengths:**
 
-- Significant cost savings (€3,300/month = €39,600/year)
+- Significant cost savings (**€3,300/month** **[Estimate: Vendor-provided (see VEN-003)]** = **€39,600/year**)
 - Modern architecture with better scaling
 - Cost savings enable vCore upgrade for better performance
 - Hyperscale designed for large databases and high throughput
@@ -257,8 +257,8 @@ Recommended approach:
 
 **Cost Impact:**
 
-- VPN Gateway: +€200/month
-- Data Factory Managed VNet IR: +€500/month
+- VPN Gateway: **+€200/month** **[Estimate: Vendor-provided (see VEN-004)]**
+- Data Factory Managed VNet IR: **+€500/month** **[Estimate: Vendor-provided (see VEN-004)]**
 - **Total: +€700/month**
 
 **Evaluation:**
@@ -318,7 +318,7 @@ Recommended approach:
 **Cost:**
 
 - Implementation: €34,543.80 (43 days)
-- Recurring: +€600/month (Front Door + WAF)
+- Recurring: **+€600/month** (Front Door + WAF) **[Estimate: Vendor-provided (see VEN-004)]**
 
 **Evaluation:**
 
@@ -373,10 +373,10 @@ Recommended approach:
 
 **Changes:**
 
-- Standard → Premium tier: +€200/month
+- Standard → Premium tier: **+€200/month** **[Estimate: Vendor-provided (see VEN-004)]**
 - Cluster VM: Upgrade to latest hardware
-- Reserved Instance option: 40-41% discount (if workload stable)
-- Pre-purchase DBCU: 4-6% discount
+- Reserved Instance option: **40-41% discount** (if workload stable) **[Estimate: Vendor-provided (see VEN-006)]**
+- Pre-purchase DBCU: **4-6% discount** **[Estimate: Vendor-provided (see VEN-006)]**
 
 **Caution from Proposal:**
 > "If workload or application logic changes, then do not purchase reserved instances"
@@ -387,7 +387,7 @@ Recommended approach:
 
 - Premium features: RBAC, audit logging, data encryption
 - Latest hardware: Better CPU/memory performance
-- Significant savings if workload stable (40% with reservations)
+- Significant savings if workload stable (**40%** with reservations) **[Estimate: Vendor-provided (see VEN-006)]**
 
 ⚠️ **Concerns:**
 
@@ -437,14 +437,14 @@ Recommended approach:
 **Changes:**
 
 - Reserved capacity: 1-year commitment
-- 20% discount on RU/s provisioning
-- Range: 100,000 - 220,000 RU/s options
+- **20% discount** on RU/s provisioning **[Estimate: Vendor-provided (see VEN-006)]**
+- Range: **100,000 - 220,000 RU/s** options **[Estimate: Vendor-provided - UNEXPLAINED INCREASE 🚨 (see SCALE-004)]**
 
 **Current vs Proposed:**
 
 | Metric | Original Design (2019) | Proposed (2025) | Change |
 |--------|----------------------|----------------|--------|
-| RU/s | 1,000 | 100,000 - 220,000 | **100-220x** |
+| RU/s | 1,000 | 100,000 - 220,000 | **100-220x** **[Estimate: Vendor-provided - UNEXPLAINED 🚨 (see SCALE-004)]** |
 | Data volume | 822M rows (planned) | Unknown (actual) | ? |
 | Partitioning | SocietyCode + CreatedDate | Unknown if optimized | ? |
 
@@ -526,8 +526,8 @@ Recommended approach:
 | VPN Gateway                 | Increase  | +€200      | HIGH     |
 | Databricks (Std→Premium)    | Increase  | +€200      | MEDIUM   |
 | Data Factory (Managed VNet) | Increase  | +€500      | HIGH     |
-| **Net Monthly (if all approved)** |   | **-€1,800**| |
-| **Net Monthly (defer WAF)** |          | **-€2,400**| |
+| **Net Monthly (if all approved)** |   | **-€1,800** **[Estimate: Vendor-provided (see VEN-002)]**| |
+| **Net Monthly (defer WAF)** |          | **-€2,400** **[Estimate: Vendor-provided (see VEN-005)]**| |
 
 **One-Time Implementation:**
 
@@ -620,19 +620,19 @@ Define clear metrics before proceeding:
 
 **Performance SLAs:**
 
-- API P95 response time: < 500ms
-- Portal page load: < 2s
+- API P95 response time: **< 500ms** **[Target: Requirements-based]**
+- Portal page load: **< 2s** **[Target: Requirements-based]**
 - Bulk submission processing: X submissions/hour
-- Database query P99: < 1s
+- Database query P99: **< 1s** **[Target: Requirements-based]**
 
 **Cost Targets:**
 
-- Monthly infrastructure cost reduction: €1,800+
-- ROI timeline: < 24 months
+- Monthly infrastructure cost reduction: **€1,800+** **[Target: Requirements-based]**
+- ROI timeline: **< 24 months** **[Target: Requirements-based]**
 
 **Availability:**
 
-- Uptime: 99.9%
+- Uptime: **99.9%** **[Target: Requirements-based]**
 - Maximum planned downtime: 4 hours/quarter
 
 ---
@@ -879,7 +879,7 @@ This section outlines specific investigations needed to establish performance ba
 
 **Additional Costs:** ⚠️ Application Insights charges apply
 
-- Estimated: €50-200/month depending on traffic volume
+- Estimated: **€50-200/month** depending on traffic volume **[Estimate: Guess - needs validation (see COST-002)]**
 - First 5GB/month included free
 - Can set daily cap to control costs
 
@@ -1150,7 +1150,7 @@ This section outlines specific investigations needed to establish performance ba
 - Databricks optimization: 7-10 days
 - Application code optimization: ongoing
 
-**Total Estimated Effort:** 40-60 person-days
+**Total Estimated Effort: 40-60 person-days** **[Estimate: Experience-based]**
 
 **Suggested Resource Allocation:**
 
@@ -1241,7 +1241,7 @@ The ISWC system was designed with performance considerations focused on:
 **Configuration:**
 
 - **Tier:** Business Critical (Gen 5)
-- **Compute:** vCore 24, Memory 122.4 GB
+- **Compute:** vCore 24, Memory 122.4 GB **[Source-documented from specs (see VEN-008)]**
 - **Replicas:** 4 total (1 primary + 3 read-only)
 - **Scalability:** DTUs adjustable based on workload
 - **Cost Model:** Compute (includes 4 replicas) + SQL License + Storage + Backup
@@ -1256,11 +1256,11 @@ The ISWC system was designed with performance considerations focused on:
 
 #### Cosmos DB for Audit Data
 
-> **From [Data Model Spec](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20%28PM%29/SPE_20190218_ISWCDataModel_REV%20%28PM%29.md) → Section "Scaling for large data volumes":** "Log data, however, currently has 822 million rows in the existing database and has had to be manually partitioned across multiple tables for performance and maintenance reasons. In the new solution this audit data will be stored in Cosmos DB using the Society Code and Created Date as a partition key."
+> **From [Data Model Spec](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20%28PM%29/SPE_20190218_ISWCDataModel_REV%20%28PM%29.md) → Section "Scaling for large data volumes":** "Log data, however, currently has **822 million rows** **[Source-documented from specs]** in the existing database and has had to be manually partitioned across multiple tables for performance and maintenance reasons. In the new solution this audit data will be stored in Cosmos DB using the Society Code and Created Date as a partition key."
 
 **Configuration:**
 
-- **Initial Provisioning:** 1,000 RU (Request Units)
+- **Initial Provisioning: 1,000 RU** (Request Units) **[Source-documented from specs]**
 - **Partition Strategy:** `{SocietyCode}_{CreatedDate}`
 - **Data Volume:** 822M+ rows (from legacy system)
 

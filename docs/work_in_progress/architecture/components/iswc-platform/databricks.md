@@ -36,7 +36,7 @@ Databricks is a **cloud-based Apache Spark processing engine** used in the ISWC 
 Databricks serves as the **heavy-duty data processing engine** for the ISWC system with these key responsibilities:
 
 1. **SFTP File Ingestion** - Process EDI and JSON files uploaded by agencies
-2. **IPI Data Synchronization** - Import quarterly IPI full dumps (1GB files) and incremental updates
+2. **IPI Data Synchronization** - Import quarterly IPI full dumps (**~1GB files**) **[Source-documented from specs]** and incremental updates
 3. **Data Transformation** - Convert external file formats into ISWC database schema
 4. **Large Volume Processing** - Handle batch operations at scale (millions of records)
 5. **Orchestration Integration** - Execute as part of Data Factory pipeline workflows
@@ -641,7 +641,8 @@ From [IPI Integration Spec](../../resources/core_design_documents/SPE_20191001_I
 
 **Cost Impact of Outdated Runtime:**
 
-> **From Yann Discussion:** Newer runtimes have better optimization, potentially reducing compute time by 20-40% through:
+> **From Yann Discussion:** Newer runtimes have better optimization, potentially reducing compute time by **20-40%** **[Estimate: Vendor/Client-provided - verify (see VEN-007)]** through:
+
 - Adaptive query execution improvements
 - Better memory management
 - Photon engine (Databricks-native execution engine)
@@ -674,6 +675,8 @@ From source code integration with Application Insights:
 ---
 
 ## Technical Debt and Risks
+
+**Note:** All effort estimates in this section are **[Experience-based estimates]** from the audit team and should be refined based on actual complexity.
 
 ### 🔴 Critical Maintenance and Support Risks
 
@@ -742,7 +745,7 @@ From Known Gaps section:
 **Idle Cluster Cost Waste:**
 
 - **Issue:** Clusters may remain running when no jobs active
-- **Cost Impact:** Potentially €5K-10K/month wasted (needs verification)
+- **Cost Impact:** Potentially **€5K-10K/month** wasted **[Estimate: Guess - needs validation (see COST-001)]**
 - **Mitigation:** Configure aggressive auto-termination (15-30 minute idle timeout)
 - **Effort Estimate:** 1 day configuration change
 
