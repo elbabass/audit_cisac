@@ -33,23 +33,21 @@ This register tracks technical debt in the ISWC system after the ISWC-2 upgrade.
 
 | Priority | Count | Total Story Points |
 |----------|-------|-------------------|
-| 🔴 CRITICAL | 2 | 17 SP |
+| 🔴 CRITICAL | 1 | 13 SP |
 | ⚠️ HIGH | 3 | 37 SP |
 | 📋 MEDIUM | 3 | 11 SP |
-| ✅ LOW | 1 | 1 SP |
-| **TOTAL** | **9** | **66 SP** |
+| **TOTAL** | **7** | **61 SP** |
 
 ### Changes Since ISWC v1
 
 - ✅ **Resolved:** Backend modernization (10 items, ~60 SP)
-- ❌ **Introduced:** Security analyzers removed (1 new item, 4 SP)
 - ⏸️ **Unchanged:** Frontend, IdentityServer4 (34 SP)
 
 **Net Result:** ~50% reduction in backend debt, 0% reduction in frontend debt
 
 ---
 
-## Critical Priority (17 SP)
+## Critical Priority (13 SP)
 
 ### TD-001: IdentityServer4 End-of-Life
 
@@ -73,31 +71,6 @@ This register tracks technical debt in the ISWC system after the ISWC-2 upgrade.
 
 - 2025-10-30: Identified
 - 2025-11-04: Confirmed unchanged in ISWC-2
-
----
-
-### TD-002: Security Analyzers Removed
-
-| Field | Value |
-|-------|-------|
-| **Status** | 🔴 OPEN (REGRESSION) |
-| **Impact** | HIGH - No automated OWASP scanning |
-| **Story Points** | 4 (1 restore + 3 CI/CD) |
-| **Source** | ISWC-2 analysis - NEW ISSUE |
-
-**Description:** ISWC-2 removed SecurityCodeScan and Roslynator analyzers.
-
-**Actions:**
-
-1. Restore SecurityCodeScan or SonarAnalyzer (1 SP)
-2. Restore Roslynator.Analyzers (included in #1)
-3. Enable in CI/CD pipeline (3 SP)
-
-**Dependencies:** None
-
-**History:**
-
-- 2025-11-04: Discovered in ISWC-2 (regression)
 
 ---
 
@@ -192,16 +165,16 @@ This register tracks technical debt in the ISWC system after the ISWC-2 upgrade.
 | **Status** | 📋 UNKNOWN |
 | **Impact** | MEDIUM - Potential bugs |
 | **Story Points** | 1 |
-| **Source** | Oct 30 analysis - cannot verify (analyzers removed) |
+| **Source** | Oct 30 analysis - cannot verify |
 
 **Description:** Oct 30 analysis found:
 
 - RCS1215: Expression always true (3 locations)
 - RCS1155: String comparison issues (1 location)
 
-**Status:** Cannot verify if fixed (analyzers removed in ISWC-2)
+**Status:** Cannot verify if fixed in ISWC-2
 
-**Dependencies:** Restore analyzers first (TD-002)
+**Dependencies:** None
 
 **History:**
 
@@ -250,7 +223,7 @@ This register tracks technical debt in the ISWC system after the ISWC-2 upgrade.
 
 **Layers Needed:**
 
-1. SAST (SecurityCodeScan) - see TD-002
+1. SAST (SecurityCodeScan, SonarAnalyzer) - 3 SP
 2. Dependency scanning (OWASP, Snyk) - 5 SP
 3. Container scanning (if applicable) - 3 SP
 
@@ -260,31 +233,6 @@ This register tracks technical debt in the ISWC system after the ISWC-2 upgrade.
 
 - 2025-10-30: Recommended
 - 2025-11-04: Cannot verify from codebase
-
----
-
-## Low Priority (1 SP)
-
-### TD-009: .editorconfig Deleted
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ OPEN |
-| **Impact** | LOW - Cosmetic |
-| **Story Points** | 1 |
-| **Source** | ISWC-2 analysis - NEW ISSUE |
-
-**Description:** `.editorconfig` file deleted in ISWC-2.
-
-**Impact:** Code formatting consistency lost (cosmetic)
-
-**Action:** Restore file with formatting rules
-
-**Dependencies:** None
-
-**History:**
-
-- 2025-11-04: Discovered in ISWC-2
 
 ---
 
@@ -423,11 +371,10 @@ This register tracks technical debt in the ISWC system after the ISWC-2 upgrade.
 
 ## Roadmap
 
-### Before Production Deployment (56 SP)
+### Before Production Deployment (52 SP)
 
-1. Restore security analyzers (4 SP) - **CRITICAL**
-2. Testing program (44 SP) - **CRITICAL**
-3. Cosmos DB migration (8 SP) - **CRITICAL**
+1. Testing program (44 SP) - **CRITICAL**
+2. Cosmos DB migration (8 SP) - **CRITICAL**
 
 ### Post-Deployment Phase 1 (15 SP)
 
@@ -443,7 +390,7 @@ This register tracks technical debt in the ISWC system after the ISWC-2 upgrade.
 3. React 16 → 18 (13 SP)
 4. react-scripts update (3 SP)
 
-**Total Remaining Work:** 105 story points
+**Total Remaining Work:** 101 story points
 
 ---
 

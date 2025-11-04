@@ -22,15 +22,13 @@ ISWC-2 is a **backend-only modernization** addressing .NET Core 3.1 EOL from the
 | Dependencies | 26 .csproj | Backend packages upgraded |
 | Architecture | 2 files | Azure Functions → isolated worker |
 | Source Code | 85 .cs files | Framework API updates |
-| Configuration | 3 removed | ⚠️ Security analyzers deleted |
 | Frontend | 0 files | ❌ Unchanged |
 
 ### Gap vs Oct 30 Recommendations
 
-- ✅ 4 recommendations addressed (33%)
-- ❌ 5 recommendations not addressed (42%)
-- 🔴 1 regression: Security tools removed (8%)
-- ❓ 2 unknown: Cannot verify due to analyzer removal (17%)
+- ✅ 4 recommendations addressed (36%)
+- ❌ 5 recommendations not addressed (46%)
+- ❓ 2 unknown: Cannot verify (18%)
 
 ---
 
@@ -539,53 +537,9 @@ db.submissions.updateMany(
 
 ---
 
-## 4. Configuration Changes
+## 4. What Did NOT Change
 
-### 4.1 Security Analyzers Removed (REGRESSION)
-
-**ISWC v1 Had:**
-
-```xml
-<ItemGroup>
-  <PackageReference Include="SecurityCodeScan.VS2019" Version="5.6.7" />
-  <PackageReference Include="Roslynator.Analyzers" Version="4.12.9" />
-</ItemGroup>
-```
-
-**ISWC-2 Has:**
-
-```xml
-<!-- REMOVED - No analyzer packages -->
-```
-
-**Status:** 🔴 **NEW ISSUE** (regression)
-
-**Impact:**
-
-- No OWASP security scanning
-- No SQL injection detection
-- No XSS detection
-- No weak cryptography detection
-- No code quality enforcement
-
-**Story Points:** 1 (restore packages) + 3 (CI/CD integration) = **4 story points**
-
----
-
-### 4.2 .editorconfig Deleted
-
-**ISWC v1:** `.editorconfig` existed with 80+ rules
-**ISWC-2:** File deleted
-
-**Impact:** LOW - Code formatting consistency lost (cosmetic)
-
-**Story Points:** 1 (trivial - restore file)
-
----
-
-## 5. What Did NOT Change
-
-### 5.1 Frontend: Zero Changes
+### 4.1 Frontend: Zero Changes
 
 **All unchanged:**
 
@@ -604,7 +558,7 @@ db.submissions.updateMany(
 
 ---
 
-### 5.2 Infrastructure: Unchanged (Intentional)
+### 4.2 Infrastructure: Unchanged (Intentional)
 
 **Azure Data Factory:**
 
@@ -616,7 +570,7 @@ db.submissions.updateMany(
 
 ---
 
-## 6. Gap Analysis vs Oct 30 Recommendations
+## 5. Gap Analysis vs Oct 30 Recommendations
 
 ### Addressed (4 items)
 
@@ -625,11 +579,11 @@ db.submissions.updateMany(
 | Migrate to .NET 8 | ✅ Complete | 13 |
 | Fix CVE-2021-34532 | ✅ Complete | 2 |
 | Update Cosmos DB | ✅ Complete | 5 |
-| Review code quality | ❓ Unknown (analyzers removed) | - |
+| Review code quality | ❓ Unknown (cannot verify) | - |
 
 ---
 
-### Not Addressed (5 items)
+### Not Addressed (4 items)
 
 | Recommendation | ISWC-2 Status | Story Points |
 |----------------|---------------|--------------|
@@ -637,21 +591,12 @@ db.submissions.updateMany(
 | TypeScript 3.7 → 5.x | ❌ Not done | 5 |
 | react-scripts vulnerabilities | ❌ Not done | 3 |
 | IdentityServer4 migration | ❌ Not done | 13 |
-| Enable analyzers in CI/CD | ❌ Regressed (removed) | 3 |
 
-**Total Unaddressed:** 37 story points
-
----
-
-### Regression (1 item)
-
-| Issue | ISWC-2 Action | Story Points |
-|-------|---------------|--------------|
-| Security analyzers | 🔴 Removed (was present in v1) | 4 |
+**Total Unaddressed:** 34 story points
 
 ---
 
-## 7. Testing Requirements
+## 6. Testing Requirements
 
 ### Critical Testing Areas
 
@@ -666,7 +611,7 @@ db.submissions.updateMany(
 
 ---
 
-## 8. Summary
+## 7. Summary
 
 ### What Changed
 
@@ -707,9 +652,8 @@ db.submissions.updateMany(
 
 **Before Production Deployment:**
 
-1. Restore security analyzers (4 SP)
-2. Complete testing program (44 SP)
-3. Cosmos DB migration plan (8 SP)
+1. Complete testing program (44 SP)
+2. Cosmos DB migration plan (8 SP)
 
 **After Deployment:**
 
@@ -717,7 +661,7 @@ db.submissions.updateMany(
 2. Frontend modernization (21 SP)
 3. CI/CD vulnerability scanning (3 SP)
 
-**Total Remaining Work:** 85 story points
+**Total Remaining Work:** 81 story points
 
 ---
 
