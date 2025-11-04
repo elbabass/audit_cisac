@@ -302,7 +302,7 @@ Created `.editorconfig` at `docs/resources/source-code/ISWC/.editorconfig`
 
 All `*.csproj` files updated with new analyzer PackageReferences:
 
-```
+```text
 src/Api.Agency/Api.Agency.csproj
 src/Api.Label/Api.Label.csproj
 src/Api.Publisher/Api.Publisher.csproj
@@ -315,7 +315,7 @@ src/Framework/Framework.csproj
 
 ### New Analysis Reports
 
-```
+```text
 docs/work_in_progress/code_analysis/
 ├── automated-analysis-2025-10-30.md (this file)
 └── raw-output/
@@ -359,7 +359,7 @@ docs/work_in_progress/code_analysis/
 
 ## Appendix A: Build Output Sample
 
-```
+```text
 Build succeeded.
 
 Warnings:
