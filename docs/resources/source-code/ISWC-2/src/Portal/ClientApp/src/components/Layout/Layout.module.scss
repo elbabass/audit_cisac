@@ -1,0 +1,12 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.container {
+  height: 100%;
+  @include display_flex;
+  @include flex_direction(column);
+}
+
+.subContainer {
+  @include flex(1);
+}

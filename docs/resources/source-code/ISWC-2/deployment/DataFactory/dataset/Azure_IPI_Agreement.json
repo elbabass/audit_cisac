@@ -1,0 +1,71 @@
+{
+	"name": "Azure_IPI_Agreement",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AgreementID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "AmendedDateTime",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "CreationClass",
+				"type": "char"
+			},
+			{
+				"name": "FromDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "ToDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "EconomicRights",
+				"type": "char"
+			},
+			{
+				"name": "Role",
+				"type": "char"
+			},
+			{
+				"name": "SharePercentage",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "SignedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "AgencyID",
+				"type": "char"
+			},
+			{
+				"name": "IPBaseNumber",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "Agreement"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,15 @@
+{
+	"name": "DciAssessmentSql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabaseReadOnly",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DCI"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

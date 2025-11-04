@@ -1,0 +1,48 @@
+@import '../../../../shared/variables.scss';
+@import '../../../../shared/mixins.scss';
+
+.pageNumberButton {
+  @include display_flex;
+  @include flex_align_items(center);
+  @include flex_direction(row);
+  @include flex_justify(space-between);
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid $primaryBlack;
+  color: $defaultFont;
+  height: 100%;
+  white-space: nowrap;
+  cursor: pointer;
+  max-width: 100px;
+  min-width: 65px;
+}
+
+.pageNumberButton:hover {
+  background-color: $greyBorder;
+  outline: none;
+}
+
+.arrowIcon {
+  height: 10px;
+}
+
+.left {
+  padding-right: 5px;
+}
+
+.right {
+  padding-left: 5px;
+}
+
+.pageNumberButtonDisabled {
+  @include display_flex;
+  @include flex_align_items(center);
+  @include flex_direction(row);
+  @include flex_justify(space-between);
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid $greyBorder;
+  color: $greyBorder;
+  height: 100%;
+  white-space: nowrap;
+}

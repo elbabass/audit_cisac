@@ -1,0 +1,19 @@
+{
+	"name": "Azure_Lookup_TitleTypes",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "TitleTypes"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

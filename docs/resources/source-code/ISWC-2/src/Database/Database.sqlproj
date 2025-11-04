@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{c4e1078d-e7c5-4c0c-9cf8-4421bccda19a}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Database</RootNamespace>
+    <AssemblyName>Database</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="ISWC\" />
+    <Folder Include="ISWC\Tables\" />
+    <Folder Include="Lookup\" />
+    <Folder Include="Lookup\Tables\" />
+    <Folder Include="IPI\" />
+    <Folder Include="IPI\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="Partition" />
+    <Folder Include="Azure\" />
+    <Folder Include="Azure\Tables\" />
+    <Folder Include="Migration\" />
+    <Folder Include="Migration\Stored Procedures\" />
+    <Folder Include="Azure\Stored Procedures\" />
+    <Folder Include="Migration\User Defined Types\" />
+    <Folder Include="Configuration\" />
+    <Folder Include="Configuration\Tables\" />
+    <Folder Include="Azure\Views\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="IPI\Stored Procedures\" />
+    <Folder Include="Portal\" />
+    <Folder Include="Portal\Tables\" />
+    <Folder Include="Report" />
+    <Folder Include="Report\Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="ISWC\Tables\DisambiguationISWC.sql" />
+    <Build Include="ISWC\Tables\Title.sql" />
+    <Build Include="ISWC\Tables\WorkInfoInstrumentation.sql" />
+    <Build Include="ISWC\Tables\WorkInfoPerformer.sql" />
+    <Build Include="ISWC\Tables\DerivedFrom.sql" />
+    <Build Include="ISWC\Tables\ISWCLinkedTo.sql" />
+    <Build Include="Lookup\Tables\DerivedWorkType.sql" />
+    <Build Include="Lookup\Tables\RoleType.sql" />
+    <Build Include="ISWC\Tables\Creator.sql" />
+    <Build Include="ISWC\Tables\Publisher.sql" />
+    <Build Include="Lookup\Tables\CisacRoleMapping.sql" />
+    <Build Include="IPI\Tables\InterestedParty.sql" />
+    <Build Include="IPI\Tables\Name.sql" />
+    <Build Include="Lookup\Tables\User.sql" />
+    <Build Include="IPI\Tables\Status.sql" />
+    <Build Include="IPI\Tables\IPNameUsage.sql" />
+    <Build Include="IPI\Tables\NameReference.sql" />
+    <Build Include="ISWC\Tables\Performer.sql" />
+    <Build Include="Lookup\Tables\Agency.sql" />
+    <Build Include="Lookup\Tables\DisambiguationReason.sql" />
+    <Build Include="Lookup\Tables\Instrumentation.sql" />
+    <Build Include="Lookup\Tables\MatchType.sql" />
+    <Build Include="Lookup\Tables\TitleType.sql" />
+    <Build Include="IPI\Tables\Agreement.sql" />
+    <Build Include="ISWC\Tables\ISWC.sql" />
+    <Build Include="ISWC\Tables\WorkInfo.sql" />
+    <Build Include="Security\IPI.sql" />
+    <Build Include="Security\ISWC.sql" />
+    <Build Include="Security\Lookup.sql" />
+    <Build Include="ISWC\Tables\MergeRequest.sql" />
+    <Build Include="ISWC\Tables\WorkflowInstance.sql" />
+    <Build Include="ISWC\Tables\WorkflowTask.sql" />
+    <Build Include="Lookup\Tables\WorkflowType.sql" />
+    <Build Include="Lookup\Tables\MergeStatus.sql" />
+    <Build Include="Lookup\Tables\WorkflowStatus.sql" />
+    <Build Include="Lookup\Tables\WorkflowTaskStatus.sql" />
+    <Build Include="Partition\part_scheme_PartitionByISWCID.sql" />
+    <Build Include="Partition\part_func_PartitionByISWCID.sql" />
+    <Build Include="Migration\Stored Procedures\ISWC_ISWC.sql" />
+    <Build Include="Migration\Stored Procedures\ISWC_Creator.sql" />
+    <Build Include="Migration\Stored Procedures\ISWC_csi_audit_req_work.sql" />
+    <Build Include="Migration\Stored Procedures\ISWC_WorkInfoPerformer.sql" />
+    <Build Include="Migration\Stored Procedures\ISWC_Title.sql" />
+    <Build Include="Migration\Stored Procedures\ISWC_Performer.sql" />
+    <Build Include="Migration\Stored Procedures\Lookup_CisacRoleMapping.sql" />
+    <Build Include="Migration\Stored Procedures\Lookup_Agency.sql" />
+    <Build Include="Migration\Stored Procedures\Lookup_MatchType.sql" />
+    <Build Include="Migration\Stored Procedures\Lookup_RoleType.sql" />
+    <Build Include="Migration\Stored Procedures\Lookup_User.sql" />
+    <Build Include="Migration\Stored Procedures\Lookup_TitleTypes.sql" />
+    <Build Include="Migration\Stored Procedures\IPI_Name.sql" />
+    <Build Include="Migration\Stored Procedures\IPI_Agreement.sql" />
+    <Build Include="Migration\Stored Procedures\ISWC_WorkInfo.sql" />
+    <Build Include="Migration\Stored Procedures\IPI_Status.sql" />
+    <Build Include="Migration\Stored Procedures\IPI_NameReference.sql" />
+    <Build Include="Migration\Stored Procedures\IPI_IPNameUsage.sql" />
+    <Build Include="Migration\Stored Procedures\ISWC_Publisher.sql" />
+    <Build Include="Migration\Stored Procedures\IPI_InterestedParty.sql" />
+    <Build Include="Migration\User Defined Types\Azure_ISWC_csi_intrpty.sql" />
+    <Build Include="Migration\User Defined Types\Azure_ISWC_csi_audit_req_work.sql" />
+    <Build Include="Migration\User Defined Types\Azure_ISWC_Publisher.sql" />
+    <Build Include="Migration\User Defined Types\Azure_IPI_Status.sql" />
+    <Build Include="Migration\User Defined Types\Azure_IPI_NameReference.sql" />
+    <Build Include="Migration\User Defined Types\Azure_IPI_IPNameUsage.sql" />
+    <Build Include="Migration\User Defined Types\Azure_IPI_Name.sql" />
+    <Build Include="Migration\User Defined Types\Azure_IPI_Agreement.sql" />
+    <Build Include="Migration\User Defined Types\Azure_IPI_InterestedParty.sql" />
+    <Build Include="Migration\User Defined Types\Azure_ISWC_Creator.sql" />
+    <Build Include="Migration\User Defined Types\Azure_ISWC_WorkInfoPerformer.sql" />
+    <Build Include="Migration\User Defined Types\Azure_ISWC_Performer.sql" />
+    <Build Include="Migration\User Defined Types\Azure_Lookup_CisacRoleMapping.sql" />
+    <Build Include="Migration\User Defined Types\Azure_Lookup_RoleType.sql" />
+    <Build Include="Migration\User Defined Types\Azure_Lookup_MatchType.sql" />
+    <Build Include="Migration\User Defined Types\Azure_Lookup_User.sql" />
+    <Build Include="Migration\User Defined Types\Azure_Lookup_Agency.sql" />
+    <Build Include="Migration\User Defined Types\Azure_ISWC_Title.sql" />
+    <Build Include="Migration\User Defined Types\Azure_ISWC_WorkInfo.sql" />
+    <Build Include="Migration\User Defined Types\Azure_ISWC_ISWC.sql" />
+    <Build Include="Migration\User Defined Types\Azure_Lookup_TitleTypes.sql" />
+    <Build Include="Security\Migration.sql" />
+    <Build Include="Security\Azure.sql" />
+    <Build Include="Configuration\Tables\SubmissionSource.sql" />
+    <Build Include="Configuration\Tables\StandardizedTitle.sql" />
+    <Build Include="dbo\Functions\RemoveNonAlphanumericCharacters.sql" />
+    <Build Include="dbo\Stored Procedures\TransferCreators.sql">
+      <SuppressTSqlWarnings>71502</SuppressTSqlWarnings>
+    </Build>
+    <Build Include="Security\Configuration.sql" />
+    <Build Include="ISWC\Tables\DeMergeRequest.sql" />
+    <Build Include="Configuration\Tables\HighWatermark.sql" />
+    <Build Include="Migration\Stored Procedures\Configuration_SubmissionSource.sql" />
+    <Build Include="Migration\Stored Procedures\Configuration_StandardizedTitle.sql" />
+    <Build Include="dbo\Stored Procedures\TransferTitles.sql">
+      <SuppressTSqlWarnings>71502</SuppressTSqlWarnings>
+    </Build>
+    <Build Include="Migration\User Defined Types\Azure_Configuration_SubmissionSource.sql" />
+    <Build Include="Migration\User Defined Types\Azure_Configuration_StandardizedTitle.sql" />
+    <Build Include="ISWC\Tables\csi_audit_req_work.sql" />
+    <Build Include="Azure\Views\Index_Contributors.sql" />
+    <Build Include="ISWC\Tables\AdditionalIdentifier.sql" />
+    <Build Include="Lookup\Tables\NumberType.sql" />
+    <Build Include="Lookup\Tables\PublisherSubmitterCode.sql" />
+    <Build Include="IPI\Stored Procedures\FullSync_InitialScript.sql" />
+    <Build Include="IPI\Stored Procedures\FullSync_FinalScript.sql" />
+    <Build Include="dbo\Stored Procedures\IndexOptimize.sql">
+      <SuppressTSqlWarnings>71502</SuppressTSqlWarnings>
+    </Build>
+    <Build Include="Lookup\Tables\PortalRoleType.sql" />
+    <Build Include="Lookup\Tables\NotificationType.sql" />
+    <Build Include="Portal\Tables\Notification.sql" />
+    <Build Include="Security\Portal.sql" />
+    <Build Include="Portal\Tables\WebUserRole.sql" />
+    <Build Include="Portal\Tables\WebUser.sql" />
+    <Build Include="Portal\Tables\Message.sql" />
+    <Build Include="Configuration\Tables\AgentVersion.sql" />
+    <Build Include="Lookup\Tables\Language.sql" />
+    <Build Include="dbo\Tables\CommandLog.sql" />
+    <Build Include="dbo\Stored Procedures\CommandExecute.sql" />
+    <Build Include="dbo\Stored Procedures\DeletePtAndCtTitles.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteEtTitles.sql" />
+    <Build Include="Azure\Stored Procedures\DciAssessment.sql" />
+    <Build Include="Azure\Views\Index_Repertoire_Work.sql" />
+    <Build Include="Security\Report.sql" />
+    <Build Include="Report\Views\SingleIasIswcSubmissions.sql" />
+    <Build Include="Report\Views\DuplicatePublisherIasSubmissions.sql" />
+    <Build Include="Report\Views\MultipleMatchingIasIswcSubmissions.sql" />
+    <Build Include="ISWC\Tables\RecordingArtist.sql" />
+    <Build Include="ISWC\Tables\Recording.sql" />
+    <Build Include="Lookup\Tables\ISWCStatus.sql" />
+    <Build Include="Lookup\Tables\PerformerDesignation.sql" />
+    <Build Include="Azure\Views\Databricks_Iswc_Data.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Azure\Views\Databricks_Ipi_Data.sql" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,45 @@
+{
+	"name": "Azure_Configuration_SubmissionSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SubmissionSourceID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Code",
+				"type": "char"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedUserID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "Configuration",
+			"table": "SubmissionSource"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

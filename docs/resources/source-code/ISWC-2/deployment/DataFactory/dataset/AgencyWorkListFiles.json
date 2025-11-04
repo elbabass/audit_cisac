@@ -1,0 +1,30 @@
+{
+	"name": "AgencyWorkListFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"AgencyId": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@{concat('AWL_DATA_',dataset().AgencyId,'_*')}",
+					"type": "Expression"
+				},
+				"folderPath": "AgencyWorkList",
+				"fileSystem": "reporting"
+			}
+		}
+	}
+}

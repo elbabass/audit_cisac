@@ -1,0 +1,32 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include display_flex;
+  @include flex_direction(column);
+  @include flex(1 1 auto);
+}
+
+.actionButtonDiv {
+  @include display_flex;
+  margin: 20px 0 10px 0;
+  min-width: 150px;
+  margin-right: auto;
+}
+
+/* IE style */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .actionButtonDiv {
+    max-width: 250px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .actionButtonDiv {
+    margin: 15px 0 0 0;
+    max-width: none;
+    min-width: none;
+    width: 100%;
+  }
+}

@@ -1,0 +1,56 @@
+{
+	"name": "csi_titles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "title_id",
+				"type": "Int64"
+			},
+			{
+				"name": "iswc_id",
+				"type": "Int64"
+			},
+			{
+				"name": "title",
+				"type": "String"
+			},
+			{
+				"name": "s_title",
+				"type": "String"
+			},
+			{
+				"name": "type_code",
+				"type": "String"
+			},
+			{
+				"name": "created_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_user",
+				"type": "String"
+			},
+			{
+				"name": "work_info_id",
+				"type": "Int64"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"csi\".\"csi_titles\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

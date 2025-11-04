@@ -1,0 +1,21 @@
+{
+	"name": "MissingIPISync_ADL_Binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Missing IPI Sync"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Missing IPI Sync/IPI Unzip Files",
+				"fileSystem": "ipi-integration"
+			}
+		}
+	}
+}

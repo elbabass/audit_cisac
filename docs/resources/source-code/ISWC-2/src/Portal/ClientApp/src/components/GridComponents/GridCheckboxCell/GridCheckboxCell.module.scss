@@ -1,0 +1,74 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include display_flex;
+  @include flex_align_items(center);
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  label {
+    margin-bottom: 0;
+  }
+}
+
+.subContainer {
+  @include display_flex;
+  position: relative;
+  cursor: pointer;
+  @include flex_align_items(flex-start);
+}
+
+/* Hide default checkbox */
+.subContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Custom checkbox */
+.checkbox {
+  position: relative;
+  min-height: 23px;
+  min-width: 23px;
+  border-radius: 11.5px;
+  border: solid 1px $greyBorder;
+  background-color: $primaryWhite;
+}
+
+.subContainer:hover input ~ .checkbox {
+  background-color: #cccccc;
+}
+
+.subContainer input:checked ~ .checkbox {
+  background-color: $primaryBlack;
+}
+
+.checkbox:after {
+  content: '';
+  position: absolute;
+}
+
+/* Checkmark */
+.subContainer .checkbox:after {
+  left: 7px;
+  width: 7px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 2px;
+}
+
+.checkboxLabel {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 2.5px;
+}

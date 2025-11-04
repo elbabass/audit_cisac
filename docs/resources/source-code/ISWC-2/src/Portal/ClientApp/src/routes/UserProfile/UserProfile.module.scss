@@ -1,0 +1,52 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.container {
+  color: $defaultFont;
+  font-size: $fs_regular;
+}
+
+.topDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  margin-top: 1.5rem;
+  margin-bottom: 50px;
+}
+
+.topLeftDiv {
+  width: 200px;
+}
+
+.topRightDiv {
+  width: 200px;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.subDiv {
+  margin-left: 140px;
+  margin-right: 140px;
+}
+
+.alertMessage {
+  margin-top: 1.5rem;
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 1024px) {
+  .subDiv {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .subDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

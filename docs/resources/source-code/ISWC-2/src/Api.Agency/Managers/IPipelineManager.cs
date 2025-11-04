@@ -1,0 +1,12 @@
+﻿using SpanishPoint.Azure.Iswc.Bdo.Submissions;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace SpanishPoint.Azure.Iswc.Api.Agency.Managers
+{
+    internal interface IPipelineManager
+    {
+        Task<IEnumerable<Submission>> RunPipelines(IEnumerable<Submission> submissions);
+        Task<Submission> RunPipelines(Submission submission);
+    }
+}

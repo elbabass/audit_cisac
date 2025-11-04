@@ -1,0 +1,84 @@
+{
+	"name": "csi_workinfo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "work_info_id",
+				"type": "Int64"
+			},
+			{
+				"name": "iswc_id",
+				"type": "Int64"
+			},
+			{
+				"name": "society_work_code",
+				"type": "String"
+			},
+			{
+				"name": "source_db",
+				"type": "Int16"
+			},
+			{
+				"name": "society_code",
+				"type": "Int16"
+			},
+			{
+				"name": "archived_iswc",
+				"type": "String"
+			},
+			{
+				"name": "mwi_category",
+				"type": "String"
+			},
+			{
+				"name": "match_type_code",
+				"type": "String"
+			},
+			{
+				"name": "is_deleted",
+				"type": "String"
+			},
+			{
+				"name": "cisnet_posted_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "cisnet_last_updated_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "created_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_user",
+				"type": "String"
+			},
+			{
+				"name": "iswc_eligible",
+				"type": "String"
+			},
+			{
+				"name": "ip_count",
+				"type": "Int16"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"csi\".\"csi_workinfo\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

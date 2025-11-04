@@ -1,0 +1,66 @@
+{
+	"name": "Parquet_IPI_Agreement",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "IPI FullSync"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Agreement",
+				"fileSystem": "ipi-integration"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "AmendedDateTime",
+				"type": "INT96"
+			},
+			{
+				"name": "CreationClass",
+				"type": "UTF8"
+			},
+			{
+				"name": "FromDate",
+				"type": "INT96"
+			},
+			{
+				"name": "ToDate",
+				"type": "INT96"
+			},
+			{
+				"name": "EconomicRights",
+				"type": "UTF8"
+			},
+			{
+				"name": "Role",
+				"type": "UTF8"
+			},
+			{
+				"name": "SharePercentage",
+				"type": "DECIMAL",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "SignedDate",
+				"type": "DATE"
+			},
+			{
+				"name": "AgencyID",
+				"type": "UTF8"
+			},
+			{
+				"name": "IPBaseNumber",
+				"type": "UTF8"
+			}
+		]
+	}
+}

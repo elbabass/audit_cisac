@@ -1,0 +1,194 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.viewMoreContainer {
+  @include display_flex;
+  @include flex_direction(column);
+  background-color: $greyBackground;
+}
+
+.headerContainer {
+  @include display_flex;
+  width: 100%;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.headerItem {
+  @include display_flex;
+  @include flex(1);
+  @include flex_direction(row);
+  @include flex_align_items(center);
+  padding: 0 5px 0 5px;
+}
+
+.headerTextContainer {
+  @include display_flex;
+  @include flex_direction(column);
+  @include flex(1 1 auto);
+  @include flex_align_items(center);
+}
+
+.labelText {
+  @include label_text;
+  @include flex(1 1 auto);
+  padding-bottom: 5px;
+}
+
+.actionText {
+  @include flex(1 1 auto);
+  columns: $defaultFont;
+  a {
+    width: 100%;
+    color: $defaultFont;
+    &:hover {
+      cursor: pointer;
+      color: $defaultFont;
+      text-decoration: underline;
+    }
+  }
+}
+
+.regularText {
+  @include regular_text;
+  @include flex(1 1 auto);
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    width: 100%;
+  }
+}
+
+.icon {
+  width: 14px;
+  height: 13px;
+  margin-right: 0.5rem;
+  @include flex_justify(flex-start);
+}
+
+.divider {
+  border-left: 1px solid $greyBorder;
+}
+
+.gridContainer {
+  @include grid_container;
+  width: 96%;
+  @include flex_direction(column);
+  margin-top: 1rem;
+}
+
+.gridTitle {
+  @include heading_3;
+  padding-bottom: 5px;
+}
+
+.grid {
+  border: solid 1px $greyBorder;
+  border-bottom: none;
+}
+
+.textWithLink {
+  @include display_flex;
+  @include flex_direction(row);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.textPadding {
+  padding-left: 1rem;
+}
+
+.viewLess {
+  @include display_flex;
+  @include flex_justify(flex-end);
+  padding-right: 2%;
+  padding-top: 2rem;
+  background-color: $greyBackground;
+  margin-bottom: 10px;
+}
+
+.alertDiv {
+  margin-bottom: 8px;
+}
+
+.mergeMessageDiv {
+  @include display_flex;
+  @include flex_direction(column);
+  @include regular_text;
+  width: 100%;
+  border: 1px solid $secondaryBlue;
+  color: $secondaryBlue;
+  background-color: #606aff1f;
+  padding: 12px;
+}
+
+.mergeMessageDivHeader {
+  @include display_flex;
+  @include flex_direction(row);
+  @include flex_align_items(center);
+  margin-bottom: 3px;
+}
+
+.mergeMessageIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.mergeMessageHeader {
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+.mergeMessageTextTop {
+  padding-left: 30px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .headerItem {
+    @include flex_direction(column);
+    @include flex_basis(100%);
+    @include flex_align_items(flex-start);
+  }
+
+  .headerTextContainer {
+    text-align: left;
+    @include flex_direction(row);
+    width: 100%;
+  }
+
+  .labelText {
+    @include flex(1);
+  }
+
+  .regularText {
+    @include flex(1);
+  }
+
+  .actionText {
+    @include flex(1);
+  }
+  .grid {
+    border: none;
+  }
+  .viewLess {
+    padding-right: 3%;
+  }
+}
+
+@media (max-width: 575px) {
+  .headerContainer {
+    @include flex_direction(column);
+  }
+
+  .headerTextContainer {
+    margin-bottom: 10px;
+  }
+
+  .divider {
+    border-left: none;
+    margin-top: 10px;
+  }
+
+  .headerItem {
+    @include flex(1 1 auto);
+  }
+}

@@ -1,0 +1,35 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  margin-left: 140px;
+  margin-right: 140px;
+}
+
+.sectionTitle {
+  @include heading_2();
+  color: $lightShade;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.description {
+  @include regular_text;
+  margin-bottom: 10px;
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 1024px) {
+  .container {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

@@ -1,0 +1,54 @@
+{
+	"name": "FullSync_IPI_Status",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "IPIAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "IPI FullSync"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "StatusID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AmendedDateTime",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "FromDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "ToDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "ForwardingBaseNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StatusCode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IPBaseNumber",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "IPI",
+			"table": "Status"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,60 @@
+{
+	"name": "Parquet_IPI_InterestedParty",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "IPI FullSync"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "InterestedParty",
+				"fileSystem": "ipi-integration"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "IPBaseNumber",
+				"type": "UTF8"
+			},
+			{
+				"name": "AmendedDateTime",
+				"type": "INT96"
+			},
+			{
+				"name": "BirthDate",
+				"type": "DATE"
+			},
+			{
+				"name": "BirthPlace",
+				"type": "UTF8"
+			},
+			{
+				"name": "BirthState",
+				"type": "UTF8"
+			},
+			{
+				"name": "DeathDate",
+				"type": "DATE"
+			},
+			{
+				"name": "Gender",
+				"type": "UTF8"
+			},
+			{
+				"name": "Type",
+				"type": "UTF8"
+			},
+			{
+				"name": "AgencyID",
+				"type": "UTF8"
+			}
+		]
+	}
+}

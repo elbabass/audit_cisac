@@ -1,0 +1,195 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.container {
+  @include grid_container;
+  @include flex_direction(column);
+  margin-top: 1.5rem;
+}
+
+.gridDiv {
+  @include display_flex;
+  margin-top: 10px;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.headerContainer {
+  @include display_flex;
+  width: 100%;
+  padding-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.headerItem {
+  @include display_flex;
+  @include flex(1);
+  @include flex_direction(row);
+  @include flex_justify(space-around);
+  @include flex_align_items(center);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.statusFilter {
+  @include display_flex;
+  @include flex(1);
+  @include flex_direction(row);
+  @include flex_justify(space-around);
+  @include flex_align_items(center);
+  padding-left: 10px;
+}
+
+.headerTextContainer {
+  @include display_flex;
+  @include flex_direction(column);
+  text-align: left;
+  max-height: 200px;
+  justify-content: center;
+}
+
+.sectionTitle {
+  min-height: 35px;
+  @include flex(0.5);
+  @include label_text;
+}
+
+.tabletTitle {
+  display: none;
+}
+
+.labelText {
+  @include label_text;
+  padding-bottom: 5px;
+}
+
+.actionText {
+  @include flex(0.5);
+  columns: $defaultFont;
+  padding-bottom: 5px;
+}
+
+.underlinedText {
+  color: $defaultFont;
+  &:hover {
+    cursor: pointer;
+    color: $defaultFont;
+    text-decoration: underline;
+  }
+}
+
+.regularText {
+  @include regular_text;
+}
+
+.icon {
+  width: 14px;
+  height: 13px;
+  margin-right: 0.5rem;
+  @include flex_justify(flex-start);
+}
+
+.divider {
+  border-left: 1px solid $greyBorder;
+}
+
+@media (max-width: 1100px) {
+  .labelText {
+    font-size: 12px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1132px) {
+  .headerItem {
+    @include flex_direction(column);
+    @include flex_basis(100%);
+    @include flex_align_items(flex-start);
+    @include flex_justify(flex-start);
+    margin-bottom: 10px;
+  }
+
+  .statusFilter {
+    @include flex_direction(column);
+    @include flex_basis(100%);
+    @include flex_align_items(flex-start);
+    margin-bottom: 10px;
+  }
+
+  .headerTextContainer {
+    text-align: left;
+    padding-bottom: 0.5rem;
+    @include flex_direction(row);
+    width: 100%;
+  }
+  .actionText {
+    @include flex(1);
+  }
+  .grid {
+    border: none;
+  }
+  .viewLess {
+    padding-right: 3%;
+  }
+
+  .labelText {
+    font-size: 13px;
+    @include flex(1);
+  }
+
+  .sectionTitle {
+    display: none;
+  }
+
+  .tabletTitle {
+    display: inline;
+    @include label_text;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .headerContainer {
+    @include flex_direction(column);
+  }
+
+  .headerItem {
+    @include flex(1 1 auto);
+  }
+
+  .headerTextContainer {
+    @include flex_justify(flex-start);
+  }
+
+  .statusFilter {
+    @include flex(1 1 auto);
+  }
+
+  .divider {
+    border-left: none;
+  }
+
+  .tabletTitle {
+    border-bottom: 1px solid $greyBorder;
+    margin-bottom: 5px;
+  }
+}
+
+.searchButton {
+  @include display_flex;
+  width: 140px;
+  margin-right: 20px;
+}
+
+.resetText {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.buttonsContainer {
+  @include display_flex;
+  @include flex_direction(row);
+  @include flex_align_items(center);
+  margin-bottom: 40px;
+  @include regular_text;
+}

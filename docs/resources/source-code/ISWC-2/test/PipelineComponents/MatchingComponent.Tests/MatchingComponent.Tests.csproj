@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <AssemblyName>SpanishPoint.Azure.Iswc.PipelineComponents.MatchingComponent.Tests</AssemblyName>
+    <RootNamespace>SpanishPoint.Azure.Iswc.PipelineComponents.MatchingComponent.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp3.0\SpanishPoint.Azure.Iswc.PipelineComponents.MatchingValidator.Tests.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.msbuild" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Bdo\Bdo.csproj" />
+    <ProjectReference Include="..\..\..\src\Business\Business.csproj" />
+    <ProjectReference Include="..\..\..\src\PipelineComponents\MatchingComponents\MatchingComponent.csproj" />
+    <ProjectReference Include="..\..\Framework.Tests\Framework.Tests.csproj" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+
+  </ItemGroup>
+
+</Project>

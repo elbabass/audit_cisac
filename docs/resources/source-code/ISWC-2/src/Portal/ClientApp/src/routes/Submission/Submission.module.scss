@@ -1,0 +1,102 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.container {
+  color: $defaultFont;
+}
+
+.subDiv {
+  margin-left: 140px;
+  margin-right: 140px;
+}
+
+.bottomDiv {
+  @include display_flex;
+  @include flex_justify(flex-end);
+  margin-left: 140px;
+  margin-right: 140px;
+}
+
+.actionButton {
+  @include display_flex;
+  margin-bottom: 20px;
+  float: right;
+  min-width: 150px;
+  margin-left: 40px;
+}
+
+.actionButtonLeft {
+  @include display_flex;
+  margin-bottom: 20px;
+  float: left;
+  min-width: 150px;
+}
+
+/* IE style */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .actionButtonBig {
+    width: 250px;
+  }
+}
+
+.loaderDiv {
+  height: 80px;
+}
+
+.errorDiv {
+  float: right;
+  margin-right: 30px;
+}
+
+.mainDiv {
+  margin-top: 1.5rem;
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 1024px) {
+  .subDiv {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  .bottomDiv {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  .actionButton {
+    margin-left: 20px;
+  }
+
+  /* IE style */
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .actionButtonBig {
+      width: 100%;
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .subDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .bottomDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+    @include flex_direction(column);
+  }
+  .actionButton {
+    width: 100%;
+  }
+  .actionButtonLeft {
+    width: 100%;
+  }
+  /* IE style */
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .actionButtonBig {
+      width: 100%;
+    }
+  }
+}

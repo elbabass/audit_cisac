@@ -1,0 +1,19 @@
+@import '../../../../shared/variables.scss';
+@import '../../../../shared/mixins.scss';
+
+.greyText {
+  color: $primaryGrey;
+}
+
+.actionText {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.marginTop {
+  margin-top: 10px;
+}
+
+.smallText {
+  font-size: 12px;
+}

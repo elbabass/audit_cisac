@@ -1,0 +1,120 @@
+{
+	"name": "IswcCreator_WorkInfo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "WorkInfoID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Status",
+				"type": "bit"
+			},
+			{
+				"name": "Concurrency",
+				"type": "timestamp"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedUserID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IswcID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ArchivedIswc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CisnetLastModifiedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "CisnetCreatedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "IPCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsReplaced",
+				"type": "bit"
+			},
+			{
+				"name": "IswcEligible",
+				"type": "bit"
+			},
+			{
+				"name": "MatchTypeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MwiCategory",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AgencyID",
+				"type": "char"
+			},
+			{
+				"name": "AgencyWorkCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SourceDatabase",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Disambiguation",
+				"type": "bit"
+			},
+			{
+				"name": "DisambiguationReasonID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BVLTR",
+				"type": "char"
+			},
+			{
+				"name": "DerivedWorkTypeID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "ISWC",
+			"table": "WorkInfo"
+		}
+	}
+}

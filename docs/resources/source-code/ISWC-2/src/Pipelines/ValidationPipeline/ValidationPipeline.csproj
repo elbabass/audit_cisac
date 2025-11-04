@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>SpanishPoint.Azure.Iswc.Pipelines.ValidationPipeline</RootNamespace>
+    <AssemblyName>SpanishPoint.Azure.Iswc.Pipelines.ValidationPipeline</AssemblyName>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\Business.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\IswcEligibilityValidator\IswcEligibilityValidator.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\LookupDataValidator\LookupDataValidator.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\MetadataStandardizationValidator\MetadataStandardizationValidator.csproj" />
+    <ProjectReference Include="..\..\PipelineComponents\StaticDataValidator\StaticDataValidator.csproj" />
+  </ItemGroup>
+
+</Project>

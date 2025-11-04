@@ -1,0 +1,78 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  color: $defaultFont;
+  @include regular_text;
+}
+
+.filterDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  margin-bottom: 40px;
+}
+
+.dropdownDiv {
+  @include display_flex;
+  @include flex(1);
+}
+
+.dateFilter {
+  @include display_flex;
+  width: 375px;
+}
+
+.dropdownInput {
+  @include flex(0.5);
+  margin-right: 30px;
+}
+
+.actionButton {
+  @include display_flex;
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 670px) {
+  .actionButton {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .filterDiv {
+    @include flex_direction(column);
+  }
+
+  .dropdownInput {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .dropdownInput {
+    @include flex(1);
+    margin-right: 0;
+    margin-top: 20px;
+  }
+}
+
+/* IE style */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @media (max-width: 1024px) {
+    .filterDiv {
+      height: 150px;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 575px) {
+    .filterDiv {
+      height: 225px;
+    }
+  }
+}

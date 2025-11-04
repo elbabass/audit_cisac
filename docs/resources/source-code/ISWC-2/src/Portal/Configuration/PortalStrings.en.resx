@@ -1,0 +1,1185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADD_CREATOR" xml:space="preserve">
+    <value>Add Creator</value>
+  </data>
+  <data name="ADD_NEW_CREATOR" xml:space="preserve">
+    <value>Add New Creator</value>
+  </data>
+  <data name="ADD_NEW_DERIVED_WORK" xml:space="preserve">
+    <value>Add New Derived Work</value>
+  </data>
+  <data name="ADD_NEW_PERFORMER" xml:space="preserve">
+    <value>Add New Performer</value>
+  </data>
+  <data name="ADD_NEW_PUBLISHER" xml:space="preserve">
+    <value>Add New Publisher</value>
+  </data>
+  <data name="ADD_NEW_TITLE" xml:space="preserve">
+    <value>Add New Title</value>
+  </data>
+  <data name="ADD_NEW_WORK_CODE" xml:space="preserve">
+    <value>Add New Work Code</value>
+  </data>
+  <data name="ADD_TO_MERGE_LIST" xml:space="preserve">
+    <value>Add to Merge List</value>
+  </data>
+  <data name="ADVANCED_SEARCH" xml:space="preserve">
+    <value>Advanced Search</value>
+  </data>
+  <data name="ADVANCED_SEARCH_DESC" xml:space="preserve">
+    <value>Enter any of the following information. You can enter multiple Agency Work Codes separated by a ";" character.</value>
+  </data>
+  <data name="AFFILIATION_FIELD" xml:space="preserve">
+    <value>Affiliation</value>
+  </data>
+  <data name="AGENCY" xml:space="preserve">
+    <value>Agency</value>
+  </data>
+  <data name="AGENCY_CODE_FIELD" xml:space="preserve">
+    <value>Agency Code</value>
+  </data>
+  <data name="AGENCY_NAME_FIELD" xml:space="preserve">
+    <value>Agency Name</value>
+  </data>
+  <data name="AGENCY_WORK_CODES" xml:space="preserve">
+    <value>Agency Work Codes</value>
+  </data>
+  <data name="AGENCY_WORK_CODE_FIELD" xml:space="preserve">
+    <value>Agency Work Code</value>
+  </data>
+  <data name="ALL_TITLES_FIELD" xml:space="preserve">
+    <value>All titles</value>
+  </data>
+  <data name="APPROVE" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="APPROVED" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="APPROVE_ALL" xml:space="preserve">
+    <value>Approve All</value>
+  </data>
+  <data name="ARCHIVED_ISWCS" xml:space="preserve">
+    <value>Archived ISWCs</value>
+  </data>
+  <data name="ASSIGNED_TO_FIELD" xml:space="preserve">
+    <value>Assigned to</value>
+  </data>
+  <data name="ASSIGNED_TO_ME" xml:space="preserve">
+    <value>Assigned to me</value>
+  </data>
+  <data name="AUTHORITATIVE_FIELD" xml:space="preserve">
+    <value>Authoritative</value>
+  </data>
+  <data name="BAND_NAME" xml:space="preserve">
+    <value>Band Name</value>
+  </data>
+  <data name="BVLTR_FIELD" xml:space="preserve">
+    <value>BVLTR</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CLOSE_MERGE_LIST" xml:space="preserve">
+    <value>Close Merge List</value>
+  </data>
+  <data name="COPY_AS_NEW_SUBMISSION" xml:space="preserve">
+    <value>Copy as a New Submission</value>
+  </data>
+  <data name="CREATED_BY_ME" xml:space="preserve">
+    <value>Created by me</value>
+  </data>
+  <data name="CREATION_DATE_FIELD" xml:space="preserve">
+    <value>Creation Date</value>
+  </data>
+  <data name="CREATORS_FIELD" xml:space="preserve">
+    <value>Creators</value>
+  </data>
+  <data name="CREATOR_BASE_NUMBERS" xml:space="preserve">
+    <value>Creator IP Base Number(s)</value>
+  </data>
+  <data name="CREATOR_IP_NAME_NUMBER_FIELD" xml:space="preserve">
+    <value>Creator IP Name Number(s)</value>
+  </data>
+  <data name="CREATOR_NAMES_FIELD" xml:space="preserve">
+    <value>Creator Name(s)</value>
+  </data>
+  <data name="CREATOR_SURNAMES" xml:space="preserve">
+    <value>Creator Surname(s)</value>
+  </data>
+  <data name="DATABASE" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="DATE_FIELD" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DEMERGE" xml:space="preserve">
+    <value>Demerge</value>
+  </data>
+  <data name="DEMERGE_HERE" xml:space="preserve">
+    <value>Demerge here</value>
+  </data>
+  <data name="DERIVED_FROM_WORK" xml:space="preserve">
+    <value>Derived from Work</value>
+  </data>
+  <data name="DERIVED_ISWC_FIELD" xml:space="preserve">
+    <value>Derived ISWC</value>
+  </data>
+  <data name="DERIVED_WORKS" xml:space="preserve">
+    <value>Derived Works</value>
+  </data>
+  <data name="DERIVED_WORK_ISWC_FIELD" xml:space="preserve">
+    <value>Derived Work ISWC</value>
+  </data>
+  <data name="DERIVED_WORK_TITLE_FIELD" xml:space="preserve">
+    <value>Derived Work Title</value>
+  </data>
+  <data name="DISAMBIGUATED_FROM_FIELD" xml:space="preserve">
+    <value>Disambiguated From ISWCs</value>
+  </data>
+  <data name="DISAMBIGUATE_ALL_ISWCS" xml:space="preserve">
+    <value>Disambiguate all ISWCs</value>
+  </data>
+  <data name="DISAMBIGUATION" xml:space="preserve">
+    <value>Disambiguation</value>
+  </data>
+  <data name="DISAMBIGUATION_REASON_FIELD" xml:space="preserve">
+    <value>Reason of disambiguation</value>
+  </data>
+  <data name="ENTER_CREATOR_DATA" xml:space="preserve">
+    <value>Enter multiple creator surnames, IP Name Numbers, or IP Base Numbers separated by the ';' character.</value>
+  </data>
+  <data name="ENTER_TITLE" xml:space="preserve">
+    <value>1. Enter a partial title</value>
+  </data>
+  <data name="FILTER_BY_STATUS" xml:space="preserve">
+    <value>Filter by status:</value>
+  </data>
+  <data name="FOLLOWING_ISWCS_MERGED" xml:space="preserve">
+    <value>The following ISWCs have been merged into ISWC {0}. You can demerge one or more of these from the ISWC. Note: ISWCs merged prior to the introduction of the new ISWC database can not be demerged.</value>
+  </data>
+  <data name="FROM_DATE" xml:space="preserve">
+    <value>From Date</value>
+  </data>
+  <data name="GO_BACK" xml:space="preserve">
+    <value>Go Back</value>
+  </data>
+  <data name="IF_DERIVED_WORK" xml:space="preserve">
+    <value>If this work is a derived work then select the type and add the ISWC or titles for the works it is derived from</value>
+  </data>
+  <data name="IP_BASE_NUMBER_FIELD" xml:space="preserve">
+    <value>IP Base Number</value>
+  </data>
+  <data name="IP_NAME_NUMBER_FIELD" xml:space="preserve">
+    <value>IP Name Number</value>
+  </data>
+  <data name="ISWC_FIELD" xml:space="preserve">
+    <value>ISWC</value>
+  </data>
+  <data name="ITEMS_SELECTED" xml:space="preserve">
+    <value>Items Selected</value>
+  </data>
+  <data name="LAST_NAME" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LAST_UPDATE_FIELD" xml:space="preserve">
+    <value>Last Update</value>
+  </data>
+  <data name="LISTED_ISWCS_MERGED" xml:space="preserve">
+    <value>Some of the ISWCs listed above were merged into this Preferred ISWC.</value>
+  </data>
+  <data name="LOOKUP" xml:space="preserve">
+    <value>Lookup</value>
+  </data>
+  <data name="MAKE_ANOTHER_SUBMISSION" xml:space="preserve">
+    <value>Make another New Submission</value>
+  </data>
+  <data name="MERGE_LIST" xml:space="preserve">
+    <value>Merge List</value>
+  </data>
+  <data name="METHOD_FIELD" xml:space="preserve">
+    <value>Method</value>
+  </data>
+  <data name="NAME_FIELD" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NEW_SUBMISSION" xml:space="preserve">
+    <value>New Submission</value>
+  </data>
+  <data name="OR" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="ORGINAL_PUBLISHERS" xml:space="preserve">
+    <value>Original Publishers</value>
+  </data>
+  <data name="ORIGINAL_SUBMISSION_FIELD" xml:space="preserve">
+    <value>Original Submission</value>
+  </data>
+  <data name="ORIGINAL_TITLE_FIELD" xml:space="preserve">
+    <value>Original Title</value>
+  </data>
+  <data name="ORIGINATING_AGENCY_FIELD" xml:space="preserve">
+    <value>Originating Agency</value>
+  </data>
+  <data name="PAGINATION_NEXT" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="PAGINATION_PER_PAGE" xml:space="preserve">
+    <value>per page</value>
+  </data>
+  <data name="PAGINATION_PREVIOUS" xml:space="preserve">
+    <value>Prev</value>
+  </data>
+  <data name="PAGINATION_SHOW" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="PENDING_APPROVAL" xml:space="preserve">
+    <value>Pending Approval</value>
+  </data>
+  <data name="PERFORMERS" xml:space="preserve">
+    <value>Performers</value>
+  </data>
+  <data name="PREFERRED_ISWC_ASSIGNED" xml:space="preserve">
+    <value>Preferred ISWC Assigned</value>
+  </data>
+  <data name="PREFERRED_ISWC_FIELD" xml:space="preserve">
+    <value>Preferred ISWC</value>
+  </data>
+  <data name="RANK_FIELD" xml:space="preserve">
+    <value>Rank</value>
+  </data>
+  <data name="REASON_FIELD" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="REJECT" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="REJECTED" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="REJECT_ALL" xml:space="preserve">
+    <value>Reject All</value>
+  </data>
+  <data name="REMOVE_FROM_MERGE_LIST" xml:space="preserve">
+    <value>Remove from merge list</value>
+  </data>
+  <data name="RESULTS" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="ROLE_FIELD" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SEARCH_BY_AGENCY_WORK_CODE" xml:space="preserve">
+    <value>by Agency Work Code</value>
+  </data>
+  <data name="SEARCH_BY_ISWC" xml:space="preserve">
+    <value>by ISWC</value>
+  </data>
+  <data name="SEARCH_BY_TITLE" xml:space="preserve">
+    <value>by Title</value>
+  </data>
+  <data name="SELECT_ALL" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="SELECT_ISWC_TO_MERGE_INTO" xml:space="preserve">
+    <value>Please select the ISWC to merge into and then press the 'Submit Merge' button to merge the listed ISWCs into the selected one.</value>
+  </data>
+  <data name="SELECT_PREFERRED_ISWC" xml:space="preserve">
+    <value>Select Preferred ISWC</value>
+  </data>
+  <data name="SETTINGS" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SHOW_WORKFLOWS" xml:space="preserve">
+    <value>Show workflows:</value>
+  </data>
+  <data name="SOURCE_AGENCY_FIELD" xml:space="preserve">
+    <value>Source Agency</value>
+  </data>
+  <data name="STANDARD_INSTRUMENTATION_FIELD" xml:space="preserve">
+    <value>Standard Instrumentation</value>
+  </data>
+  <data name="STATUS_FIELD" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SUBMISSIONS" xml:space="preserve">
+    <value>Submissions</value>
+  </data>
+  <data name="SUBMISSION_HISTORY" xml:space="preserve">
+    <value>Submission History</value>
+  </data>
+  <data name="SUBMISSION_SUCCESSFUL" xml:space="preserve">
+    <value>Your submission has been successfully submitted and an ISWC number has been assigned, see details below:</value>
+  </data>
+  <data name="SUBMIT" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="SUBMITTING_AGENCIES_FIELD" xml:space="preserve">
+    <value>Submitting Agencies</value>
+  </data>
+  <data name="SUBMITTING_AGENCY_FIELD" xml:space="preserve">
+    <value>Submitting Agency</value>
+  </data>
+  <data name="SUBMITTING_AGENCY_WORK_NO_FIELD" xml:space="preserve">
+    <value>Submitting Agency Work No.</value>
+  </data>
+  <data name="SUBMIT_DEMERGE" xml:space="preserve">
+    <value>Submit Demerge</value>
+  </data>
+  <data name="SUBMIT_MERGE" xml:space="preserve">
+    <value>Submit Merge</value>
+  </data>
+  <data name="TITLES_FIELD" xml:space="preserve">
+    <value>Titles</value>
+  </data>
+  <data name="TITLE_FIELD" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TO_DATE" xml:space="preserve">
+    <value>To Date</value>
+  </data>
+  <data name="TYPE_FIELD" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="UPDATE_SUBMISSION" xml:space="preserve">
+    <value>Update Submission</value>
+  </data>
+  <data name="VIEW_LESS_FIELD" xml:space="preserve">
+    <value>View Less</value>
+  </data>
+  <data name="VIEW_MERGE_LIST" xml:space="preserve">
+    <value>View Merge List</value>
+  </data>
+  <data name="VIEW_MORE_FIELD" xml:space="preserve">
+    <value>View More</value>
+  </data>
+  <data name="VIEW_SUBMISSION_HISTORY" xml:space="preserve">
+    <value>View Submission History</value>
+  </data>
+  <data name="WORKFLOWS" xml:space="preserve">
+    <value>Workflows</value>
+  </data>
+  <data name="WORKFLOW_ID_FIELD" xml:space="preserve">
+    <value>Workflow ID</value>
+  </data>
+  <data name="WORKFLOW_TYPE_FIELD" xml:space="preserve">
+    <value>Workflow Type</value>
+  </data>
+  <data name="PUBLISHERS_FIELD" xml:space="preserve">
+    <value>Publishers</value>
+  </data>
+  <data name="ADDITIONAL_ISWCS_TO_DISAMBIGUATE" xml:space="preserve">
+    <value>Additional ISWCs to disambiguate from (optional and separate with ";")</value>
+  </data>
+  <data name="ISWCS_TO_DISAMIGUATE" xml:space="preserve">
+    <value>ISWCs to disambiguate from:</value>
+  </data>
+  <data name="MATCHES_FOUND" xml:space="preserve">
+    <value>Matches Found</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="PREFERRED" xml:space="preserve">
+    <value>Preferred</value>
+  </data>
+  <data name="REASONS_FOR_DISAMBIGUATION" xml:space="preserve">
+    <value>Reasons for disambiguation*:</value>
+  </data>
+  <data name="SELECT_ISWC_OR_DISAMBIGUATE" xml:space="preserve">
+    <value>Please select the preferred ISWC to be attached to the submission OR disambiguate all the matching ISWCs</value>
+  </data>
+  <data name="SELECT_ISWC" xml:space="preserve">
+    <value>Please select an existing Preferred ISWC to be attached to the submission from the matches below.</value>
+  </data>
+  <data name="SELECT_ISWC_INELIGIBLE" xml:space="preserve">
+    <value>Note that you are not eligible to generate a new ISWC or disambiguate ISWCs for this metadata. Please select an existing Preferred ISWC to be attached to the submission from the matches below.</value>
+  </data>
+  <data name="USER_GUIDE" xml:space="preserve">
+    <value>User Guide</value>
+  </data>
+  <data name="IP_NOT_FOUND" xml:space="preserve">
+    <value>IP not found</value>
+  </data>
+  <data name="LOGOUT" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="SUBMISSION_SUCCESSFUL_SELECTED_PREF" xml:space="preserve">
+    <value>Your metadata submission has successfully been added to the selected existing Preferred ISWC</value>
+  </data>
+  <data name="SUBMISSION_SUCCESSFUL_UPDATE" xml:space="preserve">
+    <value>Your updates have been submitted successfully to the existing Preferred ISWC</value>
+  </data>
+  <data name="SELECT_TYPE" xml:space="preserve">
+    <value>Select Type</value>
+  </data>
+  <data name="GO_BACK_TO_SEARCH_RESULTS" xml:space="preserve">
+    <value>Go Back</value>
+  </data>
+  <data name="ENTER_CREATOR_DATA_REPORT" xml:space="preserve">
+    <value>Enter IP Name Number or IP Base Number</value>
+  </data>
+  <data name="ENTER_CREATOR_DATA_PUBLIC" xml:space="preserve">
+    <value>Enter multiple creator surnames or IP Name Numbers separated by the ';' character.</value>
+  </data>
+  <data name="ENTER_CREATOR_DATA_NO_SURNAME" xml:space="preserve">
+    <value>Enter multiple IP Name Numbers or IP Base Numbers separated by the ';' character.</value>
+  </data>
+  <data name="ENTER_CREATOR_DATA_NO_SURNAME_PUBLIC" xml:space="preserve">
+    <value>Enter multiple IP Name Numbers separated by the ';' character.</value>
+  </data>
+  <data name="SEARCH_BY_CREATOR" xml:space="preserve">
+    <value>by Creator</value>
+  </data>
+  <data name="SURNAME_FIELD" xml:space="preserve">
+    <value>Surname Firstname(s)</value>
+  </data>
+  <data name="ADD" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="DEMERGE_SUCCESSFUL" xml:space="preserve">
+    <value>successfully demerged from</value>
+  </data>
+  <data name="ERROR_OCCURED" xml:space="preserve">
+    <value>An error occurred</value>
+  </data>
+  <data name="MERGE_SUCCESSFUL" xml:space="preserve">
+    <value>successfully merged into</value>
+  </data>
+  <data name="OKAY" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="REMOVE" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="SEARCH_RESULTS" xml:space="preserve">
+    <value>Search Results</value>
+  </data>
+  <data name="UPDATE_WF_TASKS" xml:space="preserve">
+    <value>Update Workflow Tasks</value>
+  </data>
+  <data name="WF_UPDATED_SUCCESSFULLY" xml:space="preserve">
+    <value>Workflow Tasks updated successfully</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="ARE_YOU_SURE" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="WF_TASKS_WILL_BE" xml:space="preserve">
+    <value>workflow tasks will be</value>
+  </data>
+  <data name="OF" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="TERMS_OF_USE" xml:space="preserve">
+    <value>Terms of Use</value>
+  </data>
+  <data name="ISWC_NET" xml:space="preserve">
+    <value>ISWC-Net</value>
+  </data>
+  <data name="LAST_UPDATED" xml:space="preserve">
+    <value>Last updated:</value>
+  </data>
+  <data name="TERMS_AND_CONDITIONS_TEXT" xml:space="preserve">
+    <value>This Terms of Use ("Agreement") describes conditions under which the International Confederation of Authors and Composers ("CISAC"), as the ISWC International Agency, allows the public to access and use the ISWC-Network ("ISWC-Net"), whether accessed via computer, mobile device or other technology.
+
+This Agreement also contain a link to CISAC's Privacy Policy which incorporated by reference and made a part of this Agreement. When you access and use ISWC-Net, you agree to the terms and conditions of this Agreement. If you do not agree to the terms and conditions, you should immediately cease use of the ISWC-Net.
+
+PLEASE READ THIS AGREEMENT CAREFULLY BEFORE USING THE ISWC-NET.
+
+Introduction to ISWC
+
+The International Standard Musical Work Code ("ISWC") is a unique, permanent and internationally recognized reference number for the identification of musical works. The ISWC standard has been approved by the International Organization for Standardization ("ISO"), and is currently assigned to by rights management organisations through ISWC registration agencies during the process of registering the musical works with rights management organizations.
+
+Introduction to ISWC-Net
+
+The ISWC-Net facilitates the identification of works and their allocated ISWCs. It contains certain metadata (e.g., title, songwriter(s) and/or composer(s)) relating to works that have been, or are in the process of being, registered with rights management organisations.
+
+The publication of works in the ISWC-Net does not mean that the work is public domain and/or free of any rights. Additionally, the fact that a work does not appear in the ISWC-Net does not mean that the work is in the public domain and/or free of any rights.
+
+Due to complexities in the work registration process, in a limited number of cases, more than one ISWC may have been issued for the same musical work. The ISWC-Net will display the ISWC that should be used (called the Preferred ISWC). Should another ISWC exists for the same work, this ISWC is called "Archived ISWC", which is searchable, but is displayed in the work detail page.
+
+
+Use of the ISWC-Net
+
+Provided that you comply with this Agreement, CISAC, as the ISWC International Agency, hereby grants you a non-exclusive, non-transferable, limited license to access, display, and use the ISWC-Net in order to lookup for metadata related to an ISWC or identify the ISWC related to a given musical work ("Purpose").
+
+You undertake not to access, display and use the ISWC-Net for any purpose other than the Purpose defined in this Agreement.
+
+You accept and understand that the information contained in the ISWC-Net is intended for search and information purposes in the form and manner presented. You agree that you will only run manual queries through the ISWC-Net, and will not develop or run scripts or any other tools to generate queries or capture and/or download and store the results automatically. You may not systematically or automatically collect, scrape, harvest, or use other means to copy data from the ISWC-Net.
+
+You understand and agree that information obtained from the ISWC-Net may not be sold, offered for sale, marketed, promoted, advertised, commercialized or used for any other purpose, for instance, as the basis to create derivative works, directly or indirectly, in any manner.
+
+You agree not to reproduce, modify, create derivative works from, display, publish, distribute, disseminate, broadcast or circulate any content found on the ISWC-Net to any third party (including, without limitation, the display and distribution of such content via a third-party website). The foregoing prohibition includes, but is not limited to, the practice of embedding the ISWC-Net (or parts thereof) in "frames" or other pages offered from other sites, and "mirroring" content from the ISWC-Net on a server other than that operated by CISAC or its service provider. You further agree that you will not disassemble, decompile, reverse engineer or otherwise modify the content in any way at any time.
+
+You agree to access, display and use the ISWC-Net only for lawful purposes, and that you are responsible for your access and use of the ISWC-Net. You agree not to access, display and use the ISWC-Net in any manner that interferes with its normal operation, its availability, or with any other user's use and enjoyment of the ISWC-Net.
+
+You recognize that ISWC-Net may contain personally identifiable information ("Personal Data"), and you agree that you will not use any such Personal Data for any purpose other than the Purpose. You understand and agree that these Personal Data may therefore be governed by data protection law which may interfere with the permitted uses contemplated herein and that, upon request by CISAC, you will refrain from using such Personal Data in any manner and for any purpose.
+
+
+Disclaimer
+
+Your use of the ISWC-Net is at your sole risk. The ISWC-Net is provided on an "as is" and "as available" basis. CISAC, as the ISWC International Agency, and its appointed registration agencies do not take over responsibility for the correctness and accuracy of the provided data nor warranty or indemnify the user for any damage, which may result either directly or indirectly from information, which the user retrieved from ISWC-Net.
+
+Further, neither CISAC or its service provider warrant that access to or use of the ISWC-Net will be uninterrupted or error-free, that defects will be corrected, that the ISWC-Net or the server that makes it available are free of viruses or other harmful components or that information accessible via the ISWC-Net will be complete, accurate, or timely. To the fullest extent permissible under applicable law, you understand and agree that neither CISAC or its service provider shall not be liable for any direct, indirect, incidental, special, consequential, punitive, exemplary or any other damages relating to or resulting from your use or inability to use the ISWC-Net or from any actions CISAC or its service provider takes or fails to take as a result of electronic mail messages and/or other electronic submissions you send CISAC or its service provider. These include damages relating to errors, omissions, down time, interruptions, defects, delays, computer viruses, your loss of profits, loss of data, unauthorized access to and alteration of your transmissions and data, and other tangible and intangible losses. This limitation applies regardless of whether the damages are claimed under the terms of a contract, as the result of negligence or otherwise, and even if CISAC or its service provider or their representatives have been negligent or have been advised of the possibility of such damages.
+
+CISAC reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, the ISWC-Net (or any part thereof) with or without notice. You agree that CISAC shall not be liable to you or to any third party for any modification, suspension or discontinuation of the ISWC-Net.
+
+
+Changes to this Agreement
+
+CISAC reserves the right, at its sole discretion, to change, modify or otherwise alter these terms and conditions at any time. Such changes and/or modifications shall become effective immediately upon the posting thereof. The "Last Updated" date at the top of this Agreement will indicate when the latest modifications were made. Please review the terms and conditions periodically. Your continued use of the ISWC-Net following the posting of changes and/or modifications will constitute your acceptance of the revised terms and conditions.
+
+
+Privacy
+
+In addition to these terms and conditions, please review CISAC's Privacy Policy available on CISAC website (https://www.cisac.org/cisac/Privacy-Policy), which also governs your access and use of the ISWC-Net.
+
+
+Applicable laws
+
+When you access and use the ISWC-Net or any data made available via the ISWC-Net, you are responsible for compliance with applicable laws. Any claim relating to the ISWC-Net shall be governed by the French law.
+
+
+Contact
+
+If you any additional questions about this Agreement or the ISWC-Net, please contact CISAC at info@iswc.org.
+</value>
+  </data>
+  <data name="AGREE_TO_TERMS" xml:space="preserve">
+    <value>I agree</value>
+  </data>
+  <data name="LANG_ENGLISH" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LANG_FRENCH" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="LANG_SPANISH" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="SURNAME_BAND_NAME" xml:space="preserve">
+    <value>Surname / Band Name</value>
+  </data>
+  <data name="PUBLISHER_IP_NAME" xml:space="preserve">
+    <value>Publisher IP Name</value>
+  </data>
+  <data name="DISAMBIGUATION_MESSAGE" xml:space="preserve">
+    <value>This work submission has been disambiguated from other works. Click "View More" for details.</value>
+  </data>
+  <data name="CONFIRM_DELETION" xml:space="preserve">
+    <value>Confirm Deletion</value>
+  </data>
+  <data name="DELETE_CONFIRM" xml:space="preserve">
+    <value>This will delete your entire work submission and can not be undone. Press "Confirm Deletion" to proceed with this deletion.</value>
+  </data>
+  <data name="DELETE_SUBMISSION" xml:space="preserve">
+    <value>Delete Work Submission?</value>
+  </data>
+  <data name="SUB_WITH_AGENCY_WORKCODE" xml:space="preserve">
+    <value>The submission with Agency Work Code</value>
+  </data>
+  <data name="SUCCESSFULLY_DELETED" xml:space="preserve">
+    <value>has been successfully deleted</value>
+  </data>
+  <data name="MULTIPLE" xml:space="preserve">
+    <value>Multiple</value>
+  </data>
+  <data name="NON_SOCIETY" xml:space="preserve">
+    <value>Non Society</value>
+  </data>
+  <data name="ISWC_HAS_BEEN_MERGED" xml:space="preserve">
+    <value>This ISWC has been merged into the following Preferred ISWC:</value>
+  </data>
+  <data name="MERGE_INFO" xml:space="preserve">
+    <value>Merge Information</value>
+  </data>
+  <data name="SEARCH_FOR_ISWC" xml:space="preserve">
+    <value>Search for this ISWC to view the current Preferred metadata for this work.</value>
+  </data>
+  <data name="WORK_HAS_BEEN_MERGED" xml:space="preserve">
+    <value>This work submission has been merged into another. Click "View More" for details.</value>
+  </data>
+  <data name="BVLTR" xml:space="preserve">
+    <value>BVLTR</value>
+  </data>
+  <data name="DIA" xml:space="preserve">
+    <value>DIA</value>
+  </data>
+  <data name="DIA_DESCRIPTION" xml:space="preserve">
+    <value>The work has the same title and creators but is a different arrangement of the work.</value>
+  </data>
+  <data name="DIA_DESCRIPTION_2" xml:space="preserve">
+    <value>An arrangement for specific instrumentations, e.g. strings</value>
+  </data>
+  <data name="DIA_DESCRIPTION_3" xml:space="preserve">
+    <value>A different arrangement for a new album</value>
+  </data>
+  <data name="DIC" xml:space="preserve">
+    <value>DIC</value>
+  </data>
+  <data name="DIC_DESCRIPTION" xml:space="preserve">
+    <value>The work has the same title and creators but is a different AV Work / Cue.</value>
+  </data>
+  <data name="DIC_DESCRIPTION_2" xml:space="preserve">
+    <value>The BVLTR indicator can be used to provide further information about what type of cue the work is, i.e. background, logo, theme, visual or rolled up cue.</value>
+  </data>
+  <data name="DIE" xml:space="preserve">
+    <value>DIE</value>
+  </data>
+  <data name="DIE_DESCRIPTION" xml:space="preserve">
+    <value>The work has the same title and creators but is an Excerpt of another work.</value>
+  </data>
+  <data name="DISAMBIG_REASON_CODES" xml:space="preserve">
+    <value>Disambiguation Reason Codes</value>
+  </data>
+  <data name="DIT" xml:space="preserve">
+    <value>DIT</value>
+  </data>
+  <data name="DIT_DESCRIPTION" xml:space="preserve">
+    <value>Different work which has the same title and creators. Can be distinguished by adding supplemental information, such as performer or instrumentation details.</value>
+  </data>
+  <data name="DIT_DESCRIPTION_2" xml:space="preserve">
+    <value>Work 1. Title = Happy / Creator = Pharrell Williams</value>
+  </data>
+  <data name="DIT_DESCRIPTION_3" xml:space="preserve">
+    <value>Work 2. Title = Happy / Creator = Pharrell Williams / Performer = N.E.R.D</value>
+  </data>
+  <data name="DIV" xml:space="preserve">
+    <value>DIV</value>
+  </data>
+  <data name="DIV_DESCRIPTION" xml:space="preserve">
+    <value>The work has the same title and creators but is a different version of a work (excerpt, modified work e.g. instrumental) with different shares.</value>
+  </data>
+  <data name="FIND_OUT_MORE_DISAMBIG" xml:space="preserve">
+    <value>Find out more about Disambiguation Reason Codes</value>
+  </data>
+  <data name="FOR_EXAMPLE" xml:space="preserve">
+    <value>For example</value>
+  </data>
+  <data name="BE_BACK_UP" xml:space="preserve">
+    <value>We'll be back up shortly.</value>
+  </data>
+  <data name="SCHEDULED_MAINTENANCE" xml:space="preserve">
+    <value>Scheduled Maintenance in Progress</value>
+  </data>
+  <data name="SORRY_FOR_INCON" xml:space="preserve">
+    <value>Sorry for any inconvenience.</value>
+  </data>
+  <data name="REPORTS" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="AGENCY_INTEREST_EXTRACT" xml:space="preserve">
+    <value>Agency Interest Extract</value>
+  </data>
+  <data name="AGENCY_STATS" xml:space="preserve">
+    <value>Agency Statistics</value>
+  </data>
+  <data name="FILE_SUB_AUDIT" xml:space="preserve">
+    <value>File Submission Audit</value>
+  </data>
+  <data name="ISWC_FULL_EXTRACT" xml:space="preserve">
+    <value>ISWC Full Extract</value>
+  </data>
+  <data name="ISWC_CREATOR_EXTRACT" xml:space="preserve">
+    <value>ISWC Creator Extract</value>
+  </data>
+  <data name="PUBLISHER_ISWC_TRACKING" xml:space="preserve">
+    <value>Publisher ISWC Tracking</value>
+  </data>
+  <data name="SUBMISSION_AUDIT" xml:space="preserve">
+    <value>Submission Audit</value>
+  </data>
+  <data name="SELECT_PREFERRED_LANGUAGE" xml:space="preserve">
+    <value>Select your preferred language</value>
+  </data>
+  <data name="CHOOSE_REPORT_TYPE" xml:space="preserve">
+    <value>Choose your preferred type of report</value>
+  </data>
+  <data name="DAYS" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="DISPLAY_ERROR_SUCCESS_GRAPH" xml:space="preserve">
+    <value>Display Error/Success Graph</value>
+  </data>
+  <data name="DISPLAY_LIST_VIEW" xml:space="preserve">
+    <value>Display List View</value>
+  </data>
+  <data name="ERROR_RATE_PER_MONTH" xml:space="preserve">
+    <value>Error rate per month</value>
+  </data>
+  <data name="ERROR_SUCCESS_GRAPH" xml:space="preserve">
+    <value>Error/Success Graph</value>
+  </data>
+  <data name="EXTRACT_TO_FTP" xml:space="preserve">
+    <value>Extract to Excel in FTP</value>
+  </data>
+  <data name="EXTRACT_TO_FTP_JSON" xml:space="preserve">
+    <value>Extract to JSON in FTP</value>
+  </data>
+  <data name="NO_OF_SUBS" xml:space="preserve">
+    <value>No. of Submissions</value>
+  </data>
+  <data name="PUBLISHER_IP_NAME_NUMBER_FIELD" xml:space="preserve">
+    <value>Publisher IP Name Number</value>
+  </data>
+  <data name="PUBLISHER_WORK_NUMBER_FIELD" xml:space="preserve">
+    <value>Publisher Work Number</value>
+  </data>
+  <data name="TOTAL_ERROR_FOR_MONTH" xml:space="preserve">
+    <value>Total Error for month</value>
+  </data>
+  <data name="TOTAL_SUCCEEDED_FOR_MONTH" xml:space="preserve">
+    <value>Total Succeeded for month</value>
+  </data>
+  <data name="ISWC_ELIGIBLE" xml:space="preserve">
+    <value>ISWC Eligible</value>
+  </data>
+  <data name="ISWC_ELIGIBLE_DISAMBIGUATION" xml:space="preserve">
+    <value>ISWC Eligible with Disambiguation</value>
+  </data>
+  <data name="MONTH" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="NON_ISWC_ELIGIBLE" xml:space="preserve">
+    <value>Non ISWC Eligible</value>
+  </data>
+  <data name="PENDING" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="PER_MONTH" xml:space="preserve">
+    <value>Per Month</value>
+  </data>
+  <data name="PER_YEAR" xml:space="preserve">
+    <value>Per Year</value>
+  </data>
+  <data name="SELECT_PREF_MONTH_YEAR" xml:space="preserve">
+    <value>Select preferred month and year to be displayed.</value>
+  </data>
+  <data name="TIME_PERIOD" xml:space="preserve">
+    <value>Time Period</value>
+  </data>
+  <data name="TOTAL_SUCCESSFUL_SUBMISSIONS" xml:space="preserve">
+    <value>Total Successful Submissions</value>
+  </data>
+  <data name="TOTAL_WORKFLOWS_ASSIGNED" xml:space="preserve">
+    <value>Total Workflows Assigned</value>
+  </data>
+  <data name="YEAR" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="ALL" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="DISPLAY_LIST_VIEW_MESSAGE" xml:space="preserve">
+    <value>Note: The "Display List View" option is restricted to the first 1000 records that meet your selection criteria. Use the "Extract to Excel in FTP" option to view all results.</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="FAILED" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="OPTIONAL" xml:space="preserve">
+    <value>(optional)</value>
+  </data>
+  <data name="PUBLISHER" xml:space="preserve">
+    <value>Publisher</value>
+  </data>
+  <data name="SUCCEEDED" xml:space="preserve">
+    <value>Succeeded</value>
+  </data>
+  <data name="SUCCESSFUL" xml:space="preserve">
+    <value>Successful</value>
+  </data>
+  <data name="TRANSACTION_SOURCE" xml:space="preserve">
+    <value>Transaction Source</value>
+  </data>
+  <data name="ACK_FILE_NAME_FIELD" xml:space="preserve">
+    <value>Ack File Name</value>
+  </data>
+  <data name="ACK_GENERATED_FIELD" xml:space="preserve">
+    <value>Ack Generated On</value>
+  </data>
+  <data name="LIST_VIEW" xml:space="preserve">
+    <value>List View</value>
+  </data>
+  <data name="PROCESSING_DURATION_FIELD" xml:space="preserve">
+    <value>Processing Duration</value>
+  </data>
+  <data name="SUBMITTED_FILE_NAME_FIELD" xml:space="preserve">
+    <value>Submitted File Name</value>
+  </data>
+  <data name="SUBMITTING_PUBLISHER_FIELD" xml:space="preserve">
+    <value>Submitting Publisher</value>
+  </data>
+  <data name="EXTRACT_TO_SFTP_SUBMITTED" xml:space="preserve">
+    <value>Your job has been submitted. All data requested will be extracted in Excel format and transferred to the /Reports folder in your society ftp location on the ISWC Database ftp server. You will receive an email once the file is ready.</value>
+  </data>
+  <data name="EXTRACT_TO_SFTP_SUBMITTED_JSON" xml:space="preserve">
+    <value>Your job has been submitted. All data requested will be extracted in JSON format and transferred to the /Reports folder in your society ftp location on the ISWC Database ftp server. You will receive an email once the file is ready.</value>
+  </data>
+  <data name="ISWC_FULL_EXTRACT_WARNING" xml:space="preserve">
+    <value>A new up-to-date extract of ISWC data will take longer to generate than using the most recent cached version.</value>
+  </data>
+  <data name="ISWC_CREATOR_EXTRACT_WARNING" xml:space="preserve">
+    <value>A new up-to-date extract of ISWC data will take longer to generate than using the most recent cached version.</value>
+  </data>
+  <data name="LAST_VERSION_AVAILABLE" xml:space="preserve">
+    <value>Last version available:</value>
+  </data>
+  <data name="USE_MOST_RECENT_VERSION" xml:space="preserve">
+    <value>Use most recent available cached version?</value>
+  </data>
+  <data name="SELECT_PREF_YEAR" xml:space="preserve">
+    <value>Select preferred year to be displayed</value>
+  </data>
+  <data name="SHOW_GRAPHS" xml:space="preserve">
+    <value>Show Graphs</value>
+  </data>
+  <data name="FIRST_NAME" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="IP_AGREEMENT" xml:space="preserve">
+    <value>IP Agreement</value>
+  </data>
+  <data name="NON_ISWC_ELIGIBLE_DISAMBIGUATION" xml:space="preserve">
+    <value>Non ISWC Eligible with Disambiguation</value>
+  </data>
+  <data name="APRIL" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="AUGUST" xml:space="preserve">
+    <value>August</value>
+  </data>
+  <data name="DECEMBER" xml:space="preserve">
+    <value>December</value>
+  </data>
+  <data name="FEBRUARY" xml:space="preserve">
+    <value>February</value>
+  </data>
+  <data name="JANUARY" xml:space="preserve">
+    <value>January</value>
+  </data>
+  <data name="JULY" xml:space="preserve">
+    <value>July</value>
+  </data>
+  <data name="JUNE" xml:space="preserve">
+    <value>June</value>
+  </data>
+  <data name="MARCH" xml:space="preserve">
+    <value>March</value>
+  </data>
+  <data name="MAY" xml:space="preserve">
+    <value>May</value>
+  </data>
+  <data name="NOVEMBER" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="NO_RECORDS" xml:space="preserve">
+    <value>No records found</value>
+  </data>
+  <data name="OCTOBER" xml:space="preserve">
+    <value>October</value>
+  </data>
+  <data name="SEPTEMBER" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="CONSIDER_OT_ONLY" xml:space="preserve">
+    <value>Consider Original Titles only?</value>
+  </data>
+  <data name="PD_DATE_RANGE" xml:space="preserve">
+    <value>The date range at which the ISWCs were created.</value>
+  </data>
+  <data name="PD_LEAVE" xml:space="preserve">
+    <value>Leave the fields blank if you want to include all ISWCs that have been created by the selected Agency.</value>
+  </data>
+  <data name="POTENTIAL_DUPLICATES" xml:space="preserve">
+    <value>Potential Duplicates</value>
+  </data>
+  <data name="ACCESS_REQUESTED" xml:space="preserve">
+    <value>Access Requested</value>
+  </data>
+  <data name="ACCESS_REQUEST_TEXT" xml:space="preserve">
+    <value>Below is the list of the current Outstanding Access Requests, you can Approve or Decline a request by clicking the "Manage Roles" button of each user.</value>
+  </data>
+  <data name="AGENCY_USERS_TEXT" xml:space="preserve">
+    <value>Below is the list of all the existing users in your agency. You can manage the role of each user by clicking the "Manage roles" button which will take you to the users profile where you can assign or remove access for the different roles of that specific user.</value>
+  </data>
+  <data name="ASSIGNED_ROLES" xml:space="preserve">
+    <value>Assigned and Available Roles</value>
+  </data>
+  <data name="ASSIGN_ROLE" xml:space="preserve">
+    <value>Assign role</value>
+  </data>
+  <data name="DECLINE" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="GO_BACK_TO_MANAGE_USER_ROLES" xml:space="preserve">
+    <value>Go back to Manage User Roles</value>
+  </data>
+  <data name="MANAGE_ROLES" xml:space="preserve">
+    <value>Manage Roles</value>
+  </data>
+  <data name="MANAGE_USER_ROLES" xml:space="preserve">
+    <value>Manage User Roles</value>
+  </data>
+  <data name="MY_PROFILE" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="OUTSTANDING_ACCESS_REQUESTS" xml:space="preserve">
+    <value>Outstanding Access Requests</value>
+  </data>
+  <data name="PENDING_REQUEST" xml:space="preserve">
+    <value>Pending request</value>
+  </data>
+  <data name="REMOVE_ROLE" xml:space="preserve">
+    <value>Remove role</value>
+  </data>
+  <data name="REPORT_AGENCY_INTEREST" xml:space="preserve">
+    <value>Report Agency Interest</value>
+  </data>
+  <data name="REPORT_BASICS" xml:space="preserve">
+    <value>Report Basics</value>
+  </data>
+  <data name="REPORT_EXTRACTS" xml:space="preserve">
+    <value>Report Extracts</value>
+  </data>
+  <data name="REPORT_ISWC_FULL" xml:space="preserve">
+    <value>Report ISWC Full Extract Not Cached</value>
+  </data>
+  <data name="REQUEST_ACCESS" xml:space="preserve">
+    <value>Request access</value>
+  </data>
+  <data name="ROLE_REQUESTED" xml:space="preserve">
+    <value>Role Requested</value>
+  </data>
+  <data name="SOCIETY_CODE" xml:space="preserve">
+    <value>Society Code</value>
+  </data>
+  <data name="TO_ASSIGN_THIS_ROLE" xml:space="preserve">
+    <value>To assign this role the Report Basics role needs to be assigned first</value>
+  </data>
+  <data name="UPDATE" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="USERNAME" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="USERS_IN_AGENCY" xml:space="preserve">
+    <value>Users in your Agency</value>
+  </data>
+  <data name="USER_PROFILE" xml:space="preserve">
+    <value>User Profile</value>
+  </data>
+  <data name="SEARCH_BY_USERNAME" xml:space="preserve">
+    <value>Search by Username</value>
+  </data>
+  <data name="ACCESS_DENIED" xml:space="preserve">
+    <value>Access denied - please request access for the required role from the list below</value>
+  </data>
+  <data name="ERROR_REQUESTING" xml:space="preserve">
+    <value>Error requesting access</value>
+  </data>
+  <data name="ERROR_RETRIEVING" xml:space="preserve">
+    <value>Error retrieving data</value>
+  </data>
+  <data name="ERROR_UPDATING" xml:space="preserve">
+    <value>Error updating role</value>
+  </data>
+  <data name="NO_ROLES_FOUND" xml:space="preserve">
+    <value>No roles found</value>
+  </data>
+  <data name="REQUEST_REASON" xml:space="preserve">
+    <value>Reason for requesting access</value>
+  </data>
+  <data name="SUBMIT_REQUEST" xml:space="preserve">
+    <value>Submit Request</value>
+  </data>
+  <data name="RESET" xml:space="preserve">
+    <value>Reset Advanced Search</value>
+  </data>
+  <data name="ROLLED_UP_ROLE" xml:space="preserve">
+    <value>Rolled Up Role</value>
+  </data>
+  <data name="LEGAL_ENTITY" xml:space="preserve">
+    <value>This IP is a Legal Entity, check that this is the correct Creator</value>
+  </data>
+  <data name="NATURAL_PERSON" xml:space="preserve">
+    <value>This IP is a Natural Person, check that this is the correct Publisher IP</value>
+  </data>
+  <data name="COMMENTS" xml:space="preserve">
+    <value>Comments (Optional)</value>
+  </data>
+  <data name="REFINE_SEARCH" xml:space="preserve">
+    <value>More than 50 results matching your search criteria are available. Please refine your search by using the IP Number or more precise IP Name information.</value>
+  </data>
+  <data name="DELETE_AND_RESUBMIT" xml:space="preserve">
+    <value>Delete &amp; Resubmit</value>
+  </data>
+  <data name="AGENCY_WORK_LIST" xml:space="preserve">
+    <value>Agency Work List</value>
+  </data>
+  <data name="AGENCY_WORK_LIST_WARNING" xml:space="preserve">
+    <value>A new up-to-date extract of Agency Work List data will take longer to generate than using the most recent cached version.</value>
+  </data>
+  <data name="ISRC_FIELD" xml:space="preserve">
+    <value>ISRC</value>
+  </data>
+  <data name="LABEL_NAME_FIELD" xml:space="preserve">
+    <value>Label Name</value>
+  </data>
+  <data name="RECORDINGS" xml:space="preserve">
+    <value>Recordings</value>
+  </data>
+  <data name="RECORDING_TITLE_FIELD" xml:space="preserve">
+    <value>Recording Title</value>
+  </data>
+  <data name="SUBMITTER_FIELD" xml:space="preserve">
+    <value>Submitter</value>
+  </data>
+  <data name="SUBMITTER_TYPE_FIELD" xml:space="preserve">
+    <value>Submitter Type</value>
+  </data>
+  <data name="SUBMITTER_WORK_NUMBER_FIELD" xml:space="preserve">
+    <value>Submitter Work Number</value>
+  </data>
+  <data name="SUB_TITLE_FIELD" xml:space="preserve">
+    <value>Sub Title</value>
+  </data>
+  <data name="DESIGNATION_FIELD" xml:space="preserve">
+    <value>Designation</value>
+  </data>
+  <data name="IPN_FIELD" xml:space="preserve">
+    <value>IPN</value>
+  </data>
+  <data name="ISNI_FIELD" xml:space="preserve">
+    <value>ISNI</value>
+  </data>
+</root>

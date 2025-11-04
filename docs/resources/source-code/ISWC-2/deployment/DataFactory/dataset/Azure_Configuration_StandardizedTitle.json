@@ -1,0 +1,38 @@
+{
+	"name": "Azure_Configuration_StandardizedTitle",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "StandardizedTitleID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Society",
+				"type": "char"
+			},
+			{
+				"name": "SearchPattern",
+				"type": "varchar"
+			},
+			{
+				"name": "ReplacePattern",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "Configuration",
+			"table": "StandardizedTitle"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

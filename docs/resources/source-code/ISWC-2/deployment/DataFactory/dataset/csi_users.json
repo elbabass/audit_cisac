@@ -1,0 +1,44 @@
+{
+	"name": "csi_users",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "description",
+				"type": "String"
+			},
+			{
+				"name": "created_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_user",
+				"type": "String"
+			},
+			{
+				"name": "update_seq",
+				"type": "Int32"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"csi\".\"csi_users\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

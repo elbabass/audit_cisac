@@ -1,0 +1,40 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include display_flex;
+  @include flex_align_items(center);
+}
+
+.icon {
+  height: 15px;
+  margin-right: 3.5px;
+  margin-bottom: auto;
+}
+
+.largerIcon {
+  height: 20px;
+  margin-right: 3.5px;
+  margin-bottom: auto;
+}
+
+.smallerIcon {
+  height: 10px;
+  margin-right: 3.5px;
+  margin-bottom: auto;
+}
+
+.noMargin {
+  margin: 0;
+}
+
+.textContainer {
+  min-width: 112px;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .container {
+    word-break: break-word;
+    word-wrap: break-word;
+  }
+}

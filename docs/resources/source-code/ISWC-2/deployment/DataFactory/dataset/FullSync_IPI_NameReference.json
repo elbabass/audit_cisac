@@ -1,0 +1,35 @@
+{
+	"name": "FullSync_IPI_NameReference",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "IPIAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "IPI FullSync"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "IPNameNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AmendedDateTime",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "IPBaseNumber",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "IPI",
+			"table": "NameReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

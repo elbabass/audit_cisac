@@ -1,0 +1,77 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.formButton {
+  @include display_flex();
+  width: 150px;
+  color: $primaryWhite;
+}
+
+.formRow {
+  margin-bottom: 3rem;
+  @include display_flex;
+}
+
+.descriptionText {
+  @include regular_text;
+  color: $defaultFont;
+  margin-bottom: 1rem;
+}
+
+.formInput {
+  @include display_flex;
+  width: 250px;
+  margin-right: 40px;
+}
+
+.formInputLarge {
+  @include display_flex;
+  width: 500px;
+}
+
+.orDiv {
+  @include regular_text();
+  margin-top: auto;
+  margin-right: 20px;
+  margin-left: -20px;
+  margin-bottom: 5px;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .formInput {
+    margin-right: 20px;
+  }
+
+  .orDiv {
+    margin-top: auto;
+    margin-right: 10px;
+    margin-left: -10px;
+  }
+}
+
+@media (max-width: 643px) {
+  .formButton {
+    width: 100%;
+    max-width: none;
+  }
+
+  .formRow {
+    @include flex_direction(column);
+    margin-bottom: 1.5rem;
+  }
+
+  .formInput {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 10px;
+  }
+
+  .formInputLarge {
+    width: 100%;
+  }
+
+  .orDiv {
+    display: none;
+  }
+}

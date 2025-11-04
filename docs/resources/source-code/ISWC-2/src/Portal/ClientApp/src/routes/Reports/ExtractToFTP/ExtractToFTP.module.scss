@@ -1,0 +1,13 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  color: $defaultFont;
+  @include regular_text;
+}
+
+.title {
+  @include heading_2();
+  color: $lightShade;
+  margin-bottom: 10px;
+}

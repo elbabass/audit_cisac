@@ -1,0 +1,64 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include display_flex();
+  @include flex_direction(column);
+  position: relative;
+}
+
+.selectedRowsDiv {
+  @include display_flex();
+  @include flex_direction(row);
+  @include regular_text();
+  @include flex_align_items(center);
+  position: absolute;
+  right: 0;
+}
+
+.statusCell {
+  @include display_flex();
+  @include flex_direction(row);
+}
+
+.statusCellTextDiv {
+  @include display_flex();
+  @include flex_direction(column);
+  margin-left: 5px;
+  text-decoration: underline;
+}
+
+.statusCellText {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.selectedRowsText {
+  margin-right: 10px;
+}
+
+.actionButton {
+  height: 32px;
+}
+
+.marginRight {
+  margin-right: 10px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .selectedRowsDiv {
+    position: relative;
+    @include display_flex;
+    margin-bottom: 20px;
+  }
+
+  .selectedRowsText {
+    @include flex(1);
+    text-align: center;
+  }
+
+  .selectedRowsText {
+    text-align: right;
+  }
+}

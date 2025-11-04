@@ -1,0 +1,42 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include display_flex;
+  @include flex(1 1 auto);
+  @include flex_direction(column);
+}
+
+.tabViewDiv {
+  margin-left: 140px;
+  margin-right: 140px;
+}
+
+.tabHeader {
+  padding-left: 140px;
+  margin-bottom: 1.5rem;
+  background: $greyBackground;
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 1024px) {
+  .tabViewDiv {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+  .tabHeader {
+    padding-left: 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .tabViewDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .tabHeader {
+    padding-left: 0px;
+  }
+}

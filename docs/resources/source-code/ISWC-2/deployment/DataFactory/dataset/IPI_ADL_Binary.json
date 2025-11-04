@@ -1,0 +1,21 @@
+{
+	"name": "IPI_ADL_Binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "IPI FullSync"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "IPI Unzip Files",
+				"fileSystem": "ipi-integration"
+			}
+		}
+	}
+}

@@ -1,0 +1,78 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  @include display_flex;
+  @include flex(1 1 auto);
+  @include flex_direction(column);
+  background: $greyBackground;
+  padding: 10px;
+}
+
+.actionButtonDiv {
+  @include display_flex;
+  margin: 20px 0 10px 0;
+  min-width: 150px;
+  margin-right: 20px;
+}
+
+.closeButton {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.title {
+  @include heading_3;
+}
+
+.inputRow {
+  @include display_flex;
+  @include flex_direction(row);
+  margin-top: 10px;
+}
+
+.inputLabel {
+  margin-bottom: 8px;
+  @include label_text;
+}
+
+.input {
+  @include regular_text;
+  margin-right: 40px;
+  width: 250px;
+}
+
+.actionButtonsDiv {
+  @include display_flex;
+  @include flex_direction(row);
+}
+
+.gridDiv {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.error {
+  @include regular_text;
+  text-align: center;
+}
+
+.tryAgain {
+  @include label_text;
+  cursor: pointer;
+  text-decoration: underline;
+  text-align: center;
+  margin: auto;
+}
+
+.alertDiv {
+  margin-bottom: 10px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .input {
+    width: 200px;
+    margin-right: 20px;
+  }
+}

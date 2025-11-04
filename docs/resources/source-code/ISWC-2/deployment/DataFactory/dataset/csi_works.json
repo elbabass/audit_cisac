@@ -1,0 +1,44 @@
+{
+	"name": "csi_works",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "iswc_id",
+				"type": "Int64"
+			},
+			{
+				"name": "created_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_user",
+				"type": "String"
+			},
+			{
+				"name": "iswc",
+				"type": "String"
+			},
+			{
+				"name": "society_code",
+				"type": "Int16"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"csi\".\"csi_works\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

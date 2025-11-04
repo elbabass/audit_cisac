@@ -1,0 +1,31 @@
+{
+    "agencyCode": "021",
+    "agencyName": "BMI",
+    "sourceDb": 21,
+    "ips": [
+        {
+            "nameNumber": "167247",
+            "role": 7,
+            "name": "ADAMS LESLIE",
+            "baseNumber": "I-000925358-9"
+        },
+        {
+            "nameNumber": "1906032",
+            "role": 7,
+            "name": "REEVES KEN",
+            "baseNumber": "I-000682468-4"
+        }
+    ],
+    "ineligibleAgency": {
+        "agencyCode": "058",
+        "sourceDb": 58,
+        "ips": [
+            {
+                "nameNumber": "39062",
+                "role": 7,
+                "name": "ABDEL HALIM ALI",
+                "baseNumber": "I-001089010-3"
+            }
+        ]
+    }
+}

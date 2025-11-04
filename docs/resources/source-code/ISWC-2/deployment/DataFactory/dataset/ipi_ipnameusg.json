@@ -1,0 +1,36 @@
+{
+	"name": "ipi_ipnameusg",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "ipnamenr",
+				"type": "Decimal"
+			},
+			{
+				"name": "rol",
+				"type": "String"
+			},
+			{
+				"name": "creclass",
+				"type": "String"
+			},
+			{
+				"name": "ipbasenr",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"ipir\".\"ipi_ipnameusg\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

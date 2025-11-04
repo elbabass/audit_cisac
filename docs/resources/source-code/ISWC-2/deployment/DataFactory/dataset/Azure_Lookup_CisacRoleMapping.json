@@ -1,0 +1,49 @@
+{
+	"name": "Azure_Lookup_CisacRoleMapping",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CisacRoleMappingID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedUserID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RoleTypeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CisacRoleType",
+				"type": "char"
+			}
+		],
+		"typeProperties": {
+			"tableName": "CisacRoleMapping"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

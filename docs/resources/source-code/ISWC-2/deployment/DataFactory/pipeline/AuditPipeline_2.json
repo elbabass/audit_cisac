@@ -1,0 +1,2346 @@
+{
+	"name": "AuditPipeline_2",
+	"properties": {
+		"description": "reached the limit of activities in AuditPipeline_1",
+		"activities": [
+			{
+				"name": "2018q1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2018q1;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2018q2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2018q1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2018q2;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2018q3",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2018q2",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2018q3;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2018q4",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2018q3",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2018q4;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2019q1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2018q4",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2019q1;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2019q2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2019q1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2019q2;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2019q3",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2019q2",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2019q3;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2019q4",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2019q3",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2019q4;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2020q1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2019q4",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2020q1;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2020q2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2020q1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2020q2;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2020q3",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2020q2",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2020q3;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "2020q4",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "2020q3",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"query": "select * from csi.pcsi_audit_req_work_y2020q4;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[Migration].[ISWC_csi_audit_req_work]",
+						"sqlWriterTableType": "[Migration].[Azure_ISWC_csi_audit_req_work]",
+						"storedProcedureTableTypeParameterName": "Audit"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 16,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "titles"
+								},
+								"sink": {
+									"name": "titles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ips"
+								},
+								"sink": {
+									"name": "ips",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "soccde"
+								},
+								"sink": {
+									"name": "soccde",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "socwrkcde"
+								},
+								"sink": {
+									"name": "socwrkcde",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "srcdb"
+								},
+								"sink": {
+									"name": "srcdb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "update_seq"
+								},
+								"sink": {
+									"name": "update_seq",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_dt"
+								},
+								"sink": {
+									"name": "last_updated_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_updated_user"
+								},
+								"sink": {
+									"name": "last_updated_user",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "req_tx_id"
+								},
+								"sink": {
+									"name": "req_tx_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "arch_iswc"
+								},
+								"sink": {
+									"name": "arch_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pref_iswc"
+								},
+								"sink": {
+									"name": "pref_iswc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cat"
+								},
+								"sink": {
+									"name": "cat",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted"
+								},
+								"sink": {
+									"name": "deleted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "posted_dt"
+								},
+								"sink": {
+									"name": "posted_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "lst_updated_dt"
+								},
+								"sink": {
+									"name": "lst_updated_dt",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csi_audit",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Azure_ISWC_csi_audit_req_work",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

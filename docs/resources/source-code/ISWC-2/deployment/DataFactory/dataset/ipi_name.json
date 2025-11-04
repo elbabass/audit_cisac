@@ -1,0 +1,52 @@
+{
+	"name": "ipi_name",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "ipnamenr",
+				"type": "Decimal"
+			},
+			{
+				"name": "amdt",
+				"type": "DateTime"
+			},
+			{
+				"name": "fstname",
+				"type": "String"
+			},
+			{
+				"name": "lstname",
+				"type": "String"
+			},
+			{
+				"name": "namecrea",
+				"type": "DateTime"
+			},
+			{
+				"name": "nametyp",
+				"type": "String"
+			},
+			{
+				"name": "relipnamenr",
+				"type": "Decimal"
+			},
+			{
+				"name": "socid",
+				"type": "Decimal"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"ipir\".\"ipi_name\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

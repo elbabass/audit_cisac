@@ -1,0 +1,219 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  color: $defaultFont;
+}
+
+.mainView {
+  margin-bottom: 40px;
+}
+
+.reportTypeSelectDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.actionButton {
+  @include display_flex;
+  min-width: 180px;
+  margin-right: 10px;
+}
+
+.text {
+  @include label_text;
+  margin-bottom: 10px;
+}
+
+.belowGridRow {
+  @include display_flex;
+  @include flex_direction(row);
+  @include regular_text;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.graphTitle {
+  @include heading_2();
+  color: $lightShade;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.section {
+  padding: 10px 20px 10px 20px;
+}
+
+.sectionBorder {
+  border-left: 1px solid $greyBorder;
+  border-right: 1px solid $greyBorder;
+  padding: 10px 20px 10px 20px;
+}
+
+.filterDiv {
+  @include display_flex;
+  @include flex_direction(column);
+  margin-bottom: 40px;
+}
+
+.topFilterDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  margin-bottom: 40px;
+}
+
+.dateFilter {
+  @include display_flex;
+  width: 375px;
+}
+
+.dropdownCheckboxDiv {
+  @include display_flex;
+  @include flex(1);
+}
+
+.dropdownDiv {
+  @include display_flex;
+  @include flex(0.5);
+  @include flex_direction(row);
+  margin-right: 30px;
+}
+
+.textfieldDiv {
+  @include display_flex;
+  @include flex(0.5);
+  @include flex_direction(column);
+}
+
+.checkboxDivLeft {
+  @include display_flex;
+  @include flex_direction(column);
+  width: 375px;
+}
+
+.checkboxDivRight {
+  @include display_flex;
+  @include flex(0.75);
+  @include flex_direction(column);
+}
+
+.label {
+  @include label_text;
+  margin-bottom: 15px;
+}
+
+.checkBoxRow {
+  @include display_flex;
+  @include flex_direction(row);
+  @include label_text;
+}
+
+.checkBox {
+  margin-right: 20px;
+}
+
+.bottomFilterDiv {
+  @include display_flex;
+  @include flex_direction(column);
+}
+
+.errorIconDiv {
+  @include display_flex;
+  @include flex_direction(row);
+}
+
+.codeDiv {
+  margin-left: 5px;
+}
+
+@media (max-width: 670px) {
+  .reportTypeSelectDiv {
+    @include flex_direction(column);
+  }
+
+  .actionButton {
+    @include display_flex;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.alertMessageDiv {
+  margin-bottom: 25px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .topFilterDiv {
+    @include flex_direction(column);
+  }
+
+  .dropdownDiv {
+    margin-left: 0;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
+  .dateFilter {
+    margin-bottom: 20px;
+  }
+
+  .checkboxDivLeft {
+    width: auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .bottomFilterDiv {
+    @include flex_direction(column);
+  }
+
+  .checkboxDivRight {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .topFilterDiv {
+    margin-bottom: 20px;
+  }
+
+  .dropdownCheckboxDiv {
+    @include flex(1);
+    @include flex_direction(column);
+  }
+
+  .dropdownDiv {
+    margin-right: 0px;
+  }
+}
+
+/* IE style */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .actionButtonBig {
+    width: 250px;
+  }
+
+  @media (max-width: 1024px) {
+    .topFilterDivIE {
+      height: 125px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .topFilterDivIE {
+      height: 300px;
+    }
+
+    .bottomFilterDiv {
+      height: 150px;
+    }
+
+    .actionButtonBig {
+      width: 100%;
+    }
+  }
+}

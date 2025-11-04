@@ -1,0 +1,32 @@
+{
+	"name": "IPI_SFTP_Binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SuisaSftp",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FolderName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "IPI FullSync"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "SftpLocation",
+				"folderPath": {
+					"value": "@concat('IPI/IPI_Pub/Complete_IPI/',dataset().FolderName)",
+					"type": "Expression"
+				}
+			},
+			"compression": {
+				"type": "ZipDeflate",
+				"level": "Optimal"
+			}
+		}
+	}
+}

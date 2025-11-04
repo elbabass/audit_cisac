@@ -1,0 +1,27 @@
+{
+	"name": "MissingIPISync_Parquet_IpiDataFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Missing IPI Sync"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "IpiDataIswcDatabase.parquet",
+					"type": "Expression"
+				},
+				"folderPath": "Missing IPI Sync",
+				"fileSystem": "ipi-integration"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

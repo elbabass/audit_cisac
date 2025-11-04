@@ -1,0 +1,40 @@
+{
+	"name": "csi_workinfoperformer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "perf_id",
+				"type": "Int64"
+			},
+			{
+				"name": "work_info_id",
+				"type": "Int64"
+			},
+			{
+				"name": "created_dt_1",
+				"type": "DateTime"
+			},
+			{
+				"name": "created_dt_2",
+				"type": "DateTime"
+			},
+			{
+				"name": "created_user",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"csi\".\"csi_workinfo_performer\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,337 @@
+{
+	"name": "IswcFullExtract_RefreshCache",
+	"properties": {
+		"activities": [
+			{
+				"name": "Zip and Send to Sftp",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Refresh Cache",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": false,
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "SftpWriteSettings",
+							"operationTimeout": "01:00:00",
+							"useTempFileRename": true
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "IswcFullExtractFiles",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "IswcFullExtractSftp",
+						"type": "DatasetReference",
+						"parameters": {
+							"AgencyId": {
+								"value": "@pipeline().parameters.AgencyId",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Refresh Cache",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@pipeline().parameters.RefreshCache",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Copy Archived",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Delete old files",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "SELECT distinct(l.LinkedToIswc) AS Parent_ISWC,\n       i.Iswc AS Child_ISWC\nFROM iswc.ISWCLinkedTo l\nINNER JOIN iswc.ISWC i ON i.IswcID = l.IswcID\nWHERE i.Status = 1\n  AND l.Status = 1\n  AND l.DeMergeRequest IS NULL\nUNION\nSELECT i.Iswc,\n       ArchivedIswc\nFROM ISWC.WorkInfo wi\nJOIN ISWC.ISWC i ON wi.IswcID = i.IswcID\nWHERE (ArchivedIswc IS NOT NULL\n       AND wi.ArchivedIswc <> i.Iswc AND ArchivedIswc <> '')\n  AND wi.Status = 1\n  AND i.Status = 1\nORDER BY 1",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "IswcFullExtractSql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "IswcFullExtract_Archived",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Copy Combined",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Delete old files",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "SELECT distinct(l.LinkedToIswc) AS Parent_ISWC,\n       i.Iswc AS Child_ISWC\nFROM iswc.ISWCLinkedTo l\nINNER JOIN iswc.ISWC i ON i.IswcID = l.IswcID\nWHERE i.Status = 1\n  AND l.Status = 1\n  AND l.DeMergeRequest IS NULL\nUNION\nSELECT i.Iswc,\n       ArchivedIswc\nFROM ISWC.WorkInfo wi\nJOIN ISWC.ISWC i ON wi.IswcID = i.IswcID\nWHERE (ArchivedIswc IS NOT NULL\n       AND wi.ArchivedIswc <> i.Iswc AND ArchivedIswc <> '')\n  AND wi.Status = 1\n  AND i.Status = 1\nUNION\nSELECT Iswc,\n       ' '\nFROM ISWC.ISWC\nWHERE Status = 1\nORDER BY 1",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "IswcFullExtractSql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "IswcFullExtract_Combined",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Copy Preferred",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Delete old files",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "SELECT Iswc\nFROM ISWC.ISWC\nWHERE Status = 1\nORDER BY 1",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "IswcFullExtractSql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "IswcFullExtract_Preferred",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Delete old files",
+							"type": "Delete",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "IswcFullExtractFiles",
+									"type": "DatasetReference"
+								},
+								"enableLogging": false,
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"wildcardFileName": "ISWC_DATA_*"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Send Mail",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [
+					{
+						"activity": "Zip and Send to Sftp",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "SendMail",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"value": "{\n  \"recipient\": \"@{pipeline().parameters.Email}\",\n  \"reportType\": \"IswcFullExtract\"\n}",
+						"type": "Expression"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureFunction",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"concurrency": 1,
+		"parameters": {
+			"AgencyId": {
+				"type": "string"
+			},
+			"RefreshCache": {
+				"type": "bool"
+			},
+			"Email": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": []
+	}
+}

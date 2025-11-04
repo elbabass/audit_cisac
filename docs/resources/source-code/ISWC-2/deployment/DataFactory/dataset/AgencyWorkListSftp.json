@@ -1,0 +1,36 @@
+{
+	"name": "AgencyWorkListSftp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CisacSftp",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"AgencyId": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "SftpLocation",
+				"fileName": {
+					"value": "@concat('/Reports/AgencyWorkList', formatDateTime(pipeline().TriggerTime,'yyyyMMddhhmmss'),dataset().AgencyId, '.zip')",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().AgencyId",
+					"type": "Expression"
+				}
+			},
+			"compression": {
+				"type": "ZipDeflate",
+				"level": "Optimal"
+			}
+		}
+	}
+}

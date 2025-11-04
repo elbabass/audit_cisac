@@ -1,0 +1,21 @@
+{
+	"name": "IswcFullExtractFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "IswcFullExtract",
+				"fileSystem": "reporting"
+			}
+		}
+	}
+}

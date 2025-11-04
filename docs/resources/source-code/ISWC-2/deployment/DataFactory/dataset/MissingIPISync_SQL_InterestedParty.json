@@ -1,0 +1,19 @@
+{
+	"name": "MissingIPISync_SQL_InterestedParty",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabaseReadOnly",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Missing IPI Sync"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "Azure",
+			"table": "Databricks_Ipi_Data"
+		}
+	}
+}

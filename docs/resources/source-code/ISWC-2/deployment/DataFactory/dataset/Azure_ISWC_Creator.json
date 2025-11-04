@@ -1,0 +1,75 @@
+{
+	"name": "Azure_ISWC_Creator",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "IPBaseNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WorkInfoID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Status",
+				"type": "bit"
+			},
+			{
+				"name": "Concurrency",
+				"type": "timestamp"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedDate",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LastModifiedUserID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsDispute",
+				"type": "bit"
+			},
+			{
+				"name": "Authoritative",
+				"type": "bit"
+			},
+			{
+				"name": "RoleTypeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IswcID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "IPNameNumber",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"tableName": "Creator"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,245 @@
+{
+	"name": "AgencyWorkList_RefreshCache",
+	"properties": {
+		"activities": [
+			{
+				"name": "If Condition",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@pipeline().parameters.RefreshCache",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Delete",
+							"type": "Delete",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "AgencyWorkListFiles",
+									"type": "DatasetReference",
+									"parameters": {
+										"AgencyId": {
+											"value": "@pipeline().parameters.AgencyId",
+											"type": "Expression"
+										}
+									}
+								},
+								"enableLogging": false,
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							}
+						},
+						{
+							"name": "Copy data",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Delete",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "SELECT\n i.iswc,\n wi.agencyworkcode\nFROM iswc.iswc i\nJOIN iswc.workinfo wi ON i.iswcid = wi.iswcid\nWHERE wi.agencyid = '@{pipeline().parameters.AgencyId}'\n  AND wi.status = 1\nORDER BY iswc",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "AgencyWorkListSql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AgencyWorkList_Archived",
+									"type": "DatasetReference",
+									"parameters": {
+										"AgencyId": {
+											"value": "@pipeline().parameters.AgencyId",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "Zip And Send to Sftp",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "If Condition",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": false,
+							"wildcardFolderPath": "AgencyWorkList",
+							"wildcardFileName": {
+								"value": "@{concat('AWL_DATA_',pipeline().parameters.AgencyId,'_*')}",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "SftpWriteSettings",
+							"operationTimeout": "01:00:00",
+							"useTempFileRename": true
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "AgencyWorkListFiles",
+						"type": "DatasetReference",
+						"parameters": {
+							"AgencyId": {
+								"value": "@pipeline().parameters.AgencyId",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AgencyWorkListSftp",
+						"type": "DatasetReference",
+						"parameters": {
+							"AgencyId": {
+								"value": "@pipeline().parameters.AgencyId",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Send Mail",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [
+					{
+						"activity": "Zip And Send to Sftp",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "SendMail",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"value": "{\n  \"recipient\": \"@{pipeline().parameters.Email}\",\n  \"reportType\": \"AgenctWorkList\"\n}",
+						"type": "Expression"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureFunction",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"AgencyId": {
+				"type": "string",
+				"defaultValue": "021"
+			},
+			"RefreshCache": {
+				"type": "bool",
+				"defaultValue": true
+			},
+			"Email": {
+				"type": "string",
+				"defaultValue": "test@test.com"
+			}
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": []
+	}
+}

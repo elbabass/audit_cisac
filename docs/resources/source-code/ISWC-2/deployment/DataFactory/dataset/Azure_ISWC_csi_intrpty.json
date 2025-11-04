@@ -1,0 +1,47 @@
+{
+	"name": "Azure_ISWC_csi_intrpty",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ip_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ip_base_number",
+				"type": "varchar"
+			},
+			{
+				"name": "created_dt",
+				"type": "timestamp"
+			},
+			{
+				"name": "created_user",
+				"type": "varchar"
+			},
+			{
+				"name": "update_seq",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Intrpty_Row_ID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"tableName": "[ISWC].[csi_intrpty]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,44 @@
+{
+	"name": "csi_performer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ISWCAzurePostgreSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"structure": [
+			{
+				"name": "perf_id",
+				"type": "Int64"
+			},
+			{
+				"name": "lstname",
+				"type": "String"
+			},
+			{
+				"name": "fstname",
+				"type": "String"
+			},
+			{
+				"name": "created_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_updated_user",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "\"csi\".\"csi_performer\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

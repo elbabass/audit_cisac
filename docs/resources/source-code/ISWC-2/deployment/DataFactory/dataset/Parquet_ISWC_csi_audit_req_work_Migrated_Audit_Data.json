@@ -1,0 +1,24 @@
+{
+	"name": "Parquet_ISWC_csi_audit_req_work_Migrated_Audit_Data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Archiving"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "ISWC.csi_audit_req_work.parquet",
+				"folderPath": "Migrated_Audit_Data",
+				"fileSystem": "audit-data-archive"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

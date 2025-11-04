@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>SpanishPoint.Azure.Iswc.PipelineComponents.LookupDataValidator</AssemblyName>
+    <RootNamespace>SpanishPoint.Azure.Iswc.PipelineComponents.LookupDataValidator</RootNamespace>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bdo\Bdo.csproj" />
+    <ProjectReference Include="..\..\Business\Business.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,124 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+
+.container {
+  color: $defaultFont;
+  padding-bottom: 40px;
+}
+
+.gridTitle {
+  @include heading_2();
+  color: $lightShade;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.filterDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  margin-bottom: 40px;
+}
+
+.dateFilter {
+  @include display_flex;
+  width: 375px;
+}
+
+.dropdownCheckboxDiv {
+  @include display_flex;
+  @include flex(1);
+}
+
+.dropdownDiv {
+  @include display_flex;
+  @include flex(0.5);
+  @include flex_direction(row);
+  margin-right: 40px;
+}
+
+.checkBoxDiv {
+  @include display_flex;
+  @include flex(0.5);
+  @include flex_direction(column);
+}
+
+.label {
+  @include label_text;
+  margin-bottom: 15px;
+}
+
+.checkBoxRow {
+  @include display_flex;
+  @include flex_direction(row);
+  @include label_text;
+}
+
+.checkBox {
+  margin-right: 20px;
+}
+
+.reportTypeSelectDiv {
+  @include display_flex;
+  @include flex_direction(row);
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.actionButton {
+  @include display_flex;
+  min-width: 180px;
+  margin-right: 10px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .filterDiv {
+    @include flex_direction(column);
+  }
+
+  .dropdownDiv {
+    margin-left: 0;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
+  .dateFilter {
+    margin-bottom: 20px;
+  }
+
+  .checkboxDivRight {
+    margin-left: 40px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .filterDiv {
+    margin-bottom: 20px;
+  }
+
+  .dropdownCheckboxDiv {
+    @include flex(1);
+    @include flex_direction(column);
+  }
+
+  .dropdownDiv {
+    margin-right: 0px;
+  }
+}
+
+/* IE style */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @media (max-width: 1024px) {
+    .filterDiv {
+      height: 150px;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 575px) {
+    .filterDiv {
+      height: 325px;
+    }
+  }
+}

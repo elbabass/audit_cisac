@@ -1,0 +1,24 @@
+{
+   "name": "smoketest",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "test": "npx cypress run",
+      "smokeTest": "npx cypress run  --config ignoreTestFiles=[extractToFtpJobs.spec.ts,prod.spec.ts]",
+      "smokeTest:prod": "npx cypress run --config-file cypress-prod.json",
+      "open": "npx cypress open",
+      "open:prod": "npx cypress open --config-file cypress-prod.json"
+   },
+   "author": "",
+   "license": "ISC",
+   "devDependencies": {
+      "@azure/arm-datafactory": "^7.4.0",
+      "@azure/ms-rest-nodeauth": "^3.0.6",
+      "@types/node": "^14.0.13",
+      "crypto-random-string": "^3.2.0",
+      "cypress": "^8.4.0",
+      "cypress-wait-until": "^1.7.1",
+      "typescript": "^4.2.4"
+   }
+}

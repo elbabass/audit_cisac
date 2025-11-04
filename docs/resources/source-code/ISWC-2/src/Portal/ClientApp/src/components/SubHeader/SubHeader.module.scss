@@ -1,0 +1,46 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.container {
+  @include flex(1 1 auto);
+  @include display_flex;
+  @include flex_direction(column);
+  position: relative;
+  background-color: $greyBackground;
+  height: 90px;
+}
+
+.textDiv {
+  margin-left: 140px;
+  margin-top: 30px;
+  font-style: normal;
+  @include heading_1();
+  line-height: normal;
+  color: $defaultFont;
+}
+
+/* Tablet */
+@media (min-width: 575px) and (max-width: 1024px) {
+  .container {
+    height: 50px;
+  }
+
+  .textDiv {
+    margin-top: 10px;
+    margin-left: 32px;
+    @include heading_2();
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .container {
+    height: 50px;
+  }
+
+  .textDiv {
+    margin-top: 10px;
+    margin-left: 20px;
+    @include heading_2();
+  }
+}

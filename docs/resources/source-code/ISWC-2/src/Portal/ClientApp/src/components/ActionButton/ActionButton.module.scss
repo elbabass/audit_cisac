@@ -1,0 +1,107 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.actionButton {
+  @include flex(1);
+  color: $primaryWhite;
+  outline: none;
+  @include regular_text();
+  border: none;
+  cursor: pointer;
+  background-color: $primaryBlack;
+  border: solid 2px $primaryBlack;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  white-space: nowrap;
+}
+
+.actionButton:focus {
+  background-color: $darkShade;
+  border: solid 2px $lightShade;
+  outline: none;
+}
+
+.actionButton:not(:focus):hover {
+  background-color: $lightShade;
+  border: solid 2px $lightShade;
+}
+
+.actionButtonClicked {
+  background-color: $darkShade;
+  border: solid 2px $darkShade;
+  outline: none;
+}
+
+.actionButtonDisabled {
+  @include flex(1);
+  @include regular_text();
+  color: white;
+  outline: none;
+  border: none;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: $primaryGrey;
+  border: solid 2px $primaryGrey;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.secondaryActionButton {
+  @include display_flex;
+  @include flex(1);
+  @include flex_justify(center);
+  color: $primaryBlack;
+  outline: none;
+  @include regular_text();
+  border: none;
+  cursor: pointer;
+  background-color: $primaryWhite;
+  border: solid 1px $primaryBlack;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  white-space: nowrap;
+}
+
+.primaryTheme {
+  color: $primaryWhite;
+  background-color: $primaryBlack;
+  border: solid 2px $primaryBlack;
+}
+
+.secondaryActionButton:focus {
+  background-color: $primaryGrey;
+  border: solid 2px $primaryBlack;
+  outline: none;
+}
+
+.secondaryActionButton:not(:focus):hover {
+  background-color: $greyBorder;
+  border: solid 1px $primaryBlack;
+}
+
+.secondaryActionButtonDisabled {
+  @include display_flex;
+  @include flex(1);
+  @include regular_text();
+  @include flex_align_items(center);
+  @include flex_justify(flex-start);
+  color: $primaryGrey;
+  outline: $greyBorder;
+  background-color: $primaryWhite;
+  border: solid 1px $greyBorder;
+}
+
+.icon {
+  height: 14px;
+  padding-right: 10px;
+}
+
+.bigIcon {
+  height: 18px;
+  padding-right: 10px;
+}
+
+.iconTextDiv {
+  @include display_flex;
+  @include flex_align_items(center);
+}

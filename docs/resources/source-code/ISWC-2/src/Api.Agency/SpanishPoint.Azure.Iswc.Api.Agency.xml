@@ -1,0 +1,480 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SpanishPoint.Azure.Iswc.Api.Agency</name>
+    </assembly>
+    <members>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Agency.Configuration.Swagger.BaseController">
+            <summary>
+            Base Controller
+            </summary>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Agency.Configuration.Swagger.ConfigureSwaggerOptions">
+            <summary>
+            Configures the Swagger generation options.
+            </summary>
+            <remarks>This allows API versioning to define a Swagger document per API version after the
+            <see cref="T:Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider"/> service has been resolved from the service container.</remarks>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.Configuration.Swagger.ConfigureSwaggerOptions.#ctor(Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SpanishPoint.Azure.Iswc.Api.Agency.Configuration.Swagger.ConfigureSwaggerOptions"/> class.
+            </summary>
+            <param name="provider">The <see cref="T:Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider">provider</see> used to generate Swagger documents.</param>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.Configuration.Swagger.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.AuditController">
+            <summary>
+            Audit Controller
+            </summary>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.AuditController.#ctor(SpanishPoint.Azure.Iswc.Business.Managers.IAuditManager)">
+            <summary>
+            Audit Controller
+            </summary>
+            <param name="auditManager"></param>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.AuditController.Search(System.String)">
+            <summary>Search Audit History by Preferred Iswc</summary>
+            <returns>List of logged submissions from Audit History</returns>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.IpiSynchronisationController">
+            <summary>
+            Ipi Synchronisation Controller
+            </summary>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.IpiSynchronisationController.#ctor(SpanishPoint.Azure.Iswc.Business.Managers.ISynchronisationManager,Microsoft.Extensions.Logging.ILogger{SpanishPoint.Azure.Iswc.Api.Agency.Controllers.IpiSynchronisationController})">
+            <summary>
+            Ipi Synchronisation Controller
+            </summary>
+            <param name="synchronisationManager"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.IpiSynchronisationController.AddSpecifiedIps(System.Collections.Generic.List{System.String})">
+            <summary>AddSpecifiedIps</summary>
+            <returns>No content</returns>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.LookupController">
+            <summary>
+            Lookup Controller
+            </summary>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.LookupController.#ctor(SpanishPoint.Azure.Iswc.Business.Managers.ILookupManager,SpanishPoint.Azure.Iswc.Business.Managers.IMessagingManager)">
+            <summary>
+            Lookup Controller
+            </summary>
+            <param name="lookupMananger"></param>
+            <param name="messagingManager"></param>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.LookupController.GetLookupData">
+            <summary>Get Lookup Data</summary>
+            <returns>Lookup Data</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.LookupController.GetIps(SpanishPoint.Azure.Iswc.Bdo.Ipi.InterestedPartySearchModel)">
+            <summary>Get IPs</summary>
+            <returns>List creators or publishers</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.Controllers.LookupController.GetErrorCodes">
+            <summary>
+            Get Error Codes
+            </summary>
+            <returns>List of error codes and their corresponding message.</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SubmissionController.AddSubmissionAsync(SpanishPoint.Azure.Iswc.Api.Agency.V1.Submission)">
+            <summary>Add a new ISWC submission to the database</summary>
+            <param name="body">ISWC submission object that needs to be added to the ISWC Database</param>
+            <returns>Submission added</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SubmissionController.UpdateSubmissionAsync(System.String,SpanishPoint.Azure.Iswc.Api.Agency.V1.Submission)">
+            <summary>Update an existing ISWC submission</summary>
+            <param name="preferredIswc">The preferred ISWC</param>
+            <param name="body">ISWC submission object that needs to be updated in the ISWC Database</param>
+            <returns>Submission updated</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SubmissionController.DeleteSubmissionAsync(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>Deletes an ISWC submission</summary>
+            <param name="preferredIswc">The preferred ISWC</param>
+            <param name="agency">Agency of ISWC submission to delete</param>
+            <param name="workcode">Agency internal workcode for work as previously submitted</param>
+            <param name="sourceDb">SourceDb of ISWC submission to delete</param>
+            <param name="reasonCode">Reason Code for the deletion</param>
+            <returns>Iswc submission successfully deleted</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SubmissionController.AddSubmissionBatchAsync(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.SubmissionBatch})">
+            <summary>Add a batch of new ISWC submissions to the database</summary>
+            <param name="body">Array of ISWC submission objects that need to be added to the ISWC Database</param>
+            <returns>Submissions processed</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SubmissionController.UpdateSubmissionBatchAsync(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.SubmissionBatch})">
+            <summary>Update a batch of existing ISWC submissions</summary>
+            <param name="body">ISWC submission objects that need to be updated in the ISWC Database</param>
+            <returns>Submissions processed</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SubmissionController.AddSubmission(SpanishPoint.Azure.Iswc.Api.Agency.V1.Submission)">
+            <summary>Add a new ISWC submission to the database</summary>
+            <param name="body">ISWC submission object that needs to be added to the ISWC Database</param>
+            <returns>Submission added</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SubmissionController.UpdateSubmission(System.String,SpanishPoint.Azure.Iswc.Api.Agency.V1.Submission)">
+            <summary>Update an existing ISWC submission</summary>
+            <param name="preferredIswc">The preferred ISWC</param>
+            <param name="body">ISWC submission object that needs to be updated in the ISWC Database</param>
+            <returns>Submission updated</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SubmissionController.DeleteSubmission(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>Deletes an ISWC submission</summary>
+            <param name="preferredIswc">The preferred ISWC</param>
+            <param name="agency">Agency of ISWC submission to delete</param>
+            <param name="workcode">Agency internal workcode for work as previously submitted</param>
+            <param name="sourceDb">SourceDb of ISWC submission to delete</param>
+            <param name="reasonCode">Reason Code for the deletion</param>
+            <returns>Iswc submission successfully deleted</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SubmissionController.AddSubmissionBatch(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.SubmissionBatch})">
+            <summary>Add a batch of new ISWC submissions to the database</summary>
+            <param name="body">Array of ISWC submission objects that need to be added to the ISWC Database</param>
+            <returns>Submissions processed</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SubmissionController.UpdateSubmissionBatch(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.SubmissionBatch})">
+            <summary>Update a batch of existing ISWC submissions</summary>
+            <param name="body">ISWC submission objects that need to be updated in the ISWC Database</param>
+            <returns>Submissions processed</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_Allocation_and_ResolutionController.AddAllocationBatchAsync(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.SubmissionBatch})">
+            <summary>Allocate a batch of new ISWC submissions</summary>
+            <param name="body">Array of ISWC allocation objects that need to be added to the ISWC Database</param>
+            <returns>Submissions processed</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_Allocation_and_ResolutionController.AddResolutionBatchAsync(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.SubmissionBatch})">
+            <summary>Resolve a batch of ISWC submissions</summary>
+            <param name="body">Array of ISWC submission objects that need to be resolved in the ISWC Database</param>
+            <returns>Submissions processed</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_Allocation_and_ResolutionController.AddAllocationBatch(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.SubmissionBatch})">
+            <summary>Allocate a batch of new ISWC submissions</summary>
+            <param name="body">Array of ISWC allocation objects that need to be added to the ISWC Database</param>
+            <returns>Submissions processed</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_Allocation_and_ResolutionController.AddResolutionBatch(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.SubmissionBatch})">
+            <summary>Resolve a batch of ISWC submissions</summary>
+            <param name="body">Array of ISWC submission objects that need to be resolved in the ISWC Database</param>
+            <returns>Submissions processed</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SearchController.SearchByISWCAsync(System.String)">
+            <summary>Find ISWC metadata for specified ISWC</summary>
+            <param name="iswc">The preferred ISWC</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SearchController.SearchByISWCBatchAsync(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.IswcSearchModel})">
+            <summary>Find ISWC metadata for specified ISWCs</summary>
+            <param name="body">Array of ISWC search objects</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SearchController.SearchByAgencyWorkCodeAsync(System.String,System.String,System.Nullable{SpanishPoint.Azure.Iswc.Api.Agency.V1.DetailLevel})">
+            <summary>Find ISWC metadata for specified Agency and WorkCode</summary>
+            <param name="agency">The Agency of the ISWC submission</param>
+            <param name="workCode">The Agency WorkCode of the ISWC submission</param>
+            <param name="detailLevel">Allow the return of limited ISWC metadata</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SearchController.SearchByAgencyWorkCodeBatchAsync(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.AgencyWorkCodeSearchModel})">
+            <summary>Find ISWC metadata for specified batch of Agency and WorkCodes</summary>
+            <param name="body">Array of Agency Work Code search objects</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SearchController.SearchByTitleAndContributorAsync(SpanishPoint.Azure.Iswc.Api.Agency.V1.TitleAndContributorSearchModel)">
+            <summary>Find ISWC metadata for specified Titles and Contributors</summary>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_SearchController.SearchByTitleAndContributorBatchAsync(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.TitleAndContributorSearchModel})">
+            <summary>Find ISWC metadata for specified batch of Titles and Contributors</summary>
+            <param name="body">Array of ISWC search objects</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SearchController.SearchByISWC(System.String)">
+            <summary>Find ISWC metadata for specified ISWC</summary>
+            <param name="iswc">The preferred ISWC</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SearchController.SearchByISWCBatch(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.IswcSearchModel})">
+            <summary>Find ISWC metadata for specified ISWCs</summary>
+            <param name="body">Array of ISWC search objects</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SearchController.SearchByAgencyWorkCode(System.String,System.String,System.Nullable{SpanishPoint.Azure.Iswc.Api.Agency.V1.DetailLevel})">
+            <summary>Find ISWC metadata for specified Agency and WorkCode</summary>
+            <param name="agency">The Agency of the ISWC submission</param>
+            <param name="workCode">The Agency WorkCode of the ISWC submission</param>
+            <param name="detailLevel">Allow the return of limited ISWC metadata</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SearchController.SearchByAgencyWorkCodeBatch(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.AgencyWorkCodeSearchModel})">
+            <summary>Find ISWC metadata for specified batch of Agency and WorkCodes</summary>
+            <param name="body">Array of Agency Work Code search objects</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SearchController.SearchByTitleAndContributor(SpanishPoint.Azure.Iswc.Api.Agency.V1.TitleAndContributorSearchModel)">
+            <summary>Find ISWC metadata for specified Titles and Contributors</summary>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_SearchController.SearchByTitleAndContributorBatch(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.TitleAndContributorSearchModel})">
+            <summary>Find ISWC metadata for specified batch of Titles and Contributors</summary>
+            <param name="body">Array of ISWC search objects</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_Usage_SearchController.UsageSearchBatchAsync(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.UPSearchModel})">
+            <summary>Usage Search - Find ISWC metadata for specified batch of Titles and Contributors</summary>
+            <param name="body">Array of ISWC search objects</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_Usage_SearchController.UsageSearchBatch(System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.UPSearchModel})">
+            <summary>Usage Search - Find ISWC metadata for specified batch of Titles and Contributors</summary>
+            <param name="body">Array of ISWC search objects</param>
+            <returns>Iswc metadata found</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_MergeController.MergeISWCMetadataAsync(System.String,System.String,SpanishPoint.Azure.Iswc.Api.Agency.V1.Body)">
+            <summary>Merge ISWC meta-data associated with a provided list of ISWCs or Society Work Codes and as part of the merge have an ISWC designated as preferred.</summary>
+            <param name="preferredIswc">The preferred ISWC</param>
+            <param name="agency">The agency submitting the merge request</param>
+            <returns>ISWC Metadata merged and ISWC designated as preferred</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_MergeController.DemergeISWCMetadataAsync(System.String,System.String,System.String)">
+            <summary>Delete a set of incorrect metadata from a single Preferred ISWC that was incorrectly merged / matched previously.</summary>
+            <param name="preferredIswc">The preferred ISWC</param>
+            <param name="agency">Agency of iswc submission to delete</param>
+            <param name="workcode">Agency internal workcode for work as previously submitted</param>
+            <returns>ISWC Metadata demerged</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_MergeController.MergeISWCMetadata(System.String,System.String,SpanishPoint.Azure.Iswc.Api.Agency.V1.Body)">
+            <summary>Merge ISWC meta-data associated with a provided list of ISWCs or Society Work Codes and as part of the merge have an ISWC designated as preferred.</summary>
+            <param name="preferredIswc">The preferred ISWC</param>
+            <param name="agency">The agency submitting the merge request</param>
+            <returns>ISWC Metadata merged and ISWC designated as preferred</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_MergeController.DemergeISWCMetadata(System.String,System.String,System.String)">
+            <summary>Delete a set of incorrect metadata from a single Preferred ISWC that was incorrectly merged / matched previously.</summary>
+            <param name="preferredIswc">The preferred ISWC</param>
+            <param name="agency">Agency of iswc submission to delete</param>
+            <param name="workcode">Agency internal workcode for work as previously submitted</param>
+            <returns>ISWC Metadata demerged</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_Workflow_TasksController.FindWorkflowTasksAsync(System.String,SpanishPoint.Azure.Iswc.Api.Agency.V1.ShowWorkflows,System.Nullable{SpanishPoint.Azure.Iswc.Api.Agency.V1.WorkflowType},System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.WorkflowStatus},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.String,System.String,System.String)">
+            <summary>Retrieve a list of outstanding Workflow Tasks associated with an Agency</summary>
+            <param name="agency">CISAC Agency identifier</param>
+            <param name="showWorkflows">Workflows assigned to or created by my Agency</param>
+            <param name="workflowType">Type of Workflow</param>
+            <param name="status">Workflow Status</param>
+            <param name="startIndex">Start index for paging</param>
+            <param name="pageLength">Number of records to return</param>
+            <param name="fromDate">Left bound on date range</param>
+            <param name="toDate">Right bound on date range</param>
+            <param name="iswc">Filter by ISWC</param>
+            <param name="agencyWorkCodes">Filter by Agency Work Codes - seperated by \';\'</param>
+            <param name="originatingAgency">Filter by Originating Agency</param>
+            <returns>List of outstanding Workflow Tasks</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_Workflow_TasksController.UpdateWorkflowTaskAsync(System.String,System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.WorkflowTaskUpdate})">
+            <summary>Update the status of an outstanding Workflow Tasks associated with an Agency</summary>
+            <param name="agency">CISAC Agency identifier</param>
+            <returns>Workflow Task updated</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_Workflow_TasksController.FindWorkflowTasks(System.String,SpanishPoint.Azure.Iswc.Api.Agency.V1.ShowWorkflows,System.Nullable{SpanishPoint.Azure.Iswc.Api.Agency.V1.WorkflowType},System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.WorkflowStatus},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.String,System.String,System.String)">
+            <summary>Retrieve a list of outstanding Workflow Tasks associated with an Agency</summary>
+            <param name="agency">CISAC Agency identifier</param>
+            <param name="showWorkflows">Workflows assigned to or created by my Agency</param>
+            <param name="workflowType">Type of Workflow</param>
+            <param name="status">Workflow Status</param>
+            <param name="startIndex">Start index for paging</param>
+            <param name="pageLength">Number of records to return</param>
+            <param name="fromDate">Left bound on date range</param>
+            <param name="toDate">Right bound on date range</param>
+            <param name="iswc">Filter by ISWC</param>
+            <param name="agencyWorkCodes">Filter by Agency Work Codes - seperated by \';\'</param>
+            <param name="originatingAgency">Filter by Originating Agency</param>
+            <returns>List of outstanding Workflow Tasks</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_Workflow_TasksController.UpdateWorkflowTask(System.String,System.Collections.Generic.IEnumerable{SpanishPoint.Azure.Iswc.Api.Agency.V1.WorkflowTaskUpdate})">
+            <summary>Update the status of an outstanding Workflow Tasks associated with an Agency</summary>
+            <param name="agency">CISAC Agency identifier</param>
+            <returns>Workflow Task updated</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_AgentController.GetNotificationsAsync(System.String,SpanishPoint.Azure.Iswc.Api.Agency.V1.CsnTransactionType,System.String,System.Int32,System.String)">
+            <summary>Retrieve a list of CSN notifications associated with an Agency</summary>
+            <param name="agency">CISAC Agency identifier</param>
+            <param name="csnTransactionType">Type of transaction requested</param>
+            <param name="fromDate">The date from which to retrieve notifications</param>
+            <param name="pageLength">Number of records to return</param>
+            <param name="continuationToken">Used to page through results</param>
+            <returns>List of notifications</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.IISWC_AgentController.UpdateAgentRunAsync(SpanishPoint.Azure.Iswc.Api.Agency.V1.AgentRun)">
+            <summary>Notify ISWC when an agent run starts and ends</summary>
+            <returns>Agent run Id</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_AgentController.GetNotifications(System.String,SpanishPoint.Azure.Iswc.Api.Agency.V1.CsnTransactionType,System.String,System.Int32,System.String)">
+            <summary>Retrieve a list of CSN notifications associated with an Agency</summary>
+            <param name="agency">CISAC Agency identifier</param>
+            <param name="csnTransactionType">Type of transaction requested</param>
+            <param name="fromDate">The date from which to retrieve notifications</param>
+            <param name="pageLength">Number of records to return</param>
+            <param name="continuationToken">Used to page through results</param>
+            <returns>List of notifications</returns>
+        </member>
+        <member name="M:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWC_AgentController.UpdateAgentRun(SpanishPoint.Azure.Iswc.Api.Agency.V1.AgentRun)">
+            <summary>Notify ISWC when an agent run starts and ends</summary>
+            <returns>Agent run Id</returns>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWCMetadata.IswcStatus">
+            <summary>Indicator of ISWC being preferred, provisional or archived</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWCMetadata.Agency">
+            <summary>A CISAC code of a submitting agency that allocated this ISWC</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWCMetadata.OriginalTitle">
+            <summary>Original title of a musical composition</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWCMetadata.OtherTitles">
+            <summary>Other titles associated with musical composition (aka alternative titles)</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWCMetadata.InterestedParties">
+            <summary>Interested party associated with musical composition, such as :composers, lyricist, translator, original and sub publishers</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWCMetadata.ParentISWC">
+            <summary>A preferred ISWC of a parent of this ISWC. Presence of this field indicates that the ISWC merged to the parent.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWCMetadata.LinkedISWC">
+            <summary>All linked preferred ISWCs. Presence of this field indicates that those ISWCs merged to this ISWC.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWCMetadata.OverallParentISWC">
+            <summary>The preferred ISWC that is at the top of the chain of ISWCs.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.ISWCMetadataBatch.SearchId">
+            <summary>A unique identifier for this request. The same identifier will be populated for the ISWC Metadata request in the response.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.Submission.PreferredIswc">
+            <summary>The preferred ISWC</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.Submission.PreviewDisambiguation">
+            <summary>If this field is set to true, the submission will not be saved to the ISWC database if there are multiple matches. If this field is set to false or is not provided, the submission will be saved to the ISWC database.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.Submission.DisableAddUpdateSwitching">
+            <summary>If this field is set to true, the submission will be rejected if a submission already exists for the provided Agency Work Code.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.Submission.AllowProvidedIswc">
+            <summary>If this field is set to false, the submission will be rejected if the preferredIswc value cannot be found in the database. If this field is set to true and the preferredIswc value cannot be found in the database, a new ISWC record will be created with the value provided.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.Submission.DetailLevel">
+            <summary>Allow the return of limited ISWC metadata</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.SubmissionBatch.SubmissionId">
+            <summary>A unique submission identifier for this request. The same identifier will be populated for the submission in the response.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.Id">
+            <summary>An unique identifier assigned by the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.Iswc">
+            <summary>A preferred ISWC assigned by the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.IswcEligible">
+            <summary>Indicator of a submitter being Iswc Eligible</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.IswcStatus">
+            <summary>Indicator of ISWC being preferred, provisional or archived</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.Deleted">
+            <summary>Indicator of a submission being logically deleted on CSINET</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.LinkedFrom">
+            <summary>The ISWC record that this is linked from</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.LinkedTo">
+            <summary>The ISWC record that this is linked to</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.ArchivedIswc">
+            <summary>The Archived ISWC</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.OverallParentISWC">
+            <summary>The preferred ISWC that is at the top of the chain of ISWCs.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.CreatedDate">
+            <summary>Data and time of creation in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.LastModifiedDate">
+            <summary>Data and time of the latest update in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmission.LastModifiedBy">
+            <summary>Identifier of the last update in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.VerifiedSubmissionBatch.SubmissionId">
+            <summary>The value of the submissionID from the request submission.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonSubmissionAttributes.CisnetCreatedDate">
+            <summary>Date and time when this metadata was created on CISNET</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonSubmissionAttributes.CisnetLastModifiedDate">
+            <summary>Date and time when this metadata last modified on CISNET</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonSubmissionAttributes.AdditionalIdentifiers">
+            <summary>Optional list of additional identifiers that can be supplied with the submission.</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonISWCMetadata.IswcStatus">
+            <summary>Indicator of ISWC being preferred, provisional or archived</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonISWCMetadata.Agency">
+            <summary>A CISAC code of a submitting agency that allocated this ISWC</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonISWCMetadata.OriginalTitle">
+            <summary>Original title of a musical composition</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonISWCMetadata.OtherTitles">
+            <summary>Other titles associated with musical composition (aka alternative titles)</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonISWCMetadata.InterestedParties">
+            <summary>Interested party associated with musical composition, such as :composers, lyricist, translator, original and sub publishers</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonSystemAttributes.CreatedDate">
+            <summary>Data and time of creation in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonSystemAttributes.LastModifiedDate">
+            <summary>Data and time of the latest update in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.CommonSystemAttributes.LastModifiedBy">
+            <summary>Identifier of the last update in the system</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.Title.Title1">
+            <summary>Musical work title</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.Title.Type">
+            <summary>Musical work title type</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.InterestedParty.Role">
+            <summary>The role will be rolled up to the corresponding CISAC Role as per the following mapping: C(C,A,CA), MA(AR,SR), TA(AD,SA,TR) E(E,AM)</summary>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Agency.V1.DisambiguationReason">
+            <summary>Disambiguation Reason Code</summary>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Agency.V1.BVLTR">
+            <summary>Background, Logo, Theme, Visual or Rolled Up Cue</summary>
+        </member>
+        <member name="T:SpanishPoint.Azure.Iswc.Api.Agency.V1.DerivedWorkType">
+            <summary>Derived Work Type- if not provided then this isn't a derived work</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.IswcSearchModel.Iswc">
+            <summary>The preferred ISWC</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.AgencyWorkCodeSearchModel.Agency">
+            <summary>The Agency of the ISWC submission</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.AgencyWorkCodeSearchModel.WorkCode">
+            <summary>The Agency WorkCode of the ISWC submission</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.WorkflowTask.WorkflowMessage">
+            <summary>The reason for the workflow update</summary>
+        </member>
+        <member name="P:SpanishPoint.Azure.Iswc.Api.Agency.V1.WorkflowTaskUpdate.WorkflowMessage">
+            <summary>The reason for the workflow update</summary>
+        </member>
+    </members>
+</doc>

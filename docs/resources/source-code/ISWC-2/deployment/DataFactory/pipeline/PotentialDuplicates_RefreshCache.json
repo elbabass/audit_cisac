@@ -1,0 +1,498 @@
+{
+	"name": "PotentialDuplicates_RefreshCache",
+	"properties": {
+		"activities": [
+			{
+				"name": "Refresh Cache",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@pipeline().parameters.RefreshCache",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Copy WorkInfo",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Delete old files",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "select  * from ISWC.WorkInfo\nwhere Status = 1\n",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "PotentialDuplicatesSql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "PotentialDuplicates_WorkInfo",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Delete old files",
+							"type": "Delete",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "PotentialDuplicatesFiles",
+									"type": "DatasetReference"
+								},
+								"enableLogging": false,
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"wildcardFileName": {
+										"value": "ISWC_*",
+										"type": "Expression"
+									}
+								}
+							}
+						},
+						{
+							"name": "Copy Title",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Delete old files",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "select * from ISWC.Title\nwhere Status = 1",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "PotentialDuplicatesSql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "PotentialDuplicates_Title",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Copy Creator",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Delete old files",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "select  * from ISWC.Creator\nwhere Status = 1",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "PotentialDuplicatesSql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "PotentialDuplicates_Creator",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Copy ISWC",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Delete old files",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "select * from ISWC.ISWC\nwhere Status = 1",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "PotentialDuplicatesSql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "PotentialDuplicates_ISWC",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Copy ISWCLinkedTo",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Delete old files",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "select * from ISWC.ISWCLinkedTo\nwhere Status = 1",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "PotentialDuplicatesSql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "PotentialDuplicates_ISWCLinkedTo",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Copy DisambiguationISWC",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Delete old files",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "select * from ISWC.DisambiguationISWC\nwhere Status = 1",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "PotentialDuplicatesSql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "PotentialDuplicates_DisambiguationISWC",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "main_report",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Refresh Cache",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Reporting/main_report",
+					"baseParameters": {
+						"agency_code": {
+							"value": "@pipeline().parameters.AgencyId",
+							"type": "Expression"
+						},
+						"from_date": {
+							"value": "@pipeline().parameters.FromDate",
+							"type": "Expression"
+						},
+						"to_date": {
+							"value": "@pipeline().parameters.ToDate",
+							"type": "Expression"
+						},
+						"consider_original_titles_only": {
+							"value": "@pipeline().parameters.ConsiderOriginalTitlesOnly",
+							"type": "Expression"
+						},
+						"potential_duplicates_create_extract_mode": "True",
+						"report_type": "PotentialDuplicates",
+						"submitting_agency_code": {
+							"value": "@pipeline().parameters.SubmittingAgency",
+							"type": "Expression"
+						},
+						"agency_work_code": {
+							"value": "@trim('')",
+							"type": "Expression"
+						},
+						"agreement_from_date": {
+							"value": "@trim('')",
+							"type": "Expression"
+						},
+						"agreement_to_date": {
+							"value": "@trim('')",
+							"type": "Expression"
+						},
+						"status": "All",
+						"transaction_source": "All",
+						"most_recent_version": {
+							"value": "@if(equals(pipeline().parameters.RefreshCache, true), 'False', 'True')",
+							"type": "Expression"
+						},
+						"email": {
+							"value": "@pipeline().parameters.Email",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"concurrency": 1,
+		"parameters": {
+			"AgencyId": {
+				"type": "string"
+			},
+			"RefreshCache": {
+				"type": "bool"
+			},
+			"FromDate": {
+				"type": "string"
+			},
+			"ToDate": {
+				"type": "string"
+			},
+			"ConsiderOriginalTitlesOnly": {
+				"type": "string"
+			},
+			"SubmittingAgency": {
+				"type": "string"
+			},
+			"Email": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Reporting"
+		},
+		"annotations": []
+	}
+}

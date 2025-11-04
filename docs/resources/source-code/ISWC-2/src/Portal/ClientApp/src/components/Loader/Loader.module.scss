@@ -1,0 +1,27 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.loaderContainer {
+  @include display_flex();
+  @include flex_justify(center);
+  @include flex_align_items(center);
+  @include flex(1);
+}
+
+.loader {
+  border: 7px solid $primaryGrey;
+  border-top: 7px solid $primaryRed;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
