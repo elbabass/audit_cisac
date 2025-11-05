@@ -22,6 +22,7 @@
 
 | Priority | Question | Goal |
 |----------|----------|------|
+| 🔴 | What are the roles of Databricks, CosmosDB and the Datalake for the end users ? | Understand data access patterns and user workflows |
 | 🔴 | Can you walk us through how you monitor and measure the current system performance in production? What are your key performance indicators? | Understand monitoring approach and what metrics they consider important |
 | 🔴 | What are the most significant performance challenges you've observed in production over the past 6-12 months? | Identify real bottlenecks vs assumptions |
 | ⚠️ | How do you typically troubleshoot performance issues when they arise? Can you share an example? | Understand operational processes and diagnostic capabilities |
@@ -84,9 +85,8 @@
 
 | Priority | Question | Goal | Context |
 |----------|----------|------|---------|
-| 🔴 | Can you provide a breakdown of the current €50K/month cloud costs by service (SQL, Cosmos, Databricks, App Services, etc.)? | Create transparent cost attribution | CEO concern about opacity |
 | 🔴 | What's the current vs peak resource utilization for each major component? Which resources are over-provisioned? | Identify right-sizing opportunities | Quick wins for cost reduction |
-| ⚠️ | Have you analyzed reserved instance or savings plan opportunities? What's the current commitment vs on-demand split? | Assess cost optimization maturity | Could save 20-40% on stable workloads |
+| 🔴 | Have you analyzed reserved instance or savings plan opportunities? What's the current commitment vs on-demand split? | Assess cost optimization maturity | Could save 20-40% on stable workloads |
 | ⚠️ | What monitoring and alerting exists for cost anomalies? Have you had unexpected cost spikes? | Understand cost governance | - |
 | 📝 | What's the auto-scaling configuration for App Services and Databricks? How often does it trigger? | Assess elasticity vs waste | - |
 
