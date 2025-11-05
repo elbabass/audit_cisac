@@ -47,6 +47,114 @@ Databricks serves as the **heavy-duty data processing engine** for the ISWC syst
 
 ---
 
+## Business Context and Justification
+
+### Core Business Need
+
+The primary business driver for Databricks is **maintaining data integrity for Interested Party Information (IPI)** - the authoritative database of music rights holders managed by SUISA (Swiss music society).
+
+> **From [IPI Integration Spec](../../resources/core_design_documents/SPE_20191001_ISWC_IPI_Integration/SPE_20191001_ISWC_IPI_Integration.md:185):**
+>
+> "The purpose of this process is to fully replace the ISWC database copy of IPI data with the latest full quarterly export provided by IPI."
+
+Without accurate IPI data, the ISWC system cannot:
+
+- Correctly identify rights holders for musical works
+- Route royalty payments to the proper societies
+- Resolve copyright ownership disputes
+- Validate new work registrations against existing parties
+
+### Why Databricks? (vs. API-only approach)
+
+Databricks addresses specific technical challenges that make an API-only solution infeasible:
+
+#### 1. **Scale Requirements**
+
+- **IPI Quarterly Dumps:** ~1GB per file (multiple files), millions of interested party records
+- **Agency File Uploads:** Continuous 24/7 file arrivals from music societies worldwide
+- **Format Complexity:** Legacy EDI format (fixed-length positional fields) requires specialized parsing
+
+**API limitations:** Processing 1GB+ files through REST APIs would be:
+
+- Prohibitively slow (hours of API calls vs. minutes of distributed processing)
+- Unreliable (network failures, timeouts)
+- Expensive (compute time for sequential processing)
+
+#### 2. **Batch Processing Efficiency**
+
+> **From Workshop 2 (Xiyuan Zeng, 22:58):**
+>
+> "Data Lake store the files, whatever binary files in which are formatted. They are in Data Lake and the Databricks also used in combination of a Data Factory to process larger volume of files."
+
+**Databricks benefits:**
+
+- **Distributed processing:** Horizontal scaling for parallel file parsing
+- **Optimized I/O:** Direct Data Lake access without API overhead
+- **Complex transformations:** Deduplication, validation, aggregation at scale
+
+#### 3. **Dual Ingestion Architecture**
+
+The ISWC system supports two data ingestion paths to meet different operational needs:
+
+1. **SFTP → Data Factory → Databricks → SQL Server** (batch/file-based, high volume)
+   - **Use case:** Bulk submissions, legacy society integrations, IPI synchronization
+   - **Volume:** Potentially thousands of works per file
+   - **Frequency:** Continuous agency uploads + quarterly IPI dumps
+
+2. **API → App Services → SQL Server** (real-time/transactional, lower volume)
+   - **Use case:** Interactive user submissions, single work updates
+   - **Volume:** Individual records or small batches
+   - **Frequency:** On-demand, user-initiated
+
+> **From Workshop 2 (Xiyuan Zeng, 1:18:44):**
+>
+> "Two incoming paths, one through file uploading through SFTP processed by data factory Databricks... The other part is the API."
+
+Both paths converge to the same data model and trigger identical downstream workflows, but serve different operational patterns.
+
+### Critical Business Dependencies
+
+**Without Databricks, CISAC cannot:**
+
+- ✗ Process IPI quarterly full dumps (critical for rights holder data integrity)
+- ✗ Handle large-volume agency file uploads efficiently
+- ✗ Scale to support growing international agency participation
+- ✗ Maintain legacy EDI format compatibility (many societies not yet migrated to JSON/API)
+- ✗ Perform batch transformations and data quality corrections at scale
+
+**Impact of outage or removal:**
+
+- IPI data becomes stale → incorrect rights holder information → payment errors
+- Agency file submissions fail → workflow backlog → societies cannot register new works
+- No alternative processing mechanism exists for file-based integrations
+
+### Effort to Replace
+
+If CISAC wanted to eliminate Databricks dependency:
+
+**Option 1: Migrate all agencies to API-only**
+
+- **Feasibility:** Low - many societies rely on legacy EDI file exchange
+- **Effort:** 12-18 months coordination with 50+ societies worldwide
+- **Risk:** High resistance, some societies may lack technical capability
+
+**Option 2: Build custom file processing in C# services**
+
+- **Feasibility:** Medium - technically possible but reinvents wheel
+- **Effort:** 3-6 months development + testing
+- **Trade-offs:** Loses distributed processing benefits, harder to scale
+- **Cost:** Development cost > Databricks subscription for several years
+
+**Recommendation:** Databricks is the right tool for this use case. Focus on optimization (runtime upgrade, cost controls, testing) rather than replacement.
+
+---
+
+## Screenshots
+
+![Databricks Jobs Dashboard - showing job execution history and status](databricks-jobs-dashboard.png)
+
+![SFTP Integration - Data Factory pipelines connecting SFTP storage to Databricks](databricks-sftp-file-storage-integration.png)
+
 ## Component Architecture
 
 ### High-Level Component Structure
@@ -1010,6 +1118,7 @@ The following source code files in the ISWC system interact with or reference Da
 | 1.0 | 2025-10-24 | Audit Team | Initial document based on IPI Integration spec and Workshop 2; Documented file processing architecture, IPI use case, technical debt issues, integration points |
 | 1.1 | 2025-10-27 | Audit Team | Added comprehensive Source Code References section (33 files); Converted ASCII diagrams to Mermaid flowcharts for better visualization; Simplified complex workflow diagrams with text explanations |
 | 2.0 | 2025-10-29 | Audit Team | **C4 LEVEL 3 UPGRADE:** Added Component Classification section; Added comprehensive Component Architecture section (notebook architecture patterns, data flow pipelines, job orchestration); Added Performance Considerations section (cluster sizing, processing bottlenecks, cost optimization, monitoring); Restructured and expanded Technical Debt and Risks section with priority levels (🔴 Critical: Outdated runtime 11.3 LTS vs 15.4 LTS, contractual dispute; ⚠️ High: No automated testing, specification gap, no dev/test isolation; Medium: Idle cluster waste, no dead-letter queue, Delta Lake growth); Enhanced Questions for Further Investigation with categories (Runtime, Cluster, Performance, Cost, Code Quality, Monitoring, Data); Integrated Known Gaps into Technical Debt section; Updated status to "C4 Level 3 Documentation" |
+| 2.1 | 2025-11-05 | Audit Team | Added comprehensive "Business Context and Justification" section explaining core business needs, why Databricks vs API-only approach, dual ingestion architecture rationale, critical business dependencies, impact analysis, and effort-to-replace assessment; Renamed screenshot references from generic "image.png" to descriptive names (databricks-jobs-dashboard.png, databricks-sftp-file-storage-integration.png) |
 
 ---
 
@@ -1053,6 +1162,6 @@ The following source code files in the ISWC system interact with or reference Da
 ---
 
 **Status:** C4 Level 3 Documentation - Based on IPI integration spec, workshop discussions, and source code analysis
-**Last Updated:** October 29, 2025
+**Last Updated:** November 5, 2025
 **Next Review:** After Databricks workspace access granted and notebook code reviewed
 **Critical Action Item:** Escalate runtime upgrade delay - security and cost implications

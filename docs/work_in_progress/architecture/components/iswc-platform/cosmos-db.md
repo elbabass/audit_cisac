@@ -74,6 +74,155 @@ Cosmos DB was selected to address scalability challenges with audit data, which 
 
 ---
 
+## Business Context and Justification
+
+### Core Business Need
+
+The primary business driver for Cosmos DB is **solving a critical operational pain point** from the legacy ISWC system: managing 822 million+ audit log rows that had outgrown SQL Server's practical management capabilities.
+
+> **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 2.3.2 "Scaling for large data volumes":**
+>
+> "Log data, however, currently has 822 million rows in the existing database and has had to be manually partitioned across multiple tables for performance and maintenance reasons. In the new solution this audit data will be stored in Cosmos DB using the Society Code and Created Date as a partition key."
+
+**Business Imperatives:**
+
+1. **Compliance & Legal Requirements** - Audit trail required for copyright dispute resolution, regulatory compliance, financial auditing
+2. **Operational Debugging** - Track submission processing to diagnose failures and support agencies
+3. **Submission History Transparency** - Agencies need visibility into their submission history via portal
+4. **Performance at Scale** - Query audit data without degrading transactional system performance
+
+Without comprehensive audit data, CISAC cannot:
+
+- Resolve disputes about work ownership or submission timing
+- Debug submission failures or data quality issues
+- Meet regulatory requirements for financial transparency
+- Provide agencies with self-service submission history
+
+### Why Cosmos DB? (vs. SQL Server-only approach)
+
+The decision to use Cosmos DB was driven by **operational pain in the legacy system**, not theoretical scalability concerns.
+
+#### 1. **Manual Partitioning Pain Point**
+
+**Legacy Problem:**
+
+> **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 2.3.2:**
+>
+> "822 million rows in the existing database and has had to be manually partitioned across multiple tables for performance and maintenance reasons"
+
+**Manual partitioning challenges:**
+
+- **Database maintenance overhead** - DBA had to create and manage separate tables (e.g., Audit_2018, Audit_2019)
+- **Query complexity** - Application code had to union across multiple tables
+- **Backup/restore complexity** - Each partition required separate operations
+- **Storage planning** - Manual capacity planning and rebalancing
+- **Index fragmentation** - Performance degradation over time
+
+**Cosmos DB solution:**
+
+- **Automatic partitioning** - Society Code + Month partition key handles distribution transparently
+- **No manual intervention** - System scales automatically as data grows
+- **Simplified queries** - Application queries single logical collection
+- **Easier backups** - Single database backup operation (though with limited retention)
+
+#### 2. **Audit Data Characteristics**
+
+Audit data has unique characteristics that make NoSQL a good fit:
+
+- **Write-heavy workload** - Every submission writes audit records (high volume)
+- **Append-only pattern** - Audit records never updated, only created (perfect for NoSQL)
+- **Time-series data** - Natural partitioning by date
+- **Variable schema** - Different transaction types have different error structures (JSON flexibility)
+- **Infrequent reads** - Most queries are for recent data or specific ISWC (partition-friendly)
+
+**SQL Server limitations for this pattern:**
+
+- **Index maintenance overhead** - Every write updates indexes (slow at scale)
+- **Row-based storage** - Less efficient for append-only workloads
+- **Fixed schema** - Requires complex nullable columns for variable error data
+- **Partition management** - Manual table splitting when partitions grow
+
+#### 3. **ISWC Counter as Distributed System**
+
+> **From [ISWC Data Model](../../resources/core_design_documents/SPE_20190218_ISWCDataModel_REV%20(PM)/SPE_20190218_ISWCDataModel_REV%20(PM).md) → Section 6 "ISWC (Cosmos DB)":**
+>
+> "The ISWC collection in Cosmos DB will be used to generate unique ISWC codes."
+
+**Business requirement:** Generate globally unique ISWC codes with high concurrency
+
+**Why Cosmos DB for counters:**
+
+- **Distributed consistency** - MongoDB-style atomic updates with optimistic concurrency
+- **Low-latency reads** - Global distribution potential for future multi-region deployment
+- **Cache layer** - CacheIswcs collection provides fast pre-generated values
+
+**Alternative (SQL Server):** Could work, but requires row-level locking (potential bottleneck at scale)
+
+### Cost-Benefit Analysis
+
+**Cosmos DB Costs:**
+
+- **RU (Request Units):** ~$58/month for 1,000 RU (initial config) **[Estimate: Calculated - verify against bill (see COST-003)]**
+- **Storage:** ~$125/month for ~500GB (822M+ documents estimated) **[Estimate: Calculated - verify against bill (see SCALE-002)]**
+- **Total estimated:** ~$183/month **[Needs verification against actual production costs]**
+
+**Benefits vs. SQL Server Audit Tables:**
+
+- **✅ Eliminated:** DBA manual partitioning effort (estimated 2-4 hours/month) **[Estimate: Experience-based]**
+- **✅ Eliminated:** Query complexity from multi-table unions (faster development)
+- **✅ Improved:** Backup/restore simplicity (single operation vs. per-partition)
+- **✅ Improved:** Developer experience (JSON flexibility, simpler queries)
+
+**Trade-offs Accepted:**
+
+- **❌ Backup retention:** Only 8 hours vs. 35 days for SQL Server (significant compliance risk)
+- **❌ Query limitations:** Cross-partition queries expensive (design queries carefully)
+- **❌ Familiarity:** Team needs MongoDB/NoSQL expertise (learning curve)
+- **❌ Cost visibility:** RU consumption harder to predict than SQL DTU
+
+### Critical Business Dependencies
+
+**Without Cosmos DB, CISAC cannot:**
+
+- ✗ Scale audit logging beyond SQL Server partition limits (~100M rows per table practical)
+- ✗ Eliminate manual database partitioning overhead (DBA bottleneck)
+- ✗ Provide agencies with fast submission history queries (cross-partition unions too slow)
+- ✗ Handle variable error schemas efficiently (JSON flexibility needed)
+- ✗ Maintain distributed ISWC counter with low latency
+
+**Impact of outage or data loss:**
+
+- **Audit data loss:** Legal/regulatory compliance failure (dispute resolution impossible)
+- **Submission history unavailable:** Agency portal degraded (user experience impact)
+- **ISWC counter loss:** System cannot generate new work identifiers (critical failure)
+- **Recovery challenge:** Only 8-hour backup retention = limited disaster recovery capability
+
+### Effort to Replace
+
+If CISAC wanted to eliminate Cosmos DB dependency:
+
+**Option 1: Migrate all audit data back to SQL Server**
+
+- **Feasibility:** Technically possible with SQL Server 2019+ temporal tables and automatic partitioning
+- **Effort:** 6-12 months (design partitioning strategy, migrate 822M+ documents, refactor queries)
+- **Benefits:** Unified database technology, 35-day backup retention, familiar tooling
+- **Trade-offs:** Loses JSON flexibility, requires careful partition key design, may hit performance limits again
+- **Estimated Cost:** 3-6 months senior DBA + developer time = **€150K-300K** **[Estimate: Experience-based]**
+
+**Option 2: Keep Cosmos DB but address risks**
+
+- **Feasibility:** High - tactical improvements to current architecture
+- **Effort:** 2-4 weeks (implement long-term backup, optimize indexing, set up cost alerts)
+- **Benefits:** Addresses critical 8-hour backup risk, improves cost visibility
+- **Recommended Actions:**
+  1. **Immediate:** Implement scheduled export to Azure Blob Storage (daily audit backups)
+  2. **Short-term:** Configure TTL for old audit data (7-year retention policy)
+  3. **Ongoing:** Monitor RU consumption, optimize queries, tune indexing policy
+
+**Recommendation:** Keep Cosmos DB but urgently address the 8-hour backup retention risk. The manual partitioning pain it solves is real and valuable. Focus on operational maturity (backups, monitoring, cost optimization) rather than replacement.
+
+---
+
 ## Component Architecture
 
 ### Collection Architecture
@@ -897,6 +1046,7 @@ From specification:
 |---------|------|--------|---------|
 | 1.0 | 2025-10-27 | Documentation Team | Initial document created via /document-component command; Comprehensive three-phase research (4 design docs, 158+ code files, 2 meeting transcripts); Focus on Cache and Audit use cases; Mermaid diagrams for architecture and workflows |
 | 2.0 | 2025-10-29 | Audit Team | **C4 LEVEL 3 UPGRADE:** Added Component Classification section; Added comprehensive Component Architecture section (collection architecture, service layer, data access patterns, partition key strategy); Added Performance Considerations section (RU consumption, query performance, cost optimization, monitoring); Restructured and expanded Technical Debt and Risks section with priority levels (🔴 Critical: 8-hour backup retention, untested restoration procedure; ⚠️ High: No data retention policies, unknown RU configuration, no local emulator; Medium: Indexing not optimized, partition hotspots, no cost alerts); Enhanced Questions for Further Investigation with categories (Performance, Cost, Backup, Development, Data Governance); Integrated Known Gaps into Technical Debt section; Updated status to "C4 Level 3 Documentation" |
+| 2.1 | 2025-11-05 | Audit Team | Added comprehensive "Business Context and Justification" section explaining core business need (solving 822M row manual partitioning pain), why Cosmos DB vs SQL Server-only approach (automatic partitioning, audit data characteristics, distributed counter requirements), cost-benefit analysis with trade-offs (8-hour backup vs 35-day SQL Server retention), critical business dependencies, impact analysis, and effort-to-replace assessment with two migration options |
 
 ---
 
@@ -934,6 +1084,6 @@ From specification:
 ---
 
 **Status:** C4 Level 3 Documentation - Based on data model spec, workshop discussions, and 158+ source code files
-**Last Updated:** October 29, 2025
+**Last Updated:** November 5, 2025
 **Next Review:** After production configuration review and DR testing
 **Critical Action Item:** Address 8-hour backup retention limitation - critical for audit compliance
