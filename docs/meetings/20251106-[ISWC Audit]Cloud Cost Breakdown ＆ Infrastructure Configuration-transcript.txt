@@ -1,0 +1,379 @@
+[ISWC AUDIT]CLOUD COST BREAKDOWN ＆ INFRASTRUCTURE CONFIGURATION
+
+
+Participants    
+- Bastien Gallay
+- Xiyuan Zeng
+- Guillaume Jay
+
+Date    2025-11-06
+
+Bastien G. 00:05
+And then yeah, on their Propal, so yeah, that's pretty much what I had in mind. I think that behind, we can also let him explain what he thinks about it. 
+
+Guillaume J. 00:21
+Yeah. you want to take the lead on it since you did the study of the shots no because I don't know I don't have yet done the study of the shots I just did that okay don't hesitate to cut and intervene I will move forward maybe I will have something to ask him the question on the moment well I think that anyway here it is I will take advantage of the fact that you are moving forward for Do one or two graphics or get out of three things to have questions. 
+
+Bastien G. 00:53
+Ok great, well yes, you can even share it. We ask for transparency, we can show it on our side. Yes. 
+
+Guillaume J. 00:59
+Absolutely. I get your questions, I'll come back to it. Except I had started doing it, so I did a stash. No. 
+
+Bastien G. 01:10
+He doesn't want to be stupid. I should have done a quick push thing rather than asking Claude to do it. Oh yes. it's already just the problem you should have it I will ask to be concise not to do something mouse like the other times and I am happy there are 100 lines I think we will be more in something that we can follow like that. 
+
+Guillaume J. 01:54
+I can't see your thing. I can't see your question. What is he doing to me? Why is he telling me that? 
+
+Guillaume J. 01:59
+The problem is if you... Do you see the file? 
+
+Guillaume J. 02:04
+It's that I'm trying to stash my Excel to be able to recover your thing without worries. 
+
+Bastien G. 02:11
+Otherwise, you can watch it online. Yeah. 
+
+Guillaume J. 02:13
+That's what I'm going to do. And I don't know what he's doing to me. I'm annoyed there, not at all. It's not made to be handled in a report. 
+
+Bastien G. 02:59
+Yes because he can't read well in native. 
+
+Guillaume J. 03:03
+Yes and then, well, anyway, we didn't read that. And then after, here it is, Excel makes temporary files, but I'm going to ignore it. I'm going to take it back. 
+
+Bastien G. 03:14
+You can put it in an ignore guide too. 
+
+Guillaume J. 03:16
+Yeah, but that's what I'm going to do. That's what I'm going to do. That's just what I want to do. There you go. It's good. I'm going to get your version back. I'm going to take over something. I put it on, I put it on like that, at least it won't be lost. Tac Tac, SpelishMapMeeting, Cloud Coast. Okay, my little vision, CoastBackdown. So here's the problem, I can't get to 50, so we just have to say... 
+
+Bastien G. 03:58
+But we'll see why he says 50 to another man. 
+
+Guillaume J. 04:04
+Ah, yeah, you said 50, yeah, but yeah, okay, we'll see what he says. Okay, now I can do something. 
+
+Bastien G. 04:11
+Ah yes, he generated 50 because in fact, since the beginning, he's been reusing the 50 number that Yann gave us in a transcript. So if he generates it by Claude, I haven't thought about it anymore. 
+
+Guillaume J. 04:18
+Ah, I know, when you said, we would tell him, I thought you were talking about Zheng Zui and not about Claude. 
+
+Bastien G. 04:29
+He's arrived. We're taking him in. Hi. Hi. 
+
+Bastien G. 04:39
+Hello. 
+
+Bastien G. 04:42
+How are you since yesterday? Good. Not completely connected yet. 
+
+Xiyuan Z. 05:20
+Hello hello hello yes yeah some headset speaker some problem anyway okay yeah that's when it's okay um yeah i'm not sure just me yeah um be fine here um yeah just i think we have a bro. 
+
+Bastien G. 06:03
+Is it okay for you yep yep go ahead yeah okay start all right uh so thank you again to china for this meeting um we hope that it would be um shorter than the previous ones today would like to talk about the cloud costs on azure And three main things we want to talk about are... So what you can tell us about the... Because we have seen the cost breakdown. And if you can tell us what you have to suggest as savings for now. and especially i think uh the proposition you made to uh sysac maybe we can go through quickly to to have a quick understanding of uh what savings you expect with it and i think we have some more specific questions about big gaps from one month to another if you have any explanations because we couldn't find explanations and it's it was strange to us to to understand why uh there was a huge jump in the costs okay okay so yeah so we have seen the breakdown on our side uh So you agree that most of the costs are coming from Cosmos DB, I think? Yes. 
+
+Xiyuan Z. 08:06
+Yeah. So in general, we don't see any issue on the cost side because the environment is out of scale. So if in a month there is an increase or decrease, those are fully expected because it's not provisioned with a fixed. amount of compute so the cost is never fixed it's all based on the amount of a workload file submitted by different agency right you know one is they submit you know 10 files you know this month but not but might not submit file next month right so so it's never a fixed figure and yeah so everything autoscale cosmos db auto autoscale so if cosmos db calls you see jump up and down fully expected It just means the process for data or less data. We don't see any cause issue at this stage because the environment has been stable like this for years. We don't expect any changes in there neither unless you have some such a thing to make. In terms of that proposal that we made for that database change, again, that has nothing to do with any cause issue in any way. it's just a cause for the skill change. So that what the cost will be on old skill, what the cost, sorry, what was the cost on the current skill, and what the new cost will be on the new skill. So that's what's covered in that proposal which is at the slide you're sharing, basically, ESLA. So that's not an issue in any way. It just cause comparison between two different skills. so that kind of summarize everything at a high level so everything expected go up and down and. 
+
+Bastien G. 10:06
+Talking about provisions uh i'm not sure if it's because i can see them but uh are there some provisions Using the saving plans from Azure with reserved instances and everything. Is it something that has been done? 
+
+Xiyuan Z. 10:34
+Yeah, we have reservation for SQL database. Yes. 
+
+Bastien G. 10:39
+Okay. 
+
+Xiyuan Z. 10:40
+There is SQL reservation for the current SQL. That is an error reservation, so it cannot be saved any further. And we also called out, we shall buy reservation after switch to new skill. So that will also be done reservation, which are all covered in the proposal, I believe. 
+
+Bastien G. 11:00
+Yes. So maybe it would be better if we could walk through. Could you share the proposal and we look at it, just share your screen like that. You can browse and just tell us the main. 
+
+Xiyuan Z. 11:18
+Let me find it. 
+
+Bastien G. 11:19
+Many things we need to know. 
+
+Xiyuan Z. 11:27
+Do you have any particular questions here? So you can share my screen, yes? 
+
+Bastien G. 11:32
+Yes. 
+
+Xiyuan Z. 11:33
+I believe this is the one you were looking at yesterday, right? So is there anything here? Which part you have questions here? So on the cause part? Or what? 
+
+Bastien G. 11:47
+Is there any specific question here or or you want me to quickly walk through it yes please quickly walk through it just we've read it we know what it talks about uh just if you can uh tell us uh what is the main focus and maybe the main focus is from this slide in here so yeah. 
+
+Xiyuan Z. 12:07
+So we're trying to achieve those three here right so the common communication from public to private networking and add a layer 7 reverse proxy and the change cycle database queue and the focus on application change only without code change so that's basically the focus for what we're trying to achieve utilizing new services that's made available by microsoft in recent years and this is the current design everything basic common common communication but over public network over public ip this is a single uh you know inner working of microsoft service this is not some virtual machine we built okay this is the past service okay it's a microsoft match everything here this is what it is and this is what they're going to be or what we propose again they are all microsoft service nothing we manage nothing we build okay it's a platform as a service um for single database so those are the two basically how what business critical tier is what hyperscale here is you know my this is a flip based on you for micro documentation. These pictures are not drawn by us. Microsoft article has a full explanation, just basically some articulatory change. This is the overall design comparing to the initial one. There's no change on which network has it available, which is not. This just means the communication will be locked down into private networking using private bond and instead of no. services touch each other directly over public networking, which has no virtual network. This one just added virtual network. Common to common will be private. The rest just how to do deployment when there is a private. We use Hubspoke networking and people need to connect to the private network environment so that they can connect to resources that are protected privately. The rest just not that important. They're just what the uh you know resource would look like after it is deployed so nothing to do with overall communication or architecture it's just a resource you know organization and this is the matching engine which is a different than the component iswc is calling uh this is overall architecture of a match engine uh we have no change to here but we show you why it is um so you know which you currently don't have access to and we don't plan to pride in access to managing it either. We explained earlier in very first call, I believe, that the Match Engine is used as a external service from ISWC point of view. ISWC just connect to some APN point or search service that are offered by Match Engine. But the Match Engine are these that show on screen, which is similar from design point of view comparing to the new ISWC we're proposing. In other words, the man-changing architecture is more up-to-date, aligned with the Microsoft best practice, while ISWC is bit old, and that's why we proposed for the change. The rest is similar thing. It's just private networking, not really affect the architecture overall. This comes to the cost part. We review the cost and we see the the cost is going to increase for several items because we switch over to the private networking. Then as you can understand, nothing comes in free. There's an increase in different skills or service, and we called out top four item. They either need to be added or skill need to be changed in order to support more secured networking configuration. Those are the top four item. we also called out to know the the saving can be made when switching the skill for the database which uh which we mean we think there will be over three thousand saving tonight so yeah go ahead can i ask a question now or do you want to finish before uh. 
+
+Bastien G. 16:33
+Uh you can ask any question anytime yeah it's just um one thing sure clients usually ask on these for other top items with increasing costs for instance. 
+
+Xiyuan Z. 16:46
+Is are some of them optional could we implement just part of it and not pay the the whole invoice so if i understand you correctly you are talking about for example you know only do those two but not implementing yes yes well it is certainly possible it is certainly possible right it's certainly possible But that will leave the environment half open, half not open. That's from our point of view, it is pointless from secure point of view. You wouldn't implement a firewall as entire site still public, or one of the data tier still public. Seems to be pointless type of implementation. But yes, some of those services can be added without other. For example, Wolf can be added without implementing the private networking or private networking for a common common can be implemented without a wolf right and or the data factory you know uh the data factory you know private communication you know um can be uh you know left so they're not implemented or what the rest are implemented uh yeah there are certain level flexibility in there um but uh but yeah we don't see a point of doing that it's just you know not really you know secure or environment that makes sense yes i i agree i have a question um so uh quickly calculating uh that's monthly costs right yes the figure here are based on uh based on them yes they are monthly cost they are based on the months when we when we send the proposal for example right let So let's assume this is sent in April, then this cost review was based on the May's usage. 
+
+Guillaume J. 18:43
+Okay. I pray that. Okay. I pray that. Yeah. This year. Okay. Great. You're expecting total benefits of nearly 2,000, when 2,000 a little less, right? 
+
+Xiyuan Z. 19:04
+Well, we expect whatever saving made in database, can fully cover the cost. cost increase for other components that's what we were expecting based on the calculation and at the same time those savings can potentially go to buying more cores for the database so that you know so that's getting you know better performance but but we don't expect any increased cost just because of the i don't understand because the change well sure i mean the the four tens on top customer. 
+
+Guillaume J. 19:43
+Yes, I agree, yes. You're going to reduce the cost by two thousands. 
+
+Guillaume J. 19:49
+This is a 1.5k yeah 500 600 1.5 yes on the other is yes on the other is 3.3 so the benefits the the. 
+
+Guillaume J. 20:05
+Cost will be done by 1.8 right correct yes. 
+
+Xiyuan Z. 20:12
+Correct, yes. If we don't make any further changes or want to make the system better, but yes, if we fully based on the mass calculation, yes, that's roughly based on calculation, yes. Okay. 
+
+Guillaume J. 20:23
+That's about it. And it will be safer, a bit safer. 
+
+Xiyuan Z. 20:28
+Yeah. 
+
+Guillaume J. 20:31
+Just how much are you confident about your expectations? 
+
+Xiyuan Z. 20:38
+You mean the figured accuracy? 100%? The last line you expect? Well, I expect 100% accuracy here. We are very confident on the way that it's calculated. So, you know, you can also do it yourself, right? So it's a skill which is all outlined in here. So based on the usage of that month we reviewed at the time we sent the proposal, those are the switch over. So we think they will be quite accurate. 
+
+Guillaume J. 21:11
+You were able to calculate the cost for IP scale according to the usage of past users? 
+
+Xiyuan Z. 21:21
+Yeah, we take the average for that month or average for past two months. Whatever average for that particular service was at that time when we did a review. And for that level of usage, when we switch over, then what the new cost is going to be. But of course, because the service is out of scale, so there can be more usage even at a time, even in the months of switch over, if we decide to switch over, I try to implement. The course in here, the top item and then the fourth item, they are out of scale. I can never say those are the absolute figure for the service, because this service and this service, it's based on usage. Your costs can be zero. the cost can be higher while the two in the middle they are more or less fixed cost so you know so that's the nature of the cost okay great thank. 
+
+Bastien G. 22:24
+You okay yeah yes you want to no i think it's okay you can continue if you want uh yeah go ahead you have a question go ahead. 
+
+Guillaume J. 22:35
+I've got a question on past Azure cost. Do you want to continue on the proposal, Bastien? 
+
+Xiyuan Z. 22:41
+No, it's fine. You can just ask whatever you want to ask. Go on. 
+
+Bastien G. 22:44
+Guillaume. 
+
+Guillaume J. 22:45
+Okay. I'm just changing. I just did a very quick study. I just collected a month. I was just curious, maybe you know why. Let me show you very nice graphics in Excel. The blue line is the total cost, the other lines are by environment, of course, from October to October. Do you have any idea why there was a peak in February? 
+
+Xiyuan Z. 23:25
+That needs to be checked, you know, this is absolutely based on usage, right? So this basically matched what I was saying, right? the usage for certain months, right? Yeah. You know, based on different agencies, they might, you know, they might submit more data. I agree with that. 
+
+Guillaume J. 23:42
+It's just that it's 10% more, so it's a big... Yeah, yeah, yeah. I was just wondering if you have any idea of some events which happened, maybe... I don't have the figure in hand, but... Maybe in February, a lot of people are working. Do you have any idea? 
+
+Xiyuan Z. 23:57
+Yeah, yeah, yeah. So, if you ask me precisely, you know, the precise reason... pinpointed, I don't have a figure in hand because I can never have. But at the same time, your charting here is total figure. If you break your chart down by the service type, for example, was that the increase by Cosmos DB or by App Service or by Databricks? Yes. 
+
+Guillaume J. 24:20
+I know. 
+
+Xiyuan Z. 24:22
+That would tell you a bit more. 
+
+Guillaume J. 24:23
+I worry it's a high-level question. I mean, in December, costs are lower, I suppose, because people are working less. 
+
+Xiyuan Z. 24:32
+Correct, correct. 
+
+Guillaume J. 24:34
+So I was just wondering if you have some kind of high-level explanation for that, without decoding or maybe not. Maybe you added a new version, maybe... I don't know. Do you have any idea of some outside events? 
+
+Xiyuan Z. 24:51
+As I said again, it's not us or Spanish one to put the workload into the place. It was those agencies, they upload the files and we have no visibility or no control or no plan, precisely one, each agency going to upload their big files. So if they upload a bit more through that SFTP, then Data Factory is going to have a cost increase. Cosmos DB has cost increase, right? And Databricks can process more. So I cannot tell you why, but as I said, you can check the cost by break down by meter, then you can see which service kind of increase. But I suspect it will be Cosmos DB or Data Factory or something similar in the industry, because those are the top items whenever there is a usage increase based on the files agency uploaded. 
+
+Bastien G. 25:42
+Fair enough. Did they ask you? why there was this peak in February for instance because it's when you look at the at this graph it's surprising did they ask you to investigate so and gave you some not really I think this. 
+
+Xiyuan Z. 26:03
+Will communicate and we all know you know from for years the the system auto scale and as I said I think the the service that increase cost is cost must be data factory or data breaks or all combined. So I believe that that will be the case and it's always like that. 
+
+Guillaume J. 26:25
+I go deeper. You just say something, I just want to be clear. You say that if agency uploads a lot of things, we are going to see that in data breaks on data factory. 
+
+Xiyuan Z. 26:40
+Sorry, say again. I'm not- If agency. 
+
+Guillaume J. 26:43
+Upload a lot of submissions using the various parts. This is going to be reflected in Data Lake, in Data Factory, I mean, Data Factory and Databricks cost. 
+
+Xiyuan Z. 26:54
+Correct. Yeah, of course. Yeah. If user upload files, then yes. Those are service going to be used to process files, which explained last time by Nicholas, when we had a call. So those are the process to process files asynchronously. Okay. 
+
+Guillaume J. 27:11
+Thanks. I just wanted to be sure I understand. 
+
+Xiyuan Z. 27:14
+Okay, great. Yeah. As I said, if you break down the cost by service type, resource meter type, you will see which particular item. I believe the cost must be that factor in Databricks. Yes. 
+
+Guillaume J. 27:26
+In fact, I'm going to add it on maybe. 
+
+Xiyuan Z. 27:34
+Thank you. Okay. So the system is already well optimized. because you see increasing draw fully expected and we shouldn't provision a service which reach a top handle peak low. If we do that, you of course see a steady cost, but you always pay for the peak compute requirements and no one will be happy about the costs, but at the same time. service go up and down, then you certainly pay less and that's fully expected, but you do see the go up and down. We don't think that actually there's any issue. That's actually a good sign for us because the citizen actually pays less when there's no workload from our point of view. 
+
+Xiyuan Z. 28:24
+I'm just going to show you something else. Sure. 
+
+Guillaume J. 28:27
+Go ahead. 
+
+Guillaume J. 28:30
+I'm just seeing that. maybe i'm going to ask you a question i have okay uh let me show i'm looking at the prod this is march so i'm seeing okay i that every cost yeah but if i go to february yeah that's The database cost is lower. Yep. Is the database cost a speed check? 
+
+Xiyuan Z. 28:57
+The database should be the same. The database is fixed. 
+
+Guillaume J. 29:00
+SQL database is lower too. 
+
+Xiyuan Z. 29:04
+But this is half as bigger. Yeah. Cosmos DB will go up and down based on the usage. Cosmos DB is auditing the things that are done in the applications. 
+
+Guillaume J. 29:17
+But we see that there are lots, database usage is lower. 
+
+Xiyuan Z. 29:28
+Okay. I think I understand what you're asking, why you're confusing this. But to understand that not just Azure Databricks use Cosmos DB, there are other services that also use Cosmos DB. 
+
+Guillaume J. 29:39
+I agree. 
+
+Xiyuan Z. 29:41
+So not necessarily have a precise going parallel, for Cosmos DB and the Databricks. There are other services such as Azure Function running Azure. They might actually generate the a higher cost right against uh cosmos db at the same time every data breaks is not in use so so it's it's multiple services write data to cosmos db so you know it i agree that it's a bit well that uh everything is lower and the cost is uh as uh nearly yes it goes to from 16 to. 
+
+Guillaume J. 30:23
+24. 
+
+Guillaume J. 30:25
+Whereas the other users cost are lower. Okay. Maybe I don't know. We're just seeing that so. Okay. Bastian, if you want to take any questions. 
+
+Xiyuan Z. 30:40
+I'll give you an example. For instance, there are certain services use more, but the scale when we say that service use more, because the unit price for that service is lower. So you don't see a big increase for that service when you use more. For example, app service, relatively, that's way cheaper than Databricks. So when the Databricks usage increase, you will see Databricks increase more, at the same time Cosmos DB also increase. But if it is not Databricks use the Cosmos DB, but app service use Cosmos DB, you will see a relatively smaller increase on, let's say, app service. at the same time, Cosmos V might even increase more. So I just give you an example. I understand. It's given services users. 
+
+Guillaume J. 31:26
+Every other course you don't accept Cosmos V. Do you have some kind of Google, I forgot the term, Matomo or. 
+
+Guillaume J. 31:38
+Quasic measuring? Analytics. User analytics. 
+
+Xiyuan Z. 31:41
+It's an app insights. You have access to it. It's application insights in the portal. 
+
+Bastien G. 31:51
+I'm not sure the resource usage is directly linked to any analytics as the analytics may be on the front end and most of the cost as you explained, Johan, is coming from for instance the SFTP. 
+
+Xiyuan Z. 32:07
+It depends. 
+
+Bastien G. 32:10
+SFTP is one way. So this is not followed in analytics but maybe you have... 
+
+Xiyuan Z. 32:15
+Other statistics so okay first of all um there's nothing we haven't shared with you okay okay so there's no other platform other analytics okay that that's not the thing okay and the analytics for the uh for the two-way in right one is a sotp files in right the other one is the agency called API. Bose has analytics. If agency don't use SLTB, they just call, let's say, one billion times through API. Then the analytics is in the API management, and the API management has analytics. For the APIs, those agency code. At the same time, if those guys upload files through SLTB, then you'll see storage maybe activity increase, you will see more data breaks jobs, you will see more data factory jobs. and if the user accesses through site, through UI, through search, or through public portal or agency portal, we already use, and beginning insights will have the data. If you're talking about this submit asynchronous jobs or not through the UI, then maybe the other type of usage and analytics in the API management, then those data are there, two-way in. 
+
+Bastien G. 33:44
+The call api or the upload file yes um what i think what i i was thinking about is i don't know if not sure to understand uh if it's already the answer uh of what i want to do um if we want to make a correlation between the course and the usage. 
+
+Xiyuan Z. 34:10
+Sure. 
+
+Bastien G. 34:11
+You're right. We must take into account the APIs calls. Correct. And the SFTP activity. Is there somewhere on your side or on CISAC side, something that can summarize this in order to automate? 
+
+Xiyuan Z. 34:30
+Not really. 
+
+Bastien G. 34:31
+Yes. We don't have it to- Something that would be very useful here. Don't you agree? 
+
+Xiyuan Z. 34:36
+There's no tooling going to- causes because the system is you know has so many components right the cause can be from either or there but we understand the cause well we can explain we you know what type of operation will result in what type of cost so if there's a increase that you uh you and sees that want to know precisely uh you know what cause that uh you can ask this act where you can you know however you do it right you can write a uh support ticket right ask us to investigate uh you know we can we might be able to tell you more for example right this agency submitted you know calling this api one billion times or these agencies upload 20 or 100 different files in that month, on that date, then we can tell you that. But that would require a way to investigate, yes. 
+
+Bastien G. 35:27
+Yes, I've seen a document from several years ago, and I think it's... I don't remember John, on your side, John Curvey, who made an analytic about... the workload depending on the first agency using the platform, the new platform. So there was something like that. And just to be clear, if we wanted to talk about the cost, it's because it's one of the questions asked by CISAC on this audit. It's to understand the cost, are there some things that can be done? And sometimes it's what Guillaume showed to you. kind of a surprise to them it's why are there these peaks that we cannot explain with our figures on our sides why is it like that so the question is why is it like that and i'm talking with uh with you both and hearing what everyone is saying i think there isn't anything to be able to explain quickly Or maybe you have... Well. 
+
+Bastien G. 36:42
+I... an idea of why to you right i already explained why there's peak or there's drop right we can do two ways right we can provision service sorry we can turn off i interrupt you but i understand your explanation but if. 
+
+Bastien G. 36:58
+I'm um if i'm in in uh yan's shoes for instance i don't want just an explanation i want um i want other figures that can be correlated with the figure the the euro figures i see you see what i mean i don't want just a logical analytic uh explanation but statistics and i don't think we have that at the time so maybe it could be something that we should uh uh suggest to create to make it more understandable we can um so um so So first of all. 
+
+Xiyuan Z. 37:39
+These are. We offer managed service for the platform. That's usually absolutely covered break-fix. This type of request, first of all, are not break-fix. However, for big gaps, then if customer in this case, Yang or C, they has a serious concern on their cost increase, the ticket shall be created to ask us for explanation or investigation on what causing this cost increase. That's fully covered and the Yankton can create a ticket in our support system. We can go back and investigate on what generated that level of usage. From our point of view, most logs keep only for three months. So certain level of data, if it's too far back, the log probably gone. But for any investigation, no matter go up or go down, create ticket in our ticking system spanish one can provide additional insights okay it's just at high level we know for certain they are based on the usage and as i explained over and over if we can make that chart flat we have no problem as long as this has no problem then there's no gap i'm done so see that pays basically which we just we just pay for more right we just pay for the peak then nobody ever asked this question but from our point of view right go up down is actually super good because systems save your money right so you pay actually way less that's actually super good sign that indicates system auto scaling is working yes. 
+
+Bastien G. 39:23
+I i agree i agree with that um the thing is uh i think that fully understand uh that the auto scaling and everything uh sure the thing is they They know you are the expert and they don't have the explanations. When they are... You know what SISAC is. yeah it's kind of huge it's uh worldwide and yeah they have uh financers that are saying us saying them why are you spending that money there uh sure a lot of uh in a lot of subjects yeah you understand so they must give some explanations and when they don't have it um clear enough so they need it's 100. 
+
+Xiyuan Z. 40:14
+That's why yeah yeah I know this happened in the past, but 100 percent is based on the increased usage, either through API or through file upload, or slightly less likely, because that take less weight, which is through the UI. It's API core and jobs, especially jobs. They come to be the most when they go up and down. That reflected in the cost composition if you break down the cost by the meter type or service type, then you will see. 
+
+Bastien G. 40:47
+Is actually those guys really go up and down every month can you sure um because i believe what you say i mean what you say i just want to uh to find a way to find a way if it was a company if i was if i was uh yeah yeah yeah a commercial company and i was on the board of this company i would say okay if we if it's related to the usage then i want to measure all this usage and make the clients that is increasing the usage pay more. That's what I want. So that's why I'm thinking, how can we give this proof? Sure. 
+
+Xiyuan Z. 41:27
+I'm okay with that, if CISI want to do that. No problem there. If CISI want to come up with a pricing model or whatever way that they charge those agencies, we certainly can help CISI to come up with something to do that, right? And that's to my understanding. is not in the system in any way. But you are absolutely correct. There can be a term called noisy neighbor, or whatever the term is. That agency or very few model agency use the system the most. I think that's actually the case. While the rest, they are not. You're absolutely correct. Yeah, they're more likely to be the matching reality. The data in here, should be able to show you through some statistics in the, not in here, because you are looking at the API call. This is actually the API call, but there's another API management also has analytics. That can actually tell you the actual incoming. There are two level of statistics. The API is called by multiple services, but the API M is the front gate for the API call. The API app service might be called by multiple service. Just be precise. You shall look at the statics for API M as well. But you are absolutely correct. There can be noisy neighbors. They submit more files than the rest. Some certain big countries, they certainly have more music. More files, they want to get some ISWD numbers, comparing to some small agencies. They just have smaller quantity in terms of data. Absolutely the case. 
+
+Bastien G. 43:22
+Guillaume, you wanted to show us something? 
+
+Guillaume J. 43:24
+No. I was looking at the real-time metrics. I mean, you have scale to eight in source. 
+
+Xiyuan Z. 43:35
+That's auto-scaling. I can't see the rules. You can click the Configure button, that will tell you more. Just click. Oh, of course. So scroll down here. 
+
+Guillaume J. 43:45
+It will tell you the scaling. I think you could do with less. 
+
+Xiyuan Z. 43:50
+I think. But that's not the main cost. 
+
+Guillaume J. 43:51
+Azure App Service is not so costly. 
+
+Xiyuan Z. 44:05
+Let's get the question and answer one at a time. right so please go back to the app service auto scaling rule which is in the other tab so this is auto scaling rule right so if this figure needs to be tweaked to be more aggressive you can make a recommendation but if you look at those figures they are already very aggressive because we're only scaling down you know it's 20 percent right do you scale down at 50 percent, that might actually cause a problem. Do we scale up as 80 percent or 90 percent, that might be too late. The minimum node is to maximum eight. The rule in there is really very aggressive. It's not really based on the amount of, let's say the CPU total, it's a combination. Yes, you're right. All of them plus them together, what's the total? 
+
+Guillaume J. 45:05
+Anyway, it's not so expensive compared to the user. Yes. 
+
+Xiyuan Z. 45:08
+The App Service is also not that expensive as I explained. It might be used more, but the scaling of it, it might add more node, but the unit price for that is not that expensive. okay but that's a cause from app service formula but app service might use uh downstream services right so those other calls that are followed by it might actually increase more right when the app service increases so they are all linked together based on the you know based on the date the data flow yeah as you can see right now right we've got a nice speaking usage yes okay i was just wondering i'm looking on thinking yeah they are all different you know at different important in time. So yeah, so. Yeah, I cannot tell which one you call by which API, but this chart will tell you that machine is busy. It make a lot of calls or receive a lot of calls. These are expected. There's an API specification in the API in the developer portal. You can see what 400 means. Because certain error is just expected to return. because the data they submit it does not have that uh you know matching entry in the database or something or something similar okay this is not indicate okay system has an issue it's the api specification yes yes we're just thinking good sure sure yeah another question on my side. 
+
+Bastien G. 46:49
+Okay so you want me to continue on this slide i think there are two more two or three more days yes quickly but i think we have covered everything that is really needed to to us uh and you explained very well the estimates. 
+
+Xiyuan Z. 47:06
+What are your views everything yeah so this is the cost here right so we you know we this is the cost specifically for the uh for the hyper scale and business critical right PC, business critical cost, HSS, it's hyperscale cost. For example, for four core, what's a business critical tier cost, which is compute plus license, whatever those sum will be. We even break down the costs into different meter in Azure. You pay the license call, you pay for the hardware cost. Then what the cost going to be if you move to hyperscale, and what's a per replica cost? or if you add a two replica, which is primary plus secondary, what cost look like? Equivalently, when you buy reservation, what the cost look like? We give basically full matrix to understand cost better. The same goes for Cosmos DB. For a given bundle request, uh you know uh you know request units uh you know what what what what cost you know gonna be right based on the pay-as-you-go rate right and we can go for reservation uh that will basically roughly give 20 save cost and this is this is this chart as you can see uh it is based on so we did the analysis in i see probably somewhere in january or you know because the chart you know underway in january so there's no you know later month data and that will be the cost most DBs usage. But as you can understand, buy reservation has its own drawback. If buy too high and you are not using it, you're wasting money. You can see it's have a trending of using more at end or beginning of the year. Maybe that's true too because I'm not that expert in the data side from application. But I'd imagine agencies has more data to be processed, somewhere around December or January. Maybe they just start a new year, everyone start to submit new songs, whatever that might be. But we probably figure in here, but it is a reservation, and the same goes for the Databricks. We don't see real cost saving. data breaks and it is only you know four or six percent but the but the but the phrase um but the usage might go up and down and you know to make a commitment with four percent saving in there uh you know comparing to the auto scaling go up and down we think it's more risky and the more danger to actually buy reservation in this case so um so our recommendation is uh you know because the workload does change and slightly bit unpredictable unpredictable so you don't not not not going to be very steady because it's so out of scale then we think we uh probably do not buy reservation okay in this case because the saving is just too small comparing to uh other two yeah so we basically you know laid out the possible auto scaling yeah make sense to you well. 
+
+Bastien G. 50:42
+I think we lost him or something okay yes i think you're right yes. 
+
+Xiyuan Z. 50:49
+It uh disappeared in the middle of a sentence but uh okay yeah you're back yeah see my screen okay yes it's okay sorry yeah yeah okay so yeah so you know the cost here we again you know at high level right we we we provided the cost comparison between bin is critical old here and the hyper scaled here right and we can see the big cost difference uh you know if you just compare the the BNX critical B plus C calling on, and then the hyperscale, one primary plus one secondary with high availability. We can see no matter how many skill you have, you get call saving. That's why we are proposing this change immediately. That's the single database and also reservation for other services. We propose to do call saving for Cosmos DB. sorry the reservation for cosmos db if there's no big you know you know refactoring in a way and data breaks we think we probably shouldn't okay and there's a data breaks cluster as you can see and that's actually not we don't recommend because the cost go up and down and the database cluster can be zero but it is 40 but as you can see it is only 1.5 k and the reservation, sounds easy, it might even drop to November to somewhere 1K. There may be 400 saving, but again, it's based on the workload. Again, Spanish one cannot really predict the workload submitted by the different agency, but if C-SAS think the workload can be stable, steady, Then... we can certainly buy the reservation based on the me minimum right that we have no problem so uh the same goes for basic data basically for data breaks and for cosmos tv they are they are the same thing so that's where uh you know the the you know the the i the basically the cost uh proposal lies right and we uh yeah we we basically you know and since those are the the way to go to make reservation to have cost saving, because application already out of scale. Also refactor the CSA SQL so that you utilize newer service, better service to be precise, and also gain cost saving so that you can use that money to maybe buy more core, so that SQL database run faster or we don't, whichever way has CSA 1.1 to be. That's overall on the cost side. I want to highlight, just making sure everyone understand what I already emphasized. All the cost item here has nothing to do with any cost issue that we are trying to address. It's more to do with the networking change and the database skew change as well as the reservation that CSA can potentially commit for let's say one year or three year. The figure I give is one-year commitment, but if since I want to do three-year commitment, then there can be more saving. But in general, we only recommend one-year reservation. This is a way to make cost saving by make commitment, plus utilizing database and hyperscale tier, which is basically new service. That's all about this proposal. 
+
+Bastien G. 54:33
+Very good, thank you very much. Thank you again. Actually it was more near to one hour. Do we have other things to say before leaving? No, it's okay. Thanks. And on your side, Johan, do you have something to say? 
+
+Xiyuan Z. 55:02
+So no, I don't have anything to add here, right? As I said, over past few meetings, right? So if you want to know something and you just ask for the one that we can explain, I'll definitely explain, right? the For the type of access you request, I think you request one more access which you said in the last call, but I haven't seen any e-mail for that, which is to do with the task board. If you want to access them, please drop an e-mail with CSEC for authorization. We can give you access to that, which I don't believe there's any issue. and everything else in Azure you have access to, cost you have access to, all services you can read the statistics, so there's no issue there. We also welcome all the advices. If you think these should be changed, just let us know either through e-mail or in your reports or in which area that you prefer. We welcome all the . all the changes no matter whether it's actually the case or that's not the case or misunderstanding, everything will be really welcome. Just so you know, for the one that you pointed out, I think yesterday on the coding for that date or something, I forwarded this one to our internal dev team already. based on some preliminary analysis i think they are they were saying you are probably right there is a bug for that part and but that feature was probably not barely used so then nobody write the bug to date so uh so that's the initial feedback i got so rory thank you and you know for was this type of otherwise is, but I'm a little surprised you . go to that level and find that issue but uh but uh yeah we appreciate it yeah yeah yeah really appreciate it um but yeah i just wait for an email um for the uh for the requesting access to a board okay and we should have no problem share the board with you okay that board essentially cover all the items for all the features that implement from beginning to today okay what feature has been groomed and which developer assign a task, which developer work on a task. All the information are on the board. There's no other agile JIRA or whatever. The development lifecycle is using Azure DevOps board. There's agencies, not just CESAC, other agencies also participate on the board. That's the agile planning for this. project uh we have no issue to share that with you yeah perfect okay yep that's that's kind of pretty much for me uh if you request more then just let us know we can schedule a call okay i think this has no other scheduled meeting but uh yeah if you want more just let us know okay thank you very much thank you okay thank you goodbye goodbye. 
+
