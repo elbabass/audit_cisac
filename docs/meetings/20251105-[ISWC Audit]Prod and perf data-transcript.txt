@@ -1,0 +1,535 @@
+[ISWC AUDIT]PROD AND PERF DATA
+
+
+Participants    Bastien Gallay, Nicholas Randles, Guillaume Jay, Xiyuan Zeng
+
+Date    2025-11-05
+
+Guillaume J. 00:03
+Listen, my camera is when you want it. 
+
+Bastien G. 00:11
+Ok, that's good. Let's show Action. 
+
+Guillaume J. 00:21
+Ok. 
+
+Bastien G. 00:24
+Let's go. 
+
+Bastien G. 00:29
+Action. 
+
+Guillaume J. 00:30
+Hi. 
+
+Bastien G. 00:32
+How are you? oh yeah okay so thank you for running this meeting um will you be alone on your side uh let. 
+
+Xiyuan Z. 00:54
+Me check right because i think my colleague should join This meeting is about the 2a, yeah? 
+
+Guillaume J. 01:28
+Yes. 
+
+Guillaume J. 01:34
+Mostly performance. We'd like to ask more about Databricks. 
+
+Xiyuan Z. 01:52
+Rana won't join for certain. He's in a meeting. Maybe Nicholas might be able to join. 
+
+Bastien G. 02:00
+I think it was Nick and you. 
+
+Xiyuan Z. 02:04
+Yeah, correct. 
+
+Bastien G. 02:05
+Nick and Sarah are in our email. 
+
+Xiyuan Z. 02:08
+Yeah, Nick. 
+
+Bastien G. 02:11
+It's just 11, just 10 on your side right now. 
+
+Bastien G. 02:14
+So correct. We can wait for a few minutes. yeah nick should join for this part. 
+
+Bastien G. 03:26
+John, waiting for that. Have you seen our email about the git logs? Would it be possible for you to provide us? 
+
+Xiyuan Z. 03:34
+I sent you a screenshot, right? What are you looking for? 
+
+Bastien G. 03:39
+I answered to have... What we want is not proof of what you did. It's not meaningful to us. It's to understand what are your habits, how... your code is changed, what are the frequencies, what are the hotspots in the source code files. So that's why I sent you another email to ask for more details. 
+
+Xiyuan Z. 04:08
+There's a way to really answer that level of question because the product has been delivered years ago, right? And there are tons of branches, whatever. So, you know, I have to answer what the hotspot or whatever that is, right? because that's part of dev teams you know engineers responsibility to implement the code so i'm not sure you know what they will commit trends change frequency you know this is i'm not sure how that's relevant here right because the change frequency is up to whether there's a bug or whether there is a feature request right if there's no change if there's no request and search has no change so change frequency is really based on cset feature request right for whatever new item they want to implement. so if you want get you know longer i can i i can double check with team but i'm not sure how that relevant to the source code itself and and the the commit trends right so we. 
+
+Bastien G. 05:15
+Understand that fully uh we have that several uh yeah yeah with the different patterns and usage Just if you provide them to us, we'll see if it's just a noise that we cannot exploit or if we can see something useful to us. Would it be okay for you? 
+
+Xiyuan Z. 05:38
+I got your e-mail. Let me just share screen so make sure we talk about the same thing. Let me know when you can see it. 
+
+Bastien G. 05:49
+Yes. 
+
+Xiyuan Z. 05:51
+This is what you're talking about here. So, uh, so you want to understand the development the commit trends and change frequency release contains pattern batch size hotspots of changes particular file change over time correlation between taking decision timeline so uh okay. 
+
+Bastien G. 06:18
+Um just to be clear i'm sorry to saying that but these are just examples uh it's just we we have access to very few things with you guys uh for an audit it's really really too low information for us so asking for these logs is just to have something that we can explore it on our side to understand better what you are doing. If you can't provide them to us, you should just explain why. We'll see whether it sees outside and understand. But it's not a matter of why we are using it. We don't have enough information and we need more information. So here is just something I'm asking. If you can provide it, it's very good. We'll see what we can do with it or you don't, and we'll see what we can do. I understand. 
+
+Xiyuan Z. 07:30
+I'm sorry. I understand what you're asking. I also understand what those data such as this full Git log, starting from the first day on 23. I understand what you're looking for, which is basically the screenshot but extracted for way longer period of time and also in text format. yeah i understand what you're looking for okay um what i need to check is this um you know is this some sort of information that you know we we can provide you okay let me phrase this way okay because you know i don't have anything to to do for that i need to discuss internally okay there's not about anything technical cannot be done Let me just put this front. It's about the type of information and whether it makes sense for us to provide this level information. 
+
+Bastien G. 08:31
+Yes. 
+
+Xiyuan Z. 08:32
+Okay. Because I understand you want to have access to IAWC, which provided all the access you need. But this itself is to do with internal dealing process of the . I stop you see itself right the source code on our side how Spanish point is WC team operate right how they implement the feature right so I will double check okay so um I just want to make sure you know this information has no issue from our uh you know compliance side and once I clear that out then I will share with you I don't need any follow-up format with you because I understand what this would generate okay so i'll get back to you on this yeah hope that's okay yeah i won't try this one right now okay i'll check with our internal team okay yeah okay uh just to be sure we are sorry we have uh three uh transcription uh recording it's because uh two. 
+
+Bastien G. 09:33
+Things uh it's easier for us to to sum up because we have a lot of meetings and uh we need to sure to have memories of it and second thing it's a foreign language and sometimes it's it's good for us to see what was the transcript did we really understand or is it a barrier a language barrier uh that's yeah i still understand what this one yeah just let me finish because it's uh my goal saying that is What we are saying together, if you don't want it to be reported to SISAC, it's okay for us. We are all here as technical guys and we are exploring something. If at one moment, at any moment, you want to say it's just a side talk, you want to say that, it's okay for us. And the consequence of that is that We are not here to say, you guys, a Spanish pun, did that very bad. We are not here to be the bad guys. We are here to find what is really at stake here, what you are really doing. And we can be useful to you. Okay? So just to be sure, it's not a problem for us if you have a problem. 
+
+Xiyuan Z. 10:55
+I understand. 
+
+Bastien G. 10:56
+And my last point on that is that with Yann, we have... from the beginning sure explain to you that the contract is giving access to sysac to all the source code yeah we provided that's it's not source code modern source code including the repository i'm. 
+
+Bastien G. 11:18
+Sorry but i we could discuss this for how well but sure if you were on our side you would understand what i mean so well we provided entire source code for iswc application. 
+
+Bastien G. 11:32
+Source code is a living artifact. It's not a package that you can provide. 
+
+Xiyuan Z. 11:38
+I know what you are talking about. Again, we can argue this indefinitely and there are different terminology, whatever that might be, as I said. I need to double-check with internal team, making sure they're okay to share their working habit if I put this way. 
+
+Bastien G. 11:57
+I'll finish what I was explaining. Okay? Sure. if you can let me. If I say this, it's that we don't have anything to say about you have internal problems. It's not our problem. 
+
+Xiyuan Z. 12:13
+I understand that. 
+
+Bastien G. 12:14
+Okay. I understand. Just, I'm finishing that. But in, for us, we are auditors. So when we see that, let me just explain the consequence of that in what we are understanding. 
+
+Xiyuan Z. 12:32
+Sure. 
+
+Bastien G. 12:33
+It's. not a full transparency. It's something that could be harmful to the transferability, evolutivity, anything in the quality topics of the software. So that's why I'm always insisting on that, because it can be just temporary and it's a temporary problem. So we will find a solution for that. But if it's always a huge issue. It's one of the things we are looking for. Why is it so difficult to access to everything we need to audit the code and the software? And it's just being difficult is an issue for us that we'll need to report. Okay? 
+
+Bastien G. 13:25
+Sure, sure. No problem. You can report I will be next week when we make it. 
+
+Bastien G. 13:31
+Or report just with you to be sure we didn't misunderstand anything it will be in this report it's very important for you to understand that okay i'm not uh fingerprinting a finger it's just a. 
+
+Xiyuan Z. 13:47
+Matter of fact it's what we are sure seeing today sure no problem there you can reply or you can respond in whichever way that you prefer you know as long as based on the fact yeah As I said, we share source code with you, previous source code, also the latest, the door-net upgrade version, we also share with you immediately. So if you're saying not share source codes, then that's seriously wrong. We did share source code. You are correct that as of this minute right now, the full history of the source code, those change logs are not shared yet. I agree with you on that. as i said okay i can write in email later on and i will double check internally right and in which other way that those ones you know can be shared or will be shared right but that is not something i can share right now okay it's not some decision i can make at this minute okay because those are strictly speaking they are not so good okay. 
+
+Bastien G. 14:52
+There's a change history i i'm okay with you It's okay. It's not just a... an agreement we were having i'm just explaining why it's it's making me um no no i'm not making you yeah i'm not making it hard in a way right just if we can close that you will ensure what you can do and if you can do it okay as i said it's good for us thank. 
+
+Xiyuan Z. 15:18
+You very much with our compliance you know our team back there so that they are okay with this share then i will share right it's not something this because i just saw your email yeah i cannot just send that that information right now. okay without checking yeah because that's beyond beyond what i can make decision yeah okay okay and thank you very much for uh trying that okay uh and just i insist on what one thing i said if. 
+
+Bastien G. 15:46
+You need uh anything for us to be highlighted or said you can say it i won't say we will take it as it as you say but It's very important for you, okay, to say here is something we are proud of, here is something we are doing and is very useful for us. And we need to have this insight from you because we always put that in our report in one way or another. And it's very useful to say, or report is not to say only things that are bad. there are. 
+
+Xiyuan Z. 16:29
+A lot of things that we see that are good and we want to uh to highlight them okay it's to give you yeah you know you can report to we saw the code in which in your report right so whatever that is right so you can ask us questions on the on the information you want to get right so that i have no problem there right so whatever that might be right if you are auditing and you already doing auditing you know then you report you know based on whatever you're in you observed right so We absolutely have no issue on that. Okay? 
+
+Bastien G. 17:03
+Okay. So we have spent 15 minutes talking about that. Hi, Nick. I don't remember if I said it clearly. Yes. Thank you for coming in this meeting. No worries. So we are going to talk about prediction and performance data. the main topics is to understand what is important about production performance how you are measuring it and how you are addressing the main issues so i think i summarized what are all the questions we need to ask to you anytime you can say it reminds me of something or you can share your screen and show something you are using when you have some some questions or issues about peripheral lines and projection. Okay? Yeah, that's fine. So I've talked a lot. Guillaume, do you want to lead with the first questions? 
+
+Guillaume J. 18:14
+Yes, I can. My first question is, would you like to explain a small... The rule of data breaks on the data lake in the whole application. 
+
+Xiyuan Z. 18:35
+Data breaks and which one? The data lake. Data lake. Data lake store binary files and then it's processed. Data breaks is the one running Python notebooks to process the data. 
+
+Guillaume J. 18:51
+Okay. Which binary files? 
+
+Xiyuan Z. 18:56
+Okay, which type of files, Nicky? What type of file from application point of view are stored in Data Lake? 
+
+Nicholas R. 19:01
+Yeah, so at the moment we're using Databricks mostly for processing JSON files and flat files from agencies and publishers. so they'll upload their files to an ftp folder and then which functionary business what kind of business files yeah it works it's what yeah it works so they'll have an import file that would have a bunch of submissions in it so then you know a bunch of works so they could be adding works they could be updating works they could be searching for works. So based on the file, there'll be an operation specified in the file. Then we have a workflow in Databricks that will run every 30 minutes, check the FTP folder to see if there's any new files that have been dropped. And then based on the type of file it is, it will create another workflow to process that particular file. What we're doing in Databricks then is we're calling the API. to make the submissions. And then we process the response in Databricks and then output to the output folder in the FTP server. 
+
+Guillaume J. 20:46
+Okay. And the output folder is used by who or what? 
+
+Nicholas R. 20:53
+So the agencies, publishers, third parties, and all of those, they all have their own... you know secure ftp folder location and you know so that they'll put their input file in the in folder and then they'll they'll get their acknowledgement file in the l folder and then the import file will move to the archive folder okay. 
+
+Guillaume J. 21:17
+Um something which is not clear for me is do the api use database what do you do with the data which is processing Databricks after in your system? 
+
+Nicholas R. 21:37
+Yeah, so we have some notebooks that make API calls. So it will take the submissions in the file and then it'll make batch call to the API and then process the response. 
+
+Guillaume J. 21:54
+You make your main database, in fact. 
+
+Nicholas R. 21:58
+Sorry? 
+
+Guillaume J. 21:59
+The Databricks contents update the main database. 
+
+Nicholas R. 22:07
+The main database? 
+
+Guillaume J. 22:08
+Yes. SQL Server. 
+
+Nicholas R. 22:11
+No, I don't. I'm not sure we have anything that we don't really use to connect to the database directly. Yes. we have so as far as so that's the process i was telling you about there that's that's um the you know the edi process for um for you know um uploading files and processing files but we we also we have i suppose i can we can just go through and maybe i'll show my screen to be easier yes please yeah okay so these are all the the jobs we have at the moment so we have the edi so this is what i'm telling you about that runs every 30 minutes this just scans the the ftp sorry the ftp wow yeah so like the these are all agency um ftp folder locations and we have these ones here which are third parties so third parties and they're also using this the service so they'll put their input file here and the evi job will detect that and then it will based on the type of file it is so if it's an agency file you process in the process file job if it's an allocation file which these are these are publisher publisher files processed here resolution is also a publisher type of file this processed here and the third party would be would be here and so if you look at the the code we look through the college you'll see what is happening is it's just yeah it's making an api call and and it processes the response and then it just goes to the out folder here yeah um So I didn't get your question about the SQL Server. Are you asking that we connect directly to SQL Server from Databricks? 
+
+Guillaume J. 25:12
+Okay. My understanding, which is not very clear, or maybe I missed something, is there is a data race on Data Factory and Data Lake part in your schema. I'm not sure how it is related to the various API on portal. 
+
+Xiyuan Z. 25:48
+Sorry, it's not that easy to recognize. Maybe just not that clear, so it didn't fully get what you're asking. Can you repeat? 
+
+Guillaume J. 25:58
+Okay, my question is, I'm trying to be clear on the speaker better. The Databricks process on data, is it used by the portal or the API? The portal of the API? 
+
+Bastien G. 26:28
+Or the API. 
+
+Xiyuan Z. 26:30
+Or the API. 
+
+Nicholas R. 26:32
+Databricks is a background process. It's kind of a side process. It's not used directly with the API or the portal. 
+
+Guillaume J. 26:43
+Does it give something which is then used by the components? Yeah. So the main purpose is . 
+
+Nicholas R. 26:56
+Purposes we're using the Databricks for at the moment we have a few things that we use before so the first thing I was telling you about is our processing files we also have process reports so technically so if you go to the portal. 
+
+Xiyuan Z. 27:12
+I'll show you here all data processed by Databricks are eventually used by the user of the client of the platform Databricks is just processing data asynchronous in the background. 
+
+Nicholas R. 27:23
+Yeah. So if you see the portal on here, we have different types of reports. So sometimes if you want a full extract, that's going to be quite large. There's going to be a lot of data involved. So it's not something that we will return instantly to the customer. So if they come in here, for example, and they say extract XL to FTP, so this is a full ILS, you'll see extract. So there's going to be a lot of data with this. So what this will do is this will you know, this will create a job in Databricks, a process report job. And what would happen in this, it will just take the parameters the customer specified in their report, you know, such as their agency. So this meeting agency who submitted for this report, what they're looking for, the type of report they're looking for, and then also the email. so what we'll do then is this this job will and you know it'll run um against the delta lake which has all of the iswc data replicated and it will then it will it will then send an email to the customer to say okay your report's ready and it outputs the report to the ftp as well under the reports folder here so okay i was missing the part about. 
+
+Guillaume J. 28:52
+A replication to the data lake it's more clear okay it's okay it's clear for me no bastia if you have any question no it's uh very good thank you uh i understand what are the how. 
+
+Bastien G. 29:10
+The database is involved just to be sure there isn't any uh simplest path between the API for instance to Databricks it's all everything is asynchronous to the database or ftp yeah or asynchronous yeah there's no synchronous processing between any front end to Databricks and that that's. 
+
+Nicholas R. 29:35
+Not a thing yeah that would work very well just say no Databricks yeah somebody signed for that so yeah and it's uh we were thinking it was like that but. 
+
+Bastien G. 29:48
+But just to be your expression were very good. And if we go to another that... the component it's a cosmos db it's only for um audit tracking isn't it yeah yeah so primarily. 
+
+Nicholas R. 30:14
+Used for uh it's primarily used for yeah audit tracking so we have an audit uh audit request container which basically includes data data for all of the submissions that come through the system. So like, you know, it includes the submission data and then it includes, you know, you know, all the metadata, like such, like all that, all the stuff you would need basically when you're trying to debug to see if there's any issues with a submission, for example. And we also, yeah, we, we, that's kind of relates to Databricks as well. We have this job here, process audit. So what this job does here is this runs on a schedule every 20 minutes or every hour. And it basically just uses the change feed data connector in Databricks to connect to Cosmos DB and just replicates the data in the Delta Lake, in the Delta table in Cosmos. So then if we have to run a report that's using the audit data, we run it against the Delta table then. rather than we're in Cosmos. 
+
+Bastien G. 31:33
+Very good. I think for all these, I think it's more introduction questions about the use of data components, it's okay for me. 
+
+Bastien G. 31:45
+Okay. 
+
+Bastien G. 32:04
+Um okay next uh would like you will go on a broader uh topic it's how you monitor and measure the system performance currently in production what are the key performance indicator you are using so it's not a real good open question but what I want is on this what are you using to and how are you using it to have measure in alerts on the performance topics yeah so i'll take this one. 
+
+Xiyuan Z. 32:49
+Yeah yes this entire thing the real depend deploying everywhere in the cloud there's no other component anywhere else Everything we manage is in the subscription that you currently have access to, so they are entirely Azure resources. All the platform level performance metrics are gathered by the platform by Microsoft. Those are the metrics that expose through the platform, such as CPU usage for database, CPU usage for the CPU or RAM for the app service, etc. Those are the makers and the tooling we are using. and they are essentially, you can view them in the AgriPort as well. For example, go to database or app service, you can see in the monitoring those are the matrix trending. So that's a tooling and the matrix, and that's essentially what we are monitoring. Some of them are created as AgriAlert, and also in AgriMonitor, you can see them as well right now. So that's a maker that we use to alert us. For example, CPU for Apple M is over 80% for past five minutes or past 30 minutes. Those are the alerts. You can see them right now in Azure Monitor. So yeah, that's how we do it. It's an all-platform native feature through Azure Monitor. 
+
+Nicholas R. 34:18
+Okay. Yeah. So like if the CPU is above 80 percent for five minutes, an email goes and alerts is fired and it sends an email to the support team and then they investigate it. 
+
+Xiyuan Z. 34:31
+Yeah. So everything around the Azure Monitor as a micro first-party integrated with platform itself, we set up alerts in there and you can see alert definition in our reporting Azure Monitor, and those alerts send the email if something. If those key KPI using your terminal with those key ones get triggered, the email will be sent to us and we will investigate. 
+
+Bastien G. 35:00
+Do you have any kind of SLA with SESAC about them? 
+
+Xiyuan Z. 35:05
+SOA is for the... The SOA is on the support incident. So if there is an incident that becomes an issue, then the SOA is the time that we respond and that SOA does exist, it's in the support contract. 
+
+Bastien G. 35:22
+Okay, but there are not no... 
+
+Xiyuan Z. 35:26
+Incremental figures about the performances of any component or workflow on the application right the soa if there's an issue on the service level right the so is between microsoft and also the platform because microsoft provide the soa for the services and that's you know and that itself based on the skill of the service configure they have their own soa which is provided by microsoft And what we're doing is basically monitoring from our application for the given SKU, right? If that SKU is too small, too big, right? And that will tell us whether there's an issue or not, right? And based on our investigation, if that's an issue, then we turn it into a support ticket and then CISAC can see that in our ticketing system. But the SOA in our support contract between, let's say, SpanishPwn and CISAC, right? Those are for the support incidents. uh you know either c-cell rises or we create a support support incident you know if there is something that we consider this needs to require further investigation rather than ignore as noise so only one turned into a incident then that we follow sla the rest is just ongoing more uh monitoring unclean monitoring you know so just just you know just to just monitor whether there's an issue or not. and that's those are written in the support contract which is what we call soa as well and i suppose you have access to that doc if you don't we can pull up show you and so the soa is in there no. 
+
+Bastien G. 37:09
+It's uh i think it's okay um okay maybe it would be a good if we go through visual but I think we have other questions. Guillaume, do you want to ask some questions about Paraferments? 
+
+Guillaume J. 37:32
+I would just like to know what kind of... do you remember... Any kind of significant changes on performance of this last year? 
+
+Xiyuan Z. 38:00
+No, really. Some specific issues? No. Okay. If the performance issues, then that will be rise of size or whatever. So if we need more core, we just give it more core. The platform was auto-scale. So the server hosting the website, they auto-scale. The same goes for Databricks. As we can see right now, those two jobs are running. The platform automatic provision machines and deprivation machines when the job finished and add more nodes whenever required. To my knowledge, I don't think we have any same issue in the past year. Nicky, do you remember anything or do you know anything? No. 
+
+Nicholas R. 38:36
+I think it's been pretty good last year. 
+
+Guillaume J. 38:44
+In fact. 
+
+Guillaume J. 38:45
+Everything is just working as a second. 
+
+Bastien G. 38:49
+That's strange. Or maybe we don't understand the same thing about the issue. I could see that had some problems with some, I would say, not Rails Perf, but some parts of the application that had some a very low, a lot of latency or very low requests per second, and they came to you and you made a proposal for an evolution. I don't know if you know what I mean. 
+
+Bastien G. 39:28
+Oh. 
+
+Bastien G. 39:28
+You mean that one? 
+
+Bastien G. 39:30
+Yes. 
+
+Nicholas R. 39:30
+Which one? Yeah, there was a feature, yeah. So we did notice, it wasn't happening frequently, but there was a few SQL exceptions in the logs when we were reviewing the logs. And we noticed that they're like, you know, you know, in the system we have. So you have an ISWC and then it has loads of works under it. Like there's a few ISWCs that have like thousands and thousands of works under them. So when you're trying to search for one of those ISWCs, it can cause a SQL exception because there's just so much data coming back. So what we proposed to CSAC there was to implement pagination for those works. So we're at it and returning when you're making an API call to it. 
+
+Xiyuan Z. 40:24
+To return an iswc that has like 8 000 works on it rather rather than trying to return all that data in one call we could be hitman pagination for those but there's not like i wouldn't that's only an exceptional case this way there's a lot of data data on the iswc okay so basically let me rephrase right so that that's itself nothing to do with infrastructure or the platform in terms of performance it's more to do with the way that the data returned and handled by the ui so that is not just single request return. They're just quite 10 megabytes of data, just for example. The browser will render, I don't know, a long page with a lot of item. If your PC is not performance enough, then probably that won't work. Those are the extreme cases and what we're thinking is implementing the pagination, if I got your term correctly, so that different pages. Nothing to do with really platform level and the performance issue, so to say. is to do with real cases for that particular type of swc right that has similarly has too many data attached so that if they handle that one in the same way at the application to you know at the browser level or i say at the ui level to be precise right and accompanied with apis and that certainly will have you know introduced performance issue for a certain individual for that type of data only so and we don't consider that as a platform level problem in any way neither coding level is more to do on optimization or accessibility okay yeah okay and i suppose another. 
+
+Nicholas R. 42:04
+Thing um we speaking of performance at least from uh the incidents we've had i felt like the third party service there was a few performance issues with that one when that was first launched a couple years ago but we made some code optimizations that helped with that and also the application there like we have the ability to select detail levels so when you're making an api call to you like you're doing a search for example you can select a detail level so if you want minimal data which will just return you know like the the core iswc data you can select that detail level or if you want like full detail level which is going to engage include all the work information as well you can select that as well so we've yeah we've done some some code changes over the years and like those services are seem to be fine that now that was years back yeah yeah yeah so not nothing really within last month yeah okay. 
+
+Bastien G. 43:18
+Okay, so we're 20 minutes to the end of the meeting. Maybe we can go further. So just to be sure, there was a hyperscale proposal in what you proposed, to be only on the change of the infrastructure and not on the code, okay? 
+
+Xiyuan Z. 43:42
+Wait which proposal you're talking about just make sure you know because there are so many different changes requests whatever right so we're talking about the same thing so yeah whatever like proposals changes the one i was talking about was the code there's also maybe i think it might be referring to another one here let me just yeah that's why i asked which purpose you're talking about right there are there were uh different change requests and proposals that are ready to. 
+
+Bastien G. 44:12
+What nick just explained uh before yeah okay uh we'll need to to be sure we are talking about the same thing yeah uh with you but also with the yan. 
+
+Xiyuan Z. 44:27
+And maurice because sure it's very confusing i think um yeah that's why i asked right let's be precise right which is that proposal you are referring to here. 
+
+Nicholas R. 44:41
+This one here, because this is the only other one I can think of. This is infrastructure. 
+
+Xiyuan Z. 44:50
+We did propose infrastructure a couple of months back to do with security. That networking level change, nothing to do with what Nick was saying back there. But there can be more proposal which I personally not aware of which Nick might know. So which one you are referring to or you have question? 
+
+Bastien G. 45:09
+If I give you because I had a document. Yeah. Yeah, you need to. In this document, there is a PEPM. 
+
+Bastien G. 45:20
+If any data you can provide and they can tell us which one you are talking about. PSA 5499. What's the title there? 
+
+Bastien G. 45:39
+It's, sorry, just. 
+
+Xiyuan Z. 45:42
+Can you share your screen? Just maybe which PSA you are referring to. 
+
+Bastien G. 45:47
+Yes, just let me open. 
+
+Xiyuan Z. 45:50
+So we can get the correct information to you. 
+
+Bastien G. 45:53
+Good, we can. OK. I had this. 
+
+Bastien G. 46:03
+I don't know if you see. Can you just quickly scroll down? Let me see what this is. 
+
+Guillaume J. 46:12
+Yeah, put it. 
+
+Xiyuan Z. 46:14
+OK, OK. I think I know what this one is. There are multiple item in here. One is a networking layer architecture refactor. One is SQL Server skill update. 
+
+Bastien G. 46:30
+Okay. Yeah. Okay. 
+
+Xiyuan Z. 46:33
+So from BNS critical to hyperscale, which is Microsoft Service Level Improvement. So none of those SQL Server in there are, they are the internal drawing from Microsoft documentation on the particular skill. and we are proposing to change to the other skill which is supposed to be cheaper and that's what's included in there and the other part of the proposal in there which is containing some video drawing those are the networking layer uh architecture refactor or i say improvement to you know to basically introduce you know a more secure connectivity between different components and that's what those drawings talking about the component to come and communication currently and everything for using public ip of course things are locked down not anonymous and the proposal is talking about you know instead of go through public uh they'll go through the you know private communication so public path is flip block so there's not using public ip at all so that's what that proposal is and we also called out the wolf right if you want to walk then then a vapor king firewall can be introduced and seeing i think that's also called out in the in the proposal That's a different one from what Nicky was talking about. 
+
+Bastien G. 47:49
+Okay. Can you provide either a document with what you are talking about, Nick? Or just the reference for us to ask it to Jan? Sorry. 
+
+Xiyuan Z. 48:06
+What document are you talking about? Just be precise. 
+
+Bastien G. 48:08
+Do you have a document like the one I showed for this other proposal? 
+
+Bastien G. 48:12
+Or for other proposals related to performance because we only had this one and it's a good thing for us to meet other proposals that must be shared that must be sent already in a different in a different quest so nikki we have a ps4 peel for that do we yes if you if you have uh any reference for uh for us to to talk about it because. 
+
+Bastien G. 48:38
+What i see here it's uh really um very strange because we are talking about one thing you understand another and for us from us that's why it won't be clear right one real uh proposal from you so uh on the performance so it's good to us to to explain with uh jan and uh the each team why you you have a confusion and like that you have Many requests, I think. 
+
+Xiyuan Z. 49:15
+The proposal we have, the one you just shared, that's have nothing to do with performance. That wants to do with security and the skill change, modernize the platform because the version is not supposed to be used. 
+
+Bastien G. 49:28
+But it's directly talking about security and also optimizations. I think... 
+
+Xiyuan Z. 49:41
+Can you be precise? Let's don't make assumption. Yes. Can you share which part you're talking about? 
+
+Guillaume J. 49:50
+If I can tell you, the Hyperscale update, translation, conversion, is about cost, not about performance. 
+
+Bastien G. 50:00
+Yes, and I think that's why it wasn't done as a performance. Well. 
+
+Xiyuan Z. 50:05
+The performance is about the money, right? 
+
+Bastien G. 50:06
+This is the whole thing about the performance. Yes, in terms of money. 
+
+Xiyuan Z. 50:10
+This is just money, right? Because it's cheaper. The service in your school is cheaper, so you pay the same amount of money, then you certainly get more performance, right? So there's nothing to do with there's a performance issue, so make sure we are aligned on what we're talking about in here. This is cost optimization in this part. 
+
+Bastien G. 50:26
+This document is talking about. 
+
+Xiyuan Z. 50:29
+This is networking level security improvement plus SQL skill change. 
+
+Bastien G. 50:33
+It's just the fade over. Okay. thank you but uh if you have all the references like you you share nick about some performance requests or features that was discussed for a future revolution it would be very good uh i think we extend the feature in the in the chat so if you have others it's good also for us to know we'll uh share it and look back uh with them with cesac about it. 
+
+Xiyuan Z. 51:09
+Is that approved or not yet, Nicky. 
+
+Nicholas R. 51:11
+That feature in the chat? No, it's not approved yet. Actually, Jan mentioned he wanted to wait until after the audit to approve it. 
+
+Xiyuan Z. 51:23
+So there's no approval for what Nicky was talking about. So again, that is more a usability issue, not a platform level performance issue, just be precise. It's pages too big. because those particular ISWC has too many data. That is not causing any server-side or service-level performance issue in any way. It's just browser, as you know, when a table, for example, has two LUM, browser phrase, which is where you will issue for a huge page. That's what we are talking about in here. Just making sure we are fully aligned in here. yeah that's okay okay and that self has nothing to do with uh with that ppt uh you know with that uh without the networking improvement plus the cycle skill change we're talking about okay and that's uh and that proposal that we did you know you just screen share back there is all to do with security okay network level security and the cycle skill or uh cost optimization okay put this way nothing to do with performance issue in any way. 
+
+Bastien G. 52:35
+In two minutes could you tell us why you had to address some security uh solutions in this proposal is it was it a request from cesac uh is there any problem you. 
+
+Xiyuan Z. 52:50
+Have noticed because it's too too much things are opened there's no issue there's no secret bridge or nothing whatsoever okay so it's not based on any thing that you know knows there's an issue okay nothing to do with that Okay. It is a platform that was built years back and there wasn't a technology at that time to support this level of connectivity, which is this level of security. But since then, platform evolved and new technology being introduced so that the application architecture can be slightly modernized at infrastructure level. And that's what this proposal is about. and these are the standard setup. based on Microsoft best practice to secure application components. That's what this proposal is really about. It's to enhance the network level security, nothing to do with application level. There's no feature change, no application level change, it's just network communication. 
+
+Guillaume J. 53:51
+Okay. 
+
+Bastien G. 53:52
+Good. Now I understand this proposal. 
+
+Xiyuan Z. 53:58
+Yeah. We also called out WAF or something in there as well, which is for WebMU-FIRREL. And again, the feature, there wasn't a valve at the time when we initially implement or and over time, past few years, the valve or front door can be introduced with the layer seven reverse proxy, which we caught out in there as well, which that can also be introduced if CSA1 that one as well, that can be implemented. But I think maybe we didn't add a number of days for that layer seven reverse proxy, but we caught that out in there. So the diagram itself is only about networking connectivity between different components, such as web app to SQL database. So it's about component to component communication from public IP to private IP based through virtual network and private endpoint. and as i said you know that feature wasn't there years back and we're proposing to modernize this piece to bring the platform right more up to speed uh aligned with latest microsoft best practice okay. 
+
+Bastien G. 55:03
+Very good any more questions given before going to next topics next time you can't go to next topic um we have all these uh questions about database and storage performance is it in the five last minutes what we want to prioritize as questions guillaume or do you want to go on another topic sorry we are just uh reprioritizing our questions because We had a lot of very interesting discussions and didn't follow exactly the question list we had. On this part, one thing is maybe you didn't answer for the 2B in my email last week. to talk about pricing and everything to understand better what could be done because you have made some propositions about that also and what could be done to reduce pricing uh with azure uh pricing in avi that's. 
+
+Xiyuan Z. 56:29
+One of the proposal that and sorry uh In the proposal you just screen share for the SQL Server part, that is for customization to reduce the cost, change SQL SQL and then the cost can be optimized. That basically essentially covers what that is, the cost part. Everything else, we don't see much of the opportunity on cost saving, so to say, because the platform is already auto-scaling. It's not like we are buying 10 different machines for 10 core each. 
+
+Bastien G. 57:02
+It's just a reminder, I'm sure it would be good to talk about it for at least half an hour. To go through this proposal and it's not to meet for us, it's to understand why the costs are like that, what is variability, goals and things like that. Better understanding, as before, we will always need to have a better understanding. It's all the questions we are asking for. Sure. Yeah. 
+
+Xiyuan Z. 57:35
+Just ask questions, we can answer you. That's why we're here. 
+
+Bastien G. 57:39
+I don't want to ask the questions now. When would you be available and whom should we invite? 
+
+Xiyuan Z. 57:47
+It will be me. For all of those type of questions, it will be me. I'm available today. Even if this morning, if you want to run this meeting longer, I am available or I'm available tomorrow. 
+
+Bastien G. 58:01
+Uh whenever you pay for okay let's take five minutes uh when we finish uh this one to talk about uh when we we do it okay uh like that we can free nick and um okay do we want to ask some other questions um maybe Just to note something, Guillaume has found something very interesting in the code, I think about n plus 1, that is related to performance, that we wanted to say to you. 
+
+Guillaume J. 58:49
+Maybe I can talk about the bug I found, the date for it. it's just a i just maybe but i must look for it because i'm not remembering exactly please just a very minor bug we found i just wanted to to give it to you um it's about the filter i have to to look for it because it was in a meeting i'm sorry i have to check. 
+
+Bastien G. 59:28
+Guillaume is preparing to share. I also found something that was surprising to me. It's that when all the roles are applied for submission or merge, it seems that it is recorded for each row in the database instead of just recording the results and i didn't understand why so i'm it's just i have it on my mind i need to understand better that it's not a long-lasting transaction or regarding the process okay we're going here. 
+
+Guillaume J. 1:00:12
+Okay, I put the bug in the message. You'll see it's just a basic comparison problem. I have not checked in the last version if it was. 
+
+Bastien G. 1:00:25
+I didn't see any change in that part on my side of the game. 
+
+Nicholas R. 1:00:34
+Yeah, no, there wouldn't be any changes to this recently, anyway. 
+
+Xiyuan Z. 1:00:43
+So what's your question here? I see you paste this code. 
+
+Guillaume J. 1:00:47
+Not a question, it's just that we found that and we wanted to talk to you about that. Just to inform you about Visibank. 
+
+Xiyuan Z. 1:00:58
+We each part in here, and so I can see the code snapping here. So if search model whatever has value, then predict whatever is lambda expression. right? So what. 
+
+Guillaume J. 1:01:10
+Yeah but you see you see what you're searching on the today value but you're searching credit date after the to date and it should be until the to date value i think you're searching from day two to date. 
+
+Xiyuan Z. 1:01:40
+I'm not falling. Are you proposing some changes or what? Yes. 
+
+Guillaume J. 1:01:46
+I'm proposing, but maybe the variable name, it's a problem about naming, but I'm calling this, not exactly in the full context. Are you saying there's a logical error in the code? I think so. 
+
+Guillaume J. 1:02:09
+Because i think the filter is to search between from date to a two date yeah okay i should you mean yeah okay i i think we are not gonna answer this question whether you know there is a lot it's not a question i think it's about reading but i just wanted to tell you the code. 
+
+Bastien G. 1:02:27
+Reason you had some bugs that are that could be related to this part of code yeah i understand one of the solution of the problem so just keep it understand It's too minor for us to even be a part of our report. Yeah. 
+
+Bastien G. 1:02:42
+I understand that. So just you have it. 
+
+Nicholas R. 1:02:46
+Thanks for highlighting that. 
+
+Xiyuan Z. 1:02:49
+Thanks for highlighting this. But what I need to say here that the code reading this way for whatever reason that was. If that itself is a bug, we will check with the application team to see whether that's indeed the case. this is actually intended to be in such a way for that type of logic. Of course. But I understand what you are proposing. So the one above in your first text box is what we currently have, and then the second one down below is what you think the code should be. Is that what you are saying? 
+
+Guillaume J. 1:03:21
+Yes. According to the variable name, I think it should be that. 
+
+Xiyuan Z. 1:03:26
+Okay. I understand what you're saying now. Okay. Again, I cannot give you. Of course. With that one, whether it should be. That needs to be evaluated by our developer to align with whatever specific requirement or logic that part is trying to implement. I have no personal knowledge on that at all. But yes, thank you for highlighting that part. We will double-check and probably get back to you just in the chat whether that's actually valid or that actually completely you know different from what the the you know the code is trying to implement okay of course okay anything else no i think the timing is over uh it's okay it's okay um so. 
+
+Bastien G. 1:04:21
+John uh about uh talking about uh the pricing split up and uh what you were proposing about about that i think And to understand better the variations, why they are there and what could be related. Okay, everything. You said you were available today. 
+
+Xiyuan Z. 1:04:44
+I'm available right now. I'm available right now if you want to continue. It's up to you. 
+
+Bastien G. 1:04:51
+Okay uh no it's i think it's it will be complicated for because uh it's known uh on my side i have some uh things to do i don't have much time and same for you i think guillaume yes i. 
+
+Bastien G. 1:05:08
+Think it will be better tomorrow we already have one meeting with you yes tomorrow would it be for me. 
+
+Bastien G. 1:05:19
+Yes, but it will be at 7 on your side, my meeting, so it's okay. So I'm available all day for a meeting tomorrow. 
+
+Xiyuan Z. 1:05:34
+Tomorrow I can do the same time if you want. okay if you have question on what we propose in the in the in the slides right but the one one thing keep in mind right now the sql skill is a past service okay it's not some server with provision they are just two different skills in the service and we it's not asked to configure it just the the diagram in there related to security to the cost It's entirely the inner working of those two skills. at the platform level okay it's not something we choose to configure in that way no it is just uh you know it's just the service self work in that manner and that's what you know people generally recommend or i say micro recommend going forward because it's you know it's kind of cheaper and the performance better so micro has full documentation on that and that's what that proposal is about. 
+
+Bastien G. 1:06:42
+Yeah i think we're good okay i send the the invite for tomorrow's run and thank you very much once again guys thank you uh speak you later today yeah okay. 
+
+Nicholas R. 1:06:56
+Okay bye all right thanks guys bye. 
+

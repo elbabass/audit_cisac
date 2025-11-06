@@ -1,0 +1,349 @@
+[ISWC AUDIT]CI/CD PIPELINE
+
+
+Participants    Nicholas Randles, Xiyuan Zeng, Bastien Gallay, Guillaume Jay
+
+Date    2025-11-05
+
+Bastien G. 00:10
+Hi guys hello again hello hey thank you hey guys hi again so We are here to talk about CI-CD and Infrastructure as Code. Maybe depending on where we go on the topics and your answers, we may make shorter than one hour. Hopefully. It's always a good thing. So, is it okay for you? Are you available? Can we start and use the question in Gatling? 
+
+Xiyuan Z. 01:14
+Yeah, sure, you know, just fire ahead, right, whatever question you have. 
+
+Bastien G. 01:19
+Okay, first of all, I understood that it was, I'm sorry for this topic again, like for the code accessing to CI-CD is not really possible for us either. 
+
+Xiyuan Z. 01:36
+CI-CD... No. I'll give you three answers. 
+
+Bastien G. 01:44
+Do you have some, in few words, just why would it be a problem? What are the problems for us to access in Red&Li to see the pipeline of CI-CD of this soft? 
+
+Xiyuan Z. 01:57
+Yeah, so... It's my understanding that the entitlement is for CSAG is to receive the source code of the entire ISWC application, which we comply and we work with that and share the source code. Whereas, in FATRAS code and the CSAD pipeline, they are not part of the ISWC application, and they are part of the proprietary library based on the SmartM library. and they're not part of the ISW application itself. Since ISW application doesn't need any IAC, doesn't need any CSAD pipeline to be executed nor deployed. 
+
+Bastien G. 02:43
+Okay. 
+
+Xiyuan Z. 02:45
+Yeah. But if you have question, we can answer you. If you want to do screen sharing, we can probably do that as well. 
+
+Bastien G. 02:53
+Yes. I think that will be like you did. I think two weeks ago it was very good. If you can, that's actually our first question to make sure that we understand what you do on this side. Can you walk through the, I would say, the complete deployment process from, yeah, what are the gates, the stages that are on CI-CD? And while sharing your screen, I know you already showed us that, but know that we understand better the application and the code. I think it would have more sense to us. Would it be okay? 
+
+Xiyuan Z. 03:44
+Yeah, we probably can do that. And so, yeah. I probably can share my screen in that case. See my screen okay? 
+
+Guillaume J. 04:09
+Yes. 
+
+Xiyuan Z. 04:10
+Okay. So I can share in sharing, but don't take screenshot or anything. So I established a pipeline this year. So this is a release for the full CSAD deployment pipeline, consists of multi-stage build deployment. For example, we have a build stage, we build a binary, we build IEC, we build whatever relevant unit test, and then we deploy to Dev, UAT, and production. In this particular example, it's directly to UAT. But the idea is basically to build Dev, UAT, and production. This is a pipeline definition. Okay. And we use pipeline for all deployment, no manual. Pipeline, yeah, deploy IC, deploy binaries, update keyboard secrets, update data breaks, and then perform integration tests, whatever they are. So what question? 
+
+Bastien G. 05:31
+You have here you can ask yes yes yes um just let me see again please one thing surprised me on the first stage uh we see 99.5 percent passed sorry the 99.5 percent test passed on a build It's surprising to us because usually it's always 100 percent or no pass. Maybe it's just the way it's displayed here. 
+
+Xiyuan Z. 06:15
+You mean this figure, why not 100 percent? Is that what you mean? I don't have answer for that. Maybe some new code, maybe some unit tests not updated to align with the latest code, maybe. I have no answer for that because all the tests must be written so that the test will be whatever they might be. Probably just recent door net upgrade maybe. Some of those changes are not really, the code paths probably not covered. That's the only thing I can say. 
+
+Bastien G. 06:54
+Okay. 
+
+Xiyuan Z. 06:55
+Because the door net upgrade was just done recently and deployed. I say something's not. fully up to date. 
+
+Bastien G. 07:03
+Okay. Do you have the list of the tests that didn't pass? Can you show it right now? Are there some unstable tests? Are there some tests that you marked as it's okay if they don't pass? No. 
+
+Xiyuan Z. 07:22
+There are no such tests or were all automatically done. For example, for this particular run, it was to UAT, not to Dev, not to production. So there's no test that we can mark as okay or not okay. They were just test, executed automatically for every release. Test might be updated to align with a feature update. So we can see the failure or successful one. We don't have the capacity or capability to tell which one is. ignore which one is okay, right? So. 
+
+Bastien G. 07:59
+These are the tests. Usually we do it in the code. We say this test is obsolete, so skip it. Just put a marker on it, on every unit test, we can do that. My surprise is that to avoid confusion, it's one fundamental to make ops part and the dev part understanding devops is we shouldn't have tests that are red but it's okay to be red it's a developer's job to say this test this test isn't meaningful i. 
+
+Xiyuan Z. 08:44
+Understand what i say yeah i i kind of agree with you yeah but uh these are the two the these are you know for the for the feature that they are implementing at that time. probably some of those tests were broken because of the test hasn't been written or based on some old ui or whatever right so and but uh i i do agree with you right you know test generation should be all green right that's why the test should be updated right but just in this particular case right some of the tests were red some tests were green right and we can see mostly on green why those ones are red uh i personally have no answer on that and for that if you want to understand that further and we need to have i'm not sure nick has answered for that but the we have dedicated QA guys you know they're the one really managing those tests they probably know a bit more um you know on why those ones were red maybe because not updated or maybe you know because they are old or whatever that reason was and I cannot answer that yeah. 
+
+Nicholas R. 09:41
+I know there's yeah for example the portfolio smoke test I know there's some of them are failing due to a networking issue which uh should be resolved now so that this is back in October. 
+
+Xiyuan Z. 09:54
+Yeah. So maybe some recent ones may be good. I don't know. 
+
+Nicholas R. 09:58
+We have. we have actually a book logged for an issue with an active issue with the pipelines yeah okay this is very good right 100 pass this is the recent one okay this is the most this today is wrong right so this is a this. 
+
+Bastien G. 10:14
+One right executed yesterday and this one 100 however we have it's marked as failed or i misunderstand the icon okay. 
+
+Xiyuan Z. 10:27
+It's just we canceled the rest. Some of the ones executed were 100 percent. Again, I don't know. The guys were doing, they were basically still updating the . So I say for certain tests will be needs to be updated and that's still working progress. So maybe this is not good example. I don't know. 
+
+Bastien G. 10:53
+Everything we're asking is okay. it's uh You have a lot of information, it's just that for me, I'm coming here, I look at that and I see some not so meaningful information sometimes, that is, it's red, but it seems okay. 
+
+Xiyuan Z. 11:16
+Yeah, yeah, you know, some of them are a type of failure on purpose, right? So, yeah, yeah. That's all I can say because the guy is still deploying DoorNet 8 so I don't even expect everything will be green. Still in progress as you can see just this week. Even though code I just shared with you was working version, but whether everything else including the test has been updated to align with that, I say probably not fully because we're still doing that. Just let me know what you want to see, what the question is. 
+
+Nicholas R. 11:56
+Yeah, we have a BOGO open on the board. It's basically there for the pipe. After we upgraded to .NET 8, the tests are being blocked and the pipelines need to be updated now. And just one step in the pipeline needs to be updated. So what we've been doing is we just deploy the solution and then we run the test locally against that API that's just been deployed and they're passing locally. 
+
+Bastien G. 12:28
+Yes, but it's okay, I just wanted to understand that. And with more than 700 tests, six-year-old codebase, it's usual to see that kind of thing. Okay, you understand why I was surprised. Okay, any other... remarks or questions on this particular topic? 
+
+Nicholas R. 13:04
+I suppose as well, we do have some older integration tests that can be a bit brittle. Like to say you run the pipeline once and a few tests might fail, like due to a timeout, for example, and then we just run it again and they pass, so they could probably be refactored to be a bit more robust. 
+
+Bastien G. 13:33
+Hmm okay you try it logically yes it's i'm not telling you to change uh i just want to understand what i see uh just be sure of that yeah yeah okay but that's problem uh i had a lot of projects and i think yum is it's the same for you um where i we had these long lasting and stable uh tests that and we must deal with it most of the time we created a separate test suit for them to be sure that everyone has the information that it's okay for them not to be green all the time but for all the others it's no go if there is a one one red on the other tests So it's the only way I think we can deal with it without skipping them. 
+
+Nicholas R. 14:34
+Yeah, I can. There is there are some tests that are skipped like that. They're conditional. So based on what configuration is set in the environment to deploy into that test might run or might not run, you know. So you can see that in the code as well. 
+
+Xiyuan Z. 14:52
+Yes. 
+
+Xiyuan Z. 14:52
+You have access to other test sources code. 
+
+Bastien G. 14:57
+The good point is that you are not skipping the tests anytime it's noisy. 
+
+Nicholas R. 15:02
+Broken now. 
+
+Bastien G. 15:03
+So it's very good point to me to be clear on that. Anything else about the tests? 
+
+Xiyuan Z. 15:21
+I don't have much to add here. We have unit tests running in the build. We have integration tests, a UI test, and running every deployment. There's nothing manual. There's a procedure, it's just fully automated. 
+
+Bastien G. 15:40
+Sorry. Just one thing that is maybe out of the scope of today, but we learned that i don't think sisa can you have a complete agreement of manual tests uh that needs to be run on an early am i right those will probably be. 
+
+Xiyuan Z. 16:04
+Whichever counter or you know or whichever feature so i i don't have that list right but the water might be right you know of course sometimes there can be manual test but I cannot answer whether they're easy. manual yeah but all the tests in here you know uh some of those ones i believe they launch browser for tests so they are the automated replacement of manual tests if you consider that way right so they are the one they're not calling api they're actually launching browser to run the test so you have the code as well so that's what they are okay and uh. 
+
+Bastien G. 16:48
+No, it's okay, I think it's okay. About the overall process from the last commit, you said there is nothing manual to production. I think you told us at first that only the go to production is a manual action on this pipeline. 
+
+Xiyuan Z. 17:13
+Sorry, only what? 
+
+Bastien G. 17:17
+On the last block, Sysac production, it's the only one that requires UAT to say go. It's also UAT as well. 
+
+Nicholas R. 17:25
+So you have to do. 
+
+Nicholas R. 17:27
+Okay, UAT. Yeah. 
+
+Xiyuan Z. 17:29
+Yeah. They all require approval to be deployed. So if someone want to release into the environment and deployment is not automatic, approval is required at the deployment time. Approval is also required at the code change PR merge time. 
+
+Nicholas R. 17:44
+Okay. Yeah. So also when a PR is approved and merged into the master branch, it will automatically kick off with the deployment? 
+
+Xiyuan Z. 17:53
+Yeah. For example, this is a PR merge. Now this merge was approved by this lad. 
+
+Bastien G. 18:01
+Okay. Very good. So for a PR merge to To have the code ready for deployment on, let's say, UAT, do you have figures about how long it is usually on the pipeline? 
+
+Xiyuan Z. 18:25
+You mean the time it takes to run? 
+
+Nicholas R. 18:27
+It's like 20 minutes, 30 minutes. 
+
+Bastien G. 18:30
+Yes. OK. 
+
+Bastien G. 18:31
+It's quite great. It depends. There's stuff in the queue. 
+
+Bastien G. 18:35
+Regarding the size. 
+
+Xiyuan Z. 18:37
+So let's find the run that actually deployed, right, for example, this guy. 
+
+Bastien G. 18:42
+Yes. probably yeah you have a time on screen i understand that okay it's a more half an hour i understand that you don't usually work with lead time or circle cycle time of deployment or of the build do you measure all that do you do statistics about uh time to ready to deployment? 
+
+Xiyuan Z. 19:17
+Ready to deployment? I don't know precisely what you're referring to, but deployment time schedule is agree with C-SAC, at each particular point in time. Once we get a go ahead, then we will basically keep the deployment button. The entire deployment procedure to refresh everything is 27 minutes. 
+
+Bastien G. 19:41
+So which particular time you are referring to here uh it's from the moment you the last commit was pushed and you launch the process until it's ready to deploy that's automatic yes how long it is do you have statistics on this immediately that's immediately by the platform the. 
+
+Xiyuan Z. 20:10
+Build pipeline is triggered for every merge yes and the build pipeline duration until it's ready to deploy in uit or production do you have statistics about that i'm not quite follow what the figures i get so from the merge right after a pr is merged right the pipeline run is immediately get executed so there's no delay or whatsoever and then the build is finished the vasing five minutes, and then it is ready to deploy to a higher environment. but the which environment we deploy to is up to that particular agreement with csec right csec approval i'm not talking about deployment in itself but they're ready to deploy it's after uh the second block here here. 
+
+Xiyuan Z. 21:05
+That is called uh development or this is a dev environment there's u18 one production environment this is a free environment. 
+
+Xiyuan Z. 21:16
+So once build is finished we are ready to deploy asap what if we have go ahead there's no other you know lead time that need to schedule or anything as long as it's just agreed with c-zack but but we certainly don't deploy right i'm sorry unless unless the guy wants to deploy i. 
+
+Bastien G. 21:37
+Think we don't understand each other uh okay yeah but i understand your answers either what i'm talking about is close to uh i'm sure you know about it The Durametrics, you see what I mean? Yeah. It's how long it is between I finished my code and it's ready to be used by a user. It's kind of things we need to know. What are the frequency of deployments and everything. 
+
+Xiyuan Z. 22:08
+I see what you mean. 
+
+Bastien G. 22:09
+If you have them, it's very good for us to work with. Durametrics. 
+
+Xiyuan Z. 22:11
+I know what you're talking about. 
+
+Bastien G. 22:14
+No there's no dollar matrix that i can share or present for this project matrix it's no of course very few companies use ready dorametrics and the one who use it very often use it in a bad way it's uh more uh yeah there are. 
+
+Xiyuan Z. 22:35
+I think we do have some other projects so i know what you're talking about but the but no for this project no the repo is not connected to a you know to a deployment you know to a what's called engineering intelligence tooling platform they are not connected so that i cannot provide you dora metrics on the timeline for every pr because you know that seems to be again you know um yeah i don't see how that's relevant to you know to the platform itself that's more to do with internal software demo life cycle uh for us and so yeah but again uh we don't have that matrix to give you straight down here okay okay the deployment again as i said back there you know is to do with the agreement with csec um per change sometimes sometimes multiple changes will be stacked together so there's a certain feature once it's merged that might not be ready to release and sometimes they want some error immediately, then they'll be released immediately. It's not up to us to say, I want to debug today or tomorrow. It's always an agreement of a CSEC, these feature will be released at which point in time. DoraMetrics is not relevant for releasing to end-user. That's between the CSEC preference. 
+
+Bastien G. 23:55
+Yes. Actually, when we do that, When is it delivered to end user to when is it ready to deliver to end user? Yeah. 
+
+Xiyuan Z. 24:11
+We don't have that matrix. It's different per feature implementation. 
+
+Bastien G. 24:17
+Okay. Anyway, as you have this process to make agreements with SysAq, for you and for them, it's always good to know how long it lasts to to make that but if you don't have it let's go to the next point guillaume do you have another question on the topic of frequency everything um. 
+
+Guillaume J. 24:47
+Maybe i i'd like to take a look at the the pipeline actions or definitions You know, I mean the jobs. I mean. So... Can you show us again? Yes. So these are the jobs in here. A few weeks ago, we take a look at some. Maybe I just want to... I'm trying to get it. What are you building in the Databricks job? 
+
+Xiyuan Z. 25:23
+Libraries, notebooks. 
+
+Guillaume J. 25:26
+Okay. 
+
+Xiyuan Z. 25:31
+Okay can we see the drop you mean this one yes sure just just build the view file right build packages and build wheel file okay python will fight right python libraries nothing special so no notebooks python libraries which are view and then and then just you know pump into the build and then deploy yeah so nothing out of or ordinary using connect to third party or whatever no it's a standard standard you know just prison library notebook users library and you have the source code for that okay on the i think we already look at um. 
+
+Guillaume J. 26:27
+Can we... Ah yes, I know what the portal is so long. Okay, I think I know why. Okay, now it's good for me at this step. 
+
+Bastien G. 26:43
+Okay, very good. Next. okay maybe we could talk about uh you showed us the prs do you use a particular pr policy or a git branching strategy that you can share with us or is it documented what what do you have to tell us about branching and pr strategies. 
+
+Xiyuan Z. 27:22
+Standard, industry standard doing the pre-request. People just create a task branch for the feature branch, and then once ready, they merge into the main branch once fully tested. There's nothing particular out of ordinary or we fully customize, no, just a standard Git flow. 
+
+Bastien G. 27:47
+Okay. 
+
+Xiyuan Z. 27:50
+Yeah but i think this is kind of for example right yeah these are the individual branch right you know revert or whatever so you know they just deliver write their code with their own branch and then goes into master when the code is basically read it so. 
+
+Bastien G. 28:07
+Yeah we use master branch yeah so developer starts It starts with tasks. Starts with tasks. 
+
+Xiyuan Z. 28:21
+It will start with tasks on their board. Know that agile. The task has definition for what it will do. Once they understand, they create their own branch, then they finish their code. Once code is finished, then they merge the code into master. Then that will trigger the build. If that build shall be deployed, then deploy. If not going to be deployed, then just ignore and move on. Yeah, nothing special here. But it's basically standard. PR requires approval. 
+
+Bastien G. 28:55
+Yes, I moved from team to team in the past years and learned that what I call standard wasn't so standard. So that's why the subject question is always... 
+
+Xiyuan Z. 29:11
+Yeah. Just they will work on their own branch. Every task has its own branch and then just merge. So PR and then PR require approval. 
+
+Bastien G. 29:23
+You did from the board, so that means that the PR is created from the board before starting working on the code? 
+
+Xiyuan Z. 29:31
+Task is certainly created before the work. Then task will be assigned to the developer. Yeah. CSAC, I believe they have access to tasks on the board. Yes. Yeah. So task is created on the board first. Describe the issue, describe what needs to be implemented as assignment, as the requirement, then developer will be assigned to work on task. At that point in time, they will create a branch to implement this new stuff. No matter the bug or fix or change, doesn't matter what they are. once down the merge through PR. That's the procedure. These tasks, I believe the CSAG board has access, not just CSAG, but most of those societies have access to the board as well. I don't exactly recall whom, but I think it's... yeah you see these are not just right yes yeah they're not just ccls right they are the ones from different agencies different countries they have access to the board and so my favorite question can we have access to it and i think so if yan's okay with it i think i have no issue with there so because you know they're already accessed by different agencies but as long as the end's okay with and then sure yeah it's uh that's his project yeah okay uh you will come back to us it wasn't uh no as long if you draw an email with james okay with and give me your exit to board then we will grant you access okay okay i didn't know it was yen i know. 
+
+Bastien G. 31:25
+You mean with the ccc okay. 
+
+Bastien G. 31:29
+Yeah yeah cc's i need to authorize you to gain access to the board and we have no issue to sharing the board with you yes okay just let me take a quick quick screenshot of the breadcrumb and url like that it can be reminded url probably not relevant right just to access a board right in c-sac in in for isw yes it's okay uh just it was the breadcrumb uh and the barrel of the c-sac okay very good okay so yeah this one is fine um yeah if we if you get authorization then we can we can graduate that graduate okay i thought we asked that already and now. 
+
+Bastien G. 32:14
+You realize it wasn't clear okay okay and sales pipelines anything else you should uh tell us about the pipelines do you have any uh any thing you are proud of in the global management of these pipelines or things that are missing compared to other projects and you'd like that. 
+
+Xiyuan Z. 32:48
+In the future it evolves well first of all right every project is different is up to the budget with project to decide what will be implemented, what will be covered, what won't be covered. If you have infinite budgets and you can come up with infinite cases and different type of process to be included in the pipeline for that project. I'm not going to say there's nothing that could be added in the future because there always are for the reason I already outlined. But if you're talking about what this project has or what in general. you know we have all the tests we have the isa we have the unit test integration test for so it's pretty standard has the all major aspect covered so if you think something can be added we can take that on as otherwise and then you know can be potentially added but we have the you know all sorts of tests and and you know and the binary deployment so basically fully covered there's no manual deployment or manual integration anywhere. Although you're including secrets, binaries, infrastructure as code, whatever. They're all part of IAC. I say our IAC is far more advanced than any other IAC in most other companies. We are actually the company to advise other companies how to implement IAC. So we are pretty confident on our ability on what will be covered by IAC. I mean pipeline. Our pipeline cover test, cover IS, covering fast router, cover binaries, all the application also cover the test, including secret management, connectivity, connection streams, external services, full pipeline deployment. I think no pipeline can do further than that. as I said, right? So if you have suggestions, yeah, that's welcome. 
+
+Bastien G. 35:10
+Okay our views are very limited so suggestion will be limited too I think one thing I'm sorry if you already explained that but once the package is ready for instance if you agree with Czak to deploy on UIT tomorrow morning, what are the next concrete steps of the process? What do you need to do? 
+
+Xiyuan Z. 35:48
+We just click the Deploy button for that stage. Yeah. I don't know whether we have done even pending ones, because these were, yeah, there's a run, for example, just run. There will be a Pro button here, but this one we canceled and skipped. But when you get one that is not canceled, It just a pull button at the time with a grid, tomorrow 9 AM, whatever. Now we're in here, just click a button, then it will just run for 20 minutes, for example. 
+
+Bastien G. 36:23
+So everything is automated, just one click per environment or less. How is it automated? Is it only in the visual? In Azure DevOps only or do you have some scripts? 
+
+Xiyuan Z. 36:49
+No, there's no other script. Everything in the pipeline and the developer can choose automatic run or pick one existing run and then just click the button. There's no other script. 
+
+Bastien G. 37:02
+Okay. So you don't have any other code that what we had? in the infrastructure parts of the zip you sent? 
+
+Xiyuan Z. 37:14
+That part is removed. No, it's not there. I explained earlier infrastructure as code for this project, as well as a pipeline definition for this project based on preparatory and library that Spanel has that we don't consider that's part of the SWC source code. So that is not shared with you. But that part is covered. by the pipeline, which is a resource manager part, which is also deployed by multiple pipeline steps to update the infrastructure. 
+
+Guillaume J. 37:53
+Okay. I have an outside question. If SISAC asks you for the pipeline, because they want to build on their own cloud or something like that you you will give them to to to them will give your pipeline on the things to them so they can build on their own cicd so. 
+
+Xiyuan Z. 38:25
+If csec want to build their own pipeline they certainly have at least two choices okay one choice is build a pipeline themselves okay So CSEC without any input and just based on by understanding the source code or how many components they can build a pipeline using whatever technology platform that they wish to use or whichever third party work with or when they work with CSEC to build a pipeline from scratch. That's certainly possible because their entire source code is there. There's nothing that you don't have. So that's one approach. The second approach is of course if CSEC want to let's say take the current implementation of the pipeline from pipeline definition point of view, and make a copy of it. Then that depends on whether SpanishPont going to do that part and again owned by SpanishPont, delivered by SpanishPont, maintained by SpanishPont, or another third party going to maintain and match that part. There are two paths in here. If let's say this is going to be SpanishPont, For example, CSA want to add a state environment into the pipeline. The Spanish one will essentially make basically copy based on the current definition, that effort will be very small. There's really nothing entirely new needs to be written because the definition is actually the same one. We just need to supply environment-specific parameters. If CISAC decides, I want to implement the entire pipeline by another vendor, but want to utilize what SpanishFront has, then there is a licensing program that SpanishFront does offer, where the extra cost so that we need to license this third party in order to use the pipeline and IEC assets at the base on what we call SmartName library. So that third party can use the pipeline, the one that we can basically share source code entirely. So in this case, if that is licensed, that program do exist. We also have this in our SpanishPong public website called the SmartIM library where you can Google for it, you can search for it. So it's not some thing that doesn't exist. that is a program exists but the third party must be licensed in order to gain access to the uh the you know the IAC and the CSAD okay so this is based on assumption that the pipeline will be entirely from third-party. 
+
+Xiyuan Z. 41:06
+Site okay okay and that's from now okay so is that clear yes yes okay. 
+
+Xiyuan Z. 41:20
+Modifying pipeline as is, raising the current management, raising Spanish ones that don't require anything extra. They just based on the current pipeline definition, that doesn't need any extra license. Just want to be precise. That's one of the reason that part is not, we share the source code. 
+
+Bastien G. 41:52
+Okay it's okay got it now okay and uh just to understand this uh this pipeline tooling uh who is deploying who is developing it on your outside spanish one. 
+
+Xiyuan Z. 42:19
+But who are you and nick and you participating to this development it could be the engineer that assigned you know for their particular task right it can be me coming in coming in once over there so that you know i cannot give you any individual because you know we have way more people than the one that present in our call so it will be the linear whoever assigned for that task based on the you know based on whether that's for code or for pipeline or whatever. Different engineer will be assigned to work on whatever that feature is. 
+
+Bastien G. 43:03
+So that's okay for me. It leaves us with, I think we have addressed. almost all the question topics we had. Anywhere or another. Guillaume, do you have other questions for today? 
+
+Bastien G. 43:24
+No, no question. 
+
+Bastien G. 43:31
+Okay. So it's okay, I think. we may accept if you think you have other things to share with us uh we'll be happy to to stay again to stay a little time but otherwise you can uh go. 
+
+Xiyuan Z. 43:57
+Back to other tasks and it will be okay for us i don't have much to add here right because you know we follow your guide here right for the type of the questions or information and requests working and gain access to. You have access to the ISWC specific source code. You have access to the platform in Adair. I see it in pipeline for the reason I outlined. But I give you demo here screen sharing to show you. process that we're following here right and the pr right and then the pipeline deployment or what's covered by pipeline what's covered by the test and yeah so i don't have anything extra to show unless you have questions No, it's okay. If you want to gain access to the board, drop us an email. Yes. Then we should be able to share the board with you. The Git history you request in the PR history request in the morning. We checked internally. My answer is we have already shared source code with you, and that's specific to IWC. okay okay so if there's any further version uh you want to request a source code uh we are committed to share okay yes it's it's right thank you yeah okay okay so yes. 
+
+Bastien G. 45:52
+We've seen that so thank you again for your time see you tomorrow See you next time, Nick. Except if you want to be invited for tomorrow, Nick. 
+
+Nicholas R. 46:05
+Yeah, I'll actually be on leave tomorrow, so I won't be back until Tuesday. 
+
+Xiyuan Z. 46:11
+I can bring you through the course part. I'm fine. 
+
+Bastien G. 46:17
+Okay, you share the invite if you want and it's okay for us. Okay. 
+
+Xiyuan Z. 46:22
+Yeah. 
+
+Bastien G. 46:24
+So thank you again and have a nice another day. 
+
+Xiyuan Z. 46:29
+Okay. 
+
+Bastien G. 46:29
+Bye. 
+
+Nicholas R. 46:30
+You too. Thank you. Bye. 
+
