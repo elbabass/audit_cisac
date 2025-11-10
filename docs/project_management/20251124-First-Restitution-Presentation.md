@@ -129,6 +129,7 @@ What We Were Asked To Do          →    What We Actually Discovered
 ```
 
 **Key Insight Box:**
+
 > "The platform is solid. Control is the problem."
 
 **Speaker Notes:**
@@ -230,7 +231,7 @@ Let's start with the good news - and there's a lot of it.
 
 🔴 CRITICAL: Vendor Lock-in Mechanisms
    • Matching Engine source code (contractual restriction - only on termination)
-   • IaC templates (proprietary SmartIM library - not included in delivery)
+   • IaC templates (proprietary Smart AIM library - not included in delivery)
    • Implicit knowledge (minimal comments, no onboarding process)
 
 🔴 CRITICAL: Knowledge Transfer Viability Unknown
@@ -270,7 +271,7 @@ We identified three lock-in mechanisms:
 
    **[Reference: docs/meetings/20251030-Audit ISWC - Point de passage.txt]**
 
-2. **IaC proprietary library** - The infrastructure-as-code templates and CI/CD pipeline definitions are NOT included in the source code delivery. Spanish Point considers these part of their "SmartIM library." If you switch vendors, you must either (a) reverse-engineer 343 Azure resources from the portal, or (b) license the SmartIM library for your new vendor.
+2. **IaC proprietary library** - The infrastructure-as-code templates and CI/CD pipeline definitions are NOT included in the source code delivery. Spanish Point considers these part of their "Smart AIM library." If you switch vendors, you must either (a) reverse-engineer 343 Azure resources from the portal, or (b) license the Smart AIM library for your new vendor.
 
    **[Reference: docs/meetings/20251105-[ISWC Audit]CI_CD Pipeline Deep Dive-transcript.txt]**
 
@@ -332,6 +333,7 @@ The Definition of Done doesn't include documentation updates. Specs drift from i
 ```
 
 **Bottom Banner:**
+
 > "Technical quality is good. Governance and control are the gaps."
 
 **Speaker Notes:**
@@ -439,7 +441,7 @@ We documented the complete C4 model - four levels from system context down to co
 
    **[Reference: docs/work_in_progress/code_analysis/MatchingEngine_integration.md - 42+ files analyzed]**
 
-   This means replacing the Matching Engine is *technically* feasible (though strategically complex).
+   This means replacing the Matching Engine is _technically_ feasible (though strategically complex).
 
 3. **Databricks asynchronous only** - We worried Databricks might be in the critical path for front-end performance. Clarified in the November 5 workshop: Databricks handles ONLY asynchronous file processing (SFTP uploads) and reporting. Front-end APIs don't wait for Databricks.
 
@@ -476,6 +478,7 @@ Modern .NET 8 patterns            High implicit knowledge
 ```
 
 **Quote Box:**
+
 > "Not bad, well-structured, easy to navigate... Very little commenting and significant code duplication. Even for them, onboarding new developers must be hard."
 > — Bastien & Guillaume, October 30 checkpoint meeting
 
@@ -493,7 +496,7 @@ Modern .NET 8 patterns are used - async/await for non-blocking operations, Entit
 
 **The concerns:**
 
-1. **Minimal code comments** - Business logic is not documented in the code itself. You can read the code and understand *what* it does, but understanding *why* it does it requires external context. This knowledge is "locked in people's heads" as Guillaume put it.
+1. **Minimal code comments** - Business logic is not documented in the code itself. You can read the code and understand _what_ it does, but understanding _why_ it does it requires external context. This knowledge is "locked in people's heads" as Guillaume put it.
 
 2. **Significant code duplication** - We found repeated patterns across modules. Copy-paste-modify appears to be common. This is a maintainability risk - bug fixes must be replicated in multiple places, and it's easy to miss one.
 
@@ -538,7 +541,7 @@ Technical Debt Assessment
 
 🟡 MONITORING REQUIRED
    • Git commit history not provided (compliance review pending)
-   • IaC templates not included (proprietary SmartIM library)
+   • IaC templates not included (proprietary Smart AIM library)
 ```
 
 **Speaker Notes:**
@@ -647,13 +650,13 @@ Manual Steps: ZERO (fully automated)
 Infrastructure-as-Code Status: ⚠️  PROPRIETARY
 
 Spanish Point Position:
-• IaC templates = "SmartIM library" (proprietary)
+• IaC templates = "Smart AIM library" (proprietary)
 • NOT included in source code delivery
 • Licensing program exists for third-party vendors
 
 CISAC Options for Vendor Switch:
 1. Rebuild IaC from scratch (reverse-engineer 343 resources)
-2. License SmartIM library for new vendor (cost unknown)
+2. License Smart AIM library for new vendor (cost unknown)
 
 Impact: Adds 1-2 months to vendor switch timeline
 ```
@@ -678,7 +681,7 @@ Azure infrastructure is comprehensive - 343 resources deployed across 4 environm
 
 The infrastructure-as-code templates and CI/CD pipeline definitions are **NOT included in the source code delivery.**
 
-In our November 5 workshop, when we asked about IaC access, Spanish Point's position was clear: these are part of their proprietary "SmartIM library." They have a licensing program for third-party vendors who need access.
+In our November 5 workshop, when we asked about IaC access, Spanish Point's position was clear: these are part of their proprietary "Smart AIM library." They have a licensing program for third-party vendors who need access.
 
 **[Reference: docs/meetings/20251105-[ISWC Audit]CI_CD Pipeline Deep Dive-transcript.txt]**
 
@@ -686,7 +689,7 @@ This creates a vendor lock-in. If CISAC switches to a new vendor, that vendor mu
 
 1. **Rebuild IaC from scratch** - Reverse-engineer 343 Azure resources from the portal or export templates. Estimated 1-2 months effort. Error-prone (configuration drift, missing dependencies).
 
-2. **License the SmartIM library** - Pay Spanish Point for access to their IaC templates. Cost unknown. Creates ongoing dependency even after vendor switch.
+2. **License the Smart AIM library** - Pay Spanish Point for access to their IaC templates. Cost unknown. Creates ongoing dependency even after vendor switch.
 
 **This is unacceptable for vendor independence.**
 
@@ -1006,7 +1009,7 @@ Recovery:
 
 **Assessment:**
 🔴 **This should never have happened with proper governance**
-⚠️  **CAB was reactive (post-incident), not proactive**
+⚠️ **CAB was reactive (post-incident), not proactive**
 
 **Speaker Notes:**
 
@@ -1159,7 +1162,7 @@ Access Outcome:
 ✅ GRANTED: ISWC application source code (.NET 3.1 and .NET 8)
 🔴 BLOCKED: Matching Engine source code (only on contract termination)
 🟡 PENDING: Git commit history (compliance review ongoing)
-🔴 EXCLUDED: IaC and CI/CD pipeline definitions (proprietary SmartIM)
+🔴 EXCLUDED: IaC and CI/CD pipeline definitions (proprietary Smart AIM)
 ```
 
 **Pattern Observed:**
@@ -1199,7 +1202,7 @@ November 5 - We requested git commit history. Spanish Point's position: "Source 
 
 🟡 **PENDING:** Git commit history - compliance review ongoing for 3+ weeks
 
-🔴 **EXCLUDED:** IaC and CI/CD pipeline definitions - considered proprietary SmartIM library
+🔴 **EXCLUDED:** IaC and CI/CD pipeline definitions - considered proprietary Smart AIM library
 
 **The pattern:**
 
@@ -1471,11 +1474,11 @@ Vendor Lock-in Assessment
    🔴 Source code: Contract              🔴 IaC templates: Not included
       termination only                      in source delivery
 
-   ✅ Physical separation: REST API      🔴 SmartIM library: Proprietary
+   ✅ Physical separation: REST API      🔴 Smart AIM library: Proprietary
       integration (good architecture)
 
    ⚠️  "Heart of the product" (Yann)    ⚠️  Options: Rebuild (1-2 months)
-                                           or License SmartIM
+                                           or License Smart AIM
 
    Impact: Alternative matching          Impact: Environment replication
    engines unknown, refactoring             impossible without rebuild
@@ -1523,7 +1526,7 @@ The unknowns:
 
 **Mechanism 2: Infrastructure-as-Code (Proprietary Library)**
 
-IaC templates and CI/CD pipeline definitions are NOT included in source code delivery. Spanish Point considers these part of their proprietary "SmartIM library."
+IaC templates and CI/CD pipeline definitions are NOT included in source code delivery. Spanish Point considers these part of their proprietary "Smart AIM library."
 
 **[Reference: docs/meetings/20251105-[ISWC Audit]CI_CD Pipeline Deep Dive-transcript.txt]**
 
@@ -1531,7 +1534,7 @@ If CISAC switches vendors, options are:
 
 1. **Rebuild IaC from scratch** - Reverse-engineer 343 Azure resources from portal. Estimated 1-2 months effort. Error-prone.
 
-2. **License SmartIM library** - Pay Spanish Point for access. Cost unknown. Creates ongoing dependency even after vendor switch.
+2. **License Smart AIM library** - Pay Spanish Point for access. Cost unknown. Creates ongoing dependency even after vendor switch.
 
 This is a **critical blocker** for seamless vendor transition. Environment replication becomes manual effort instead of automated script execution.
 
@@ -1774,7 +1777,7 @@ ISWC application source code (.NET 8 version). This was sufficient to assess arc
 
    Impact: Cannot assess replacement feasibility, build alternative, or evaluate IP constraints. This is the core lock-in.
 
-2. **IaC templates & CI/CD pipeline** - Considered proprietary SmartIM library. Not included in source code delivery.
+2. **IaC templates & CI/CD pipeline** - Considered proprietary Smart AIM library. Not included in source code delivery.
 
    Impact: Cannot reproduce environments, understand deployment automation, or enable new vendor takeover. **Critical blocker for vendor switch.**
 
@@ -1825,7 +1828,7 @@ Application Code Handover    3-6 months        • Knowledge transfer viability 
 
 IaC Reconstruction          1-2 months        • 343 Azure resources
                                               • Reverse-engineer from portal
-                                              • OR license SmartIM library (cost unknown)
+                                              • OR license Smart AIM library (cost unknown)
 
 Matching Engine             6-12 months       • Alternative vendors UNKNOWN
 Replacement                 (if required)     • Substantial refactoring likely
@@ -1843,7 +1846,7 @@ ESTIMATED COST              €300K - €600K     VERY LOW confidence
 CRITICAL UNKNOWNS:
 🔴 Can independent vendor maintain the code? (Knowledge transfer pilot needed)
 🔴 Do alternative matching engines exist? (Market research needed)
-🔴 What does SmartIM library license cost? (Negotiate with Spanish Point)
+🔴 What does Smart AIM library license cost? (Negotiate with Spanish Point)
 ```
 
 **Risk Assessment:**
@@ -1860,7 +1863,7 @@ HIGH RISK: Matching Engine Alternatives
 
 MEDIUM RISK: IaC Reconstruction
 ├─ Technically feasible but time-intensive
-└─ MITIGATION: Negotiate IaC inclusion or SmartIM licensing terms
+└─ MITIGATION: Negotiate IaC inclusion or Smart AIM licensing terms
 
 MEDIUM RISK: Timeline Overruns
 ├─ 12-24 month estimate has HIGH uncertainty
@@ -1900,7 +1903,7 @@ Assuming another vendor can onboard to the codebase, we estimate 3-6 months for 
 
 Reverse-engineering 343 Azure resources from the portal is technically feasible but time-intensive and error-prone. Configuration drift, missing dependencies, undocumented settings - all create risk.
 
-Alternative: License the SmartIM library from Spanish Point. Cost unknown. This creates ongoing dependency even after vendor switch.
+Alternative: License the Smart AIM library from Spanish Point. Cost unknown. This creates ongoing dependency even after vendor switch.
 
 **Matching Engine replacement: 6-12 months (if required)**
 
@@ -1933,7 +1936,7 @@ Educated guess based on:
 
 1. **Can independent vendor maintain the code?** - Unknown. Must test with pilot.
 2. **Do alternative matching engines exist?** - Unknown. Market research needed.
-3. **What does SmartIM library license cost?** - Unknown. Negotiate with Spanish Point.
+3. **What does Smart AIM library license cost?** - Unknown. Negotiate with Spanish Point.
 
 **Risk assessment:**
 
@@ -2085,6 +2088,7 @@ Three parallel workstreams:
    Assign a small, low-risk feature to an independent vendor. For example: "Add a new validation rule" or "Generate a new report format" or "Implement a minor UI enhancement."
 
    Give them:
+
    - Source code (.NET 8)
    - Existing documentation
    - Feature specification
@@ -2092,6 +2096,7 @@ Three parallel workstreams:
    See if they can deliver. See what questions they ask. See if Spanish Point cooperates with handover materials.
 
    **Success criteria:**
+
    - Feature delivered correctly
    - Timeline reasonable (not 10x longer than expected)
    - Independent vendor doesn't require extensive Spanish Point support
@@ -2105,6 +2110,7 @@ Three parallel workstreams:
    Research alternative matching engine vendors. Music rights matching is a specialized domain - who else offers this?
 
    Request proposals, demos, API documentation. Assess:
+
    - Functionality comparison (do they match Spanish Point's capabilities?)
    - API compatibility (can they replace via adapter layer?)
    - Cost comparison
@@ -2126,6 +2132,7 @@ Three parallel workstreams:
    - **Proactive metrics sharing** - Performance dashboards, cost breakdowns
 
    **Leverage:**
+
    - CISAC's data is Spanish Point's business model foundation
    - CISAC is volume leader among music societies
    - CISAC's satisfaction impacts Spanish Point's reputation
@@ -2281,6 +2288,7 @@ If they can't, the entire vendor switch strategy is infeasible, regardless of co
 **How to structure the pilot:**
 
 1. **Choose a representative feature** - Not trivial (doesn't test real complexity), not critical (failure is low-risk). Examples:
+
    - Add validation rule (touches validation pipeline, database, business logic)
    - Generate new report (touches data access, Databricks, reporting layer)
    - UI enhancement (touches React, API, state management)
@@ -2288,6 +2296,7 @@ If they can't, the entire vendor switch strategy is infeasible, regardless of co
 2. **Provide standard materials** - Source code, documentation, feature spec, UAT environment. No special support beyond what would be available in a real vendor transition.
 
 3. **Set clear success criteria**:
+
    - Feature works correctly
    - Timeline is reasonable (1-2 weeks, not 6+ weeks)
    - Vendor doesn't require constant Spanish Point hand-holding
@@ -2384,7 +2393,7 @@ Negotiation Objectives:
 │ ✓ Knowledge transfer improvements (onboarding docs)    │
 │ ✓ Architecture Decision Records (ADR) practice         │
 │ ✓ Reduced environment setup costs (IaC automation)     │
-│ ✓ SmartIM library licensing terms (if vendor switch)   │
+│ ✓ Smart AIM library licensing terms (if vendor switch)   │
 └────────────────────────────────────────────────────────┘
 
 Negotiation Strategy:
@@ -2493,7 +2502,7 @@ These address transparency and control gaps.
 - Knowledge transfer improvements - onboarding documentation
 - Architecture Decision Records - document rationale for decisions
 - Reduced environment setup costs - automate via IaC
-- SmartIM library licensing - if vendor switch becomes necessary
+- Smart AIM library licensing - if vendor switch becomes necessary
 
 **Negotiation strategy:**
 
@@ -2513,7 +2522,7 @@ This creates constructive urgency for Spanish Point to improve the relationship.
 
 ---
 
-### Slide 24b: From Vendor to Partnership - Lean Principles Framework *(OPTIONAL)*
+### Slide 24b: From Vendor to Partnership - Lean Principles Framework _(OPTIONAL)_
 
 **Visual:** Partnership maturity assessment matrix
 
@@ -2555,7 +2564,7 @@ Lean Partnership Principles - Current vs Target State:
 ┌─────────────────────────────────────────────────────────────────┐
 │ PRINCIPLE 4: Long-term Thinking vs. Short-term Profit          │
 ├─────────────────────────────────────────────────────────────────┤
-│ Current: Matching Engine bundling, SmartIM template lock-in    │
+│ Current: Matching Engine bundling, Smart AIM template lock-in    │
 │ Target:  Shared success metrics, investment in CISAC autonomy  │
 │ Gap:     🔴 SIGNIFICANT - Economic model favors dependence      │
 └─────────────────────────────────────────────────────────────────┘
@@ -2712,6 +2721,7 @@ The seven Lean principles (Respect, Transparency, Kaizen, Long-term Thinking, Sh
 Phase 1 (Pilot Test + Contract Renegotiation) is brilliant because it tests BOTH dimensions simultaneously:
 
 1. **Technical Test (Pilot):** Can independent vendor deliver with available materials?
+
    - Tests knowledge transfer viability
    - Reveals quality of documentation and code clarity
    - Answers: "Is switching technically feasible?"
@@ -2896,6 +2906,7 @@ While strategic decisions (vendor switch vs improve relationship) take months, t
    **[Reference: docs/meetings/20251106-[ISWC Audit]Cloud Cost Breakdown ＆ Infrastructure Configuration-transcript.txt]**
 
    Options:
+
    - Spanish Point develops (preferred - they have all the context)
    - CISAC builds using API Management analytics + Azure Cost Management APIs
 
@@ -2904,6 +2915,7 @@ While strategic decisions (vendor switch vs improve relationship) take months, t
 5. **Cosmos DB Archive Policy**
 
    Audit tracking logs stored indefinitely in expensive Cosmos DB. Implement tiered archival:
+
    - 0-90 days: Cosmos DB (hot access)
    - 91-365 days: Blob Storage warm tier
    - 365+ days: Blob Storage cool/archive tier
@@ -2915,6 +2927,7 @@ While strategic decisions (vendor switch vs improve relationship) take months, t
 6. **Performance Validation with Moïse**
 
    We haven't validated performance claims with CISAC's operational expert (Moïse - 5+ years experience). Before approving Hyperscale proposal (€40K migration cost), validate:
+
    - What are actual user complaints?
    - What are production performance metrics?
    - Is SQL Server actually the bottleneck?
@@ -3064,6 +3077,7 @@ We haven't validated that SQL Server is actually the performance bottleneck. Spa
 2. **Can query optimization achieve similar results?**
 
    Hyperscale is expensive (€40K migration + €3,300/month savings requires optimal performance). Have simpler alternatives been tried?
+
    - Missing indexes identified and added?
    - Inefficient queries optimized?
    - Caching implemented where appropriate?
@@ -3646,6 +3660,7 @@ This annex provides pointers to the full detailed documentation created during t
 **Architecture Documentation:**
 
 - **C4 Models** (4 levels): `docs/work_in_progress/architecture/`
+
   - System Context, Container, Component, Code levels documented
   - 12 containers, 30+ relationships mapped
   - 6 major subsystems analyzed (Validation, Matching, Processing, Post-Matching, API, Portals)
@@ -3658,6 +3673,7 @@ This annex provides pointers to the full detailed documentation created during t
 **Code Analysis:**
 
 - **Integration Patterns:** `docs/work_in_progress/code_analysis/MatchingEngine_integration.md`
+
   - REST API integration analysis
   - Interface abstractions documented
   - Performance coupling identified
@@ -3702,7 +3718,7 @@ Key quotes from stakeholders with full source references for traceability.
 
 > "Ma vision moyen terme, c'est de me passer de eux, en fait, tout simplement. C'est ça la réalité aujourd'hui, parce que je ne peux pas gérer un SI sur lequel je n'ai pas la main, et actuellement je n'ai pas la main du tout."
 >
-> *Translation:* "My medium-term vision is to get rid of them, quite simply. That's the reality today, because I cannot manage an IS that I don't control, and currently I have no control at all."
+> _Translation:_ "My medium-term vision is to get rid of them, quite simply. That's the reality today, because I cannot manage an IS that I don't control, and currently I have no control at all."
 >
 > **Source:** docs/meetings/20251021-ISWC - Discussion Yann_Guillaume_Bastien.txt, Line 27:54
 
@@ -3710,7 +3726,7 @@ Key quotes from stakeholders with full source references for traceability.
 
 > "Pour moi, il y a beaucoup de choses qui ne vont pas sur le management de ce produit... la gouvernance est bancale... Donc, pour moi, c'est un marasme, ce truc-là."
 >
-> *Translation:* "For me, there are many things that are not working in the management of this product... governance is shaky... So for me, it's a mess, this thing."
+> _Translation:_ "For me, there are many things that are not working in the management of this product... governance is shaky... So for me, it's a mess, this thing."
 >
 > **Source:** Same transcript, Line 03:20
 
@@ -3718,7 +3734,7 @@ Key quotes from stakeholders with full source references for traceability.
 
 > "On a mis six mois à fixer tous les problèmes qu'il y a eu à ce moment-là. Il y a eu un merge qui a eu lieu avec du code qui était en POC. Un POC sur un autre projet, ça a été mergé avec la branche principale et c'est sorti en prod."
 >
-> *Translation:* "It took us six months to fix all the problems. There was a merge with POC code from another project, merged to the main branch and deployed to production."
+> _Translation:_ "It took us six months to fix all the problems. There was a merge with POC code from another project, merged to the main branch and deployed to production."
 >
 > **Source:** Same transcript, Line 41:40
 
@@ -3726,7 +3742,7 @@ Key quotes from stakeholders with full source references for traceability.
 
 > "J'ai mis en place un CAB pour les déploiements parce qu'il n'y avait rien, il faisait tout quand il voulait sans même prévenir les déploiements."
 >
-> *Translation:* "I set up a CAB for deployments because there was nothing, they did everything when they wanted without even warning of deployments."
+> _Translation:_ "I set up a CAB for deployments because there was nothing, they did everything when they wanted without even warning of deployments."
 >
 > **Source:** Same transcript, Line 11:00
 
@@ -3734,7 +3750,7 @@ Key quotes from stakeholders with full source references for traceability.
 
 > "Les coûts sont énormes. J'en ai pour 50K chaque mois de cloud, en gros, que ce soit de la transaction ou de l'hébergement de données."
 >
-> *Translation:* "The costs are enormous. I have about 50K each month for cloud, basically, whether it's transactions or data hosting."
+> _Translation:_ "The costs are enormous. I have about 50K each month for cloud, basically, whether it's transactions or data hosting."
 >
 > **Source:** Same transcript, Line 22:23
 
@@ -3742,7 +3758,7 @@ Key quotes from stakeholders with full source references for traceability.
 
 > "C'est-à-dire qu'il y a un vrai problème de transparence. Je ne peux pas travailler avec des gens en transparence... je n'ai jamais eu de discussion comme j'ai avec vous là, avec l'équipe."
 >
-> *Translation:* "There's a real transparency problem. I can't work with people in transparency... I've never had a discussion like I'm having with you, with the team."
+> _Translation:_ "There's a real transparency problem. I can't work with people in transparency... I've never had a discussion like I'm having with you, with the team."
 >
 > **Source:** Same transcript, Line 26:48
 
@@ -3750,7 +3766,7 @@ Key quotes from stakeholders with full source references for traceability.
 
 > "Extrêmement fort. Le cœur de notre produit, c'est leur outil. C'est ça la difficulté."
 >
-> *Translation:* "Extremely strong. The heart of our product is their tool. That's the difficulty."
+> _Translation:_ "Extremely strong. The heart of our product is their tool. That's the difficulty."
 >
 > **Source:** Same transcript, Line 06:50
 
@@ -3758,7 +3774,7 @@ Key quotes from stakeholders with full source references for traceability.
 
 > "C'est la source autoritative unique et ISO d'ailleurs. C'est nous qui avons ce référentiel unique."
 >
-> *Translation:* "It's the only authoritative and ISO source. We have this unique repository."
+> _Translation:_ "It's the only authoritative and ISO source. We have this unique repository."
 >
 > **Source:** Same transcript, Line 34:18
 
@@ -3768,7 +3784,7 @@ Key quotes from stakeholders with full source references for traceability.
 
 > "J'ai pris une telle baffe hier, une telle froideur... eux aussi ils ont plein de trucs hyper propriétaires, mais les gens ils étaient enthousiastes, ils participaient au truc, il y avait un partenariat."
 >
-> *Translation:* "I took such a slap yesterday, such coldness... they also have lots of proprietary stuff, but people were enthusiastic, they participated, there was a partnership."
+> _Translation:_ "I took such a slap yesterday, such coldness... they also have lots of proprietary stuff, but people were enthusiastic, they participated, there was a partnership."
 >
 > **Source:** Same transcript, Line 08:14
 
@@ -3776,7 +3792,7 @@ Key quotes from stakeholders with full source references for traceability.
 
 > "Donc, leur business model est basé sur vos données. Il n'existe pas sans vos données."
 >
-> *Translation:* "So their business model is based on your data. It doesn't exist without your data."
+> _Translation:_ "So their business model is based on your data. It doesn't exist without your data."
 >
 > **Source:** Same transcript, Line 34:17
 
@@ -3850,56 +3866,60 @@ This annex clearly distinguishes between **verified facts** (high confidence, ev
 
 **VERIFIED FACTS (High Confidence)**
 
-| Finding | Evidence | Source |
-|---------|----------|--------|
-| 343 Azure resources deployed | Infrastructure inventory | docs/work_in_progress/infra/ |
-| .NET 3.1 EOL Dec 2022, upgraded to 8.0 Nov 4 | Microsoft docs + code analysis | docs/work_in_progress/code_analysis/ |
-| 700+ tests in CI/CD pipeline | Nov 5 workshop testimony | Workshop transcript |
-| Matching Engine REST API integration | Code analysis (42+ files) | MatchingEngine_integration.md |
-| May-June 2024 production incident (6 months recovery) | Yann testimony | Oct 21 transcript, Line 41:40 |
-| CAB established May 2024 | Yann testimony | Oct 21 transcript, Line 11:00 |
-| €50k/month cloud costs (€600K/year) | Yann statement | Oct 21 transcript, Line 22:23 |
-| No git history provided (zip format only) | Source code delivery format | Confirmed Nov 4 |
-| IaC templates not included (proprietary SmartIM) | Nov 5 workshop | CI/CD workshop transcript |
-| No automated cost correlation tooling | Spanish Point confirmation | Nov 6 workshop, Xiyuan statement |
+| Finding                                               | Evidence                       | Source                               |
+| ----------------------------------------------------- | ------------------------------ | ------------------------------------ |
+| 343 Azure resources deployed                          | Infrastructure inventory       | docs/work_in_progress/infra/         |
+| .NET 3.1 EOL Dec 2022, upgraded to 8.0 Nov 4          | Microsoft docs + code analysis | docs/work_in_progress/code_analysis/ |
+| 700+ tests in CI/CD pipeline                          | Nov 5 workshop testimony       | Workshop transcript                  |
+| Matching Engine REST API integration                  | Code analysis (42+ files)      | MatchingEngine_integration.md        |
+| May-June 2024 production incident (6 months recovery) | Yann testimony                 | Oct 21 transcript, Line 41:40        |
+| CAB established May 2024                              | Yann testimony                 | Oct 21 transcript, Line 11:00        |
+| €50k/month cloud costs (€600K/year)                   | Yann statement                 | Oct 21 transcript, Line 22:23        |
+| No git history provided (zip format only)             | Source code delivery format    | Confirmed Nov 4                      |
+| IaC templates not included (proprietary Smart AIM)    | Nov 5 workshop                 | CI/CD workshop transcript            |
+| No automated cost correlation tooling                 | Spanish Point confirmation     | Nov 6 workshop, Xiyuan statement     |
 
 **ASSUMPTIONS NEEDING VALIDATION (Medium-Low Confidence)**
 
-| Assumption | Basis | Validation Needed | Priority |
-|-----------|-------|-------------------|----------|
-| **Hyperscale savings: €3,300/month** | Spanish Point PSA5499 | Based on single month average; auto-scaling may vary | MEDIUM |
-| **Vendor switch timeline: 12-24 months** | Audit team estimate | Requires detailed vendor proposals and scoping | HIGH |
-| **Vendor switch cost: €300-600K** | Audit team educated guess | Requires detailed scoping, very low confidence | HIGH |
-| **Knowledge transfer HIGH RISK** | Code review observations | **CRITICAL: Pilot test required** | URGENT |
-| **ISWC API rate limit 3-5 req/sec** | Yann Oct 30 statement | Not confirmed in Nov 5 workshop; need Moïse validation | MEDIUM |
-| **Cost optimization potential: 10-20%** | Audit team estimate (€60-120K/year) | Requires detailed Azure cost breakdown | MEDIUM |
-| **Matching Engine replacement effort: 6-12 months** | Architecture analysis | Depends on alternatives available (unknown) | LOW |
-| **IaC reconstruction: 1-2 months** | Audit team estimate | Technically feasible but effort uncertain | MEDIUM |
-| **20-day environment extension quote** | Yann testimony | Need Spanish Point justification | MEDIUM |
+| Assumption                                          | Basis                               | Validation Needed                                      | Priority |
+| --------------------------------------------------- | ----------------------------------- | ------------------------------------------------------ | -------- |
+| **Hyperscale savings: €3,300/month**                | Spanish Point PSA5499               | Based on single month average; auto-scaling may vary   | MEDIUM   |
+| **Vendor switch timeline: 12-24 months**            | Audit team estimate                 | Requires detailed vendor proposals and scoping         | HIGH     |
+| **Vendor switch cost: €300-600K**                   | Audit team educated guess           | Requires detailed scoping, very low confidence         | HIGH     |
+| **Knowledge transfer HIGH RISK**                    | Code review observations            | **CRITICAL: Pilot test required**                      | URGENT   |
+| **ISWC API rate limit 3-5 req/sec**                 | Yann Oct 30 statement               | Not confirmed in Nov 5 workshop; need Moïse validation | MEDIUM   |
+| **Cost optimization potential: 10-20%**             | Audit team estimate (€60-120K/year) | Requires detailed Azure cost breakdown                 | MEDIUM   |
+| **Matching Engine replacement effort: 6-12 months** | Architecture analysis               | Depends on alternatives available (unknown)            | LOW      |
+| **IaC reconstruction: 1-2 months**                  | Audit team estimate                 | Technically feasible but effort uncertain              | MEDIUM   |
+| **20-day environment extension quote**              | Yann testimony                      | Need Spanish Point justification                       | MEDIUM   |
 
 **CRITICAL UNKNOWNS (Require Investigation)**
 
 1. **Can independent vendor maintain the code?**
+
    - **Status:** UNKNOWN
    - **Validation:** €10-20K pilot test (Dec 2025 - Feb 2026)
    - **Impact:** Determines vendor switch feasibility
 
 2. **Do alternative matching engines exist?**
+
    - **Status:** UNKNOWN
    - **Validation:** Market research (Jan-Feb 2026)
    - **Impact:** Determines Matching Engine lock-in severity
 
 3. **Is SQL Server the performance bottleneck?**
+
    - **Status:** UNVERIFIED (Spanish Point claims no issues)
    - **Validation:** Meet with Moïse, review Application Insights
    - **Impact:** Determines Hyperscale proposal justification
 
 4. **What are actual production performance metrics?**
+
    - **Status:** UNVERIFIED (no proactive dashboards shared)
    - **Validation:** Request from Spanish Point or CISAC operational team
    - **Impact:** Validates or refutes performance claims
 
-5. **What does SmartIM library licensing cost?**
+5. **What does Smart AIM library licensing cost?**
    - **Status:** UNKNOWN
    - **Validation:** Negotiate with Spanish Point
    - **Impact:** Affects vendor switch cost calculation
@@ -3958,12 +3978,14 @@ This annex clearly distinguishes between **verified facts** (high confidence, ev
 **Three lock-in mechanisms identified:**
 
 1. **Matching Engine** (CRITICAL)
+
    - ✅ Technically: Clean REST API separation (could be replaced)
    - 🔴 Contractually: Source code only on termination
    - ❓ Unknown: Do alternative matching engines exist?
 
 2. **IaC Templates** (CRITICAL)
-   - 🔴 Not included in source delivery (proprietary SmartIM library)
+
+   - 🔴 Not included in source delivery (proprietary Smart AIM library)
    - Impact: Environment replication impossible without rebuild or licensing
    - Vendor switch blocker
 
@@ -3981,11 +4003,13 @@ This annex clearly distinguishes between **verified facts** (high confidence, ev
 **IMMEDIATE (High Priority):**
 
 1. **✅ Approve Knowledge Transfer Pilot Test** (€10-20K, Dec 2025 - Feb 2026)
+
    - Assign small feature to independent vendor
    - Validate maintainability with available materials
    - **CRITICAL data point** for vendor independence strategy
 
 2. **✅ Initiate Contract Renegotiation** (Dec 2025 - Mar 2026)
+
    - Use audit findings as leverage
    - Priority terms: Git history, IaC templates, cost correlation tooling
    - Better terms achievable whether CISAC stays or switches
@@ -4041,11 +4065,13 @@ This annex clearly distinguishes between **verified facts** (high confidence, ev
 **CRITICAL UNKNOWNS (Must Investigate):**
 
 1. **Knowledge Transfer Viability** - €10-20K pilot test required
+
    - Can independent vendor deliver with available materials?
    - What is Spanish Point's cooperation level with handover?
    - This determines vendor switch feasibility entirely
 
 2. **Alternative Matching Engines** - €5-10K market research
+
    - Do viable alternatives exist in music rights technology market?
    - API compatibility with current integration?
    - This determines severity of Matching Engine lock-in
@@ -4057,11 +4083,13 @@ This annex clearly distinguishes between **verified facts** (high confidence, ev
 
 **MEDIUM PRIORITY UNKNOWNS:**
 
-4. **SmartIM Library Licensing** - Negotiate with Spanish Point
+4. **Smart AIM Library Licensing** - Negotiate with Spanish Point
+
    - What does it cost to license IaC templates for third-party vendor?
    - This affects vendor switch cost calculation
 
 5. **Environment Extension Cost** - Spanish Point justification needed
+
    - Why 20 person-days for environment setup if IaC exists?
    - Should be 0.5 days if properly automated
 
@@ -4072,6 +4100,7 @@ This annex clearly distinguishes between **verified facts** (high confidence, ev
 **LOW PRIORITY EXPLORATION:**
 
 7. **Git History Analysis** - If/when access granted
+
    - Code evolution patterns, developer turnover, knowledge concentration
    - Informs maintainability risk assessment
 

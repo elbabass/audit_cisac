@@ -4,13 +4,13 @@
 
 ## Progress Overview
 
-| Category | Status | Notes |
-|----------|--------|-------|
-| Documentation Review | ✅ Complete | Core design docs analyzed, component documentation created |
-| Source Code Access | ✅ Granted | .NET 8 version received and analyzed, upgrade delta documented |
-| Infrastructure Analysis | 🟢 75% | Spanish Point workshops completed, cost analysis in progress |
-| Vendor Meetings | 5 sessions | Oct 20 kickoff, Oct 21 architecture, Oct 30 checkpoint, Nov 5 (2x), Nov 6 |
-| Code Quality Assessment | ✅ Complete | Both .NET 3.1 and .NET 8 versions analyzed |
+| Category                | Status      | Notes                                                                     |
+| ----------------------- | ----------- | ------------------------------------------------------------------------- |
+| Documentation Review    | ✅ Complete | Core design docs analyzed, component documentation created                |
+| Source Code Access      | ✅ Granted  | .NET 8 version received and analyzed, upgrade delta documented            |
+| Infrastructure Analysis | 🟢 75%      | Spanish Point workshops completed, cost analysis in progress              |
+| Vendor Meetings         | 5 sessions  | Oct 20 kickoff, Oct 21 architecture, Oct 30 checkpoint, Nov 5 (2x), Nov 6 |
+| Code Quality Assessment | ✅ Complete | Both .NET 3.1 and .NET 8 versions analyzed                                |
 
 ---
 
@@ -19,21 +19,25 @@
 ### Completed ✅
 
 - ✅ **Spanish Point Technical Workshop Series (Nov 5-6)** - Three deep-dive sessions:
+
   - Production & Performance Data (Nov 5) - Databricks workflows, monitoring approach, SLA clarifications
   - CI/CD Pipeline (Nov 5) - Deployment process, testing strategy, pipeline configuration
   - Cloud Cost Breakdown (Nov 6) - Cost optimization proposal review, usage patterns analysis
 
 - ✅ **ISWC v2 (.NET 8) Code Analysis**:
+
   - Received updated source code (post-Nov 4 production deployment)
   - Documented upgrade delta and technical debt improvements
   - Package updates: ASP.NET Core 3.1 → .NET 8, React 16 → 18, Entity Framework improvements
   - Security vulnerability reduction achieved
 
 - ✅ **ISWC Portal UI Documentation**:
+
   - Screenshots and feature documentation for Agency Portal
   - User workflow analysis and accessibility review
 
 - ✅ **Azure Cost Analysis**:
+
   - Created cost tracking spreadsheet with monthly breakdown (Oct 2024 - Oct 2025)
   - Identified cost patterns: Cosmos DB (primary driver), auto-scaling impact, seasonal variations
   - Documented Spanish Point's cost optimization proposal (hyperscale migration)
@@ -59,12 +63,12 @@
 
 ## 🚧 Blockers
 
-| Priority | Item | Owner | Status | Impact |
-|----------|------|-------|--------|--------|
-| 🟢 Resolved | **.NET 8 Source Code** | Spanish Point | ✅ **Received Nov 4** | Findings now reflect current production reality |
-| 🟡 Medium | **Git History Access** | Spanish Point | Compliance review | Cannot analyze evolution patterns, commit frequency, hotspots |
-| 🟡 Medium | **Azure DevOps Board Access** | CISAC (Yann approval) | Action required | Cannot review task management, feature history, sprint planning |
-| 🟢 Low | **Matching Engine Source Code** | Spanish Point | **Confirmed BLOCKED** | Proprietary constraint - source only accessible upon contract termination |
+| Priority    | Item                            | Owner                 | Status                | Impact                                                                    |
+| ----------- | ------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------- |
+| 🟢 Resolved | **.NET 8 Source Code**          | Spanish Point         | ✅ **Received Nov 4** | Findings now reflect current production reality                           |
+| 🟡 Medium   | **Git History Access**          | Spanish Point         | Compliance review     | Cannot analyze evolution patterns, commit frequency, hotspots             |
+| 🟡 Medium   | **Azure DevOps Board Access**   | CISAC (Yann approval) | Action required       | Cannot review task management, feature history, sprint planning           |
+| 🟢 Low      | **Matching Engine Source Code** | Spanish Point         | **Confirmed BLOCKED** | Proprietary constraint - source only accessible upon contract termination |
 
 **Blocker Status Update:**
 
@@ -105,9 +109,9 @@
 **IaC & Pipeline Proprietary Constraint:**
 
 - Infrastructure-as-Code and CI/CD pipeline definitions **not included in source code delivery**
-- Considered "Spanish Point proprietary library" (SmartIM framework)
+- Considered "Spanish Point proprietary library" (Smart AIM framework)
 - Licensing program exists for third-party vendors to access pipeline/IaC assets
-- If CISAC wants to replicate: Either (1) rebuild from scratch, or (2) license SmartIM library
+- If CISAC wants to replicate: Either (1) rebuild from scratch, or (2) license Smart AIM library
 
 ### Organizational Discoveries
 
@@ -135,19 +139,22 @@
 ### Risks Identified
 
 - 🟡 **Medium: Test Stability** - Integration test brittleness could mask real issues
+
   - Mitigation: Team aware, working on robustness improvements
   - Risk: Test failures becoming "normal" background noise
 
 - 🟡 **Medium: Cost Unpredictability** - Monthly variations difficult to explain without usage correlation
+
   - Impact: CISAC financial stakeholders cannot forecast spending accurately
   - Mitigation: Spanish Point can investigate specific spikes via support tickets
 
 - 🟡 **Medium: Pipeline Test Execution Post-Upgrade** - .NET 8 upgrade broke pipeline test runner
+
   - Workaround: Tests run locally and pass, team prioritizes local validation
   - Risk: Reduced deployment safety net (manual testing replaces automated gate)
 
 - 🟢 **Low: IaC Proprietary Lock-in** - Pipeline/IaC definitions require licensing if third-party vendor involved
-  - Impact: Vendor switch requires either (1) full rebuild, or (2) SmartIM licensing
+  - Impact: Vendor switch requires either (1) full rebuild, or (2) Smart AIM licensing
   - Note: Not blocking for Spanish Point-managed transitions
 
 ---
@@ -159,19 +166,22 @@
 **Primary Focus:** Consolidate findings into final audit report structure
 
 1. [ ] **Begin Final Report Drafting**
+
    - Executive summary with key findings and strategic recommendations
    - Technical assessment chapters (code quality, architecture, infrastructure)
    - Vendor lock-in analysis and mitigation strategies
    - Cost optimization roadmap
 
 2. [ ] **Cost Correlation Analysis Deep-Dive**
+
    - Map API Management analytics to monthly cost variations
    - Correlate SFTP file upload activity with Databricks/Cosmos DB spending
    - Document "noisy neighbor" phenomenon with data
 
 3. [ ] **Vendor Independence Assessment Finalization**
+
    - Document IaC/pipeline proprietary constraints
-   - Assess SmartIM library licensing model for third-party transitions
+   - Assess Smart AIM library licensing model for third-party transitions
    - Calculate vendor switch effort estimate (code refactoring + infrastructure rebuild)
 
 4. [ ] **Prepare Nov 12 CISAC Review Meeting**
@@ -194,11 +204,11 @@
 
 **Budget Breakdown:**
 
-| Phase | Planned | Actual | Status |
-|-------|---------|--------|--------|
-| Discovery (Docs + workshops) | 4-6 days | 7 days | 🟢 Complete (+1 day over plan - acceptable given workshop depth) |
-| Investigation (Code audit) | 10-12 days | 5 days | 🟢 Complete - Spanish Point workshops filled knowledge gaps |
-| Synthesis (Report writing) | 3-4 days | 0 days | ⚪ Starting Nov 7 |
+| Phase                        | Planned    | Actual | Status                                                           |
+| ---------------------------- | ---------- | ------ | ---------------------------------------------------------------- |
+| Discovery (Docs + workshops) | 4-6 days   | 7 days | 🟢 Complete (+1 day over plan - acceptable given workshop depth) |
+| Investigation (Code audit)   | 10-12 days | 5 days | 🟢 Complete - Spanish Point workshops filled knowledge gaps      |
+| Synthesis (Report writing)   | 3-4 days   | 0 days | ⚪ Starting Nov 7                                                |
 
 **Time Budget Assessment:** 🟢 Sufficient time for synthesis phase execution
 
@@ -213,14 +223,17 @@
 **Key Clarifications:**
 
 - **Databricks Role:** Asynchronous file processing only (SFTP uploads) + report generation
+
   - No synchronous front-end dependencies (performance concern resolved)
   - Data replicated to Delta Lake for reporting (avoids Cosmos DB query load)
 
 - **Cosmos DB Usage:** Primarily audit tracking container
+
   - All submission metadata logged for debugging
   - Change feed replicates to Delta Lake every 20 minutes for reporting
 
 - **Monitoring Approach:** Azure Monitor platform-native metrics
+
   - Alerts: CPU >80% for 5 minutes → email to support team
   - No formal SLAs for performance, only incident response time SLAs
 
@@ -254,8 +267,8 @@
 **IaC & Pipeline Proprietary Constraint:**
 
 - Pipeline definitions and IaC templates **not included in source code delivery**
-- Considered "Spanish Point proprietary library" (SmartIM framework)
-- CISAC options: (1) Rebuild from scratch, or (2) License SmartIM library for third-party vendor
+- Considered "Spanish Point proprietary library" (Smart AIM framework)
+- CISAC options: (1) Rebuild from scratch, or (2) License Smart AIM library for third-party vendor
 - Spanish Point modifications to existing pipelines: No additional cost
 
 **Git Branching Strategy:**
@@ -268,11 +281,13 @@
 **Cost Optimization Proposal (PSA 5499):**
 
 - **Three objectives:**
+
   1. Networking security: Public → private endpoints
   2. SQL skill change: Business Critical → Hyperscale
   3. Platform modernization: Align with Microsoft best practices
 
 - **Cost Impact:**
+
   - **Savings:** €3,300/month (Hyperscale migration, includes reservation)
   - **Increases:** €1,500/month (private networking: VPN Gateway, Private DNS, Private Endpoints)
   - **Net result:** €1,800/month reduction
