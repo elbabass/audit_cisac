@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Code Access Audit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 60px;
+            font-size: 32px;
+        }
+
+        .timeline-wrapper {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline-row {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            flex: 1;
+            max-width: 280px;
+            z-index: 2;
+        }
+
+        .timeline-item.top .content {
+            margin-bottom: 0px;
+        }
+
+        .timeline-item.bottom .content {
+            margin-bottom: 0px;
+        }
+
+        .content {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .date {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .timeline-item.milestone .date {
+            color: #f56565;
+        }
+
+        .title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .details {
+            font-size: 13px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .details li {
+            margin-left: 15px;
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 1200px) {
+            .timeline-item {
+                max-width: 240px;
+            }
+            .content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Code Access Audit Timeline</h1>
+        
+        <div class="timeline-wrapper">
+            
+            <!-- LIGNE 1 (TOP) -->
+            <div class="timeline-row">
+                <div class="timeline-item top">
+                    <div class="content">
+                        <span class="date">Oct 20, 2025</span>
+                        <div class="title">Workshop 1</div>
+                        <ul class="details">
+                            <li>Code access requested</li>
+                            <li>Initial refusal: "Legal/NDA concerns"</li>
+                            <li>Yann intervention: "NDA signed, please grant access"</li>
+                            <li>Commitment: "Early next week"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item top">
+                    <div class="content">
+                        <span class="date">Oct 21, 2025</span>
+                        <div class="title">Workshop 2</div>
+                        <ul class="details">
+                            <li>Status: "Procedure needs to go through internally"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item top milestone">
+                    <div class="content">
+                        <span class="date">Oct 24, 2025</span>
+                        <div class="title">⚠️ Audit Status</div>
+                        <ul class="details">
+                            <li><strong>25% of audit duration lost</strong> waiting for access</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item top">
+                    <div class="content">
+                        <span class="date">Oct 27, 2025</span>
+                        <div class="title">✅ .NET 3.1 Code Received</div>
+                        <ul class="details">
+                            <li>ZIP format</li>
+                            <li>No git history</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LIGNE 2 (BOTTOM) -->
+            <div class="timeline-row">
+                <div class="timeline-item bottom">
+                    <div class="content">
+                        <span class="date">Oct 30, 2025</span>
+                        <div class="title">🔍 Checkpoint</div>
+                        <ul class="details">
+                            <li>Matching Engine confirmed "black box"</li>
+                            <li>Contractual restriction</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item bottom">
+                    <div class="content">
+                        <span class="date">Nov 4, 2025</span>
+                        <div class="title">✅ .NET 8 Code Received</div>
+                        <ul class="details">
+                            <li>Current production version</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item bottom">
+                    <div class="content">
+                        <span class="date">Nov 5, 2025</span>
+                        <div class="title">📋 Git History Requested</div>
+                        <ul class="details">
+                            <li>Compliance review pending</li>
+                            <li><strong>Still pending as of Nov 24</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
