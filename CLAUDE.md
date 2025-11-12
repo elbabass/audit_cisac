@@ -100,6 +100,36 @@ Create comprehensive technical documentation for ISWC system components by synth
 
 **Full methodology:** See [DOCUMENTATION_STANDARDS.md](docs/DOCUMENTATION_STANDARDS.md#component-documentation-methodology) for the three-phase research process and required document structure.
 
+### /enhance-presentation-part
+
+Improve the visual style of presentation markdown files by adding Mermaid diagrams and tables while preserving ASCII versions in speaker notes.
+
+**Usage:**
+
+```plaintext
+/enhance-presentation-part PART_FILE="docs/deliverables/first-restitution-2025-11-24/presentation/part2-executive-summary.md"
+```
+
+**What it does:**
+
+- Converts ASCII diagrams to Mermaid (with color coding: red for critical, orange for warnings, green for positives)
+- Converts structured lists to markdown tables
+- Converts two-column layouts to comparison tables
+- Adds priority tables and visual diagrams for status dashboards
+- Preserves original ASCII diagrams in `<details>` blocks within speaker notes
+- Maintains all references, citations, and content
+- Verifies markdown linting passes
+
+**Output:** Enhanced version of the specified presentation part file (modified in place)
+
+**Examples:**
+
+- Part 2: `/enhance-presentation-part PART_FILE="docs/deliverables/first-restitution-2025-11-24/presentation/part2-executive-summary.md"`
+- Part 4: `/enhance-presentation-part PART_FILE="docs/deliverables/first-restitution-2025-11-24/presentation/part4-governance-findings.md"`
+- Part 6: `/enhance-presentation-part PART_FILE="docs/deliverables/first-restitution-2025-11-24/presentation/part6-strategic-recommendations.md"`
+
+**Note:** Parts 3 and 5 have already been enhanced using this methodology.
+
 ## Source Code Analysis
 
 **Technology Stack:**
