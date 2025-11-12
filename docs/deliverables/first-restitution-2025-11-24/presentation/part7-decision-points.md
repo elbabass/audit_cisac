@@ -10,7 +10,7 @@
 
 **Visual:** Decision matrix
 
-```
+```text
 Strategic Decisions Required (November 2025)
 
 DECISION 1: Approve Knowledge Transfer Pilot Test?
@@ -227,7 +227,7 @@ Decision timeline: March 2026.
 
 **Visual:** Action timeline
 
-```
+```text
 Phase 1 Implementation Timeline (Dec 2025 - Mar 2026)
 
 DECEMBER 2025 - Launch Phase
@@ -343,7 +343,7 @@ Week 3-4:
 
 **Responsibilities:**
 
-```
+```text
 CISAC (Yann + Moïse + Finance):
 ├─ Pilot feature definition
 ├─ Vendor selection and contracting
@@ -444,7 +444,7 @@ CISAC leads pilot, negotiation, decisions. Spanish Point delivers fixes and coop
 
 **Visual:** Simple closing slide
 
-```
+```text
 Thank You
 
 Questions & Discussion

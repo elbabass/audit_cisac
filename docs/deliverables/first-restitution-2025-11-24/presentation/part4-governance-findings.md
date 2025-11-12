@@ -10,7 +10,68 @@
 
 **Visual:** Timeline of incident
 
+```mermaid
+graph LR
+    Incident[May-June 2024 Production Incident<br/>Six months of hell incessant incidents]
+
+    Incident --> What[What Happened]
+    Incident --> Root[Root Cause]
+    Incident --> Impact[Impact]
+    Incident --> Recovery[Recovery]
+
+    What --> W1[POC code from unrelated project<br/>accidentally merged to production branch<br/>and deployed to production]
+
+    Root --> R1[No branch protection preventing POC merges]
+    Root --> R2[No pre-production testing gate caught the issue]
+    Root --> R3[No rollback executed or couldn't rollback]
+    Root --> R4[Governance gap allowed uncontrolled deployment]
+
+    Impact --> I1[6 months continuous incident recovery]
+    Impact --> I2[User complaints system instability]
+    Impact --> I3[CISAC resources consumed troubleshooting]
+    Impact --> I4[Trust in vendor relationship damaged]
+
+    Recovery --> Re1[CAB Change Advisory Board established May 2024]
+    Recovery --> Re2[Deployment control and notification process]
+    Recovery --> Re3[Expert group review before production releases]
+
+    style Incident fill:#ffcccc
+    style What fill:#ffe6e6
+    style W1 fill:#ffcccc
+    style Root fill:#fff4cc
+    style R1 fill:#ffe6e6
+    style R2 fill:#ffe6e6
+    style R3 fill:#ffe6e6
+    style R4 fill:#ffe6e6
+    style Impact fill:#ffcccc
+    style I1 fill:#ffe6e6
+    style I2 fill:#ffe6e6
+    style I3 fill:#ffe6e6
+    style I4 fill:#ffe6e6
+    style Recovery fill:#ccffcc
+    style Re1 fill:#e6ffe6
+    style Re2 fill:#e6ffe6
+    style Re3 fill:#e6ffe6
 ```
+
+**Yann's Description (Oct 21 Discussion):**
+
+> "On a mis six mois à fixer tous les problèmes qu'il y a eu à ce moment-là. Il y a eu un merge qui a eu lieu avec du code qui était en POC. Un POC sur un autre projet, ça a été mergé avec la branche principale et c'est sorti en prod. Et ça nous a valu pratiquement six mois de galère, d'incidents incessants."
+>
+> Translation: "It took us six months to fix all the problems that occurred at that time. There was a merge that happened with code that was in POC. A POC on another project was merged with the main branch and went to production. And that caused us almost six months of hell, of incessant incidents."
+
+**Reference:** docs/meetings/20251021-ISWC - Discussion Yann_Guillaume_Bastien.txt, Line 41:40
+
+**Assessment:**
+🔴 **This should never have happened with proper governance**
+⚠️ **CAB was reactive (post-incident), not proactive**
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Incident Timeline (fallback)</summary>
+
+```text
 May-June 2024 Production Incident
 "Six months of hell, incessant incidents"
 
@@ -38,19 +99,7 @@ Recovery:
 • Expert group review before production releases
 ```
 
-**Yann's Description (Oct 21 Discussion):**
-
-> "On a mis six mois à fixer tous les problèmes qu'il y a eu à ce moment-là. Il y a eu un merge qui a eu lieu avec du code qui était en POC. Un POC sur un autre projet, ça a été mergé avec la branche principale et c'est sorti en prod. Et ça nous a valu pratiquement six mois de galère, d'incidents incessants."
->
-> Translation: "It took us six months to fix all the problems that occurred at that time. There was a merge that happened with code that was in POC. A POC on another project was merged with the main branch and went to production. And that caused us almost six months of hell, of incessant incidents."
-
-**Reference:** docs/meetings/20251021-ISWC - Discussion Yann_Guillaume_Bastien.txt, Line 41:40
-
-**Assessment:**
-🔴 **This should never have happened with proper governance**
-⚠️ **CAB was reactive (post-incident), not proactive**
-
-**Speaker Notes:**
+</details>
 
 Let's talk about governance. The May-June 2024 production incident is the clearest evidence of governance gaps.
 
@@ -96,7 +145,37 @@ This is good - but it's reactive, not proactive. The CAB should have existed fro
 
 **Visual:** Two-column before/after comparison
 
-```
+| Before CAB (Pre-May 2024) | After CAB (Since May 2024) |
+|---------------------------|----------------------------|
+| ❌ No deployment tracking | ✅ Deployment history tracking |
+| ❌ No change notification | ✅ Controlled deployment schedule |
+| ❌ No governance oversight | ✅ Expert group review |
+| ❌ Uncontrolled production releases | ✅ CAB approval required |
+| ❌ "They did everything when they wanted without warning" | ✅ Deployment control process |
+
+**Remaining Gaps:**
+
+| Gap | Description |
+|-----|-------------|
+| ⚠️ **Definition of Done incomplete** | Documentation updates not required |
+| ⚠️ **No Architecture Decision Records (ADR)** | Rationale for decisions not documented |
+| ⚠️ **Knowledge management processes undefined** | No capture, organize, share process |
+| ⚠️ **Onboarding processes non-existent** | No developer onboarding materials |
+
+**Quote:**
+
+> "J'ai mis en place un CAB pour les déploiements parce qu'il n'y avait rien, il faisait tout quand il voulait sans même prévenir les déploiements."
+>
+> — Yann Lebreuilly, October 21, 2025
+
+**Translation:** "I set up a CAB for deployments because there was nothing, they did everything when they wanted without even warning of deployments."
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Before/After CAB (fallback)</summary>
+
+```text
 Before CAB (Pre-May 2024)          After CAB (Since May 2024)
 
 ❌ No deployment tracking           ✅ Deployment history tracking
@@ -114,15 +193,7 @@ Remaining Gaps:
 ⚠️  Onboarding processes non-existent
 ```
 
-**Quote:**
-
-> "J'ai mis en place un CAB pour les déploiements parce qu'il n'y avait rien, il faisait tout quand il voulait sans même prévenir les déploiements."
->
-> — Yann Lebreuilly, October 21, 2025
-
-**Translation:** "I set up a CAB for deployments because there was nothing, they did everything when they wanted without even warning of deployments."
-
-**Speaker Notes:**
+</details>
 
 The CAB implementation in May 2024 was a turning point. It closed the most critical governance gap - uncontrolled deployments.
 
@@ -169,7 +240,60 @@ The CAB addresses deployment control, but broader governance gaps remain:
 
 **Visual:** Timeline showing access delays
 
+```mermaid
+graph TB
+    Start[October 20 Workshop 1]
+    Start --> S1[Code access requested]
+    S1 --> S2[Initial refusal: Legal/NDA concerns]
+    S2 --> S3[Yann intervention: We have NDA signed please give access]
+    S3 --> S4[Commitment: Early next week pending internal approval]
+
+    S4 --> Oct21[October 21 Workshop 2]
+    Oct21 --> O21[Access status: Procedure needs to go through internally]
+
+    O21 --> Oct24[October 24 Audit Status]
+    Oct24 --> O24[Assessment: 25% of audit duration lost waiting for access]
+
+    O24 --> Oct27[October 27]
+    Oct27 --> O27[.NET 3.1 code received ZIP format no git history]
+
+    O27 --> Oct30[October 30 Checkpoint]
+    Oct30 --> O30[Matching Engine confirmed black box contractual restriction]
+
+    O30 --> Nov4[November 4]
+    Nov4 --> N4[.NET 8 code received current production version]
+
+    N4 --> Nov5[November 5]
+    Nov5 --> N5A[Git history requested]
+    N5A --> N5B[Status: Compliance review pending still pending as of Nov 24]
+
+    style Start fill:#e6f3ff
+    style S2 fill:#fff4cc
+    style O24 fill:#ffcccc
+    style O27 fill:#ccffcc
+    style O30 fill:#fff4cc
+    style N4 fill:#ccffcc
+    style N5B fill:#fff4cc
 ```
+
+**Access Outcome:**
+
+| Status | Item | Details |
+|--------|------|---------|
+| ✅ **GRANTED** | ISWC application source code | .NET 3.1 and .NET 8 |
+| 🔴 **BLOCKED** | Matching Engine source code | Only on contract termination |
+| 🟡 **PENDING** | Git commit history | Compliance review ongoing |
+| 🔴 **EXCLUDED** | IaC and CI/CD pipeline definitions | Proprietary Smart AIM |
+
+**Pattern Observed:**
+Systematic defensive posture → Access requests questioned → Information shared reluctantly
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Access Timeline (fallback)</summary>
+
+```text
 Access Challenges Timeline
 
 October 20, 2025 - Workshop 1
@@ -204,10 +328,7 @@ Access Outcome:
 🔴 EXCLUDED: IaC and CI/CD pipeline definitions (proprietary Smart AIM)
 ```
 
-**Pattern Observed:**
-Systematic defensive posture → Access requests questioned → Information shared reluctantly
-
-**Speaker Notes:**
+</details>
 
 The access challenges during this audit reveal a pattern that concerns us.
 
@@ -272,7 +393,47 @@ This isn't a partnership attitude. It's a defensive posture. Contrast with Guill
 
 **Visual:** Documentation timeline
 
-```
+**Specification Documents Analysis:**
+
+| Aspect | Finding |
+|--------|---------|
+| **Last Modified** | 2019-2020 (Original implementation period) |
+| **Spec vs. Implementation Delta** | UNKNOWN (Until our LLM-assisted reconciliation) |
+| **Volume** | ✅ Extensive (100+ pages of specifications) |
+| **Organization** | ⚠️ Disorganized and difficult to navigate |
+| **Currency** | ⚠️ Unclear (last modified 2019-2020) |
+| **Accuracy** | ✅ LLM-assisted reconciliation: Minimal drift vs .NET 3.1 code |
+
+**Yann's Experience:**
+
+> "La documentation n'est pas disponible quand on le veut, quand on le demande. Il faut que nous repassions derrière le fournisseur pour pouvoir classer notre documentation parce que c'est confus tout ça."
+>
+> **Translation:** "Documentation is not available when we want it, when we ask for it. We have to go back behind the supplier to be able to classify our documentation because it's all confusing."
+
+**Finding:**
+
+System hasn't evolved much since 2019 launch
+
+- **Pro:** Specifications still mostly accurate
+- **Con:** Limited feature development in 5+ years
+
+**Root Cause: Definition of Done Gap**
+
+| Current DoD (Inferred) | Recommended DoD |
+|------------------------|-----------------|
+| ✓ Feature implemented | ✓ Feature implemented |
+| ✓ Tests pass | ✓ Tests written and passing |
+| ❌ Technical docs updated | ✓ Technical docs updated |
+| ❌ Functional specs updated | ✓ Functional specs updated |
+| ❌ Code comments written | ✓ Business logic commented |
+| | ✓ Peer review completed |
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Documentation Status (fallback)</summary>
+
+```text
 Documentation Status Assessment
 
 Specification Documents Analysis:
@@ -304,11 +465,9 @@ Finding:
 System hasn't evolved much since 2019 launch
   → Pro: Specifications still mostly accurate
   → Con: Limited feature development in 5+ years
-```
 
-**Root Cause: Definition of Done Gap**
+Root Cause: Definition of Done Gap
 
-```
 Current DoD (Inferred):          Recommended DoD:
 
 ✓ Feature implemented            ✓ Feature implemented
@@ -319,7 +478,7 @@ Current DoD (Inferred):          Recommended DoD:
                                  ✓ Peer review completed
 ```
 
-**Speaker Notes:**
+</details>
 
 Documentation drift is a governance symptom, not just a documentation problem.
 
@@ -377,7 +536,36 @@ Without documentation updates in the DoD, every feature delivery increases techn
 
 **Visual:** Quotes comparison
 
-```
+| Partnership Attitude | Defensive Posture |
+|---------------------|-------------------|
+| "Enthusiastic, participatory, collaborative" | "Cold atmosphere"<br/>(Guillaume's impression, Workshop 1) |
+| "People participated, there was a partnership"<br/>(Guillaume's other audits) | "When you ask for something, it's always 'for what purpose'"<br/>(Yann's experience) |
+| Open information sharing | "Real transparency problem. I've never had a discussion like I'm having with you [audit team], with the [Spanish Point] team."<br/>(Yann, Oct 21) |
+
+**Specific Transparency Gaps:**
+
+| Area | Issues |
+|------|--------|
+| ❌ **Cost Correlation** | • No automated tooling to explain monthly spending variations<br/>• Manual investigation required via support tickets<br/>• Logs kept only 3 months |
+| ❌ **Performance Metrics** | • No proactive dashboard sharing production metrics<br/>• Relies on Spanish Point claims rather than shared objective data<br/>• No formal SLAs for performance |
+| ❌ **Git History** | • "Source code provided, history is internal working process"<br/>• 3+ weeks compliance review (still pending) |
+| ❌ **IaC Templates** | • Considered proprietary library<br/>• Not included in source delivery<br/>• Creates vendor lock-in |
+| ❌ **Access Requests** | • Systematic questions about purpose<br/>• Multiple objections raised sequentially<br/>• Information shared reluctantly |
+
+**Yann's Assessment:**
+
+> "C'est-à-dire qu'il y a un vrai problème de transparence. Je ne peux pas travailler avec des gens en transparence... je n'ai jamais eu de discussion comme j'ai avec vous là, avec l'équipe."
+>
+> Translation: "There's a real transparency problem. I can't work with people in transparency... I've never had a discussion like I'm having with you, with the team."
+
+**Reference:** docs/meetings/20251021-ISWC - Discussion Yann_Guillaume_Bastien.txt, Line 26:48
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Transparency Comparison (fallback)</summary>
+
+```text
 Partnership Attitude                    Defensive Posture
 
 "Enthusiastic, participatory,          "Cold atmosphere"
@@ -392,11 +580,9 @@ Open information sharing                "Real transparency problem.
                                        I'm having with you [audit team],
                                        with the [Spanish Point] team."
                                        (Yann, Oct 21)
-```
 
-**Specific Transparency Gaps:**
+Specific Transparency Gaps:
 
-```
 ❌ Cost Correlation
    • No automated tooling to explain monthly spending variations
    • Manual investigation required via support tickets
@@ -422,15 +608,7 @@ Open information sharing                "Real transparency problem.
    • Information shared reluctantly
 ```
 
-**Yann's Assessment:**
-
-> "C'est-à-dire qu'il y a un vrai problème de transparence. Je ne peux pas travailler avec des gens en transparence... je n'ai jamais eu de discussion comme j'ai avec vous là, avec l'équipe."
->
-> Translation: "There's a real transparency problem. I can't work with people in transparency... I've never had a discussion like I'm having with you, with the team."
-
-**Reference:** docs/meetings/20251021-ISWC - Discussion Yann_Guillaume_Bastien.txt, Line 26:48
-
-**Speaker Notes:**
+</details>
 
 Let's address the elephant in the room: the vendor relationship dynamics.
 

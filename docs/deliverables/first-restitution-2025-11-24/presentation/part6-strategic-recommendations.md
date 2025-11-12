@@ -10,7 +10,7 @@
 
 **Visual:** Three-phase roadmap
 
-```
+```text
 Recommended Strategy: TEST → NEGOTIATE → DECIDE
 
 Phase 1 (Immediate - Nov/Dec 2025)
@@ -96,7 +96,102 @@ Phase 3 (H2 2026 onwards - 12-18 months)
 
 **Why This Approach?**
 
-```
+| ❌ DON'T | ✅ DO |
+|----------|-------|
+| Commit to vendor switch before testing feasibility | Gather data first, decide with evidence, not assumptions |
+| Accept status quo without negotiating better terms | Use audit findings as leverage for better contract terms |
+| | Test knowledge transfer with low-risk pilot |
+| | Research alternatives to strengthen negotiating position |
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Three-Phase Roadmap (fallback)</summary>
+
+```text
+Recommended Strategy: TEST → NEGOTIATE → DECIDE
+
+Phase 1 (Immediate - Nov/Dec 2025)
+┌────────────────────────────────────────────────────────────┐
+│ OBJECTIVE: Gather data, reduce uncertainty, establish      │
+│            leverage before major decisions                 │
+│                                                             │
+│ ACTIONS:                                                    │
+│ ✓ Knowledge Transfer Pilot Test                            │
+│   ├─ Assign €10-20K feature to independent vendor         │
+│   ├─ Test maintainability with available materials        │
+│   └─ Assess Spanish Point handover cooperation            │
+│                                                             │
+│ ✓ Matching Engine Market Research                          │
+│   ├─ Identify alternative matching engine vendors         │
+│   ├─ Request proposals/demos                              │
+│   └─ Assess replacement feasibility                       │
+│                                                             │
+│ ✓ Contract Renegotiation (Parallel)                        │
+│   ├─ Git history access (immediate)                       │
+│   ├─ IaC templates inclusion in deliverables              │
+│   ├─ Cost correlation tooling (automated dashboard)       │
+│   ├─ Performance SLAs and proactive metrics              │
+│   └─ Enhanced Definition of Done (docs required)          │
+│                                                             │
+│ TIMELINE: 2-3 months                                       │
+│ INVESTMENT: €20-40K (pilot + research)                    │
+└────────────────────────────────────────────────────────────┘
+
+Phase 2 (Q1-Q2 2026 - 6 months)
+┌────────────────────────────────────────────────────────────┐
+│ OBJECTIVE: Based on Phase 1 results, choose strategic path │
+│                                                             │
+│ DECISION POINT:                                             │
+│                                                             │
+│ IF Pilot Successful + Alternatives Exist:                  │
+│   → Option A: Proceed with vendor transition plan         │
+│   → Begin detailed RFP process                             │
+│   → Negotiate transition terms                             │
+│                                                             │
+│ IF Pilot Fails OR No Alternatives:                         │
+│   → Option B: Improve current relationship                │
+│   → Use pilot results as leverage                          │
+│   → Negotiate enhanced governance terms                    │
+│   → Accept lock-in, optimize within constraints            │
+│                                                             │
+│ IF Pilot Mixed Results:                                    │
+│   → Option C: Partial independence strategy               │
+│   → Keep Spanish Point for Matching Engine                │
+│   → New vendor for application maintenance                │
+│   → Require knowledge transfer improvements                │
+│                                                             │
+│ TIMELINE: 6 months                                         │
+│ INVESTMENT: Depends on path chosen                        │
+└────────────────────────────────────────────────────────────┘
+
+Phase 3 (H2 2026 onwards - 12-18 months)
+┌────────────────────────────────────────────────────────────┐
+│ OBJECTIVE: Execute chosen strategy                         │
+│                                                             │
+│ Path A (Vendor Transition):                                │
+│   ├─ 12-24 month timeline                                 │
+│   ├─ €300-600K investment                                 │
+│   ├─ Parallel vendor overlap                              │
+│   └─ Gradual feature transition                           │
+│                                                             │
+│ Path B (Improved Relationship):                            │
+│   ├─ Enhanced contract terms in place                     │
+│   ├─ Better transparency and governance                   │
+│   ├─ Cost optimization implemented                        │
+│   └─ Continue with Spanish Point under better terms       │
+│                                                             │
+│ Path C (Partial Independence):                             │
+│   ├─ Split maintenance model                              │
+│   ├─ New vendor for app, Spanish Point for Matching       │
+│   ├─ Clear interface contracts                            │
+│   └─ Improved knowledge management                        │
+│                                                             │
+│ TIMELINE: 12-18 months                                     │
+│ INVESTMENT: €100K-600K (depending on path)                │
+└────────────────────────────────────────────────────────────┘
+
+Why This Approach?
 ❌ DON'T: Commit to vendor switch before testing feasibility
 ❌ DON'T: Accept status quo without negotiating better terms
 ✅ DO: Gather data first, decide with evidence, not assumptions
@@ -105,7 +200,7 @@ Phase 3 (H2 2026 onwards - 12-18 months)
 ✅ DO: Research alternatives to strengthen negotiating position
 ```
 
-**Speaker Notes:**
+</details>
 
 Based on everything we've found, here's our recommended strategy.
 
@@ -211,7 +306,7 @@ This is how you make a multi-million-euro strategic decision responsibly.
 
 **Visual:** Pilot test framework
 
-```
+```text
 Knowledge Transfer Pilot Test Framework
 
 OBJECTIVE: Validate that independent vendor can deliver with available materials
@@ -368,7 +463,7 @@ If they can't, the entire vendor switch strategy is infeasible, regardless of co
 
 **Visual:** Leverage assessment
 
-```
+```text
 CISAC's Negotiating Leverage
 
 Strategic Asset: CISAC's Data
@@ -560,7 +655,7 @@ This creates constructive urgency for Spanish Point to improve the relationship.
 
 **Visual:** Partnership maturity assessment matrix
 
-```
+```text
 Evaluating Vendor-to-Partnership Transformation Potential
 
 The Strategic Question: Can Spanish Point Relationship Evolve?
@@ -823,7 +918,7 @@ This slide can be skipped if time is tight or if the audience prefers to focus o
 
 **Visual:** Priority matrix
 
-```
+```text
 Technical Quick Wins (Independent of Strategic Vendor Decision)
 
 HIGH IMPACT, LOW EFFORT (Do Immediately)
@@ -989,7 +1084,7 @@ While strategic decisions (vendor switch vs improve relationship) take months, t
 
 **Visual:** Proposal summary
 
-```
+```text
 Hyperscale Proposal Assessment (PSA 5499)
 
 Three Objectives:

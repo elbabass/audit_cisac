@@ -10,7 +10,20 @@
 
 **Visual:** Green checkmarks with supporting evidence
 
-```
+| Category | Assessment |
+|----------|------------|
+| **Architecture** | ✅ Well-designed C4 architecture (12 containers, clean separation)<br/>✅ Matching Engine physically separated (REST API integration)<br/>✅ Azure-native services with industry-standard patterns |
+| **Code Quality** | ✅ Well-structured, easy to navigate<br/>✅ Dependency injection, interface abstractions<br/>✅ Clean separation of concerns (Controllers, Services, Repositories) |
+| **Recent Upgrades** | ✅ .NET 3.1 → .NET 8.0 (upgraded Nov 4, 2025)<br/>✅ React 16.12 → 18.3.1<br/>✅ TypeScript 3.7.3 → 5.6.3<br/>✅ Entity Framework 3.1 → 8.0<br/>✅ Security vulnerabilities addressed |
+| **DevOps Maturity** | ✅ Fully automated CI/CD pipeline (20-30 min build + test + deploy)<br/>✅ 700+ automated tests<br/>✅ Multi-stage deployment (Dev → UAT → Production)<br/>✅ Auto-scaling functioning correctly (cost variations = feature, not bug) |
+| **Performance** | ✅ No significant issues reported in past year<br/>✅ Auto-scaling handling load variations<br/>✅ Monitoring alerts configured (CPU >80% = email) |
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Platform Assessment (fallback)</summary>
+
+```text
 ✅ Platform Quality Assessment
 
 Architecture
@@ -42,7 +55,7 @@ Performance
   ✓ Monitoring alerts configured (CPU >80% = email)
 ```
 
-**Speaker Notes:**
+</details>
 
 Let's start with the good news - and there's a lot of it.
 
@@ -72,7 +85,49 @@ Let's start with the good news - and there's a lot of it.
 
 **Visual:** Warning indicators with severity levels
 
+| Priority | Challenge | Details |
+|----------|-----------|---------|
+| 🔴 **CRITICAL** | **Vendor Lock-in Mechanisms** | • Matching Engine source code (contractual restriction - only on termination)<br/>• IaC templates (proprietary Smart AIM library - not included in delivery)<br/>• Implicit knowledge (minimal comments, no onboarding process) |
+| 🔴 **CRITICAL** | **Knowledge Transfer Viability Unknown** | • "Even for them, onboarding new developers must be hard"<br/>• Code duplication, minimal documentation<br/>• No local dev environment feasible within audit timeframe<br/>• ⚠️ Cannot confirm another vendor could maintain this |
+| 🔴 **CRITICAL** | **Cost Control Gap** | • €600K/year spending (€50K/month average)<br/>• No automated correlation: usage metrics → Azure costs<br/>• Cannot explain monthly variations to stakeholders<br/>• "Noisy neighbor" agencies identified but no allocation model |
+| 🟠 **HIGH** | **Governance Gaps** | • May 2024 production incident: 6 months recovery time<br/>• No deployment tracking pre-CAB (May 2024)<br/>• Definition of Done incomplete (docs not updated)<br/>• Transparency issues with vendor relationship |
+| 🟡 **MEDIUM** | **Technical Debt Remaining** | • Databricks 10.4 LTS outdated (modern features missing)<br/>• .NET 8 support ends Nov 2026 (only 2 years)<br/>• Pipeline test runner blocked post-upgrade (workaround active)<br/>• Code duplication needs refactoring |
+
+```mermaid
+graph TB
+    Main[Governance & Control Challenges]
+
+    Main --> Critical1[🔴 Vendor Lock-in<br/>Mechanisms]
+    Main --> Critical2[🔴 Knowledge Transfer<br/>Viability Unknown]
+    Main --> Critical3[🔴 Cost Control<br/>Gap]
+    Main --> High[🟠 Governance<br/>Gaps]
+    Main --> Medium[🟡 Technical Debt<br/>Remaining]
+
+    Critical1 --> C1D[Matching Engine<br/>IaC Library<br/>Implicit Knowledge]
+    Critical2 --> C2D[Maintainability Unknown<br/>€10-20K Test Needed]
+    Critical3 --> C3D[€600K/year<br/>No Correlation Tooling]
+    High --> HD[May 2024 Incident<br/>CAB Reactive]
+    Medium --> MD[Databricks Outdated<br/>.NET 8 EOL 2026]
+
+    style Critical1 fill:#ffcccc
+    style Critical2 fill:#ffcccc
+    style Critical3 fill:#ffcccc
+    style C1D fill:#ffe6e6
+    style C2D fill:#ffe6e6
+    style C3D fill:#ffe6e6
+    style High fill:#fff4cc
+    style HD fill:#fffaee
+    style Medium fill:#ffffcc
+    style MD fill:#ffffe6
+    style Main fill:#e6f3ff
 ```
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Governance Challenges (fallback)</summary>
+
+```text
 ⚠️  Governance & Control Challenges
 
 🔴 CRITICAL: Vendor Lock-in Mechanisms
@@ -105,7 +160,7 @@ Let's start with the good news - and there's a lot of it.
    • Code duplication needs refactoring
 ```
 
-**Speaker Notes:**
+</details>
 
 Now the challenges. These are not technical failures - they are control gaps.
 
@@ -161,7 +216,43 @@ The Definition of Done doesn't include documentation updates. Specs drift from i
 
 **Visual:** Three colored boxes with icons
 
+| Finding | Status | Impact | Key Unknown |
+|---------|--------|--------|-------------|
+| 🔴 **FINDING 1:**<br/>Vendor Lock-in is Real,<br/>But Manageable | Technically separated,<br/>contractually/organizationally<br/>coupled | Vendor switch =<br/>12-24 months,<br/>€300-600K<br/>(preliminary estimate) | Matching Engine<br/>alternatives exist? |
+| 🔴 **FINDING 2:**<br/>Knowledge Transfer<br/>Viability is Unknown<br/>**(HIGHEST RISK)** | Cannot confirm<br/>maintainability by<br/>third party | Vendor switch may be<br/>infeasible regardless<br/>of technical quality | Can independent vendor<br/>deliver with available<br/>materials? |
+| 🔴 **FINDING 3:**<br/>Cost Control Gap<br/>is Solvable | €600K/year with<br/>no correlation tooling | Cannot explain spending,<br/>cannot forecast,<br/>cannot optimize | What are the actual<br/>cost drivers<br/>month-to-month? |
+
+```mermaid
+graph LR
+    Main[Three Critical Findings]
+
+    Main --> F1[🔴 FINDING 1<br/>Vendor Lock-in<br/>Real But Manageable]
+    Main --> F2[🔴 FINDING 2<br/>Knowledge Transfer<br/>HIGHEST RISK]
+    Main --> F3[🔴 FINDING 3<br/>Cost Control Gap<br/>Solvable]
+
+    F1 --> F1D[12-24 months<br/>€300-600K estimate<br/>Research alternatives]
+    F2 --> F2D[€10-20K test needed<br/>MUST validate before<br/>strategic decisions]
+    F3 --> F3D[2-3 month fix<br/>Visibility tooling<br/>Usage correlation]
+
+    style F1 fill:#ffcccc
+    style F2 fill:#ff9999
+    style F3 fill:#ffcccc
+    style F1D fill:#ffe6e6
+    style F2D fill:#ffcccc
+    style F3D fill:#ffe6e6
+    style Main fill:#e6f3ff
 ```
+
+**Bottom Banner:**
+
+> "Technical quality is good. Governance and control are the gaps."
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Three Findings (fallback)</summary>
+
+```text
 🔴 FINDING 1: Vendor Lock-in is Real, But Manageable
    Status: Technically separated, contractually/organizationally coupled
    Impact: Vendor switch = 12-24 months, €300-600K (preliminary estimate)
@@ -178,11 +269,7 @@ The Definition of Done doesn't include documentation updates. Specs drift from i
    Key Unknown: What are the actual cost drivers month-to-month?
 ```
 
-**Bottom Banner:**
-
-> "Technical quality is good. Governance and control are the gaps."
-
-**Speaker Notes:**
+</details>
 
 Let me synthesize this into three critical findings:
 
