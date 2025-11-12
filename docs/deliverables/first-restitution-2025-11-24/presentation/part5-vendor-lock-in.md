@@ -8,9 +8,56 @@
 
 ### Slide 18: Three Lock-in Mechanisms
 
-**Visual:** Three interconnected circles
+```mermaid
+graph TB
+    subgraph "Vendor Lock-in Assessment"
+        A[1. Matching Engine<br/>Contractual + Conceptual]
+        B[2. Infrastructure-as-Code<br/>Proprietary Library]
+        C[3. Knowledge Transfer<br/>Implicit Knowledge]
+    end
 
+    A --> A1[🔴 Source code: Contract termination only]
+    A --> A2[✅ Physical separation: REST API]
+    A --> A3[⚠️ Heart of the product]
+    A --> A4[Impact: Alternative engines unknown]
+
+    B --> B1[🔴 IaC templates: Not included]
+    B --> B2[🔴 Smart AIM library: Proprietary]
+    B --> B3[⚠️ Options: Rebuild or License]
+    B --> B4[Impact: Environment replication blocked]
+
+    C --> C1[⚠️ Minimal code comments]
+    C --> C2[🔴 No onboarding process]
+    C --> C3[⚠️ Significant duplication]
+    C --> C4[Impact: Viability UNKNOWN - highest risk]
+
+    style A fill:#ffe6e6
+    style B fill:#ffe6e6
+    style C fill:#fff4e6
+    style A1 fill:#ffcccc
+    style A2 fill:#ccffcc
+    style A3 fill:#fff4cc
+    style B1 fill:#ffcccc
+    style B2 fill:#ffcccc
+    style B3 fill:#fff4cc
+    style C1 fill:#fff4cc
+    style C2 fill:#ffcccc
+    style C3 fill:#fff4cc
 ```
+
+**Assessment Summary:**
+
+| Coupling Type | Level | Details |
+|---------------|-------|---------|
+| **Technical coupling** | 🟢 **LOW** | Clean architecture, REST APIs, proper abstractions |
+| **Organizational coupling** | 🔴 **HIGH** | Contract terms, knowledge transfer gaps, proprietary IaC |
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Diagram (fallback)</summary>
+
+```text
 Vendor Lock-in Assessment
 
 1. Matching Engine                    2. Infrastructure-as-Code
@@ -41,11 +88,7 @@ Vendor Lock-in Assessment
    UNKNOWN (highest risk)
 ```
 
-**Assessment:**
-Technical coupling: 🟢 LOW (clean architecture, REST APIs)
-Organizational coupling: 🔴 HIGH (contract terms, knowledge transfer, IaC)
-
-**Speaker Notes:**
+</details>
 
 Vendor lock-in has three distinct mechanisms. Let's examine each.
 
@@ -112,9 +155,88 @@ Vendor switch is technically possible but organizationally complex and risky. Pr
 
 ### Slide 19: Matching Engine Deep-Dive - "Heart of the Product"
 
-**Visual:** Integration architecture diagram
+```mermaid
+flowchart LR
+    subgraph ISWC["ISWC Application"]
+        VP[Validation Pipeline]
+        INT[IMatchingEngineMatchingService<br/>Interface]
+        IMPL[MatchingEngineMatchingService.cs<br/>Implementation]
 
+        VP --> INT
+        INT -.implements.- IMPL
+    end
+
+    subgraph ME["Matching Engine (Spanish Point)"]
+        API[Matching Engine API<br/>Deployed separately]
+        AUTH[OAuth2 Authentication]
+        ALGO[Proprietary Matching Algorithm<br/>🔴 Source: Contract termination only]
+        EP1[POST /match]
+        EP2[GET /results]
+
+        API --> AUTH
+        API --> ALGO
+        API --> EP1
+        API --> EP2
+    end
+
+    IMPL -->|REST HTTP| API
+    IMPL -->|OAuth2| AUTH
+
+    style ISWC fill:#e6f3ff
+    style ME fill:#ffe6e6
+    style ALGO fill:#ffcccc
+    style INT fill:#ccffcc
+    style IMPL fill:#ccffcc
 ```
+
+**Architecture Assessment:**
+
+| Aspect | Status | Details |
+|--------|--------|---------|
+| ✅ **Separation** | POSITIVE | Clean architectural separation, physically deployed separately |
+| ⚠️ **Performance** | CONCERN | Synchronous blocking calls create performance coupling |
+| 🔴 **Access** | BLOCKER | Contractual restriction - source code inaccessible |
+
+**Code Analysis Results (42+ files reviewed):**
+
+| Component | Implementation |
+|-----------|----------------|
+| **Interface** | `IMatchingEngineMatchingService` (proper abstraction) |
+| **Implementation** | `MatchingEngineMatchingService.cs` (clean code) |
+| **Authentication** | OAuth2 client credentials |
+| **HTTP Client** | Factory pattern with proper DI |
+| **Error Handling** | Try-catch with comprehensive logging |
+| **Timeout Config** | Configurable settings |
+
+**Technical Assessment:**
+
+- ✅ Professional implementation
+- ✅ Could be swapped for alternative (technically feasible)
+- ⚠️ Synchronous calls = performance coupling
+- 🔴 **Unknown:** Alternative matching engines availability
+
+**Yann's Assessment:**
+
+> "Extrêmement fort. Le cœur de notre produit, c'est leur outil. C'est ça la difficulté."
+>
+> Translation: "Extremely strong. The heart of our product is their tool. That's the difficulty."
+
+**Reference:** docs/meetings/20251021-ISWC - Discussion Yann_Guillaume_Bastien.txt, Line 06:50
+
+**Decoupling Options:**
+
+| Option | Approach | Effort | Feasibility |
+|--------|----------|--------|-------------|
+| **1** | Find alternative matching engine | Unknown | Market research needed |
+| **2** | Build adapter/facade layer | Months | Multi-vendor support possible |
+| **3** | Accept lock-in, negotiate terms | Short | ✅ Pragmatic short-term solution |
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Diagram (fallback)</summary>
+
+```text
 Matching Engine Integration Architecture
 
 ISWC Application                    Matching Engine (Spanish Point)
@@ -143,41 +265,7 @@ ISWC Application                    Matching Engine (Spanish Point)
 🔴 BLOCKER: Contractual restriction (source code inaccessible)
 ```
 
-**Code Analysis Results:**
-
-```
-42+ files reviewed
-┌─────────────────────────────────────────────────────┐
-│ Interface Abstraction: IMatchingEngineMatchingService│
-│ Implementation: MatchingEngineMatchingService.cs    │
-│ Authentication: OAuth2 client credentials           │
-│ HTTP Client: Factory pattern (proper DI)            │
-│ Error Handling: Try-catch with logging              │
-│ Timeout Configuration: Configurable                 │
-└─────────────────────────────────────────────────────┘
-
-Assessment:
-✅ Professional implementation
-✅ Could be swapped for alternative (technically)
-⚠️  Synchronous calls = performance coupling
-🔴 Unknown: Alternative matching engines available?
-```
-
-**Yann's Assessment:**
-
-> "Extrêmement fort. Le cœur de notre produit, c'est leur outil. C'est ça la difficulté."
->
-> Translation: "Extremely strong. The heart of our product is their tool. That's the difficulty."
-
-**Reference:** docs/meetings/20251021-ISWC - Discussion Yann_Guillaume_Bastien.txt, Line 06:50
-
-**Decoupling Options:**
-
-1. **Find alternative matching engine** (market research needed - unknown feasibility)
-2. **Build adapter/facade layer** (multi-vendor support - months effort)
-3. **Accept lock-in, negotiate better terms** (pragmatic short-term)
-
-**Speaker Notes:**
+</details>
 
 The Matching Engine deserves special attention - it's both the cleanest technical integration AND the strongest lock-in.
 
@@ -233,9 +321,71 @@ We haven't researched this market. CISAC should. Not to commit to switching - bu
 
 ### Slide 20: What We Can't Access - Visibility Gaps
 
-**Visual:** Access status matrix
+**Access Status Matrix** (as of Nov 24, 2025)
 
+| Resource | Status | Impact on Vendor Independence |
+|----------|--------|------------------------------|
+| ✅ **ISWC Application Source Code** (.NET 8) | **GRANTED** | Can analyze architecture, code quality, integration patterns |
+| ⚠️ **Git Commit History** | **PENDING** (3+ weeks) | Cannot analyze evolution, developer turnover, knowledge concentration (bus factor) |
+| 🔴 **Matching Engine Source Code** | **BLOCKED** (Contract) | Cannot assess replacement feasibility, build alternative, or evaluate IP constraints |
+| 🔴 **IaC Templates & CI/CD Pipeline** | **EXCLUDED** (Proprietary) | Cannot reproduce environments, understand deployment process, or enable new vendor |
+| 🟡 **Azure DevOps Board** (Task Mgmt) | **PENDING** (CISAC auth) | Cannot assess velocity, sprint planning, agile maturity |
+| 🟡 **Production Performance Metrics** | **LIMITED** | Relies on Spanish Point claims rather than shared dashboards |
+| 🟡 **Cost Correlation Data** | **MANUAL** | No automated tooling, support ticket required |
+
+**Access Request Pattern:**
+
+```mermaid
+graph LR
+    A[Access Request] --> B[Question: Why?]
+    B --> C[Multiple Objections]
+    C --> D[Reluctant Sharing]
+
+    style A fill:#e6f3ff
+    style B fill:#fff4e6
+    style C fill:#ffe6e6
+    style D fill:#ffcccc
 ```
+
+**Examples:**
+
+- **Code access:** Legal → Technical → Proprietary → Compliance review
+- **Git history:** "Internal working process" → Compliance review (3+ weeks)
+- **IaC templates:** "Proprietary library" → Not included in delivery
+- **Cost data:** No tooling → Manual investigation → Limited history
+
+**Impact Analysis:**
+
+```mermaid
+graph TD
+    A[Access Restrictions] --> B[HIGH IMPACT<br/>Vendor Independence]
+    A --> C[MEDIUM IMPACT<br/>Operational Visibility]
+    A --> D[LOW IMPACT<br/>Audit Depth]
+
+    B --> B1[🔴 IaC Templates<br/>Critical blocker for vendor switch]
+    B --> B2[🔴 Matching Engine<br/>Cannot assess alternatives]
+    B --> B3[⚠️ Git History<br/>Cannot analyze evolution]
+
+    C --> C1[🟡 Performance Metrics<br/>Cannot validate claims]
+    C --> C2[🟡 Cost Correlation<br/>Cannot explain spending]
+    C --> C3[🟡 DevOps Board<br/>Cannot assess velocity]
+
+    D --> D1[Limited access reduced depth<br/>but sufficient for strategic assessment]
+
+    style B fill:#ffcccc
+    style C fill:#fff4cc
+    style D fill:#e6ffe6
+    style B1 fill:#ffe6e6
+    style B2 fill:#ffe6e6
+    style B3 fill:#fff4e6
+```
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Diagram (fallback)</summary>
+
+```text
 Access Status Matrix (as of Nov 24, 2025)
 
 Resource                           Status      Impact on Vendor Independence
@@ -267,36 +417,7 @@ Resource                           Status      Impact on Vendor Independence
                                                support ticket required
 ```
 
-**Pattern Analysis:**
-
-```
-Access Request → Question "Why?" → Multiple Objections → Reluctant Sharing
-
-Examples:
-• Code access: Legal → Technical → Proprietary → Compliance review
-• Git history: "Internal working process" → Compliance review (3+ weeks)
-• IaC templates: "Proprietary library" → Not included in delivery
-• Cost data: No tooling → Manual investigation → Limited history
-```
-
-**Impact Summary:**
-
-```
-HIGH IMPACT (Vendor Independence)
-├─ IaC Templates: Critical blocker for vendor switch
-├─ Matching Engine: Cannot assess alternatives
-└─ Git History: Cannot analyze evolution patterns
-
-MEDIUM IMPACT (Operational Visibility)
-├─ Performance Metrics: Cannot validate claims
-├─ Cost Correlation: Cannot explain spending
-└─ DevOps Board: Cannot assess delivery velocity
-
-LOW IMPACT (Audit Depth)
-└─ Limited access reduced audit depth but sufficient for strategic assessment
-```
-
-**Speaker Notes:**
+</details>
 
 Let's summarize what we could and couldn't access during this audit, and why it matters.
 
@@ -359,9 +480,80 @@ The git history and performance metrics are **visibility gaps** that reduce CISA
 
 ### Slide 21: Vendor Switch Effort Estimate - Preliminary Assessment
 
-**Visual:** Effort breakdown table
+> **⚠️ Disclaimer:** Preliminary estimates with **LOW CONFIDENCE**. Not scoped, no vendor proposals, knowledge transfer untested.
 
+**Effort Breakdown:**
+
+| Component | Effort Estimate | Dependencies & Risks |
+|-----------|----------------|----------------------|
+| **Application Code Handover** | 3-6 months | • Knowledge transfer viability **UNKNOWN**<br/>• Minimal documentation<br/>• No onboarding process<br/>• **Recommend:** Pilot test first |
+| **IaC Reconstruction** | 1-2 months | • 343 Azure resources<br/>• Reverse-engineer from portal<br/>• **OR** license Smart AIM library (cost unknown) |
+| **Matching Engine Replacement** | 6-12 months<br/>(if required) | • Alternative vendors **UNKNOWN**<br/>• Substantial refactoring likely<br/>• **OR** accept ongoing lock-in |
+| **Knowledge Transfer** (Overlap Period) | 6-12 months<br/>(parallel run) | • Parallel vendor overlap recommended<br/>• Gradual transition reduces risk |
+|-----------|----------------|----------------------|
+| **TOTAL TIMELINE** | **12-24 months** | HIGH uncertainty due to unknowns |
+| **ESTIMATED COST** | **€300K - €600K** | **VERY LOW** confidence (educated guess, not scoped) |
+
+**Critical Unknowns:**
+
+- 🔴 Can independent vendor maintain the code? → **Knowledge transfer pilot needed**
+- 🔴 Do alternative matching engines exist? → **Market research needed**
+- 🔴 What does Smart AIM library license cost? → **Negotiate with Spanish Point**
+
+**Risk Assessment:**
+
+```mermaid
+graph TD
+    A[Vendor Switch Risks] --> B[HIGHEST: Knowledge Transfer Viability]
+    A --> C[HIGH: Matching Engine Alternatives]
+    A --> D[MEDIUM: IaC Reconstruction]
+    A --> E[MEDIUM: Timeline Overruns]
+
+    B --> B1[Cannot confirm vendor capability]
+    B --> B2[Minimal documentation]
+    B --> B3[MITIGATION: €10-20K pilot test]
+
+    C --> C1[Market unknown]
+    C --> C2[MITIGATION: Market research, RFP]
+
+    D --> D1[Technically feasible but time-intensive]
+    D --> D2[MITIGATION: Negotiate IaC or licensing]
+
+    E --> E1[HIGH uncertainty in estimates]
+    E --> E2[MITIGATION: Phased approach, overlap]
+
+    style B fill:#ffcccc
+    style C fill:#ffe6e6
+    style D fill:#fff4cc
+    style E fill:#fff4cc
+    style B3 fill:#ccffcc
+    style C2 fill:#ccffcc
+    style D2 fill:#ccffcc
+    style E2 fill:#ccffcc
 ```
+
+**Strategic Comparison:**
+
+| Criteria | Option A: Vendor Switch | Option B: Improve Current Relationship |
+|----------|------------------------|----------------------------------------|
+| **Timeline** | 12-24 months | Immediate (contract renegotiation) |
+| **Cost** | €300-600K | Minimal cost (leverage existing contract) |
+| **Risk** | 🔴 HIGH (knowledge transfer) | 🟡 MEDIUM (dependency continues) |
+| **Outcome** | Uncertain | ✅ Proven platform (already works) |
+| **Independence** | Full independence (if successful) | Better terms, more transparency |
+
+**Recommendation:**
+
+> **Test knowledge transfer BEFORE committing to switch**
+>
+> Don't decide today. Run the pilot. Research matching engine alternatives. Negotiate better contract terms in parallel. Make the decision when you have data, not guesses.
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Diagram (fallback)</summary>
+
+```text
 Vendor Switch Effort Estimate (Preliminary, LOW Confidence)
 
 Component                    Effort Estimate    Dependencies & Risks
@@ -387,48 +579,9 @@ TOTAL TIMELINE              12-24 months      HIGH uncertainty due to unknowns
 
 ESTIMATED COST              €300K - €600K     VERY LOW confidence
                                               (educated guess, not scoped)
-
-CRITICAL UNKNOWNS:
-🔴 Can independent vendor maintain the code? (Knowledge transfer pilot needed)
-🔴 Do alternative matching engines exist? (Market research needed)
-🔴 What does Smart AIM library license cost? (Negotiate with Spanish Point)
 ```
 
-**Risk Assessment:**
-
-```
-HIGHEST RISK: Knowledge Transfer Viability
-├─ Cannot confirm another vendor could deliver
-├─ Minimal documentation, implicit knowledge
-└─ MITIGATION: €10-20K pilot test (assign small feature to independent vendor)
-
-HIGH RISK: Matching Engine Alternatives
-├─ Market unknown, replacement feasibility uncertain
-└─ MITIGATION: Market research, vendor RFP process
-
-MEDIUM RISK: IaC Reconstruction
-├─ Technically feasible but time-intensive
-└─ MITIGATION: Negotiate IaC inclusion or Smart AIM licensing terms
-
-MEDIUM RISK: Timeline Overruns
-├─ 12-24 month estimate has HIGH uncertainty
-└─ MITIGATION: Phased approach, pilot testing, parallel overlap
-```
-
-**Comparison to Status Quo:**
-
-```
-Option A: Vendor Switch            Option B: Improve Current Relationship
-├─ 12-24 months timeline           ├─ Immediate (contract renegotiation)
-├─ €300-600K cost                  ├─ Minimal cost (leverage existing contract)
-├─ HIGH risk (knowledge transfer)  ├─ MEDIUM risk (dependency continues)
-├─ Uncertain outcome               ├─ Proven platform (already works)
-└─ Full independence (if successful)  └─ Better terms, more transparency
-
-RECOMMENDATION: Test knowledge transfer BEFORE committing to switch
-```
-
-**Speaker Notes:**
+</details>
 
 Let's talk about what it would actually take to switch vendors.
 

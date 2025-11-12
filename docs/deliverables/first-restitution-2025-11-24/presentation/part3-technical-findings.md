@@ -8,9 +8,67 @@
 
 ### Slide 7: Architecture Assessment - Clean Separation
 
-**Visual:** Simplified C4 Context diagram
+```mermaid
+graph TB
+    subgraph External["External Systems"]
+        FT[FastTrack SSO]
+        SWISS[Swiss API]
+        ME[Matching Engine<br/>Spanish Point]
+    end
 
+    subgraph ISWC["ISWC Platform"]
+        AP[Agency Portal<br/>React]
+        API[Agency API<br/>.NET 8]
+        BP[Background Processing<br/>Databricks]
+        PP[Public Portal<br/>React]
+
+        subgraph Data["Data Layer"]
+            SQL[SQL Server]
+            COSMOS[Cosmos DB]
+            STORAGE[Storage]
+        end
+    end
+
+    subgraph Users["External Users"]
+        SOCIETIES[Music Societies<br/>Agencies]
+        STAFF[CISAC Staff]
+        PUBLIC[Public Users<br/>Search]
+    end
+
+    FT -->|SSO Auth| AP
+    SWISS -->|External API| API
+    ME <-->|REST API| BP
+
+    SOCIETIES -->|Use| AP
+    STAFF -->|Manage| API
+    PUBLIC -->|Search| PP
+
+    AP --> API
+    API --> BP
+    BP --> Data
+    PP --> Data
+
+    style ISWC fill:#e6f3ff
+    style External fill:#ffe6e6
+    style Users fill:#f0f0f0
+    style ME fill:#ffcccc
 ```
+
+**Key Architecture Principles:**
+
+| Principle | Status | Details |
+|-----------|--------|---------|
+| ✅ **Separation of Concerns** | STRONG | UI, API, Processing, Data layers cleanly separated |
+| ✅ **Matching Engine Decoupling** | PROPER | Accessed ONLY via REST API (no code coupling) |
+| ✅ **Async Processing** | CORRECT | Databricks asynchronous (no front-end blocking) |
+| ✅ **Azure Best Practices** | FOLLOWED | Industry-standard services (SQL, Cosmos, Storage, Functions) |
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Diagram (fallback)</summary>
+
+```text
 System Context (C4 Level 1)
 
 External Systems          ISWC Platform          External Users
@@ -42,14 +100,7 @@ External Systems          ISWC Platform          External Users
                            └─────────────┘
 ```
 
-**Key Architecture Principles:**
-
-- ✅ Clean separation of concerns (UI, API, Processing, Data)
-- ✅ Matching Engine accessed ONLY via REST API (no code coupling)
-- ✅ Databricks asynchronous processing (no front-end blocking)
-- ✅ Industry-standard Azure services (SQL, Cosmos, Storage, Functions)
-
-**Speaker Notes:**
+</details>
 
 Let's dive into the technical details. Starting with architecture.
 
@@ -79,9 +130,27 @@ We documented the complete C4 model - four levels from system context down to co
 
 ### Slide 8: Code Quality - "Not Bad, But..."
 
-**Visual:** Two-column layout
+**Code Quality Assessment:**
 
-```
+| ✅ Strengths | ⚠️ Concerns |
+|-------------|-------------|
+| **Well-structured codebase**<br/>• Logical project organization<br/>• Easy to navigate | **Minimal code comments**<br/>• Business logic not documented<br/>• "Locked in people's heads" |
+| **Clean separation of concerns**<br/>• Controllers, Services, Repos<br/>• Good layering | **Significant code duplication**<br/>• Repeated patterns across modules<br/>• Maintainability risk |
+| **Dependency injection patterns**<br/>• Interface abstractions<br/>• Testability enabled | **No developer onboarding guide**<br/>• Steep learning curve<br/>• No "how to contribute" |
+| **Modern .NET 8 patterns**<br/>• Async/await usage<br/>• Entity Framework Core 8.0 | **High implicit knowledge**<br/>• Contextual understanding required<br/>• "Tentacular" dependencies |
+
+**Assessment Quote:**
+
+> "Not bad, well-structured, easy to navigate... Very little commenting and significant code duplication. Even for them, onboarding new developers must be hard."
+>
+> — Bastien & Guillaume, October 30 checkpoint meeting
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Layout (fallback)</summary>
+
+```text
 ✅ Code Quality Strengths          ⚠️  Code Quality Concerns
 
 Well-structured codebase           Minimal code comments
@@ -101,12 +170,7 @@ Modern .NET 8 patterns            High implicit knowledge
   • Entity Framework Core 8.0        • "Tentacular" dependencies
 ```
 
-**Quote Box:**
-
-> "Not bad, well-structured, easy to navigate... Very little commenting and significant code duplication. Even for them, onboarding new developers must be hard."
-> — Bastien & Guillaume, October 30 checkpoint meeting
-
-**Speaker Notes:**
+</details>
 
 When we got access to the .NET 8 source code on November 4, our first task was a code quality assessment.
 
@@ -140,9 +204,34 @@ This is the source of our "knowledge transfer viability unknown" critical findin
 
 ### Slide 9: Technical Debt Status - Mixed Picture
 
-**Visual:** Status dashboard with colored indicators
+**Technical Debt Assessment:**
 
+| Priority | Status | Items |
+|----------|--------|-------|
+| ✅ **RESOLVED** | Recently Addressed | • .NET Core 3.1 → 8.0 (EOL Dec 2022 → Active support until Nov 2026)<br/>• React 16.12.0 → 18.3.1 (Modern version)<br/>• TypeScript 3.7.3 → 5.6.3 (Modern version)<br/>• Entity Framework 3.1 → 8.0 (Modern ORM)<br/>• Outdated packages → Security vulnerabilities addressed |
+| ⚠️ **MEDIUM** | Plan Required | • .NET 8 support ends Nov 2026 (only 2 years remaining)<br/>• Consider .NET 9/10 for longer support window<br/>• Code duplication needs refactoring (gradual, 6-12 months)<br/>• Documentation drift (specs from 2019-2020) |
+| 🔴 **URGENT** | Action Needed | • Databricks 10.4 LTS outdated (unknown EOL, missing modern features)<br/>• Pipeline test runner blocked post-.NET 8 upgrade (workaround active)<br/>• Test stability issues (some tests brittle, 99.5% pass rate) |
+| 🟡 **MONITORING** | Watch Closely | • Git commit history not provided (compliance review pending)<br/>• IaC templates not included (proprietary Smart AIM library) |
+
+```mermaid
+graph LR
+    A[Technical Debt] --> B[✅ RESOLVED<br/>Framework upgrades]
+    A --> C[⚠️ MEDIUM<br/>Future planning]
+    A --> D[🔴 URGENT<br/>Databricks, Tests]
+    A --> E[🟡 MONITORING<br/>Access gaps]
+
+    style B fill:#ccffcc
+    style C fill:#fff4cc
+    style D fill:#ffcccc
+    style E fill:#ffffcc
 ```
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Dashboard (fallback)</summary>
+
+```text
 Technical Debt Assessment
 
 ✅ RESOLVED (Recently Addressed)
@@ -168,7 +257,7 @@ Technical Debt Assessment
    • IaC templates not included (proprietary Smart AIM library)
 ```
 
-**Speaker Notes:**
+</details>
 
 Technical debt tells an interesting story.
 
@@ -214,9 +303,66 @@ Documentation drift is ongoing - specifications from 2019-2020 may not match cur
 
 ### Slide 10: Infrastructure & DevOps - Mature Pipeline, IaC Gap
 
-**Visual:** Infrastructure overview
+**Azure Resource Inventory:**
 
+```mermaid
+graph LR
+    A[343 Azure Resources] --> B[Production]
+    A --> C[UAT]
+    A --> D[Dev]
+    A --> E[Matching Engine]
+
+    B --> R1[App Services: 12+ instances]
+    B --> R2[Databases: SQL + Cosmos]
+    B --> R3[Data Processing: Databricks + Factory]
+    B --> R4[Storage: SFTP + Data Lake]
+    B --> R5[Networking: VPN + Private Endpoints]
+    B --> R6[Management: Key Vault + Monitoring]
+    B --> R7[API Management: Gateway]
+
+    style A fill:#e6f3ff
+    style B fill:#ccffcc
+    style C fill:#fff4cc
+    style D fill:#ffffcc
+    style E fill:#ffe6e6
 ```
+
+**CI/CD Pipeline Maturity:**
+
+| Stage | Duration | Details | Status |
+|-------|----------|---------|--------|
+| **Build** | 5-10 min | • Source compilation<br/>• NuGet restore<br/>• React + TypeScript build<br/>• Docker image creation | ✅ Automated |
+| **Test** | 10-15 min | • 700+ automated tests<br/>• Unit + Integration + UI<br/>• 99.5% pass rate | ✅ Automated |
+| **Deploy** | 5-10 min | • Dev (automatic)<br/>• UAT (approval)<br/>• Production (approval) | ✅ Automated |
+| **Total** | **20-30 min** | **Manual Steps: ZERO** | ✅ **Fully Automated** |
+
+**Critical Gap - IaC Not Included:**
+
+```mermaid
+graph LR
+    A[IaC Templates] --> B{Spanish Point Position}
+    B -->|Proprietary| C[Smart AIM Library]
+    B -->|Not Included| D[Source Code Delivery]
+
+    C --> E[Vendor Switch Options]
+    E --> F[1. Rebuild IaC<br/>1-2 months effort<br/>Error-prone]
+    E --> G[2. License Smart AIM<br/>Cost unknown<br/>Ongoing dependency]
+
+    style A fill:#ffcccc
+    style C fill:#ffe6e6
+    style D fill:#ffcccc
+    style F fill:#fff4cc
+    style G fill:#fff4cc
+```
+
+**Impact:** Adds 1-2 months to vendor switch timeline + creates dependency risk
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Overview (fallback)</summary>
+
+```text
 Azure Resource Inventory
 
 343 Resources Across 4 Environments
@@ -241,51 +387,7 @@ Resource Categories
 └────────────────────────────────────────────┘
 ```
 
-**CI/CD Pipeline Maturity:**
-
-```
-✅ Fully Automated Deployment Pipeline
-
-Build Stage (5-10 min)
-├─ Source code compilation
-├─ NuGet package restore
-├─ Frontend build (React + TypeScript)
-└─ Docker image creation
-
-Test Stage (10-15 min)
-├─ 700+ automated tests
-│   ├─ Unit tests
-│   ├─ Integration tests
-│   └─ UI tests
-└─ 99.5% pass rate (recent runs)
-
-Deploy Stage (5-10 min)
-├─ Dev environment (automatic)
-├─ UAT environment (approval required)
-└─ Production environment (approval required)
-
-Total Duration: 20-30 minutes
-Manual Steps: ZERO (fully automated)
-```
-
-**🔴 CRITICAL GAP: IaC Not Included**
-
-```
-Infrastructure-as-Code Status: ⚠️  PROPRIETARY
-
-Spanish Point Position:
-• IaC templates = "Smart AIM library" (proprietary)
-• NOT included in source code delivery
-• Licensing program exists for third-party vendors
-
-CISAC Options for Vendor Switch:
-1. Rebuild IaC from scratch (reverse-engineer 343 resources)
-2. License Smart AIM library for new vendor (cost unknown)
-
-Impact: Adds 1-2 months to vendor switch timeline
-```
-
-**Speaker Notes:**
+</details>
 
 Infrastructure and DevOps show a mixed picture: excellent automation, but a critical lock-in gap.
 
@@ -331,9 +433,50 @@ If IaC were properly automated and included in deliverables, environment replica
 
 ### Slide 11: Performance & Scalability - Auto-Scaling Works
 
-**Visual:** Performance dashboard
+**Performance Assessment:**
 
+| Category | Status | Details |
+|----------|--------|---------|
+| **Historical Performance** | ✅ STABLE | • No significant issues (past 12 months)<br/>• Auto-scaling handling load variations<br/>⚠️ Exception: ISWCs with 8,000+ works → SQL exceptions<br/>→ Proposed: Pagination for large submissions |
+| **Monitoring & Alerts** | ⚠️ PARTIAL | ✅ Azure Monitor configured (platform-native)<br/>✅ Alerts: CPU >80% for 5 min → email<br/>✅ Application Insights available<br/>⚠️ No formal performance SLAs<br/>⚠️ No proactive KPI dashboards |
+| **Auto-Scaling** | ✅ WORKING | ✅ App Services: 2-8 instances (CPU/memory)<br/>✅ Cosmos DB: RU/s auto-scale (usage-based)<br/>✅ Databricks: Cluster sizing adjusts<br/>✅ Evidence: Cost variations match usage |
+
+**Architecture Clarifications (Nov 5 Workshop):**
+
+```mermaid
+graph TB
+    A[Front-end APIs] -->|Synchronous| B[SQL Server]
+    A -->|Synchronous| C[Matching Engine]
+    A -.->|NOT blocking| D[Databricks]
+
+    D -->|Async Only| E[SFTP Processing]
+    D -->|Async Only| F[Reporting]
+
+    G[Cosmos DB] -->|Change Feed<br/>20 min| H[Delta Lake]
+    H -->|Query| F
+
+    C -.->|⚠️ Blocking calls| I[Performance Concern]
+
+    style A fill:#e6f3ff
+    style B fill:#ccffcc
+    style C fill:#fff4cc
+    style D fill:#ccffcc
+    style I fill:#ffcccc
 ```
+
+**Performance Concerns:**
+
+- ✓ **Databricks NOT in critical path** (async file processing only)
+- ✓ **Cosmos DB NOT bottleneck** (audit logs + change feed to Delta Lake)
+- ⚠️ **ISWC API Rate Limiting** (3-5 req/sec claimed - UNVERIFIED, needs Moïse validation)
+- ⚠️ **Synchronous Matching Engine calls** (blocking HTTP - queue-based async would improve)
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Dashboard (fallback)</summary>
+
+```text
 Performance Assessment
 
 Historical Performance (Past 12 Months)
@@ -356,31 +499,7 @@ Auto-Scaling Configuration
 ✅ Evidence: Monthly cost variations match usage patterns
 ```
 
-**Performance Clarifications from Nov 5 Workshop:**
-
-```
-✓ Databricks NOT in critical path
-  → Asynchronous file processing only (SFTP uploads)
-  → Reporting via Delta Lake replication
-  → Front-end APIs do NOT wait for Databricks
-
-✓ Cosmos DB NOT performance bottleneck
-  → Primary use: Audit tracking container (append-only logs)
-  → Change feed replicates to Delta Lake every 20 minutes
-  → Avoids Cosmos DB query load for reporting
-
-⚠️ ISWC API Rate Limiting (UNVERIFIED)
-  → Yann Oct 30 claim: "3-5 requests per second limit"
-  → NOT confirmed in Nov 5 workshop
-  → Requires validation with Moïse (CISAC technical expert)
-
-⚠️ Synchronous Matching Engine Calls
-  → Blocking HTTP calls (performance coupling)
-  → Large submissions may cause latency
-  → Alternative: Queue-based async pattern would decouple
-```
-
-**Speaker Notes:**
+</details>
 
 Performance is where we have mixed data. Spanish Point claims the system performs well. Our analysis suggests they're mostly right, but there are gaps in visibility.
 
@@ -426,9 +545,78 @@ Spanish Point's Xiyuan explained: "The environment is autoscale... cost is never
 
 ### Slide 12: Cost Analysis - €600K/Year, Visibility Gap
 
-**Visual:** Cost breakdown chart
+**Annual Cloud Spending: ~€600,000** (~€50K/month average)
 
+**Primary Cost Drivers:**
+
+```mermaid
+graph TD
+    A[€600K Annual Cost] --> B[Cosmos DB<br/>Largest portion]
+    A --> C[SQL Server<br/>Business Critical]
+    A --> D[Databricks<br/>Usage-based]
+    A --> E[Data Factory<br/>Orchestration]
+    A --> F[App Services<br/>APIs + Portals]
+
+    B --> B1[Audit tracking logs<br/>RU/s auto-scale<br/>⚠️ Expensive for use case]
+    C --> C1[Fixed capacity<br/>Hyperscale target<br/>-€3.3K/month potential]
+    D --> D1[File processing<br/>Cluster runtime<br/>Auto-scaling]
+
+    style A fill:#e6f3ff
+    style B fill:#ffcccc
+    style C fill:#fff4cc
+    style D fill:#ffffcc
+    style E fill:#e6ffe6
+    style F fill:#e6ffe6
 ```
+
+**Monthly Cost Variation Pattern:**
+
+| Pattern | Observation | Explanation |
+|---------|-------------|-------------|
+| **Variation** | ±10% month-to-month | December: Lower (holidays)<br/>February: Higher (+10% peak) |
+| **Cause** | Auto-scaling | "Cost is never fixed, it's based on workload" (Spanish Point) |
+| **Assessment** | ✅ **Working as designed** | Cost variations = feature, not bug |
+
+**Critical Gap - No Cost Correlation Tooling:**
+
+```mermaid
+graph TB
+    A[Cost Spike Detected] --> B{Tooling Available?}
+    B -->|❌ No| C[Manual Support Ticket]
+    C --> D[Spanish Point Investigation]
+    D --> E[Limited: 3 months logs only]
+
+    B -.->|✅ Should Have| F[Automated Dashboard]
+    F -.-> G[Usage Metrics + Costs]
+    F -.-> H[Forecasting]
+    F -.-> I[Per-Agency Allocation]
+
+    style B fill:#ffcccc
+    style C fill:#ffe6e6
+    style F fill:#ccffcc
+```
+
+**Impact on CISAC:**
+
+- ❌ Cannot explain monthly variations to stakeholders
+- ❌ Cannot forecast spending based on expected usage
+- ❌ Cannot identify cost optimization opportunities proactively
+- ❌ Financial stakeholders lack visibility
+
+**"Noisy Neighbor" Acknowledgment:**
+
+> "There can be a term called noisy neighbor... That agency or very few model agencies use the system the most. I think that's actually the case."
+>
+> — Spanish Point (Xiyuan Zeng)
+
+**Finding:** Some agencies drive majority of costs, but no allocation model exists (flat-rate pricing for all)
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Cost Breakdown (fallback)</summary>
+
+```text
 Annual Cloud Spending: ~€600,000 (~€50K/month average)
 
 Primary Cost Drivers (Oct 2024 - Oct 2025)
@@ -454,66 +642,7 @@ Primary Cost Drivers (Oct 2024 - Oct 2025)
    └─ Less expensive than Databricks/Cosmos per unit
 ```
 
-**Monthly Cost Variation Pattern:**
-
-```
-±10% month-to-month variation observed
-Example: February 2025 peak (~10% above baseline)
-
-Spanish Point Explanation:
-"The environment is autoscale... cost is never fixed,
-it's all based on the amount of workload."
-
-December Drop: Lower usage during holidays
-February Peak: Higher agency file uploads and API calls
-
-Assessment: ✅ Auto-scaling working as designed
-           (cost variations = feature, not bug)
-```
-
-**🔴 CRITICAL GAP: No Cost Correlation Tooling**
-
-```
-Audit Team Question (Nov 6 Workshop):
-"Is there tooling to correlate usage metrics with Azure spending?"
-
-Spanish Point Response (Xiyuan Zeng):
-"Not really... There's no tooling going to [correlate] causes
-because the system has so many components."
-
-Current Process:
-• Cost spikes require MANUAL support ticket investigation
-• Spanish Point can analyze specific months on request
-• Logs kept only 3 months
-• No proactive monitoring
-• No automated correlation dashboard
-
-Impact on CISAC:
-❌ Cannot explain monthly variations to stakeholders
-❌ Cannot forecast spending based on expected usage
-❌ Cannot identify cost optimization opportunities proactively
-❌ Financial stakeholders lack visibility
-```
-
-**"Noisy Neighbor" Phenomenon:**
-
-```
-Spanish Point Acknowledgment:
-"There can be a term called noisy neighbor... That agency or
-very few model agency use the system the most. I think that's
-actually the case."
-
-Finding:
-• Some agencies drive majority of costs
-• No cost allocation model exists
-• All agencies pay flat-rate pricing regardless of usage
-
-Potential Future:
-• Usage-based pricing per agency (would require tooling development)
-• Fair cost distribution based on actual consumption
-```
-
-**Speaker Notes:**
+</details>
 
 Cost is where governance gaps become financially tangible. €600,000 per year is being spent without adequate visibility.
 

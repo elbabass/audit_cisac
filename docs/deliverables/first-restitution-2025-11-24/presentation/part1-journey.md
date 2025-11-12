@@ -28,6 +28,53 @@ Today we'll share what we found, what it means, and most importantly, what we re
 
 **Visual:** Timeline infographic with key milestones
 
+```mermaid
+graph TB
+    Start[October 7, 2025] --> Oct7_1[Relaunch meeting with Yann]
+    Oct7_1 --> Oct7_2[Scope refinement: vendor independence focus]
+    Oct7_2 --> Oct7_3[Budget: 20 man-days]
+
+    Oct7_3 --> Oct20[October 20-21, 2025]
+    Oct20 --> Oct20_1[Initial workshops with Spanish Point]
+    Oct20_1 --> Oct20_2[Access challenges revealed]
+    Oct20_2 --> Oct20_3[Strategic pivot discussion]
+
+    Oct20_3 --> Oct30[October 30, 2025]
+    Oct30 --> Oct30_1[Checkpoint meeting]
+    Oct30_1 --> Oct30_2[Accept constraints, focus on value]
+    Oct30_2 --> Oct30_3[12/20 days consumed]
+
+    Oct30_3 --> Nov5[November 5-6, 2025]
+    Nov5 --> Nov5_1[Technical deep-dive workshops completed]
+    Nov5_1 --> Nov5_2[Code access granted .NET 8]
+    Nov5_2 --> Nov5_3[Investigation phase complete 75% progress]
+
+    Nov5_3 --> Nov24[November 24, 2025]
+    Nov24 --> Nov24_1[First restitution today]
+
+    style Start fill:#e6f3ff
+    style Oct7_2 fill:#fff4cc
+    style Oct20_2 fill:#fff4cc
+    style Oct30_2 fill:#fff4cc
+    style Nov5_3 fill:#ccffcc
+    style Nov24_1 fill:#ccffcc
+```
+
+**Key Statistics:**
+
+| Metric | Value |
+|--------|-------|
+| **Budget** | 20 man-days (12 investigation, 8 synthesis) |
+| **Workshops** | 6+ sessions with Spanish Point |
+| **Azure Resources** | 343 resources analyzed |
+| **Code Review** | 42+ files (Matching Engine integration) |
+| **Documentation** | 95+ validation rules documented |
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Timeline (fallback)</summary>
+
 ```text
 The Audit Evolution
 
@@ -55,15 +102,7 @@ November 24, 2025
 └─ First restitution (today)
 ```
 
-**Key Statistics Box:**
-
-- 20 man-days budget (12 consumed in investigation, 8 for synthesis)
-- 6+ workshops with Spanish Point
-- 343 Azure resources analyzed
-- 42+ source code files reviewed (Matching Engine integration)
-- 95+ validation rules documented
-
-**Speaker Notes:**
+</details>
 
 Our audit journey has been revealing. We started October 7 with what seemed like a straightforward technical assessment - validate the infrastructure upgrade proposal, assess the architecture, identify technical debt.
 
@@ -91,6 +130,24 @@ By November 6, we completed the investigation phase with high confidence in our 
 
 **Visual:** Two-column comparison
 
+| What We Were Asked To Do | What We Actually Discovered |
+|--------------------------|------------------------------|
+| ✓ Validate Hyperscale proposal | ⚠️ Cost control gap (€600K/year) |
+| ✓ Assess architecture quality | ✓ Platform technically sound |
+| ✓ Identify technical debt | ✓ Recently upgraded, well-maintained |
+| ✓ Migration roadmap | ⚠️ Governance gaps are the real issue |
+| | 🔴 Vendor independence unknown |
+| | 🔴 Knowledge transfer HIGH RISK |
+
+**Key Insight Box:**
+
+> "The platform is solid. Control is the problem."
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Comparison (fallback)</summary>
+
 ```text
 What We Were Asked To Do          →    What We Actually Discovered
 
@@ -102,11 +159,7 @@ What We Were Asked To Do          →    What We Actually Discovered
                                    →    🔴 Knowledge transfer HIGH RISK
 ```
 
-**Key Insight Box:**
-
-> "The platform is solid. Control is the problem."
-
-**Speaker Notes:**
+</details>
 
 Here's what we learned: the ISWC platform is technically sound. The architecture is well-designed. The code quality is reasonable. Auto-scaling is working correctly. Spanish Point upgraded you to .NET 8 just before this audit.
 
