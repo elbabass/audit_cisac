@@ -7,6 +7,6 @@
   "MD029": false,
   "MD036": false,
   "MD033": {
-    "allowed_elements": ["br", "a"]
+    "allowed_elements": ["br", "a", "details", "summary"]
   }
 }
