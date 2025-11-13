@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timeline Alternative 4: HTML Cards</title>
+    <title>Timeline Alternative V2: Alternating Above/Below</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -26,38 +26,63 @@
         }
         .timeline-container {
             position: relative;
-            padding: 40px 0;
+            padding: 180px 0;
+            min-height: 200px;
         }
         .timeline-line {
             position: absolute;
-            top: 70px;
+            top: 50%;
             left: 0;
             right: 0;
             height: 4px;
             background: linear-gradient(to right, #0066cc, #00cc00);
             z-index: 0;
+            transform: translateY(-50%);
         }
         .events {
             display: flex;
             justify-content: space-between;
-            position: relative;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
             z-index: 1;
         }
         .event {
             flex: 1;
             text-align: center;
             padding: 0 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .event-dot {
+            width: 20px;
+            height: 20px;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
         }
         .event-card {
             background: white;
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.2s, box-shadow 0.2s;
+            min-width: 200px;
+            max-width: 220px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .event-card:hover {
-            transform: translateY(-4px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         .event-date {
@@ -77,13 +102,13 @@
             margin-bottom: 8px;
             font-size: 15px;
         }
-        .event-dot {
-            width: 20px;
-            height: 20px;
-            border: 4px solid white;
-            border-radius: 50%;
-            margin: 0 auto;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+        /* Alternate cards above and below the line */
+        .event:nth-child(odd) .event-card {
+            bottom: 20px;
+        }
+        .event:nth-child(even) .event-card {
+            top: 20px;
         }
 
         /* Color schemes */
@@ -111,6 +136,7 @@
 <body>
     <div class="container">
         <h1>The Audit Evolution: October 7 - November 24, 2025</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;"><strong>Version 2:</strong> Cards alternating above/below, points centered on line</p>
 
         <div class="timeline-container">
             <div class="timeline-line"></div>
@@ -118,6 +144,7 @@
             <div class="events">
                 <!-- Event 1: Oct 7 -->
                 <div class="event event-1">
+                    <div class="event-dot"></div>
                     <div class="event-card">
                         <div class="event-date">Oct 7</div>
                         <div class="event-content">
@@ -126,11 +153,11 @@
                             Budget: 20 man-days
                         </div>
                     </div>
-                    <div class="event-dot"></div>
                 </div>
 
                 <!-- Event 2: Oct 20-21 -->
                 <div class="event event-2">
+                    <div class="event-dot"></div>
                     <div class="event-card">
                         <div class="event-date">Oct 20-21</div>
                         <div class="event-content">
@@ -140,11 +167,11 @@
                             Strategic pivot discussion
                         </div>
                     </div>
-                    <div class="event-dot"></div>
                 </div>
 
                 <!-- Event 3: Oct 30 -->
                 <div class="event event-3">
+                    <div class="event-dot"></div>
                     <div class="event-card">
                         <div class="event-date">Oct 30</div>
                         <div class="event-content">
@@ -154,11 +181,11 @@
                             12/20 days consumed
                         </div>
                     </div>
-                    <div class="event-dot"></div>
                 </div>
 
                 <!-- Event 4: Nov 5-6 -->
                 <div class="event event-4">
+                    <div class="event-dot"></div>
                     <div class="event-card">
                         <div class="event-date">Nov 5-6</div>
                         <div class="event-content">
@@ -168,11 +195,11 @@
                             Investigation 75% complete
                         </div>
                     </div>
-                    <div class="event-dot"></div>
                 </div>
 
                 <!-- Event 5: Nov 24 -->
                 <div class="event event-5">
+                    <div class="event-dot"></div>
                     <div class="event-card">
                         <div class="event-date">Nov 24</div>
                         <div class="event-content">
@@ -180,7 +207,6 @@
                             Today's presentation
                         </div>
                     </div>
-                    <div class="event-dot"></div>
                 </div>
             </div>
         </div>

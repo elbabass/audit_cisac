@@ -125,19 +125,34 @@ graph LR
 
 ---
 
-## Alternative 4: HTML Timeline with Cards
+## Alternative 4: HTML Timeline - Version 1 (Linear Layout)
 
-**Note:** HTML/CSS doesn't render in all markdown viewers.
+**Design:** Points above cards, horizontal line behind points, all cards aligned below
 
-**[View full interactive version →](timeline-alternative-preview.html)**
+**[View V1 (Linear) →](timeline-alternative-v1.html)**
 
-Preview:
-
-![HTML Timeline Preview](timeline-alternative-preview.html)
+**Strengths:**
+- Clean, simple linear progression
+- Easy to scan top-to-bottom
+- Consistent card positioning
 
 ---
 
-## Alternative 5: SVG Timeline (Compact Modern Design)
+## Alternative 5: HTML Timeline - Version 2 (Alternating Layout)
+
+**Design:** Cards alternating above/below line, points centered on line, wider cards
+
+**[View V2 (Alternating) →](timeline-alternative-v2.html)**
+
+**Strengths:**
+- Dynamic visual balance
+- More space for card content (wider cards)
+- Professional alternating layout
+- Points perfectly aligned on timeline
+
+---
+
+## Alternative 6: SVG Timeline (Compact Modern Design)
 
 **Note:** SVG doesn't render in all markdown viewers.
 
@@ -156,13 +171,16 @@ Preview:
 | **Alt 1** | Mermaid Gantt | Shows duration/overlap, professional | Can feel technical/PM-heavy | Project managers, detailed timeline |
 | **Alt 2** | Mermaid Timeline | Clean, modern, easy to read | Less visual flexibility | Quick overview, simple narrative |
 | **Alt 3** | Mermaid Roadmap | Shows phases clearly, color-coded | More complex, needs space | Emphasizing project evolution |
-| **Alt 4** | HTML Cards | Beautiful design, fully customizable | May not render in all markdown viewers | Web/slides with HTML support |
-| **Alt 5** | SVG | Compact, professional, resolution-independent | Harder to modify manually | Final polished presentation |
+| **Alt 4** | HTML V1 (Linear) | Simple, consistent layout | All cards below line | Clean presentation, simple story |
+| **Alt 5** | HTML V2 (Alternating) | Dynamic, wider cards, balanced | More complex layout | Maximum visual impact for slides |
+| **Alt 6** | SVG | Compact, professional, resolution-independent | Harder to modify manually | Final polished presentation |
 
 ## Recommendations
 
-**For presentation slides:** Alternative 4 (HTML) or Alternative 5 (SVG) for maximum visual impact
+**For presentation slides:** Alternative 5 (HTML V2 - Alternating) for maximum visual impact and content space
 
 **For documentation/markdown:** Alternative 2 (Mermaid Timeline) for simplicity and compatibility
 
 **For emphasizing phases:** Alternative 3 (Mermaid Roadmap) to show strategic evolution
+
+**For simple linear story:** Alternative 4 (HTML V1 - Linear) for clean, easy-to-follow progression
