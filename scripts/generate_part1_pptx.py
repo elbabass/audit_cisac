@@ -40,8 +40,8 @@ def create_cisac_logo_png():
     # we'll create a simple red square as placeholder
     # The actual logo will need to be exported from the SVG manually
 
-    img.save(LOGO_PATH)
-    print(f"Created simple logo placeholder at {LOGO_PATH}")
+    img.save(CISAC_LOGO_PATH)
+    print(f"Created simple logo placeholder at {CISAC_LOGO_PATH}")
 
 
 def add_title_slide(prs):
@@ -338,7 +338,7 @@ def main():
     print("Generating Part 1 (Journey) PowerPoint presentation...")
 
     # Create logo if it doesn't exist
-    if not os.path.exists(LOGO_PATH):
+    if not os.path.exists(CISAC_LOGO_PATH):
         create_cisac_logo_png()
 
     # Create presentation
