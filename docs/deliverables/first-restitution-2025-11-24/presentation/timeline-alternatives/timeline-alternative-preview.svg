@@ -1,56 +1,62 @@
-<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="350" viewBox="0 0 1200 350" xmlns="http://www.w3.org/2000/svg">
   <!-- Title -->
-  <text x="600" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">
+  <text x="600" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333">
     The Audit Evolution: October 7 - November 24, 2025
   </text>
 
-  <!-- Timeline line -->
+  <!-- Timeline line (behind everything) -->
+  <line x1="80" y1="175" x2="1120" y2="175" stroke="#888" stroke-width="4" opacity="0.5"/>
+
+  <!-- Timeline gradient line (on top of gray base) -->
   <defs>
     <linearGradient id="timelineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#0066cc;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#00cc00;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#0088dd;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff9900;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#66cc00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#009900;stop-opacity:1" />
     </linearGradient>
   </defs>
-  <line x1="50" y1="150" x2="1150" y2="150" stroke="url(#timelineGradient)" stroke-width="4"/>
+  <line x1="80" y1="175" x2="1120" y2="175" stroke="url(#timelineGradient)" stroke-width="4"/>
 
   <!-- Event 1: Oct 7 -->
-  <circle cx="100" cy="150" r="12" fill="#0066cc" stroke="white" stroke-width="3"/>
-  <rect x="50" y="50" width="100" height="80" rx="8" fill="#e6f3ff" stroke="#0066cc" stroke-width="2"/>
-  <text x="100" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0066cc">Oct 7</text>
-  <text x="100" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Relaunch</text>
-  <text x="100" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Meeting</text>
-  <text x="100" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">20 man-days</text>
+  <circle cx="80" cy="175" r="12" fill="#0066cc" stroke="white" stroke-width="3"/>
+  <rect x="15" y="60" width="130" height="95" rx="8" fill="#e6f3ff" stroke="#0066cc" stroke-width="2"/>
+  <text x="80" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#0066cc">Oct 7</text>
+  <text x="80" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#333">Relaunch</text>
+  <text x="80" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#333">Meeting</text>
+  <text x="80" y="142" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">20 man-days</text>
 
   <!-- Event 2: Oct 20-21 -->
-  <circle cx="325" cy="150" r="12" fill="#ff9900" stroke="white" stroke-width="3"/>
-  <rect x="250" y="170" width="150" height="90" rx="8" fill="#fff4cc" stroke="#ff9900" stroke-width="2"/>
-  <text x="325" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ff9900">Oct 20-21</text>
-  <text x="325" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Initial Workshops</text>
-  <text x="325" y="223" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Spanish Point</text>
-  <text x="325" y="238" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Access challenges</text>
-  <text x="325" y="253" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Strategic pivot</text>
+  <circle cx="340" cy="175" r="12" fill="#ff9900" stroke="white" stroke-width="3"/>
+  <rect x="250" y="195" width="180" height="110" rx="8" fill="#fff4cc" stroke="#ff9900" stroke-width="2"/>
+  <text x="340" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ff9900">Oct 20-21</text>
+  <text x="340" y="239" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#333">Initial Workshops</text>
+  <text x="340" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">Spanish Point</text>
+  <text x="340" y="274" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">Access challenges</text>
+  <text x="340" y="291" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">Strategic pivot</text>
 
   <!-- Event 3: Oct 30 -->
-  <circle cx="550" cy="150" r="12" fill="#ff9900" stroke="white" stroke-width="3"/>
-  <rect x="475" y="50" width="150" height="80" rx="8" fill="#fff4cc" stroke="#ff9900" stroke-width="2"/>
-  <text x="550" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ff9900">Oct 30</text>
-  <text x="550" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Checkpoint</text>
-  <text x="550" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Accept constraints</text>
-  <text x="550" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">12/20 days used</text>
+  <circle cx="600" cy="175" r="12" fill="#ff9900" stroke="white" stroke-width="3"/>
+  <rect x="510" y="60" width="180" height="95" rx="8" fill="#fff4cc" stroke="#ff9900" stroke-width="2"/>
+  <text x="600" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ff9900">Oct 30</text>
+  <text x="600" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#333">Checkpoint</text>
+  <text x="600" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">Accept constraints</text>
+  <text x="600" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">12/20 days used</text>
 
   <!-- Event 4: Nov 5-6 -->
-  <circle cx="825" cy="150" r="12" fill="#00cc00" stroke="white" stroke-width="3"/>
-  <rect x="725" y="170" width="200" height="90" rx="8" fill="#e6ffe6" stroke="#00cc00" stroke-width="2"/>
-  <text x="825" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#00cc00">Nov 5-6</text>
-  <text x="825" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Technical Deep-Dive</text>
-  <text x="825" y="223" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Workshops completed</text>
-  <text x="825" y="238" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Code access (.NET 8)</text>
-  <text x="825" y="253" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">75% complete</text>
+  <circle cx="860" cy="175" r="12" fill="#00cc00" stroke="white" stroke-width="3"/>
+  <rect x="760" y="195" width="200" height="110" rx="8" fill="#e6ffe6" stroke="#00cc00" stroke-width="2"/>
+  <text x="860" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#00cc00">Nov 5-6</text>
+  <text x="860" y="239" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#333">Technical Deep-Dive</text>
+  <text x="860" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">Workshops completed</text>
+  <text x="860" y="274" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">Code access (.NET 8)</text>
+  <text x="860" y="291" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">75% complete</text>
 
   <!-- Event 5: Nov 24 -->
-  <circle cx="1100" cy="150" r="14" fill="#009900" stroke="white" stroke-width="3"/>
-  <rect x="1025" y="50" width="150" height="80" rx="8" fill="#ccffcc" stroke="#009900" stroke-width="3"/>
-  <text x="1100" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#009900">Nov 24</text>
-  <text x="1100" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">First Restitution</text>
-  <text x="1100" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#009900">TODAY</text>
+  <circle cx="1120" cy="175" r="14" fill="#009900" stroke="white" stroke-width="3"/>
+  <rect x="1035" y="60" width="170" height="95" rx="8" fill="#ccffcc" stroke="#009900" stroke-width="3"/>
+  <text x="1120" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#009900">Nov 24</text>
+  <text x="1120" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#333">First Restitution</text>
+  <text x="1120" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#009900">TODAY</text>
 </svg>
