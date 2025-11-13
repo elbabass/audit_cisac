@@ -10,6 +10,101 @@
 
 **Visual:** Decision matrix
 
+## Strategic Decisions Required (November 2025)
+
+### ✅ DECISION 1: Approve Knowledge Transfer Pilot Test?
+
+| Aspect | Details |
+|--------|---------|
+| **Investment** | €10-20K |
+| **Timeline** | December 2025 - February 2026 (2 months) |
+| **Risk** | Very Low (non-critical feature) |
+| **RECOMMENDATION** | ✅ **YES (High Priority)** |
+| **Rationale** | Single most important data point for vendor independence strategy. €10-20K investment de-risks €300-600K decision. |
+| **Action Required** | • Define pilot feature scope<br/>• Identify independent vendors to approach<br/>• Allocate budget approval<br/>• **Timeline:** Start December 2025 |
+
+### ✅ DECISION 2: Initiate Contract Renegotiation?
+
+| Aspect | Details |
+|--------|---------|
+| **Investment** | Minimal (legal/negotiation time) |
+| **Timeline** | December 2025 - March 2026 (parallel to pilot) |
+| **Risk** | Low (worst case: status quo continues) |
+| **RECOMMENDATION** | ✅ **YES (High Priority)** |
+| **Rationale** | Use audit findings as leverage. Better terms achievable whether CISAC stays or switches vendors. |
+| **Priority Terms** | • **CRITICAL:** Git history, IaC templates, cost tooling<br/>• **HIGH:** Performance SLAs, enhanced DoD, metrics sharing<br/>• **MEDIUM:** Knowledge transfer docs, ADR practice |
+| **Action Required** | • Authorize Yann to lead negotiation<br/>• Define priority vs negotiable terms<br/>• **Timeline:** Initiate December 2025 |
+
+### ⚠️ DECISION 3: Approve Hyperscale Proposal (PSA 5499)?
+
+| Aspect | Details |
+|--------|---------|
+| **Investment** | €40K migration + €1,800/month savings |
+| **Timeline** | Migration ~2-3 months after approval |
+| **Risk** | Medium (reserved instance = 1-year commitment) |
+| **RECOMMENDATION** | ⚠️ **HOLD Pending Validation** |
+| **Rationale** | Bottleneck not validated. Query optimization may achieve similar results at lower cost. Secondary priority vs governance issues. |
+| **Actions BEFORE Approval** | • Meet with Moïse (production performance data)<br/>• Validate SQL Server bottleneck<br/>• Explore query optimization alternative (€5-10K)<br/>• Decision by March 2026 with data |
+
+### ✅ DECISION 4: Research Alternative Matching Engine Vendors?
+
+| Aspect | Details |
+|--------|---------|
+| **Investment** | €5-10K (market research, vendor proposals) |
+| **Timeline** | December 2025 - February 2026 (parallel) |
+| **Risk** | Very Low (research only, no commitment) |
+| **RECOMMENDATION** | ✅ **YES (Medium Priority)** |
+| **Rationale** | Strengthens negotiating position even if CISAC never switches. Informs long-term strategy. Low cost for high strategic value. |
+| **Scope** | • Identify alternative matching engine vendors<br/>• Request proposals and demos<br/>• Assess functionality comparison<br/>• Evaluate API compatibility and integration effort |
+| **Action Required** | • Define matching engine requirements spec<br/>• Research music rights technology vendors<br/>• **Timeline:** Start January 2026 |
+
+### ⏸️ DECISION 5: Vendor Relationship Strategy Going Forward?
+
+| Aspect | Details |
+|--------|---------|
+| **Timeline** | Decision by March 2026 (after Phase 1 results) |
+| **Risk** | Depends on path chosen |
+| **RECOMMENDATION** | ⏸️ **DEFER Until Phase 1 Complete** |
+| **Rationale** | Don't decide today. Wait for:<br/>• Pilot test results (Feb 2026)<br/>• Market research results (Feb 2026)<br/>• Negotiation outcomes (ongoing) |
+
+**Possible Paths (decide with data):**
+
+| Path | Condition | Details |
+|------|-----------|---------|
+| **Path A: Vendor Transition** | IF: Pilot successful + Alternatives exist | 12-24 months, €300-600K, high risk, full independence |
+| **Path B: Improved Relationship** | IF: Pilot fails OR no alternatives | Immediate, minimal cost, medium risk, better terms |
+| **Path C: Partial Independence** | IF: Mixed results | Split model: new vendor (app) + Spanish Point (ME) |
+
+**Decision Timeline:** March 2026 with Phase 1 data
+
+**Alternative: Mermaid Decision Tree**
+
+```mermaid
+graph TD
+    A[Five Key Decisions] --> B[1. Pilot Test?]
+    A --> C[2. Contract Negotiation?]
+    A --> D[3. Hyperscale Approval?]
+    A --> E[4. Market Research?]
+    A --> F[5. Vendor Strategy?]
+
+    B -->|YES ✅| G[Dec 2025 - Feb 2026<br/>€10-20K]
+    C -->|YES ✅| H[Dec 2025 - Mar 2026<br/>Parallel to pilot]
+    D -->|HOLD ⚠️| I[Validate first<br/>Decision Mar 2026]
+    E -->|YES ✅| J[Jan 2026 - Feb 2026<br/>€5-10K]
+    F -->|DEFER ⏸️| K[Decide Mar 2026<br/>After Phase 1 data]
+
+    style B fill:#90EE90
+    style C fill:#90EE90
+    style D fill:#FFD700
+    style E fill:#90EE90
+    style F fill:#87CEEB
+```
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Decision Matrix (fallback)</summary>
+
 ```text
 Strategic Decisions Required (November 2025)
 
@@ -128,30 +223,7 @@ DECISION 5: Vendor Relationship Strategy Going Forward?
 └────────────────────────────────────────────────────────┘
 ```
 
-**Alternative: Mermaid Decision Tree**
-
-```mermaid
-graph TD
-    A[Five Key Decisions] --> B[1. Pilot Test?]
-    A --> C[2. Contract Negotiation?]
-    A --> D[3. Hyperscale Approval?]
-    A --> E[4. Market Research?]
-    A --> F[5. Vendor Strategy?]
-
-    B -->|YES ✅| G[Dec 2025 - Feb 2026<br/>€10-20K]
-    C -->|YES ✅| H[Dec 2025 - Mar 2026<br/>Parallel to pilot]
-    D -->|HOLD ⚠️| I[Validate first<br/>Decision Mar 2026]
-    E -->|YES ✅| J[Jan 2026 - Feb 2026<br/>€5-10K]
-    F -->|DEFER ⏸️| K[Decide Mar 2026<br/>After Phase 1 data]
-
-    style B fill:#90EE90
-    style C fill:#90EE90
-    style D fill:#FFD700
-    style E fill:#90EE90
-    style F fill:#87CEEB
-```
-
-**Speaker Notes:**
+</details>
 
 Let's crystallize the decisions CISAC leadership must make.
 
@@ -226,6 +298,113 @@ Decision timeline: March 2026.
 ### Slide 28: Immediate Next Steps (December 2025 - March 2026)
 
 **Visual:** Action timeline
+
+### DECEMBER 2025 - Launch Phase
+
+#### Week 1-2
+
+| Workstream | Activities |
+|------------|------------|
+| **Pilot Test Setup** | • Define pilot feature scope (CISAC + Audit Team)<br/>• Identify 3-5 independent vendors (.NET expertise)<br/>• Prepare RFP materials (code, docs, spec)<br/>• Send RFP, collect proposals |
+| **Contract Renegotiation Preparation** | • Document audit findings (this presentation + detailed report)<br/>• Prioritize contract terms (critical vs nice-to-have)<br/>• Legal review of current contract<br/>• Schedule negotiation kickoff meeting with Spanish Point |
+| **Technical Quick Wins** | • 🔴 **URGENT**: Escalate pipeline test runner fix<br/>• Request Databricks upgrade roadmap (due Dec 31)<br/>• Schedule January cost review meeting |
+
+#### Week 3-4
+
+| Workstream | Activities |
+|------------|------------|
+| **Pilot Test Launch** | • Select pilot vendor (evaluation of proposals)<br/>• Contract signed, NDA in place<br/>• Kickoff meeting, materials delivered<br/>• Development begins |
+| **Contract Negotiation Kickoff** | • Present audit findings to Spanish Point<br/>• Request git history access (immediate priority)<br/>• Request IaC templates inclusion<br/>• Discuss cost correlation tooling options |
+
+### JANUARY 2026 - Execution Phase
+
+#### Week 1-2
+
+| Workstream | Activities |
+|------------|------------|
+| **Pilot Test Monitoring** | • Weekly check-ins with pilot vendor<br/>• Track questions, challenges, progress<br/>• Document Spanish Point cooperation level |
+| **Matching Engine Market Research** | • Identify alternative vendors (music rights tech)<br/>• Request proposals and technical documentation<br/>• Schedule vendor demos/presentations |
+| **Performance Validation** | • Meet with Moïse (production metrics, user complaints)<br/>• Review Application Insights data (SQL performance)<br/>• Document actual vs. claimed performance |
+
+#### Week 3-4
+
+| Workstream | Activities |
+|------------|------------|
+| **Monthly Cost Review (First Meeting)** | • CISAC + Spanish Point + Finance<br/>• Review Dec 2025 spending<br/>• Manually correlate with usage (until tooling exists)<br/>• Identify anomalies, action items |
+| **Contract Negotiation Progress** | • Git history access resolved? (should be immediate)<br/>• IaC templates negotiation status<br/>• Cost correlation tooling commitment<br/>• Enhanced DoD discussion |
+
+### FEBRUARY 2026 - Evaluation Phase
+
+#### Week 1-2
+
+| Workstream | Activities |
+|------------|------------|
+| **Pilot Test Completion** | • Feature delivery deadline<br/>• UAT testing and validation<br/>• Code quality review<br/>• Comprehensive evaluation report |
+| **Market Research Synthesis** | • Evaluate alternative matching engine proposals<br/>• Compare functionality, cost, integration effort<br/>• Document feasibility assessment<br/>• Prepare summary for leadership |
+
+#### Week 3-4
+
+| Workstream | Activities |
+|------------|------------|
+| **Pilot Test Debrief** | • Internal evaluation: Success/Partial/Failure?<br/>• Document lessons learned<br/>• Assess knowledge transfer viability<br/>• Decision: Proceed with RFP or focus on relationship improvement? |
+| **Hyperscale Decision Preparation** | • Review Moïse performance validation<br/>• Assess query optimization feasibility (€5-10K alternative)<br/>• Validate SQL bottleneck claim<br/>• Prepare recommendation for leadership |
+
+### MARCH 2026 - Decision Phase
+
+#### Week 1-2
+
+| Workstream | Activities |
+|------------|------------|
+| **Leadership Decision Meeting** | • Present Phase 1 results (pilot, research, negotiation)<br/>• Recommend Path A/B/C based on data<br/>• Decision: Vendor switch vs improved relationship vs partial independence<br/>• Budget allocation for Phase 2 |
+| **Hyperscale Proposal Decision** | • Approve, reject, or modify based on validation<br/>• If approved: Plan migration (Q2 2026)<br/>• If rejected: Implement query optimization alternative<br/>• Decouple networking security if valuable independently |
+
+#### Week 3-4
+
+| Workstream | Activities |
+|------------|------------|
+| **Phase 2 Planning** | • Based on strategic decision, plan next 6-12 months<br/>• Budget allocation and resource planning<br/>• Vendor engagement (if transition chosen)<br/>• Governance improvement roadmap (if relationship improvement chosen) |
+
+### Responsibilities
+
+| Team | Responsibilities |
+|------|------------------|
+| **CISAC**<br/>(Yann + Moïse + Finance) | • Pilot feature definition<br/>• Vendor selection and contracting<br/>• Contract negotiation leadership<br/>• Monthly cost review participation<br/>• Performance validation (Moïse operational data)<br/>• Strategic decision making (March 2026) |
+| **Spanish Point** | • Git history access delivery (December)<br/>• Databricks upgrade roadmap (December)<br/>• 🔴 Pipeline test runner fix (URGENT)<br/>• Cost correlation tooling discussion<br/>• Contract negotiation participation<br/>• Pilot vendor handover cooperation |
+| **Audit Team**<br/>(Teragone-Factory) | • Pilot test RFP preparation<br/>• Market research coordination<br/>• Contract negotiation support (advisory)<br/>• Performance validation analysis<br/>• Final report delivery (end Nov 2025)<br/>• Phase 1 evaluation synthesis (Feb 2026) |
+
+**Alternative: Mermaid Gantt Chart**
+
+```mermaid
+gantt
+    title Phase 1 Timeline (Dec 2025 - Mar 2026)
+    dateFormat YYYY-MM-DD
+    section Pilot Test
+    Setup & RFP           :2025-12-01, 14d
+    Vendor Selection      :2025-12-15, 7d
+    Development           :2025-12-22, 45d
+    Evaluation            :2026-02-05, 14d
+    section Contract Negotiation
+    Preparation           :2025-12-01, 14d
+    Kickoff               :2025-12-15, 7d
+    Ongoing Negotiation   :2025-12-22, 90d
+    section Market Research
+    Vendor Identification :2026-01-06, 14d
+    Proposals & Demos     :2026-01-20, 21d
+    Synthesis             :2026-02-10, 10d
+    section Performance Validation
+    Moïse Meetings        :2026-01-06, 14d
+    Data Analysis         :2026-01-20, 14d
+    section Decision
+    Phase 1 Evaluation    :2026-02-17, 7d
+    Leadership Decision   :2026-03-03, 14d
+```
+
+**Speaker Notes:**
+
+Let's translate strategy into action. Here's the concrete timeline for the next 4 months.
+
+<details>
+<summary>ASCII Timeline (fallback)</summary>
 
 ```text
 Phase 1 Implementation Timeline (Dec 2025 - Mar 2026)
@@ -339,11 +518,9 @@ Week 3-4:
      ├─ Budget allocation and resource planning
      ├─ Vendor engagement (if transition chosen)
      └─ Governance improvement roadmap (if relationship improvement chosen)
-```
 
-**Responsibilities:**
+Responsibilities:
 
-```text
 CISAC (Yann + Moïse + Finance):
 ├─ Pilot feature definition
 ├─ Vendor selection and contracting
@@ -369,36 +546,7 @@ Audit Team (Teragone-Factory):
 └─ Phase 1 evaluation synthesis (Feb 2026)
 ```
 
-**Alternative: Mermaid Gantt Chart**
-
-```mermaid
-gantt
-    title Phase 1 Timeline (Dec 2025 - Mar 2026)
-    dateFormat YYYY-MM-DD
-    section Pilot Test
-    Setup & RFP           :2025-12-01, 14d
-    Vendor Selection      :2025-12-15, 7d
-    Development           :2025-12-22, 45d
-    Evaluation            :2026-02-05, 14d
-    section Contract Negotiation
-    Preparation           :2025-12-01, 14d
-    Kickoff               :2025-12-15, 7d
-    Ongoing Negotiation   :2025-12-22, 90d
-    section Market Research
-    Vendor Identification :2026-01-06, 14d
-    Proposals & Demos     :2026-01-20, 21d
-    Synthesis             :2026-02-10, 10d
-    section Performance Validation
-    Moïse Meetings        :2026-01-06, 14d
-    Data Analysis         :2026-01-20, 14d
-    section Decision
-    Phase 1 Evaluation    :2026-02-17, 7d
-    Leadership Decision   :2026-03-03, 14d
-```
-
-**Speaker Notes:**
-
-Let's translate strategy into action. Here's the concrete timeline for the next 4 months.
+</details>
 
 **December 2025 - Launch Phase:**
 
@@ -444,6 +592,50 @@ CISAC leads pilot, negotiation, decisions. Spanish Point delivers fixes and coop
 
 **Visual:** Simple closing slide
 
+## Thank You
+
+## Questions & Discussion
+
+---
+
+### Key Contacts
+
+| Team | Contacts |
+|------|----------|
+| **Audit Team (Teragone-Factory)** | • Guillaume Jay<br/>• Bastien Gallay |
+| **Final Report Delivery** | End of November 2025 |
+| **Next Meeting** | TBD (Phase 1 results review - February 2026) |
+
+---
+
+### Today's Key Messages
+
+| Message | Details |
+|---------|---------|
+| ✅ **Platform is technically solid** | Not the problem |
+| 🔴 **Governance and control are the challenges** | The real issues |
+| 🧪 **Test knowledge transfer before committing** | €10-20K pilot de-risks €300-600K decision |
+| 💪 **Use audit findings as leverage** | Better contract terms achievable |
+| 📊 **Decide with data (March 2026)** | Not assumptions (today) |
+
+---
+
+### Open Discussion Topics
+
+| Category | Questions |
+|----------|-----------|
+| **Pilot Test** | • Which pilot feature makes most sense?<br/>• What vendors should we approach for pilot test? |
+| **Contract** | • Which contract terms are highest priority for CISAC? |
+| **Performance** | • What performance issues have users actually reported? |
+| **Timeline** | • Timeline feasibility - can we execute Phase 1 by March 2026? |
+| **Budget** | • Budget allocation - approval for pilot test and market research? |
+| **Other** | • Other concerns or questions from CISAC leadership? |
+
+**Speaker Notes:**
+
+<details>
+<summary>ASCII Closing Slide (fallback)</summary>
+
 ```text
 Thank You
 
@@ -484,7 +676,7 @@ Open Discussion Topics:
 • Other concerns or questions from CISAC leadership?
 ```
 
-**Speaker Notes:**
+</details>
 
 Thank you for your time and attention.
 
