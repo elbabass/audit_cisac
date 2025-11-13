@@ -10,89 +10,61 @@
 
 **Visual:** Three-phase roadmap
 
-```text
-Recommended Strategy: TEST → NEGOTIATE → DECIDE
+### Phase 1: Gather Data (Nov/Dec 2025 - 2-3 months)
 
-Phase 1 (Immediate - Nov/Dec 2025)
-┌────────────────────────────────────────────────────────────┐
-│ OBJECTIVE: Gather data, reduce uncertainty, establish      │
-│            leverage before major decisions                 │
-│                                                             │
-│ ACTIONS:                                                    │
-│ ✓ Knowledge Transfer Pilot Test                            │
-│   ├─ Assign €10-20K feature to independent vendor         │
-│   ├─ Test maintainability with available materials        │
-│   └─ Assess Spanish Point handover cooperation            │
-│                                                             │
-│ ✓ Matching Engine Market Research                          │
-│   ├─ Identify alternative matching engine vendors         │
-│   ├─ Request proposals/demos                              │
-│   └─ Assess replacement feasibility                       │
-│                                                             │
-│ ✓ Contract Renegotiation (Parallel)                        │
-│   ├─ Git history access (immediate)                       │
-│   ├─ IaC templates inclusion in deliverables              │
-│   ├─ Cost correlation tooling (automated dashboard)       │
-│   ├─ Performance SLAs and proactive metrics              │
-│   └─ Enhanced Definition of Done (docs required)          │
-│                                                             │
-│ TIMELINE: 2-3 months                                       │
-│ INVESTMENT: €20-40K (pilot + research)                    │
-└────────────────────────────────────────────────────────────┘
+**Objective:** Gather data, reduce uncertainty, establish leverage before major decisions
 
-Phase 2 (Q1-Q2 2026 - 6 months)
-┌────────────────────────────────────────────────────────────┐
-│ OBJECTIVE: Based on Phase 1 results, choose strategic path │
-│                                                             │
-│ DECISION POINT:                                             │
-│                                                             │
-│ IF Pilot Successful + Alternatives Exist:                  │
-│   → Option A: Proceed with vendor transition plan         │
-│   → Begin detailed RFP process                             │
-│   → Negotiate transition terms                             │
-│                                                             │
-│ IF Pilot Fails OR No Alternatives:                         │
-│   → Option B: Improve current relationship                │
-│   → Use pilot results as leverage                          │
-│   → Negotiate enhanced governance terms                    │
-│   → Accept lock-in, optimize within constraints            │
-│                                                             │
-│ IF Pilot Mixed Results:                                    │
-│   → Option C: Partial independence strategy               │
-│   → Keep Spanish Point for Matching Engine                │
-│   → New vendor for application maintenance                │
-│   → Require knowledge transfer improvements                │
-│                                                             │
-│ TIMELINE: 6 months                                         │
-│ INVESTMENT: Depends on path chosen                        │
-└────────────────────────────────────────────────────────────┘
+| Action | Details | Investment |
+|--------|---------|------------|
+| **✓ Knowledge Transfer Pilot Test** | • Assign €10-20K feature to independent vendor<br/>• Test maintainability with available materials<br/>• Assess Spanish Point handover cooperation | €10-20K |
+| **✓ Matching Engine Market Research** | • Identify alternative matching engine vendors<br/>• Request proposals/demos<br/>• Assess replacement feasibility | €5-10K |
+| **✓ Contract Renegotiation (Parallel)** | • Git history access (immediate)<br/>• IaC templates inclusion in deliverables<br/>• Cost correlation tooling (automated dashboard)<br/>• Performance SLAs and proactive metrics<br/>• Enhanced Definition of Done (docs required) | Minimal |
 
-Phase 3 (H2 2026 onwards - 12-18 months)
-┌────────────────────────────────────────────────────────────┐
-│ OBJECTIVE: Execute chosen strategy                         │
-│                                                             │
-│ Path A (Vendor Transition):                                │
-│   ├─ 12-24 month timeline                                 │
-│   ├─ €300-600K investment                                 │
-│   ├─ Parallel vendor overlap                              │
-│   └─ Gradual feature transition                           │
-│                                                             │
-│ Path B (Improved Relationship):                            │
-│   ├─ Enhanced contract terms in place                     │
-│   ├─ Better transparency and governance                   │
-│   ├─ Cost optimization implemented                        │
-│   └─ Continue with Spanish Point under better terms       │
-│                                                             │
-│ Path C (Partial Independence):                             │
-│   ├─ Split maintenance model                              │
-│   ├─ New vendor for app, Spanish Point for Matching       │
-│   ├─ Clear interface contracts                            │
-│   └─ Improved knowledge management                        │
-│                                                             │
-│ TIMELINE: 12-18 months                                     │
-│ INVESTMENT: €100K-600K (depending on path)                │
-└────────────────────────────────────────────────────────────┘
+**Timeline:** 2-3 months | **Total Investment:** €20-40K (pilot + research)
+
+### Phase 2: Decide Based on Results (Q1-Q2 2026 - 6 months)
+
+**Objective:** Based on Phase 1 results, choose strategic path
+
+```mermaid
+graph TD
+    Phase1[Phase 1 Results] --> Decision{Evaluation}
+
+    Decision -->|Pilot Successful +<br/>Alternatives Exist| OptA[Option A:<br/>Vendor Transition]
+    Decision -->|Pilot Fails OR<br/>No Alternatives| OptB[Option B:<br/>Improved Relationship]
+    Decision -->|Mixed Results| OptC[Option C:<br/>Partial Independence]
+
+    OptA --> A1[Proceed with vendor<br/>transition plan]
+    OptA --> A2[Begin detailed RFP process]
+    OptA --> A3[Negotiate transition terms]
+
+    OptB --> B1[Use pilot results<br/>as leverage]
+    OptB --> B2[Negotiate enhanced<br/>governance terms]
+    OptB --> B3[Accept lock-in optimize<br/>within constraints]
+
+    OptC --> C1[Keep Spanish Point<br/>for Matching Engine]
+    OptC --> C2[New vendor for<br/>application maintenance]
+    OptC --> C3[Require knowledge<br/>transfer improvements]
+
+    style OptA fill:#fff4cc
+    style OptB fill:#ccffcc
+    style OptC fill:#e6f3ff
+    style Phase1 fill:#e6e6ff
 ```
+
+**Timeline:** 6 months | **Investment:** Depends on path chosen
+
+### Phase 3: Execute Strategy (H2 2026 onwards - 12-18 months)
+
+**Objective:** Execute chosen strategy
+
+| Path | Description | Timeline | Investment | Key Activities |
+|------|-------------|----------|------------|----------------|
+| **Path A:<br/>Vendor Transition** | Full vendor switch | 12-24 months | €300-600K | • Parallel vendor overlap<br/>• Gradual feature transition |
+| **Path B:<br/>Improved Relationship** | Stay with better terms | Immediate | Minimal | • Enhanced contract terms in place<br/>• Better transparency and governance<br/>• Cost optimization implemented<br/>• Continue with Spanish Point under better terms |
+| **Path C:<br/>Partial Independence** | Split maintenance model | 12-18 months | €100K-300K | • New vendor for app Spanish Point for Matching<br/>• Clear interface contracts<br/>• Improved knowledge management |
+
+**Timeline:** 12-18 months | **Investment:** €100K-600K (depending on path)
 
 **Why This Approach?**
 
@@ -306,72 +278,54 @@ This is how you make a multi-million-euro strategic decision responsibly.
 
 **Visual:** Pilot test framework
 
-```text
-Knowledge Transfer Pilot Test Framework
+**OBJECTIVE:** Validate that independent vendor can deliver with available materials
 
-OBJECTIVE: Validate that independent vendor can deliver with available materials
+### Scope: Small, Low-Risk Feature Assignment
 
-SCOPE: Small, Low-Risk Feature Assignment
-├─ Examples:
-│  ├─ Add new validation rule (e.g., "Work title must not contain special characters")
-│  ├─ Generate new report format (e.g., "Monthly submission statistics by agency")
-│  ├─ Implement minor UI enhancement (e.g., "Add bulk edit capability for work metadata")
-│  └─ Fix non-critical bug (e.g., "Improve error message clarity for validation failures")
-├─ Criteria:
-│  ├─ Well-defined requirements
-│  ├─ Limited scope (1-2 weeks effort for experienced team)
-│  ├─ Non-critical (failure doesn't impact production)
-│  └─ Representative complexity (touches multiple layers)
+| Category | Examples |
+|----------|----------|
+| **Feature Examples** | • Add new validation rule (e.g., "Work title must not contain special characters")<br/>• Generate new report format (e.g., "Monthly submission statistics by agency")<br/>• Implement minor UI enhancement (e.g., "Add bulk edit capability for work metadata")<br/>• Fix non-critical bug (e.g., "Improve error message clarity for validation failures") |
+| **Selection Criteria** | • Well-defined requirements<br/>• Limited scope (1-2 weeks effort for experienced team)<br/>• Non-critical (failure doesn't impact production)<br/>• Representative complexity (touches multiple layers) |
 
-MATERIALS PROVIDED TO PILOT VENDOR:
-✓ Source code (.NET 8 codebase)
-✓ Existing documentation (specifications, architecture docs)
-✓ Feature specification (detailed requirements)
-✓ Access to UAT environment for testing
-❌ NO direct Spanish Point development support (handover materials only)
+### Materials Provided to Pilot Vendor
 
-SUCCESS CRITERIA:
-┌────────────────────────────────────────────────────────┐
-│ 1. Feature Delivered Correctly                         │
-│    └─ Meets requirements, passes testing               │
-│                                                         │
-│ 2. Reasonable Timeline                                 │
-│    └─ 1-2 weeks for experienced vendor (not 6+ weeks)  │
-│                                                         │
-│ 3. Independent Delivery                                │
-│    └─ Minimal questions requiring Spanish Point input  │
-│                                                         │
-│ 4. Code Quality Maintained                             │
-│    └─ Follows existing patterns, no technical debt     │
-│                                                         │
-│ 5. Documentation Updated                               │
-│    └─ Tests written, comments added (if missing)       │
-└────────────────────────────────────────────────────────┘
+| Status | Material |
+|--------|----------|
+| ✅ **PROVIDED** | Source code (.NET 8 codebase) |
+| ✅ **PROVIDED** | Existing documentation (specifications, architecture docs) |
+| ✅ **PROVIDED** | Feature specification (detailed requirements) |
+| ✅ **PROVIDED** | Access to UAT environment for testing |
+| ❌ **NOT PROVIDED** | Direct Spanish Point development support (handover materials only) |
 
-EVALUATION DIMENSIONS:
-├─ Onboarding Time: How long to become productive?
-├─ Question Types: What knowledge gaps exist?
-├─ Spanish Point Cooperation: Helpful or defensive?
-├─ Code Comprehension: Can they navigate codebase?
-└─ Delivery Quality: Professional vs struggling?
+### Success Criteria
 
-OUTCOMES:
-┌─────────────────────────────────────────────────────────┐
-│ SUCCESS → Knowledge transfer feasible                   │
-│          → Vendor switch is viable option              │
-│          → Proceed with detailed RFP process           │
-│                                                         │
-│ PARTIAL → Knowledge transfer challenging but possible  │
-│          → Requires improved documentation first       │
-│          → Negotiate knowledge transfer improvements   │
-│                                                         │
-│ FAILURE → Knowledge transfer not viable                │
-│          → Vendor switch extremely high risk           │
-│          → Focus on improving current relationship     │
-└─────────────────────────────────────────────────────────┘
+| # | Criterion | Expected Outcome |
+|---|-----------|------------------|
+| **1** | **Feature Delivered Correctly** | Meets requirements, passes testing |
+| **2** | **Reasonable Timeline** | 1-2 weeks for experienced vendor (not 6+ weeks) |
+| **3** | **Independent Delivery** | Minimal questions requiring Spanish Point input |
+| **4** | **Code Quality Maintained** | Follows existing patterns, no technical debt |
+| **5** | **Documentation Updated** | Tests written, comments added (if missing) |
 
-INVESTMENT: €10-20K | TIMELINE: 2 months | RISK: Very Low
-```
+### Evaluation Dimensions
+
+| Dimension | Evaluation Question |
+|-----------|---------------------|
+| **Onboarding Time** | How long to become productive? |
+| **Question Types** | What knowledge gaps exist? |
+| **Spanish Point Cooperation** | Helpful or defensive? |
+| **Code Comprehension** | Can they navigate codebase? |
+| **Delivery Quality** | Professional vs struggling? |
+
+### Possible Outcomes
+
+| Result | Interpretation | Next Step |
+|--------|----------------|-----------|
+| ✅ **SUCCESS** | Knowledge transfer feasible<br/>Vendor switch is viable option | Proceed with detailed RFP process |
+| ⚠️ **PARTIAL** | Knowledge transfer challenging but possible<br/>Requires improved documentation first | Negotiate knowledge transfer improvements |
+| 🔴 **FAILURE** | Knowledge transfer not viable<br/>Vendor switch extremely high risk | Focus on improving current relationship |
+
+**INVESTMENT:** €10-20K | **TIMELINE:** 2 months | **RISK:** Very Low
 
 **Alternative: Mermaid Diagram**
 
@@ -463,87 +417,40 @@ If they can't, the entire vendor switch strategy is infeasible, regardless of co
 
 **Visual:** Leverage assessment
 
-```text
-CISAC's Negotiating Leverage
+### CISAC's Strategic Asset: Data Authority
 
-Strategic Asset: CISAC's Data
-┌────────────────────────────────────────────────────────┐
-│ "Their business model is based on your data.           │
-│  It doesn't exist without your data."                  │
-│  — Guillaume Jay, Oct 21                               │
-│                                                         │
-│ "It's the only authoritative and ISO source.           │
-│  We have this unique repository."                      │
-│  — Yann Lebreuilly, Oct 21                             │
-└────────────────────────────────────────────────────────┘
+> "Their business model is based on your data. It doesn't exist without your data."
+> — Guillaume Jay, Oct 21
+>
+> "It's the only authoritative and ISO source. We have this unique repository."
+> — Yann Lebreuilly, Oct 21
 
-Leverage Factors:
-├─ 1. Data Source Authority
-│     └─ CISAC holds the authoritative ISO music works database
-│        Spanish Point's Matching Engine depends on this data
-│        No CISAC data = No Spanish Point matching business
-│
-├─ 2. Volume Leadership
-│     └─ CISAC is Spanish Point's largest Matching Engine client
-│        Largest deployment, most works, most agencies
-│        Reference client for sales to other music societies
-│
-├─ 3. Market Influence
-│     └─ Other music societies follow CISAC's lead
-│        CISAC's satisfaction impacts Spanish Point's reputation
-│        Positive/negative reference affects future sales
-│
-├─ 4. Audit Documentation
-│     └─ Governance gaps documented (May 2024 incident)
-│        Transparency issues documented (access challenges)
-│        Cost control gaps documented (no correlation tooling)
-│        Legitimate basis for contract term improvements
-│
-└─ 5. Alternatives Research
-      └─ Pilot test + market research = credible BATNA
-         (Best Alternative To Negotiated Agreement)
-         Even if you don't switch, showing you CAN switch
-         strengthens negotiating position
+### Five Leverage Factors
 
-Negotiation Objectives:
-┌────────────────────────────────────────────────────────┐
-│ IMMEDIATE (Non-negotiable):                            │
-│ ✓ Git commit history access (no more compliance delays)│
-│ ✓ IaC templates inclusion in source delivery           │
-│ ✓ Cost correlation tooling (automated dashboard)       │
-│                                                         │
-│ HIGH PRIORITY (Strongly push):                         │
-│ ✓ Performance SLAs (P95 latency, uptime commitments)   │
-│ ✓ Enhanced Definition of Done (docs required)          │
-│ ✓ Proactive metrics sharing (monthly dashboards)       │
-│ ✓ Monthly cost review meetings (usage correlation)     │
-│                                                         │
-│ MEDIUM PRIORITY (Negotiate):                           │
-│ ✓ Knowledge transfer improvements (onboarding docs)    │
-│ ✓ Architecture Decision Records (ADR) practice         │
-│ ✓ Reduced environment setup costs (IaC automation)     │
-│ ✓ Smart AIM library licensing terms (if vendor switch)   │
-└────────────────────────────────────────────────────────┘
+| # | Leverage Factor | Description |
+|---|-----------------|-------------|
+| **1** | **Data Source Authority** | • CISAC holds the authoritative ISO music works database<br/>• Spanish Point's Matching Engine depends on this data<br/>• No CISAC data = No Spanish Point matching business |
+| **2** | **Volume Leadership** | • CISAC is Spanish Point's largest Matching Engine client<br/>• Largest deployment, most works, most agencies<br/>• Reference client for sales to other music societies |
+| **3** | **Market Influence** | • Other music societies follow CISAC's lead<br/>• CISAC's satisfaction impacts Spanish Point's reputation<br/>• Positive/negative reference affects future sales |
+| **4** | **Audit Documentation** | • Governance gaps documented (May 2024 incident)<br/>• Transparency issues documented (access challenges)<br/>• Cost control gaps documented (no correlation tooling)<br/>• Legitimate basis for contract term improvements |
+| **5** | **Alternatives Research** | • Pilot test + market research = credible BATNA (Best Alternative To Negotiated Agreement)<br/>• Even if you don't switch, showing you CAN switch strengthens negotiating position |
 
-Negotiation Strategy:
-├─ TIMING: Use pilot test period (Dec 2025 - Feb 2026)
-│          → "We're testing vendor alternatives while negotiating better terms"
-│          → Creates urgency for Spanish Point to improve relationship
-│
-├─ FRAMING: Partnership vs Compliance
-│          → "We want partnership, not just contract compliance"
-│          → Position improvements as mutual benefit, not demands
-│
-├─ EVIDENCE: Audit findings as basis
-│          → Reference specific incidents (May 2024, access delays)
-│          → Document cost control gaps, transparency issues
-│          → Professional assessment, not emotional complaints
-│
-└─ FALLBACK: Partial improvements acceptable
-           → Not all-or-nothing negotiation
-           → Prioritize critical items (git history, IaC, cost tooling)
-           → Accept incremental progress on medium priorities
-```
+### Negotiation Objectives
+
+| Priority | Terms | Details |
+|----------|-------|---------|
+| 🔴 **IMMEDIATE**<br/>(Non-negotiable) | • Git commit history access<br/>• IaC templates inclusion<br/>• Cost correlation tooling | No more compliance delays<br/>In source delivery<br/>Automated dashboard |
+| 🟠 **HIGH PRIORITY**<br/>(Strongly push) | • Performance SLAs<br/>• Enhanced Definition of Done<br/>• Proactive metrics sharing<br/>• Monthly cost review meetings | P95 latency, uptime commitments<br/>Docs required<br/>Monthly dashboards<br/>Usage correlation |
+| 🟡 **MEDIUM PRIORITY**<br/>(Negotiate) | • Knowledge transfer improvements<br/>• Architecture Decision Records<br/>• Reduced environment setup costs<br/>• Smart AIM library licensing | Onboarding docs<br/>ADR practice<br/>IaC automation<br/>If vendor switch |
+
+### Negotiation Strategy
+
+| Element | Approach | Rationale |
+|---------|----------|-----------|
+| **TIMING** | Use pilot test period (Dec 2025 - Feb 2026) | "We're testing vendor alternatives while negotiating better terms"<br/>Creates urgency for Spanish Point to improve relationship |
+| **FRAMING** | Partnership vs Compliance | "We want partnership, not just contract compliance"<br/>Position improvements as mutual benefit, not demands |
+| **EVIDENCE** | Audit findings as basis | Reference specific incidents (May 2024, access delays)<br/>Document cost control gaps, transparency issues<br/>Professional assessment, not emotional complaints |
+| **FALLBACK** | Partial improvements acceptable | Not all-or-nothing negotiation<br/>Prioritize critical items (git history, IaC, cost tooling)<br/>Accept incremental progress on medium priorities |
 
 **Alternative: Mermaid Diagram**
 
@@ -918,83 +825,37 @@ This slide can be skipped if time is tight or if the audience prefers to focus o
 
 **Visual:** Priority matrix
 
-```text
-Technical Quick Wins (Independent of Strategic Vendor Decision)
+### 🔴 HIGH IMPACT, LOW EFFORT (Do Immediately)
 
-HIGH IMPACT, LOW EFFORT (Do Immediately)
-┌────────────────────────────────────────────────────────┐
-│ 1. Fix Pipeline Test Runner (URGENT)                   │
-│    Status: Blocked since .NET 8 upgrade (Nov 4)        │
-│    Impact: Deployment safety net disabled              │
-│    Effort: Spanish Point bug fix (should be immediate) │
-│    Action: Escalate priority, demand fix ETA           │
-│                                                         │
-│ 2. Databricks Upgrade Planning                         │
-│    Status: Version 10.4 LTS outdated                   │
-│    Impact: Missing features, potential security gaps   │
-│    Effort: Spanish Point upgrade roadmap (1-2 weeks)   │
-│    Action: Request upgrade plan by end of Dec 2025     │
-│                                                         │
-│ 3. Monthly Cost Review Meeting                         │
-│    Status: No regular cost review process              │
-│    Impact: €600K/year spending without visibility      │
-│    Effort: Recurring meeting setup (1 hour/month)      │
-│    Action: Establish January 2026, invite Finance      │
-└────────────────────────────────────────────────────────┘
+| # | Quick Win | Status | Impact | Effort | Action |
+|---|-----------|--------|--------|--------|--------|
+| **1** | **Fix Pipeline Test Runner<br/>(URGENT)** | Blocked since .NET 8 upgrade (Nov 4) | Deployment safety net disabled | Spanish Point bug fix (should be immediate) | Escalate priority demand fix ETA |
+| **2** | **Databricks Upgrade Planning** | Version 10.4 LTS outdated | Missing features potential security gaps | Spanish Point upgrade roadmap (1-2 weeks) | Request upgrade plan by end of Dec 2025 |
+| **3** | **Monthly Cost Review Meeting** | No regular cost review process | €600K/year spending without visibility | Recurring meeting setup (1 hour/month) | Establish January 2026 invite Finance |
 
-HIGH IMPACT, MEDIUM EFFORT (Plan for Q1 2026)
-┌────────────────────────────────────────────────────────┐
-│ 4. Cost Correlation Tooling                            │
-│    Status: Manual investigation required               │
-│    Impact: Cannot explain monthly variations           │
-│    Effort: 2-3 months development (€10-20K)            │
-│    Action: Either Spanish Point delivers OR CISAC      │
-│            builds using API Mgmt + Cost Mgmt APIs      │
-│                                                         │
-│ 5. Cosmos DB Archive Policy                            │
-│    Status: Old audit logs in expensive Cosmos DB       │
-│    Impact: Potential cost savings (€5-10K/year est.)   │
-│    Effort: 2-4 weeks implementation                    │
-│    Action: Archive 90+ day logs to Blob Storage        │
-│                                                         │
-│ 6. Performance Validation with Moïse                   │
-│    Status: Relying on Spanish Point claims             │
-│    Impact: Cannot validate Hyperscale proposal need    │
-│    Effort: 1-2 meetings with CISAC technical expert    │
-│    Action: Gather production metrics, user complaints  │
-└────────────────────────────────────────────────────────┘
+### 🟠 HIGH IMPACT, MEDIUM EFFORT (Plan for Q1 2026)
 
-MEDIUM IMPACT, LOW EFFORT (Ongoing Improvements)
-┌────────────────────────────────────────────────────────┐
-│ 7. Enhanced Definition of Done                         │
-│    Status: Documentation updates not required          │
-│    Impact: Prevents knowledge accumulation in heads    │
-│    Effort: Policy change (no dev work)                 │
-│    Action: Negotiate as contract term                  │
-│                                                         │
-│ 8. Code Documentation Standards                        │
-│    Status: Minimal code comments                       │
-│    Impact: Knowledge transfer difficulty               │
-│    Effort: Apply incrementally to new features         │
-│    Action: Mandate comments for business logic         │
-│                                                         │
-│ 9. Architecture Decision Records (ADR)                 │
-│    Status: No ADR practice                             │
-│    Impact: Future teams won't know WHY decisions made  │
-│    Effort: Template creation, ongoing practice         │
-│    Action: Start with next major architectural change  │
-└────────────────────────────────────────────────────────┘
+| # | Quick Win | Status | Impact | Effort | Action |
+|---|-----------|--------|--------|--------|--------|
+| **4** | **Cost Correlation Tooling** | Manual investigation required | Cannot explain monthly variations | 2-3 months development (€10-20K) | Either Spanish Point delivers OR CISAC builds using API Mgmt + Cost Mgmt APIs |
+| **5** | **Cosmos DB Archive Policy** | Old audit logs in expensive Cosmos DB | Potential cost savings (€5-10K/year est.) | 2-4 weeks implementation | Archive 90+ day logs to Blob Storage |
+| **6** | **Performance Validation with Moïse** | Relying on Spanish Point claims | Cannot validate Hyperscale proposal need | 1-2 meetings with CISAC technical expert | Gather production metrics user complaints |
 
-Timeline:
-December 2025:  ✓ Fix pipeline test runner
-                ✓ Establish monthly cost review
-                ✓ Request Databricks upgrade plan
-January 2026:   ✓ Meet with Moïse (performance validation)
-                ✓ Implement enhanced DoD
-Feb-Mar 2026:   ✓ Cost correlation tooling
-                ✓ Cosmos DB archive policy
-                ✓ Code documentation standards
-```
+### 🟡 MEDIUM IMPACT, LOW EFFORT (Ongoing Improvements)
+
+| # | Quick Win | Status | Impact | Effort | Action |
+|---|-----------|--------|--------|--------|--------|
+| **7** | **Enhanced Definition of Done** | Documentation updates not required | Prevents knowledge accumulation in heads | Policy change (no dev work) | Negotiate as contract term |
+| **8** | **Code Documentation Standards** | Minimal code comments | Knowledge transfer difficulty | Apply incrementally to new features | Mandate comments for business logic |
+| **9** | **Architecture Decision Records (ADR)** | No ADR practice | Future teams won't know WHY decisions made | Template creation ongoing practice | Start with next major architectural change |
+
+### Implementation Timeline
+
+| Phase | Actions |
+|-------|---------|
+| **December 2025** | ✓ Fix pipeline test runner<br/>✓ Establish monthly cost review<br/>✓ Request Databricks upgrade plan |
+| **January 2026** | ✓ Meet with Moïse (performance validation)<br/>✓ Implement enhanced DoD |
+| **Feb-Mar 2026** | ✓ Cost correlation tooling<br/>✓ Cosmos DB archive policy<br/>✓ Code documentation standards |
 
 **Speaker Notes:**
 
@@ -1084,96 +945,64 @@ While strategic decisions (vendor switch vs improve relationship) take months, t
 
 **Visual:** Proposal summary
 
-```text
-Hyperscale Proposal Assessment (PSA 5499)
+### Hyperscale Proposal (PSA 5499) - Three Objectives
 
-Three Objectives:
-1. Networking Security: Public → Private endpoints
-2. SQL Tier Change: Business Critical → Hyperscale
-3. Platform Modernization: Align with Microsoft best practices
+1. **Networking Security:** Public → Private endpoints
+2. **SQL Tier Change:** Business Critical → Hyperscale
+3. **Platform Modernization:** Align with Microsoft best practices
 
-Cost Impact (Spanish Point Claims):
-┌────────────────────────────────────────────────────────┐
-│ SQL Hyperscale Migration        -€3,300/month          │
-│   (Business Critical → Hyperscale + reserved instances)│
-│                                                         │
-│ Private Networking              +€1,500/month          │
-│   (VPN Gateway, Private DNS, Private Endpoints, WAF)   │
-│                                                         │
-│ NET SAVINGS                     -€1,800/month          │
-│                                 -€21,600/year          │
-└────────────────────────────────────────────────────────┘
+### Cost Impact (Spanish Point Claims)
 
-Migration Investment: €40,000 (one-time)
-ROI: ~22 months payback period
+| Component | Monthly Cost | Details |
+|-----------|--------------|---------|
+| **SQL Hyperscale Migration** | **-€3,300/month** | Business Critical → Hyperscale + reserved instances |
+| **Private Networking** | **+€1,500/month** | VPN Gateway Private DNS Private Endpoints WAF |
+| **NET SAVINGS** | **-€1,800/month<br/>-€21,600/year** | |
 
-Our Assessment: ⚠️  HOLD Pending Validation
+**Migration Investment:** €40,000 (one-time) | **ROI:** ~22 months payback period
 
-Validation Questions (UNRESOLVED):
-┌────────────────────────────────────────────────────────┐
-│ 1. Is SQL Server actually the bottleneck?              │
-│    └─ No production performance metrics shared         │
-│    └─ Spanish Point claims "no issues" but no data     │
-│    └─ Need Moïse validation (operational experience)   │
-│                                                         │
-│ 2. Can query optimization achieve similar results?     │
-│    └─ Have indexing, caching alternatives been tried?  │
-│    └─ Hyperscale may mask inefficient queries          │
-│    └─ Cheaper optimization path not explored           │
-│                                                         │
-│ 3. Are cost estimates accurate?                        │
-│    └─ Based on single month average (auto-scaling)     │
-│    └─ Usage variations may affect savings              │
-│    └─ Reserved instance commitment = 1-year lock-in    │
-│                                                         │
-│ 4. Can networking upgrade be decoupled from SQL tier?  │
-│    └─ Private networking (+€1,500/mo) may be valuable  │
-│    └─ Hyperscale migration (-€3,300/mo) needs proof    │
-│    └─ Decouple = validate each independently           │
-└────────────────────────────────────────────────────────┘
+### ⚠️ Our Assessment: HOLD Pending Validation
 
-Alternative: Query Optimization First
-┌────────────────────────────────────────────────────────┐
-│ BEFORE committing €40K + reserved instances:           │
-│                                                         │
-│ Option 1: Performance Audit                            │
-│   ├─ Analyze slow queries (Application Insights)       │
-│   ├─ Identify missing indexes                          │
-│   ├─ Implement caching where appropriate               │
-│   └─ Measure improvement                               │
-│   Cost: €5-10K | Timeline: 1-2 months                  │
-│                                                         │
-│ IF performance issues persist after optimization:      │
-│   → THEN consider Hyperscale migration                 │
-│   → Data-driven decision, not assumption               │
-│                                                         │
-│ IF optimization resolves issues:                       │
-│   → Save €40K migration cost                           │
-│   → Avoid 1-year reserved instance commitment          │
-│   → Keep Hyperscale as future option if needed         │
-└────────────────────────────────────────────────────────┘
+### Validation Questions (UNRESOLVED)
 
-Networking Security Component (May Be Valuable Independently):
-✓ Private endpoints (removes public internet exposure)
-✓ VPN Gateway (secure admin access)
-✓ Private DNS zones
-✓ Optional WAF (Layer 7 reverse proxy)
-Cost: +€1,500/month
-Benefit: Enhanced security posture (may be justified regardless of SQL tier)
+| # | Question | Concerns |
+|---|----------|----------|
+| **1** | **Is SQL Server actually the bottleneck?** | • No production performance metrics shared<br/>• Spanish Point claims "no issues" but no data<br/>• Need Moïse validation (operational experience) |
+| **2** | **Can query optimization achieve similar results?** | • Have indexing caching alternatives been tried?<br/>• Hyperscale may mask inefficient queries<br/>• Cheaper optimization path not explored |
+| **3** | **Are cost estimates accurate?** | • Based on single month average (auto-scaling)<br/>• Usage variations may affect savings<br/>• Reserved instance commitment = 1-year lock-in |
+| **4** | **Can networking upgrade be decoupled from SQL tier?** | • Private networking (+€1,500/mo) may be valuable<br/>• Hyperscale migration (-€3,300/mo) needs proof<br/>• Decouple = validate each independently |
 
-RECOMMENDATION: HOLD Hyperscale approval
+### Alternative Approach: Query Optimization First
 
-Actions BEFORE approval:
+**BEFORE committing €40K + reserved instances:**
+
+| Option | Activities | Cost & Timeline | Outcomes |
+|--------|-----------|-----------------|----------|
+| **Performance Audit** | • Analyze slow queries (Application Insights)<br/>• Identify missing indexes<br/>• Implement caching where appropriate<br/>• Measure improvement | €5-10K<br/>1-2 months | **IF issues persist:** THEN consider Hyperscale (data-driven decision)<br/>**IF optimization resolves:** Save €40K migration + avoid 1-year lock-in |
+
+### Networking Security Component (May Be Valuable Independently)
+
+| Feature | Benefit |
+|---------|---------|
+| ✓ Private endpoints | Removes public internet exposure |
+| ✓ VPN Gateway | Secure admin access |
+| ✓ Private DNS zones | Internal resolution |
+| ✓ Optional WAF | Layer 7 reverse proxy |
+
+**Cost:** +€1,500/month | **Benefit:** Enhanced security posture (may be justified regardless of SQL tier)
+
+### 🔴 RECOMMENDATION: HOLD Hyperscale Approval
+
+**Actions BEFORE approval:**
+
 1. Meet with Moïse - gather production performance data
 2. Validate SQL Server is actual bottleneck (not Matching Engine, not Cosmos DB)
 3. Explore query optimization alternatives (€5-10K vs €40K)
 4. Separate networking security decision from SQL tier decision
 
-Timeline: Jan-Feb 2026 validation → Decision by March 2026
+**Timeline:** Jan-Feb 2026 validation → Decision by March 2026
 
-This is SECONDARY priority - Strategic vendor decisions and governance
-improvements are MORE IMPORTANT than infrastructure optimization.
-```
+**Priority:** This is SECONDARY - Strategic vendor decisions and governance improvements are MORE IMPORTANT than infrastructure optimization.
 
 **Speaker Notes:**
 

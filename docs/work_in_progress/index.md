@@ -7,4 +7,5 @@ Active audit analyses and technical documentation (not published in site navigat
 - [Architecture](architecture/index.md) - Component deep-dives (7 documents)
 - [Code Analysis](code_analysis/index.md) - Integration patterns and source code studies
 - [Infrastructure](infra/index.md) - Azure infrastructure inventory and C4 diagrams
+- [Quality Attributes](quality-attributes/index.md) - Software quality analysis (transferability, maintainability, observability)
 - [Messages](messages/index.md) - Communications and correspondence
