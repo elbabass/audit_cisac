@@ -6,74 +6,207 @@
 
 ## PART 6: Strategic Recommendations (10 min, Slides 22-26)
 
-### Slide 22: Our Recommended Strategy - Hybrid Approach
+### Slide 22: Our Recommended Strategy - Three-Phase Approach
 
-**Visual:** Three-phase roadmap
+**Strategic Timeline:** TEST → DECIDE → EXECUTE
 
-### Phase 1: Gather Data (Nov/Dec 2025 - 2-3 months)
-
-**Objective:** Gather data, reduce uncertainty, establish leverage before major decisions
-
-| Action | Details | Investment |
-|--------|---------|------------|
-| **✓ Knowledge Transfer Pilot Test** | • Assign €10-20K feature to independent vendor<br/>• Test maintainability with available materials<br/>• Assess Spanish Point handover cooperation | €10-20K |
-| **✓ Matching Engine Market Research** | • Identify alternative matching engine vendors<br/>• Request proposals/demos<br/>• Assess replacement feasibility | €5-10K |
-| **✓ Contract Renegotiation (Parallel)** | • Git history access (immediate)<br/>• IaC templates inclusion in deliverables<br/>• Cost correlation tooling (automated dashboard)<br/>• Performance SLAs and proactive metrics<br/>• Enhanced Definition of Done (docs required) | Minimal |
-
-**Timeline:** 2-3 months | **Total Investment:** €20-40K (pilot + research)
-
-### Phase 2: Decide Based on Results (Q1-Q2 2026 - 6 months)
-
-**Objective:** Based on Phase 1 results, choose strategic path
+**Alternative 1: Mermaid Flowchart**
 
 ```mermaid
-graph TD
-    Phase1[Phase 1 Results] --> Decision{Evaluation}
+graph LR
+    Start[Strategic<br/>Roadmap] --> P1[Phase 1:<br/>Gather Data]
 
-    Decision -->|Pilot Successful +<br/>Alternatives Exist| OptA[Option A:<br/>Vendor Transition]
-    Decision -->|Pilot Fails OR<br/>No Alternatives| OptB[Option B:<br/>Improved Relationship]
-    Decision -->|Mixed Results| OptC[Option C:<br/>Partial Independence]
+    P1 --> P1A[Knowledge Transfer<br/>Pilot Test]
+    P1 --> P1B[Market Research<br/>Matching Engine]
+    P1 --> P1C[Contract<br/>Negotiation]
 
-    OptA --> A1[Proceed with vendor<br/>transition plan]
-    OptA --> A2[Begin detailed RFP process]
-    OptA --> A3[Negotiate transition terms]
+    P1A --> P2
+    P1B --> P2
+    P1C --> P2
 
-    OptB --> B1[Use pilot results<br/>as leverage]
-    OptB --> B2[Negotiate enhanced<br/>governance terms]
-    OptB --> B3[Accept lock-in optimize<br/>within constraints]
+    P2[Phase 2:<br/>Decide] --> P2D{Evaluation}
 
-    OptC --> C1[Keep Spanish Point<br/>for Matching Engine]
-    OptC --> C2[New vendor for<br/>application maintenance]
-    OptC --> C3[Require knowledge<br/>transfer improvements]
+    P2D --> P3A[Path A:<br/>Vendor Switch]
+    P2D --> P3B[Path B:<br/>Better Terms]
+    P2D --> P3C[Path C:<br/>Partial]
 
-    style OptA fill:#fff4cc
-    style OptB fill:#ccffcc
-    style OptC fill:#e6f3ff
-    style Phase1 fill:#e6e6ff
+    P3A --> End[Strategy<br/>Executed]
+    P3B --> End
+    P3C --> End
+
+    style Start fill:#e6e6ff
+    style P1 fill:#ccffcc
+    style P2 fill:#fff4cc
+    style P2D fill:#ffe6e6
+    style End fill:#e6ffe6
 ```
 
-**Timeline:** 6 months | **Investment:** Depends on path chosen
+**Alternative 2: Mermaid Gantt Chart**
 
-### Phase 3: Execute Strategy (H2 2026 onwards - 12-18 months)
+```mermaid
+gantt
+    title Three-Phase Strategic Roadmap (2025-2027)
+    dateFormat YYYY-MM-DD
+    section Phase 1: Gather Data
+    Pilot Test                :p1, 2025-12-01, 60d
+    Market Research           :p2, 2026-01-01, 45d
+    Contract Negotiation      :p3, 2025-12-01, 90d
+    section Phase 2: Decide
+    Evaluation & Decision     :p4, 2026-02-15, 45d
+    section Phase 3: Execute
+    Path A (Vendor Switch)    :crit, p5a, 2026-04-01, 540d
+    Path B (Better Terms)     :p5b, 2026-04-01, 30d
+    Path C (Partial)          :p5c, 2026-04-01, 360d
+```
 
-**Objective:** Execute chosen strategy
+**Alternative 3: Simple Markdown Timeline**
 
-| Path | Description | Timeline | Investment | Key Activities |
-|------|-------------|----------|------------|----------------|
-| **Path A:<br/>Vendor Transition** | Full vendor switch | 12-24 months | €300-600K | • Parallel vendor overlap<br/>• Gradual feature transition |
-| **Path B:<br/>Improved Relationship** | Stay with better terms | Immediate | Minimal | • Enhanced contract terms in place<br/>• Better transparency and governance<br/>• Cost optimization implemented<br/>• Continue with Spanish Point under better terms |
-| **Path C:<br/>Partial Independence** | Split maintenance model | 12-18 months | €100K-300K | • New vendor for app Spanish Point for Matching<br/>• Clear interface contracts<br/>• Improved knowledge management |
-
-**Timeline:** 12-18 months | **Investment:** €100K-600K (depending on path)
+| Phase | Period | Focus | Outcome |
+|-------|--------|-------|---------|
+| **Phase 1:<br/>Gather Data** | Nov/Dec 2025<br/>(S duration) | • Pilot test<br/>• Market research<br/>• Contract negotiation | Data to inform decision |
+| **Phase 2:<br/>Decide** | Q1-Q2 2026<br/>(M duration) | • Evaluate results<br/>• Choose strategic path | Path A, B, or C selected |
+| **Phase 3:<br/>Execute** | H2 2026+<br/>(L to XL) | • Implement chosen strategy | Vendor independence or better terms |
 
 **Why This Approach?**
 
 | ❌ DON'T | ✅ DO |
 |----------|-------|
-| Commit to vendor switch before testing feasibility | Gather data first, decide with evidence, not assumptions |
-| Accept status quo without negotiating better terms | Use audit findings as leverage for better contract terms |
-| | Test knowledge transfer with low-risk pilot |
-| | Research alternatives to strengthen negotiating position |
+| Commit to vendor switch before testing feasibility | Gather data first, decide with evidence |
+| Accept status quo without negotiating | Use audit findings as leverage |
+
+---
+
+### Slide 22a: Phase 1 - Gather Data (Nov/Dec 2025)
+
+**Objective:** Gather data, reduce uncertainty, establish leverage before major decisions
+
+**Three Parallel Workstreams:**
+
+| # | Action | Details | Investment |
+|---|--------|---------|------------|
+| **1** | **Knowledge Transfer Pilot Test** | • Assign small feature to independent vendor<br/>• Test maintainability with available materials<br/>• Assess Spanish Point handover cooperation | S |
+| **2** | **Matching Engine Market Research** | • Identify alternative matching engine vendors<br/>• Request proposals/demos<br/>• Assess replacement feasibility | XS |
+| **3** | **Contract Renegotiation (Parallel)** | • Git history access (immediate)<br/>• IaC templates inclusion in deliverables<br/>• Cost correlation tooling (automated dashboard)<br/>• Performance SLAs and proactive metrics<br/>• Enhanced Definition of Done (docs required) | Unknown |
+
+**Timeline:** S (2-3 months) | **Total Investment:** S (pilot + research)
+
+**Success Criteria:**
+
+- ✅ Pilot test completed with clear feasibility assessment
+- ✅ Market research identifies viable alternatives (or confirms none exist)
+- ✅ Contract negotiation yields improved terms (at minimum: git history, IaC templates)
+
+---
+
+### Slide 22b: Phase 2 - Decide Based on Results (Q1-Q2 2026)
+
+**Objective:** Based on Phase 1 results, choose strategic path
+
+**Decision Framework:**
+
+**Alternative 1: Simple Three-Path Diagram**
+
+```mermaid
+graph TD
+    Phase1[Phase 1 Results] --> Decision{Evaluation<br/>March 2026}
+
+    Decision -->|Pilot Successful +<br/>Alternatives Exist| OptA[Path A:<br/>Vendor Transition]
+    Decision -->|Pilot Fails OR<br/>No Alternatives| OptB[Path B:<br/>Improved Relationship]
+    Decision -->|Mixed Results| OptC[Path C:<br/>Partial Independence]
+
+    style OptA fill:#fff4cc
+    style OptB fill:#ccffcc
+    style OptC fill:#e6f3ff
+    style Phase1 fill:#e6e6ff
+    style Decision fill:#ffe6e6
+```
+
+**Alternative 2: Decision Table**
+
+| Scenario | Condition | Path Selected | Next Actions |
+|----------|-----------|---------------|--------------|
+| ✅ **SUCCESS** | Pilot successful<br/>+ Alternatives exist | **Path A:**<br/>Vendor Transition | • Proceed with vendor transition plan<br/>• Begin detailed RFP process<br/>• Negotiate transition terms |
+| 🔴 **BLOCKED** | Pilot fails<br/>OR No alternatives | **Path B:**<br/>Improved Relationship | • Use pilot results as leverage<br/>• Negotiate enhanced governance terms<br/>• Accept lock-in, optimize within constraints |
+| ⚠️ **MIXED** | Partial success<br/>Mixed results | **Path C:**<br/>Partial Independence | • Keep Spanish Point for Matching Engine<br/>• New vendor for application maintenance<br/>• Require knowledge transfer improvements |
+
+**Alternative 3: Horizontal Flow**
+
+```mermaid
+graph LR
+    P1[Phase 1<br/>Results] --> E{Evaluation}
+
+    E -->|Success| A[Path A<br/>Vendor Transition]
+    E -->|Blocked| B[Path B<br/>Better Terms]
+    E -->|Mixed| C[Path C<br/>Partial]
+
+    A --> A1[Full independence<br/>XL timeline/cost]
+    B --> B1[Improved governance<br/>Immediate]
+    C --> C1[Split model<br/>L timeline/cost]
+
+    style A fill:#fff4cc
+    style B fill:#ccffcc
+    style C fill:#e6f3ff
+    style E fill:#ffe6e6
+```
+
+**Alternative 4: Three Separate Decision Trees**
+
+**Path A: Vendor Transition**
+
+```mermaid
+graph TD
+    A1{Pilot Successful?} -->|YES| A2{Alternatives Exist?}
+    A2 -->|YES| A3[✅ Path A<br/>Vendor Transition<br/>XL timeline/cost]
+    A1 -->|NO| A4[❌ Path A Not Viable]
+    A2 -->|NO| A4
+
+    style A3 fill:#ccffcc
+    style A4 fill:#ffcccc
+```
+
+**Path B: Improved Relationship**
+
+```mermaid
+graph TD
+    B1{Pilot Failed OR<br/>No Alternatives?} -->|YES| B2[✅ Path B<br/>Improved Relationship<br/>Immediate]
+    B1 -->|NO| B3[Consider Path A or C]
+
+    style B2 fill:#ccffcc
+    style B3 fill:#fff4cc
+```
+
+**Path C: Partial Independence**
+
+```mermaid
+graph TD
+    C1{Mixed Results?} -->|YES| C2[✅ Path C<br/>Partial Independence<br/>L timeline/cost]
+    C1 -->|NO| C3[Consider Path A or B]
+
+    style C2 fill:#ccffcc
+    style C3 fill:#fff4cc
+```
+
+**Timeline:** M (6 months) | **Investment:** Depends on path chosen
+
+**Decision Date:** March 2026
+
+---
+
+### Slide 22c: Phase 3 - Execute Strategy (H2 2026 onwards)
+
+**Objective:** Execute chosen strategy based on Phase 1 evidence
+
+**Three Possible Paths:**
+
+| Path | Description | Timeline | Investment | Key Activities |
+|------|-------------|----------|------------|----------------|
+| **Path A:<br/>Vendor Transition** | Full vendor switch | XL | XL | • Parallel vendor overlap<br/>• Gradual feature transition |
+| **Path B:<br/>Improved Relationship** | Stay with better terms | Immediate | Minimal | • Enhanced contract terms in place<br/>• Better transparency and governance<br/>• Cost optimization implemented<br/>• Continue with Spanish Point under better terms |
+| **Path C:<br/>Partial Independence** | Split maintenance model | L | L | • New vendor for app, Spanish Point for Matching<br/>• Clear interface contracts<br/>• Improved knowledge management |
+
+**Timeline:** L to XL (depending on path) | **Investment:** L to XL (depending on path)
+
+**Key Principle:** Don't decide today which path - decide in March 2026 when you have data
 
 **Speaker Notes:**
 
@@ -90,7 +223,7 @@ Phase 1 (Immediate - Nov/Dec 2025)
 │                                                             │
 │ ACTIONS:                                                    │
 │ ✓ Knowledge Transfer Pilot Test                            │
-│   ├─ Assign €10-20K feature to independent vendor         │
+│   ├─ Assign small feature to independent vendor           │
 │   ├─ Test maintainability with available materials        │
 │   └─ Assess Spanish Point handover cooperation            │
 │                                                             │
@@ -106,11 +239,11 @@ Phase 1 (Immediate - Nov/Dec 2025)
 │   ├─ Performance SLAs and proactive metrics              │
 │   └─ Enhanced Definition of Done (docs required)          │
 │                                                             │
-│ TIMELINE: 2-3 months                                       │
-│ INVESTMENT: €20-40K (pilot + research)                    │
+│ TIMELINE: S                                                │
+│ INVESTMENT: S (pilot + research)                          │
 └────────────────────────────────────────────────────────────┘
 
-Phase 2 (Q1-Q2 2026 - 6 months)
+Phase 2 (Q1-Q2 2026 - M timeline)
 ┌────────────────────────────────────────────────────────────┐
 │ OBJECTIVE: Based on Phase 1 results, choose strategic path │
 │                                                             │
@@ -133,17 +266,17 @@ Phase 2 (Q1-Q2 2026 - 6 months)
 │   → New vendor for application maintenance                │
 │   → Require knowledge transfer improvements                │
 │                                                             │
-│ TIMELINE: 6 months                                         │
+│ TIMELINE: M                                                │
 │ INVESTMENT: Depends on path chosen                        │
 └────────────────────────────────────────────────────────────┘
 
-Phase 3 (H2 2026 onwards - 12-18 months)
+Phase 3 (H2 2026 onwards - L to XL timeline)
 ┌────────────────────────────────────────────────────────────┐
 │ OBJECTIVE: Execute chosen strategy                         │
 │                                                             │
 │ Path A (Vendor Transition):                                │
-│   ├─ 12-24 month timeline                                 │
-│   ├─ €300-600K investment                                 │
+│   ├─ XL timeline                                          │
+│   ├─ XL investment                                        │
 │   ├─ Parallel vendor overlap                              │
 │   └─ Gradual feature transition                           │
 │                                                             │
@@ -159,8 +292,8 @@ Phase 3 (H2 2026 onwards - 12-18 months)
 │   ├─ Clear interface contracts                            │
 │   └─ Improved knowledge management                        │
 │                                                             │
-│ TIMELINE: 12-18 months                                     │
-│ INVESTMENT: €100K-600K (depending on path)                │
+│ TIMELINE: L to XL                                          │
+│ INVESTMENT: L to XL (depending on path)                   │
 └────────────────────────────────────────────────────────────┘
 
 Why This Approach?
@@ -184,7 +317,7 @@ We don't recommend committing to a vendor switch today. We also don't recommend 
 
 Three parallel workstreams:
 
-1. **Knowledge Transfer Pilot Test** (€10-20K, 2 months)
+1. **Knowledge Transfer Pilot Test** (S investment, S timeline)
 
    Assign a small, low-risk feature to an independent vendor. For example: "Add a new validation rule" or "Generate a new report format" or "Implement a minor UI enhancement."
 
@@ -199,14 +332,14 @@ Three parallel workstreams:
    **Success criteria:**
 
    - Feature delivered correctly
-   - Timeline reasonable (not 10x longer than expected)
+   - Timeline reasonable (not much longer than expected)
    - Independent vendor doesn't require extensive Spanish Point support
 
    **If pilot fails:** Knowledge transfer viability is low. Vendor switch is high risk. Option B (improve current relationship) becomes preferred.
 
    **If pilot succeeds:** Knowledge transfer is feasible. Vendor switch is an option. Proceed with detailed RFP.
 
-2. **Matching Engine Market Research** (€5-10K, 2 months)
+2. **Matching Engine Market Research** (XS investment, S timeline)
 
    Research alternative matching engine vendors. Music rights matching is a specialized domain - who else offers this?
 
@@ -251,7 +384,7 @@ After Phase 1, you'll have data:
 
 Three possible paths:
 
-**Option A - Vendor Transition:** IF pilot successful AND alternatives exist, proceed with full vendor switch RFP. 12-24 months, €300-600K, high risk but full independence.
+**Option A - Vendor Transition:** IF pilot successful AND alternatives exist, proceed with full vendor switch RFP. XL timeline and investment, high risk but full independence.
 
 **Option B - Improved Relationship:** IF pilot fails OR no alternatives, stay with Spanish Point under better terms. Use pilot results and audit findings as leverage. Lower risk, proven platform, better governance.
 
@@ -274,7 +407,7 @@ This is how you make a multi-million-euro strategic decision responsibly.
 
 ---
 
-### Slide 23: The Knowledge Transfer Test - €10-20K De-Risking Investment
+### Slide 23: The Knowledge Transfer Test - Small De-Risking Investment
 
 **Visual:** Pilot test framework
 
@@ -285,7 +418,7 @@ This is how you make a multi-million-euro strategic decision responsibly.
 | Category | Examples |
 |----------|----------|
 | **Feature Examples** | • Add new validation rule (e.g., "Work title must not contain special characters")<br/>• Generate new report format (e.g., "Monthly submission statistics by agency")<br/>• Implement minor UI enhancement (e.g., "Add bulk edit capability for work metadata")<br/>• Fix non-critical bug (e.g., "Improve error message clarity for validation failures") |
-| **Selection Criteria** | • Well-defined requirements<br/>• Limited scope (1-2 weeks effort for experienced team)<br/>• Non-critical (failure doesn't impact production)<br/>• Representative complexity (touches multiple layers) |
+| **Selection Criteria** | • Well-defined requirements<br/>• Limited scope (XS effort for experienced team)<br/>• Non-critical (failure doesn't impact production)<br/>• Representative complexity (touches multiple layers) |
 
 ### Materials Provided to Pilot Vendor
 
@@ -302,7 +435,7 @@ This is how you make a multi-million-euro strategic decision responsibly.
 | # | Criterion | Expected Outcome |
 |---|-----------|------------------|
 | **1** | **Feature Delivered Correctly** | Meets requirements, passes testing |
-| **2** | **Reasonable Timeline** | 1-2 weeks for experienced vendor (not 6+ weeks) |
+| **2** | **Reasonable Timeline** | XS effort for experienced vendor (not much longer) |
 | **3** | **Independent Delivery** | Minimal questions requiring Spanish Point input |
 | **4** | **Code Quality Maintained** | Follows existing patterns, no technical debt |
 | **5** | **Documentation Updated** | Tests written, comments added (if missing) |
@@ -325,7 +458,7 @@ This is how you make a multi-million-euro strategic decision responsibly.
 | ⚠️ **PARTIAL** | Knowledge transfer challenging but possible<br/>Requires improved documentation first | Negotiate knowledge transfer improvements |
 | 🔴 **FAILURE** | Knowledge transfer not viable<br/>Vendor switch extremely high risk | Focus on improving current relationship |
 
-**INVESTMENT:** €10-20K | **TIMELINE:** 2 months | **RISK:** Very Low
+**INVESTMENT:** S | **TIMELINE:** S | **RISK:** Very Low
 
 **Alternative: Mermaid Diagram**
 
@@ -353,11 +486,11 @@ graph TD
 
 The knowledge transfer pilot is the single most important recommendation we're making today. Here's why and how.
 
-**Why €10-20K?**
+**Why small investment?**
 
 This is the cost of engaging an independent vendor for a small feature assignment:
 
-- 1-2 weeks development time
+- Short development time
 - Testing and documentation
 - Project management overhead
 - Vendor proposal and scoping effort
@@ -381,7 +514,7 @@ If they can't, the entire vendor switch strategy is infeasible, regardless of co
 3. **Set clear success criteria**:
 
    - Feature works correctly
-   - Timeline is reasonable (1-2 weeks, not 6+ weeks)
+   - Timeline is reasonable (XS effort, not much longer)
    - Vendor doesn't require constant Spanish Point hand-holding
    - Code quality maintained (follows patterns, no shortcuts)
 
@@ -398,13 +531,13 @@ If they can't, the entire vendor switch strategy is infeasible, regardless of co
 
 **PARTIAL SUCCESS** - Feature delivered but took longer than expected, or required more Spanish Point support than ideal. Knowledge transfer is challenging but possible with better documentation. Negotiate documentation improvements as contract term.
 
-**FAILURE** - Feature not delivered, or timeline 3-5x longer than expected, or quality is poor. Knowledge transfer not viable with current materials. Vendor switch is extremely high risk. Focus on improving current relationship instead.
+**FAILURE** - Feature not delivered, or timeline much longer than expected, or quality is poor. Knowledge transfer not viable with current materials. Vendor switch is extremely high risk. Focus on improving current relationship instead.
 
 **Why low risk?**
 
-- €10-20K investment (vs €300-600K full switch cost)
+- Small investment (vs XL full switch cost)
 - Non-critical feature (failure doesn't impact production)
-- 2 months timeline (fast feedback)
+- Short timeline (fast feedback)
 - Learning value regardless of outcome (either confirms switch viability or proves it's not feasible)
 
 **Recommendation:** Start this pilot IMMEDIATELY (December 2025). Don't wait for Phase 2. This is the data point that drives all other decisions.
@@ -830,16 +963,16 @@ This slide can be skipped if time is tight or if the audience prefers to focus o
 | # | Quick Win | Status | Impact | Effort | Action |
 |---|-----------|--------|--------|--------|--------|
 | **1** | **Fix Pipeline Test Runner<br/>(URGENT)** | Blocked since .NET 8 upgrade (Nov 4) | Deployment safety net disabled | Spanish Point bug fix (should be immediate) | Escalate priority demand fix ETA |
-| **2** | **Databricks Upgrade Planning** | Version 10.4 LTS outdated | Missing features potential security gaps | Spanish Point upgrade roadmap (1-2 weeks) | Request upgrade plan by end of Dec 2025 |
+| **2** | **Databricks Upgrade Planning** | Version 10.4 LTS outdated | Missing features potential security gaps | Spanish Point upgrade roadmap (XS effort) | Request upgrade plan by end of Dec 2025 |
 | **3** | **Monthly Cost Review Meeting** | No regular cost review process | €600K/year spending without visibility | Recurring meeting setup (1 hour/month) | Establish January 2026 invite Finance |
 
 ### 🟠 HIGH IMPACT, MEDIUM EFFORT (Plan for Q1 2026)
 
 | # | Quick Win | Status | Impact | Effort | Action |
 |---|-----------|--------|--------|--------|--------|
-| **4** | **Cost Correlation Tooling** | Manual investigation required | Cannot explain monthly variations | 2-3 months development (€10-20K) | Either Spanish Point delivers OR CISAC builds using API Mgmt + Cost Mgmt APIs |
-| **5** | **Cosmos DB Archive Policy** | Old audit logs in expensive Cosmos DB | Potential cost savings (€5-10K/year est.) | 2-4 weeks implementation | Archive 90+ day logs to Blob Storage |
-| **6** | **Performance Validation with Moïse** | Relying on Spanish Point claims | Cannot validate Hyperscale proposal need | 1-2 meetings with CISAC technical expert | Gather production metrics user complaints |
+| **4** | **Cost Correlation Tooling** | Manual investigation required | Cannot explain monthly variations | S development effort | Either Spanish Point delivers OR CISAC builds using API Mgmt + Cost Mgmt APIs |
+| **5** | **Cosmos DB Archive Policy** | Old audit logs in expensive Cosmos DB | Potential cost savings (estimated) | S implementation | Archive 90+ day logs to Blob Storage |
+| **6** | **Performance Validation with Moïse** | Relying on Spanish Point claims | Cannot validate Hyperscale proposal need | XS (meetings with CISAC technical expert) | Gather production metrics user complaints |
 
 ### 🟡 MEDIUM IMPACT, LOW EFFORT (Ongoing Improvements)
 
@@ -900,7 +1033,7 @@ While strategic decisions (vendor switch vs improve relationship) take months, t
    - Spanish Point develops (preferred - they have all the context)
    - CISAC builds using API Management analytics + Azure Cost Management APIs
 
-   Estimated: 2-3 months, €10-20K. Negotiate as part of contract improvements OR budget for CISAC internal development.
+   Estimated: S development effort. Negotiate as part of contract improvements OR budget for CISAC internal development.
 
 5. **Cosmos DB Archive Policy**
 
@@ -910,13 +1043,13 @@ While strategic decisions (vendor switch vs improve relationship) take months, t
    - 91-365 days: Blob Storage warm tier
    - 365+ days: Blob Storage cool/archive tier
 
-   Estimated savings: €5-10K/year (needs data volume analysis to confirm).
+   Estimated savings: Cost reduction anticipated (needs data volume analysis to confirm).
 
-   Effort: 2-4 weeks implementation.
+   Effort: S implementation.
 
 6. **Performance Validation with Moïse**
 
-   We haven't validated performance claims with CISAC's operational expert (Moïse - 5+ years experience). Before approving Hyperscale proposal (€40K migration cost), validate:
+   We haven't validated performance claims with CISAC's operational expert (Moïse - 5+ years experience). Before approving Hyperscale proposal, validate:
 
    - What are actual user complaints?
    - What are production performance metrics?
@@ -978,7 +1111,7 @@ While strategic decisions (vendor switch vs improve relationship) take months, t
 
 | Option | Activities | Cost & Timeline | Outcomes |
 |--------|-----------|-----------------|----------|
-| **Performance Audit** | • Analyze slow queries (Application Insights)<br/>• Identify missing indexes<br/>• Implement caching where appropriate<br/>• Measure improvement | €5-10K<br/>1-2 months | **IF issues persist:** THEN consider Hyperscale (data-driven decision)<br/>**IF optimization resolves:** Save €40K migration + avoid 1-year lock-in |
+| **Performance Audit** | • Analyze slow queries (Application Insights)<br/>• Identify missing indexes<br/>• Implement caching where appropriate<br/>• Measure improvement | XS-S cost<br/>S timeline | **IF issues persist:** THEN consider Hyperscale (data-driven decision)<br/>**IF optimization resolves:** Save migration cost + avoid 1-year lock-in |
 
 ### Networking Security Component (May Be Valuable Independently)
 
@@ -997,7 +1130,7 @@ While strategic decisions (vendor switch vs improve relationship) take months, t
 
 1. Meet with Moïse - gather production performance data
 2. Validate SQL Server is actual bottleneck (not Matching Engine, not Cosmos DB)
-3. Explore query optimization alternatives (€5-10K vs €40K)
+3. Explore query optimization alternatives (XS-S cost vs €40K migration)
 4. Separate networking security decision from SQL tier decision
 
 **Timeline:** Jan-Feb 2026 validation → Decision by March 2026
@@ -1054,7 +1187,7 @@ We haven't validated that SQL Server is actually the performance bottleneck. Spa
 
 BEFORE committing €40K migration:
 
-**Option 1: Performance Audit** (€5-10K, 1-2 months)
+**Option 1: Performance Audit** (XS-S cost, S timeline)
 
 - Analyze slow queries via Application Insights
 - Identify missing indexes
@@ -1082,7 +1215,7 @@ Private endpoints, VPN Gateway, Private DNS, optional WAF - these may be valuabl
 
 1. Meet with Moïse - gather production performance data and user complaints
 2. Validate SQL Server is actual bottleneck
-3. Explore query optimization (€5-10K investment)
+3. Explore query optimization (XS-S investment)
 4. Separate networking security decision from SQL tier decision
 
 Decision by March 2026 with actual data.

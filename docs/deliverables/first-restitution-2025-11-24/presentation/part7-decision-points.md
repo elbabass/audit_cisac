@@ -16,11 +16,11 @@
 
 | Aspect | Details |
 |--------|---------|
-| **Investment** | €10-20K |
-| **Timeline** | December 2025 - February 2026 (2 months) |
+| **Investment** | S |
+| **Timeline** | December 2025 - February 2026 (S) |
 | **Risk** | Very Low (non-critical feature) |
 | **RECOMMENDATION** | ✅ **YES (High Priority)** |
-| **Rationale** | Single most important data point for vendor independence strategy. €10-20K investment de-risks €300-600K decision. |
+| **Rationale** | Single most important data point for vendor independence strategy. Small investment de-risks XL decision. |
 | **Action Required** | • Define pilot feature scope<br/>• Identify independent vendors to approach<br/>• Allocate budget approval<br/>• **Timeline:** Start December 2025 |
 
 ### ✅ DECISION 2: Initiate Contract Renegotiation?
@@ -39,22 +39,22 @@
 
 | Aspect | Details |
 |--------|---------|
-| **Investment** | €40K migration + €1,800/month savings |
-| **Timeline** | Migration ~2-3 months after approval |
+| **Investment** | €40K migration + €1,800/month savings (Spanish Point proposal) |
+| **Timeline** | Migration S after approval |
 | **Risk** | Medium (reserved instance = 1-year commitment) |
 | **RECOMMENDATION** | ⚠️ **HOLD Pending Validation** |
 | **Rationale** | Bottleneck not validated. Query optimization may achieve similar results at lower cost. Secondary priority vs governance issues. |
-| **Actions BEFORE Approval** | • Meet with Moïse (production performance data)<br/>• Validate SQL Server bottleneck<br/>• Explore query optimization alternative (€5-10K)<br/>• Decision by March 2026 with data |
+| **Actions BEFORE Approval** | • Meet with Moïse (production performance data)<br/>• Validate SQL Server bottleneck<br/>• Explore query optimization alternative (XS-S cost)<br/>• Decision by March 2026 with data |
 
 ### ✅ DECISION 4: Research Alternative Matching Engine Vendors?
 
 | Aspect | Details |
 |--------|---------|
-| **Investment** | €5-10K (market research, vendor proposals) |
-| **Timeline** | December 2025 - February 2026 (parallel) |
+| **Investment** | XS (market research, vendor proposals) |
+| **Timeline** | December 2025 - February 2026 (S, parallel) |
 | **Risk** | Very Low (research only, no commitment) |
 | **RECOMMENDATION** | ✅ **YES (Medium Priority)** |
-| **Rationale** | Strengthens negotiating position even if CISAC never switches. Informs long-term strategy. Low cost for high strategic value. |
+| **Rationale** | Strengthens negotiating position even if CISAC never switches. Informs long-term strategy. Small cost for high strategic value. |
 | **Scope** | • Identify alternative matching engine vendors<br/>• Request proposals and demos<br/>• Assess functionality comparison<br/>• Evaluate API compatibility and integration effort |
 | **Action Required** | • Define matching engine requirements spec<br/>• Research music rights technology vendors<br/>• **Timeline:** Start January 2026 |
 
@@ -71,7 +71,7 @@
 
 | Path | Condition | Details |
 |------|-----------|---------|
-| **Path A: Vendor Transition** | IF: Pilot successful + Alternatives exist | 12-24 months, €300-600K, high risk, full independence |
+| **Path A: Vendor Transition** | IF: Pilot successful + Alternatives exist | XL timeline, XL cost, high risk, full independence |
 | **Path B: Improved Relationship** | IF: Pilot fails OR no alternatives | Immediate, minimal cost, medium risk, better terms |
 | **Path C: Partial Independence** | IF: Mixed results | Split model: new vendor (app) + Spanish Point (ME) |
 
@@ -87,10 +87,10 @@ graph TD
     A --> E[4. Market Research?]
     A --> F[5. Vendor Strategy?]
 
-    B -->|YES ✅| G[Dec 2025 - Feb 2026<br/>€10-20K]
+    B -->|YES ✅| G[Dec 2025 - Feb 2026<br/>S investment]
     C -->|YES ✅| H[Dec 2025 - Mar 2026<br/>Parallel to pilot]
     D -->|HOLD ⚠️| I[Validate first<br/>Decision Mar 2026]
-    E -->|YES ✅| J[Jan 2026 - Feb 2026<br/>€5-10K]
+    E -->|YES ✅| J[Jan 2026 - Feb 2026<br/>XS investment]
     F -->|DEFER ⏸️| K[Decide Mar 2026<br/>After Phase 1 data]
 
     style B fill:#90EE90
@@ -110,15 +110,15 @@ Strategic Decisions Required (November 2025)
 
 DECISION 1: Approve Knowledge Transfer Pilot Test?
 ┌────────────────────────────────────────────────────────┐
-│ Investment: €10-20K                                     │
-│ Timeline: December 2025 - February 2026 (2 months)     │
+│ Investment: S                                           │
+│ Timeline: December 2025 - February 2026 (S)            │
 │ Risk: Very Low (non-critical feature)                  │
 │                                                         │
 │ OUR RECOMMENDATION: ✅ YES (High Priority)              │
 │                                                         │
 │ Rationale: Single most important data point for vendor │
-│           independence strategy. €10-20K investment    │
-│           de-risks €300-600K decision.                 │
+│           independence strategy. Small investment      │
+│           de-risks XL decision.                        │
 │                                                         │
 │ Action Required:                                        │
 │ • Define pilot feature scope                           │
@@ -153,7 +153,8 @@ DECISION 2: Initiate Contract Renegotiation?
 DECISION 3: Approve Hyperscale Proposal (PSA 5499)?
 ┌────────────────────────────────────────────────────────┐
 │ Investment: €40K migration + €1,800/month savings      │
-│ Timeline: Migration ~2-3 months after approval         │
+│            (Spanish Point proposal)                    │
+│ Timeline: Migration S after approval                   │
 │ Risk: Medium (reserved instance = 1-year commitment)   │
 │                                                         │
 │ OUR RECOMMENDATION: ⚠️  HOLD Pending Validation        │
@@ -165,21 +166,21 @@ DECISION 3: Approve Hyperscale Proposal (PSA 5499)?
 │ Actions BEFORE Approval:                                │
 │ • Meet with Moïse (production performance data)        │
 │ • Validate SQL Server bottleneck                       │
-│ • Explore query optimization alternative (€5-10K)      │
+│ • Explore query optimization alternative (XS-S cost)   │
 │ • Decision by March 2026 with data                     │
 └────────────────────────────────────────────────────────┘
 
 DECISION 4: Research Alternative Matching Engine Vendors?
 ┌────────────────────────────────────────────────────────┐
-│ Investment: €5-10K (market research, vendor proposals) │
-│ Timeline: December 2025 - February 2026 (parallel)     │
+│ Investment: XS (market research, vendor proposals)     │
+│ Timeline: December 2025 - February 2026 (S, parallel)  │
 │ Risk: Very Low (research only, no commitment)          │
 │                                                         │
 │ OUR RECOMMENDATION: ✅ YES (Medium Priority)            │
 │                                                         │
 │ Rationale: Strengthens negotiating position even if    │
 │           CISAC never switches. Informs long-term      │
-│           strategy. Low cost for high strategic value. │
+│           strategy. Small cost for high strategic value.│
 │                                                         │
 │ Scope:                                                  │
 │ • Identify alternative matching engine vendors         │
@@ -209,7 +210,7 @@ DECISION 5: Vendor Relationship Strategy Going Forward?
 │                                                         │
 │ Path A: Vendor Transition                             │
 │   IF: Pilot successful + Alternatives exist           │
-│   → 12-24 months, €300-600K, high risk, full independence│
+│   → XL timeline, XL cost, high risk, full independence│
 │                                                         │
 │ Path B: Improved Relationship                         │
 │   IF: Pilot fails OR no alternatives                  │
@@ -231,7 +232,7 @@ Let's crystallize the decisions CISAC leadership must make.
 
 **Our recommendation: ✅ YES (High Priority)**
 
-This is the single most important investment. €10-20K to validate the €300-600K vendor switch assumption. Start December 2025.
+This is the single most important investment. Small investment to validate the XL vendor switch assumption. Start December 2025.
 
 Actions required:
 
@@ -257,7 +258,7 @@ Action required: Authorize Yann to lead negotiation.
 
 **Our recommendation: ⚠️ HOLD Pending Validation**
 
-€40K investment + reserved instance commitment requires performance justification we don't have. Validate SQL bottleneck first. Explore query optimization alternative (€5-10K).
+€40K investment (Spanish Point proposal) + reserved instance commitment requires performance justification we don't have. Validate SQL bottleneck first. Explore query optimization alternative (XS-S cost).
 
 Decision timeline: March 2026 after validation.
 
@@ -267,7 +268,7 @@ This is SECONDARY priority - governance and vendor strategy are more important.
 
 **Our recommendation: ✅ YES (Medium Priority)**
 
-€5-10K market research. Low cost, high strategic value. Strengthens negotiating position even if CISAC never switches.
+Small market research investment. Low cost, high strategic value. Strengthens negotiating position even if CISAC never switches.
 
 Start January 2026.
 
